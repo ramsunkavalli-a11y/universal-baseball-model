@@ -1,0 +1,87 @@
+{
+  "execution_integrity": true,
+  "player_walkthrough_status": "complete",
+  "reviewed_cases": 12,
+  "disposition": "Retain the available-season clock as an arrival research challenger, not a replacement integrated hitter model. Probability scores and prospect PA squared error improve with favorable nominal player intervals, and 2022 probability accuracy does not reproduce the older outage test's clear harm. But mean absolute PA error worsens, delivered-value gain is negligible and uncertain, lower-minors delivered value worsens, elite thin entrants remain missed, and the established/public workload problem is unchanged. Keep V68/V53/V63 and translated talent anchors intact; no year-specific routing or lower-stage exclusion. Next inspect coherent talent/opportunity integration and prospect readiness evidence rather than repeat COVID boosts or globally penalize roster protection.",
+  "assessments": [
+    {
+      "row_id": 44122,
+      "assessment": "Julio: age 20, 340 Aplus/AA PA with 13 HR, 42 BB and 66 K in 2021. Prior 2019 A/Aplus and 2018 DSL seasons are restored to available slots without changing age or current performance. Probability .8051 to .8864 and fixed conditional PA 315.63 give 254.11 to 279.77 against 560. The old model on rebuilt inputs gives .8263 and the new model on old inputs .8792; both representation and refitting contribute. Roster and fresh .98 rank dominate saved logit paths, not a magical COVID coefficient. Fixed rate .754 versus 2.683 still misses talent. Refined support 12 people/9 positive; nearest peers include Abrams 302 but weaker-pedigree Nunez/Rincones zero and Bae 37. These are timing controls, not equivalent elite bats. Helpful but incomplete."
+    },
+    {
+      "row_id": 44159,
+      "assessment": "Witt: age 21, 564 AA/AAA PA, 33 HR/50 BB/131 K, fresh rank score 1.0. His 180 rookie PA in 2019 receive .8 instead of .6 weight; no earlier professional season is invented. Probability .7790 to .8162 gives 278.80 to 292.11 PA against 632 with conditional 357.90 fixed. Logit paths show ranks, upper-level role and exposure rather than a blanket absence reward. Fixed batting rate .295 versus actual .055 is not the large error here. Refined support 7/7; peers Gorman 313, Arias 57, Downs 41 and Miranda 483 retain varied timing. Small useful opportunity change, large workload miss remains."
+    },
+    {
+      "row_id": 44354,
+      "assessment": "Vavra: age 24, 218 current AA/Aplus/complex PA, older 453 A and 199 short-season PA recovered. Probability .4957 to .5975 and fixed conditional 172.62 yield 85.56 to 103.15 against 103 actual. The control on rebuilt inputs rises to .6754, while candidate on old inputs stays .5020: history representation matters, not only refitting. Rate -.0246 versus -.1464 is reasonably close, but higher PA worsens value .2646 to .3190 versus .2384; exact PA is not exact value. Refined support 1056/99; selected peers all have zero MLB PA but are not matched on 40-man status, which strongly drives this fit. Ordinary source/model walk, not two huge canceling errors."
+    },
+    {
+      "row_id": 49030,
+      "assessment": "Walker: age 20, 536 AA PA/19 HR/57 BB/116 K after 366 A/Aplus PA. He has no professional 2019 record, so his full model input vector is unchanged. Refit alone changes probability .6392 to .6756 and PA 155.17 to 164.01 against 465. Rank/AA role and exposure still dominate. Fixed conditional 242.76 and rate .411 versus 1.228 remain too low. Refined support 17/14; Winn 137, Meadows 145, Pages zero and Rafaela 89 show no guarantee of immediate large workload. Helpful refit, not evidence that recovered own history caused the benefit."
+    },
+    {
+      "row_id": 53164,
+      "assessment": "Langford: age 21, 200 professional PA including 80 AA/AAA, 10 HR/36 BB/34 K, pick 4 and fresh rank .95. Inputs are unchanged in 2023; refit lowers probability .5991 to .5521 and PA 214.92 to 198.07 against 557. Reduced AA-role/exposure contributions accompany the change; path changes are accounting, not causal attribution. Rate .688 versus .549 is close, so worsened opportunity directly worsens value. Refined support zero, despite large broad counts; same-level peers have much weaker pedigree or different workload and all zero future PA. Do not use those zero outcomes to dismiss the elite first-draft-year miss."
+    },
+    {
+      "row_id": 57052,
+      "assessment": "Kurtz: age 21, only 50 A/AA PA, 4 HR/12 BB/10 K, fourth pick and rank .63. Inputs are unchanged in 2024; refit lowers probability .0606 to .0550 and PA 10.18 to 9.25 against 489. Conditional 168.16 and current rate -.063 versus actual 5.150 also severely miss; translated rate 1.024 is an informative alternative but not a solution. Refined support 2 all-training people and zero positives. The four mostly weak-pedigree peers all fail to arrive but cannot establish what an elite college bat should do. This is a substantive remaining thin-entry support/representation gap, not a calendar repair success."
+    },
+    {
+      "row_id": 43288,
+      "assessment": "Pena: age 23, 160 AAA/complex PA, 10 HR/8 BB/41 K in 2021, with 474 A/Aplus PA in 2019 and 156 short-season PA in 2018. Probability .2664 to .6212 raises PA 46.89 to 109.34 against 558, the largest squared PA gain. Old model on rebuilt inputs .5823 and new on old .4151 show both sources of change; control's empty prior-games path was negative. Roster protection is a large positive path. Fixed rate -.064 versus -.108 is close, leaving conditional PA 176.03 and arrival attenuation as major misses. Support 74/46. Broad peers include different positions/weak pedigrees and zero arrivals; none explains away the productive SS. Real representation improvement, not sufficient readiness projection."
+    },
+    {
+      "row_id": 48210,
+      "assessment": "Davis: age 22, 255 A/AA/Aplus/complex PA with 10 HR/21 BB/51 K in 2022 after 31 PA in 2021; first overall pick and current rank .44. No own-player inputs change because there is no 2019 pro history. Refit lowers probability .4529 to .2517, PA 131.37 to 73.01 against 255; largest squared PA harm. AA-role/exposure contributions shrink. Conditional 290.05 is fixed. Current value .368 versus .363 is falsely reassuring: too-low PA and too-high rate -.198 versus -1.569 cancel. New value .205 is worse as well. Support 51/40. Wells 75 and Garcia/Roederer/Vellojin zero differ in pedigree/position; do not invent a team reason for the harm."
+    },
+    {
+      "row_id": 24935,
+      "assessment": "Meadows: age 21, 352 AA/AAA/short PA, 12 HR/32 BB/67 K in 2016, fresh rank .91. All old and new inputs/models are identical before the cancellation. Both give .8255 times 360.80 = 297.83 PA against zero; largest nonarrival false high. Upper-level role, rank and sample drive the saved forecast. Refined support only 2/2. Brinson 55, Frazier 142, Bellinger 548 and Zimmer 332 show reasonable readiness with uncertain timing. Zero next-year PA is not proof of no lifetime talent; this miss is not repaired by the new clock."
+    },
+    {
+      "row_id": 34859,
+      "assessment": "Reynolds: age 23, 383 AA PA/7 HR/40 BB/73 K after 541 Aplus PA. Both unchanged pre-pandemic arms give .1564 times 81.02 = 12.67 PA against 546, largest active shortfall. Fixed current rate -.430 versus actual 2.731 also misses. Positive AA-role/exposure paths are insufficient to overcome low overall baseline and no roster listing. Refined support 472/122 means this cannot be dismissed merely as an empty-profile forecast; those counts still do not certify identical talent. Bishop 60 and other nearest CFs zero have similar age/level but lack all relevant player information. Persistent talent/readiness miss outside the COVID question."
+    },
+    {
+      "row_id": 48385,
+      "assessment": "Cartaya, postfit lower-stage supplement: age 20 catcher, 445 A/Aplus PA/22 HR/60 BB/119 K in 2022, rank .87 and 40-man listed. Added 207 rookie PA from 2019 change 13 inputs. Probability .5898 to .6527 raises PA 117.39 to 129.90 against zero. Old model on rebuilt inputs falls to .4493 whereas new on old rises to .7215: refit reverses the own-input effect. Roster logit contribution about +3.78 remains dominant, but one case cannot justify a global roster penalty. Refined support 16/9. Listed same-age Aplus peers Marte 123 and Luciano 45 do arrive; Lopez/Valenzuela zero. More expected PA worsens this immediate false high, not a lifetime talent verdict."
+    },
+    {
+      "row_id": 30657,
+      "assessment": "Soto, postfit lower-stage supplement: age 18, 123 A/complex PA with 3 HR/10 BB/9 K in 2017, following 207 rookie/short PA, rank .72. All inputs/models unchanged. Both give probability .0143, conditional 120.53 and expected 1.72 PA against 494. Rank paths are positive but tiny current game exposure and no roster listing reduce logit. Current rate .252 versus actual 3.567 misses talent; translated rate .060 is no rescue. Refined support 27 people but only one positive arrival, so the actual rapid jump is weakly represented. Similar-age listed Taveras gets zero immediate MLB PA; other weaker-pedigree peers also zero. This does not prove every teenage prospect should get a large immediate boost, nor settle multiyear Soto talent."
+    }
+  ],
+  "checks_before_fits": 70,
+  "new_classifiers": 20,
+  "classifiers_replayed": 35,
+  "controls_replayed_before_fits": 35,
+  "fixed_conditional_and_hitting": true,
+  "established_unchanged": true,
+  "protected_outcomes_used": false,
+  "frozen_forecast_changed": false,
+  "explorer_changed": false,
+  "deployment_approved": false,
+  "full_goal_complete": false,
+  "unit_tests_passed": 9,
+  "hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-available-season-history\\preflight.json": "dd468e0f69a1fd213d5ff8844776315f8ba7cd1e5dcd145449879ed5b27dffea",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-available-season-history\\source-approval.json": "a1f5e2d95692f31e4ee17f9bdabe1e7021da68caa81b9fa8ac8cc4e0e4a9e373",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-available-season-history\\verification.json": "14df7baec0b8a2bd9b7396482b786b18bcc1b56f972ed652105cf776da772fed",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-available-season-history\\scores.json": "2bc6d2d3aec28279da6d3c94a2a4d7a2950833c4e970eb39130f67dc6914dad2",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-available-season-history\\intervals.json": "8edae56bd580f3186a7e67971b5564f26f52a07ed37cac9c3256781312ab5c45",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-available-season-history\\selected-cases.json": "37460898cffeef541e21df1bd72f6213d9c4e7cf49e4c2fa8261b49d6f52d03b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-available-season-history\\cases.json": "52ab29847966d7ea483b8d7196feaa7259864610ab2bd34e68686036eb4153bf",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-v31\\counts.parquet": "62de048f7eb6cae53dd29755e26953c31b204fbdfc0e6be261b63acd42da5e66",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-v38\\game-counts.parquet": "00a6fd96c22b873a8c16d6342ac1d8310fa8e543af8cfb370fd5d0da884c90e8",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-available-season-history\\selected-supplement.json": "b26d2c285ed24f7030c0fe4e5b4b53627109fc1994380c10cb445e65901d4e71",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-available-season-history\\cases-supplement.json": "498adfa0cc290600194be53f2bfbff0949dbedfd9da5fa3ea6cd6145f2486723",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\config\\hitter_available_season_model_review.json": "f03dc95fa2befd2b669b8e0d455be168cc677bd4ad1cf5f03be7651534143f30",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-available-season-history\\roster-readiness-diagnostic-separate-mexico.json": "0655cffdd4fe5297c711f41e88f5b0d7dabda3cb7ba9e7d37b9d07298981ced9",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-available-season-history\\unit-tests.xml": "20e59044a5fd703df545cfd615ad2fbd4a9309098dd5f8b4052f8d92abea3861",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-available-season-history\\preflight-summary.json": "bdb9430d82231112dcc1c191797a02171625cb3e2d1990bd8b5cf2a843576236",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\hitter-available-season-history-result.md": "a8df90cdb164b0ce461df6132df8eedac919f252a229fa561b3faf75dc4ca656",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\review_hitter_available_season_history.py": "87a730177e7f010e15fe77c6b0c4ee0f74f56081bfea4d02324605d60f860012"
+  }
+}

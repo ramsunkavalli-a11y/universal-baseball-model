@@ -1,0 +1,28 @@
+{
+  "source_walkthrough_status": "complete",
+  "scope": "Input/source meaning only; no fitted candidate or predictive disposition yet",
+  "cases": [
+    {
+      "player_id": 677594,
+      "origin": 2021,
+      "assessment": "Julio remains age 20 with 2021 AA 206 and Aplus 134 PA. Calendar slots 2021/2020/2019 become actual 2021/2019/2018 seasons. Prior slot now contains his 295 A and 72 Aplus PA in 2019; oldest slot contains 255 DSL PA in 2018. Pooled Aplus PA increases 177.2 to 191.6 by changing 2019 weight .6 to .8, not by inventing play in 2020. True cancellation flag and rank .98 are retained. The extra teenage DSL history is older evidence, not same-age production. Predictive usefulness remains untested."
+    },
+    {
+      "player_id": 677951,
+      "origin": 2021,
+      "assessment": "Witt remains age 21 with 279 AA and 285 AAA PA, 33 total HR in 2021. His 180 rookie PA in 2019 move from slot two to slot one; 2018 remains zero because he had not been drafted, not because the clock searches for a nonzero personal season. Actual 2020 cancellation and two elapsed draft years remain visible. The denominator in the draft exposure term does not change because no additional older professional season exists."
+    },
+    {
+      "player_id": 679631,
+      "origin": 2021,
+      "assessment": "Vavra remains age 24 with 184 AA, 24 Aplus and 10 complex PA in 2021. The alternative brings 453 A PA from 2019 into prior slot and recovers 199 Aminus PA in 2018. Prior games change zero to 102 and prior role 4 to 4.4018. The draft exposure term decreases .051816 to .041185 because it now sees a larger professional sample. This coherent change does not by itself establish better health or readiness."
+    },
+    {
+      "player_id": 691023,
+      "origin": 2022,
+      "assessment": "Walker remains age 20 with 536 AA PA in 2022 and 366 A/Aplus PA in 2021. Source years become 2022/2021/2019, but there is no 2019 professional history for this 2020 draftee. No own-player input changes above 1e-12. This is an opposite-risk control: any probability change must come from refitted training, not recovered personal production. It guards against assigning a fictitious benefit to every player affected by the calendar."
+    }
+  ],
+  "calendar_reconstruction": "All rebuilt fields agree with current values within 1e-12. Unchanged-origin candidate inputs are copied exactly to prevent floating rounding differences from becoming a contrast.",
+  "claim_limits": "Available-season weighting retains an older affiliated season and changes its weight. These effects are not separately identified. Calendar age/gaps, MLB and Mexico history, scouting vintages and individual absences are unchanged."
+}

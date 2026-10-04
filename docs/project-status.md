@@ -24,7 +24,30 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: separate entrant workload comparison and thirteen model walks completed.**
+**Current checkpoint: available minor season clock and twelve model walks completed.**
+The [completed history comparison](hitter-available-season-history-result.md)
+changes only prospect arrival representation, keeping conditional PA/hitting
+fixed and all 30,506 forecasts. All 70 preflights precede twenty new fits;
+fifteen identical pre-pandemic controls are reused, and all 35 classifiers
+replay. Never-debut Brier .019800 becomes .019462, log loss .070921 becomes
+.069286 and PA RMSE 27.2521 becomes 27.0808, with favorable nominal player
+intervals. Expected arrivals rise 677 to 701 versus 787 actual. Most improvement
+comes from 2021; unlike the older block-removal test, 2022 probability scores
+do not clearly worsen. But PA MAE worsens, value .152257 to .152223 is tiny
+and uncertain, and lower-minors value worsens. Public workload is unchanged.
+Retain this as an arrival research challenger, not an integrated replacement
+or a post-result upper-only/2021-only route. Twelve walks show Pena/Julio gains,
+Davis/Langford harms, ordinary Vavra, Meadows/Reynolds false high/low and
+Cartaya/Soto lower-stage failures. Kurtz's elite thin-entry miss remains.
+The corrected roster diagnostic keeps Mexico separate: protected Aplus cases
+undercount arrivals but overpredict PA, so a blanket roster-protection penalty
+is not supported by Cartaya alone. Stop COVID boost/feature sweeps; next finish
+coherent talent/opportunity integration and residual readiness analysis using
+these preserved anchors and reconciled prior detailed winners. Public workload,
+full value/uncertainty and the full goal remain unfinished. Nine focused checks
+pass; protected 2026, all 31 frozen files and deployed explorer are unchanged.
+
+**Previous checkpoint: separate entrant workload comparison and thirteen model walks completed.**
 The [completed comparison](hitter-prospect-workload-specialization-result.md)
 keeps all 30,506 forecasts, fixed arrival/hitting and unchanged established
 players. All 140 actual conditional-subset preflights precede seventy new fits;

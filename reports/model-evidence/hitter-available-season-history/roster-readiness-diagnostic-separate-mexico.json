@@ -1,0 +1,4127 @@
+{
+  "postfit_mechanism_diagnostic": true,
+  "no_forecasts_changed": true,
+  "supersedes": "roster-readiness-diagnostic.json, whose highest-level helper pooled Mexico with AA",
+  "group_selection": "Actual origin-known affiliated exposure, separate Mexico fallback, 40-man flag and fresh list group; no outcome selection",
+  "interpretation": "Descriptive errors, not a causal team decision model or selectable postfit routing. Roster protection need not imply readiness; the observed group totals decide whether a blanket correction is warranted.",
+  "groups": [
+    {
+      "group_keys": [
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "readiness_level": "Mexico_without_A_or_higher_affiliated",
+        "on_40man": 0
+      },
+      "rows": 563,
+      "people": 361,
+      "probability": {
+        "preseason": {
+          "brier": 5.094987484290685e-05,
+          "log_loss": 0.004523320498058146,
+          "expected_arrivals": 2.531471695155564,
+          "actual_arrivals": 0
+        },
+        "available": {
+          "brier": 5.094987484290685e-05,
+          "log_loss": 0.004523320498058146,
+          "expected_arrivals": 2.531471695155564,
+          "actual_arrivals": 0
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 0.43346702611045684,
+          "pa_mae": 0.2558899616894815,
+          "pa_bias": 0.2558899616894815,
+          "value_rmse": 0.0006377605591418727,
+          "value_mae": 0.00034342067386018384,
+          "value_bias": 0.0003410709054424665,
+          "pa_total": 144.03658912226632,
+          "value_total": 0.1919583291649517
+        },
+        "available": {
+          "pa_rmse": 0.43346702611045684,
+          "pa_mae": 0.2558899616894815,
+          "pa_bias": 0.2558899616894815,
+          "value_rmse": 0.0006377605591418728,
+          "value_mae": 0.0003434206738601839,
+          "value_bias": 0.00034107090544246657,
+          "pa_total": 144.03658912226632,
+          "value_total": 0.19195832916495173
+        }
+      },
+      "actual_pa": 0
+    },
+    {
+      "group_keys": [
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "readiness_level": "A",
+        "on_40man": 1
+      },
+      "rows": 10,
+      "people": 10,
+      "probability": {
+        "preseason": {
+          "brier": 0.19710663646394216,
+          "log_loss": 0.6015371356562575,
+          "expected_arrivals": 1.7926446886148422,
+          "actual_arrivals": 3
+        },
+        "available": {
+          "brier": 0.19796800072691684,
+          "log_loss": 0.6051420645434501,
+          "expected_arrivals": 1.8739907340395883,
+          "actual_arrivals": 3
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 43.30431264855433,
+          "pa_mae": 27.803587154603925,
+          "pa_bias": -4.285821505252631,
+          "value_rmse": 0.30700574312863194,
+          "value_mae": 0.1398027566238766,
+          "value_bias": 0.1217676320359414,
+          "pa_total": 147.02021666037743,
+          "value_total": 0.41788722751574064
+        },
+        "available": {
+          "pa_rmse": 43.484283621680696,
+          "pa_mae": 28.207604522368094,
+          "pa_bias": -3.881804137488463,
+          "value_rmse": 0.3071861903822625,
+          "value_mae": 0.1408835538129171,
+          "value_bias": 0.12284842922498192,
+          "pa_total": 156.03669874148937,
+          "value_total": 0.44502905949940114
+        }
+      },
+      "actual_pa": 232
+    },
+    {
+      "group_keys": [
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "readiness_level": "Aplus",
+        "on_40man": 1
+      },
+      "rows": 49,
+      "people": 46,
+      "probability": {
+        "preseason": {
+          "brier": 0.146646171873459,
+          "log_loss": 0.46465432657540334,
+          "expected_arrivals": 12.73647837206353,
+          "actual_arrivals": 15
+        },
+        "available": {
+          "brier": 0.14815217999098979,
+          "log_loss": 0.46762062561674983,
+          "expected_arrivals": 13.517559003543543,
+          "actual_arrivals": 15
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 52.49249089223292,
+          "pa_mae": 34.529987788558124,
+          "pa_bias": 18.788349520210637,
+          "value_rmse": 0.15772663018920757,
+          "value_mae": 0.10148962707415304,
+          "value_bias": 0.07176963829095634,
+          "pa_total": 1707.119464585126,
+          "value_total": 4.61725709247214
+        },
+        "available": {
+          "pa_rmse": 54.1871351501898,
+          "pa_mae": 36.59740451089133,
+          "pa_bias": 21.625014714853034,
+          "value_rmse": 0.16578626810016925,
+          "value_mae": 0.10986862874346676,
+          "value_bias": 0.07989134270330672,
+          "pa_total": 1832.9770361778099,
+          "value_total": 4.960849581515817
+        }
+      },
+      "actual_pa": 991
+    },
+    {
+      "group_keys": [
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "readiness_level": "AA_AAA",
+        "on_40man": 1
+      },
+      "rows": 377,
+      "people": 320,
+      "probability": {
+        "preseason": {
+          "brier": 0.2316290702051609,
+          "log_loss": 0.6582413770220431,
+          "expected_arrivals": 229.0826790797767,
+          "actual_arrivals": 261
+        },
+        "available": {
+          "brier": 0.22462607847707108,
+          "log_loss": 0.6429716813074566,
+          "expected_arrivals": 235.0779531911473,
+          "actual_arrivals": 261
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 132.17890238163213,
+          "pa_mae": 92.86466649707998,
+          "pa_bias": -9.184841308572041,
+          "value_rmse": 0.6040398754796299,
+          "value_mae": 0.3830780411454228,
+          "value_bias": 0.009928559537304982,
+          "pa_total": 31684.866808494386,
+          "value_total": 74.50374393398332
+        },
+        "available": {
+          "pa_rmse": 130.88561066172971,
+          "pa_mae": 92.7544099808825,
+          "pa_bias": -7.295297126219327,
+          "value_rmse": 0.6015166703223815,
+          "value_mae": 0.3846006122810571,
+          "value_bias": 0.01516431678227199,
+          "pa_total": 32514.898691308394,
+          "value_total": 76.81849838267111
+        }
+      },
+      "actual_pa": 35508
+    },
+    {
+      "group_keys": [
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "readiness_level": "short_rookie_DSL_or_none",
+        "on_40man": 1
+      },
+      "rows": 2,
+      "people": 2,
+      "probability": {
+        "preseason": {
+          "brier": 0.45474436169003285,
+          "log_loss": 1.3569947247224674,
+          "expected_arrivals": 0.7949816985478332,
+          "actual_arrivals": 2
+        },
+        "available": {
+          "brier": 0.46733758966659106,
+          "log_loss": 1.3859701700651608,
+          "expected_arrivals": 0.7555490777732586,
+          "actual_arrivals": 2
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 190.16732046285858,
+          "pa_mae": 188.30729972466986,
+          "pa_bias": -26.53244508949183,
+          "value_rmse": 0.3125993939502604,
+          "value_mae": 0.26701885345801996,
+          "value_bias": 0.26701885345801996,
+          "pa_total": 214.93510982101634,
+          "value_total": 0.44075256155889075
+        },
+        "available": {
+          "pa_rmse": 185.42330957976066,
+          "pa_mae": 182.5988114778229,
+          "pa_bias": -32.240933336338784,
+          "value_rmse": 0.3091341558988369,
+          "value_mae": 0.255420885083034,
+          "value_bias": 0.255420885083034,
+          "pa_total": 203.51813332732243,
+          "value_total": 0.41755662480891886
+        }
+      },
+      "actual_pa": 268
+    },
+    {
+      "group_keys": [
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "readiness_level": "AA_AAA",
+        "on_40man": 0
+      },
+      "rows": 5077,
+      "people": 2878,
+      "probability": {
+        "preseason": {
+          "brier": 0.06671814465678523,
+          "log_loss": 0.23473155669637233,
+          "expected_arrivals": 360.38032326322633,
+          "actual_arrivals": 469
+        },
+        "available": {
+          "brier": 0.06587774470896203,
+          "log_loss": 0.2296433096079471,
+          "expected_arrivals": 378.52855666247063,
+          "actual_arrivals": 469
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 44.58779569178941,
+          "pa_mae": 13.28185254898616,
+          "pa_bias": -2.9248207865864653,
+          "value_rmse": 0.27882988694799576,
+          "value_mae": 0.05580628835287776,
+          "value_bias": -0.00647905448694961,
+          "pa_total": 42554.171762085134,
+          "value_total": 104.51083119450276
+        },
+        "available": {
+          "pa_rmse": 44.41466346696247,
+          "pa_mae": 13.431782346430273,
+          "pa_bias": -2.6163476846473657,
+          "value_rmse": 0.2790970337340568,
+          "value_mae": 0.056406413613092066,
+          "value_bias": -0.005766287656372157,
+          "pa_total": 44239.68043297922,
+          "value_total": 108.4136155133861
+        }
+      },
+      "actual_pa": 57383
+    },
+    {
+      "group_keys": [
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "readiness_level": "A",
+        "on_40man": 0
+      },
+      "rows": 3556,
+      "people": 2965,
+      "probability": {
+        "preseason": {
+          "brier": 0.0017122553270822317,
+          "log_loss": 0.012899899413238413,
+          "expected_arrivals": 15.756926989361428,
+          "actual_arrivals": 6
+        },
+        "available": {
+          "brier": 0.001712128565916689,
+          "log_loss": 0.01293288543358251,
+          "expected_arrivals": 15.408150051498833,
+          "actual_arrivals": 6
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 9.264116178481352,
+          "pa_mae": 0.5631616788196999,
+          "pa_bias": 0.08756400238529549,
+          "value_rmse": 0.07393181705442982,
+          "value_mae": 0.0023825885337966676,
+          "value_bias": -0.0005150425475745259,
+          "pa_total": 1154.8354341470924,
+          "value_total": 3.2904612752362175
+        },
+        "available": {
+          "pa_rmse": 9.264288580927879,
+          "pa_mae": 0.5560539277361798,
+          "pa_bias": 0.08044968672830301,
+          "value_rmse": 0.07393255243186665,
+          "value_mae": 0.00236415947463219,
+          "value_bias": -0.0005335014202763414,
+          "pa_total": 1127.575216813171,
+          "value_total": 3.219992624406104
+        }
+      },
+      "actual_pa": 798
+    },
+    {
+      "group_keys": [
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "readiness_level": "short_rookie_DSL_or_none",
+        "on_40man": 0
+      },
+      "rows": 11313,
+      "people": 6703,
+      "probability": {
+        "preseason": {
+          "brier": 0.00027386467238693136,
+          "log_loss": 0.0033821228806881097,
+          "expected_arrivals": 24.329279495844148,
+          "actual_arrivals": 3
+        },
+        "available": {
+          "brier": 0.0002705947354179526,
+          "log_loss": 0.0032849425821961232,
+          "expected_arrivals": 23.21143551658309,
+          "actual_arrivals": 3
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 1.942937621132606,
+          "pa_mae": 0.17554298752134562,
+          "pa_bias": 0.12318309943746204,
+          "value_rmse": 0.006828707745301233,
+          "value_mae": 0.0005182432427334084,
+          "value_bias": 0.00034017264902200245,
+          "pa_total": 1726.6893409342265,
+          "value_total": 4.823561130318986
+        },
+        "available": {
+          "pa_rmse": 1.9324906860328999,
+          "pa_mae": 0.1668997889023748,
+          "pa_bias": 0.11452775271442486,
+          "value_rmse": 0.006805683725261702,
+          "value_mae": 0.0004971082463292325,
+          "value_bias": 0.0003190318536914613,
+          "pa_total": 1641.365045846011,
+          "value_total": 4.61263957645828
+        }
+      },
+      "actual_pa": 265
+    },
+    {
+      "group_keys": [
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "readiness_level": "Aplus",
+        "on_40man": 0
+      },
+      "rows": 3252,
+      "people": 2629,
+      "probability": {
+        "preseason": {
+          "brier": 0.008278679920500038,
+          "log_loss": 0.04158689114393598,
+          "expected_arrivals": 29.628225653795774,
+          "actual_arrivals": 28
+        },
+        "available": {
+          "brier": 0.008291599717431864,
+          "log_loss": 0.04089680413741079,
+          "expected_arrivals": 30.56300103478555,
+          "actual_arrivals": 28
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 13.599173850316758,
+          "pa_mae": 1.5666365932353679,
+          "pa_bias": -0.1078773705792304,
+          "value_rmse": 0.06675100461002927,
+          "value_mae": 0.005263517004429342,
+          "value_bias": 0.00040367826221144747,
+          "pa_total": 2515.3318148505127,
+          "value_total": 6.742784562181217
+        },
+        "available": {
+          "pa_rmse": 13.65526078252616,
+          "pa_mae": 1.5987781537761514,
+          "pa_bias": -0.0761922644015021,
+          "value_rmse": 0.0668476910714035,
+          "value_mae": 0.005360590311716316,
+          "value_bias": 0.000505934026143479,
+          "pa_total": 2620.9840124728557,
+          "value_total": 7.082759983579586
+        }
+      },
+      "actual_pa": 2883
+    },
+    {
+      "group_keys": [
+        "readiness_level",
+        "on_40man",
+        "scout_group"
+      ],
+      "profile": {
+        "readiness_level": "Aplus",
+        "on_40man": 0,
+        "scout_group": "other_listed"
+      },
+      "rows": 60,
+      "people": 59,
+      "probability": {
+        "preseason": {
+          "brier": 0.11047171114980435,
+          "log_loss": 0.41261252556837497,
+          "expected_arrivals": 2.6979207868565482,
+          "actual_arrivals": 7
+        },
+        "available": {
+          "brier": 0.11098095614272645,
+          "log_loss": 0.41614864823839676,
+          "expected_arrivals": 2.731759343398361,
+          "actual_arrivals": 7
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 56.944887962953054,
+          "pa_mae": 16.150878903041676,
+          "pa_bias": -5.3207642132790625,
+          "value_rmse": 0.37731485124804925,
+          "value_mae": 0.08081948106068952,
+          "value_bias": -0.016039737830056244,
+          "pa_total": 374.6439202320284,
+          "value_total": 1.1726575849296228
+        },
+        "available": {
+          "pa_rmse": 56.981092525114846,
+          "pa_mae": 16.338923047596413,
+          "pa_bias": -5.249794987690483,
+          "value_rmse": 0.37690562992159793,
+          "value_mae": 0.08088917149315902,
+          "value_bias": -0.015683285757647027,
+          "pa_total": 377.862027889428,
+          "value_total": 1.1934060314752004
+        }
+      },
+      "actual_pa": 897
+    },
+    {
+      "group_keys": [
+        "readiness_level",
+        "on_40man",
+        "scout_group"
+      ],
+      "profile": {
+        "readiness_level": "AA_AAA",
+        "on_40man": 0,
+        "scout_group": "other_listed"
+      },
+      "rows": 99,
+      "people": 92,
+      "probability": {
+        "preseason": {
+          "brier": 0.22129683859803695,
+          "log_loss": 0.662875579479358,
+          "expected_arrivals": 45.24518807403699,
+          "actual_arrivals": 58
+        },
+        "available": {
+          "brier": 0.2124210008029623,
+          "log_loss": 0.63632661752739,
+          "expected_arrivals": 45.183278856412954,
+          "actual_arrivals": 58
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 148.4421389135927,
+          "pa_mae": 104.7321313504996,
+          "pa_bias": -27.718616586412136,
+          "value_rmse": 1.1250263127698956,
+          "value_mae": 0.5590037772459782,
+          "value_bias": -0.06746972389451741,
+          "pa_total": 9058.394375851252,
+          "value_total": 27.808128025048543
+        },
+        "available": {
+          "pa_rmse": 147.695890070307,
+          "pa_mae": 104.54650527276546,
+          "pa_bias": -27.231543881665086,
+          "value_rmse": 1.125338861522786,
+          "value_mae": 0.5593547310398664,
+          "value_bias": -0.0660538271974806,
+          "pa_total": 9049.467546250211,
+          "value_total": 27.781603295946347
+        }
+      },
+      "actual_pa": 11892
+    },
+    {
+      "group_keys": [
+        "readiness_level",
+        "on_40man",
+        "scout_group"
+      ],
+      "profile": {
+        "readiness_level": "AA_AAA",
+        "on_40man": 0,
+        "scout_group": "top20"
+      },
+      "rows": 47,
+      "people": 41,
+      "probability": {
+        "preseason": {
+          "brier": 0.17998000792852722,
+          "log_loss": 0.5298838096752821,
+          "expected_arrivals": 26.926321579465295,
+          "actual_arrivals": 33
+        },
+        "available": {
+          "brier": 0.1828967674170188,
+          "log_loss": 0.5355793483473591,
+          "expected_arrivals": 27.337945663373677,
+          "actual_arrivals": 33
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 210.79563941120895,
+          "pa_mae": 169.05976899819652,
+          "pa_bias": -47.44568490012694,
+          "value_rmse": 1.5248227845990134,
+          "value_mae": 1.0372153558324841,
+          "value_bias": -0.4109450902522065,
+          "pa_total": 8103.502068342807,
+          "value_total": 25.772061696306263
+        },
+        "available": {
+          "pa_rmse": 208.4765725897173,
+          "pa_mae": 166.98694276528883,
+          "pa_bias": -45.27443095407192,
+          "value_rmse": 1.5278825964227387,
+          "value_mae": 1.045485466910302,
+          "value_bias": -0.40234465247490353,
+          "pa_total": 8226.174703583294,
+          "value_total": 26.253727101467792
+        }
+      },
+      "actual_pa": 10585
+    },
+    {
+      "group_keys": [
+        "readiness_level",
+        "on_40man",
+        "scout_group"
+      ],
+      "profile": {
+        "readiness_level": "short_rookie_DSL_or_none",
+        "on_40man": 1,
+        "scout_group": "not_observed_listed"
+      },
+      "rows": 1,
+      "people": 1,
+      "probability": {
+        "preseason": {
+          "brier": 0.8197019843826414,
+          "log_loss": 2.3578224419287452,
+          "expected_arrivals": 0.09462605273696907,
+          "actual_arrivals": 1
+        },
+        "available": {
+          "brier": 0.8197019843826414,
+          "log_loss": 2.3578224419287452,
+          "expected_arrivals": 0.09462605273696907,
+          "actual_arrivals": 1
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 214.8397448141617,
+          "pa_mae": 214.8397448141617,
+          "pa_bias": -214.8397448141617,
+          "value_rmse": 0.4295590423222961,
+          "value_mae": 0.4295590423222961,
+          "value_bias": 0.4295590423222961,
+          "pa_total": 12.160255185838315,
+          "value_total": 0.02877372414950222
+        },
+        "available": {
+          "pa_rmse": 214.8397448141617,
+          "pa_mae": 214.8397448141617,
+          "pa_bias": -214.8397448141617,
+          "value_rmse": 0.4295590423222961,
+          "value_mae": 0.4295590423222961,
+          "value_bias": 0.4295590423222961,
+          "pa_total": 12.160255185838315,
+          "value_total": 0.028773724149502227
+        }
+      },
+      "actual_pa": 227
+    },
+    {
+      "group_keys": [
+        "readiness_level",
+        "on_40man",
+        "scout_group"
+      ],
+      "profile": {
+        "readiness_level": "Aplus",
+        "on_40man": 1,
+        "scout_group": "other_listed"
+      },
+      "rows": 8,
+      "people": 8,
+      "probability": {
+        "preseason": {
+          "brier": 0.3325853539656213,
+          "log_loss": 0.9159801302382222,
+          "expected_arrivals": 3.135759357077178,
+          "actual_arrivals": 6
+        },
+        "available": {
+          "brier": 0.27378853249022594,
+          "log_loss": 0.7474182489607771,
+          "expected_arrivals": 3.6211292535828066,
+          "actual_arrivals": 6
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 94.96563638935072,
+          "pa_mae": 75.40267870880994,
+          "pa_bias": 27.262680858345938,
+          "value_rmse": 0.3145021381940775,
+          "value_mae": 0.23573887838895452,
+          "value_bias": 0.09889483843709809,
+          "pa_total": 690.5877148157982,
+          "value_total": 1.9247155101094893
+        },
+        "available": {
+          "pa_rmse": 90.71082121901021,
+          "pa_mae": 78.78240032494193,
+          "pa_bias": 39.800502793170914,
+          "value_rmse": 0.3230721509476706,
+          "value_mae": 0.258745894113911,
+          "value_bias": 0.1305241430238109,
+          "pa_total": 776.9737899077127,
+          "value_total": 2.1344759684614414
+        }
+      },
+      "actual_pa": 414
+    },
+    {
+      "group_keys": [
+        "readiness_level",
+        "on_40man",
+        "scout_group"
+      ],
+      "profile": {
+        "readiness_level": "Aplus",
+        "on_40man": 0,
+        "scout_group": "top20"
+      },
+      "rows": 18,
+      "people": 18,
+      "probability": {
+        "preseason": {
+          "brier": 0.1587379435972046,
+          "log_loss": 0.5396277141312185,
+          "expected_arrivals": 2.2943934866670403,
+          "actual_arrivals": 4
+        },
+        "available": {
+          "brier": 0.1643782989967755,
+          "log_loss": 0.5610022707856264,
+          "expected_arrivals": 2.5655581474003832,
+          "actual_arrivals": 4
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 62.48953894655268,
+          "pa_mae": 42.15278183998334,
+          "pa_bias": 12.265233339150015,
+          "value_rmse": 0.3235809695344067,
+          "value_mae": 0.17976048302776823,
+          "value_bias": 0.005278886722704666,
+          "pa_total": 497.91785531392213,
+          "value_total": 1.6481334410997697
+        },
+        "available": {
+          "pa_rmse": 65.0837075430588,
+          "pa_mae": 45.57536945551906,
+          "pa_bias": 15.642390083368824,
+          "value_rmse": 0.3298747762708802,
+          "value_mae": 0.1918030347209115,
+          "value_bias": 0.01714181977751614,
+          "pa_total": 557.4689939290935,
+          "value_total": 1.8444523777031956
+        }
+      },
+      "actual_pa": 396
+    },
+    {
+      "group_keys": [
+        "readiness_level",
+        "on_40man",
+        "scout_group"
+      ],
+      "profile": {
+        "readiness_level": "AA_AAA",
+        "on_40man": 1,
+        "scout_group": "not_observed_listed"
+      },
+      "rows": 327,
+      "people": 283,
+      "probability": {
+        "preseason": {
+          "brier": 0.23360485293317115,
+          "log_loss": 0.6606833034796228,
+          "expected_arrivals": 190.25699587848555,
+          "actual_arrivals": 227
+        },
+        "available": {
+          "brier": 0.2271951554106326,
+          "log_loss": 0.6471374694850356,
+          "expected_arrivals": 195.52671152567248,
+          "actual_arrivals": 227
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 128.0875998345452,
+          "pa_mae": 86.74329149783273,
+          "pa_bias": -17.4382493171102,
+          "value_rmse": 0.564095558748585,
+          "value_mae": 0.34849396141058175,
+          "value_bias": 0.013356633392068206,
+          "pa_total": 22718.910026315265,
+          "value_total": 49.80616062584645
+        },
+        "available": {
+          "pa_rmse": 126.87790441478862,
+          "pa_mae": 86.57500556293961,
+          "pa_bias": -15.504980504600606,
+          "value_rmse": 0.5624131537494412,
+          "value_mae": 0.35009617052786285,
+          "value_bias": 0.018345824419010694,
+          "pa_total": 23396.90920604837,
+          "value_total": 51.58174191680527
+        }
+      },
+      "actual_pa": 28563
+    },
+    {
+      "group_keys": [
+        "readiness_level",
+        "on_40man",
+        "scout_group"
+      ],
+      "profile": {
+        "readiness_level": "short_rookie_DSL_or_none",
+        "on_40man": 0,
+        "scout_group": "not_observed_listed"
+      },
+      "rows": 11275,
+      "people": 6674,
+      "probability": {
+        "preseason": {
+          "brier": 0.00027004902781417367,
+          "log_loss": 0.0032966061514570306,
+          "expected_arrivals": 23.269618419531675,
+          "actual_arrivals": 3
+        },
+        "available": {
+          "brier": 0.00026800137921108503,
+          "log_loss": 0.0032098683432243294,
+          "expected_arrivals": 22.24979137637009,
+          "actual_arrivals": 3
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 1.9181625165274432,
+          "pa_mae": 0.16157158066509722,
+          "pa_bias": 0.10897679123100786,
+          "value_rmse": 0.006751497315641477,
+          "value_mae": 0.0004744643898558315,
+          "value_bias": 0.00029561741942265446,
+          "pa_total": 1563.7208463148636,
+          "value_total": 4.302080257210811
+        },
+        "available": {
+          "pa_rmse": 1.9147022915481704,
+          "pa_mae": 0.1544752926238624,
+          "pa_bias": 0.1018682974206557,
+          "value_rmse": 0.00674873728710145,
+          "value_mae": 0.0004577462467698119,
+          "value_bias": 0.00027889342430001553,
+          "pa_total": 1493.8985598132472,
+          "value_total": 4.1364284669908225
+        }
+      },
+      "actual_pa": 265
+    },
+    {
+      "group_keys": [
+        "readiness_level",
+        "on_40man",
+        "scout_group"
+      ],
+      "profile": {
+        "readiness_level": "Mexico_without_A_or_higher_affiliated",
+        "on_40man": 0,
+        "scout_group": "not_observed_listed"
+      },
+      "rows": 563,
+      "people": 361,
+      "probability": {
+        "preseason": {
+          "brier": 5.094987484290685e-05,
+          "log_loss": 0.004523320498058146,
+          "expected_arrivals": 2.531471695155564,
+          "actual_arrivals": 0
+        },
+        "available": {
+          "brier": 5.094987484290685e-05,
+          "log_loss": 0.004523320498058146,
+          "expected_arrivals": 2.531471695155564,
+          "actual_arrivals": 0
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 0.43346702611045684,
+          "pa_mae": 0.2558899616894815,
+          "pa_bias": 0.2558899616894815,
+          "value_rmse": 0.0006377605591418727,
+          "value_mae": 0.00034342067386018384,
+          "value_bias": 0.0003410709054424665,
+          "pa_total": 144.03658912226632,
+          "value_total": 0.1919583291649517
+        },
+        "available": {
+          "pa_rmse": 0.43346702611045684,
+          "pa_mae": 0.2558899616894815,
+          "pa_bias": 0.2558899616894815,
+          "value_rmse": 0.0006377605591418728,
+          "value_mae": 0.0003434206738601839,
+          "value_bias": 0.00034107090544246657,
+          "pa_total": 144.03658912226632,
+          "value_total": 0.19195832916495173
+        }
+      },
+      "actual_pa": 0
+    },
+    {
+      "group_keys": [
+        "readiness_level",
+        "on_40man",
+        "scout_group"
+      ],
+      "profile": {
+        "readiness_level": "Aplus",
+        "on_40man": 1,
+        "scout_group": "not_observed_listed"
+      },
+      "rows": 40,
+      "people": 37,
+      "probability": {
+        "preseason": {
+          "brier": 0.12275060560861241,
+          "log_loss": 0.40367268389244354,
+          "expected_arrivals": 9.010879208085875,
+          "actual_arrivals": 9
+        },
+        "available": {
+          "brier": 0.12746143545894853,
+          "log_loss": 0.42028498065132447,
+          "expected_arrivals": 9.243758844607703,
+          "actual_arrivals": 9
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 41.513561394286455,
+          "pa_mae": 25.2469785015284,
+          "pa_bias": 9.773964833113501,
+          "value_rmse": 0.09979013050803277,
+          "value_mae": 0.06857008051058043,
+          "value_bias": 0.050231638623235715,
+          "pa_total": 899.1397429955338,
+          "value_total": 2.390200432198706
+        },
+        "available": {
+          "pa_rmse": 43.07972465325121,
+          "pa_mae": 26.35865624691007,
+          "pa_bias": 10.753015010551868,
+          "value_rmse": 0.10513679057139767,
+          "value_mae": 0.07313679525376338,
+          "value_bias": 0.05328831879689333,
+          "pa_total": 926.1063718206098,
+          "value_total": 2.4918263853250124
+        }
+      },
+      "actual_pa": 577
+    },
+    {
+      "group_keys": [
+        "readiness_level",
+        "on_40man",
+        "scout_group"
+      ],
+      "profile": {
+        "readiness_level": "AA_AAA",
+        "on_40man": 1,
+        "scout_group": "top20"
+      },
+      "rows": 9,
+      "people": 8,
+      "probability": {
+        "preseason": {
+          "brier": 0.09602665583588925,
+          "log_loss": 0.36305598542774115,
+          "expected_arrivals": 7.760526958463995,
+          "actual_arrivals": 8
+        },
+        "available": {
+          "brier": 0.0981846865791709,
+          "log_loss": 0.3660988576311084,
+          "expected_arrivals": 7.773477612664198,
+          "actual_arrivals": 8
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 228.1952279518506,
+          "pa_mae": 209.09735128811926,
+          "pa_bias": -113.9824585802374,
+          "value_rmse": 1.5466725906995333,
+          "value_mae": 1.340806095810547,
+          "value_bias": -0.9475601505717594,
+          "pa_total": 2207.3309657473837,
+          "value_total": 6.831862273831576
+        },
+        "available": {
+          "pa_rmse": 226.2790617675917,
+          "pa_mae": 207.1007108961895,
+          "pa_bias": -113.19618571196823,
+          "value_rmse": 1.5308587191512177,
+          "value_mae": 1.3323273452779725,
+          "value_bias": -0.9419899879093149,
+          "pa_total": 2221.247755362022,
+          "value_total": 6.9128888310939685
+        }
+      },
+      "actual_pa": 2846
+    },
+    {
+      "group_keys": [
+        "readiness_level",
+        "on_40man",
+        "scout_group"
+      ],
+      "profile": {
+        "readiness_level": "A",
+        "on_40man": 0,
+        "scout_group": "not_observed_listed"
+      },
+      "rows": 3498,
+      "people": 2911,
+      "probability": {
+        "preseason": {
+          "brier": 0.0010937662370184293,
+          "log_loss": 0.00984487859997973,
+          "expected_arrivals": 14.060965215485956,
+          "actual_arrivals": 4
+        },
+        "available": {
+          "brier": 0.0010929291927332138,
+          "log_loss": 0.009872711429159702,
+          "expected_arrivals": 13.689404949437128,
+          "actual_arrivals": 4
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 2.2587162773568696,
+          "pa_mae": 0.3139668221615976,
+          "pa_bias": 0.20269566949661616,
+          "value_rmse": 0.0031895317440821832,
+          "value_mae": 0.0007667149692743869,
+          "value_bias": 0.0006483410930636092,
+          "pa_total": 901.1422217126124,
+          "value_total": 2.441343937396357
+        },
+        "available": {
+          "pa_rmse": 2.2562565266831376,
+          "pa_mae": 0.306187225274024,
+          "pa_bias": 0.19490936885733393,
+          "value_rmse": 0.003178509712338825,
+          "value_mae": 0.0007457215769240283,
+          "value_bias": 0.0006273172550867813,
+          "pa_total": 871.6830407366617,
+          "value_total": 2.362095006355247
+        }
+      },
+      "actual_pa": 222
+    },
+    {
+      "group_keys": [
+        "readiness_level",
+        "on_40man",
+        "scout_group"
+      ],
+      "profile": {
+        "readiness_level": "A",
+        "on_40man": 0,
+        "scout_group": "top20"
+      },
+      "rows": 9,
+      "people": 9,
+      "probability": {
+        "preseason": {
+          "brier": 0.007309780753222169,
+          "log_loss": 0.07951272819493986,
+          "expected_arrivals": 0.6391419672584258,
+          "actual_arrivals": 0
+        },
+        "available": {
+          "brier": 0.00792592982800715,
+          "log_loss": 0.08589760509893145,
+          "expected_arrivals": 0.6858120390407699,
+          "actual_arrivals": 0
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 13.901017773584,
+          "pa_mae": 12.20168184721188,
+          "pa_bias": 12.20168184721188,
+          "value_rmse": 0.04368229526696566,
+          "value_mae": 0.03897011217409826,
+          "value_bias": 0.03897011217409826,
+          "pa_total": 104.51835904012799,
+          "value_total": 0.34716425107479504
+        },
+        "available": {
+          "pa_rmse": 14.41442075800009,
+          "pa_mae": 13.113320991303354,
+          "pa_bias": 13.113320991303354,
+          "value_rmse": 0.04517915629550582,
+          "value_mae": 0.04166729210369138,
+          "value_bias": 0.04166729210369138,
+          "pa_total": 111.6092033087261,
+          "value_total": 0.36911553463648966
+        }
+      },
+      "actual_pa": 0
+    },
+    {
+      "group_keys": [
+        "readiness_level",
+        "on_40man",
+        "scout_group"
+      ],
+      "profile": {
+        "readiness_level": "short_rookie_DSL_or_none",
+        "on_40man": 1,
+        "scout_group": "other_listed"
+      },
+      "rows": 1,
+      "people": 1,
+      "probability": {
+        "preseason": {
+          "brier": 0.08978673899742434,
+          "log_loss": 0.3561670075161895,
+          "expected_arrivals": 0.7003556458108641,
+          "actual_arrivals": 1
+        },
+        "available": {
+          "brier": 0.11497319495054074,
+          "log_loss": 0.41411789820157613,
+          "expected_arrivals": 0.6609230250362895,
+          "actual_arrivals": 1
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 161.77485463517803,
+          "pa_mae": 161.77485463517803,
+          "pa_bias": 161.77485463517803,
+          "value_rmse": 0.10447866459374383,
+          "value_mae": 0.10447866459374383,
+          "value_bias": 0.10447866459374383,
+          "pa_total": 202.77485463517803,
+          "value_total": 0.4119788374093885
+        },
+        "available": {
+          "pa_rmse": 150.35787814148412,
+          "pa_mae": 150.35787814148412,
+          "pa_bias": 150.35787814148412,
+          "value_rmse": 0.08128272784377194,
+          "value_mae": 0.08128272784377194,
+          "value_bias": 0.08128272784377194,
+          "pa_total": 191.35787814148412,
+          "value_total": 0.3887829006594166
+        }
+      },
+      "actual_pa": 41
+    },
+    {
+      "group_keys": [
+        "readiness_level",
+        "on_40man",
+        "scout_group"
+      ],
+      "profile": {
+        "readiness_level": "Aplus",
+        "on_40man": 0,
+        "scout_group": "not_observed_listed"
+      },
+      "rows": 3174,
+      "people": 2558,
+      "probability": {
+        "preseason": {
+          "brier": 0.005279724304929889,
+          "log_loss": 0.031039958936007136,
+          "expected_arrivals": 24.635911380272187,
+          "actual_arrivals": 17
+        },
+        "available": {
+          "brier": 0.005251588185136434,
+          "log_loss": 0.03006164378972626,
+          "expected_arrivals": 25.265683543986803,
+          "actual_arrivals": 17
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 9.316036723771468,
+          "pa_mae": 1.0082298194610675,
+          "pa_bias": 0.01782950037682479,
+          "value_rmse": 0.02352291416153489,
+          "value_mae": 0.002593386033020794,
+          "value_bias": 0.0011135298726897597,
+          "pa_total": 1642.770039304562,
+          "value_total": 3.9219935361518234
+        },
+        "available": {
+          "pa_rmse": 9.302103884441427,
+          "pa_mae": 1.019102189886357,
+          "pa_bias": 0.031096193572958973,
+          "value_rmse": 0.02350822869911349,
+          "value_mae": 0.002627994583430046,
+          "value_bias": 0.001151651684348567,
+          "pa_total": 1685.652990654334,
+          "value_total": 4.04490157440119
+        }
+      },
+      "actual_pa": 1590
+    },
+    {
+      "group_keys": [
+        "readiness_level",
+        "on_40man",
+        "scout_group"
+      ],
+      "profile": {
+        "readiness_level": "A",
+        "on_40man": 1,
+        "scout_group": "other_listed"
+      },
+      "rows": 1,
+      "people": 1,
+      "probability": {
+        "preseason": {
+          "brier": 0.03343448108604016,
+          "log_loss": 0.20193380240019596,
+          "expected_arrivals": 0.18285098054437707,
+          "actual_arrivals": 0
+        },
+        "available": {
+          "brier": 0.05252767260152186,
+          "log_loss": 0.2603122835886315,
+          "expected_arrivals": 0.22918916335970568,
+          "actual_arrivals": 0
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 20.245794994690492,
+          "pa_mae": 20.245794994690492,
+          "pa_bias": 20.245794994690492,
+          "value_rmse": 0.06136643186809702,
+          "value_mae": 0.06136643186809702,
+          "value_bias": 0.06136643186809702,
+          "pa_total": 20.245794994690492,
+          "value_total": 0.06136643186809702
+        },
+        "available": {
+          "pa_rmse": 25.376494031209727,
+          "pa_mae": 25.376494031209727,
+          "pa_bias": 25.376494031209727,
+          "value_rmse": 0.076917942339424,
+          "value_mae": 0.076917942339424,
+          "value_bias": 0.076917942339424,
+          "pa_total": 25.376494031209727,
+          "value_total": 0.076917942339424
+        }
+      },
+      "actual_pa": 0
+    },
+    {
+      "group_keys": [
+        "readiness_level",
+        "on_40man",
+        "scout_group"
+      ],
+      "profile": {
+        "readiness_level": "AA_AAA",
+        "on_40man": 0,
+        "scout_group": "not_observed_listed"
+      },
+      "rows": 4931,
+      "people": 2768,
+      "probability": {
+        "preseason": {
+          "brier": 0.06248765814354524,
+          "log_loss": 0.2231716485527993,
+          "expected_arrivals": 288.208813609724,
+          "actual_arrivals": 378
+        },
+        "available": {
+          "brier": 0.06176849297026658,
+          "log_loss": 0.21836338476684952,
+          "expected_arrivals": 306.007332142684,
+          "actual_arrivals": 378
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 34.710064507984704,
+          "pa_mae": 10.031237517421813,
+          "pa_bias": -1.953054810519235,
+          "value_rmse": 0.18417217603735242,
+          "value_mae": 0.03655365300427753,
+          "value_bias": -0.0010614423553929038,
+          "pa_total": 25392.27531789108,
+          "value_total": 50.930641473147936
+        },
+        "available": {
+          "pa_rmse": 34.6504650734766,
+          "pa_mae": 10.205250217781312,
+          "pa_bias": -1.6559151887656938,
+          "value_rmse": 0.184151191509425,
+          "value_mae": 0.037072434924670924,
+          "value_bias": -0.0004092543127966623,
+          "pa_total": 26964.03818314572,
+          "value_total": 54.378285115971956
+        }
+      },
+      "actual_pa": 34906
+    },
+    {
+      "group_keys": [
+        "readiness_level",
+        "on_40man",
+        "scout_group"
+      ],
+      "profile": {
+        "readiness_level": "AA_AAA",
+        "on_40man": 1,
+        "scout_group": "other_listed"
+      },
+      "rows": 41,
+      "people": 36,
+      "probability": {
+        "preseason": {
+          "brier": 0.25100902777671585,
+          "log_loss": 0.7197874703841356,
+          "expected_arrivals": 31.06515624282717,
+          "actual_arrivals": 26
+        },
+        "available": {
+          "brier": 0.2362089842914686,
+          "log_loss": 0.6859469356602439,
+          "expected_arrivals": 31.777764052810635,
+          "actual_arrivals": 26
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 143.43655329085868,
+          "pa_mae": 123.86615042026173,
+          "pa_bias": 65.20049356227888,
+          "value_rmse": 0.6012495459856648,
+          "value_mae": 0.48426304890209454,
+          "value_bias": 0.10130970153697727,
+          "pa_total": 6758.625816431736,
+          "value_total": 17.865721034305274
+        },
+        "available": {
+          "pa_rmse": 141.89869747653455,
+          "pa_mae": 124.27116698133524,
+          "pa_bias": 66.73692791817366,
+          "value_rmse": 0.6003503607278516,
+          "value_mae": 0.4869291532846103,
+          "value_bias": 0.10711325935967624,
+          "pa_total": 6896.741729898001,
+          "value_total": 18.323867634771855
+        }
+      },
+      "actual_pa": 4099
+    },
+    {
+      "group_keys": [
+        "readiness_level",
+        "on_40man",
+        "scout_group"
+      ],
+      "profile": {
+        "readiness_level": "A",
+        "on_40man": 0,
+        "scout_group": "other_listed"
+      },
+      "rows": 49,
+      "people": 49,
+      "probability": {
+        "preseason": {
+          "brier": 0.03412059029488098,
+          "log_loss": 0.17450964339508443,
+          "expected_arrivals": 1.0568198066170464,
+          "actual_arrivals": 2
+        },
+        "available": {
+          "brier": 0.034079163219789155,
+          "log_loss": 0.17398038430137835,
+          "expected_arrivals": 1.0329330630209357,
+          "actual_arrivals": 2
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 63.15357597285021,
+          "pa_mae": 12.935261934620353,
+          "pa_bias": -5.585402913913337,
+          "value_rmse": 0.5182642007890309,
+          "value_mae": 0.08126574386393018,
+          "value_bias": -0.056953009646172996,
+          "pa_total": 149.17485339435206,
+          "value_total": 0.5019530867650656
+        },
+        "available": {
+          "pa_rmse": 63.144384729746925,
+          "pa_mae": 12.839644414481663,
+          "pa_bias": -5.681020434052031,
+          "value_rmse": 0.5182556941684081,
+          "value_mae": 0.08101065333296635,
+          "value_bias": -0.0572081001771368,
+          "pa_total": 144.28297276778312,
+          "value_total": 0.4887820834143668
+        }
+      },
+      "actual_pa": 576
+    },
+    {
+      "group_keys": [
+        "readiness_level",
+        "on_40man",
+        "scout_group"
+      ],
+      "profile": {
+        "readiness_level": "short_rookie_DSL_or_none",
+        "on_40man": 0,
+        "scout_group": "other_listed"
+      },
+      "rows": 34,
+      "people": 34,
+      "probability": {
+        "preseason": {
+          "brier": 0.0011230277100324946,
+          "log_loss": 0.024190293256192825,
+          "expected_arrivals": 0.8818596034940199,
+          "actual_arrivals": 0
+        },
+        "available": {
+          "brier": 0.0008929042685510501,
+          "log_loss": 0.022133008610935125,
+          "expected_arrivals": 0.8078915586105179,
+          "actual_arrivals": 0
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 5.032675373762984,
+          "pa_mae": 3.574246687476696,
+          "pa_bias": 3.574246687476696,
+          "value_rmse": 0.016875465366412733,
+          "value_mae": 0.011476912616172391,
+          "value_bias": 0.011476912616172391,
+          "pa_total": 132.6019538884507,
+          "value_total": 0.4204418828497447
+        },
+        "available": {
+          "pa_rmse": 4.535921440149844,
+          "pa_mae": 3.274686340295576,
+          "pa_bias": 3.274686340295576,
+          "value_rmse": 0.015510808908727504,
+          "value_mae": 0.01064842886537319,
+          "value_bias": 0.01064842886537319,
+          "pa_total": 121.4035540494146,
+          "value_total": 0.39008318263538533
+        }
+      },
+      "actual_pa": 0
+    },
+    {
+      "group_keys": [
+        "readiness_level",
+        "on_40man",
+        "scout_group"
+      ],
+      "profile": {
+        "readiness_level": "Aplus",
+        "on_40man": 1,
+        "scout_group": "top20"
+      },
+      "rows": 1,
+      "people": 1,
+      "probability": {
+        "preseason": {
+          "brier": 0.34791099780439555,
+          "log_loss": 0.8912074807160869,
+          "expected_arrivals": 0.58983980690048,
+          "actual_arrivals": 0
+        },
+        "available": {
+          "brier": 0.42597931069435063,
+          "log_loss": 1.0574825489230155,
+          "expected_arrivals": 0.6526709053530352,
+          "actual_arrivals": 0
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 117.39200677379377,
+          "pa_mae": 117.39200677379377,
+          "pa_bias": 117.39200677379377,
+          "value_rmse": 0.3023411501639439,
+          "value_mae": 0.3023411501639439,
+          "value_bias": 0.3023411501639439,
+          "pa_total": 117.39200677379377,
+          "value_total": 0.3023411501639439
+        },
+        "available": {
+          "pa_rmse": 129.89687444948754,
+          "pa_mae": 129.89687444948754,
+          "pa_bias": 129.89687444948754,
+          "value_rmse": 0.3345472277293645,
+          "value_mae": 0.3345472277293645,
+          "value_bias": 0.3345472277293645,
+          "pa_total": 129.89687444948754,
+          "value_total": 0.3345472277293645
+        }
+      },
+      "actual_pa": 0
+    },
+    {
+      "group_keys": [
+        "readiness_level",
+        "on_40man",
+        "scout_group"
+      ],
+      "profile": {
+        "readiness_level": "short_rookie_DSL_or_none",
+        "on_40man": 0,
+        "scout_group": "top20"
+      },
+      "rows": 4,
+      "people": 4,
+      "probability": {
+        "preseason": {
+          "brier": 0.0023213211492620965,
+          "log_loss": 0.04566030888937954,
+          "expected_arrivals": 0.1778014728184536,
+          "actual_arrivals": 0
+        },
+        "available": {
+          "brier": 0.0016276157176451365,
+          "log_loss": 0.03927798319394923,
+          "expected_arrivals": 0.1537525816024786,
+          "actual_arrivals": 0
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 8.348197186085269,
+          "pa_mae": 7.5916351827280035,
+          "pa_bias": 7.5916351827280035,
+          "value_rmse": 0.030405934312876456,
+          "value_mae": 0.025259747564607655,
+          "value_bias": 0.025259747564607655,
+          "pa_total": 30.366540730912014,
+          "value_total": 0.10103899025843062
+        },
+        "available": {
+          "pa_rmse": 6.896419479697424,
+          "pa_mae": 6.515732995837296,
+          "pa_bias": 6.515732995837296,
+          "value_rmse": 0.024724499582881393,
+          "value_mae": 0.02153198170801828,
+          "value_bias": 0.02153198170801828,
+          "pa_total": 26.062931983349184,
+          "value_total": 0.08612792683207311
+        }
+      },
+      "actual_pa": 0
+    },
+    {
+      "group_keys": [
+        "readiness_level",
+        "on_40man",
+        "scout_group"
+      ],
+      "profile": {
+        "readiness_level": "A",
+        "on_40man": 1,
+        "scout_group": "not_observed_listed"
+      },
+      "rows": 9,
+      "people": 9,
+      "probability": {
+        "preseason": {
+          "brier": 0.19529564103537533,
+          "log_loss": 0.5940999546568368,
+          "expected_arrivals": 1.6097937080704652,
+          "actual_arrivals": 3
+        },
+        "available": {
+          "brier": 0.1951329103647677,
+          "log_loss": 0.5955477297397794,
+          "expected_arrivals": 1.6448015706798826,
+          "actual_arrivals": 3
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 43.03620002759935,
+          "pa_mae": 27.051165499747626,
+          "pa_bias": -5.03824316010893,
+          "value_rmse": 0.306665122119329,
+          "value_mae": 0.1375890683053565,
+          "value_bias": 0.11955394371742133,
+          "pa_total": 126.77442166568696,
+          "value_total": 0.3565207956476436
+        },
+        "available": {
+          "pa_rmse": 43.06369412626322,
+          "pa_mae": 27.27637127607534,
+          "pa_bias": -4.813037383781214,
+          "value_rmse": 0.3066523897027059,
+          "value_mae": 0.1381520918871998,
+          "value_bias": 0.1201169672992646,
+          "pa_total": 130.66020471027963,
+          "value_total": 0.36811111715997713
+        }
+      },
+      "actual_pa": 232
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2017,
+        "readiness_level": "AA_AAA",
+        "on_40man": 1
+      },
+      "rows": 55,
+      "people": 55,
+      "probability": {
+        "preseason": {
+          "brier": 0.26937695001006656,
+          "log_loss": 0.7427809023025576,
+          "expected_arrivals": 31.40059206425944,
+          "actual_arrivals": 39
+        },
+        "available": {
+          "brier": 0.26937695001006656,
+          "log_loss": 0.7427809023025576,
+          "expected_arrivals": 31.40059206425944,
+          "actual_arrivals": 39
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 129.7505616473219,
+          "pa_mae": 90.80159673473237,
+          "pa_bias": -26.410129398005207,
+          "value_rmse": 0.5052822726642998,
+          "value_mae": 0.3575355425176119,
+          "value_bias": -0.028441580791878588,
+          "pa_total": 4342.442883109713,
+          "value_total": 9.91176810262742
+        },
+        "available": {
+          "pa_rmse": 129.7505616473219,
+          "pa_mae": 90.80159673473237,
+          "pa_bias": -26.410129398005207,
+          "value_rmse": 0.5052822726642998,
+          "value_mae": 0.3575355425176119,
+          "value_bias": -0.028441580791878588,
+          "pa_total": 4342.442883109713,
+          "value_total": 9.91176810262742
+        }
+      },
+      "actual_pa": 5795
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2018,
+        "readiness_level": "Aplus",
+        "on_40man": 0
+      },
+      "rows": 474,
+      "people": 474,
+      "probability": {
+        "preseason": {
+          "brier": 0.006425513037189044,
+          "log_loss": 0.03324527017842123,
+          "expected_arrivals": 4.43830591082075,
+          "actual_arrivals": 3
+        },
+        "available": {
+          "brier": 0.006425513037189044,
+          "log_loss": 0.03324527017842123,
+          "expected_arrivals": 4.43830591082075,
+          "actual_arrivals": 3
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 4.917699785014964,
+          "pa_mae": 0.930494922997338,
+          "pa_bias": 0.7587052010093238,
+          "value_rmse": 0.023005709295148148,
+          "value_mae": 0.0033918354250958575,
+          "value_bias": 0.003346819720817297,
+          "pa_total": 413.6262652784195,
+          "value_total": 1.2109266284554119
+        },
+        "available": {
+          "pa_rmse": 4.917699785014964,
+          "pa_mae": 0.930494922997338,
+          "pa_bias": 0.7587052010093238,
+          "value_rmse": 0.023005709295148148,
+          "value_mae": 0.0033918354250958567,
+          "value_bias": 0.0033468197208172965,
+          "pa_total": 413.6262652784195,
+          "value_total": 1.2109266284554119
+        }
+      },
+      "actual_pa": 54
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2018,
+        "readiness_level": "AA_AAA",
+        "on_40man": 1
+      },
+      "rows": 51,
+      "people": 51,
+      "probability": {
+        "preseason": {
+          "brier": 0.22082726182066645,
+          "log_loss": 0.6379261503573391,
+          "expected_arrivals": 30.677192032228493,
+          "actual_arrivals": 37
+        },
+        "available": {
+          "brier": 0.22082726182066645,
+          "log_loss": 0.6379261503573391,
+          "expected_arrivals": 30.677192032228493,
+          "actual_arrivals": 37
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 117.23543833328324,
+          "pa_mae": 78.80322730797722,
+          "pa_bias": -24.302220384510658,
+          "value_rmse": 0.669795934615618,
+          "value_mae": 0.43442839186523674,
+          "value_bias": -0.0987523159041308,
+          "pa_total": 3823.586760389955,
+          "value_total": 9.090378790234318
+        },
+        "available": {
+          "pa_rmse": 117.23543833328324,
+          "pa_mae": 78.80322730797722,
+          "pa_bias": -24.302220384510658,
+          "value_rmse": 0.669795934615618,
+          "value_mae": 0.43442839186523674,
+          "value_bias": -0.0987523159041308,
+          "pa_total": 3823.586760389955,
+          "value_total": 9.09037879023432
+        }
+      },
+      "actual_pa": 5063
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2024,
+        "readiness_level": "short_rookie_DSL_or_none",
+        "on_40man": 0
+      },
+      "rows": 1270,
+      "people": 1270,
+      "probability": {
+        "preseason": {
+          "brier": 0.0008034792404129958,
+          "log_loss": 0.005982557226933237,
+          "expected_arrivals": 2.2330622954687476,
+          "actual_arrivals": 1
+        },
+        "available": {
+          "brier": 0.0007946923738838182,
+          "log_loss": 0.005859794671914328,
+          "expected_arrivals": 1.9213656124448506,
+          "actual_arrivals": 1
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 4.789268578714843,
+          "pa_mae": 0.26229352611872286,
+          "pa_bias": -0.004853751592380389,
+          "value_rmse": 0.013314187526229027,
+          "value_mae": 0.0006536169964627965,
+          "value_bias": -9.146730657674264e-05,
+          "pa_total": 163.83573547767685,
+          "value_total": 0.35731080603327453
+        },
+        "available": {
+          "pa_rmse": 4.778902708100304,
+          "pa_mae": 0.2433686750888795,
+          "pa_bias": -0.023863639350688238,
+          "value_rmse": 0.013300233305270056,
+          "value_mae": 0.0006150822553689952,
+          "value_bias": -0.0001300960491048527,
+          "pa_total": 139.69317802462598,
+          "value_total": 0.3082523030225749
+        }
+      },
+      "actual_pa": 170
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2022,
+        "readiness_level": "A",
+        "on_40man": 0
+      },
+      "rows": 578,
+      "people": 578,
+      "probability": {
+        "preseason": {
+          "brier": 0.005179513333276796,
+          "log_loss": 0.03161139644704903,
+          "expected_arrivals": 2.3917499483271802,
+          "actual_arrivals": 3
+        },
+        "available": {
+          "brier": 0.00518255281758553,
+          "log_loss": 0.032265483242886736,
+          "expected_arrivals": 2.2683405179377787,
+          "actual_arrivals": 3
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 5.927484332497179,
+          "pa_mae": 0.7464109020963784,
+          "pa_bias": -0.013065934829308425,
+          "value_rmse": 0.008659706892033948,
+          "value_mae": 0.0015203566848952298,
+          "value_bias": 0.0007089426752981689,
+          "pa_total": 213.44788966865974,
+          "value_total": 0.6495105650777929
+        },
+        "available": {
+          "pa_rmse": 5.931938377164817,
+          "pa_mae": 0.7322063791836989,
+          "pa_bias": -0.027316409756295224,
+          "value_rmse": 0.008695099238198842,
+          "value_mae": 0.0014848829720261025,
+          "value_bias": 0.0006732602676676737,
+          "pa_total": 205.2111151608614,
+          "value_total": 0.6288861334673668
+        }
+      },
+      "actual_pa": 221
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2018,
+        "readiness_level": "A",
+        "on_40man": 0
+      },
+      "rows": 471,
+      "people": 471,
+      "probability": {
+        "preseason": {
+          "brier": 0.0021029383991481116,
+          "log_loss": 0.013859182671819828,
+          "expected_arrivals": 2.047370729585262,
+          "actual_arrivals": 1
+        },
+        "available": {
+          "brier": 0.0021029383991481116,
+          "log_loss": 0.013859182671819828,
+          "expected_arrivals": 2.047370729585262,
+          "actual_arrivals": 1
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 3.76260490655547,
+          "pa_mae": 0.4594362703352321,
+          "pa_bias": 0.11550534827143294,
+          "value_rmse": 0.010328705830418408,
+          "value_mae": 0.0013043916365255556,
+          "value_bias": 0.0003641453740112982,
+          "pa_total": 136.40301903584492,
+          "value_total": 0.3960343889384685
+        },
+        "available": {
+          "pa_rmse": 3.76260490655547,
+          "pa_mae": 0.4594362703352321,
+          "pa_bias": 0.11550534827143294,
+          "value_rmse": 0.010328705830418408,
+          "value_mae": 0.0013043916365255556,
+          "value_bias": 0.0003641453740112982,
+          "pa_total": 136.40301903584492,
+          "value_total": 0.3960343889384685
+        }
+      },
+      "actual_pa": 82
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2023,
+        "readiness_level": "A",
+        "on_40man": 0
+      },
+      "rows": 559,
+      "people": 559,
+      "probability": {
+        "preseason": {
+          "brier": 5.2454189050533443e-05,
+          "log_loss": 0.003947320634337303,
+          "expected_arrivals": 2.1911268242528155,
+          "actual_arrivals": 0
+        },
+        "available": {
+          "brier": 5.144907001241128e-05,
+          "log_loss": 0.003809591503379545,
+          "expected_arrivals": 2.114382018346698,
+          "actual_arrivals": 0
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 0.920805227292658,
+          "pa_mae": 0.29370837405818745,
+          "pa_bias": 0.29370837405818745,
+          "value_rmse": 0.0031006799743080377,
+          "value_mae": 0.0008099965511181751,
+          "value_bias": 0.0008099965511181751,
+          "pa_total": 164.1829810985268,
+          "value_total": 0.45278807207505994
+        },
+        "available": {
+          "pa_rmse": 0.9190574973580148,
+          "pa_mae": 0.282239994881799,
+          "pa_bias": 0.282239994881799,
+          "value_rmse": 0.0031094829244424855,
+          "value_mae": 0.0007808752251265012,
+          "value_bias": 0.0007808752251265012,
+          "pa_total": 157.77215713892565,
+          "value_total": 0.4365092508457142
+        }
+      },
+      "actual_pa": 0
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2021,
+        "readiness_level": "short_rookie_DSL_or_none",
+        "on_40man": 0
+      },
+      "rows": 1520,
+      "people": 1520,
+      "probability": {
+        "preseason": {
+          "brier": 1.4777917183916036e-05,
+          "log_loss": 0.0018637134820237637,
+          "expected_arrivals": 2.8212452811026174,
+          "actual_arrivals": 0
+        },
+        "available": {
+          "brier": 1.3789735712472672e-05,
+          "log_loss": 0.001755154100641679,
+          "expected_arrivals": 2.6570739846520324,
+          "actual_arrivals": 0
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 0.5716732036878988,
+          "pa_mae": 0.1471073790319477,
+          "pa_bias": 0.1471073790319477,
+          "value_rmse": 0.0021927604876976407,
+          "value_mae": 0.00046764756845689296,
+          "value_bias": 0.00046764756845689296,
+          "pa_total": 223.6032161285605,
+          "value_total": 0.7108243040544773
+        },
+        "available": {
+          "pa_rmse": 0.48650093566598407,
+          "pa_mae": 0.13644228370695555,
+          "pa_bias": 0.13644228370695555,
+          "value_rmse": 0.0018124203582552249,
+          "value_mae": 0.0004249021395934766,
+          "value_bias": 0.0004249021395934766,
+          "pa_total": 207.39227123457243,
+          "value_total": 0.6458512521820845
+        }
+      },
+      "actual_pa": 0
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2016,
+        "readiness_level": "Aplus",
+        "on_40man": 1
+      },
+      "rows": 12,
+      "people": 12,
+      "probability": {
+        "preseason": {
+          "brier": 0.21696040692384108,
+          "log_loss": 0.6141723955472804,
+          "expected_arrivals": 3.985351813078935,
+          "actual_arrivals": 6
+        },
+        "available": {
+          "brier": 0.21696040692384108,
+          "log_loss": 0.6141723955472804,
+          "expected_arrivals": 3.985351813078935,
+          "actual_arrivals": 6
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 59.54238740287564,
+          "pa_mae": 40.48197834367761,
+          "pa_bias": 38.857061340038605,
+          "value_rmse": 0.2516816311988787,
+          "value_mae": 0.16891108453759288,
+          "value_bias": 0.16891108453759288,
+          "pa_total": 574.2847360804633,
+          "value_total": 1.5704009550641056
+        },
+        "available": {
+          "pa_rmse": 59.54238740287564,
+          "pa_mae": 40.48197834367761,
+          "pa_bias": 38.857061340038605,
+          "value_rmse": 0.2516816311988787,
+          "value_mae": 0.16891108453759288,
+          "value_bias": 0.16891108453759288,
+          "pa_total": 574.2847360804633,
+          "value_total": 1.5704009550641056
+        }
+      },
+      "actual_pa": 108
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2024,
+        "readiness_level": "A",
+        "on_40man": 0
+      },
+      "rows": 544,
+      "people": 544,
+      "probability": {
+        "preseason": {
+          "brier": 3.6648787532744853e-05,
+          "log_loss": 0.0038942744434132667,
+          "expected_arrivals": 2.108257474912274,
+          "actual_arrivals": 0
+        },
+        "available": {
+          "brier": 3.407898013426225e-05,
+          "log_loss": 0.0038029533175227247,
+          "expected_arrivals": 2.05933321852467,
+          "actual_arrivals": 0
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 0.5845647492793826,
+          "pa_mae": 0.2799857663098593,
+          "pa_bias": 0.2799857663098593,
+          "value_rmse": 0.0014671180347795509,
+          "value_mae": 0.0006838360822318222,
+          "value_bias": 0.0006838360822318222,
+          "pa_total": 152.31225687256344,
+          "value_total": 0.37200682873411134
+        },
+        "available": {
+          "pa_rmse": 0.5668776676029385,
+          "pa_mae": 0.27215902824993254,
+          "pa_bias": 0.27215902824993254,
+          "value_rmse": 0.0014709944744713446,
+          "value_mae": 0.00066851964586503,
+          "value_bias": 0.00066851964586503,
+          "pa_total": 148.0545113679633,
+          "value_total": 0.36367468735057623
+        }
+      },
+      "actual_pa": 0
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2021,
+        "readiness_level": "Aplus",
+        "on_40man": 0
+      },
+      "rows": 481,
+      "people": 481,
+      "probability": {
+        "preseason": {
+          "brier": 0.02012854182551498,
+          "log_loss": 0.09585550171749034,
+          "expected_arrivals": 3.694800914519245,
+          "actual_arrivals": 10
+        },
+        "available": {
+          "brier": 0.02015500720783625,
+          "log_loss": 0.0913634792274469,
+          "expected_arrivals": 4.465008229045764,
+          "actual_arrivals": 10
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 24.41037215251591,
+          "pa_mae": 3.049833491036496,
+          "pa_bias": -1.6351680756384306,
+          "value_rmse": 0.15737614287190968,
+          "value_mae": 0.014832885634524999,
+          "value_bias": -0.008694685203396968,
+          "pa_total": 367.4841556179148,
+          "value_total": 1.0652902878977666
+        },
+        "available": {
+          "pa_rmse": 24.48231914913371,
+          "pa_mae": 3.219053528639063,
+          "pa_bias": -1.4561179073326898,
+          "value_rmse": 0.15751551968495622,
+          "value_mae": 0.015358912050359351,
+          "value_bias": -0.008157392405245333,
+          "pa_total": 453.6072865729762,
+          "value_total": 1.3237281238087046
+        }
+      },
+      "actual_pa": 1154
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2022,
+        "readiness_level": "Aplus",
+        "on_40man": 1
+      },
+      "rows": 11,
+      "people": 11,
+      "probability": {
+        "preseason": {
+          "brier": 0.22918147407280157,
+          "log_loss": 0.6450615360164599,
+          "expected_arrivals": 3.576297978178707,
+          "actual_arrivals": 4
+        },
+        "available": {
+          "brier": 0.24209731933969214,
+          "log_loss": 0.6874597379777029,
+          "expected_arrivals": 3.528689020947955,
+          "actual_arrivals": 4
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 87.34396250837256,
+          "pa_mae": 62.41488008187395,
+          "pa_bias": 2.7710081582881845,
+          "value_rmse": 0.2521957528361018,
+          "value_mae": 0.1960860425703485,
+          "value_bias": 0.021135677500272097,
+          "pa_total": 580.48108974117,
+          "value_total": 1.5734539270107348
+        },
+        "available": {
+          "pa_rmse": 92.62132807140102,
+          "pa_mae": 65.92288237790568,
+          "pa_bias": 4.083354712455192,
+          "value_rmse": 0.2630717517162337,
+          "value_mae": 0.20567710015380714,
+          "value_bias": 0.02581338391284689,
+          "pa_total": 594.9169018370071,
+          "value_total": 1.6249086975490579
+        }
+      },
+      "actual_pa": 550
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2021,
+        "readiness_level": "A",
+        "on_40man": 0
+      },
+      "rows": 514,
+      "people": 514,
+      "probability": {
+        "preseason": {
+          "brier": 2.03811301675332e-05,
+          "log_loss": 0.0036212627753858537,
+          "expected_arrivals": 1.8560553508361812,
+          "actual_arrivals": 0
+        },
+        "available": {
+          "brier": 2.0029244136605752e-05,
+          "log_loss": 0.0034271283788051255,
+          "expected_arrivals": 1.75635690565671,
+          "actual_arrivals": 0
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 0.47749501860611054,
+          "pa_mae": 0.28076734178988433,
+          "pa_bias": 0.28076734178988433,
+          "value_rmse": 0.0016896009653201002,
+          "value_mae": 0.0008746143585246237,
+          "value_bias": 0.0008746143585246237,
+          "pa_total": 144.31441368000054,
+          "value_total": 0.44955178028165654
+        },
+        "available": {
+          "pa_rmse": 0.4702347602213173,
+          "pa_mae": 0.2645127243542387,
+          "pa_bias": 0.2645127243542387,
+          "value_rmse": 0.0017133650494810168,
+          "value_mae": 0.0008255224196008756,
+          "value_bias": 0.0008255224196008756,
+          "pa_total": 135.9595403180787,
+          "value_total": 0.42431852367485007
+        }
+      },
+      "actual_pa": 0
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2023,
+        "readiness_level": "Aplus",
+        "on_40man": 0
+      },
+      "rows": 457,
+      "people": 457,
+      "probability": {
+        "preseason": {
+          "brier": 0.010771782313188873,
+          "log_loss": 0.05458103336386585,
+          "expected_arrivals": 3.9440272142094304,
+          "actual_arrivals": 5
+        },
+        "available": {
+          "brier": 0.010766303267972411,
+          "log_loss": 0.05425460583933186,
+          "expected_arrivals": 3.9841954089174654,
+          "actual_arrivals": 5
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 9.781459319634841,
+          "pa_mae": 1.5548478157758183,
+          "pa_bias": -0.2449787726615269,
+          "value_rmse": 0.02715760192400363,
+          "value_mae": 0.003958848238880471,
+          "value_bias": 0.003958848238880471,
+          "pa_total": 310.04470089368226,
+          "value_total": 0.7592103573594409
+        },
+        "available": {
+          "pa_rmse": 9.810657220917024,
+          "pa_mae": 1.5697604726170584,
+          "pa_bias": -0.23660673809427415,
+          "value_rmse": 0.027154045927457016,
+          "value_mae": 0.0039977697328582125,
+          "value_bias": 0.0039977697328582125,
+          "pa_total": 313.87072069091676,
+          "value_total": 0.7769974801072687
+        }
+      },
+      "actual_pa": 422
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2023,
+        "readiness_level": "AA_AAA",
+        "on_40man": 0
+      },
+      "rows": 771,
+      "people": 771,
+      "probability": {
+        "preseason": {
+          "brier": 0.0620291395205717,
+          "log_loss": 0.2280389949695828,
+          "expected_arrivals": 69.9225090261956,
+          "actual_arrivals": 67
+        },
+        "available": {
+          "brier": 0.06234806980074578,
+          "log_loss": 0.2283820104062369,
+          "expected_arrivals": 70.55633703282062,
+          "actual_arrivals": 67
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 39.645619807137535,
+          "pa_mae": 13.547364966138966,
+          "pa_bias": 1.9494153090269715,
+          "value_rmse": 0.17771962544557296,
+          "value_mae": 0.044107725689247486,
+          "value_bias": 0.025204598591524144,
+          "pa_total": 8792.999203259795,
+          "value_total": 21.71826277991751
+        },
+        "available": {
+          "pa_rmse": 39.696685139424154,
+          "pa_mae": 13.658394136636394,
+          "pa_bias": 2.050795858931528,
+          "value_rmse": 0.17889278485349433,
+          "value_mae": 0.04479805504220477,
+          "value_bias": 0.02551506972333043,
+          "pa_total": 8871.163607236209,
+          "value_total": 21.95763602254016
+        }
+      },
+      "actual_pa": 7290
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2018,
+        "readiness_level": "short_rookie_DSL_or_none",
+        "on_40man": 0
+      },
+      "rows": 1916,
+      "people": 1916,
+      "probability": {
+        "preseason": {
+          "brier": 1.0264089859005093e-05,
+          "log_loss": 0.002335585458482625,
+          "expected_arrivals": 4.465050615772805,
+          "actual_arrivals": 0
+        },
+        "available": {
+          "brier": 1.0264089859005093e-05,
+          "log_loss": 0.002335585458482625,
+          "expected_arrivals": 4.465050615772805,
+          "actual_arrivals": 0
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 0.3437064323422541,
+          "pa_mae": 0.17494431895889115,
+          "pa_bias": 0.17494431895889115,
+          "value_rmse": 0.0011458271770624147,
+          "value_mae": 0.0005359257908978115,
+          "value_bias": 0.0005359257908978115,
+          "pa_total": 335.1933151252354,
+          "value_total": 1.0268338153602068
+        },
+        "available": {
+          "pa_rmse": 0.3437064323422541,
+          "pa_mae": 0.17494431895889115,
+          "pa_bias": 0.17494431895889115,
+          "value_rmse": 0.0011458271770624147,
+          "value_mae": 0.0005359257908978115,
+          "value_bias": 0.0005359257908978115,
+          "pa_total": 335.1933151252354,
+          "value_total": 1.0268338153602068
+        }
+      },
+      "actual_pa": 0
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2016,
+        "readiness_level": "AA_AAA",
+        "on_40man": 0
+      },
+      "rows": 647,
+      "people": 647,
+      "probability": {
+        "preseason": {
+          "brier": 0.05986824529132036,
+          "log_loss": 0.21118889560528897,
+          "expected_arrivals": 43.33943791020892,
+          "actual_arrivals": 56
+        },
+        "available": {
+          "brier": 0.05986824529132036,
+          "log_loss": 0.21118889560528897,
+          "expected_arrivals": 43.33943791020892,
+          "actual_arrivals": 56
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 39.89994619717509,
+          "pa_mae": 11.007862471887114,
+          "pa_bias": -0.8201982950756749,
+          "value_rmse": 0.26419175526291844,
+          "value_mae": 0.05130116748862357,
+          "value_bias": -0.005933006263255428,
+          "pa_total": 5153.331703086038,
+          "value_total": 13.120789756217231
+        },
+        "available": {
+          "pa_rmse": 39.89994619717509,
+          "pa_mae": 11.007862471887114,
+          "pa_bias": -0.8201982950756749,
+          "value_rmse": 0.26419175526291844,
+          "value_mae": 0.05130116748862357,
+          "value_bias": -0.005933006263255428,
+          "pa_total": 5153.331703086038,
+          "value_total": 13.120789756217231
+        }
+      },
+      "actual_pa": 5684
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2022,
+        "readiness_level": "A",
+        "on_40man": 1
+      },
+      "rows": 3,
+      "people": 3,
+      "probability": {
+        "preseason": {
+          "brier": 0.018946517657505615,
+          "log_loss": 0.14243635440483057,
+          "expected_arrivals": 0.39555286791752586,
+          "actual_arrivals": 0
+        },
+        "available": {
+          "brier": 0.029846949704328773,
+          "log_loss": 0.18355760515926556,
+          "expected_arrivals": 0.49912008226983556,
+          "actual_arrivals": 0
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 14.990008865288594,
+          "pa_mae": 14.226421755840095,
+          "pa_bias": 14.226421755840095,
+          "value_rmse": 0.04575593343182407,
+          "value_mae": 0.04365692531993629,
+          "value_bias": 0.04365692531993629,
+          "pa_total": 42.679265267520286,
+          "value_total": 0.13097077595980888
+        },
+        "available": {
+          "pa_rmse": 18.781828638147452,
+          "pa_mae": 17.926628060867724,
+          "pa_bias": 17.926628060867724,
+          "value_rmse": 0.05740235399555833,
+          "value_mae": 0.05506624693368554,
+          "value_bias": 0.05506624693368554,
+          "pa_total": 53.77988418260317,
+          "value_total": 0.16519874080105662
+        }
+      },
+      "actual_pa": 0
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2016,
+        "readiness_level": "Aplus",
+        "on_40man": 0
+      },
+      "rows": 439,
+      "people": 439,
+      "probability": {
+        "preseason": {
+          "brier": 0.006041804323625119,
+          "log_loss": 0.029767788007055405,
+          "expected_arrivals": 4.992037337517501,
+          "actual_arrivals": 3
+        },
+        "available": {
+          "brier": 0.006041804323625119,
+          "log_loss": 0.029767788007055405,
+          "expected_arrivals": 4.992037337517501,
+          "actual_arrivals": 3
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 10.782407569562215,
+          "pa_mae": 1.4753768065805017,
+          "pa_bias": 0.11033159386860579,
+          "value_rmse": 0.056228565698042,
+          "value_mae": 0.005001034542894018,
+          "value_bias": -0.000652750571073939,
+          "pa_total": 402.4355697083179,
+          "value_total": 1.1368828427802666
+        },
+        "available": {
+          "pa_rmse": 10.782407569562215,
+          "pa_mae": 1.4753768065805017,
+          "pa_bias": 0.11033159386860579,
+          "value_rmse": 0.056228565698042,
+          "value_mae": 0.005001034542894018,
+          "value_bias": -0.000652750571073939,
+          "pa_total": 402.4355697083179,
+          "value_total": 1.1368828427802666
+        }
+      },
+      "actual_pa": 354
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2016,
+        "readiness_level": "Mexico_without_A_or_higher_affiliated",
+        "on_40man": 0
+      },
+      "rows": 281,
+      "people": 281,
+      "probability": {
+        "preseason": {
+          "brier": 6.636582422980747e-05,
+          "log_loss": 0.005079881685888587,
+          "expected_arrivals": 1.417934420288648,
+          "actual_arrivals": 0
+        },
+        "available": {
+          "brier": 6.636582422980747e-05,
+          "log_loss": 0.005079881685888587,
+          "expected_arrivals": 1.417934420288648,
+          "actual_arrivals": 0
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 0.4929511215386101,
+          "pa_mae": 0.285349270601262,
+          "pa_bias": 0.285349270601262,
+          "value_rmse": 0.0007470582175616614,
+          "value_mae": 0.00040599940264171043,
+          "value_bias": 0.0004056615045993913,
+          "pa_total": 80.18314503895462,
+          "value_total": 0.11399088279242894
+        },
+        "available": {
+          "pa_rmse": 0.4929511215386101,
+          "pa_mae": 0.285349270601262,
+          "pa_bias": 0.285349270601262,
+          "value_rmse": 0.0007470582175616615,
+          "value_mae": 0.0004059994026417105,
+          "value_bias": 0.00040566150459939133,
+          "pa_total": 80.18314503895462,
+          "value_total": 0.11399088279242894
+        }
+      },
+      "actual_pa": 0
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2017,
+        "readiness_level": "short_rookie_DSL_or_none",
+        "on_40man": 0
+      },
+      "rows": 1844,
+      "people": 1844,
+      "probability": {
+        "preseason": {
+          "brier": 1.3370597885114155e-05,
+          "log_loss": 0.00261705182396408,
+          "expected_arrivals": 4.813361519768442,
+          "actual_arrivals": 0
+        },
+        "available": {
+          "brier": 1.3370597885114155e-05,
+          "log_loss": 0.00261705182396408,
+          "expected_arrivals": 4.813361519768442,
+          "actual_arrivals": 0
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 0.34253092405777,
+          "pa_mae": 0.17577956958150717,
+          "pa_bias": 0.17577956958150717,
+          "value_rmse": 0.0010098015734802618,
+          "value_mae": 0.00046559014735469804,
+          "value_bias": 0.00046559014735469804,
+          "pa_total": 324.13752630829924,
+          "value_total": 0.8585482317220632
+        },
+        "available": {
+          "pa_rmse": 0.34253092405777,
+          "pa_mae": 0.17577956958150717,
+          "pa_bias": 0.17577956958150717,
+          "value_rmse": 0.0010098015734802618,
+          "value_mae": 0.00046559014735469804,
+          "value_bias": 0.00046559014735469804,
+          "pa_total": 324.13752630829924,
+          "value_total": 0.8585482317220632
+        }
+      },
+      "actual_pa": 0
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2017,
+        "readiness_level": "A",
+        "on_40man": 1
+      },
+      "rows": 3,
+      "people": 3,
+      "probability": {
+        "preseason": {
+          "brier": 0.2524819767824498,
+          "log_loss": 0.7020542947088976,
+          "expected_arrivals": 0.6621683723440217,
+          "actual_arrivals": 1
+        },
+        "available": {
+          "brier": 0.2524819767824498,
+          "log_loss": 0.7020542947088976,
+          "expected_arrivals": 0.6621683723440217,
+          "actual_arrivals": 1
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 16.79049404328045,
+          "pa_mae": 14.208118052718632,
+          "pa_bias": 7.479143190044362,
+          "value_rmse": 0.0703223969329399,
+          "value_mae": 0.061943788300654425,
+          "value_bias": 0.061943788300654425,
+          "pa_total": 51.43742957013309,
+          "value_total": 0.13475298149815818
+        },
+        "available": {
+          "pa_rmse": 16.79049404328045,
+          "pa_mae": 14.208118052718632,
+          "pa_bias": 7.479143190044362,
+          "value_rmse": 0.0703223969329399,
+          "value_mae": 0.061943788300654425,
+          "value_bias": 0.061943788300654425,
+          "pa_total": 51.43742957013309,
+          "value_total": 0.13475298149815818
+        }
+      },
+      "actual_pa": 29
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2016,
+        "readiness_level": "short_rookie_DSL_or_none",
+        "on_40man": 1
+      },
+      "rows": 1,
+      "people": 1,
+      "probability": {
+        "preseason": {
+          "brier": 0.8197019843826414,
+          "log_loss": 2.3578224419287452,
+          "expected_arrivals": 0.09462605273696907,
+          "actual_arrivals": 1
+        },
+        "available": {
+          "brier": 0.8197019843826414,
+          "log_loss": 2.3578224419287452,
+          "expected_arrivals": 0.09462605273696907,
+          "actual_arrivals": 1
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 214.8397448141617,
+          "pa_mae": 214.8397448141617,
+          "pa_bias": -214.8397448141617,
+          "value_rmse": 0.4295590423222961,
+          "value_mae": 0.4295590423222961,
+          "value_bias": 0.4295590423222961,
+          "pa_total": 12.160255185838315,
+          "value_total": 0.02877372414950222
+        },
+        "available": {
+          "pa_rmse": 214.8397448141617,
+          "pa_mae": 214.8397448141617,
+          "pa_bias": -214.8397448141617,
+          "value_rmse": 0.4295590423222961,
+          "value_mae": 0.4295590423222961,
+          "value_bias": 0.4295590423222961,
+          "pa_total": 12.160255185838315,
+          "value_total": 0.028773724149502227
+        }
+      },
+      "actual_pa": 227
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2023,
+        "readiness_level": "short_rookie_DSL_or_none",
+        "on_40man": 0
+      },
+      "rows": 1437,
+      "people": 1437,
+      "probability": {
+        "preseason": {
+          "brier": 8.815703050116108e-06,
+          "log_loss": 0.0017598243359812236,
+          "expected_arrivals": 2.5224553988202554,
+          "actual_arrivals": 0
+        },
+        "available": {
+          "brier": 4.833809475773185e-06,
+          "log_loss": 0.001519973120320544,
+          "expected_arrivals": 2.1807105127466553,
+          "actual_arrivals": 0
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 0.1762891288069608,
+          "pa_mae": 0.11291820545412858,
+          "pa_bias": 0.11291820545412858,
+          "value_rmse": 0.00034882487529950683,
+          "value_mae": 0.00028264662156238484,
+          "value_bias": 0.0002824760275090367,
+          "pa_total": 162.2634612375828,
+          "value_total": 0.4059180515304857
+        },
+        "available": {
+          "pa_rmse": 0.14027953978948776,
+          "pa_mae": 0.09866063253215546,
+          "pa_bias": 0.09866063253215546,
+          "value_rmse": 0.0003114259673515181,
+          "value_mae": 0.0002514188784274238,
+          "value_bias": 0.0002513016933238277,
+          "pa_total": 141.7753289487074,
+          "value_total": 0.36112053330634036
+        }
+      },
+      "actual_pa": 0
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2023,
+        "readiness_level": "Aplus",
+        "on_40man": 1
+      },
+      "rows": 2,
+      "people": 2,
+      "probability": {
+        "preseason": {
+          "brier": 0.05283159106537141,
+          "log_loss": 0.2431877708453983,
+          "expected_arrivals": 0.42089301008440894,
+          "actual_arrivals": 0
+        },
+        "available": {
+          "brier": 0.0889755009515838,
+          "log_loss": 0.3386235110015756,
+          "expected_arrivals": 0.5595703908463865,
+          "actual_arrivals": 0
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 37.83981397803078,
+          "pa_mae": 31.48538745295818,
+          "pa_bias": 31.48538745295818,
+          "value_rmse": 0.1169690961882933,
+          "value_mae": 0.09517749139133855,
+          "value_bias": 0.09517749139133855,
+          "pa_total": 62.97077490591636,
+          "value_total": 0.1903549827826771
+        },
+        "available": {
+          "pa_rmse": 48.237831224734684,
+          "pa_mae": 41.03868819976306,
+          "pa_bias": 41.03868819976306,
+          "value_rmse": 0.1487778580464592,
+          "value_mae": 0.1235351900388428,
+          "value_bias": 0.1235351900388428,
+          "pa_total": 82.07737639952612,
+          "value_total": 0.2470703800776856
+        }
+      },
+      "actual_pa": 0
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2022,
+        "readiness_level": "short_rookie_DSL_or_none",
+        "on_40man": 0
+      },
+      "rows": 1470,
+      "people": 1470,
+      "probability": {
+        "preseason": {
+          "brier": 1.718707350240247e-05,
+          "log_loss": 0.001847018857071976,
+          "expected_arrivals": 2.7019880651471087,
+          "actual_arrivals": 0
+        },
+        "available": {
+          "brier": 8.054456294514943e-06,
+          "log_loss": 0.0016379299196897447,
+          "expected_arrivals": 2.401756951434132,
+          "actual_arrivals": 0
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 0.3869170078347811,
+          "pa_mae": 0.137814202727866,
+          "pa_bias": 0.137814202727866,
+          "value_rmse": 0.0007690333601814395,
+          "value_mae": 0.00035644445713070507,
+          "value_bias": 0.00035644445713070507,
+          "pa_total": 202.586878009963,
+          "value_total": 0.5239733519821363
+        },
+        "available": {
+          "pa_rmse": 0.25886166099274643,
+          "pa_mae": 0.12115933167187892,
+          "pa_bias": 0.12115933167187892,
+          "value_rmse": 0.0005598124353846493,
+          "value_mae": 0.00032100739539365244,
+          "value_bias": 0.00032100739539365244,
+          "pa_total": 178.10421755766205,
+          "value_total": 0.47188087122866906
+        }
+      },
+      "actual_pa": 0
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2017,
+        "readiness_level": "Aplus",
+        "on_40man": 1
+      },
+      "rows": 6,
+      "people": 6,
+      "probability": {
+        "preseason": {
+          "brier": 0.09116950601791307,
+          "log_loss": 0.35035394535208425,
+          "expected_arrivals": 1.7468268972734706,
+          "actual_arrivals": 0
+        },
+        "available": {
+          "brier": 0.09116950601791307,
+          "log_loss": 0.35035394535208425,
+          "expected_arrivals": 1.7468268972734706,
+          "actual_arrivals": 0
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 26.01524471220593,
+          "pa_mae": 24.399507055153283,
+          "pa_bias": 24.399507055153283,
+          "value_rmse": 0.05944721275963536,
+          "value_mae": 0.05597124282286218,
+          "value_bias": 0.05597124282286218,
+          "pa_total": 146.3970423309197,
+          "value_total": 0.3358274569371731
+        },
+        "available": {
+          "pa_rmse": 26.01524471220593,
+          "pa_mae": 24.399507055153283,
+          "pa_bias": 24.399507055153283,
+          "value_rmse": 0.05944721275963536,
+          "value_mae": 0.05597124282286218,
+          "value_bias": 0.05597124282286218,
+          "pa_total": 146.3970423309197,
+          "value_total": 0.3358274569371731
+        }
+      },
+      "actual_pa": 0
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2022,
+        "readiness_level": "Aplus",
+        "on_40man": 0
+      },
+      "rows": 447,
+      "people": 447,
+      "probability": {
+        "preseason": {
+          "brier": 0.006119030157181726,
+          "log_loss": 0.027531086826385925,
+          "expected_arrivals": 3.5557717071484864,
+          "actual_arrivals": 3
+        },
+        "available": {
+          "brier": 0.006140601005434785,
+          "log_loss": 0.02731433716260984,
+          "expected_arrivals": 3.6739571212618416,
+          "actual_arrivals": 3
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 16.724072006484462,
+          "pa_mae": 1.4647914824448294,
+          "pa_bias": -0.24791069805987453,
+          "value_rmse": 0.023229981902311864,
+          "value_mae": 0.003285593719220569,
+          "value_bias": 0.0013177071763112406,
+          "pa_total": 294.183917967236,
+          "value_total": 0.8018378630203498
+        },
+        "available": {
+          "pa_rmse": 16.74962222765045,
+          "pa_mae": 1.4931351152534027,
+          "pa_bias": -0.22158654635932223,
+          "value_rmse": 0.0235154267496094,
+          "value_mae": 0.003368975300443263,
+          "value_bias": 0.0014249030893701666,
+          "pa_total": 305.950813777383,
+          "value_total": 0.8497544361576899
+        }
+      },
+      "actual_pa": 405
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2023,
+        "readiness_level": "AA_AAA",
+        "on_40man": 1
+      },
+      "rows": 54,
+      "people": 54,
+      "probability": {
+        "preseason": {
+          "brier": 0.20781173149134471,
+          "log_loss": 0.6060715913303392,
+          "expected_arrivals": 36.11083731962838,
+          "actual_arrivals": 35
+        },
+        "available": {
+          "brier": 0.20540448464415473,
+          "log_loss": 0.6029788893995408,
+          "expected_arrivals": 36.55349997668503,
+          "actual_arrivals": 35
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 114.9891950491866,
+          "pa_mae": 91.85646645921021,
+          "pa_bias": 23.097068052828742,
+          "value_rmse": 0.4363664502294092,
+          "value_mae": 0.3220164100766837,
+          "value_bias": 0.14380862836310004,
+          "pa_total": 5232.241674852753,
+          "value_total": 11.64877455003144
+        },
+        "available": {
+          "pa_rmse": 114.48665958832045,
+          "pa_mae": 91.6767926718863,
+          "pa_bias": 24.34283694681731,
+          "value_rmse": 0.43692565076260353,
+          "value_mae": 0.3233407182533994,
+          "value_bias": 0.14711076070248444,
+          "pa_total": 5299.513195128134,
+          "value_total": 11.827089696358195
+        }
+      },
+      "actual_pa": 3985
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2021,
+        "readiness_level": "A",
+        "on_40man": 1
+      },
+      "rows": 1,
+      "people": 1,
+      "probability": {
+        "preseason": {
+          "brier": 0.031989280102343975,
+          "log_loss": 0.1970561468561593,
+          "expected_arrivals": 0.17885547266534502,
+          "actual_arrivals": 0
+        },
+        "available": {
+          "brier": 0.024534305107419583,
+          "log_loss": 0.17035461165049456,
+          "expected_arrivals": 0.15663430373778148,
+          "actual_arrivals": 0
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 16.77496263829549,
+          "pa_mae": 16.77496263829549,
+          "pa_bias": 16.77496263829549,
+          "value_rmse": 0.05703541725210949,
+          "value_mae": 0.05703541725210949,
+          "value_bias": 0.05703541725210949,
+          "pa_total": 16.77496263829549,
+          "value_total": 0.05703541725210949
+        },
+        "available": {
+          "pa_rmse": 14.690825804324536,
+          "pa_mae": 14.690825804324536,
+          "pa_bias": 14.690825804324536,
+          "value_rmse": 0.04994928439452226,
+          "value_mae": 0.04994928439452226,
+          "value_bias": 0.04994928439452226,
+          "pa_total": 14.690825804324536,
+          "value_total": 0.04994928439452226
+        }
+      },
+      "actual_pa": 0
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2016,
+        "readiness_level": "A",
+        "on_40man": 0
+      },
+      "rows": 447,
+      "people": 447,
+      "probability": {
+        "preseason": {
+          "brier": 0.0022985084021442423,
+          "log_loss": 0.018016360102107193,
+          "expected_arrivals": 2.6221560129877552,
+          "actual_arrivals": 1
+        },
+        "available": {
+          "brier": 0.0022985084021442423,
+          "log_loss": 0.018016360102107193,
+          "expected_arrivals": 2.6221560129877552,
+          "actual_arrivals": 1
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 1.1521708058183806,
+          "pa_mae": 0.3897893332461574,
+          "pa_bias": 0.3864997863800655,
+          "value_rmse": 0.003772974416260677,
+          "value_mae": 0.001179625462937061,
+          "value_bias": 0.001179625462937061,
+          "pa_total": 173.76540451188927,
+          "value_total": 0.5040942743139729
+        },
+        "available": {
+          "pa_rmse": 1.1521708058183806,
+          "pa_mae": 0.3897893332461574,
+          "pa_bias": 0.3864997863800655,
+          "value_rmse": 0.003772974416260677,
+          "value_mae": 0.001179625462937061,
+          "value_bias": 0.001179625462937061,
+          "pa_total": 173.76540451188927,
+          "value_total": 0.5040942743139729
+        }
+      },
+      "actual_pa": 1
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2021,
+        "readiness_level": "AA_AAA",
+        "on_40man": 0
+      },
+      "rows": 784,
+      "people": 784,
+      "probability": {
+        "preseason": {
+          "brier": 0.09260842213117283,
+          "log_loss": 0.32100160396486876,
+          "expected_arrivals": 33.92804080753825,
+          "actual_arrivals": 92
+        },
+        "available": {
+          "brier": 0.0863256731054855,
+          "log_loss": 0.2865566773542763,
+          "expected_arrivals": 47.11436749049491,
+          "actual_arrivals": 92
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 42.3847510635756,
+          "pa_mae": 12.164692824406172,
+          "pa_bias": -6.701800323383479,
+          "value_rmse": 0.19684543441702748,
+          "value_mae": 0.04885213320226558,
+          "value_bias": -0.0007256366017896986,
+          "pa_total": 4550.788546467353,
+          "value_total": 13.16620116358956
+        },
+        "available": {
+          "pa_rmse": 40.94040262296108,
+          "pa_mae": 12.715440284275886,
+          "pa_bias": -5.018722055006857,
+          "value_rmse": 0.19893219285850106,
+          "value_mae": 0.05166033117604671,
+          "value_bias": 0.0035596230423459545,
+          "pa_total": 5870.321908874624,
+          "value_total": 16.525844724591913
+        }
+      },
+      "actual_pa": 9805
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2022,
+        "readiness_level": "AA_AAA",
+        "on_40man": 1
+      },
+      "rows": 59,
+      "people": 59,
+      "probability": {
+        "preseason": {
+          "brier": 0.20043894080949332,
+          "log_loss": 0.5900668230200253,
+          "expected_arrivals": 37.68604645451857,
+          "actual_arrivals": 40
+        },
+        "available": {
+          "brier": 0.195481055988616,
+          "log_loss": 0.5799148761511129,
+          "expected_arrivals": 38.59168120450601,
+          "actual_arrivals": 40
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 133.62132317358112,
+          "pa_mae": 96.39786209818901,
+          "pa_bias": 0.9678295944988508,
+          "value_rmse": 0.6812273948819775,
+          "value_mae": 0.42143517008436093,
+          "value_bias": 0.022193016449996186,
+          "pa_total": 5654.101946075432,
+          "value_total": 14.003250833879882
+        },
+        "available": {
+          "pa_rmse": 133.8386642532097,
+          "pa_mae": 96.33683909697054,
+          "pa_bias": 2.848785026766526,
+          "value_rmse": 0.6787645167868073,
+          "value_mae": 0.4242355160107398,
+          "value_bias": 0.02625657567271254,
+          "pa_total": 5765.0783165792245,
+          "value_total": 14.243000828020145
+        }
+      },
+      "actual_pa": 5597
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2016,
+        "readiness_level": "A",
+        "on_40man": 1
+      },
+      "rows": 3,
+      "people": 3,
+      "probability": {
+        "preseason": {
+          "brier": 0.4850087713134692,
+          "log_loss": 1.3646017466551428,
+          "expected_arrivals": 0.5560679756879496,
+          "actual_arrivals": 2
+        },
+        "available": {
+          "brier": 0.4850087713134692,
+          "log_loss": 1.3646017466551428,
+          "expected_arrivals": 0.5560679756879496,
+          "actual_arrivals": 2
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 81.93310410536081,
+          "pa_mae": 66.00484617156148,
+          "pa_bias": -55.62381360519047,
+          "value_rmse": 0.6055726393093733,
+          "value_mae": 0.3965748956228062,
+          "value_bias": 0.32443439727106543,
+          "pa_total": 36.12855918442857,
+          "value_total": 0.09512805280566405
+        },
+        "available": {
+          "pa_rmse": 81.93310410536081,
+          "pa_mae": 66.00484617156148,
+          "pa_bias": -55.62381360519047,
+          "value_rmse": 0.6055726393093733,
+          "value_mae": 0.3965748956228062,
+          "value_bias": 0.32443439727106543,
+          "pa_total": 36.12855918442857,
+          "value_total": 0.09512805280566407
+        }
+      },
+      "actual_pa": 203
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2017,
+        "readiness_level": "A",
+        "on_40man": 0
+      },
+      "rows": 443,
+      "people": 443,
+      "probability": {
+        "preseason": {
+          "brier": 0.00229534304825566,
+          "log_loss": 0.015349498818556422,
+          "expected_arrivals": 2.5402106484599587,
+          "actual_arrivals": 1
+        },
+        "available": {
+          "brier": 0.00229534304825566,
+          "log_loss": 0.015349498818556422,
+          "expected_arrivals": 2.5402106484599587,
+          "actual_arrivals": 1
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 23.42497762032402,
+          "pa_mae": 1.4920337639022,
+          "pa_bias": -0.7304526652830525,
+          "value_rmse": 0.19506631073612293,
+          "value_mae": 0.010305298960344208,
+          "value_bias": -0.00822645833714283,
+          "pa_total": 170.4094692796078,
+          "value_total": 0.46647536581515525
+        },
+        "available": {
+          "pa_rmse": 23.42497762032402,
+          "pa_mae": 1.4920337639022,
+          "pa_bias": -0.7304526652830525,
+          "value_rmse": 0.19506631073612293,
+          "value_mae": 0.010305298960344208,
+          "value_bias": -0.00822645833714283,
+          "pa_total": 170.4094692796078,
+          "value_total": 0.46647536581515525
+        }
+      },
+      "actual_pa": 494
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2017,
+        "readiness_level": "Mexico_without_A_or_higher_affiliated",
+        "on_40man": 0
+      },
+      "rows": 282,
+      "people": 282,
+      "probability": {
+        "preseason": {
+          "brier": 3.553392545600623e-05,
+          "log_loss": 0.003966759310227705,
+          "expected_arrivals": 1.1135372748669161,
+          "actual_arrivals": 0
+        },
+        "available": {
+          "brier": 3.553392545600623e-05,
+          "log_loss": 0.003966759310227705,
+          "expected_arrivals": 1.1135372748669161,
+          "actual_arrivals": 0
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 0.36439884360946234,
+          "pa_mae": 0.22643065277770108,
+          "pa_bias": 0.22643065277770108,
+          "value_rmse": 0.0005053524326324171,
+          "value_mae": 0.00028084194507865725,
+          "value_bias": 0.0002764803062855418,
+          "pa_total": 63.85344408331171,
+          "value_total": 0.07796744637252279
+        },
+        "available": {
+          "pa_rmse": 0.36439884360946234,
+          "pa_mae": 0.22643065277770108,
+          "pa_bias": 0.22643065277770108,
+          "value_rmse": 0.0005053524326324171,
+          "value_mae": 0.00028084194507865725,
+          "value_bias": 0.0002764803062855418,
+          "pa_total": 63.85344408331171,
+          "value_total": 0.07796744637252279
+        }
+      },
+      "actual_pa": 0
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2018,
+        "readiness_level": "AA_AAA",
+        "on_40man": 0
+      },
+      "rows": 688,
+      "people": 688,
+      "probability": {
+        "preseason": {
+          "brier": 0.06712944806567477,
+          "log_loss": 0.22920683880281212,
+          "expected_arrivals": 47.83778710683713,
+          "actual_arrivals": 67
+        },
+        "available": {
+          "brier": 0.06712944806567477,
+          "log_loss": 0.22920683880281212,
+          "expected_arrivals": 47.83778710683713,
+          "actual_arrivals": 67
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 56.84531907877797,
+          "pa_mae": 16.163950449238257,
+          "pa_bias": -7.802912843185816,
+          "value_rmse": 0.4622178590647494,
+          "value_mae": 0.0896322086922093,
+          "value_bias": -0.0546347889001496,
+          "pa_total": 5268.595963888158,
+          "value_total": 12.712709738406511
+        },
+        "available": {
+          "pa_rmse": 56.84531907877797,
+          "pa_mae": 16.163950449238257,
+          "pa_bias": -7.802912843185816,
+          "value_rmse": 0.4622178590647494,
+          "value_mae": 0.0896322086922093,
+          "value_bias": -0.0546347889001496,
+          "pa_total": 5268.595963888158,
+          "value_total": 12.712709738406511
+        }
+      },
+      "actual_pa": 10637
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2018,
+        "readiness_level": "Aplus",
+        "on_40man": 1
+      },
+      "rows": 3,
+      "people": 3,
+      "probability": {
+        "preseason": {
+          "brier": 0.04711946259417643,
+          "log_loss": 0.2334878320863293,
+          "expected_arrivals": 0.6154906595085523,
+          "actual_arrivals": 0
+        },
+        "available": {
+          "brier": 0.04711946259417643,
+          "log_loss": 0.2334878320863293,
+          "expected_arrivals": 0.6154906595085523,
+          "actual_arrivals": 0
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 20.201853496648358,
+          "pa_mae": 18.189264599643934,
+          "pa_bias": 18.189264599643934,
+          "value_rmse": 0.04817645408325394,
+          "value_mae": 0.04484994528344922,
+          "value_bias": 0.04484994528344922,
+          "pa_total": 54.5677937989318,
+          "value_total": 0.13454983585034766
+        },
+        "available": {
+          "pa_rmse": 20.201853496648358,
+          "pa_mae": 18.189264599643934,
+          "pa_bias": 18.189264599643934,
+          "value_rmse": 0.04817645408325394,
+          "value_mae": 0.04484994528344922,
+          "value_bias": 0.04484994528344922,
+          "pa_total": 54.5677937989318,
+          "value_total": 0.13454983585034766
+        }
+      },
+      "actual_pa": 0
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2024,
+        "readiness_level": "AA_AAA",
+        "on_40man": 0
+      },
+      "rows": 747,
+      "people": 747,
+      "probability": {
+        "preseason": {
+          "brier": 0.06713576521486224,
+          "log_loss": 0.22275531109447774,
+          "expected_arrivals": 66.48517326545877,
+          "actual_arrivals": 78
+        },
+        "available": {
+          "brier": 0.06725945546959883,
+          "log_loss": 0.22291535592879444,
+          "expected_arrivals": 65.5713965117741,
+          "actual_arrivals": 78
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 51.8064107051531,
+          "pa_mae": 16.78211514371919,
+          "pa_bias": -4.167419232535851,
+          "value_rmse": 0.30926152043071825,
+          "value_mae": 0.06639078879389682,
+          "value_bias": -0.01221181511034869,
+          "pa_total": 8066.93783329572,
+          "value_total": 17.41940872210932
+        },
+        "available": {
+          "pa_rmse": 51.75410434913464,
+          "pa_mae": 16.70282072132911,
+          "pa_bias": -4.3122857857025485,
+          "value_rmse": 0.3098231325423163,
+          "value_mae": 0.06637639480018039,
+          "value_bias": -0.012466221258747629,
+          "pa_total": 7958.722518080197,
+          "value_total": 17.229367329255307
+        }
+      },
+      "actual_pa": 11180
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2021,
+        "readiness_level": "short_rookie_DSL_or_none",
+        "on_40man": 1
+      },
+      "rows": 1,
+      "people": 1,
+      "probability": {
+        "preseason": {
+          "brier": 0.08978673899742434,
+          "log_loss": 0.3561670075161895,
+          "expected_arrivals": 0.7003556458108641,
+          "actual_arrivals": 1
+        },
+        "available": {
+          "brier": 0.11497319495054074,
+          "log_loss": 0.41411789820157613,
+          "expected_arrivals": 0.6609230250362895,
+          "actual_arrivals": 1
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 161.77485463517803,
+          "pa_mae": 161.77485463517803,
+          "pa_bias": 161.77485463517803,
+          "value_rmse": 0.10447866459374383,
+          "value_mae": 0.10447866459374383,
+          "value_bias": 0.10447866459374383,
+          "pa_total": 202.77485463517803,
+          "value_total": 0.4119788374093885
+        },
+        "available": {
+          "pa_rmse": 150.35787814148412,
+          "pa_mae": 150.35787814148412,
+          "pa_bias": 150.35787814148412,
+          "value_rmse": 0.08128272784377194,
+          "value_mae": 0.08128272784377194,
+          "value_bias": 0.08128272784377194,
+          "pa_total": 191.35787814148412,
+          "value_total": 0.3887829006594166
+        }
+      },
+      "actual_pa": 41
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2017,
+        "readiness_level": "Aplus",
+        "on_40man": 0
+      },
+      "rows": 465,
+      "people": 465,
+      "probability": {
+        "preseason": {
+          "brier": 0.0023032413660166434,
+          "log_loss": 0.017456783491683118,
+          "expected_arrivals": 4.36383820857382,
+          "actual_arrivals": 1
+        },
+        "available": {
+          "brier": 0.0023032413660166434,
+          "log_loss": 0.017456783491683118,
+          "expected_arrivals": 4.36383820857382,
+          "actual_arrivals": 1
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 2.8139903395985293,
+          "pa_mae": 0.7330103470500037,
+          "pa_bias": 0.5349876082084436,
+          "value_rmse": 0.014505918757642046,
+          "value_mae": 0.002265531649902424,
+          "value_bias": 0.0010364421075411163,
+          "pa_total": 296.7692378169262,
+          "value_total": 0.7727744799911411
+        },
+        "available": {
+          "pa_rmse": 2.8139903395985293,
+          "pa_mae": 0.7330103470500037,
+          "pa_bias": 0.5349876082084436,
+          "value_rmse": 0.014505918757642046,
+          "value_mae": 0.0022655316499024243,
+          "value_bias": 0.0010364421075411163,
+          "pa_total": 296.7692378169262,
+          "value_total": 0.7727744799911411
+        }
+      },
+      "actual_pa": 48
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2016,
+        "readiness_level": "short_rookie_DSL_or_none",
+        "on_40man": 0
+      },
+      "rows": 1856,
+      "people": 1856,
+      "probability": {
+        "preseason": {
+          "brier": 0.00104915808481497,
+          "log_loss": 0.007269108980359865,
+          "expected_arrivals": 4.77211631976417,
+          "actual_arrivals": 2
+        },
+        "available": {
+          "brier": 0.00104915808481497,
+          "log_loss": 0.007269108980359865,
+          "expected_arrivals": 4.77211631976417,
+          "actual_arrivals": 2
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 1.6567734464766974,
+          "pa_mae": 0.21794371077635571,
+          "pa_bias": 0.11857177190027404,
+          "value_rmse": 0.011886851896737044,
+          "value_mae": 0.0008658311172685698,
+          "value_bias": 0.0003645918583816153,
+          "pa_total": 315.0692086469086,
+          "value_total": 0.9401525696363414
+        },
+        "available": {
+          "pa_rmse": 1.6567734464766974,
+          "pa_mae": 0.21794371077635571,
+          "pa_bias": 0.11857177190027404,
+          "value_rmse": 0.011886851896737044,
+          "value_mae": 0.0008658311172685698,
+          "value_bias": 0.0003645918583816153,
+          "pa_total": 315.0692086469086,
+          "value_total": 0.9401525696363414
+        }
+      },
+      "actual_pa": 95
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2017,
+        "readiness_level": "AA_AAA",
+        "on_40man": 0
+      },
+      "rows": 678,
+      "people": 678,
+      "probability": {
+        "preseason": {
+          "brier": 0.0642048236114928,
+          "log_loss": 0.22801525978773565,
+          "expected_arrivals": 42.86329277859044,
+          "actual_arrivals": 53
+        },
+        "available": {
+          "brier": 0.0642048236114928,
+          "log_loss": 0.22801525978773565,
+          "expected_arrivals": 42.86329277859044,
+          "actual_arrivals": 53
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 38.55419245235175,
+          "pa_mae": 11.241387991282132,
+          "pa_bias": -1.997750764917239,
+          "value_rmse": 0.21627533977779465,
+          "value_mae": 0.04346437397711889,
+          "value_bias": 0.0023690737691902126,
+          "pa_total": 4133.524981386112,
+          "value_total": 9.350226160458273
+        },
+        "available": {
+          "pa_rmse": 38.55419245235175,
+          "pa_mae": 11.241387991282132,
+          "pa_bias": -1.997750764917239,
+          "value_rmse": 0.21627533977779465,
+          "value_mae": 0.043464373977118886,
+          "value_bias": 0.0023690737691902126,
+          "pa_total": 4133.524981386112,
+          "value_total": 9.350226160458273
+        }
+      },
+      "actual_pa": 5488
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2024,
+        "readiness_level": "AA_AAA",
+        "on_40man": 1
+      },
+      "rows": 36,
+      "people": 36,
+      "probability": {
+        "preseason": {
+          "brier": 0.2717862991984608,
+          "log_loss": 0.7478026975560303,
+          "expected_arrivals": 24.303587865834373,
+          "actual_arrivals": 23
+        },
+        "available": {
+          "brier": 0.2721823531522116,
+          "log_loss": 0.7462112764710398,
+          "expected_arrivals": 24.206927937762334,
+          "actual_arrivals": 23
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 154.50994399444448,
+          "pa_mae": 111.59294422614508,
+          "pa_bias": 1.1115171490889963,
+          "value_rmse": 0.5773213117532228,
+          "value_mae": 0.36331448007630796,
+          "value_bias": -0.025615711296259953,
+          "pa_total": 3434.0146173672038,
+          "value_total": 6.36512963245913
+        },
+        "available": {
+          "pa_rmse": 152.96510357581178,
+          "pa_mae": 110.99072759410438,
+          "pa_bias": 0.5382341797767983,
+          "value_rmse": 0.5732801781652722,
+          "value_mae": 0.3605288023959409,
+          "value_bias": -0.027532708763025507,
+          "pa_total": 3413.3764304719643,
+          "value_total": 6.296117723655571
+        }
+      },
+      "actual_pa": 3394
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2024,
+        "readiness_level": "Aplus",
+        "on_40man": 0
+      },
+      "rows": 489,
+      "people": 489,
+      "probability": {
+        "preseason": {
+          "brier": 0.006160846420783881,
+          "log_loss": 0.03267077442265006,
+          "expected_arrivals": 4.639444361006546,
+          "actual_arrivals": 3
+        },
+        "available": {
+          "brier": 0.006208727813948785,
+          "log_loss": 0.03287536505532717,
+          "expected_arrivals": 4.645658818648407,
+          "actual_arrivals": 3
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 13.227330817321315,
+          "pa_mae": 1.7581012867625876,
+          "pa_bias": -0.03110845078115378,
+          "value_rmse": 0.0352721225448331,
+          "value_mae": 0.004108889820487058,
+          "value_bias": 0.0025133663664009143,
+          "pa_total": 430.78796756801574,
+          "value_total": 0.9958621026768391
+        },
+        "available": {
+          "pa_rmse": 13.443125108142208,
+          "pa_mae": 1.7706158832956929,
+          "pa_bias": -0.02305906211060184,
+          "value_rmse": 0.035742191095970356,
+          "value_mae": 0.00414007348046109,
+          "value_bias": 0.0025457465087368332,
+          "pa_total": 434.72411862791563,
+          "value_total": 1.0116959922791033
+        }
+      },
+      "actual_pa": 446
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2021,
+        "readiness_level": "AA_AAA",
+        "on_40man": 1
+      },
+      "rows": 63,
+      "people": 63,
+      "probability": {
+        "preseason": {
+          "brier": 0.23901864554273458,
+          "log_loss": 0.6670132624127119,
+          "expected_arrivals": 32.063802877558416,
+          "actual_arrivals": 50
+        },
+        "available": {
+          "brier": 0.19696678116042257,
+          "log_loss": 0.5749614622953075,
+          "expected_arrivals": 36.807439509956936,
+          "actual_arrivals": 50
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 160.01475074839013,
+          "pa_mae": 103.79348886762196,
+          "pa_bias": -47.20044426006946,
+          "value_rmse": 0.781359387569713,
+          "value_mae": 0.46975167519229755,
+          "value_bias": -0.040033342406904655,
+          "pa_total": 4637.372011615625,
+          "value_total": 13.405394197705418
+        },
+        "available": {
+          "pa_rmse": 154.12779098717434,
+          "pa_mae": 103.86460667482267,
+          "pa_bias": -36.52707634054452,
+          "value_rmse": 0.7724896829698541,
+          "value_mae": 0.4790706967190101,
+          "value_bias": -0.008831735787470773,
+          "pa_total": 5309.794190545697,
+          "value_total": 15.371095414729751
+        }
+      },
+      "actual_pa": 7611
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2022,
+        "readiness_level": "AA_AAA",
+        "on_40man": 0
+      },
+      "rows": 762,
+      "people": 762,
+      "probability": {
+        "preseason": {
+          "brier": 0.05405116876240192,
+          "log_loss": 0.2029139926498401,
+          "expected_arrivals": 56.00408236839719,
+          "actual_arrivals": 56
+        },
+        "available": {
+          "brier": 0.05400849761841618,
+          "log_loss": 0.20123812937048538,
+          "expected_arrivals": 61.245937831744506,
+          "actual_arrivals": 56
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 39.427559225069785,
+          "pa_mae": 12.06559399623128,
+          "pa_bias": -0.9330793560341711,
+          "value_rmse": 0.21915749420510186,
+          "value_mae": 0.046895620626782666,
+          "value_bias": 0.0005781931061817899,
+          "pa_total": 6587.993530701962,
+          "value_total": 17.023232873804346
+        },
+        "available": {
+          "pa_rmse": 39.60282638722061,
+          "pa_mae": 12.532620370363025,
+          "pa_bias": -0.4133599075749533,
+          "value_rmse": 0.2179022831552657,
+          "value_mae": 0.047612364115260826,
+          "value_bias": 0.001226236292680953,
+          "pa_total": 6984.019750427886,
+          "value_total": 17.517041781916703
+        }
+      },
+      "actual_pa": 7299
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2016,
+        "readiness_level": "AA_AAA",
+        "on_40man": 1
+      },
+      "rows": 59,
+      "people": 59,
+      "probability": {
+        "preseason": {
+          "brier": 0.2121436625633599,
+          "log_loss": 0.6160282121752984,
+          "expected_arrivals": 36.840620465749055,
+          "actual_arrivals": 37
+        },
+        "available": {
+          "brier": 0.2121436625633599,
+          "log_loss": 0.6160282121752984,
+          "expected_arrivals": 36.840620465749055,
+          "actual_arrivals": 37
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 105.66107684357777,
+          "pa_mae": 76.80707978568401,
+          "pa_bias": 8.442490086164447,
+          "value_rmse": 0.5018003558372973,
+          "value_mae": 0.3130646182054606,
+          "value_bias": 0.09634122234721264,
+          "pa_total": 4561.106915083701,
+          "value_total": 10.079047827045695
+        },
+        "available": {
+          "pa_rmse": 105.66107684357777,
+          "pa_mae": 76.80707978568401,
+          "pa_bias": 8.442490086164447,
+          "value_rmse": 0.5018003558372973,
+          "value_mae": 0.3130646182054606,
+          "value_bias": 0.09634122234721264,
+          "pa_total": 4561.106915083701,
+          "value_total": 10.079047827045695
+        }
+      },
+      "actual_pa": 4063
+    },
+    {
+      "group_keys": [
+        "origin_year",
+        "readiness_level",
+        "on_40man"
+      ],
+      "profile": {
+        "origin_year": 2021,
+        "readiness_level": "Aplus",
+        "on_40man": 1
+      },
+      "rows": 15,
+      "people": 15,
+      "probability": {
+        "preseason": {
+          "brier": 0.24261459056665038,
+          "log_loss": 0.7016624796048678,
+          "expected_arrivals": 2.391618013939459,
+          "actual_arrivals": 5
+        },
+        "available": {
+          "brier": 0.20259088411873216,
+          "log_loss": 0.5816263317355262,
+          "expected_arrivals": 3.0816302218882456,
+          "actual_arrivals": 5
+        }
+      },
+      "scores": {
+        "preseason": {
+          "pa_rmse": 53.30803459236562,
+          "pa_mae": 30.208909198041777,
+          "pa_bias": -2.9721314848183633,
+          "value_rmse": 0.052754968462982596,
+          "value_mae": 0.04794195583932687,
+          "value_bias": 0.0445723882102231,
+          "pa_total": 288.41802772772456,
+          "value_total": 0.8126699348271005
+        },
+        "available": {
+          "pa_rmse": 45.625334847685195,
+          "pa_mae": 29.552106489204412,
+          "pa_bias": 3.1822123820641264,
+          "value_rmse": 0.06610852616488644,
+          "value_mae": 0.06026720962424635,
+          "value_bias": 0.06026720962424635,
+          "pa_total": 380.7331857309619,
+          "value_total": 1.0480922560374493
+        }
+      },
+      "actual_pa": 333
+    }
+  ],
+  "hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-preseason-readiness-v68\\features.parquet": "a9c1bc927adcbb07742080297e2c513ec2de1a5800d2d5e9b01652cd828ffcfc",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-available-season-history\\scored-predictions.parquet": "61b64e45a46f95eb068992d8f0f017fe5ef0bb0b7f7301ce2303017af0981187",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\diagnose_hitter_roster_readiness_separate_mexico.py": "6a0ffc3b2ea4ef6ce1fb5ff636a8c4edf103a064a511738b2c93e7e22647a9e1"
+  }
+}

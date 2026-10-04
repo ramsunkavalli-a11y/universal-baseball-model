@@ -1,0 +1,14 @@
+{
+  "before_successful_scoring": true,
+  "fits_and_forecasts_changed": false,
+  "reason": "Absent zips_pa field; use the previously declared current-MLB/two-public-system matched sample",
+  "old_instruction": "public = q.filter(pl.col('steamer_pa').is_not_null()&pl.col('zips_pa').is_not_null())",
+  "new_instruction": "public = q.filter((pl.col('pa_0')>0)&pl.col('steamer_index').is_not_null()&pl.col('zips_index').is_not_null())",
+  "expected_public_rows": 2627,
+  "old_function_sha256": "6cf74f94c0cdcd95dc640bf29dcbb8e2257ab6acde443d4cfef479e5aa90ff3c",
+  "new_function_sha256": "e2560ec6161121922b99ae8d56013d285b6a83cf1191aa07a5df722f27484f5a",
+  "hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\evaluate_hitter_available_season_history.py": "6d0a88b19d5ab926a0cfc6265ed7cc2db74ed3995e6673db814bbe87e356a24b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\score_hitter_available_season_history.py": "75d275cc01bc999f0687b68fab39373b1b86d1a58b78e7e8448ddd45ad65fc49"
+  }
+}
