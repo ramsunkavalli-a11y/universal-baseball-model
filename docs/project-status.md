@@ -24,7 +24,29 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: repaired raw contact comparison and nineteen player walks complete.**
+**Current checkpoint: joint offense risk comparison and seventeen player walks complete.**
+The [offense uncertainty result](hitter-offense-risk-result.md) retains all 30,506
+forecasts and every current mean. Fifty genuinely nested Ridge heads, 35 variance
+fits and all risk rows replay after 130 actual prefit checks. Adding hitting
+spread that shrinks with PA improves quantile loss .047190 to .041233 overall
+and .258569 to .221910 on public matches; all seven origins improve against both
+declared references. This is risk accuracy, not a new point forecast or public
+uncertainty comparison. Seventeen actual walks retain Soto/Merrifield gains,
+Dozier/Langford harms, Judge/Acuna star misses, unchanged Kurtz readiness,
+Reynolds's zero-atom quantile, and Rortvedt's compensating component errors.
+The Normal law puts more than one percent probability on impossible joint
+PA/offense outcomes for 1,424 rows, including Gore and Rortvedt. It fails the
+physical-distribution gate at low PA. Calibration residuals also depend strongly
+on realized PA; 19,800 rows lack a matching refined calibration profile.
+Keep this as qualified development evidence, not deployment or full-population
+calibration. The follow-up independently verifies all 153 case quantiles and
+qualifies the initial finalizer's count. Twelve focused tests and all 31 frozen
+files verify. Next build coherent event-count risk and review workload-related
+rate bias, not Normal width tuning; current means, public workload/readiness
+gaps, full value and the active goal remain unchanged. No protected outcomes
+or deployed explorer change.
+
+**Previous checkpoint: repaired raw contact comparison and nineteen player walks complete.**
 The [matched information result](hitter-repaired-contact-information-result.md)
 keeps all 30,506 forecasts and fixed playing time. All 210 checks and 35 anchor
 replays precede ninety Ridge fits; five unsupported 2016 folds retain the anchor.

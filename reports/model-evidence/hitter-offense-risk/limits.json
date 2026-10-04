@@ -1,0 +1,1096 @@
+{
+  "physical_groups": [
+    {
+      "scope": "all",
+      "rows": 30506,
+      "mean_impossible_mass": 0.0017850712748079514,
+      "maximum_impossible_mass": 0.0861907546283698,
+      "rows_above_one_percent": 1424
+    },
+    {
+      "scope": "current_MLB",
+      "rows": 4541,
+      "mean_impossible_mass": 0.005194786900021066,
+      "maximum_impossible_mass": 0.0861907546283698,
+      "rows_above_one_percent": 875
+    },
+    {
+      "scope": "conditional_under100",
+      "rows": 25000,
+      "mean_impossible_mass": 0.0015352731425732034,
+      "maximum_impossible_mass": 0.0861907546283698,
+      "rows_above_one_percent": 966
+    },
+    {
+      "scope": "conditional_100to299",
+      "rows": 3589,
+      "mean_impossible_mass": 0.004463044607036348,
+      "maximum_impossible_mass": 0.03183602572872251,
+      "rows_above_one_percent": 458
+    },
+    {
+      "scope": "conditional_300plus",
+      "rows": 1917,
+      "mean_impossible_mass": 2.9049895830896547e-05,
+      "maximum_impossible_mass": 0.000351676229343678,
+      "rows_above_one_percent": 0
+    }
+  ],
+  "calibration_bias_by_actual_pa": [
+    {
+      "outer_year": 2016,
+      "outer_fold": 0,
+      "diagnostic_actual_pa_band": "1to49",
+      "rows": 70,
+      "people": 56,
+      "residual_mean": -3.9392492057136477,
+      "residual_mse": 60.94826375428672,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2016,
+      "outer_fold": 0,
+      "diagnostic_actual_pa_band": "50to299",
+      "rows": 145,
+      "people": 96,
+      "residual_mean": -0.9231375602041381,
+      "residual_mse": 5.319368473999268,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2016,
+      "outer_fold": 0,
+      "diagnostic_actual_pa_band": "300plus",
+      "rows": 140,
+      "people": 70,
+      "residual_mean": 0.18264905425651645,
+      "residual_mse": 1.9587362008808802,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2016,
+      "outer_fold": 1,
+      "diagnostic_actual_pa_band": "1to49",
+      "rows": 82,
+      "people": 69,
+      "residual_mean": -3.468432345152887,
+      "residual_mse": 65.61603018653395,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2016,
+      "outer_fold": 1,
+      "diagnostic_actual_pa_band": "50to299",
+      "rows": 129,
+      "people": 96,
+      "residual_mean": -0.7098966815846158,
+      "residual_mse": 6.165860942905724,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2016,
+      "outer_fold": 1,
+      "diagnostic_actual_pa_band": "300plus",
+      "rows": 160,
+      "people": 78,
+      "residual_mean": 0.39690887263649366,
+      "residual_mse": 2.4008297217539467,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2016,
+      "outer_fold": 2,
+      "diagnostic_actual_pa_band": "1to49",
+      "rows": 66,
+      "people": 52,
+      "residual_mean": -2.9878781155682232,
+      "residual_mse": 62.458166379239685,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2016,
+      "outer_fold": 2,
+      "diagnostic_actual_pa_band": "50to299",
+      "rows": 142,
+      "people": 98,
+      "residual_mean": -0.8108959729915876,
+      "residual_mse": 7.107184845173644,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2016,
+      "outer_fold": 2,
+      "diagnostic_actual_pa_band": "300plus",
+      "rows": 179,
+      "people": 81,
+      "residual_mean": 0.37571812632394397,
+      "residual_mse": 2.9471559468925577,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2016,
+      "outer_fold": 3,
+      "diagnostic_actual_pa_band": "1to49",
+      "rows": 88,
+      "people": 73,
+      "residual_mean": -4.199347025458829,
+      "residual_mse": 81.52566618128623,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2016,
+      "outer_fold": 3,
+      "diagnostic_actual_pa_band": "50to299",
+      "rows": 144,
+      "people": 96,
+      "residual_mean": -0.7977520382937994,
+      "residual_mse": 6.7154075042350145,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2016,
+      "outer_fold": 3,
+      "diagnostic_actual_pa_band": "300plus",
+      "rows": 155,
+      "people": 71,
+      "residual_mean": 0.4306015740824573,
+      "residual_mse": 1.9209496633936929,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2016,
+      "outer_fold": 4,
+      "diagnostic_actual_pa_band": "1to49",
+      "rows": 89,
+      "people": 74,
+      "residual_mean": -3.86327114773228,
+      "residual_mse": 67.28226034535791,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2016,
+      "outer_fold": 4,
+      "diagnostic_actual_pa_band": "50to299",
+      "rows": 150,
+      "people": 101,
+      "residual_mean": -0.683754154560053,
+      "residual_mse": 6.972860271921229,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2016,
+      "outer_fold": 4,
+      "diagnostic_actual_pa_band": "300plus",
+      "rows": 159,
+      "people": 76,
+      "residual_mean": 0.3343171948631198,
+      "residual_mse": 2.8245344249856355,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2017,
+      "outer_fold": 0,
+      "diagnostic_actual_pa_band": "1to49",
+      "rows": 77,
+      "people": 66,
+      "residual_mean": -4.007855054761704,
+      "residual_mse": 59.29233708809002,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2017,
+      "outer_fold": 0,
+      "diagnostic_actual_pa_band": "50to299",
+      "rows": 146,
+      "people": 94,
+      "residual_mean": -0.7526365174195879,
+      "residual_mse": 5.137308550871841,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2017,
+      "outer_fold": 0,
+      "diagnostic_actual_pa_band": "300plus",
+      "rows": 146,
+      "people": 67,
+      "residual_mean": 0.24080236353826975,
+      "residual_mse": 2.2945660038010973,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2017,
+      "outer_fold": 1,
+      "diagnostic_actual_pa_band": "1to49",
+      "rows": 80,
+      "people": 67,
+      "residual_mean": -1.7311120718745951,
+      "residual_mse": 82.63051705049095,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2017,
+      "outer_fold": 1,
+      "diagnostic_actual_pa_band": "50to299",
+      "rows": 134,
+      "people": 102,
+      "residual_mean": -0.8334146574666305,
+      "residual_mse": 6.2245171614439645,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2017,
+      "outer_fold": 1,
+      "diagnostic_actual_pa_band": "300plus",
+      "rows": 174,
+      "people": 81,
+      "residual_mean": 0.5942091980817357,
+      "residual_mse": 2.5309595213205367,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2017,
+      "outer_fold": 2,
+      "diagnostic_actual_pa_band": "1to49",
+      "rows": 64,
+      "people": 55,
+      "residual_mean": -3.419867467859255,
+      "residual_mse": 74.17573036786196,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2017,
+      "outer_fold": 2,
+      "diagnostic_actual_pa_band": "50to299",
+      "rows": 133,
+      "people": 93,
+      "residual_mean": -0.6845657301659895,
+      "residual_mse": 7.59226900840031,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2017,
+      "outer_fold": 2,
+      "diagnostic_actual_pa_band": "300plus",
+      "rows": 178,
+      "people": 83,
+      "residual_mean": 0.5697753897726258,
+      "residual_mse": 2.8500913751283856,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2017,
+      "outer_fold": 3,
+      "diagnostic_actual_pa_band": "1to49",
+      "rows": 88,
+      "people": 67,
+      "residual_mean": -4.314824322062609,
+      "residual_mse": 81.50275629801098,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2017,
+      "outer_fold": 3,
+      "diagnostic_actual_pa_band": "50to299",
+      "rows": 129,
+      "people": 92,
+      "residual_mean": -0.7362235910866777,
+      "residual_mse": 6.906084580661253,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2017,
+      "outer_fold": 3,
+      "diagnostic_actual_pa_band": "300plus",
+      "rows": 162,
+      "people": 77,
+      "residual_mean": 0.643919182578847,
+      "residual_mse": 2.2004478372141922,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2017,
+      "outer_fold": 4,
+      "diagnostic_actual_pa_band": "1to49",
+      "rows": 76,
+      "people": 63,
+      "residual_mean": -3.7231372563406846,
+      "residual_mse": 62.840887681231784,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2017,
+      "outer_fold": 4,
+      "diagnostic_actual_pa_band": "50to299",
+      "rows": 141,
+      "people": 96,
+      "residual_mean": -0.7040474445839632,
+      "residual_mse": 6.839934223653849,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2017,
+      "outer_fold": 4,
+      "diagnostic_actual_pa_band": "300plus",
+      "rows": 159,
+      "people": 79,
+      "residual_mean": 0.600240914184768,
+      "residual_mse": 2.6934355174105735,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2018,
+      "outer_fold": 0,
+      "diagnostic_actual_pa_band": "1to49",
+      "rows": 80,
+      "people": 66,
+      "residual_mean": -3.444632414365472,
+      "residual_mse": 59.255701040466626,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2018,
+      "outer_fold": 0,
+      "diagnostic_actual_pa_band": "50to299",
+      "rows": 141,
+      "people": 95,
+      "residual_mean": -1.1837426403145486,
+      "residual_mse": 5.659757087136672,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2018,
+      "outer_fold": 0,
+      "diagnostic_actual_pa_band": "300plus",
+      "rows": 145,
+      "people": 72,
+      "residual_mean": -0.003777391646108,
+      "residual_mse": 2.142717944748979,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2018,
+      "outer_fold": 1,
+      "diagnostic_actual_pa_band": "1to49",
+      "rows": 79,
+      "people": 64,
+      "residual_mean": -2.700284993287963,
+      "residual_mse": 69.92391939342832,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2018,
+      "outer_fold": 1,
+      "diagnostic_actual_pa_band": "50to299",
+      "rows": 152,
+      "people": 106,
+      "residual_mean": -1.1302780064458844,
+      "residual_mse": 7.031975541562789,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2018,
+      "outer_fold": 1,
+      "diagnostic_actual_pa_band": "300plus",
+      "rows": 180,
+      "people": 82,
+      "residual_mean": 0.3185162568840691,
+      "residual_mse": 2.2371348234064388,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2018,
+      "outer_fold": 2,
+      "diagnostic_actual_pa_band": "1to49",
+      "rows": 64,
+      "people": 57,
+      "residual_mean": -4.785138560630507,
+      "residual_mse": 75.07824739286109,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2018,
+      "outer_fold": 2,
+      "diagnostic_actual_pa_band": "50to299",
+      "rows": 136,
+      "people": 95,
+      "residual_mean": -0.7088150864061851,
+      "residual_mse": 6.777055633366116,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2018,
+      "outer_fold": 2,
+      "diagnostic_actual_pa_band": "300plus",
+      "rows": 175,
+      "people": 82,
+      "residual_mean": 0.2636337752695364,
+      "residual_mse": 2.610261612216371,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2018,
+      "outer_fold": 3,
+      "diagnostic_actual_pa_band": "1to49",
+      "rows": 73,
+      "people": 57,
+      "residual_mean": -4.159689618361162,
+      "residual_mse": 74.02949459305306,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2018,
+      "outer_fold": 3,
+      "diagnostic_actual_pa_band": "50to299",
+      "rows": 120,
+      "people": 88,
+      "residual_mean": -1.024729962213075,
+      "residual_mse": 6.731142611659864,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2018,
+      "outer_fold": 3,
+      "diagnostic_actual_pa_band": "300plus",
+      "rows": 164,
+      "people": 78,
+      "residual_mean": 0.40366366909170487,
+      "residual_mse": 2.1894291157771506,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2018,
+      "outer_fold": 4,
+      "diagnostic_actual_pa_band": "1to49",
+      "rows": 74,
+      "people": 63,
+      "residual_mean": -3.6327753951639625,
+      "residual_mse": 53.09674947623027,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2018,
+      "outer_fold": 4,
+      "diagnostic_actual_pa_band": "50to299",
+      "rows": 131,
+      "people": 94,
+      "residual_mean": -1.2915761690907714,
+      "residual_mse": 7.571543737669269,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2018,
+      "outer_fold": 4,
+      "diagnostic_actual_pa_band": "300plus",
+      "rows": 166,
+      "people": 78,
+      "residual_mean": 0.3892262298735192,
+      "residual_mse": 2.5856371092448374,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2021,
+      "outer_fold": 0,
+      "diagnostic_actual_pa_band": "1to49",
+      "rows": 41,
+      "people": 38,
+      "residual_mean": -4.641000146162534,
+      "residual_mse": 71.49768069967341,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2021,
+      "outer_fold": 0,
+      "diagnostic_actual_pa_band": "50to299",
+      "rows": 107,
+      "people": 87,
+      "residual_mean": -0.8165165636066954,
+      "residual_mse": 7.45995412640585,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2021,
+      "outer_fold": 0,
+      "diagnostic_actual_pa_band": "300plus",
+      "rows": 83,
+      "people": 61,
+      "residual_mean": 0.5331943895035118,
+      "residual_mse": 2.5820099818223876,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2021,
+      "outer_fold": 1,
+      "diagnostic_actual_pa_band": "1to49",
+      "rows": 59,
+      "people": 55,
+      "residual_mean": -3.980235245825437,
+      "residual_mse": 75.10944002274586,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2021,
+      "outer_fold": 1,
+      "diagnostic_actual_pa_band": "50to299",
+      "rows": 134,
+      "people": 112,
+      "residual_mean": -1.154398689019897,
+      "residual_mse": 7.316058059729546,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2021,
+      "outer_fold": 1,
+      "diagnostic_actual_pa_band": "300plus",
+      "rows": 129,
+      "people": 90,
+      "residual_mean": 0.4595109771398311,
+      "residual_mse": 3.5034533489845905,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2021,
+      "outer_fold": 2,
+      "diagnostic_actual_pa_band": "1to49",
+      "rows": 50,
+      "people": 49,
+      "residual_mean": -3.5408888249301373,
+      "residual_mse": 61.83538136608251,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2021,
+      "outer_fold": 2,
+      "diagnostic_actual_pa_band": "50to299",
+      "rows": 101,
+      "people": 85,
+      "residual_mean": -1.1738191969221656,
+      "residual_mse": 7.346312150977071,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2021,
+      "outer_fold": 2,
+      "diagnostic_actual_pa_band": "300plus",
+      "rows": 102,
+      "people": 72,
+      "residual_mean": 0.2723350254793404,
+      "residual_mse": 2.7343532430751476,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2021,
+      "outer_fold": 3,
+      "diagnostic_actual_pa_band": "1to49",
+      "rows": 51,
+      "people": 45,
+      "residual_mean": -6.454013055088944,
+      "residual_mse": 75.35958267251591,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2021,
+      "outer_fold": 3,
+      "diagnostic_actual_pa_band": "50to299",
+      "rows": 84,
+      "people": 67,
+      "residual_mean": -0.8680502420534549,
+      "residual_mse": 6.2630089214075095,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2021,
+      "outer_fold": 3,
+      "diagnostic_actual_pa_band": "300plus",
+      "rows": 106,
+      "people": 65,
+      "residual_mean": 0.44735697467196184,
+      "residual_mse": 2.3277946025623475,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2021,
+      "outer_fold": 4,
+      "diagnostic_actual_pa_band": "1to49",
+      "rows": 48,
+      "people": 45,
+      "residual_mean": -2.6748295254724948,
+      "residual_mse": 43.05023668978157,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2021,
+      "outer_fold": 4,
+      "diagnostic_actual_pa_band": "50to299",
+      "rows": 90,
+      "people": 79,
+      "residual_mean": -1.2738776092025654,
+      "residual_mse": 8.70759028750329,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2021,
+      "outer_fold": 4,
+      "diagnostic_actual_pa_band": "300plus",
+      "rows": 115,
+      "people": 78,
+      "residual_mean": 0.7037498642996188,
+      "residual_mse": 3.260831489523004,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2022,
+      "outer_fold": 0,
+      "diagnostic_actual_pa_band": "1to49",
+      "rows": 51,
+      "people": 47,
+      "residual_mean": -2.9070282416218443,
+      "residual_mse": 50.546998116442765,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2022,
+      "outer_fold": 0,
+      "diagnostic_actual_pa_band": "50to299",
+      "rows": 113,
+      "people": 84,
+      "residual_mean": -1.3799052503507274,
+      "residual_mse": 8.759599670325688,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2022,
+      "outer_fold": 0,
+      "diagnostic_actual_pa_band": "300plus",
+      "rows": 91,
+      "people": 60,
+      "residual_mean": -0.26191520134183893,
+      "residual_mse": 2.064785913950407,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2022,
+      "outer_fold": 1,
+      "diagnostic_actual_pa_band": "1to49",
+      "rows": 63,
+      "people": 57,
+      "residual_mean": -4.678181925472836,
+      "residual_mse": 87.18367824731794,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2022,
+      "outer_fold": 1,
+      "diagnostic_actual_pa_band": "50to299",
+      "rows": 123,
+      "people": 99,
+      "residual_mean": -1.6493494723484896,
+      "residual_mse": 7.1143139743330694,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2022,
+      "outer_fold": 1,
+      "diagnostic_actual_pa_band": "300plus",
+      "rows": 131,
+      "people": 85,
+      "residual_mean": -0.3362506689754365,
+      "residual_mse": 2.4264704029687043,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2022,
+      "outer_fold": 2,
+      "diagnostic_actual_pa_band": "1to49",
+      "rows": 53,
+      "people": 49,
+      "residual_mean": -4.954435608888674,
+      "residual_mse": 67.41180295432413,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2022,
+      "outer_fold": 2,
+      "diagnostic_actual_pa_band": "50to299",
+      "rows": 111,
+      "people": 92,
+      "residual_mean": -1.7520809463450358,
+      "residual_mse": 8.914861826047595,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2022,
+      "outer_fold": 2,
+      "diagnostic_actual_pa_band": "300plus",
+      "rows": 107,
+      "people": 68,
+      "residual_mean": -0.13684964128266694,
+      "residual_mse": 2.541001769850647,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2022,
+      "outer_fold": 3,
+      "diagnostic_actual_pa_band": "1to49",
+      "rows": 61,
+      "people": 50,
+      "residual_mean": -4.924485305127707,
+      "residual_mse": 99.82291641911938,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2022,
+      "outer_fold": 3,
+      "diagnostic_actual_pa_band": "50to299",
+      "rows": 89,
+      "people": 71,
+      "residual_mean": -1.468051419738935,
+      "residual_mse": 7.005382800660701,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2022,
+      "outer_fold": 3,
+      "diagnostic_actual_pa_band": "300plus",
+      "rows": 102,
+      "people": 66,
+      "residual_mean": -0.10393216552182095,
+      "residual_mse": 2.251834212755686,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2022,
+      "outer_fold": 4,
+      "diagnostic_actual_pa_band": "1to49",
+      "rows": 47,
+      "people": 45,
+      "residual_mean": -4.127774278790625,
+      "residual_mse": 53.59167229526367,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2022,
+      "outer_fold": 4,
+      "diagnostic_actual_pa_band": "50to299",
+      "rows": 99,
+      "people": 80,
+      "residual_mean": -1.2024008484398467,
+      "residual_mse": 6.991690436736912,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2022,
+      "outer_fold": 4,
+      "diagnostic_actual_pa_band": "300plus",
+      "rows": 107,
+      "people": 67,
+      "residual_mean": -0.1249647431753212,
+      "residual_mse": 2.50174705869854,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2023,
+      "outer_fold": 0,
+      "diagnostic_actual_pa_band": "1to49",
+      "rows": 81,
+      "people": 69,
+      "residual_mean": -2.5098200982178156,
+      "residual_mse": 62.9319688975532,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2023,
+      "outer_fold": 0,
+      "diagnostic_actual_pa_band": "50to299",
+      "rows": 163,
+      "people": 109,
+      "residual_mean": -1.2811221855965864,
+      "residual_mse": 7.7177272767073966,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2023,
+      "outer_fold": 0,
+      "diagnostic_actual_pa_band": "300plus",
+      "rows": 143,
+      "people": 74,
+      "residual_mean": -0.02240037159675323,
+      "residual_mse": 2.1935809671769326,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2023,
+      "outer_fold": 1,
+      "diagnostic_actual_pa_band": "1to49",
+      "rows": 84,
+      "people": 73,
+      "residual_mean": -4.15189424619182,
+      "residual_mse": 82.36589712957718,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2023,
+      "outer_fold": 1,
+      "diagnostic_actual_pa_band": "50to299",
+      "rows": 177,
+      "people": 125,
+      "residual_mean": -1.435446892807167,
+      "residual_mse": 6.882519085658149,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2023,
+      "outer_fold": 1,
+      "diagnostic_actual_pa_band": "300plus",
+      "rows": 205,
+      "people": 104,
+      "residual_mean": 0.020398399850013522,
+      "residual_mse": 2.530747949993961,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2023,
+      "outer_fold": 2,
+      "diagnostic_actual_pa_band": "1to49",
+      "rows": 77,
+      "people": 67,
+      "residual_mean": -3.9851157229054714,
+      "residual_mse": 61.55505374094285,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2023,
+      "outer_fold": 2,
+      "diagnostic_actual_pa_band": "50to299",
+      "rows": 156,
+      "people": 110,
+      "residual_mean": -1.4663357557630186,
+      "residual_mse": 7.576717589720915,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2023,
+      "outer_fold": 2,
+      "diagnostic_actual_pa_band": "300plus",
+      "rows": 165,
+      "people": 81,
+      "residual_mean": 0.21577153452083753,
+      "residual_mse": 2.508971881541574,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2023,
+      "outer_fold": 3,
+      "diagnostic_actual_pa_band": "1to49",
+      "rows": 78,
+      "people": 64,
+      "residual_mean": -4.993909298395563,
+      "residual_mse": 93.22199575256188,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2023,
+      "outer_fold": 3,
+      "diagnostic_actual_pa_band": "50to299",
+      "rows": 142,
+      "people": 100,
+      "residual_mean": -1.0833557310327573,
+      "residual_mse": 7.661429985655595,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2023,
+      "outer_fold": 3,
+      "diagnostic_actual_pa_band": "300plus",
+      "rows": 148,
+      "people": 77,
+      "residual_mean": 0.038985309647380874,
+      "residual_mse": 2.260002419644004,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2023,
+      "outer_fold": 4,
+      "diagnostic_actual_pa_band": "1to49",
+      "rows": 65,
+      "people": 56,
+      "residual_mean": -4.000026722113203,
+      "residual_mse": 51.97388485618722,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2023,
+      "outer_fold": 4,
+      "diagnostic_actual_pa_band": "50to299",
+      "rows": 145,
+      "people": 104,
+      "residual_mean": -1.1194692388103071,
+      "residual_mse": 6.326013232223745,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2023,
+      "outer_fold": 4,
+      "diagnostic_actual_pa_band": "300plus",
+      "rows": 168,
+      "people": 83,
+      "residual_mean": 0.18504391250634905,
+      "residual_mse": 2.413804239653133,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2024,
+      "outer_fold": 0,
+      "diagnostic_actual_pa_band": "1to49",
+      "rows": 88,
+      "people": 71,
+      "residual_mean": -2.6094736652630024,
+      "residual_mse": 65.79052213993961,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2024,
+      "outer_fold": 0,
+      "diagnostic_actual_pa_band": "50to299",
+      "rows": 157,
+      "people": 117,
+      "residual_mean": -1.4244075713656974,
+      "residual_mse": 7.847140647694313,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2024,
+      "outer_fold": 0,
+      "diagnostic_actual_pa_band": "300plus",
+      "rows": 155,
+      "people": 83,
+      "residual_mean": -0.16034932700028545,
+      "residual_mse": 2.176693662810673,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2024,
+      "outer_fold": 1,
+      "diagnostic_actual_pa_band": "1to49",
+      "rows": 71,
+      "people": 65,
+      "residual_mean": -4.224260367910496,
+      "residual_mse": 65.95123928449713,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2024,
+      "outer_fold": 1,
+      "diagnostic_actual_pa_band": "50to299",
+      "rows": 158,
+      "people": 110,
+      "residual_mean": -1.399410397657977,
+      "residual_mse": 7.032531789643822,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2024,
+      "outer_fold": 1,
+      "diagnostic_actual_pa_band": "300plus",
+      "rows": 218,
+      "people": 107,
+      "residual_mean": -0.1106340661249643,
+      "residual_mse": 2.3682329341676036,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2024,
+      "outer_fold": 2,
+      "diagnostic_actual_pa_band": "1to49",
+      "rows": 78,
+      "people": 66,
+      "residual_mean": -3.571283091321956,
+      "residual_mse": 54.274192484961,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2024,
+      "outer_fold": 2,
+      "diagnostic_actual_pa_band": "50to299",
+      "rows": 153,
+      "people": 106,
+      "residual_mean": -1.357010188640733,
+      "residual_mse": 7.366323313968336,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2024,
+      "outer_fold": 2,
+      "diagnostic_actual_pa_band": "300plus",
+      "rows": 169,
+      "people": 82,
+      "residual_mean": 0.1101087762934275,
+      "residual_mse": 2.2461312669577924,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2024,
+      "outer_fold": 3,
+      "diagnostic_actual_pa_band": "1to49",
+      "rows": 71,
+      "people": 63,
+      "residual_mean": -4.575281779278949,
+      "residual_mse": 89.02522372801081,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2024,
+      "outer_fold": 3,
+      "diagnostic_actual_pa_band": "50to299",
+      "rows": 142,
+      "people": 98,
+      "residual_mean": -1.5235433490254813,
+      "residual_mse": 8.920541295914163,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2024,
+      "outer_fold": 3,
+      "diagnostic_actual_pa_band": "300plus",
+      "rows": 146,
+      "people": 76,
+      "residual_mean": -0.21141514351482862,
+      "residual_mse": 2.535018948420889,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2024,
+      "outer_fold": 4,
+      "diagnostic_actual_pa_band": "1to49",
+      "rows": 65,
+      "people": 55,
+      "residual_mean": -4.739200445175438,
+      "residual_mse": 57.749600647147844,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2024,
+      "outer_fold": 4,
+      "diagnostic_actual_pa_band": "50to299",
+      "rows": 146,
+      "people": 105,
+      "residual_mean": -0.9969703097941836,
+      "residual_mse": 6.252543685224757,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    },
+    {
+      "outer_year": 2024,
+      "outer_fold": 4,
+      "diagnostic_actual_pa_band": "300plus",
+      "rows": 165,
+      "people": 83,
+      "residual_mean": 0.07310042071428766,
+      "residual_mse": 2.0801211179935275,
+      "qualification": "Actual PA is a diagnostic, not a forecast-time routing rule"
+    }
+  ],
+  "complete_physical_distribution_claim": false,
+  "explanation": "Normal conditional offense permits impossible outcomes at very small PA; no clipping, routing or fits changed",
+  "physical_case_row_id": 32918,
+  "source_scoring_failure": "First scorer failed on boolean negation after all replays, before scores were saved. Explicit float conversion repaired only event-score arithmetic; fits and predictions unchanged.",
+  "protected_outcomes_used": false
+}
