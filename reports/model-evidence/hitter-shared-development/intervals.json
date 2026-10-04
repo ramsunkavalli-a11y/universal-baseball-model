@@ -1,0 +1,370 @@
+[
+  {
+    "scope": "all",
+    "delivered": {
+      "candidate": "level_age",
+      "benchmark": "translated_ridge",
+      "metric": "value_mse",
+      "difference": 2.5676276194632197e-05,
+      "lower": -1.1770128929287832e-05,
+      "upper": 6.292677197465824e-05,
+      "repeats": 1000,
+      "nominal_development_interval": true
+    },
+    "rate": {
+      "arm": "level_age",
+      "reference": "translated_ridge",
+      "metric": "actual_PA_weighted_conditional_rate_mse",
+      "difference": 0.0012753839365128596,
+      "lower": -0.0009277971129966333,
+      "upper": 0.0035741448063854393,
+      "repeats": 1000,
+      "nominal_development_interval": true
+    }
+  },
+  {
+    "scope": "all",
+    "delivered": {
+      "candidate": "shared_development",
+      "benchmark": "translated_ridge",
+      "metric": "value_mse",
+      "difference": -4.955993487657731e-05,
+      "lower": -0.00024862867119568614,
+      "upper": 0.00011926000686286576,
+      "repeats": 1000,
+      "nominal_development_interval": true
+    },
+    "rate": {
+      "arm": "shared_development",
+      "reference": "translated_ridge",
+      "metric": "actual_PA_weighted_conditional_rate_mse",
+      "difference": 0.0027132738006230353,
+      "lower": -0.005450215641507445,
+      "upper": 0.010579584274672113,
+      "repeats": 1000,
+      "nominal_development_interval": true
+    }
+  },
+  {
+    "scope": "all",
+    "delivered": {
+      "candidate": "shared_development",
+      "benchmark": "level_age",
+      "metric": "value_mse",
+      "difference": -7.523621107120996e-05,
+      "lower": -0.00028602570951432015,
+      "upper": 0.00010096117487781049,
+      "repeats": 1000,
+      "nominal_development_interval": true
+    },
+    "rate": {
+      "arm": "shared_development",
+      "reference": "level_age",
+      "metric": "actual_PA_weighted_conditional_rate_mse",
+      "difference": 0.0014378898641101763,
+      "lower": -0.007380833475505329,
+      "upper": 0.00976564790842072,
+      "repeats": 1000,
+      "nominal_development_interval": true
+    }
+  },
+  {
+    "scope": "all",
+    "delivered": {
+      "candidate": "shared_development",
+      "benchmark": "preseason",
+      "metric": "value_mse",
+      "difference": -0.00019498604177384967,
+      "lower": -0.0005555520309728302,
+      "upper": 9.976073207144689e-05,
+      "repeats": 1000,
+      "nominal_development_interval": true
+    },
+    "rate": {
+      "arm": "shared_development",
+      "reference": "preseason",
+      "metric": "actual_PA_weighted_conditional_rate_mse",
+      "difference": -0.009930040821439395,
+      "lower": -0.025954729256700268,
+      "upper": 0.0038191645363971883,
+      "repeats": 1000,
+      "nominal_development_interval": true
+    }
+  },
+  {
+    "scope": "never_debut",
+    "delivered": {
+      "candidate": "level_age",
+      "benchmark": "translated_ridge",
+      "metric": "value_mse",
+      "difference": 3.1921523038201036e-05,
+      "lower": -1.6508247829538194e-05,
+      "upper": 8.13037581404112e-05,
+      "repeats": 1000,
+      "nominal_development_interval": true
+    },
+    "rate": {
+      "arm": "level_age",
+      "reference": "translated_ridge",
+      "metric": "actual_PA_weighted_conditional_rate_mse",
+      "difference": 0.020231669924348994,
+      "lower": -0.007611767925446621,
+      "upper": 0.047727683627741144,
+      "repeats": 1000,
+      "nominal_development_interval": true
+    }
+  },
+  {
+    "scope": "never_debut",
+    "delivered": {
+      "candidate": "shared_development",
+      "benchmark": "translated_ridge",
+      "metric": "value_mse",
+      "difference": -5.938232767277234e-05,
+      "lower": -0.00026722311695039183,
+      "upper": 0.0001509981243260413,
+      "repeats": 1000,
+      "nominal_development_interval": true
+    },
+    "rate": {
+      "arm": "shared_development",
+      "reference": "translated_ridge",
+      "metric": "actual_PA_weighted_conditional_rate_mse",
+      "difference": 0.03441525693669994,
+      "lower": -0.05947738479787206,
+      "upper": 0.13268501230758356,
+      "repeats": 1000,
+      "nominal_development_interval": true
+    }
+  },
+  {
+    "scope": "never_debut",
+    "delivered": {
+      "candidate": "shared_development",
+      "benchmark": "level_age",
+      "metric": "value_mse",
+      "difference": -9.130385071097393e-05,
+      "lower": -0.0003262218231411289,
+      "upper": 0.00013013697394968887,
+      "repeats": 1000,
+      "nominal_development_interval": true
+    },
+    "rate": {
+      "arm": "shared_development",
+      "reference": "level_age",
+      "metric": "actual_PA_weighted_conditional_rate_mse",
+      "difference": 0.014183587012350942,
+      "lower": -0.09110988111877324,
+      "upper": 0.11610114374996731,
+      "repeats": 1000,
+      "nominal_development_interval": true
+    }
+  },
+  {
+    "scope": "never_debut",
+    "delivered": {
+      "candidate": "shared_development",
+      "benchmark": "preseason",
+      "metric": "value_mse",
+      "difference": -0.0002401579269469954,
+      "lower": -0.0006788491761972966,
+      "upper": 0.00014925642420271902,
+      "repeats": 1000,
+      "nominal_development_interval": true
+    },
+    "rate": {
+      "arm": "shared_development",
+      "reference": "preseason",
+      "metric": "actual_PA_weighted_conditional_rate_mse",
+      "difference": -0.12825651470028052,
+      "lower": -0.32278256753183815,
+      "upper": 0.023287682798618158,
+      "repeats": 1000,
+      "nominal_development_interval": true
+    }
+  },
+  {
+    "scope": "upper_never_debut",
+    "delivered": {
+      "candidate": "level_age",
+      "benchmark": "translated_ridge",
+      "metric": "value_mse",
+      "difference": 0.00015796066793498208,
+      "lower": -6.650635041442692e-05,
+      "upper": 0.0003648551912202001,
+      "repeats": 1000,
+      "nominal_development_interval": true
+    },
+    "rate": {
+      "arm": "level_age",
+      "reference": "translated_ridge",
+      "metric": "actual_PA_weighted_conditional_rate_mse",
+      "difference": 0.024668074091696107,
+      "lower": -0.002515530147580547,
+      "upper": 0.052766713324061514,
+      "repeats": 1000,
+      "nominal_development_interval": true
+    }
+  },
+  {
+    "scope": "upper_never_debut",
+    "delivered": {
+      "candidate": "shared_development",
+      "benchmark": "translated_ridge",
+      "metric": "value_mse",
+      "difference": -0.00031588805384637507,
+      "lower": -0.0013560670103893548,
+      "upper": 0.0005909153959570771,
+      "repeats": 1000,
+      "nominal_development_interval": true
+    },
+    "rate": {
+      "arm": "shared_development",
+      "reference": "translated_ridge",
+      "metric": "actual_PA_weighted_conditional_rate_mse",
+      "difference": 0.04180388810485837,
+      "lower": -0.04828176523749691,
+      "upper": 0.14545114582713253,
+      "repeats": 1000,
+      "nominal_development_interval": true
+    }
+  },
+  {
+    "scope": "upper_never_debut",
+    "delivered": {
+      "candidate": "shared_development",
+      "benchmark": "level_age",
+      "metric": "value_mse",
+      "difference": -0.0004738487217813583,
+      "lower": -0.0015559470023452752,
+      "upper": 0.0005128440700735185,
+      "repeats": 1000,
+      "nominal_development_interval": true
+    },
+    "rate": {
+      "arm": "shared_development",
+      "reference": "level_age",
+      "metric": "actual_PA_weighted_conditional_rate_mse",
+      "difference": 0.01713581401316228,
+      "lower": -0.08256733176782048,
+      "upper": 0.11599349427447055,
+      "repeats": 1000,
+      "nominal_development_interval": true
+    }
+  },
+  {
+    "scope": "upper_never_debut",
+    "delivered": {
+      "candidate": "shared_development",
+      "benchmark": "preseason",
+      "metric": "value_mse",
+      "difference": -0.0011532903946124423,
+      "lower": -0.0031836857828020614,
+      "upper": 0.0004939690456876927,
+      "repeats": 1000,
+      "nominal_development_interval": true
+    },
+    "rate": {
+      "arm": "shared_development",
+      "reference": "preseason",
+      "metric": "actual_PA_weighted_conditional_rate_mse",
+      "difference": -0.10345890449590174,
+      "lower": -0.29914918783533534,
+      "upper": 0.061278113645645775,
+      "repeats": 1000,
+      "nominal_development_interval": true
+    }
+  },
+  {
+    "scope": "lower_never_debut",
+    "delivered": {
+      "candidate": "level_age",
+      "benchmark": "translated_ridge",
+      "metric": "value_mse",
+      "difference": 5.379715364748872e-07,
+      "lower": -1.5192168883757835e-06,
+      "upper": 2.5773732442261582e-06,
+      "repeats": 1000,
+      "nominal_development_interval": true
+    },
+    "rate": {
+      "arm": "level_age",
+      "reference": "translated_ridge",
+      "metric": "actual_PA_weighted_conditional_rate_mse",
+      "difference": -0.062370529844749875,
+      "lower": -0.16074459728588472,
+      "upper": 0.23308849015960104,
+      "repeats": 1000,
+      "nominal_development_interval": true
+    }
+  },
+  {
+    "scope": "lower_never_debut",
+    "delivered": {
+      "candidate": "shared_development",
+      "benchmark": "translated_ridge",
+      "metric": "value_mse",
+      "difference": 2.3313583896176615e-06,
+      "lower": -3.69178610256021e-06,
+      "upper": 8.905828492353005e-06,
+      "repeats": 1000,
+      "nominal_development_interval": true
+    },
+    "rate": {
+      "arm": "shared_development",
+      "reference": "translated_ridge",
+      "metric": "actual_PA_weighted_conditional_rate_mse",
+      "difference": 0.04999799053075605,
+      "lower": -0.569217945897666,
+      "upper": 0.37745206635410855,
+      "repeats": 1000,
+      "nominal_development_interval": true
+    }
+  },
+  {
+    "scope": "lower_never_debut",
+    "delivered": {
+      "candidate": "shared_development",
+      "benchmark": "level_age",
+      "metric": "value_mse",
+      "difference": 1.7933868531427804e-06,
+      "lower": -3.696564229517531e-06,
+      "upper": 7.611517278881192e-06,
+      "repeats": 1000,
+      "nominal_development_interval": true
+    },
+    "rate": {
+      "arm": "shared_development",
+      "reference": "level_age",
+      "metric": "actual_PA_weighted_conditional_rate_mse",
+      "difference": 0.11236852037550595,
+      "lower": -0.8355073114620308,
+      "upper": 0.44053186372237774,
+      "repeats": 1000,
+      "nominal_development_interval": true
+    }
+  },
+  {
+    "scope": "lower_never_debut",
+    "delivered": {
+      "candidate": "shared_development",
+      "benchmark": "preseason",
+      "metric": "value_mse",
+      "difference": -2.1292909038614874e-06,
+      "lower": -1.2657451250542776e-05,
+      "upper": 7.232179816348497e-06,
+      "repeats": 1000,
+      "nominal_development_interval": true
+    },
+    "rate": {
+      "arm": "shared_development",
+      "reference": "preseason",
+      "metric": "actual_PA_weighted_conditional_rate_mse",
+      "difference": -0.5068966766474203,
+      "lower": -2.104142505998577,
+      "upper": -0.09677082118994813,
+      "repeats": 1000,
+      "nominal_development_interval": true
+    }
+  }
+]

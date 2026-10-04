@@ -24,7 +24,29 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: longer future MLB labels and eleven source walks checked.**
+**Current checkpoint: shared development hitting comparison and fourteen walks completed.**
+The [completed comparison](hitter-shared-development-result.md) keeps all 30,506
+forecasts and current playing time, replaying 35 translated anchors and seventy
+new Ridge heads. New next-year level/age control and annual Years 1–6 sharing
+do not beat the reviewed translated/ranking rate anchor: never-debut RMSE
+2.58308 versus 2.58700/2.58974. Shared delivered-value .151466 versus .151662
+is a tiny uncertain gain; recent origin rate losses and false highs remain.
+Fourteen actual player walks show Alonso/Julio/Kurtz gains but Langford/Holliday
+overestimates, Acuna's preserved .99 rank and absent teenage-AAA support, and
+near-exact Frelick/Azocar value hiding component misses. The completed review
+corrects inactive rate display to null without changing the original sentinel
+files, models or scores. All prior forecast columns remain exact and seventy
+new heads replay; no protected,
+frozen or explorer changes. Do not promote either new arm; preserve the reviewed
+translated/ranking alternative and current opportunity. Before another feature
+or learner sweep, audit older cached origin eligibility/history coverage to
+extend fast-track training examples: pre-2011 predictor counts are not earlier
+forecast origins. Never cherry-pick stars or impute unavailable early histories
+zero. Population augmentation needs its own contract and source review, then a
+matched anchor comparison. Public workload/readiness and full value remain
+unfinished; the practical goal stays active.
+
+**Previous checkpoint: longer future MLB labels and eleven source walks checked.**
 The [follow-up audit](hitter-followup-support-result.md) preserves the current
 63,282 source origins and 30,506 forecasts, reproduces every next-year PA and
 active batting-rate label, and leaves 63,093 annual observations after 2025 null.

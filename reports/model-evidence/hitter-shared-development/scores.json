@@ -1,0 +1,1738 @@
+[
+  {
+    "scope": "all",
+    "rows": 30506,
+    "actual_pa": 1270493,
+    "actual_value": 4264.186901827925,
+    "rate": {
+      "preseason": {
+        "rows": 4538,
+        "players": 1493,
+        "rmse": 1.8233491815348752,
+        "mae": 1.3517754498974779,
+        "bias": 0.0730961022483253,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "translated_ridge": {
+        "rows": 4538,
+        "players": 1493,
+        "rmse": 1.8198788210157941,
+        "mae": 1.3508260695489365,
+        "bias": 0.07120061883702969,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "level_age": {
+        "rows": 4538,
+        "players": 1493,
+        "rmse": 1.8202291908214057,
+        "mae": 1.3510987973820683,
+        "bias": 0.0710778805377896,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "shared_development": {
+        "rows": 4538,
+        "players": 1493,
+        "rmse": 1.820624122926657,
+        "mae": 1.3514966781969087,
+        "bias": 0.08037498693723444,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "unweighted_rate": {
+      "preseason": {
+        "rows": 4538,
+        "players": 1493,
+        "rmse": 3.9056611920043682,
+        "mae": 2.47277534970602,
+        "bias": 1.1271046026853833,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "translated_ridge": {
+        "rows": 4538,
+        "players": 1493,
+        "rmse": 3.8934376294768045,
+        "mae": 2.4653808650664693,
+        "bias": 1.1114195198169794,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "level_age": {
+        "rows": 4538,
+        "players": 1493,
+        "rmse": 3.89429181622082,
+        "mae": 2.4659646977215752,
+        "bias": 1.1116330513700345,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "shared_development": {
+        "rows": 4538,
+        "players": 1493,
+        "rmse": 3.8988107363184588,
+        "mae": 2.4697982733905364,
+        "bias": 1.126251335144968,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      }
+    },
+    "delivered": {
+      "preseason": {
+        "pa_rmse": 60.499101826264365,
+        "pa_mae": 20.612358229964123,
+        "pa_bias": -1.3478241546151608,
+        "value_rmse": 0.453383758346363,
+        "value_mae": 0.1287883541154738,
+        "value_bias": -0.003011917365026582,
+        "pa_total": 1228732.5119559553,
+        "value_total": 4165.848839961402
+      },
+      "translated_ridge": {
+        "pa_rmse": 60.499101826264365,
+        "pa_mae": 20.612358229964123,
+        "pa_bias": -1.3478241546151608,
+        "value_rmse": 0.45322335136814834,
+        "value_mae": 0.12849838188253188,
+        "value_bias": -0.003161411820255076,
+        "pa_total": 1228732.5119559553,
+        "value_total": 4160.975118139149
+      },
+      "level_age": {
+        "pa_rmse": 60.499101826264365,
+        "pa_mae": 20.612358229964123,
+        "pa_bias": -1.3478241546151608,
+        "value_rmse": 0.45325167677745076,
+        "value_mae": 0.12851037745164426,
+        "value_bias": -0.0031680947644527097,
+        "pa_total": 1228732.5119559553,
+        "value_total": 4160.742042867024
+      },
+      "shared_development": {
+        "pa_rmse": 60.49910182626437,
+        "pa_mae": 20.61235822996412,
+        "pa_bias": -1.3478241546151606,
+        "value_rmse": 0.453168673112451,
+        "value_mae": 0.12875093218732495,
+        "value_bias": -0.0026337884496537125,
+        "pa_total": 1228732.5119559553,
+        "value_total": 4176.9252667380915
+      }
+    }
+  },
+  {
+    "scope": "never_debut",
+    "rows": 24199,
+    "actual_pa": 98328,
+    "actual_value": 214.74994801805383,
+    "rate": {
+      "preseason": {
+        "rows": 787,
+        "players": 787,
+        "rmse": 2.6143821770975753,
+        "mae": 1.9542461336588828,
+        "bias": 0.26622481301825357,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "translated_ridge": {
+        "rows": 787,
+        "players": 787,
+        "rmse": 2.5830838926152744,
+        "mae": 1.941004012586623,
+        "bias": 0.2417702455843452,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "level_age": {
+        "rows": 787,
+        "players": 787,
+        "rmse": 2.5869971136846726,
+        "mae": 1.945307165635692,
+        "bias": 0.23840674430414438,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "shared_development": {
+        "rows": 787,
+        "players": 787,
+        "rmse": 2.5897369853375416,
+        "mae": 1.9481643131845314,
+        "bias": 0.3644661996493589,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "unweighted_rate": {
+      "preseason": {
+        "rows": 787,
+        "players": 787,
+        "rmse": 5.051183637042686,
+        "mae": 3.569532839108082,
+        "bias": 1.9490256844773175,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "translated_ridge": {
+        "rows": 787,
+        "players": 787,
+        "rmse": 4.998827130697897,
+        "mae": 3.528333571779254,
+        "bias": 1.863475392801235,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "level_age": {
+        "rows": 787,
+        "players": 787,
+        "rmse": 5.002812210151065,
+        "mae": 3.531691292708015,
+        "bias": 1.8639585548962951,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "shared_development": {
+        "rows": 787,
+        "players": 787,
+        "rmse": 5.026641253771459,
+        "mae": 3.5565459630309393,
+        "bias": 1.9582355495211061,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      }
+    },
+    "delivered": {
+      "preseason": {
+        "pa_rmse": 27.252102384345836,
+        "pa_mae": 4.763865067953442,
+        "pa_bias": -0.6817321849531622,
+        "value_rmse": 0.15225656503000695,
+        "value_mae": 0.019355993107108553,
+        "value_bias": -0.0005511246068797023,
+        "pa_total": 81849.00654070015,
+        "value_total": 199.53923730693418
+      },
+      "translated_ridge": {
+        "pa_rmse": 27.252102384345836,
+        "pa_mae": 4.763865067953442,
+        "pa_bias": -0.6817321849531622,
+        "value_rmse": 0.15166174862325213,
+        "value_mae": 0.01899317870149114,
+        "value_bias": -0.0007359993026401409,
+        "pa_total": 81849.00654070015,
+        "value_total": 194.66551548468306
+      },
+      "level_age": {
+        "pa_rmse": 27.252102384345836,
+        "pa_mae": 4.763865067953444,
+        "pa_bias": -0.6817321849531622,
+        "value_rmse": 0.15176695133823015,
+        "value_mae": 0.019008177101074972,
+        "value_bias": -0.0007441951111385258,
+        "pa_total": 81849.00654070015,
+        "value_total": 194.43244021255646
+      },
+      "shared_development": {
+        "pa_rmse": 27.252102384345836,
+        "pa_mae": 4.763865067953442,
+        "pa_bias": -0.6817321849531621,
+        "value_rmse": 0.15146584984011988,
+        "value_mae": 0.019314949281648838,
+        "value_bias": -6.73406306352283e-05,
+        "pa_total": 81849.00654070015,
+        "value_total": 210.61566408362427
+      }
+    }
+  },
+  {
+    "scope": "upper_never_debut",
+    "rows": 5454,
+    "actual_pa": 92891,
+    "actual_value": 203.93926446318383,
+    "rate": {
+      "preseason": {
+        "rows": 730,
+        "players": 730,
+        "rmse": 2.5914291763012316,
+        "mae": 1.9285450226909673,
+        "bias": 0.25128625173435276,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "translated_ridge": {
+        "rows": 730,
+        "players": 730,
+        "rmse": 2.563248404502482,
+        "mae": 1.9204112291191375,
+        "bias": 0.23758681249941596,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "level_age": {
+        "rows": 730,
+        "players": 730,
+        "rmse": 2.5680557737861176,
+        "mae": 1.9254303650098845,
+        "bias": 0.23234008847330231,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "shared_development": {
+        "rows": 730,
+        "players": 730,
+        "rmse": 2.571389949286062,
+        "mae": 1.9286828264915452,
+        "bias": 0.3663209738852569,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "unweighted_rate": {
+      "preseason": {
+        "rows": 730,
+        "players": 730,
+        "rmse": 5.066581967481623,
+        "mae": 3.5793870352283497,
+        "bias": 1.9328429729270833,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "translated_ridge": {
+        "rows": 730,
+        "players": 730,
+        "rmse": 5.020680993199011,
+        "mae": 3.5455124407180185,
+        "bias": 1.855616137078933,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "level_age": {
+        "rows": 730,
+        "players": 730,
+        "rmse": 5.023806493081838,
+        "mae": 3.5481508757377904,
+        "bias": 1.8548533012729458,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "shared_development": {
+        "rows": 730,
+        "players": 730,
+        "rmse": 5.052630334709568,
+        "mae": 3.577672840267367,
+        "bias": 1.9567546840166143,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      }
+    },
+    "delivered": {
+      "preseason": {
+        "pa_rmse": 55.12674520539247,
+        "pa_mae": 18.732137202600434,
+        "pa_bias": -3.416978901846813,
+        "value_rmse": 0.3128318977061655,
+        "value_mae": 0.07856357155993558,
+        "value_bias": -0.005198053547361468,
+        "pa_total": 74239.03857057953,
+        "value_total": 179.01457512848606
+      },
+      "translated_ridge": {
+        "pa_rmse": 55.12674520539247,
+        "pa_mae": 18.732137202600434,
+        "pa_bias": -3.416978901846813,
+        "value_rmse": 0.31149059998926887,
+        "value_mae": 0.07748531402772664,
+        "value_bias": -0.005493475194704102,
+        "pa_total": 74239.03857057953,
+        "value_total": 177.48629929052925
+      },
+      "level_age": {
+        "pa_rmse": 55.12674520539247,
+        "pa_mae": 18.732137202600434,
+        "pa_bias": -3.416978901846813,
+        "value_rmse": 0.31174405294986735,
+        "value_mae": 0.07759274493265801,
+        "value_bias": -0.005515956857180873,
+        "pa_total": 74239.03857057953,
+        "value_total": 177.43437542583897
+      },
+      "shared_development": {
+        "pa_rmse": 55.12674520539247,
+        "pa_mae": 18.732137202600438,
+        "pa_bias": -3.416978901846813,
+        "value_rmse": 0.3109831278828939,
+        "value_mae": 0.07888231360290383,
+        "value_bias": -0.002559100627374847,
+        "pa_total": 74239.03857057953,
+        "value_total": 193.4770913048611
+      }
+    }
+  },
+  {
+    "scope": "lower_never_debut",
+    "rows": 17852,
+    "actual_pa": 5194,
+    "actual_value": 9.56025276109348,
+    "rate": {
+      "preseason": {
+        "rows": 54,
+        "players": 54,
+        "rmse": 3.2654969254387893,
+        "mae": 2.5807148434855796,
+        "bias": 1.1080795152932337,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "translated_ridge": {
+        "rows": 54,
+        "players": 54,
+        "rmse": 3.179084066656937,
+        "mae": 2.4974298366555274,
+        "bias": 0.9121662000827848,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "level_age": {
+        "rows": 54,
+        "players": 54,
+        "rmse": 3.169259372949343,
+        "mae": 2.4861975769158646,
+        "bias": 0.9303484756083991,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "shared_development": {
+        "rows": 54,
+        "players": 54,
+        "rmse": 3.186937949412063,
+        "mae": 2.537996282184838,
+        "bias": 0.947480192800172,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "unweighted_rate": {
+      "preseason": {
+        "rows": 54,
+        "players": 54,
+        "rmse": 5.03027246224437,
+        "mae": 3.525529718288297,
+        "bias": 2.3821295365766644,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "translated_ridge": {
+        "rows": 54,
+        "players": 54,
+        "rmse": 4.891204090045913,
+        "mae": 3.399166900640275,
+        "bias": 2.1776799674225384,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "level_age": {
+        "rows": 54,
+        "players": 54,
+        "rmse": 4.9026979575391945,
+        "mae": 3.404886831772125,
+        "bias": 2.1885717508667915,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "shared_development": {
+        "rows": 54,
+        "players": 54,
+        "rmse": 4.855686102234406,
+        "mae": 3.396307818430664,
+        "bias": 2.1824231803268943,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      }
+    },
+    "delivered": {
+      "preseason": {
+        "pa_rmse": 7.96636270362901,
+        "pa_mae": 0.6216744545061628,
+        "pa_bias": 0.09588994521125105,
+        "value_rmse": 0.04303858531189544,
+        "value_mae": 0.0020659169234858643,
+        "value_bias": 0.000554853903661186,
+        "pa_total": 7054.64556931176,
+        "value_total": 19.472943221761007
+      },
+      "translated_ridge": {
+        "pa_rmse": 7.96636270362901,
+        "pa_mae": 0.6216744545061628,
+        "pa_bias": 0.09588994521125105,
+        "value_rmse": 0.04298673256198734,
+        "value_mae": 0.0018909995059644663,
+        "value_bias": 0.0003733844617340878,
+        "pa_total": 7054.64556931176,
+        "value_total": 16.178953968368184
+      },
+      "level_age": {
+        "pa_rmse": 7.96636270362901,
+        "pa_mae": 0.6216744545061628,
+        "pa_bias": 0.09588994521125105,
+        "value_rmse": 0.04299298952029619,
+        "value_mae": 0.0018831608757888352,
+        "value_bias": 0.00036815588682016266,
+        "pa_total": 7054.64556931176,
+        "value_total": 16.082469926191795
+      },
+      "shared_development": {
+        "pa_rmse": 7.96636270362901,
+        "pa_mae": 0.6216744545061628,
+        "pa_bias": 0.09588994521125105,
+        "value_rmse": 0.04301384119961202,
+        "value_mae": 0.0018760522650374937,
+        "value_bias": 0.0003623825746803423,
+        "pa_total": 7054.64556931176,
+        "value_total": 15.980534004434347
+      }
+    }
+  },
+  {
+    "scope": "new_draftees",
+    "rows": 2205,
+    "actual_pa": 2728,
+    "actual_value": 9.36707027409158,
+    "rate": {
+      "preseason": {
+        "rows": 11,
+        "players": 11,
+        "rmse": 2.5364346459684697,
+        "mae": 1.8557056988195284,
+        "bias": 1.1263007101488323,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "translated_ridge": {
+        "rows": 11,
+        "players": 11,
+        "rmse": 2.367704730797314,
+        "mae": 1.9237763412728388,
+        "bias": 1.3465247356460683,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "level_age": {
+        "rows": 11,
+        "players": 11,
+        "rmse": 2.343770654814959,
+        "mae": 1.8899474060008146,
+        "bias": 1.2975544472708382,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "shared_development": {
+        "rows": 11,
+        "players": 11,
+        "rmse": 2.456342640649377,
+        "mae": 2.1305559022746623,
+        "bias": 1.6074795597430458,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "unweighted_rate": {
+      "preseason": {
+        "rows": 11,
+        "players": 11,
+        "rmse": 2.568261991857291,
+        "mae": 2.021757050225512,
+        "bias": 1.5004338528013643,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "translated_ridge": {
+        "rows": 11,
+        "players": 11,
+        "rmse": 2.446397212285283,
+        "mae": 2.0677041784969576,
+        "bias": 1.6551286444140199,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "level_age": {
+        "rows": 11,
+        "players": 11,
+        "rmse": 2.427550589233437,
+        "mae": 2.0428258707289846,
+        "bias": 1.6194284493054127,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "shared_development": {
+        "rows": 11,
+        "players": 11,
+        "rmse": 2.547142852037429,
+        "mae": 2.257862325790205,
+        "bias": 1.8840071484593257,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      }
+    },
+    "delivered": {
+      "preseason": {
+        "pa_rmse": 23.191681428517867,
+        "pa_mae": 2.1290255587954894,
+        "pa_bias": -0.9740925134520558,
+        "value_rmse": 0.1638245229526781,
+        "value_mae": 0.008608352302448307,
+        "value_bias": -0.003908120575515652,
+        "pa_total": 1508.5780211291378,
+        "value_total": 4.844072977926874
+      },
+      "translated_ridge": {
+        "pa_rmse": 23.191681428517867,
+        "pa_mae": 2.1290255587954894,
+        "pa_bias": -0.9740925134520558,
+        "value_rmse": 0.16263177452341426,
+        "value_mae": 0.008340182643214039,
+        "value_bias": -0.003786343862240947,
+        "pa_total": 1508.5780211291378,
+        "value_total": 4.937170908880775
+      },
+      "level_age": {
+        "pa_rmse": 23.191681428517867,
+        "pa_mae": 2.1290255587954894,
+        "pa_bias": -0.9740925134520558,
+        "value_rmse": 0.16269486232194333,
+        "value_mae": 0.008316823767368708,
+        "value_bias": -0.003821910905985638,
+        "pa_total": 1508.5780211291378,
+        "value_total": 4.8535274515190725
+      },
+      "shared_development": {
+        "pa_rmse": 23.191681428517867,
+        "pa_mae": 2.1290255587954894,
+        "pa_bias": -0.9740925134520558,
+        "value_rmse": 0.16216908102573718,
+        "value_mae": 0.008326172826767095,
+        "value_bias": -0.003617607918734301,
+        "pa_total": 1508.5780211291378,
+        "value_total": 5.23823642361736
+      }
+    }
+  },
+  {
+    "scope": "thin_pro",
+    "rows": 5317,
+    "actual_pa": 1817,
+    "actual_value": 7.3175754980934276,
+    "rate": {
+      "preseason": {
+        "rows": 8,
+        "players": 8,
+        "rmse": 2.1532418849204022,
+        "mae": 1.737054101945453,
+        "bias": 0.877112955622446,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "translated_ridge": {
+        "rows": 8,
+        "players": 8,
+        "rmse": 2.0370562786545783,
+        "mae": 1.755327271048545,
+        "bias": 1.0745012070600337,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "level_age": {
+        "rows": 8,
+        "players": 8,
+        "rmse": 2.0761487303079607,
+        "mae": 1.7705081402343097,
+        "bias": 1.075992076427424,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "shared_development": {
+        "rows": 8,
+        "players": 8,
+        "rmse": 2.126235255761814,
+        "mae": 1.8930181784601237,
+        "bias": 1.3075782647911973,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "unweighted_rate": {
+      "preseason": {
+        "rows": 8,
+        "players": 8,
+        "rmse": 2.0230515631235884,
+        "mae": 1.6724349683069308,
+        "bias": 1.0643441241387437,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "translated_ridge": {
+        "rows": 8,
+        "players": 8,
+        "rmse": 1.971938616100934,
+        "mae": 1.7156927842750898,
+        "bias": 1.2339547943083835,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "level_age": {
+        "rows": 8,
+        "players": 8,
+        "rmse": 2.005258767674851,
+        "mae": 1.7266512366141658,
+        "bias": 1.23996617675699,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "shared_development": {
+        "rows": 8,
+        "players": 8,
+        "rmse": 2.0840420418463577,
+        "mae": 1.8500333328500729,
+        "bias": 1.471597124861691,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      }
+    },
+    "delivered": {
+      "preseason": {
+        "pa_rmse": 11.372193766045886,
+        "pa_mae": 0.6119483847000208,
+        "pa_bias": -0.1475675463398763,
+        "value_rmse": 0.0884155370175088,
+        "value_mae": 0.0024850378008928376,
+        "value_bias": -0.0009421043334932152,
+        "pa_total": 1310.6843112951515,
+        "value_total": 3.606198401041962
+      },
+      "translated_ridge": {
+        "pa_rmse": 11.372193766045886,
+        "pa_mae": 0.6119483847000206,
+        "pa_bias": -0.14756754633987626,
+        "value_rmse": 0.08814126523729152,
+        "value_mae": 0.002397955962817559,
+        "value_bias": -0.0010123209591645205,
+        "pa_total": 1310.6843112951515,
+        "value_total": 3.2161459385818683
+      },
+      "level_age": {
+        "pa_rmse": 11.372193766045886,
+        "pa_mae": 0.6119483847000206,
+        "pa_bias": -0.1475675463398763,
+        "value_rmse": 0.08816679488853148,
+        "value_mae": 0.0023799149412264747,
+        "value_bias": -0.0010315212580981675,
+        "pa_total": 1310.6843112951515,
+        "value_total": 3.1127267070200846
+      },
+      "shared_development": {
+        "pa_rmse": 11.372193766045886,
+        "pa_mae": 0.6119483847000206,
+        "pa_bias": -0.14756754633987626,
+        "value_rmse": 0.08804063254960527,
+        "value_mae": 0.002421603527496547,
+        "value_bias": -0.0009801005597403847,
+        "pa_total": 1310.6843112951515,
+        "value_total": 3.3734049051169626
+      }
+    }
+  },
+  {
+    "scope": "public",
+    "rows": 2627,
+    "actual_pa": 660776,
+    "actual_value": 2123.810127060133,
+    "rate": {
+      "preseason": {
+        "rows": 2088,
+        "players": 830,
+        "rmse": 1.6845132584996698,
+        "mae": 1.2642257277239524,
+        "bias": 0.11127604261652871,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "translated_ridge": {
+        "rows": 2088,
+        "players": 830,
+        "rmse": 1.6845132584996698,
+        "mae": 1.2642257277239524,
+        "bias": 0.11127604261652871,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "level_age": {
+        "rows": 2088,
+        "players": 830,
+        "rmse": 1.6845132584996698,
+        "mae": 1.2642257277239524,
+        "bias": 0.11127604261652871,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "shared_development": {
+        "rows": 2088,
+        "players": 830,
+        "rmse": 1.6845132584996698,
+        "mae": 1.2642257277239524,
+        "bias": 0.11127604261652871,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "unweighted_rate": {
+      "preseason": {
+        "rows": 2088,
+        "players": 830,
+        "rmse": 3.4198369104818584,
+        "mae": 2.1100721608363915,
+        "bias": 0.8719775306763953,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "translated_ridge": {
+        "rows": 2088,
+        "players": 830,
+        "rmse": 3.4198369104818584,
+        "mae": 2.1100721608363915,
+        "bias": 0.8719775306763953,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "level_age": {
+        "rows": 2088,
+        "players": 830,
+        "rmse": 3.4198369104818584,
+        "mae": 2.1100721608363915,
+        "bias": 0.8719775306763953,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "shared_development": {
+        "rows": 2088,
+        "players": 830,
+        "rmse": 3.4198369104818584,
+        "mae": 2.1100721608363915,
+        "bias": 0.8719775306763953,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      }
+    },
+    "delivered": {
+      "preseason": {
+        "pa_rmse": 138.32984746826148,
+        "pa_mae": 106.41075374670471,
+        "pa_bias": -4.36301202314118,
+        "value_rmse": 1.0605043659795657,
+        "value_mae": 0.7106946389775699,
+        "value_bias": 0.033136637674419864,
+        "pa_total": 649254.8423971365,
+        "value_total": 2202.932588584372
+      },
+      "translated_ridge": {
+        "pa_rmse": 138.32984746826148,
+        "pa_mae": 106.41075374670471,
+        "pa_bias": -4.36301202314118,
+        "value_rmse": 1.0605043659795657,
+        "value_mae": 0.7106946389775699,
+        "value_bias": 0.033136637674419864,
+        "pa_total": 649254.8423971365,
+        "value_total": 2202.932588584372
+      },
+      "level_age": {
+        "pa_rmse": 138.32984746826148,
+        "pa_mae": 106.41075374670471,
+        "pa_bias": -4.36301202314118,
+        "value_rmse": 1.0605043659795657,
+        "value_mae": 0.7106946389775699,
+        "value_bias": 0.033136637674419864,
+        "pa_total": 649254.8423971365,
+        "value_total": 2202.932588584372
+      },
+      "shared_development": {
+        "pa_rmse": 138.32984746826148,
+        "pa_mae": 106.41075374670471,
+        "pa_bias": -4.36301202314118,
+        "value_rmse": 1.0605043659795657,
+        "value_mae": 0.7106946389775699,
+        "value_bias": 0.033136637674419864,
+        "pa_total": 649254.8423971365,
+        "value_total": 2202.932588584372
+      }
+    }
+  },
+  {
+    "scope": "never_origin_2016",
+    "rows": 3745,
+    "actual_pa": 10735,
+    "actual_value": 21.282580116879206,
+    "rate": {
+      "preseason": {
+        "rows": 108,
+        "players": 108,
+        "rmse": 2.914482322330503,
+        "mae": 2.144917122897697,
+        "bias": 0.5620955626020735,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "translated_ridge": {
+        "rows": 108,
+        "players": 108,
+        "rmse": 2.8387830831714154,
+        "mae": 2.0811085452251454,
+        "bias": 0.4905231339378011,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "level_age": {
+        "rows": 108,
+        "players": 108,
+        "rmse": 2.8459451943371565,
+        "mae": 2.0949495917102574,
+        "bias": 0.4708717162385516,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "shared_development": {
+        "rows": 108,
+        "players": 108,
+        "rmse": 2.8191388490971288,
+        "mae": 2.061074839699121,
+        "bias": 0.5787904469524018,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "unweighted_rate": {
+      "preseason": {
+        "rows": 108,
+        "players": 108,
+        "rmse": 5.609475262272357,
+        "mae": 3.9070051524168825,
+        "bias": 2.425829308080853,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "translated_ridge": {
+        "rows": 108,
+        "players": 108,
+        "rmse": 5.524601961978389,
+        "mae": 3.8248206656820583,
+        "bias": 2.291500380104136,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "level_age": {
+        "rows": 108,
+        "players": 108,
+        "rmse": 5.520565198873805,
+        "mae": 3.824492329363734,
+        "bias": 2.280942913650454,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "shared_development": {
+        "rows": 108,
+        "players": 108,
+        "rmse": 5.513895912699364,
+        "mae": 3.828816401429663,
+        "bias": 2.3374556919441014,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      }
+    },
+    "delivered": {
+      "preseason": {
+        "pa_rmse": 22.25206051949182,
+        "pa_mae": 3.7006557202694363,
+        "pa_bias": 0.1531283034783822,
+        "value_rmse": 0.13043706625498264,
+        "value_mae": 0.015955327026691477,
+        "value_bias": 0.0016840269073233655,
+        "pa_total": 11308.46549652654,
+        "value_total": 27.58926088480521
+      },
+      "translated_ridge": {
+        "pa_rmse": 22.25206051949182,
+        "pa_mae": 3.7006557202694363,
+        "pa_bias": 0.1531283034783822,
+        "value_rmse": 0.1303603611336191,
+        "value_mae": 0.015527766043383698,
+        "value_bias": 0.0012546560851878403,
+        "pa_total": 11308.46549652654,
+        "value_total": 25.981267155907666
+      },
+      "level_age": {
+        "pa_rmse": 22.25206051949182,
+        "pa_mae": 3.7006557202694363,
+        "pa_bias": 0.1531283034783822,
+        "value_rmse": 0.13040204932221072,
+        "value_mae": 0.015542287206109548,
+        "value_bias": 0.0012127687458754778,
+        "pa_total": 11308.46549652654,
+        "value_total": 25.824399070182867
+      },
+      "shared_development": {
+        "pa_rmse": 22.25206051949182,
+        "pa_mae": 3.7006557202694363,
+        "pa_bias": 0.1531283034783822,
+        "value_rmse": 0.1312919085055638,
+        "value_mae": 0.015789016772144292,
+        "value_bias": 0.0017473712379877007,
+        "pa_total": 11308.46549652654,
+        "value_total": 27.826485403143145
+      }
+    }
+  },
+  {
+    "scope": "never_origin_2017",
+    "rows": 3776,
+    "actual_pa": 11854,
+    "actual_value": 23.570596116878196,
+    "rate": {
+      "preseason": {
+        "rows": 95,
+        "players": 95,
+        "rmse": 2.487990075385144,
+        "mae": 1.9313619273364102,
+        "bias": -0.2652545534627552,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "translated_ridge": {
+        "rows": 95,
+        "players": 95,
+        "rmse": 2.489587364435519,
+        "mae": 1.9294877148397553,
+        "bias": -0.3877422614536587,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "level_age": {
+        "rows": 95,
+        "players": 95,
+        "rmse": 2.505164672139723,
+        "mae": 1.943334094762019,
+        "bias": -0.39967795607455475,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "shared_development": {
+        "rows": 95,
+        "players": 95,
+        "rmse": 2.480307099874776,
+        "mae": 1.9091315879818,
+        "bias": -0.3015069136267006,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "unweighted_rate": {
+      "preseason": {
+        "rows": 95,
+        "players": 95,
+        "rmse": 4.631561451887905,
+        "mae": 3.3827900851546433,
+        "bias": 1.5075429246326901,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "translated_ridge": {
+        "rows": 95,
+        "players": 95,
+        "rmse": 4.564806355055138,
+        "mae": 3.3258538081375653,
+        "bias": 1.3263893026166615,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "level_age": {
+        "rows": 95,
+        "players": 95,
+        "rmse": 4.565796350461187,
+        "mae": 3.330426358586086,
+        "bias": 1.3195832297446437,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "shared_development": {
+        "rows": 95,
+        "players": 95,
+        "rmse": 4.581112189985932,
+        "mae": 3.337058419303918,
+        "bias": 1.3916885414037872,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      }
+    },
+    "delivered": {
+      "preseason": {
+        "pa_rmse": 24.058889821716924,
+        "pa_mae": 3.7591583723959685,
+        "pa_bias": -0.6157383437804494,
+        "value_rmse": 0.128909104805464,
+        "value_mae": 0.014886500141330972,
+        "value_bias": -0.0004402160729492296,
+        "pa_total": 9528.972013885023,
+        "value_total": 21.90834022542191
+      },
+      "translated_ridge": {
+        "pa_rmse": 24.058889821716924,
+        "pa_mae": 3.7591583723959685,
+        "pa_bias": -0.6157383437804494,
+        "value_rmse": 0.12879311550121136,
+        "value_mae": 0.01443364656606239,
+        "value_bias": -0.0008502002616945503,
+        "pa_total": 9528.972013885023,
+        "value_total": 20.36023992871958
+      },
+      "level_age": {
+        "pa_rmse": 24.058889821716924,
+        "pa_mae": 3.7591583723959685,
+        "pa_bias": -0.6157383437804494,
+        "value_rmse": 0.1293222567058676,
+        "value_mae": 0.014433192884755664,
+        "value_bias": -0.0008952057110573595,
+        "pa_total": 9528.972013885023,
+        "value_total": 20.19029935192561
+      },
+      "shared_development": {
+        "pa_rmse": 24.058889821716924,
+        "pa_mae": 3.7591583723959685,
+        "pa_bias": -0.6157383437804494,
+        "value_rmse": 0.1291696224279028,
+        "value_mae": 0.014656307085570352,
+        "value_bias": -0.00043526281141859373,
+        "pa_total": 9528.972013885023,
+        "value_total": 21.927043740961587
+      }
+    }
+  },
+  {
+    "scope": "never_origin_2018",
+    "rows": 3603,
+    "actual_pa": 15836,
+    "actual_value": 64.27724740162158,
+    "rate": {
+      "preseason": {
+        "rows": 108,
+        "players": 108,
+        "rmse": 2.757225042880879,
+        "mae": 2.103769128812889,
+        "bias": -0.40580023109863145,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "translated_ridge": {
+        "rows": 108,
+        "players": 108,
+        "rmse": 2.7122618190673435,
+        "mae": 2.0773511359485277,
+        "bias": -0.41745171158743805,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "level_age": {
+        "rows": 108,
+        "players": 108,
+        "rmse": 2.7067321855468025,
+        "mae": 2.0785841994034606,
+        "bias": -0.4296099489312829,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "shared_development": {
+        "rows": 108,
+        "players": 108,
+        "rmse": 2.64991411376777,
+        "mae": 2.019936700023624,
+        "bias": -0.21382465152952332,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "unweighted_rate": {
+      "preseason": {
+        "rows": 108,
+        "players": 108,
+        "rmse": 4.70175872779533,
+        "mae": 3.3423038837468693,
+        "bias": 1.377519028566816,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "translated_ridge": {
+        "rows": 108,
+        "players": 108,
+        "rmse": 4.649018583043885,
+        "mae": 3.3079037494184256,
+        "bias": 1.3017944090889526,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "level_age": {
+        "rows": 108,
+        "players": 108,
+        "rmse": 4.650037141375812,
+        "mae": 3.3094490257693967,
+        "bias": 1.2892301594752493,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "shared_development": {
+        "rows": 108,
+        "players": 108,
+        "rmse": 4.657374167269879,
+        "mae": 3.3042505624722045,
+        "bias": 1.4569819483920896,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      }
+    },
+    "delivered": {
+      "preseason": {
+        "pa_rmse": 28.583594973902624,
+        "pa_mae": 4.49263743756191,
+        "pa_bias": -1.6108872835091466,
+        "value_rmse": 0.21733030126901862,
+        "value_mae": 0.02420379951953278,
+        "value_bias": -0.01102020932677666,
+        "pa_total": 10031.973117516545,
+        "value_total": 24.571433197245263
+      },
+      "translated_ridge": {
+        "pa_rmse": 28.583594973902624,
+        "pa_mae": 4.49263743756191,
+        "pa_bias": -1.6108872835091466,
+        "value_rmse": 0.21498508404749844,
+        "value_mae": 0.023659581706202207,
+        "value_bias": -0.011166807737503903,
+        "pa_total": 10031.973117516545,
+        "value_total": 24.043239123395022
+      },
+      "level_age": {
+        "pa_rmse": 28.583594973902624,
+        "pa_mae": 4.49263743756191,
+        "pa_bias": -1.6108872835091466,
+        "value_rmse": 0.21509194230609935,
+        "value_mae": 0.023677752307503495,
+        "value_bias": -0.011229678607124796,
+        "pa_total": 10031.973117516545,
+        "value_total": 23.816715380150935
+      },
+      "shared_development": {
+        "pa_rmse": 28.583594973902624,
+        "pa_mae": 4.49263743756191,
+        "pa_bias": -1.6108872835091466,
+        "value_rmse": 0.21248748657956404,
+        "value_mae": 0.02367059606726342,
+        "value_bias": -0.010442891791974874,
+        "pa_total": 10031.973117516545,
+        "value_total": 26.65150827513611
+      }
+    }
+  },
+  {
+    "scope": "never_origin_2021",
+    "rows": 3379,
+    "actual_pa": 18944,
+    "actual_value": 35.3616131839542,
+    "rate": {
+      "preseason": {
+        "rows": 158,
+        "players": 158,
+        "rmse": 2.5018443096521104,
+        "mae": 1.8771036288221474,
+        "bias": 0.2573337008521288,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "translated_ridge": {
+        "rows": 158,
+        "players": 158,
+        "rmse": 2.4910698809707026,
+        "mae": 1.8944148755715944,
+        "bias": 0.17843561983250522,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "level_age": {
+        "rows": 158,
+        "players": 158,
+        "rmse": 2.4883090400572327,
+        "mae": 1.892322090175227,
+        "bias": 0.19814236108014383,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "shared_development": {
+        "rows": 158,
+        "players": 158,
+        "rmse": 2.5183353301482683,
+        "mae": 1.9367699496713604,
+        "bias": 0.15592391922358256,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "unweighted_rate": {
+      "preseason": {
+        "rows": 158,
+        "players": 158,
+        "rmse": 5.193502766801865,
+        "mae": 3.7180972029188375,
+        "bias": 2.0139286471476443,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "translated_ridge": {
+        "rows": 158,
+        "players": 158,
+        "rmse": 5.104070133285331,
+        "mae": 3.652469148803553,
+        "bias": 1.8335018853058338,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "level_age": {
+        "rows": 158,
+        "players": 158,
+        "rmse": 5.106472268060154,
+        "mae": 3.656789307131355,
+        "bias": 1.8490262697470543,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "shared_development": {
+        "rows": 158,
+        "players": 158,
+        "rmse": 5.07346911111308,
+        "mae": 3.636159760894389,
+        "bias": 1.7639527445725676,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      }
+    },
+    "delivered": {
+      "preseason": {
+        "pa_rmse": 31.617310385520526,
+        "pa_mae": 5.487623547569054,
+        "pa_bias": -2.5192275263360013,
+        "value_rmse": 0.15465470558058306,
+        "value_mae": 0.022808542604814845,
+        "value_bias": -0.0015633818469774274,
+        "pa_total": 10431.530188510651,
+        "value_total": 30.078945923017475
+      },
+      "translated_ridge": {
+        "pa_rmse": 31.617310385520526,
+        "pa_mae": 5.487623547569054,
+        "pa_bias": -2.5192275263360013,
+        "value_rmse": 0.15315054860948624,
+        "value_mae": 0.02211692050701353,
+        "value_bias": -0.0019662281790461806,
+        "pa_total": 10431.530188510651,
+        "value_total": 28.71772816695716
+      },
+      "level_age": {
+        "pa_rmse": 31.617310385520526,
+        "pa_mae": 5.487623547569054,
+        "pa_bias": -2.5192275263360013,
+        "value_rmse": 0.1532422796008548,
+        "value_mae": 0.02216233832533938,
+        "value_bias": -0.0019099651376616531,
+        "pa_total": 10431.530188510651,
+        "value_total": 28.907840983795474
+      },
+      "shared_development": {
+        "pa_rmse": 31.617310385520526,
+        "pa_mae": 5.487623547569054,
+        "pa_bias": -2.5192275263360013,
+        "value_rmse": 0.15223620992605458,
+        "value_mae": 0.021943076130717255,
+        "value_bias": -0.001979095302672958,
+        "pa_total": 10431.530188510651,
+        "value_total": 28.67425015622228
+      }
+    }
+  },
+  {
+    "scope": "never_origin_2022",
+    "rows": 3330,
+    "actual_pa": 14072,
+    "actual_value": 31.07003851869635,
+    "rate": {
+      "preseason": {
+        "rows": 106,
+        "players": 106,
+        "rmse": 2.6219721087131984,
+        "mae": 1.992147152126436,
+        "bias": 0.8460748673694661,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "translated_ridge": {
+        "rows": 106,
+        "players": 106,
+        "rmse": 2.5841678859893418,
+        "mae": 1.959745386013953,
+        "bias": 0.7465146118588424,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "level_age": {
+        "rows": 106,
+        "players": 106,
+        "rmse": 2.5987082792581186,
+        "mae": 1.9700099722315634,
+        "bias": 0.7666153582933246,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "shared_development": {
+        "rows": 106,
+        "players": 106,
+        "rmse": 2.6436834237754603,
+        "mae": 2.0331180659626082,
+        "bias": 1.0076511433718618,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "unweighted_rate": {
+      "preseason": {
+        "rows": 106,
+        "players": 106,
+        "rmse": 5.154775390670231,
+        "mae": 3.596887255715621,
+        "bias": 1.9314712616025147,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "translated_ridge": {
+        "rows": 106,
+        "players": 106,
+        "rmse": 5.0734292100223115,
+        "mae": 3.5367239567153845,
+        "bias": 1.7952255323772508,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "level_age": {
+        "rows": 106,
+        "players": 106,
+        "rmse": 5.0934202423361965,
+        "mae": 3.5507452746420163,
+        "bias": 1.8173695814343376,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "shared_development": {
+        "rows": 106,
+        "players": 106,
+        "rmse": 5.15347988966087,
+        "mae": 3.634693927833314,
+        "bias": 2.0259845388706705,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      }
+    },
+    "delivered": {
+      "preseason": {
+        "pa_rmse": 27.224585328049727,
+        "pa_mae": 5.074916999148357,
+        "pa_bias": -0.14910675152193903,
+        "value_rmse": 0.13968043806010372,
+        "value_mae": 0.019747283815364114,
+        "value_bias": 0.0010919494510626732,
+        "pa_total": 13575.474517431941,
+        "value_total": 34.706230190735056
+      },
+      "translated_ridge": {
+        "pa_rmse": 27.224585328049727,
+        "pa_mae": 5.074916999148357,
+        "pa_bias": -0.14910675152193903,
+        "value_rmse": 0.1400106580855595,
+        "value_mae": 0.019141494200017452,
+        "value_bias": 0.0002719743255727727,
+        "pa_total": 13575.474517431941,
+        "value_total": 31.97571302285368
+      },
+      "level_age": {
+        "pa_rmse": 27.224585328049727,
+        "pa_mae": 5.074916999148357,
+        "pa_bias": -0.14910675152193903,
+        "value_rmse": 0.14023857693963607,
+        "value_mae": 0.019240163176907545,
+        "value_bias": 0.00040543354781713537,
+        "pa_total": 13575.474517431941,
+        "value_total": 32.42013223292741
+      },
+      "shared_development": {
+        "pa_rmse": 27.224585328049727,
+        "pa_mae": 5.074916999148357,
+        "pa_bias": -0.14910675152193903,
+        "value_rmse": 0.14068382316196737,
+        "value_mae": 0.020098134042183444,
+        "value_bias": 0.001759950693038202,
+        "pa_total": 13575.474517431941,
+        "value_total": 36.93067432651356
+      }
+    }
+  },
+  {
+    "scope": "never_origin_2023",
+    "rows": 3280,
+    "actual_pa": 11697,
+    "actual_value": 5.118642596467499,
+    "rate": {
+      "preseason": {
+        "rows": 107,
+        "players": 107,
+        "rmse": 2.518270525602681,
+        "mae": 1.7296327757680288,
+        "bias": 0.7841483767548894,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "translated_ridge": {
+        "rows": 107,
+        "players": 107,
+        "rmse": 2.5495695869259123,
+        "mae": 1.7787237463429666,
+        "bias": 0.8742488265220458,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "level_age": {
+        "rows": 107,
+        "players": 107,
+        "rmse": 2.546148867092073,
+        "mae": 1.7750266004064716,
+        "bias": 0.8642392713198803,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "shared_development": {
+        "rows": 107,
+        "players": 107,
+        "rmse": 2.5905449632966415,
+        "mae": 1.8047369333613483,
+        "bias": 0.9999952533459879,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "unweighted_rate": {
+      "preseason": {
+        "rows": 107,
+        "players": 107,
+        "rmse": 5.460129614511159,
+        "mae": 3.8232089513814764,
+        "bias": 2.5436933713290486,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "translated_ridge": {
+        "rows": 107,
+        "players": 107,
+        "rmse": 5.476566548271209,
+        "mae": 3.8387110169943965,
+        "bias": 2.5820051431605107,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "level_age": {
+        "rows": 107,
+        "players": 107,
+        "rmse": 5.479863864129824,
+        "mae": 3.839242816328306,
+        "bias": 2.5785389012672595,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "shared_development": {
+        "rows": 107,
+        "players": 107,
+        "rmse": 5.537705226408873,
+        "mae": 3.899386999761015,
+        "bias": 2.697916383531328,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      }
+    },
+    "delivered": {
+      "preseason": {
+        "pa_rmse": 24.525752750860367,
+        "pa_mae": 5.032088489860386,
+        "pa_bias": 0.9230801208073949,
+        "value_rmse": 0.10330496170694844,
+        "value_mae": 0.016540988581025,
+        "value_bias": 0.009163617743057656,
+        "pa_total": 14724.702796248255,
+        "value_total": 35.175308793696615
+      },
+      "translated_ridge": {
+        "pa_rmse": 24.525752750860367,
+        "pa_mae": 5.032088489860386,
+        "pa_bias": 0.9230801208073949,
+        "value_rmse": 0.10530805237720436,
+        "value_mae": 0.016687188340429423,
+        "value_bias": 0.009574365690733585,
+        "pa_total": 14724.702796248255,
+        "value_total": 36.52256206207365
+      },
+      "level_age": {
+        "pa_rmse": 24.525752750860367,
+        "pa_mae": 5.032088489860386,
+        "pa_bias": 0.9230801208073949,
+        "value_rmse": 0.1050118424827192,
+        "value_mae": 0.016641007884019815,
+        "value_bias": 0.009502629700854286,
+        "pa_total": 14724.702796248255,
+        "value_total": 36.287268015269554
+      },
+      "shared_development": {
+        "pa_rmse": 24.525752750860367,
+        "pa_mae": 5.032088489860386,
+        "pa_bias": 0.9230801208073949,
+        "value_rmse": 0.10642736380734705,
+        "value_mae": 0.017188493825518233,
+        "value_bias": 0.01040538182283725,
+        "pa_total": 14724.702796248255,
+        "value_total": 39.248294975373675
+      }
+    }
+  },
+  {
+    "scope": "never_origin_2024",
+    "rows": 3086,
+    "actual_pa": 15190,
+    "actual_value": 34.06923008355681,
+    "rate": {
+      "preseason": {
+        "rows": 105,
+        "players": 105,
+        "rmse": 2.4663167451219605,
+        "mae": 1.9007911998485714,
+        "bias": 0.08497596811060418,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "translated_ridge": {
+        "rows": 105,
+        "players": 105,
+        "rmse": 2.3894560190461904,
+        "mae": 1.8661966841644184,
+        "bias": 0.20786349998031875,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "level_age": {
+        "rows": 105,
+        "players": 105,
+        "rmse": 2.3913144089804765,
+        "mae": 1.8629236107608453,
+        "bias": 0.1982664082029476,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      },
+      "shared_development": {
+        "rows": 105,
+        "players": 105,
+        "rmse": 2.4049227669455395,
+        "mae": 1.87238211559186,
+        "bias": 0.3242341998079022,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; actual PA within year"
+      }
+    },
+    "unweighted_rate": {
+      "preseason": {
+        "rows": 105,
+        "players": 105,
+        "rmse": 4.496652964876822,
+        "mae": 3.216437342422242,
+        "bias": 1.8431952499816548,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "translated_ridge": {
+        "rows": 105,
+        "players": 105,
+        "rmse": 4.490195325710094,
+        "mae": 3.2118526567033956,
+        "bias": 1.913911096955301,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "level_age": {
+        "rows": 105,
+        "players": 105,
+        "rmse": 4.494778244393927,
+        "mae": 3.2106939371352117,
+        "bias": 1.9130188289550698,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      },
+      "shared_development": {
+        "rows": 105,
+        "players": 105,
+        "rmse": 4.563382728020167,
+        "mae": 3.2554556695220715,
+        "bias": 2.033668997933201,
+        "unit": "batting wins above target-season MLB average per 600 PA",
+        "weighting": "equal years; equal active observations within year"
+      }
+    },
+    "delivered": {
+      "preseason": {
+        "pa_rmse": 31.070700053658012,
+        "pa_mae": 5.799974908868989,
+        "pa_bias": -0.9533738138103761,
+        "value_rmse": 0.1652572779346452,
+        "value_mae": 0.021349510061000658,
+        "value_bias": -0.002773659102898293,
+        "pa_total": 12247.888410581181,
+        "value_total": 25.509718092012676
+      },
+      "translated_ridge": {
+        "pa_rmse": 31.070700053658012,
+        "pa_mae": 5.799974908868989,
+        "pa_bias": -0.9533738138103761,
+        "value_rmse": 0.16450247547533633,
+        "value_mae": 0.021385653547329273,
+        "value_bias": -0.002269755041730551,
+        "pa_total": 12247.888410581181,
+        "value_total": 27.06476602477633
+      },
+      "level_age": {
+        "pa_rmse": 31.070700053658012,
+        "pa_mae": 5.799974908868989,
+        "pa_bias": -0.9533738138103761,
+        "value_rmse": 0.16450357642503657,
+        "value_mae": 0.021360497922889347,
+        "value_bias": -0.0022953483166727705,
+        "pa_total": 12247.888410581181,
+        "value_total": 26.985785178304642
+      },
+      "shared_development": {
+        "pa_rmse": 31.070700053658012,
+        "pa_mae": 5.799974908868989,
+        "pa_bias": -0.9533738138103761,
+        "value_rmse": 0.1650013686165318,
+        "value_mae": 0.021859021048144845,
+        "value_bias": -0.001526838262243323,
+        "pa_total": 12247.888410581181,
+        "value_total": 29.357407206273912
+      }
+    }
+  }
+]
