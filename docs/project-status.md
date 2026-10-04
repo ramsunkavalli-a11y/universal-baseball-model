@@ -24,7 +24,28 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: available minor season clock and twelve model walks completed.**
+**Current checkpoint: earlier detailed contact evidence reconciled and identity repair demonstrated.**
+The [completed compatibility review](hitter-detailed-contact-compatibility-result.md)
+inspects 38,114 old contact player-seasons and all six chronological memberships.
+The old ninety-cell block is minor-only, pooled across levels and not park-adjusted;
+24,029 of its 28,183 forecasts match current, with exact matched PA labels but
+different value references and player-separation rules. There are 670 source
+conflict player-seasons, including Mexican League measurements collapsed into
+AAA and small participant disagreements. Official matchup evidence confirms
+three HR assigned to runners rather than hitters. A ten-game, 501-contact pilot
+changes those three IDs while preserving geometry/results. This is not a complete
+season repair or a new model gain. Eleven source/output walks include Meadows
+gain, McNeil harm, Reynolds/Kurtz misses, Judge/Soto missing own MLB-contact
+evidence and ordinary Pujols. Seven focused tests pass; forecasts are unchanged.
+Before the next detailed-information fit, apply the existing player-game residual
+and official sequence identity policy to league-preserving measurements, audit
+unflagged controls and reconcile MEX coverage. Do not trust contact<=PA alone,
+infer a global corruption rate from selected HR, or silently import old learned
+park residuals without outer-fold provenance. Current, translated-rate and
+available-season-arrival anchors remain preserved. Full goal active; protected
+2026, frozen forecast and deployed explorer unchanged.
+
+**Previous checkpoint: available minor season clock and twelve model walks completed.**
 The [completed history comparison](hitter-available-season-history-result.md)
 changes only prospect arrival representation, keeping conditional PA/hitting
 fixed and all 30,506 forecasts. All 70 preflights precede twenty new fits;

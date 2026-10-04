@@ -1,0 +1,169 @@
+{
+  "selected_games": 10,
+  "selected_contacts": 501,
+  "changed_participant_contacts": 3,
+  "changed_rows": [
+    {
+      "season": 2024,
+      "league_id": -2,
+      "source_level": "aa",
+      "game_pk": 750493,
+      "at_bat_index": 74,
+      "pitch_number": 5,
+      "source_batter_id": 647228,
+      "source_pitcher_id": 695229,
+      "batter_side": "R",
+      "core_bin": "PULL_OFFB",
+      "canonical_outcome": "HR",
+      "official_batter_id": 676045,
+      "player_id": 676045,
+      "participant_authority": "official_selected_game_sequence"
+    },
+    {
+      "season": 2024,
+      "league_id": -2,
+      "source_level": "aa",
+      "game_pk": 750929,
+      "at_bat_index": 76,
+      "pitch_number": 2,
+      "source_batter_id": 665888,
+      "source_pitcher_id": 669437,
+      "batter_side": "L",
+      "core_bin": "CENTER_OFFB",
+      "canonical_outcome": "HR",
+      "official_batter_id": 694808,
+      "player_id": 694808,
+      "participant_authority": "official_selected_game_sequence"
+    },
+    {
+      "season": 2024,
+      "league_id": -1,
+      "source_level": "aaa",
+      "game_pk": 752195,
+      "at_bat_index": 39,
+      "pitch_number": 5,
+      "source_batter_id": 543482,
+      "source_pitcher_id": 663474,
+      "batter_side": "R",
+      "core_bin": "PULL_LD",
+      "canonical_outcome": "HR",
+      "official_batter_id": 678760,
+      "player_id": 678760,
+      "participant_authority": "official_selected_game_sequence"
+    }
+  ],
+  "affected_player_totals": [
+    {
+      "player_id": 543482,
+      "before": [
+        {
+          "player_id": 543482,
+          "contacts": 14,
+          "hr": 6
+        }
+      ],
+      "after": [
+        {
+          "player_id": 543482,
+          "contacts": 13,
+          "hr": 5
+        }
+      ]
+    },
+    {
+      "player_id": 647228,
+      "before": [
+        {
+          "player_id": 647228,
+          "contacts": 1,
+          "hr": 1
+        }
+      ],
+      "after": []
+    },
+    {
+      "player_id": 665888,
+      "before": [
+        {
+          "player_id": 665888,
+          "contacts": 6,
+          "hr": 3
+        }
+      ],
+      "after": [
+        {
+          "player_id": 665888,
+          "contacts": 5,
+          "hr": 2
+        }
+      ]
+    },
+    {
+      "player_id": 676045,
+      "before": [
+        {
+          "player_id": 676045,
+          "contacts": 3,
+          "hr": 0
+        }
+      ],
+      "after": [
+        {
+          "player_id": 676045,
+          "contacts": 4,
+          "hr": 1
+        }
+      ]
+    },
+    {
+      "player_id": 678760,
+      "before": [
+        {
+          "player_id": 678760,
+          "contacts": 10,
+          "hr": 0
+        }
+      ],
+      "after": [
+        {
+          "player_id": 678760,
+          "contacts": 11,
+          "hr": 1
+        }
+      ]
+    },
+    {
+      "player_id": 694808,
+      "before": [],
+      "after": [
+        {
+          "player_id": 694808,
+          "contacts": 1,
+          "hr": 1
+        }
+      ]
+    }
+  ],
+  "physical_fields_unchanged": true,
+  "raw_event_results_unchanged": true,
+  "player_selection_by_future_outcomes": false,
+  "complete_season_repair": false,
+  "forecasts_changed": false,
+  "protected_2026_used": false,
+  "input_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\full-bip-context-2024\\tables\\hitter_full_bip_event_outcomes.parquet": "9cd0c9ddbf041094e545f1dede1fb48a0cd1f58cfa3da9812917697c71ac713b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\repair_hitter_contact_compatibility_pilot.py": "e4b036b73ef3c8b100af3dd1322e84eaf5af26b8f189c88d49910a8b5835b363",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-detailed-contact-compatibility\\official-adjudication.json": "ff1ba53f59b01fec95db7813b2e9cb2c6264c2234cf36d5252ad2c6e29a533de",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-detailed-contact-compatibility\\official-captures\\750493.json": "2d3d80b64ecd12dbdd662998b728ecf4392ccaa71303a0c87d7547e3631c0fea",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-detailed-contact-compatibility\\official-captures\\750929.json": "30aa4cc8820f5df97ca602182ba24f55f74ea723c73cc03c1222047a72e191c3",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-detailed-contact-compatibility\\official-captures\\752124.json": "4472bde6d68ba8abdee66ca1a9480927ba56d673a5a7ef209271490494945f2a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-detailed-contact-compatibility\\official-captures\\752195.json": "b681cb529a539d38e7edb79df2a7fee04d3fc0fa692a182d24be4a5ee139490c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-detailed-contact-compatibility\\official-captures\\752209.json": "f6ad6b521707cfd05cef25f8dfbc3ed617dc1387f0a7af7023452bac965a73ed",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-detailed-contact-compatibility\\official-captures\\752572.json": "3bcded217c421eca916e1f8da0a322c86eddaa440c0d1e75caec07d07fca281b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-detailed-contact-compatibility\\official-captures\\752598.json": "0029243e4976896ba01d49c65c81e002e36ec28cee01247999de926fd706c474",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-detailed-contact-compatibility\\official-captures\\753186.json": "e4b837e5e09a5badd46d9465e86e6a50f48a3ff6a63bf91fd22bda9d190900ee",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-detailed-contact-compatibility\\official-captures\\772295.json": "dca628e14a67adc661f3035363d09272853595df0c027f92693d0c360dcfff62",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-detailed-contact-compatibility\\official-captures\\772302.json": "59cf93150317ba6558e80fe9de521909e642893768387259ee58d9a049f9613b"
+  },
+  "repaired_artifact_sha256": "6ae41622d22d1cbf138b95cb55d75b47b380b2509ddbef45d36a07fd3058dc05"
+}

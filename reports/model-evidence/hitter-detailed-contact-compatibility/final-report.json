@@ -1,0 +1,220 @@
+{
+  "source_player_seasons": 38114,
+  "reconstructed_cells": 90,
+  "source_by_season": [
+    {
+      "season": 2015,
+      "rows": 4329,
+      "contact_events": 607286,
+      "contacts_level__MLB": 0,
+      "official_missing": 0,
+      "excess_contacts": 9,
+      "excess_hr": 32
+    },
+    {
+      "season": 2016,
+      "rows": 4622,
+      "contact_events": 649431,
+      "contacts_level__MLB": 0,
+      "official_missing": 0,
+      "excess_contacts": 3,
+      "excess_hr": 30
+    },
+    {
+      "season": 2017,
+      "rows": 4670,
+      "contact_events": 637638,
+      "contacts_level__MLB": 0,
+      "official_missing": 0,
+      "excess_contacts": 7,
+      "excess_hr": 35
+    },
+    {
+      "season": 2018,
+      "rows": 4744,
+      "contact_events": 633575,
+      "contacts_level__MLB": 0,
+      "official_missing": 329,
+      "excess_contacts": 12,
+      "excess_hr": 26
+    },
+    {
+      "season": 2019,
+      "rows": 4616,
+      "contact_events": 606505,
+      "contacts_level__MLB": 0,
+      "official_missing": 0,
+      "excess_contacts": 6,
+      "excess_hr": 30
+    },
+    {
+      "season": 2021,
+      "rows": 4060,
+      "contact_events": 421085,
+      "contacts_level__MLB": 0,
+      "official_missing": 1,
+      "excess_contacts": 5,
+      "excess_hr": 29
+    },
+    {
+      "season": 2022,
+      "rows": 3800,
+      "contact_events": 479104,
+      "contacts_level__MLB": 0,
+      "official_missing": 0,
+      "excess_contacts": 0,
+      "excess_hr": 42
+    },
+    {
+      "season": 2023,
+      "rows": 3756,
+      "contact_events": 475461,
+      "contacts_level__MLB": 0,
+      "official_missing": 0,
+      "excess_contacts": 1,
+      "excess_hr": 40
+    },
+    {
+      "season": 2024,
+      "rows": 3517,
+      "contact_events": 475675,
+      "contacts_level__MLB": 0,
+      "official_missing": 0,
+      "excess_contacts": 1,
+      "excess_hr": 38
+    }
+  ],
+  "source_conflict_rows": 670,
+  "source_conflict_people": 631,
+  "source_conflict_contacts": 93891,
+  "old_folds": [
+    {
+      "origin": 2017,
+      "train_rows": 10703,
+      "test_rows": 5419,
+      "train_people": 6820,
+      "test_people": 5419,
+      "shared_people": 4115,
+      "test_rows_with_prior_training_identity": 4115,
+      "max_training_target": 2017
+    },
+    {
+      "origin": 2018,
+      "train_rows": 16122,
+      "test_rows": 5212,
+      "train_people": 8124,
+      "test_people": 5212,
+      "shared_people": 3831,
+      "test_rows_with_prior_training_identity": 3831,
+      "max_training_target": 2018
+    },
+    {
+      "origin": 2021,
+      "train_rows": 21334,
+      "test_rows": 5196,
+      "train_people": 9505,
+      "test_people": 5196,
+      "shared_people": 2666,
+      "test_rows_with_prior_training_identity": 2666,
+      "max_training_target": 2019
+    },
+    {
+      "origin": 2022,
+      "train_rows": 26530,
+      "test_rows": 4243,
+      "train_people": 12035,
+      "test_people": 4243,
+      "shared_people": 3326,
+      "test_rows_with_prior_training_identity": 3326,
+      "max_training_target": 2022
+    },
+    {
+      "origin": 2023,
+      "train_rows": 30773,
+      "test_rows": 4184,
+      "train_people": 12952,
+      "test_people": 4184,
+      "shared_people": 3286,
+      "test_rows_with_prior_training_identity": 3286,
+      "max_training_target": 2023
+    },
+    {
+      "origin": 2024,
+      "train_rows": 34957,
+      "test_rows": 3929,
+      "train_people": 13850,
+      "test_people": 3929,
+      "shared_people": 3175,
+      "test_rows_with_prior_training_identity": 3175,
+      "max_training_target": 2024
+    }
+  ],
+  "old_evaluation_rows": 28183,
+  "current_evaluation_rows": 30506,
+  "matched_rows": 24029,
+  "old_only_rows": 4154,
+  "current_without_old_rows": 6477,
+  "matched_pa_label_disagreements": 0,
+  "matched_zero_old_positive_current": 0,
+  "old_current_value_labels_max_difference": 0.7422824727519499,
+  "old_evaluation_origins": [
+    2017,
+    2018,
+    2021,
+    2022,
+    2023,
+    2024
+  ],
+  "old_current_mlb_contact_coverage": [
+    {
+      "rows": 4996,
+      "lag0_has_minor_contact": 2847,
+      "lag1_has_minor_contact": 2436,
+      "lag2_has_minor_contact": 2573
+    }
+  ],
+  "old_raw_cells_park_adjusted": false,
+  "old_cells_pooled_across_levels": true,
+  "neutral_event_fold_formula": "(player_id * 1000003 + 97) modulo 2",
+  "neutral_outer_forecast_fold_exclusion_demonstrated": false,
+  "model_predictive_walkthrough_status": "not_replayed_no_new_model_test",
+  "source_walkthrough_status": "complete",
+  "new_fit": false,
+  "forecasts_changed": false,
+  "protected_2026_used": false,
+  "interpretation": "Compatibility audit only; old saved errors are not compared with current as an isolated contact treatment",
+  "input_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-value-panel-v2\\tables\\hitter-contact-features.parquet": "cdd92faeedeb1852d94156c34d31d7f580ec4c57a37bdd1c65b21ee726b729fb",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-contact-neutralization-v2\\tables\\modeling-panel.parquet": "95083acc5e1441e41ad3fc3fcc09dec9b9dc279fcb9e4a51233a1c78737c1705",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-model-finalist-tuning-v2\\tables\\finalist-ensemble-predictions.parquet": "4ca6848ce35c065ff473a5271c71f4c65771221887a223e4cdd9ab992a71a1d4",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-contact-block-ensemble-v2\\tables\\stats_only-predictions.parquet": "f094fcfd2fbe66481a3b2f9d7022239504925ac82ce321e17fa76264891c5d2a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-v31\\counts.parquet": "62de048f7eb6cae53dd29755e26953c31b204fbdfc0e6be261b63acd42da5e66",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-preseason-readiness-v68\\scored-predictions.parquet": "9a08f2a4bea18d9fb14313fedd904ddd98f009331ed89bd607f3aeac34f750f8",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-value-panel-v2\\report.json": "b08f3b94803664a62fa23fea767bc9ca6847d7da1350635e6905f211881db261",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-contact-neutralization-v2\\report.json": "1d1300b9761ff8dc70a2da03bfdc7bf3c43ace36097a26416015733c0211247e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-model-finalist-tuning-v2\\finalist-report.json": "4909b193e3b83d981809a124bcf795cbf831722d1e4f867b3472243c1658301e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-contact-block-ensemble-v2\\report.json": "7c2a4cf8b00345e3c90175639249cb84111de454b7b9ccbffb2b1fc5d50aaebf",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\hitter-detailed-contact-compatibility-contract.md": "1a9afe168804bdfdab2a529d9f151ca4401860075adfec353cfca52dc7ade5b2",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\audit_hitter_detailed_contact_compatibility.py": "c5500fed06ea014a4de6086d5e4431f867208eac88f1c8c35566a7d92e64726e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\src\\universal_baseball\\hitter_value_panel.py": "e6f2e4f842f6fb88a9d160508163fb9249289385f84eb96da853e0d492d6dc8a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\src\\universal_baseball\\hitter_target_architecture.py": "18eabded5cd13230827ce390594ab6c5baf08e1594069ad835045ce7d478d471",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\evaluate_hitter_contact_block_ensemble_v2.py": "6aa733326bd708dc7cac2e58765094d88aed835605eb9092bbaa91084cba3ca0",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\src\\universal_baseball\\hitter_contact_neutralization.py": "94d55bd6d1b5794aa4772e9d0b6c3d13f6eb5e789d92525b928b26d5a51b59cf",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\summarize_hitter_finalists_v2.py": "403f382094f35ece374d98ce983974e74d0a69bf09640bef2d82d96c2b310717"
+  },
+  "output_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-detailed-contact-compatibility\\source-conflicts.parquet": "3b7ed9a050485f4fb41cc0ecfcd1e9c1e297d00bec5da0b781ef12426715bde5",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-detailed-contact-compatibility\\cases.json": "9f99e1c5ead6388d8bd4e72c7c602990fe80384bf043dfebb050fe1290226758",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-detailed-contact-compatibility\\selected-cases.json": "0631067e4e1dff210cba1a9eb3711d806542b52c482a5e0937af88f6588714aa"
+  },
+  "complete_season_repair": false,
+  "deployment_approved": false,
+  "disposition": "Source repair required before fair current-contact comparison; old forecasts remain qualified development evidence",
+  "next_action": "Reconstruct league-preserving contact information using existing residual-triggered official sequence identity policy before a fixed matched information test. Keep current and translated hitting plus available-season arrival anchors. Do not infer adoption from this audit.",
+  "review_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\config\\hitter_detailed_contact_compatibility_review.json": "9a871a8772718d94e68a68fde13d2eed8fb471e624a5c93db519a5bd987e0cb1",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\hitter-detailed-contact-compatibility-result.md": "a727dc55eb7c5eca082576a77bb420b50fa19f2857d2ef6a873abe4e83a55c87",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\finalize_hitter_detailed_contact_compatibility.py": "d2130e873407721628a24c5fafa283f2af6bea517ad01e5c39d8ac9b19ceea9e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-detailed-contact-compatibility\\unit-tests.xml": "47f54871337e26d357b8cb1528330256e8736a5abbf3cb5c6959086b3e654494"
+  }
+}
