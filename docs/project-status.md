@@ -24,7 +24,25 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: coherent candidate and comparative handoff sealed.**
+**Current checkpoint: Belt interpretation corrected and smooth ranking comparison reviewed.**
+The [judgment correction](hitter-review-judgment-v73.md) keeps Belt in scores but
+does not use his unusual exit to impose an unsigned-player penalty. The
+productive free-agent control expects 37,299 PA versus 37,613 actual. The
+[matched prospect comparison](hitter-smooth-preseason-v73-result.md) changes only
+eight ranking inputs in the exact older smooth model, replays 140 opportunity
+heads and completes thirteen real reviews, including fixed hitting traces. New
+rankings help that model versus its own old-source version, but its replacement
+of the current fresh trees has uncertain PA gain and no overall offense gain.
+Langford rises 215 to 244 PA before 557; Julio falls 254 to 218 before 560.
+The 2021 allocation shortfall and rare conditional extrapolation remain. An
+incorrect Maitan review-list ID is corrected by adding his case and retaining
+Burger; no forecasts change. Keep the existing V68/V53/V63 candidate and 8791
+explorer. Close opportunity/ranking/penalty sweeps. Next the controlling plan's
+prospect batting-talent bridge, after auditing prior component/MLE provenance,
+with established-player benchmarks and failed peers retained. Whole goal active;
+protected 2026 and deployment unchanged.
+
+**Previous checkpoint: coherent candidate and comparative handoff sealed.**
 The [handoff](hitter-comparative-handoff-v72-result.md) selects fresher preseason
 rankings with unchanged V53/V63 hitting as the research candidate, with original
 forecasts visible alongside it. All 30,506 historical rows and both arms'
