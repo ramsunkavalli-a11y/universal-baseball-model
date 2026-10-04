@@ -32,15 +32,17 @@ pass; all 31 protected files remain unchanged. No new fits, scores, forecast
 changes or predictive improvement are claimed. Original pending receipts are
 preserved with additive final receipts in `reports/model-evidence`.
 
-Two source years leave every earlier fold without tracked active training
-profiles. A bounded [historical source capture](hitter-statcast-historical-capture-contract.md)
-is recovering MLB 2015 through 2022, including the short 2020 MLB season, with
-missing readings retained. A [source-code amendment](hitter-statcast-capture-source-semantics-amendment.md)
-preserves exceptional pitch codes instead of mistaking the contact query for
-an all-X guarantee. Reuse completed chunks; inspect the actual process and saved
-receipts before resuming. Collection is not yet approved for fitting: independent
-per-player hit and in-play denominator reconciliation, source/player review and
-actual outer-fold support must precede the separately frozen forecast contrast.
+Two source years alone leave every earlier fold without tracked active training
+profiles. The bounded [earlier source capture](hitter-statcast-historical-capture-result.md)
+has now completed MLB 2015 through 2022: sixty-four months and another 907,971
+complete pairs, including the short 2020 MLB season. Every player's four hit
+counts match the official backbone. The corrected source adapter preserves
+catcher interference separately; twenty player-seasons retain one-contact
+denominator differences after separating those events. Original failed checks
+and the additive independent audit are preserved. Do not restart the completed
+collector or describe these earlier years as approved for fitting: historical
+venue authority, complete source/player review, unresolved denominator semantics
+and actual outer-fold support precede the separately frozen forecast contrast.
 
 The mature lower-level follow-up and shared development-rate comparisons already
 exist. Their source/target findings must be carried forward, not rediscovered by

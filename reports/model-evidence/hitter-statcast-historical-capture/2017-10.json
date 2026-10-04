@@ -1,0 +1,102 @@
+{
+  "season": 2017,
+  "month": 10,
+  "requested_url": "https://baseballsavant.mlb.com/statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=hit\\.\\.into\\.\\.play%7C&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2017-10-01&game_date_lt=2017-10-31&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details&",
+  "returned_url": "https://baseballsavant.mlb.com/statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=hit%5C.%5C.into%5C.%5C.play%7C&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2017-10-01&game_date_lt=2017-10-31&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details&",
+  "captured_at": "2026-10-04 17:18:22.015650+00:00",
+  "response_sha256": "b374430c0c95647f42ba44456374e0a588afab14ebd90845e3b6b024dcb804d8",
+  "response_bytes": 574293,
+  "raw_rows": 753,
+  "terminal_rows": 753,
+  "missing_launch_speed": 6,
+  "missing_launch_angle": 6,
+  "returned_events": [
+    {
+      "events": "double",
+      "len": 54
+    },
+    {
+      "events": "double_play",
+      "len": 1
+    },
+    {
+      "events": "field_error",
+      "len": 8
+    },
+    {
+      "events": "field_out",
+      "len": 448
+    },
+    {
+      "events": "fielders_choice",
+      "len": 3
+    },
+    {
+      "events": "fielders_choice_out",
+      "len": 2
+    },
+    {
+      "events": "force_out",
+      "len": 20
+    },
+    {
+      "events": "grounded_into_double_play",
+      "len": 21
+    },
+    {
+      "events": "home_run",
+      "len": 25
+    },
+    {
+      "events": "sac_bunt",
+      "len": 3
+    },
+    {
+      "events": "sac_fly",
+      "len": 9
+    },
+    {
+      "events": "single",
+      "len": 156
+    },
+    {
+      "events": "triple",
+      "len": 3
+    }
+  ],
+  "unusual_pitch_codes": [],
+  "raw_columns": [
+    "game_date",
+    "game_year",
+    "game_pk",
+    "at_bat_number",
+    "pitch_number",
+    "game_type",
+    "batter",
+    "pitcher",
+    "stand",
+    "p_throws",
+    "events",
+    "description",
+    "des",
+    "type",
+    "bb_type",
+    "hit_location",
+    "hc_x",
+    "hc_y",
+    "home_team",
+    "away_team",
+    "inning_topbot",
+    "launch_speed",
+    "launch_angle"
+  ],
+  "contract_sha256": "e2fc1173b523f5113893c8c2e94f6d2fa64a817fca0ec2bab3088b6f68a58377",
+  "amendment_sha256": "43966ea62c84438742c8f19cd5a809a690efc9f8e0afb0042d148ac9b72e6746",
+  "collector_sha256": "5c7a20d561c995da1cb30691bc971be53135a606c849ddffd5d28c977d488010",
+  "outputs": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2017-10.csv.gz": "e3f89be31aa4374f5c862b4801f7aafa3326a29463f7570dc05c42269abdcb11",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2017-10.parquet": "1e2d34458c353a5775abe350d145c9e31a1f32e88b11a8abe8f424318d7aae36"
+  },
+  "model_fits": 0,
+  "protected_outcomes_used": false
+}

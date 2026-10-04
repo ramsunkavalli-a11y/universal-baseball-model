@@ -1,0 +1,135 @@
+{
+  "season": 2020,
+  "month": 7,
+  "requested_url": "https://baseballsavant.mlb.com/statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=hit\\.\\.into\\.\\.play%7C&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2020-07-01&game_date_lt=2020-07-31&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details&",
+  "returned_url": "https://baseballsavant.mlb.com/statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=hit%5C.%5C.into%5C.%5C.play%7C&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2020-07-01&game_date_lt=2020-07-31&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details&",
+  "captured_at": "2026-10-04 17:13:43.417935+00:00",
+  "response_sha256": "7bc6249484a46e1e1b717ef55deebaf2a2fc6ed1e88a9dfdddea40ba0a10f4b9",
+  "response_bytes": 3859201,
+  "raw_rows": 5124,
+  "terminal_rows": 5124,
+  "missing_launch_speed": 66,
+  "missing_launch_angle": 66,
+  "returned_events": [
+    {
+      "events": "catcher_interf",
+      "len": 2
+    },
+    {
+      "events": "double",
+      "len": 320
+    },
+    {
+      "events": "double_play",
+      "len": 24
+    },
+    {
+      "events": "field_error",
+      "len": 72
+    },
+    {
+      "events": "field_out",
+      "len": 3030
+    },
+    {
+      "events": "fielders_choice",
+      "len": 22
+    },
+    {
+      "events": "fielders_choice_out",
+      "len": 10
+    },
+    {
+      "events": "force_out",
+      "len": 152
+    },
+    {
+      "events": "grounded_into_double_play",
+      "len": 145
+    },
+    {
+      "events": "home_run",
+      "len": 254
+    },
+    {
+      "events": "sac_bunt",
+      "len": 10
+    },
+    {
+      "events": "sac_fly",
+      "len": 46
+    },
+    {
+      "events": "sac_fly_double_play",
+      "len": 1
+    },
+    {
+      "events": "single",
+      "len": 1003
+    },
+    {
+      "events": "triple",
+      "len": 32
+    },
+    {
+      "events": "triple_play",
+      "len": 1
+    }
+  ],
+  "unusual_pitch_codes": [
+    {
+      "game_pk": "630495",
+      "batter": "592450",
+      "at_bat_number": "2",
+      "pitch_number": "5",
+      "type": "S",
+      "events": "catcher_interf",
+      "description": "hit_into_play",
+      "des": "Aaron Judge reaches on catcher interference by Pedro Severino. Aaron Judge to 1st."
+    },
+    {
+      "game_pk": "631382",
+      "batter": "592626",
+      "at_bat_number": "18",
+      "pitch_number": "5",
+      "type": "S",
+      "events": "catcher_interf",
+      "description": "hit_into_play",
+      "des": "Joc Pederson reaches on catcher interference by Tyler Heineman. Joc Pederson to 1st."
+    }
+  ],
+  "raw_columns": [
+    "game_date",
+    "game_year",
+    "game_pk",
+    "at_bat_number",
+    "pitch_number",
+    "game_type",
+    "batter",
+    "pitcher",
+    "stand",
+    "p_throws",
+    "events",
+    "description",
+    "des",
+    "type",
+    "bb_type",
+    "hit_location",
+    "hc_x",
+    "hc_y",
+    "home_team",
+    "away_team",
+    "inning_topbot",
+    "launch_speed",
+    "launch_angle"
+  ],
+  "contract_sha256": "e2fc1173b523f5113893c8c2e94f6d2fa64a817fca0ec2bab3088b6f68a58377",
+  "amendment_sha256": "43966ea62c84438742c8f19cd5a809a690efc9f8e0afb0042d148ac9b72e6746",
+  "collector_sha256": "5c7a20d561c995da1cb30691bc971be53135a606c849ddffd5d28c977d488010",
+  "outputs": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2020-07.csv.gz": "ee02b43efe48a497b61b9d960df48fe55dacc801f4fcf3b2b6aabc84b1878912",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2020-07.parquet": "e3e1bb577a3f3917e1572e0a9cab64898a37bcefdc2633d3f5a554f6e1c458f4"
+  },
+  "model_fits": 0,
+  "protected_outcomes_used": false
+}

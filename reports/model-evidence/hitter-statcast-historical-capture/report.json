@@ -1,0 +1,1067 @@
+{
+  "source_only": true,
+  "new_model_fits": 0,
+  "protected_outcomes_used": false,
+  "source_walkthrough_status": "pending",
+  "approved_for_modeling": false,
+  "source_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\audit_hitter_statcast_capture.py": "514bc934c8fcddbebfee8abddb0a1829b4ea13c6877e8c236ac9a716c2aea4d4",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\capture_hitter_statcast_history.py": "1c91f1115272d6a6cebd67ee4c33485d46c070ce8c76975c57cdfc2bad3e312c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\capture_hitter_statcast_history_v2.py": "5c7a20d561c995da1cb30691bc971be53135a606c849ddffd5d28c977d488010",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\hitter-statcast-historical-capture-contract.md": "e2fc1173b523f5113893c8c2e94f6d2fa64a817fca0ec2bab3088b6f68a58377",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\hitter-statcast-capture-source-semantics-amendment.md": "43966ea62c84438742c8f19cd5a809a690efc9f8e0afb0042d148ac9b72e6746",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-v31\\counts.parquet": "62de048f7eb6cae53dd29755e26953c31b204fbdfc0e6be261b63acd42da5e66",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-v31\\dated-stints.parquet": "d079aea8ae18cdae378013f8d0f63cd236ee137f25f6d5ebb4dd0a4a12c4518a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2015-03.json": "4405c4fdd09fe89f7ff22232ce9975f84529456151d430ad9ebbddd2eabd1c4b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2015-03.csv.gz": "8493f92957e6e7fac73eb643026e1b49d6ccb8bf25db5dbbc85b333dec7c8625",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2015-03.parquet": "f6920e79c894d3d6db9e2142c4ee08a40ab1ec8911311b5535f81a30f6013f17",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2015-04.json": "5a046bb292d3dd15bb5e326986669675d906b33479c38f174db7a96cf03be667",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2015-04.csv.gz": "5860308c6c502bd7a658b064176755b27a8a29f9b5fed473101cf4f0c21a0630",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2015-04.parquet": "063e59d4c8012d45c4d42fda6c46ba165691a9845a838e4b70a6a4d74524b977",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2015-05.json": "a819c07a9cc874bd652d78fabab29d3bd9da036c97bfb87753958ce995a2e5f5",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2015-05.csv.gz": "72f59e4030972b26813263f1063ed9e4ffbf6c79ec938e55c99cb6cd5c86d752",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2015-05.parquet": "f20514cf6478761b8ebf8c5d13a2903323c02ed931787e42bc998b3c068303bc",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2015-06.json": "043942e11566b3ceeba392c05936f3e1bfa7195bcdd2c8671f83eebb59f21b55",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2015-06.csv.gz": "edc5ff60a3fad074b384ace1e764ec279b30b50641933248d3595152fe9f47ae",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2015-06.parquet": "2c6dd879a633e5cf58ffb00f455e623a96bc7f89f8ac76cc38922a0bba549a06",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2015-07.json": "0bf235ac0bda346bebaa8d4edd4bc7066f898119e2d45dab77c311b41e681a74",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2015-07.csv.gz": "2c76667b1d2a716f9a47b281bffe79ba28ce4bd703f1412729e35e4524641e78",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2015-07.parquet": "c41deec05f3179701e02fb7553aad693e0e84b1d1441490b20863c49575f41ef",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2015-08.json": "6c33c0996710d490633e016c3f65d1ef18b974b0d99a731b5550e21bcb10ba66",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2015-08.csv.gz": "4a9a4f4536becce136c5d0012050684c2e325ce4489095f2748f12c7c2d02b73",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2015-08.parquet": "0c1af39b136568ec4143789fe174a1abd4b2cc7484fc20508c97b56965a3f61e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2015-09.json": "41cce865984600ea52884e10f1c0cd1cee6dbc04b3977a2caa92b0d5517c576f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2015-09.csv.gz": "8f1bb5e6926240d8c351f2c9e2e18b24f4ea945df788060076c29bfc2557cbda",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2015-09.parquet": "2d0d19d8ca9d0cddadb1e696b068880e5a0d3701d45a370b68506cc464bc4c6e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2015-10.json": "05021654972ab97d6a2fb9d2c4b5f5742962c221daeba05a150c04dcff3499df",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2015-10.csv.gz": "6b8517492d9cb36902cd65f0d6f522c186fda5f5b6a7e080c272a4c88c9f3042",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2015-10.parquet": "1b48dc62b083b84a7193f8d8484ab1355bc572f511bec97eddd316ee612465bc",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2016-03.json": "56b4aba4eabd0c61bcc44995d707100341104935ac50d698086d88c56b97781e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2016-03.csv.gz": "29795023b78b536a4737d21ff8050aaffc659ede14d2fa9519e10d0e334fb805",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2016-03.parquet": "f6920e79c894d3d6db9e2142c4ee08a40ab1ec8911311b5535f81a30f6013f17",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2016-04.json": "9786f354c67516d346b82c5a631f91540724429f52ea590c98fa816fcb8e4188",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2016-04.csv.gz": "90ec398dce9793911395015c8011a3ac3e358716da53fef824503f4f393e73fd",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2016-04.parquet": "be151d93626ce2c799df6120e56e542d8e06d8303fe38354a1de237fedb4eb9f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2016-05.json": "4e3fcb680dbee8179cef9ac0f2cb6e61ed6064c3b7aa6401f8c9c5e7a2484406",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2016-05.csv.gz": "3791a2711e6367b0fa7023e7dd1f18255ba9cd3028bb8266640528107ac5ec1b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2016-05.parquet": "7ac94115599eb665a3e97e54679e0c4cf19634f3acd737eb3f46b1f7e8c92792",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2016-06.json": "40ae6bb3f07e635b8c847567a69b7b357998503e7a2694e69419148965ffdcd9",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2016-06.csv.gz": "9d24b1e2a3f19ddb783f07be6f0f8bbf92a36df9a7ad178424518ee2d1e48d6c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2016-06.parquet": "e38d006bd85d15371645d9afeec57c272a4cabf2863342bc1f6f90dc05009908",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2016-07.json": "49f4fd3ca30f89b9c6d23a4972bf1985750b95995f0fa84560c1df74f59cc6e2",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2016-07.csv.gz": "539d83d161d47e23f5dfcb3c29f8b8e14d18c93c99dd45f24796a1b74df9a43e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2016-07.parquet": "0f7d542eac8df991d64fb40018f179f1bafe81a5d8ca1f2fdb137cd0330a3d9d",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2016-08.json": "f5325107ff31c2bd544dc32074268c9441de47bd10d885c15c217a6e7a7e3180",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2016-08.csv.gz": "bea772417b55502a85e092780bf29cce34822be7a5516e19dac814318b84535e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2016-08.parquet": "73ecfdd4ecb3d5168b5e62e7d34df5af7a6c46ed14cdfdca7ef6dad610741b6b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2016-09.json": "4849cb5dbd980b3c3687ddf5fb2654cb75c0477fbe8adf631160b449cac78cf8",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2016-09.csv.gz": "f6e9858eea315073fa3a267713a343cb17f47cc53cf138ce27ebd554f9ceecc3",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2016-09.parquet": "df863e6ea6cbc4e3e5fa808d61b94273caff11f8c13e5f362e2ea9120ed664c7",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2016-10.json": "ac9cf81e98e726bedad6eb0698cef3a86e6000f74f15f8b88e30c33bd1b8211f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2016-10.csv.gz": "f872b242af7d0e4e7622c558317684691b4d2cf98b0914dad66ca3cb3f404c83",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2016-10.parquet": "0137790867184d039b8748990b7fb36ba468b682d2ba6ba848b6d6e9d34a0b3b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2017-03.json": "26461b59f95bd7f52fe341b25b9c2a71753e06d2d145a4dab993451ddd7449ad",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2017-03.csv.gz": "49a51988b4c191f2300d007f20b0f379c34fe8fa58220b5f3b4ccb030fa45af2",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2017-03.parquet": "f6920e79c894d3d6db9e2142c4ee08a40ab1ec8911311b5535f81a30f6013f17",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2017-04.json": "6e421edf6034eea43dbdc632105e829e15a0ffcdad084637d88de8f354800191",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2017-04.csv.gz": "99b32bc15583746a50cf364b2410352aeab07d33ca3f0bdf6362e020463c2b9d",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2017-04.parquet": "534560987279e4e95c47a8188949680990a3a931dc71906a90c74a0ae039159a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2017-05.json": "eba9c7c04983f567b1cff8d9d4e9f18cbbaecaf425ccdee9825e68c53365e524",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2017-05.csv.gz": "1aad2617086318c425fec94741cb2fc2dcd14a18ce058ae15523f5e4f767c9fe",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2017-05.parquet": "1e23ca3a36ef6b4d81e512032deded8e99141830ac974bc37d523d82c6001d5a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2017-06.json": "2e8001bdb6e59f744873468dcd999d41d8724760c789be1915fc943f7855304e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2017-06.csv.gz": "bb690fb7bc164252097b4ae59ff1d1b1d6e96625afe716e5f529172535f1fa25",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2017-06.parquet": "eb907beac58f76c1918a9f9e5ff8c12fdc4e0d09c35bbaeb200bdfafa906cd5d",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2017-07.json": "2d9887ee69b0e4a84da5ca10b69c61be43d27a1682b3d8d6f2b0edc9990f94f9",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2017-07.csv.gz": "a21200e756453a5803f490663b421fe942f052337d57277d8dfd61f571f348b6",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2017-07.parquet": "4dcc9c484c178f9f5c3f5a947461603f6f58d2afb996215ffc7477d80739e3a3",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2017-08.json": "a686a9f3ef3e3b3cde97acd58decb42eda869664cdb04df9b0899399d979a23e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2017-08.csv.gz": "8a02a98e8a9be943f018250fac18349b0d52f7bda8ebdad85f8d9ff6f9d5ae8e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2017-08.parquet": "c72fd97632f84817e91d331ee931674a385f553138626f38d4aef35beefce1c4",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2017-09.json": "29e10f13a812ca8c67a8865cececd87a360a09a979e040217c6d6c451c686416",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2017-09.csv.gz": "8672b7dc6729a3d2cfbca66376221585107ab6f3a8220e9f992388a26a7bbe9a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2017-09.parquet": "b7a1ad2a600f58b2a5529047bca1a6d8e1748490da15f200df91cf625b4967df",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2017-10.json": "4526796d8d8a837d7bfc10b08eaa75f41c5eee2ff2cb039b9356f1314eb5624d",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2017-10.csv.gz": "e3f89be31aa4374f5c862b4801f7aafa3326a29463f7570dc05c42269abdcb11",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2017-10.parquet": "1e2d34458c353a5775abe350d145c9e31a1f32e88b11a8abe8f424318d7aae36",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2018-03.json": "a16de8eec5c03447196ffb7bd55a3651d733cb639f9d7b4901f19062147520f4",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2018-03.csv.gz": "993d9a36d264ae01be594ca40f503b4b166aed8f4f13cd75dedb77841542ba20",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2018-03.parquet": "30e866f5e5cf14053996d04bfdb490a04f3f47ebd68b924b430ee461a0120ee3",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2018-04.json": "3dc2f45b2d8cbd14b9d66edeb5fa52706d6f86a7a07c201ba904d13328c43843",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2018-04.csv.gz": "989c6e1470f50bc6d712e85a2847c9c67f3a94c7ea481c5687404fb2976afc20",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2018-04.parquet": "21762e2fc27f20fa343f5a848ce9124da5e4f79fa53860c30909ea6cb4ea44cf",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2018-05.json": "8ad396cbbe3db88fb71308d4e226103794c83c8a3b5b3b5a29ff48806b5adc97",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2018-05.csv.gz": "592c562888f23ab096db7938c7c28dd64e8d2f79af31916cad3dacc936811f2c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2018-05.parquet": "0b7bc1183bb5d65aaa8ac8a03f197b8ea832e5aee4c95eef09b6bd5114efc995",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2018-06.json": "e14c24daf308cbc10a515482ddaa61b3a163b6918c873ef1744d7ee6e5032db9",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2018-06.csv.gz": "f8dcbb045926209a58ef35a582b9c1d5820b044ece87d756f4e414f3dfea57d4",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2018-06.parquet": "6aeb28d4fe3949c590f6c2cd6451beaf8a8d09f3447b174d4a970e1d5aeca5f3",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2018-07.json": "05ea7fdeac8e9fd2432787208e66ddaaca6c772031e570de2e868382da8472ab",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2018-07.csv.gz": "e00602f6b7ff0d99176a3bd9f9ec46ceb6f2e41e4cd187cacaee2ea63e34eaf0",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2018-07.parquet": "2116d0d9eb1aa309ca32a0c363ce5db9dd8ff26f047ce41fcafdd91855bf6af5",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2018-08.json": "79d1f49cc8010eb24539ff1c2d8276a17de0a60ac1281434cb432dfe9976ebcf",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2018-08.csv.gz": "195a4c876a860fe8dcc4cb7f4205bd5bdbaba5a6f8138176519264b33a5b2120",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2018-08.parquet": "0987069924a502447f82b539dcd815be4dcb96005d241ea0e836bbcc36acdeef",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2018-09.json": "71b95976be88eece9f0b79dde11f06bbf15df42353948c40da949c79f5ba5364",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2018-09.csv.gz": "3fee0dabecce78f39dd8a844a4c63c0b6b6411ed7446c315ba705f82509d5639",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2018-09.parquet": "934d437cebdb8bcf8bb471fe6e9fa6162dd5000fea905f4ff29d415967b30715",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2018-10.json": "9137c93e5ee8072d8888a18440675a427bb95903c64fa7b2007b465cec10d990",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2018-10.csv.gz": "1523b575eb950915e90320ae0f6fcd4fecb9897c8a9d96583fd8c97232ef950d",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2018-10.parquet": "1c8a395b659cd0472a7c7d3900abe0be710c05bff6226abe2be1ec197ac1c6a9",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2019-03.json": "a2680b7b9b77c4b5f38026cc3ed4d2fe78dedd48475a0d8c451648922f15dddb",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2019-03.csv.gz": "7222a34b740b76b5db6e3300f9fed54346f8379533b9f4ff13842f3c246e33e9",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2019-03.parquet": "86b731b24e8ff7c9ebfb0ae1311290ad8ff1192e1674eaa8594422b1a865ba86",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2019-04.json": "91613b60606302fc3781b7eb91b13e5b0bdb636f552996a4c3e66d8d6dd94329",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2019-04.csv.gz": "07b947046c5a47f5f47c4c9c10f84a7705150db05c5361e2ba3dd5c4783a885b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2019-04.parquet": "03c48f63e1ed70a31171d765013930da37f9a87e918a1e0c177d7f85c73599d1",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2019-05.json": "8841259a24c3002851771cf28c7e896a57d052acea7ed909d9285387a59439e1",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2019-05.csv.gz": "ad4d7b9890598ce81f6ae792ad85a6fd95e1c9cada5b15b0a6915998b924dd81",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2019-05.parquet": "386d7bb1ae1f6205c1c835a28ce32318567ea2884815609bfe6d77b99c9de288",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2019-06.json": "285988b9efea7912b98d981d4d70a7a12c296b6fb880781168323bc6d6d0fefd",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2019-06.csv.gz": "492dd7f2ef35128463ca285318292b9598c52db1b06bf574d4602e82744f3513",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2019-06.parquet": "3b789831d320a1f8d7b52f21072826a2bf445c9376a64d536e433a3cfe8b5872",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2019-07.json": "fdc05e8b712556635091a686615276048aeb0be9d6aada69283827db60719866",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2019-07.csv.gz": "6f5814490732a4678e75953e1aa83e4644e3a57d98aee4352da089b46ff5f910",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2019-07.parquet": "acd808cb91beb2c9e0ea5a7e148a13505a0477ffc78c6582503d599500aa0108",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2019-08.json": "6cdd2f740022dbc35e7301b8cf570c82a18b27c985b11b61ef67223f7ab8a2eb",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2019-08.csv.gz": "bf12902d0a81005fab17b98c6b80b4f16b5c85994864edeea2962869ef2f34b2",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2019-08.parquet": "7d8a1d630df91423d441d6e65bbf9d67f39c6ed7ece9b8e60273223ef4e5a894",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2019-09.json": "4fe9359c905f0e37acc66729e3640f2a282799fc7d9fa52d50e00e30ae47bb16",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2019-09.csv.gz": "c0192518eb3daa1727264dd1f3ebdc4800302b5700f7a31b6d555d1e2808c84c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2019-09.parquet": "c60da2ae1738588d767fb96f27f0bc9507b7464456edc265b713af447e624968",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2019-10.json": "17e6d3031b7c3ea9b7284a2492f596c0710736c5a2c06b6db856f785d5138397",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2019-10.csv.gz": "c48baf1588eecb495da2a03dd435085ff69fc35b7d08ee134ad7db7a98cd8af7",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2019-10.parquet": "f6920e79c894d3d6db9e2142c4ee08a40ab1ec8911311b5535f81a30f6013f17",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2020-03.json": "b4b151a7dd1d6eea50486eee0f3f41f5a1c8189eeb0f67faee369aa86cb19cad",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2020-03.csv.gz": "9f0dacdbec43584f0135d5b7d769a411b6dbc3700ee825f200659f385c7054c8",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2020-03.parquet": "f6920e79c894d3d6db9e2142c4ee08a40ab1ec8911311b5535f81a30f6013f17",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2020-04.json": "eaa3ac950cf473f281007231a00bc00542b17adfa68c00957611bf11381bbf2f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2020-04.csv.gz": "25470649e7af6f2af3f24c78ee7857bdfcbae4ce8be9062135f6a78e09004603",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2020-04.parquet": "f6920e79c894d3d6db9e2142c4ee08a40ab1ec8911311b5535f81a30f6013f17",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2020-05.json": "d2a1977d55b59b6b7598d8ad9957eee1d29900df54e53c051da143481a004fce",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2020-05.csv.gz": "33467be2c97f2d07d5fec8d037fa5457851083ff021eae7cb5f69dee2578b95a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2020-05.parquet": "f6920e79c894d3d6db9e2142c4ee08a40ab1ec8911311b5535f81a30f6013f17",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2020-06.json": "2ff698ebccd14c52b7a200014eb3a98665385a556ccced78944d504fd91e645a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2020-06.csv.gz": "1db8e229b4fc822d38ef23124610ddc32f5fe24e72eb80d7c2e56d13cde13508",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2020-06.parquet": "f6920e79c894d3d6db9e2142c4ee08a40ab1ec8911311b5535f81a30f6013f17",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2020-07.json": "09f4241f46456e6331d6fccc71024aeb290d7013c2cb658bef979cc2521392c0",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2020-07.csv.gz": "ee02b43efe48a497b61b9d960df48fe55dacc801f4fcf3b2b6aabc84b1878912",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2020-07.parquet": "e3e1bb577a3f3917e1572e0a9cab64898a37bcefdc2633d3f5a554f6e1c458f4",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2020-08.json": "3618d24413d4a65bb567a58df1f6d87b2e28c481154039f5d2c433a776b08c88",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2020-08.csv.gz": "5889d2c55bdb58a4705bfd38ecc9736315f1595c9370cb3211122a7f43d8df0b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2020-08.parquet": "bea0838a5034b1bad300dbdf0868918a484f344f780af5520b0ba1876b179199",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2020-09.json": "99a116ecdec824fa4019db619d0f958e9e5ae9e03727bb5496a7d4a47c4eca37",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2020-09.csv.gz": "69551ccea06a671e61423292cfc434742fb1aa6fbe7d52d043ffe7cadcc61c96",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2020-09.parquet": "bf558e00c46812b5e37004f22a8e03454e3da4251dede36ab2107b80a2756310",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2020-10.json": "5928243c3bdd7eba18cbf52e82b7eadcb3868270a6df90180259ca3526eee862",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2020-10.csv.gz": "433cdc0aaee2cafcaddeea236a43d94fdf220ff39776d68c31b0d503441ddbfc",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2020-10.parquet": "f6920e79c894d3d6db9e2142c4ee08a40ab1ec8911311b5535f81a30f6013f17",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2021-03.json": "efba252b7eec6c2c65dbec16fd06ff79927768d937dd6e8ebff94c7fb36771f7",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2021-03.csv.gz": "4f901fb42e4de3f88fcead64ee65f5834b984e72fa27b2209d9148aa892634e2",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2021-03.parquet": "f6920e79c894d3d6db9e2142c4ee08a40ab1ec8911311b5535f81a30f6013f17",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2021-04.json": "1be9632f0481463cc43e16d1b63bec1b38777d2b6ae0455dd84de3d5f7c3634f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2021-04.csv.gz": "d22bccd29e710ac2a4a9e871982e97afbb97e288a37e45ce961988fec6435b15",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2021-04.parquet": "2bc85350eaf6e7e92573d623a319c2079bb23d348f36f8182a7c33f31c66d7ac",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2021-05.json": "7972864f876d57ef8e49cd0a58b1b0cb116c2c61901056283b43fa43a39c6b9e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2021-05.csv.gz": "5e2fd154248aa52fd3669378ba7371b26299150b72d22813f75225fb469fe14b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2021-05.parquet": "eb42ee425404d7bd11b0e8ffe9ce5adb6e15f7616718f069fb4b09b2e8d46fd2",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2021-06.json": "673ff3c226144c4939ca0043e889e5ce254ab9c163f8f4246e97df4c3ed05af7",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2021-06.csv.gz": "08d1a269f2a1671985450776b321b05ab2c8f681016e03fadc672c7db6e066e1",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2021-06.parquet": "4e003e4d301d4b10d6c107647e3e03791516e8d60b0236b93962bd8775553f6a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2021-07.json": "163e78c50f0e2a92888a5e236b0a6518fe7f8588f52a1e197d54b20b6980f554",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2021-07.csv.gz": "36ec314d3e2b804b76796d387015b0b3995aff41754c9d8df0c0821561dbd4f7",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2021-07.parquet": "b39aa0066a1fa4f213962e02d2a2f23ce4efacaec4d88075f7befd5db5aaa7e7",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2021-08.json": "f7207a2c6c8c3947d9572094f684d62c1a1810ef47dd35e8545c5286f1ad1c41",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2021-08.csv.gz": "3e1b352898a9dda0fba8bc0fac78c2f6fb8fa3c2c05fea915d14ee60863fd0c7",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2021-08.parquet": "7b68b1a279f389a6beff1705fc8646ab078743a186ab430c0f2f17f281fe2aa2",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2021-09.json": "148d791147bd3820959b97e28bcffddf1299385afaa50d9b02b3965c7f0170fe",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2021-09.csv.gz": "5ae3dc1a0c55d063edb900776b3291a3e560e995e36b299db8d7e2cfb928501c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2021-09.parquet": "f4319a8e2ce0fa24ffab0365faed3fa96c0717b73aa3d8ded147ddba11d135ff",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2021-10.json": "f1fb119e15f7f13aa33fe3795041243d128f238cfa69038811ba26f33bf9ef5f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2021-10.csv.gz": "61501796bb484968fbe167538a90df883426e23f22b2fc831c686e3245e98989",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2021-10.parquet": "be46a71823b545dc81daf6464ea3e073cdf2170e99157c4bebf60d795fdb7493",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2022-03.json": "110994ad6cfebdc54437d9af5ae4b2a8e82e46438090f91fa2af58f7ac6e909e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2022-03.csv.gz": "7342e0301d1110eaa3f0b74cda1a6a23f9ebfb764b33a581bbfe4406cd154e7a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2022-03.parquet": "f6920e79c894d3d6db9e2142c4ee08a40ab1ec8911311b5535f81a30f6013f17",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2022-04.json": "eed019fbdbd7af37357829a52c88164f2e00b6887163f34bdb0bfd5bfd09795c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2022-04.csv.gz": "0381012b4bb3896701a1336c5a4c584e07da48491f4761c4a0c35e401b330dcc",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2022-04.parquet": "49972fe76e6202ed5a519432cdee32ff92f7cbeae031a9922617cb321cee8a0b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2022-05.json": "676eff550117e1c2b8d2e0b3d5356cd4197334e7f6b328e974b5f30e22b10564",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2022-05.csv.gz": "85f7ae34786a16a3e77d95194f966f77d671a6ae7f78d3e87016fcce8d90d6ca",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2022-05.parquet": "2fab70bd1f6bbce6bd1a6dcefd47cc25090b7ae5ba030e2f3f89013f8cd1cb52",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2022-06.json": "09b53625a04f2e2f879bbbee4747269494925382ec38df67e19ceed85cecbc78",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2022-06.csv.gz": "248ec65fc70b716fb90e361ff1702633921b5687270bf681309c28dc884d944e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2022-06.parquet": "c6cbc0e33fd86711d9017ac6e7dd292f133fa75ad100dab6f80ebd5856f4b61b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2022-07.json": "41133b97cb40138acf8fe2d79b90677d0b5ec7b941f6aaaa8e77ae17615fe04e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2022-07.csv.gz": "48ae979c31079a60a60f124af5de94bec00c298eb3d1e90c23a1325f7ace210d",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2022-07.parquet": "c8aa58c941071dff14b13f73f0beeeb1518e860391de58971a1233b9f423385a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2022-08.json": "106457eb31cc41cca2246177ca5d80de1db0c3e609dc73ee6cc111a96694d560",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2022-08.csv.gz": "6a6de16ef5659296188432b516aa18ca9bed7b4ef9b748af0078d97911b358a9",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2022-08.parquet": "b5374dfbcc8ae370e4cc5ef3601d5ec92a9f88bfb4b77fae59c48b0fcdd71288",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2022-09.json": "2017568395e0c8c2466c09223ccbabca0ed59b41bb47927356a3310070340f17",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2022-09.csv.gz": "cf44bd4774d3519a996dc8ea4de2f1fb78397661b616d9526d1fd2151d882d9b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2022-09.parquet": "3c34c9cc467c56acffdd7f63be320bc1b5df8f6c7360bcedf5b1ec76f1a9d200",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2022-10.json": "63a25335f88d7952c0098cc12a4730e191529e31f44f1f3502106cf7a4d8c8b0",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2022-10.csv.gz": "cdc89f7f462451885351fd688d142712e3e32f65fdd194f237981a062dd00f18",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2022-10.parquet": "fb9036df5aa601c562d5e715ef1f499ef66c667e73318e960543652a7d71ad0d"
+  },
+  "years": [
+    {
+      "season": 2015,
+      "source_results": 130480,
+      "complete_nonbunt_pairs": 125366,
+      "terminal_nonbunt_results": 128185,
+      "missing_pair_results": 2819,
+      "complete_pair_share": 0.9780083473105278,
+      "source_people": 915,
+      "exact_all_player_hit_counts": true,
+      "catcher_interference_results": [
+        {
+          "game_pk": "415147",
+          "batter": "453056",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Jacoby Ellsbury reaches on catcher interference by Tomas Telis.    Jacoby Ellsbury to 1st."
+        },
+        {
+          "game_pk": "414991",
+          "batter": "430637",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Kelly Johnson reaches on catcher interference by Kyle Schwarber.    Kelly Johnson to 1st."
+        },
+        {
+          "game_pk": "415000",
+          "batter": "608701",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Rob Refsnyder reaches on catcher interference by Mike Zunino.    Didi Gregorius to 2nd.    Rob Refsnyder to 1st."
+        },
+        {
+          "game_pk": "415283",
+          "batter": "408307",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Carl Crawford reaches on catcher interference by Chris Stewart.    Carl Crawford to 1st."
+        },
+        {
+          "game_pk": "415802",
+          "batter": "502210",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Josh Reddick reaches on catcher interference by Tyler Flowers.    Danny Valencia to 2nd.    Josh Reddick to 1st."
+        },
+        {
+          "game_pk": "416052",
+          "batter": "600303",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Tommy La Stella reaches on catcher interference by Martin Maldonado.    Tommy La Stella to 1st."
+        }
+      ],
+      "contact_denominator_residual_people": 2,
+      "contact_denominator_residual_total": 0,
+      "contact_denominator_residual_absolute": 2,
+      "contact_denominator_residuals": [
+        {
+          "player_id": 446334,
+          "player_name": "Evan Longoria",
+          "official_contact_denominator": 481,
+          "source_without_catcher_interference": 480,
+          "contact_denominator_residual": -1
+        },
+        {
+          "player_id": 581527,
+          "player_name": "Devon Travis",
+          "official_contact_denominator": 175,
+          "source_without_catcher_interference": 176,
+          "contact_denominator_residual": 1
+        }
+      ],
+      "approved_for_modeling": false
+    },
+    {
+      "season": 2016,
+      "source_results": 128825,
+      "complete_nonbunt_pairs": 124628,
+      "terminal_nonbunt_results": 126799,
+      "missing_pair_results": 2171,
+      "complete_pair_share": 0.9828784138676172,
+      "source_people": 909,
+      "exact_all_player_hit_counts": true,
+      "catcher_interference_results": [
+        {
+          "game_pk": "446955",
+          "batter": "572816",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Corey Dickerson reaches on catcher interference by Matt Wieters. Evan Longoria to 2nd. Corey Dickerson to 1st."
+        },
+        {
+          "game_pk": "447417",
+          "batter": "431094",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Aaron Hill reaches on catcher interference by Hector Sanchez. Aaron Hill to 1st."
+        },
+        {
+          "game_pk": "447877",
+          "batter": "434636",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Angel Pagan reaches on catcher interference by Curt Casali. Brandon Crawford to 2nd. Angel Pagan to 1st."
+        },
+        {
+          "game_pk": "448416",
+          "batter": "453056",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Jacoby Ellsbury reaches on catcher interference by Curt Casali. Brett Gardner to 2nd. Jacoby Ellsbury to 1st."
+        },
+        {
+          "game_pk": "448357",
+          "batter": "600303",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Tommy La Stella reaches on catcher interference by Dioner Navarro. Addison Russell to 3rd. Miguel Montero to 2nd. Tommy La Stella to 1st."
+        },
+        {
+          "game_pk": "448822",
+          "batter": "453056",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Jacoby Ellsbury reaches on catcher interference by Drew Butera. Jacoby Ellsbury to 1st."
+        }
+      ],
+      "contact_denominator_residual_people": 5,
+      "contact_denominator_residual_total": 1,
+      "contact_denominator_residual_absolute": 5,
+      "contact_denominator_residuals": [
+        {
+          "player_id": 543829,
+          "player_name": "Dee Strange-Gordon",
+          "official_contact_denominator": 272,
+          "source_without_catcher_interference": 273,
+          "contact_denominator_residual": 1
+        },
+        {
+          "player_id": 425902,
+          "player_name": "Prince Fielder",
+          "official_contact_denominator": 268,
+          "source_without_catcher_interference": 267,
+          "contact_denominator_residual": -1
+        },
+        {
+          "player_id": 445055,
+          "player_name": "Jon Jay",
+          "official_contact_denominator": 270,
+          "source_without_catcher_interference": 271,
+          "contact_denominator_residual": 1
+        },
+        {
+          "player_id": 594828,
+          "player_name": "Evan Gattis",
+          "official_contact_denominator": 325,
+          "source_without_catcher_interference": 324,
+          "contact_denominator_residual": -1
+        },
+        {
+          "player_id": 591720,
+          "player_name": "Ronald Torreyes",
+          "official_contact_denominator": 137,
+          "source_without_catcher_interference": 138,
+          "contact_denominator_residual": 1
+        }
+      ],
+      "approved_for_modeling": false
+    },
+    {
+      "season": 2017,
+      "source_results": 127564,
+      "complete_nonbunt_pairs": 124974,
+      "terminal_nonbunt_results": 125761,
+      "missing_pair_results": 787,
+      "complete_pair_share": 0.9937420981067262,
+      "source_people": 905,
+      "exact_all_player_hit_counts": true,
+      "catcher_interference_results": [
+        {
+          "game_pk": "490288",
+          "batter": "543068",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "C.J. Cron reaches on catcher interference by Evan Gattis. C.J. Cron to 1st."
+        },
+        {
+          "game_pk": "490218",
+          "batter": "429665",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Edwin Encarnacion reaches on catcher interference by Omar Narvaez. Edwin Encarnacion to 1st."
+        },
+        {
+          "game_pk": "490190",
+          "batter": "516416",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Jean Segura reaches on catcher interference by Carlos Perez. Taylor Motter to 2nd. Jean Segura to 1st."
+        },
+        {
+          "game_pk": "490111",
+          "batter": "543807",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "George Springer reaches on catcher interference by Mike Zunino. Norichika Aoki to 2nd. George Springer to 1st."
+        },
+        {
+          "game_pk": "490485",
+          "batter": "453056",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Jacoby Ellsbury reaches on catcher interference by Luke Maile. Starlin Castro to 2nd. Jacoby Ellsbury to 1st."
+        },
+        {
+          "game_pk": "491263",
+          "batter": "467092",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Wilson Ramos reaches on catcher interference by Chris Stewart. Wilson Ramos to 1st."
+        },
+        {
+          "game_pk": "491574",
+          "batter": "451089",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Shane Peterson reaches on catcher interference by Robinson Chirinos. Steven Souza Jr. to 2nd. Shane Peterson to 1st."
+        },
+        {
+          "game_pk": "491887",
+          "batter": "608701",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Rob Refsnyder reaches on catcher interference by Wilson Ramos. Rob Refsnyder to 1st."
+        },
+        {
+          "game_pk": "492446",
+          "batter": "600303",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Tommy La Stella reaches on catcher interference by Carson Kelly. Kyle Schwarber scores. Jason Heyward to 3rd. Mike Freeman to 2nd. Tommy La Stella to 1st."
+        }
+      ],
+      "contact_denominator_residual_people": 1,
+      "contact_denominator_residual_total": -1,
+      "contact_denominator_residual_absolute": 1,
+      "contact_denominator_residuals": [
+        {
+          "player_id": 518618,
+          "player_name": "Derek Dietrich",
+          "official_contact_denominator": 312,
+          "source_without_catcher_interference": 311,
+          "contact_denominator_residual": -1
+        }
+      ],
+      "approved_for_modeling": false
+    },
+    {
+      "season": 2018,
+      "source_results": 126295,
+      "complete_nonbunt_pairs": 123826,
+      "terminal_nonbunt_results": 124550,
+      "missing_pair_results": 724,
+      "complete_pair_share": 0.9941870734644721,
+      "source_people": 911,
+      "exact_all_player_hit_counts": true,
+      "catcher_interference_results": [
+        {
+          "game_pk": "530224",
+          "batter": "542303",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Marcell Ozuna reaches on catcher interference by Manny Pina. Marcell Ozuna to 1st."
+        },
+        {
+          "game_pk": "530207",
+          "batter": "656555",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Rhys Hoskins reaches on catcher interference by Yasmani Grandal. Rhys Hoskins to 1st."
+        },
+        {
+          "game_pk": "530612",
+          "batter": "543807",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "George Springer reaches on catcher interference by Luke Maile. George Springer to 1st."
+        },
+        {
+          "game_pk": "530489",
+          "batter": "545361",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Mike Trout reaches on catcher interference by John Ryan Murphy. David Fletcher to 3rd. Ian Kinsler to 2nd. Mike Trout to 1st."
+        },
+        {
+          "game_pk": "530402",
+          "batter": "571679",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "David Freitas reaches on catcher interference by Martin Maldonado. David Freitas to 1st."
+        },
+        {
+          "game_pk": "530405",
+          "batter": "570256",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Gregory Polanco reaches on catcher interference by John Ryan Murphy. Josh Bell to 2nd. Gregory Polanco to 1st."
+        },
+        {
+          "game_pk": "530341",
+          "batter": "600303",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Tommy La Stella reaches on catcher interference by Andrew Knapp. Tommy La Stella to 1st."
+        },
+        {
+          "game_pk": "531103",
+          "batter": "657557",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Paul DeJong reaches on catcher interference by J. T. Realmuto. Marcell Ozuna to 2nd. Paul DeJong to 1st."
+        },
+        {
+          "game_pk": "531090",
+          "batter": "600303",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Tommy La Stella reaches on catcher interference by Austin Hedges. Tommy La Stella to 1st."
+        },
+        {
+          "game_pk": "531026",
+          "batter": "570256",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Gregory Polanco reaches on catcher interference by Willson Contreras. Gregory Polanco to 1st."
+        },
+        {
+          "game_pk": "531619",
+          "batter": "518614",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Daniel Descalso reaches on catcher interference by Brian McCann. Eduardo Escobar to 2nd. Daniel Descalso to 1st."
+        },
+        {
+          "game_pk": "531432",
+          "batter": "502671",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Paul Goldschmidt reaches on catcher interference by Austin Barnes. Paul Goldschmidt to 1st."
+        }
+      ],
+      "contact_denominator_residual_people": 2,
+      "contact_denominator_residual_total": 0,
+      "contact_denominator_residual_absolute": 2,
+      "contact_denominator_residuals": [
+        {
+          "player_id": 500743,
+          "player_name": "Miguel Rojas",
+          "official_contact_denominator": 425,
+          "source_without_catcher_interference": 426,
+          "contact_denominator_residual": 1
+        },
+        {
+          "player_id": 460086,
+          "player_name": "Alex Gordon",
+          "official_contact_denominator": 384,
+          "source_without_catcher_interference": 383,
+          "contact_denominator_residual": -1
+        }
+      ],
+      "approved_for_modeling": false
+    },
+    {
+      "season": 2019,
+      "source_results": 125768,
+      "complete_nonbunt_pairs": 123273,
+      "terminal_nonbunt_results": 124234,
+      "missing_pair_results": 961,
+      "complete_pair_share": 0.9922645974531932,
+      "source_people": 910,
+      "exact_all_player_hit_counts": true,
+      "catcher_interference_results": [
+        {
+          "game_pk": "564749",
+          "batter": "600303",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Tommy La Stella reaches on catcher interference by Luke Maile. Tommy La Stella to 1st."
+        },
+        {
+          "game_pk": "566975",
+          "batter": "501303",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Ehire Adrianza reaches on catcher interference by Robinson Chirinos. Ehire Adrianza to 1st."
+        },
+        {
+          "game_pk": "566777",
+          "batter": "542454",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Danny Santana reaches on catcher interference by Robinson Chirinos. Jeff Mathis to 3rd. Delino DeShields to 2nd. Danny Santana to 1st."
+        },
+        {
+          "game_pk": "564837",
+          "batter": "523253",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Logan Forsythe reaches on catcher interference by Carson Kelly. Logan Forsythe to 1st."
+        },
+        {
+          "game_pk": "567162",
+          "batter": "660670",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Ronald Acuna reaches on catcher interference by Chad Wallach. Freddie Freeman to 2nd. Ronald Acuna to 1st."
+        },
+        {
+          "game_pk": "567557",
+          "batter": "542583",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Jesus Aguilar reaches on catcher interference by Victor Caratini. Jesus Aguilar to 1st."
+        },
+        {
+          "game_pk": "567159",
+          "batter": "660670",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Ronald Acuna reaches on catcher interference by Willson Contreras. Freddie Freeman to 2nd. Ronald Acuna to 1st."
+        },
+        {
+          "game_pk": "566489",
+          "batter": "669222",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Nick Senzel reaches on catcher interference by Erik Kratz. Nick Senzel to 1st."
+        },
+        {
+          "game_pk": "566900",
+          "batter": "600303",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Tommy La Stella reaches on catcher interference by Danny Jansen. Tommy La Stella to 1st."
+        },
+        {
+          "game_pk": "566698",
+          "batter": "600303",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Tommy La Stella reaches on catcher interference by Mike Zunino. Tommy La Stella to 1st."
+        },
+        {
+          "game_pk": "566207",
+          "batter": "570256",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Gregory Polanco reaches on catcher interference by Manny Pina. Gregory Polanco to 1st."
+        },
+        {
+          "game_pk": "565845",
+          "batter": "641778",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Eric Lauer reaches on catcher interference by Austin Barnes. Eric Lauer to 1st."
+        },
+        {
+          "game_pk": "565671",
+          "batter": "502210",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Josh Reddick reaches on catcher interference by Travis d'Arnaud. Aledmys Diaz to 3rd. Robinson Chirinos to 2nd. Josh Reddick to 1st."
+        },
+        {
+          "game_pk": "567220",
+          "batter": "669222",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Nick Senzel reaches on catcher interference by Brian McCann. Nick Senzel to 1st."
+        },
+        {
+          "game_pk": "567632",
+          "batter": "456715",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Lorenzo Cain reaches on catcher interference by Jacob Stallings. Lorenzo Cain to 1st."
+        },
+        {
+          "game_pk": "565009",
+          "batter": "542340",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Jonathan Villar reaches on catcher interference by Tom Murphy. Jonathan Villar to 1st."
+        },
+        {
+          "game_pk": "567039",
+          "batter": "624585",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Jorge Soler reaches on catcher interference by Mitch Garver. Jorge Soler to 1st."
+        }
+      ],
+      "contact_denominator_residual_people": 5,
+      "contact_denominator_residual_total": -3,
+      "contact_denominator_residual_absolute": 5,
+      "contact_denominator_residuals": [
+        {
+          "player_id": 630111,
+          "player_name": "Yasmany Tom\u00e1s",
+          "official_contact_denominator": 3,
+          "source_without_catcher_interference": 2,
+          "contact_denominator_residual": -1
+        },
+        {
+          "player_id": 643265,
+          "player_name": "Garrett Cooper",
+          "official_contact_denominator": 273,
+          "source_without_catcher_interference": 272,
+          "contact_denominator_residual": -1
+        },
+        {
+          "player_id": 621043,
+          "player_name": "Carlos Correa",
+          "official_contact_denominator": 209,
+          "source_without_catcher_interference": 208,
+          "contact_denominator_residual": -1
+        },
+        {
+          "player_id": 641355,
+          "player_name": "Cody Bellinger",
+          "official_contact_denominator": 454,
+          "source_without_catcher_interference": 455,
+          "contact_denominator_residual": 1
+        },
+        {
+          "player_id": 641477,
+          "player_name": "Ryan Cordell",
+          "official_contact_denominator": 156,
+          "source_without_catcher_interference": 155,
+          "contact_denominator_residual": -1
+        }
+      ],
+      "approved_for_modeling": false
+    },
+    {
+      "season": 2020,
+      "source_results": 43978,
+      "complete_nonbunt_pairs": 43301,
+      "terminal_nonbunt_results": 43598,
+      "missing_pair_results": 297,
+      "complete_pair_share": 0.9931877609064635,
+      "source_people": 576,
+      "exact_all_player_hit_counts": true,
+      "catcher_interference_results": [
+        {
+          "game_pk": "630495",
+          "batter": "592450",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Aaron Judge reaches on catcher interference by Pedro Severino. Aaron Judge to 1st."
+        },
+        {
+          "game_pk": "631382",
+          "batter": "592626",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Joc Pederson reaches on catcher interference by Tyler Heineman. Joc Pederson to 1st."
+        },
+        {
+          "game_pk": "631448",
+          "batter": "543807",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "George Springer reaches on catcher interference by Austin Nola. George Springer to 1st."
+        },
+        {
+          "game_pk": "631445",
+          "batter": "502210",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Josh Reddick reaches on catcher interference by Chadwick Tromp. Jose Altuve to 2nd. Josh Reddick to 1st."
+        },
+        {
+          "game_pk": "631543",
+          "batter": "502517",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Daniel Murphy reaches on catcher interference by Tyler Heineman. Charlie Blackmon to 3rd. Nolan Arenado to 2nd. Daniel Murphy to 1st."
+        },
+        {
+          "game_pk": "631401",
+          "batter": "670084",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Royals challenged (other), call on the field was overturned: Nick Heath reaches on catcher interference by John Ryan Murphy. Maikel Franco to 3rd. Hunter Dozier to 2nd. Nick Heath to 1st."
+        }
+      ],
+      "contact_denominator_residual_people": 0,
+      "contact_denominator_residual_total": 0,
+      "contact_denominator_residual_absolute": 0,
+      "contact_denominator_residuals": [],
+      "approved_for_modeling": false
+    },
+    {
+      "season": 2021,
+      "source_results": 121707,
+      "complete_nonbunt_pairs": 119920,
+      "terminal_nonbunt_results": 120287,
+      "missing_pair_results": 367,
+      "complete_pair_share": 0.9969489637284162,
+      "source_people": 945,
+      "exact_all_player_hit_counts": true,
+      "catcher_interference_results": [
+        {
+          "game_pk": "634495",
+          "batter": "624585",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Jorge Soler reaches on catcher interference by Anthony Bemboom. Carlos Santana to 2nd. Jorge Soler to 1st."
+        },
+        {
+          "game_pk": "634607",
+          "batter": "624415",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Cavan Biggio reaches on catcher interference by Gary Sanchez. Randal Grichuk to 3rd. Joe Panik to 2nd. Cavan Biggio to 1st."
+        },
+        {
+          "game_pk": "633887",
+          "batter": "656775",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Cedric Mullins reaches on catcher interference by Yasmani Grandal. Cedric Mullins to 1st."
+        },
+        {
+          "game_pk": "632428",
+          "batter": "624585",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Jorge Soler reaches on catcher interference by Carson Kelly. Jorge Soler to 1st."
+        }
+      ],
+      "contact_denominator_residual_people": 4,
+      "contact_denominator_residual_total": -2,
+      "contact_denominator_residual_absolute": 4,
+      "contact_denominator_residuals": [
+        {
+          "player_id": 624585,
+          "player_name": "Jorge Soler",
+          "official_contact_denominator": 379,
+          "source_without_catcher_interference": 378,
+          "contact_denominator_residual": -1
+        },
+        {
+          "player_id": 656371,
+          "player_name": "Isan D\u00edaz",
+          "official_contact_denominator": 169,
+          "source_without_catcher_interference": 170,
+          "contact_denominator_residual": 1
+        },
+        {
+          "player_id": 668804,
+          "player_name": "Bryan Reynolds",
+          "official_contact_denominator": 444,
+          "source_without_catcher_interference": 443,
+          "contact_denominator_residual": -1
+        },
+        {
+          "player_id": 467793,
+          "player_name": "Carlos Santana",
+          "official_contact_denominator": 468,
+          "source_without_catcher_interference": 467,
+          "contact_denominator_residual": -1
+        }
+      ],
+      "approved_for_modeling": false
+    },
+    {
+      "season": 2022,
+      "source_results": 124275,
+      "complete_nonbunt_pairs": 122683,
+      "terminal_nonbunt_results": 123209,
+      "missing_pair_results": 526,
+      "complete_pair_share": 0.9957308313516058,
+      "source_people": 685,
+      "exact_all_player_hit_counts": true,
+      "catcher_interference_results": [
+        {
+          "game_pk": "662290",
+          "batter": "605137",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Josh Bell reaches on catcher interference by Andrew Knapp. Juan Soto to 2nd. Josh Bell to 1st."
+        },
+        {
+          "game_pk": "661292",
+          "batter": "502671",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Paul Goldschmidt reaches on catcher interference by Omar Narvaez. Paul Goldschmidt to 1st."
+        },
+        {
+          "game_pk": "663001",
+          "batter": "543068",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "C.J. Cron reaches on catcher interference by Tomas Nido. Connor Joe to 3rd. Charlie Blackmon to 2nd. C.J. Cron to 1st."
+        },
+        {
+          "game_pk": "663366",
+          "batter": "665862",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Jazz Chisholm Jr. reaches on catcher interference by Daulton Varsho. Jazz Chisholm Jr. to 1st."
+        },
+        {
+          "game_pk": "661275",
+          "batter": "592450",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Aaron Judge reaches on catcher interference by Sean Murphy. DJ LeMahieu to 2nd. Aaron Judge to 1st."
+        },
+        {
+          "game_pk": "661148",
+          "batter": "542583",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Jesus Aguilar reaches on catcher interference by Brian Serven. Jorge Soler to 2nd. Jesus Aguilar to 1st."
+        },
+        {
+          "game_pk": "662222",
+          "batter": "630105",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Jake Cronenworth reaches on catcher interference by Elias Diaz. Jake Cronenworth to 1st."
+        },
+        {
+          "game_pk": "662497",
+          "batter": "542583",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Jesus Aguilar reaches on catcher interference by James McCann. Garrett Cooper to 2nd. Jesus Aguilar to 1st."
+        },
+        {
+          "game_pk": "661063",
+          "batter": "542583",
+          "type": "S",
+          "events": "catcher_interf",
+          "description": "hit_into_play",
+          "des": "Jesus Aguilar reaches on catcher interference by Yan Gomes. Jesus Aguilar to 1st."
+        }
+      ],
+      "contact_denominator_residual_people": 1,
+      "contact_denominator_residual_total": -1,
+      "contact_denominator_residual_absolute": 1,
+      "contact_denominator_residuals": [
+        {
+          "player_id": 623520,
+          "player_name": "David Bote",
+          "official_contact_denominator": 72,
+          "source_without_catcher_interference": 71,
+          "contact_denominator_residual": -1
+        }
+      ],
+      "approved_for_modeling": false
+    }
+  ],
+  "unchanged_query_scope": true,
+  "source_years": [
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022
+  ],
+  "no_source_waiver": true,
+  "output_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture-audit\\contact-denominator-residuals-2015.parquet": "1f8b0b7bc80d85e814aaec9aa6057a59dc5e55bb4ad4563a6816e1bf5ea16619",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture-audit\\contact-denominator-residuals-2016.parquet": "5a3765c9e503c33f89ad94e8a2b8a713e8d1a970ceec91b88df05903ade8df23",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture-audit\\contact-denominator-residuals-2017.parquet": "214ae8492940d0fdc1b341c9e0ac36c9d0bc13cef1ceec70568e4c04acc35478",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture-audit\\contact-denominator-residuals-2018.parquet": "a046bec2ef142babb6f4f53961c132a3dce0f64c2badffb06faf5faf3ab7baae",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture-audit\\contact-denominator-residuals-2019.parquet": "3d118f23df3a8f295ff7d21b4dfbee7e54bea12bf01183a7b0edc24724cb3803",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture-audit\\contact-denominator-residuals-2020.parquet": "2f30f205ef69c74959aa8bf4b8f5d90760c5ca612be62c9a7d446c0882a7c77b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture-audit\\contact-denominator-residuals-2021.parquet": "5c86e2d02f31900d8937f9f36555d8f1db49db7c35fdfbdd9d166068c2f13cb6",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture-audit\\contact-denominator-residuals-2022.parquet": "9a34e244b3491e974eddea1cb7042e88754563f0c7b2856385132032f326ea8f"
+  }
+}

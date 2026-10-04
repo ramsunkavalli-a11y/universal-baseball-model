@@ -1,0 +1,125 @@
+{
+  "season": 2017,
+  "month": 9,
+  "requested_url": "https://baseballsavant.mlb.com/statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=hit\\.\\.into\\.\\.play%7C&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2017-09-01&game_date_lt=2017-09-30&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details&",
+  "returned_url": "https://baseballsavant.mlb.com/statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=hit%5C.%5C.into%5C.%5C.play%7C&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2017-09-01&game_date_lt=2017-09-30&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details&",
+  "captured_at": "2026-10-04 17:18:41.607426+00:00",
+  "response_sha256": "71eca87735969e1c1ca0df96b8ff4ce5cebf9fcabf361e2c9c109f30c9287ad1",
+  "response_bytes": 16431606,
+  "raw_rows": 21620,
+  "terminal_rows": 21620,
+  "missing_launch_speed": 302,
+  "missing_launch_angle": 302,
+  "returned_events": [
+    {
+      "events": "catcher_interf",
+      "len": 1
+    },
+    {
+      "events": "double",
+      "len": 1438
+    },
+    {
+      "events": "double_play",
+      "len": 70
+    },
+    {
+      "events": "field_error",
+      "len": 221
+    },
+    {
+      "events": "field_out",
+      "len": 12436
+    },
+    {
+      "events": "fielders_choice",
+      "len": 62
+    },
+    {
+      "events": "fielders_choice_out",
+      "len": 54
+    },
+    {
+      "events": "force_out",
+      "len": 625
+    },
+    {
+      "events": "grounded_into_double_play",
+      "len": 648
+    },
+    {
+      "events": "home_run",
+      "len": 1001
+    },
+    {
+      "events": "sac_bunt",
+      "len": 153
+    },
+    {
+      "events": "sac_fly",
+      "len": 202
+    },
+    {
+      "events": "sac_fly_double_play",
+      "len": 3
+    },
+    {
+      "events": "single",
+      "len": 4558
+    },
+    {
+      "events": "triple",
+      "len": 147
+    },
+    {
+      "events": "triple_play",
+      "len": 1
+    }
+  ],
+  "unusual_pitch_codes": [
+    {
+      "game_pk": "492446",
+      "batter": "600303",
+      "at_bat_number": "34",
+      "pitch_number": "4",
+      "type": "S",
+      "events": "catcher_interf",
+      "description": "hit_into_play",
+      "des": "Tommy La Stella reaches on catcher interference by Carson Kelly. Kyle Schwarber scores. Jason Heyward to 3rd. Mike Freeman to 2nd. Tommy La Stella to 1st."
+    }
+  ],
+  "raw_columns": [
+    "game_date",
+    "game_year",
+    "game_pk",
+    "at_bat_number",
+    "pitch_number",
+    "game_type",
+    "batter",
+    "pitcher",
+    "stand",
+    "p_throws",
+    "events",
+    "description",
+    "des",
+    "type",
+    "bb_type",
+    "hit_location",
+    "hc_x",
+    "hc_y",
+    "home_team",
+    "away_team",
+    "inning_topbot",
+    "launch_speed",
+    "launch_angle"
+  ],
+  "contract_sha256": "e2fc1173b523f5113893c8c2e94f6d2fa64a817fca0ec2bab3088b6f68a58377",
+  "amendment_sha256": "43966ea62c84438742c8f19cd5a809a690efc9f8e0afb0042d148ac9b72e6746",
+  "collector_sha256": "5c7a20d561c995da1cb30691bc971be53135a606c849ddffd5d28c977d488010",
+  "outputs": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2017-09.csv.gz": "8672b7dc6729a3d2cfbca66376221585107ab6f3a8220e9f992388a26a7bbe9a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2017-09.parquet": "b7a1ad2a600f58b2a5529047bca1a6d8e1748490da15f200df91cf625b4967df"
+  },
+  "model_fits": 0,
+  "protected_outcomes_used": false
+}

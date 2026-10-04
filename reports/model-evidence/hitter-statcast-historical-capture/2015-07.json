@@ -1,0 +1,145 @@
+{
+  "season": 2015,
+  "month": 7,
+  "requested_url": "https://baseballsavant.mlb.com/statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=hit\\.\\.into\\.\\.play%7C&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2015-07-01&game_date_lt=2015-07-31&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details&",
+  "returned_url": "https://baseballsavant.mlb.com/statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=hit%5C.%5C.into%5C.%5C.play%7C&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2015-07-01&game_date_lt=2015-07-31&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details&",
+  "captured_at": "2026-10-04 17:20:04.657288+00:00",
+  "response_sha256": "bbd34e722e206651d0180c85fea0a1ef2e0a8841b7e933389dfb7ffd0bd8af32",
+  "response_bytes": 14634651,
+  "raw_rows": 20288,
+  "terminal_rows": 20288,
+  "missing_launch_speed": 774,
+  "missing_launch_angle": 774,
+  "returned_events": [
+    {
+      "events": "catcher_interf",
+      "len": 3
+    },
+    {
+      "events": "double",
+      "len": 1250
+    },
+    {
+      "events": "double_play",
+      "len": 85
+    },
+    {
+      "events": "field_error",
+      "len": 209
+    },
+    {
+      "events": "field_out",
+      "len": 11756
+    },
+    {
+      "events": "fielders_choice",
+      "len": 54
+    },
+    {
+      "events": "fielders_choice_out",
+      "len": 50
+    },
+    {
+      "events": "force_out",
+      "len": 610
+    },
+    {
+      "events": "grounded_into_double_play",
+      "len": 600
+    },
+    {
+      "events": "home_run",
+      "len": 739
+    },
+    {
+      "events": "sac_bunt",
+      "len": 206
+    },
+    {
+      "events": "sac_fly",
+      "len": 175
+    },
+    {
+      "events": "sac_fly_double_play",
+      "len": 4
+    },
+    {
+      "events": "single",
+      "len": 4386
+    },
+    {
+      "events": "triple",
+      "len": 160
+    },
+    {
+      "events": "triple_play",
+      "len": 1
+    }
+  ],
+  "unusual_pitch_codes": [
+    {
+      "game_pk": "415147",
+      "batter": "453056",
+      "at_bat_number": "88",
+      "pitch_number": "5",
+      "type": "S",
+      "events": "catcher_interf",
+      "description": "hit_into_play",
+      "des": "Jacoby Ellsbury reaches on catcher interference by Tomas Telis.    Jacoby Ellsbury to 1st."
+    },
+    {
+      "game_pk": "414991",
+      "batter": "430637",
+      "at_bat_number": "47",
+      "pitch_number": "5",
+      "type": "S",
+      "events": "catcher_interf",
+      "description": "hit_into_play",
+      "des": "Kelly Johnson reaches on catcher interference by Kyle Schwarber.    Kelly Johnson to 1st."
+    },
+    {
+      "game_pk": "415000",
+      "batter": "608701",
+      "at_bat_number": "18",
+      "pitch_number": "2",
+      "type": "S",
+      "events": "catcher_interf",
+      "description": "hit_into_play",
+      "des": "Rob Refsnyder reaches on catcher interference by Mike Zunino.    Didi Gregorius to 2nd.    Rob Refsnyder to 1st."
+    }
+  ],
+  "raw_columns": [
+    "game_date",
+    "game_year",
+    "game_pk",
+    "at_bat_number",
+    "pitch_number",
+    "game_type",
+    "batter",
+    "pitcher",
+    "stand",
+    "p_throws",
+    "events",
+    "description",
+    "des",
+    "type",
+    "bb_type",
+    "hit_location",
+    "hc_x",
+    "hc_y",
+    "home_team",
+    "away_team",
+    "inning_topbot",
+    "launch_speed",
+    "launch_angle"
+  ],
+  "contract_sha256": "e2fc1173b523f5113893c8c2e94f6d2fa64a817fca0ec2bab3088b6f68a58377",
+  "amendment_sha256": "43966ea62c84438742c8f19cd5a809a690efc9f8e0afb0042d148ac9b72e6746",
+  "collector_sha256": "5c7a20d561c995da1cb30691bc971be53135a606c849ddffd5d28c977d488010",
+  "outputs": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2015-07.csv.gz": "2c76667b1d2a716f9a47b281bffe79ba28ce4bd703f1412729e35e4524641e78",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2015-07.parquet": "c41deec05f3179701e02fb7553aad693e0e84b1d1441490b20863c49575f41ef"
+  },
+  "model_fits": 0,
+  "protected_outcomes_used": false
+}

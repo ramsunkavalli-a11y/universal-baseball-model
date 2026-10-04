@@ -1,0 +1,131 @@
+{
+  "season": 2018,
+  "month": 9,
+  "requested_url": "https://baseballsavant.mlb.com/statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=hit\\.\\.into\\.\\.play%7C&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2018-09-01&game_date_lt=2018-09-30&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details&",
+  "returned_url": "https://baseballsavant.mlb.com/statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=hit%5C.%5C.into%5C.%5C.play%7C&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2018-09-01&game_date_lt=2018-09-30&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details&",
+  "captured_at": "2026-10-04 17:17:08.052602+00:00",
+  "response_sha256": "455a27f03cf3580712d7d122527819b8f713b82849e3c83a0db385abcd2c3447",
+  "response_bytes": 15420913,
+  "raw_rows": 20575,
+  "terminal_rows": 20575,
+  "missing_launch_speed": 212,
+  "missing_launch_angle": 212,
+  "returned_events": [
+    {
+      "events": "catcher_interf",
+      "len": 2
+    },
+    {
+      "events": "double",
+      "len": 1338
+    },
+    {
+      "events": "double_play",
+      "len": 81
+    },
+    {
+      "events": "field_error",
+      "len": 237
+    },
+    {
+      "events": "field_out",
+      "len": 12088
+    },
+    {
+      "events": "fielders_choice",
+      "len": 66
+    },
+    {
+      "events": "fielders_choice_out",
+      "len": 56
+    },
+    {
+      "events": "force_out",
+      "len": 537
+    },
+    {
+      "events": "grounded_into_double_play",
+      "len": 542
+    },
+    {
+      "events": "home_run",
+      "len": 912
+    },
+    {
+      "events": "sac_bunt",
+      "len": 117
+    },
+    {
+      "events": "sac_fly",
+      "len": 209
+    },
+    {
+      "events": "sac_fly_double_play",
+      "len": 2
+    },
+    {
+      "events": "single",
+      "len": 4232
+    },
+    {
+      "events": "triple",
+      "len": 156
+    }
+  ],
+  "unusual_pitch_codes": [
+    {
+      "game_pk": "531619",
+      "batter": "518614",
+      "at_bat_number": "31",
+      "pitch_number": "2",
+      "type": "S",
+      "events": "catcher_interf",
+      "description": "hit_into_play",
+      "des": "Daniel Descalso reaches on catcher interference by Brian McCann. Eduardo Escobar to 2nd. Daniel Descalso to 1st."
+    },
+    {
+      "game_pk": "531432",
+      "batter": "502671",
+      "at_bat_number": "3",
+      "pitch_number": "5",
+      "type": "S",
+      "events": "catcher_interf",
+      "description": "hit_into_play",
+      "des": "Paul Goldschmidt reaches on catcher interference by Austin Barnes. Paul Goldschmidt to 1st."
+    }
+  ],
+  "raw_columns": [
+    "game_date",
+    "game_year",
+    "game_pk",
+    "at_bat_number",
+    "pitch_number",
+    "game_type",
+    "batter",
+    "pitcher",
+    "stand",
+    "p_throws",
+    "events",
+    "description",
+    "des",
+    "type",
+    "bb_type",
+    "hit_location",
+    "hc_x",
+    "hc_y",
+    "home_team",
+    "away_team",
+    "inning_topbot",
+    "launch_speed",
+    "launch_angle"
+  ],
+  "contract_sha256": "e2fc1173b523f5113893c8c2e94f6d2fa64a817fca0ec2bab3088b6f68a58377",
+  "amendment_sha256": "43966ea62c84438742c8f19cd5a809a690efc9f8e0afb0042d148ac9b72e6746",
+  "collector_sha256": "5c7a20d561c995da1cb30691bc971be53135a606c849ddffd5d28c977d488010",
+  "outputs": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2018-09.csv.gz": "3fee0dabecce78f39dd8a844a4c63c0b6b6411ed7446c315ba705f82509d5639",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2018-09.parquet": "934d437cebdb8bcf8bb471fe6e9fa6162dd5000fea905f4ff29d415967b30715"
+  },
+  "model_fits": 0,
+  "protected_outcomes_used": false
+}

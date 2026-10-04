@@ -1,0 +1,141 @@
+{
+  "season": 2019,
+  "month": 6,
+  "requested_url": "https://baseballsavant.mlb.com/statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=hit\\.\\.into\\.\\.play%7C&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2019-06-01&game_date_lt=2019-06-30&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details&",
+  "returned_url": "https://baseballsavant.mlb.com/statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=hit%5C.%5C.into%5C.%5C.play%7C&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2019-06-01&game_date_lt=2019-06-30&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details&",
+  "captured_at": "2026-10-04 17:14:49.722103+00:00",
+  "response_sha256": "277cb30c9d7eeb5c51ac1dbb70ec58f19f802f3c113a3997c116da7d0c9cd891",
+  "response_bytes": 15907763,
+  "raw_rows": 21288,
+  "terminal_rows": 21288,
+  "missing_launch_speed": 189,
+  "missing_launch_angle": 189,
+  "returned_events": [
+    {
+      "events": "catcher_interf",
+      "len": 3
+    },
+    {
+      "events": "double",
+      "len": 1452
+    },
+    {
+      "events": "double_play",
+      "len": 63
+    },
+    {
+      "events": "field_error",
+      "len": 240
+    },
+    {
+      "events": "field_out",
+      "len": 12197
+    },
+    {
+      "events": "fielders_choice",
+      "len": 62
+    },
+    {
+      "events": "fielders_choice_out",
+      "len": 49
+    },
+    {
+      "events": "force_out",
+      "len": 619
+    },
+    {
+      "events": "grounded_into_double_play",
+      "len": 558
+    },
+    {
+      "events": "home_run",
+      "len": 1142
+    },
+    {
+      "events": "sac_bunt",
+      "len": 137
+    },
+    {
+      "events": "sac_fly",
+      "len": 198
+    },
+    {
+      "events": "sac_fly_double_play",
+      "len": 3
+    },
+    {
+      "events": "single",
+      "len": 4430
+    },
+    {
+      "events": "triple",
+      "len": 135
+    }
+  ],
+  "unusual_pitch_codes": [
+    {
+      "game_pk": "566900",
+      "batter": "600303",
+      "at_bat_number": "33",
+      "pitch_number": "4",
+      "type": "S",
+      "events": "catcher_interf",
+      "description": "hit_into_play",
+      "des": "Tommy La Stella reaches on catcher interference by Danny Jansen. Tommy La Stella to 1st."
+    },
+    {
+      "game_pk": "566698",
+      "batter": "600303",
+      "at_bat_number": "54",
+      "pitch_number": "5",
+      "type": "S",
+      "events": "catcher_interf",
+      "description": "hit_into_play",
+      "des": "Tommy La Stella reaches on catcher interference by Mike Zunino. Tommy La Stella to 1st."
+    },
+    {
+      "game_pk": "566207",
+      "batter": "570256",
+      "at_bat_number": "71",
+      "pitch_number": "3",
+      "type": "S",
+      "events": "catcher_interf",
+      "description": "hit_into_play",
+      "des": "Gregory Polanco reaches on catcher interference by Manny Pina. Gregory Polanco to 1st."
+    }
+  ],
+  "raw_columns": [
+    "game_date",
+    "game_year",
+    "game_pk",
+    "at_bat_number",
+    "pitch_number",
+    "game_type",
+    "batter",
+    "pitcher",
+    "stand",
+    "p_throws",
+    "events",
+    "description",
+    "des",
+    "type",
+    "bb_type",
+    "hit_location",
+    "hc_x",
+    "hc_y",
+    "home_team",
+    "away_team",
+    "inning_topbot",
+    "launch_speed",
+    "launch_angle"
+  ],
+  "contract_sha256": "e2fc1173b523f5113893c8c2e94f6d2fa64a817fca0ec2bab3088b6f68a58377",
+  "amendment_sha256": "43966ea62c84438742c8f19cd5a809a690efc9f8e0afb0042d148ac9b72e6746",
+  "collector_sha256": "5c7a20d561c995da1cb30691bc971be53135a606c849ddffd5d28c977d488010",
+  "outputs": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2019-06.csv.gz": "492dd7f2ef35128463ca285318292b9598c52db1b06bf574d4602e82744f3513",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2019-06.parquet": "3b789831d320a1f8d7b52f21072826a2bf445c9376a64d536e433a3cfe8b5872"
+  },
+  "model_fits": 0,
+  "protected_outcomes_used": false
+}

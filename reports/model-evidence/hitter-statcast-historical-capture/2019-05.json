@@ -1,0 +1,125 @@
+{
+  "season": 2019,
+  "month": 5,
+  "requested_url": "https://baseballsavant.mlb.com/statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=hit\\.\\.into\\.\\.play%7C&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2019-05-01&game_date_lt=2019-05-31&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details&",
+  "returned_url": "https://baseballsavant.mlb.com/statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=hit%5C.%5C.into%5C.%5C.play%7C&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2019-05-01&game_date_lt=2019-05-31&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details&",
+  "captured_at": "2026-10-04 17:14:38.902866+00:00",
+  "response_sha256": "6c3d1d1a746b92e9e0d2906fa1b59012eb30ef3e81e910c2c123a72f91d89087",
+  "response_bytes": 16037344,
+  "raw_rows": 21584,
+  "terminal_rows": 21584,
+  "missing_launch_speed": 535,
+  "missing_launch_angle": 535,
+  "returned_events": [
+    {
+      "events": "catcher_interf",
+      "len": 1
+    },
+    {
+      "events": "double",
+      "len": 1399
+    },
+    {
+      "events": "double_play",
+      "len": 54
+    },
+    {
+      "events": "field_error",
+      "len": 227
+    },
+    {
+      "events": "field_out",
+      "len": 12426
+    },
+    {
+      "events": "fielders_choice",
+      "len": 86
+    },
+    {
+      "events": "fielders_choice_out",
+      "len": 48
+    },
+    {
+      "events": "force_out",
+      "len": 637
+    },
+    {
+      "events": "grounded_into_double_play",
+      "len": 593
+    },
+    {
+      "events": "home_run",
+      "len": 1136
+    },
+    {
+      "events": "sac_bunt",
+      "len": 132
+    },
+    {
+      "events": "sac_fly",
+      "len": 205
+    },
+    {
+      "events": "sac_fly_double_play",
+      "len": 1
+    },
+    {
+      "events": "single",
+      "len": 4511
+    },
+    {
+      "events": "triple",
+      "len": 127
+    },
+    {
+      "events": "triple_play",
+      "len": 1
+    }
+  ],
+  "unusual_pitch_codes": [
+    {
+      "game_pk": "566489",
+      "batter": "669222",
+      "at_bat_number": "1",
+      "pitch_number": "3",
+      "type": "S",
+      "events": "catcher_interf",
+      "description": "hit_into_play",
+      "des": "Nick Senzel reaches on catcher interference by Erik Kratz. Nick Senzel to 1st."
+    }
+  ],
+  "raw_columns": [
+    "game_date",
+    "game_year",
+    "game_pk",
+    "at_bat_number",
+    "pitch_number",
+    "game_type",
+    "batter",
+    "pitcher",
+    "stand",
+    "p_throws",
+    "events",
+    "description",
+    "des",
+    "type",
+    "bb_type",
+    "hit_location",
+    "hc_x",
+    "hc_y",
+    "home_team",
+    "away_team",
+    "inning_topbot",
+    "launch_speed",
+    "launch_angle"
+  ],
+  "contract_sha256": "e2fc1173b523f5113893c8c2e94f6d2fa64a817fca0ec2bab3088b6f68a58377",
+  "amendment_sha256": "43966ea62c84438742c8f19cd5a809a690efc9f8e0afb0042d148ac9b72e6746",
+  "collector_sha256": "5c7a20d561c995da1cb30691bc971be53135a606c849ddffd5d28c977d488010",
+  "outputs": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2019-05.csv.gz": "ad4d7b9890598ce81f6ae792ad85a6fd95e1c9cada5b15b0a6915998b924dd81",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2019-05.parquet": "386d7bb1ae1f6205c1c835a28ce32318567ea2884815609bfe6d77b99c9de288"
+  },
+  "model_fits": 0,
+  "protected_outcomes_used": false
+}

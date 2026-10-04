@@ -1,0 +1,135 @@
+{
+  "season": 2022,
+  "month": 4,
+  "requested_url": "https://baseballsavant.mlb.com/statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=hit\\.\\.into\\.\\.play%7C&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2022-04-01&game_date_lt=2022-04-30&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details&",
+  "returned_url": "https://baseballsavant.mlb.com/statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=hit%5C.%5C.into%5C.%5C.play%7C&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2022-04-01&game_date_lt=2022-04-30&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details&",
+  "captured_at": "2026-10-04 17:12:06.726929+00:00",
+  "response_sha256": "561b1d473ac3406729b89b14c0faf9371226a73ae8fa1bad8be1f102c43d7e69",
+  "response_bytes": 11887134,
+  "raw_rows": 15713,
+  "terminal_rows": 15713,
+  "missing_launch_speed": 74,
+  "missing_launch_angle": 60,
+  "returned_events": [
+    {
+      "events": "catcher_interf",
+      "len": 2
+    },
+    {
+      "events": "double",
+      "len": 994
+    },
+    {
+      "events": "double_play",
+      "len": 52
+    },
+    {
+      "events": "field_error",
+      "len": 159
+    },
+    {
+      "events": "field_out",
+      "len": 9427
+    },
+    {
+      "events": "fielders_choice",
+      "len": 55
+    },
+    {
+      "events": "fielders_choice_out",
+      "len": 31
+    },
+    {
+      "events": "force_out",
+      "len": 488
+    },
+    {
+      "events": "grounded_into_double_play",
+      "len": 431
+    },
+    {
+      "events": "home_run",
+      "len": 574
+    },
+    {
+      "events": "sac_bunt",
+      "len": 49
+    },
+    {
+      "events": "sac_fly",
+      "len": 186
+    },
+    {
+      "events": "sac_fly_double_play",
+      "len": 2
+    },
+    {
+      "events": "single",
+      "len": 3186
+    },
+    {
+      "events": "triple",
+      "len": 76
+    },
+    {
+      "events": "triple_play",
+      "len": 1
+    }
+  ],
+  "unusual_pitch_codes": [
+    {
+      "game_pk": "662290",
+      "batter": "605137",
+      "at_bat_number": "4",
+      "pitch_number": "4",
+      "type": "S",
+      "events": "catcher_interf",
+      "description": "hit_into_play",
+      "des": "Josh Bell reaches on catcher interference by Andrew Knapp. Juan Soto to 2nd. Josh Bell to 1st."
+    },
+    {
+      "game_pk": "661292",
+      "batter": "502671",
+      "at_bat_number": "21",
+      "pitch_number": "9",
+      "type": "S",
+      "events": "catcher_interf",
+      "description": "hit_into_play",
+      "des": "Paul Goldschmidt reaches on catcher interference by Omar Narvaez. Paul Goldschmidt to 1st."
+    }
+  ],
+  "raw_columns": [
+    "game_date",
+    "game_year",
+    "game_pk",
+    "at_bat_number",
+    "pitch_number",
+    "game_type",
+    "batter",
+    "pitcher",
+    "stand",
+    "p_throws",
+    "events",
+    "description",
+    "des",
+    "type",
+    "bb_type",
+    "hit_location",
+    "hc_x",
+    "hc_y",
+    "home_team",
+    "away_team",
+    "inning_topbot",
+    "launch_speed",
+    "launch_angle"
+  ],
+  "contract_sha256": "e2fc1173b523f5113893c8c2e94f6d2fa64a817fca0ec2bab3088b6f68a58377",
+  "amendment_sha256": "43966ea62c84438742c8f19cd5a809a690efc9f8e0afb0042d148ac9b72e6746",
+  "collector_sha256": "5c7a20d561c995da1cb30691bc971be53135a606c849ddffd5d28c977d488010",
+  "outputs": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2022-04.csv.gz": "0381012b4bb3896701a1336c5a4c584e07da48491f4761c4a0c35e401b330dcc",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2022-04.parquet": "49972fe76e6202ed5a519432cdee32ff92f7cbeae031a9922617cb321cee8a0b"
+  },
+  "model_fits": 0,
+  "protected_outcomes_used": false
+}

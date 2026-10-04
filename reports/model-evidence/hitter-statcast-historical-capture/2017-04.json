@@ -1,0 +1,155 @@
+{
+  "season": 2017,
+  "month": 4,
+  "requested_url": "https://baseballsavant.mlb.com/statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=hit\\.\\.into\\.\\.play%7C&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2017-04-01&game_date_lt=2017-04-30&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details&",
+  "returned_url": "https://baseballsavant.mlb.com/statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=hit%5C.%5C.into%5C.%5C.play%7C&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2017-04-01&game_date_lt=2017-04-30&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details&",
+  "captured_at": "2026-10-04 17:17:25.199246+00:00",
+  "response_sha256": "f87bddc641a4c1af83a45d61bc9c584494673b4aab471702f1c43d072670de5f",
+  "response_bytes": 14376757,
+  "raw_rows": 19305,
+  "terminal_rows": 19303,
+  "missing_launch_speed": 428,
+  "missing_launch_angle": 428,
+  "returned_events": [
+    {
+      "events": "catcher_interf",
+      "len": 4
+    },
+    {
+      "events": "double",
+      "len": 1185
+    },
+    {
+      "events": "double_play",
+      "len": 50
+    },
+    {
+      "events": "field_error",
+      "len": 218
+    },
+    {
+      "events": "field_out",
+      "len": 11275
+    },
+    {
+      "events": "fielders_choice",
+      "len": 60
+    },
+    {
+      "events": "fielders_choice_out",
+      "len": 44
+    },
+    {
+      "events": "force_out",
+      "len": 568
+    },
+    {
+      "events": "game_advisory",
+      "len": 2
+    },
+    {
+      "events": "grounded_into_double_play",
+      "len": 605
+    },
+    {
+      "events": "home_run",
+      "len": 863
+    },
+    {
+      "events": "sac_bunt",
+      "len": 137
+    },
+    {
+      "events": "sac_fly",
+      "len": 155
+    },
+    {
+      "events": "sac_fly_double_play",
+      "len": 2
+    },
+    {
+      "events": "single",
+      "len": 4015
+    },
+    {
+      "events": "triple",
+      "len": 122
+    }
+  ],
+  "unusual_pitch_codes": [
+    {
+      "game_pk": "490288",
+      "batter": "543068",
+      "at_bat_number": "23",
+      "pitch_number": "2",
+      "type": "S",
+      "events": "catcher_interf",
+      "description": "hit_into_play",
+      "des": "C.J. Cron reaches on catcher interference by Evan Gattis. C.J. Cron to 1st."
+    },
+    {
+      "game_pk": "490218",
+      "batter": "429665",
+      "at_bat_number": "14",
+      "pitch_number": "3",
+      "type": "S",
+      "events": "catcher_interf",
+      "description": "hit_into_play",
+      "des": "Edwin Encarnacion reaches on catcher interference by Omar Narvaez. Edwin Encarnacion to 1st."
+    },
+    {
+      "game_pk": "490190",
+      "batter": "516416",
+      "at_bat_number": "35",
+      "pitch_number": "3",
+      "type": "S",
+      "events": "catcher_interf",
+      "description": "hit_into_play",
+      "des": "Jean Segura reaches on catcher interference by Carlos Perez. Taylor Motter to 2nd. Jean Segura to 1st."
+    },
+    {
+      "game_pk": "490111",
+      "batter": "543807",
+      "at_bat_number": "20",
+      "pitch_number": "4",
+      "type": "S",
+      "events": "catcher_interf",
+      "description": "hit_into_play",
+      "des": "George Springer reaches on catcher interference by Mike Zunino. Norichika Aoki to 2nd. George Springer to 1st."
+    }
+  ],
+  "raw_columns": [
+    "game_date",
+    "game_year",
+    "game_pk",
+    "at_bat_number",
+    "pitch_number",
+    "game_type",
+    "batter",
+    "pitcher",
+    "stand",
+    "p_throws",
+    "events",
+    "description",
+    "des",
+    "type",
+    "bb_type",
+    "hit_location",
+    "hc_x",
+    "hc_y",
+    "home_team",
+    "away_team",
+    "inning_topbot",
+    "launch_speed",
+    "launch_angle"
+  ],
+  "contract_sha256": "e2fc1173b523f5113893c8c2e94f6d2fa64a817fca0ec2bab3088b6f68a58377",
+  "amendment_sha256": "43966ea62c84438742c8f19cd5a809a690efc9f8e0afb0042d148ac9b72e6746",
+  "collector_sha256": "5c7a20d561c995da1cb30691bc971be53135a606c849ddffd5d28c977d488010",
+  "outputs": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2017-04.csv.gz": "99b32bc15583746a50cf364b2410352aeab07d33ca3f0bdf6362e020463c2b9d",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2017-04.parquet": "534560987279e4e95c47a8188949680990a3a931dc71906a90c74a0ae039159a"
+  },
+  "model_fits": 0,
+  "protected_outcomes_used": false
+}

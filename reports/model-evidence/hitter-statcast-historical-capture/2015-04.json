@@ -1,0 +1,108 @@
+{
+  "season": 2015,
+  "month": 4,
+  "requested_url": "https://baseballsavant.mlb.com/statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=hit\\.\\.into\\.\\.play%7C&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2015-04-01&game_date_lt=2015-04-30&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details&",
+  "returned_url": "https://baseballsavant.mlb.com/statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=hit%5C.%5C.into%5C.%5C.play%7C&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2015-04-01&game_date_lt=2015-04-30&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details&",
+  "captured_at": "2026-10-04 17:04:36.219600+00:00",
+  "response_sha256": "d58910f1a08a93bc76e3e9f56a45cf52bf66321c67779711d85e5e5bb343764e",
+  "response_bytes": 12611533,
+  "raw_rows": 17559,
+  "terminal_rows": 17559,
+  "missing_launch_speed": 1019,
+  "missing_launch_angle": 1019,
+  "returned_events": [
+    {
+      "events": "double",
+      "len": 1099
+    },
+    {
+      "events": "double_play",
+      "len": 67
+    },
+    {
+      "events": "field_error",
+      "len": 221
+    },
+    {
+      "events": "field_out",
+      "len": 10250
+    },
+    {
+      "events": "fielders_choice",
+      "len": 50
+    },
+    {
+      "events": "fielders_choice_out",
+      "len": 48
+    },
+    {
+      "events": "force_out",
+      "len": 566
+    },
+    {
+      "events": "grounded_into_double_play",
+      "len": 482
+    },
+    {
+      "events": "home_run",
+      "len": 592
+    },
+    {
+      "events": "sac_bunt",
+      "len": 162
+    },
+    {
+      "events": "sac_bunt_double_play",
+      "len": 1
+    },
+    {
+      "events": "sac_fly",
+      "len": 175
+    },
+    {
+      "events": "sac_fly_double_play",
+      "len": 1
+    },
+    {
+      "events": "single",
+      "len": 3724
+    },
+    {
+      "events": "triple",
+      "len": 121
+    }
+  ],
+  "raw_columns": [
+    "game_date",
+    "game_year",
+    "game_pk",
+    "at_bat_number",
+    "pitch_number",
+    "game_type",
+    "batter",
+    "pitcher",
+    "stand",
+    "p_throws",
+    "events",
+    "description",
+    "des",
+    "type",
+    "bb_type",
+    "hit_location",
+    "hc_x",
+    "hc_y",
+    "home_team",
+    "away_team",
+    "inning_topbot",
+    "launch_speed",
+    "launch_angle"
+  ],
+  "contract_sha256": "e2fc1173b523f5113893c8c2e94f6d2fa64a817fca0ec2bab3088b6f68a58377",
+  "collector_sha256": "1c91f1115272d6a6cebd67ee4c33485d46c070ce8c76975c57cdfc2bad3e312c",
+  "outputs": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2015-04.csv.gz": "5860308c6c502bd7a658b064176755b27a8a29f9b5fed473101cf4f0c21a0630",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2015-04.parquet": "063e59d4c8012d45c4d42fda6c46ba165691a9845a838e4b70a6a4d74524b977"
+  },
+  "model_fits": 0,
+  "protected_outcomes_used": false
+}

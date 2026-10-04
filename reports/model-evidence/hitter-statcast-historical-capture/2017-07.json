@@ -1,0 +1,125 @@
+{
+  "season": 2017,
+  "month": 7,
+  "requested_url": "https://baseballsavant.mlb.com/statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=hit\\.\\.into\\.\\.play%7C&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2017-07-01&game_date_lt=2017-07-31&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details&",
+  "returned_url": "https://baseballsavant.mlb.com/statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=hit%5C.%5C.into%5C.%5C.play%7C&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2017-07-01&game_date_lt=2017-07-31&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details&",
+  "captured_at": "2026-10-04 17:18:08.787227+00:00",
+  "response_sha256": "2a6c0bf9a6b0f4eb088af36be9a15ca9c4f65b654a3ce7ca51cd028b8017db10",
+  "response_bytes": 15051405,
+  "raw_rows": 19803,
+  "terminal_rows": 19803,
+  "missing_launch_speed": 257,
+  "missing_launch_angle": 257,
+  "returned_events": [
+    {
+      "events": "catcher_interf",
+      "len": 1
+    },
+    {
+      "events": "double",
+      "len": 1376
+    },
+    {
+      "events": "double_play",
+      "len": 66
+    },
+    {
+      "events": "field_error",
+      "len": 187
+    },
+    {
+      "events": "field_out",
+      "len": 11320
+    },
+    {
+      "events": "fielders_choice",
+      "len": 60
+    },
+    {
+      "events": "fielders_choice_out",
+      "len": 52
+    },
+    {
+      "events": "force_out",
+      "len": 579
+    },
+    {
+      "events": "grounded_into_double_play",
+      "len": 593
+    },
+    {
+      "events": "home_run",
+      "len": 936
+    },
+    {
+      "events": "sac_bunt",
+      "len": 127
+    },
+    {
+      "events": "sac_fly",
+      "len": 196
+    },
+    {
+      "events": "sac_fly_double_play",
+      "len": 2
+    },
+    {
+      "events": "single",
+      "len": 4173
+    },
+    {
+      "events": "triple",
+      "len": 134
+    },
+    {
+      "events": "triple_play",
+      "len": 1
+    }
+  ],
+  "unusual_pitch_codes": [
+    {
+      "game_pk": "491574",
+      "batter": "451089",
+      "at_bat_number": "15",
+      "pitch_number": "3",
+      "type": "S",
+      "events": "catcher_interf",
+      "description": "hit_into_play",
+      "des": "Shane Peterson reaches on catcher interference by Robinson Chirinos. Steven Souza Jr. to 2nd. Shane Peterson to 1st."
+    }
+  ],
+  "raw_columns": [
+    "game_date",
+    "game_year",
+    "game_pk",
+    "at_bat_number",
+    "pitch_number",
+    "game_type",
+    "batter",
+    "pitcher",
+    "stand",
+    "p_throws",
+    "events",
+    "description",
+    "des",
+    "type",
+    "bb_type",
+    "hit_location",
+    "hc_x",
+    "hc_y",
+    "home_team",
+    "away_team",
+    "inning_topbot",
+    "launch_speed",
+    "launch_angle"
+  ],
+  "contract_sha256": "e2fc1173b523f5113893c8c2e94f6d2fa64a817fca0ec2bab3088b6f68a58377",
+  "amendment_sha256": "43966ea62c84438742c8f19cd5a809a690efc9f8e0afb0042d148ac9b72e6746",
+  "collector_sha256": "5c7a20d561c995da1cb30691bc971be53135a606c849ddffd5d28c977d488010",
+  "outputs": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2017-07.csv.gz": "a21200e756453a5803f490663b421fe942f052337d57277d8dfd61f571f348b6",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2017-07.parquet": "4dcc9c484c178f9f5c3f5a947461603f6f58d2afb996215ffc7477d80739e3a3"
+  },
+  "model_fits": 0,
+  "protected_outcomes_used": false
+}

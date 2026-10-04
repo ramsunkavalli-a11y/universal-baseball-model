@@ -1,0 +1,141 @@
+{
+  "season": 2022,
+  "month": 6,
+  "requested_url": "https://baseballsavant.mlb.com/statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=hit\\.\\.into\\.\\.play%7C&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2022-06-01&game_date_lt=2022-06-30&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details&",
+  "returned_url": "https://baseballsavant.mlb.com/statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=hit%5C.%5C.into%5C.%5C.play%7C&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2022-06-01&game_date_lt=2022-06-30&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details&",
+  "captured_at": "2026-10-04 17:12:44.533784+00:00",
+  "response_sha256": "7f7a225edcd7b8857db2deaadfe1b07f3b10a9e1183bd323f5629397d825852c",
+  "response_bytes": 15850055,
+  "raw_rows": 20992,
+  "terminal_rows": 20992,
+  "missing_launch_speed": 101,
+  "missing_launch_angle": 76,
+  "returned_events": [
+    {
+      "events": "catcher_interf",
+      "len": 3
+    },
+    {
+      "events": "double",
+      "len": 1380
+    },
+    {
+      "events": "double_play",
+      "len": 61
+    },
+    {
+      "events": "field_error",
+      "len": 195
+    },
+    {
+      "events": "field_out",
+      "len": 12453
+    },
+    {
+      "events": "fielders_choice",
+      "len": 62
+    },
+    {
+      "events": "fielders_choice_out",
+      "len": 42
+    },
+    {
+      "events": "force_out",
+      "len": 649
+    },
+    {
+      "events": "grounded_into_double_play",
+      "len": 522
+    },
+    {
+      "events": "home_run",
+      "len": 960
+    },
+    {
+      "events": "sac_bunt",
+      "len": 45
+    },
+    {
+      "events": "sac_fly",
+      "len": 184
+    },
+    {
+      "events": "sac_fly_double_play",
+      "len": 4
+    },
+    {
+      "events": "single",
+      "len": 4314
+    },
+    {
+      "events": "triple",
+      "len": 118
+    }
+  ],
+  "unusual_pitch_codes": [
+    {
+      "game_pk": "661275",
+      "batter": "592450",
+      "at_bat_number": "59",
+      "pitch_number": "3",
+      "type": "S",
+      "events": "catcher_interf",
+      "description": "hit_into_play",
+      "des": "Aaron Judge reaches on catcher interference by Sean Murphy. DJ LeMahieu to 2nd. Aaron Judge to 1st."
+    },
+    {
+      "game_pk": "661148",
+      "batter": "542583",
+      "at_bat_number": "34",
+      "pitch_number": "8",
+      "type": "S",
+      "events": "catcher_interf",
+      "description": "hit_into_play",
+      "des": "Jesus Aguilar reaches on catcher interference by Brian Serven. Jorge Soler to 2nd. Jesus Aguilar to 1st."
+    },
+    {
+      "game_pk": "662222",
+      "batter": "630105",
+      "at_bat_number": "68",
+      "pitch_number": "5",
+      "type": "S",
+      "events": "catcher_interf",
+      "description": "hit_into_play",
+      "des": "Jake Cronenworth reaches on catcher interference by Elias Diaz. Jake Cronenworth to 1st."
+    }
+  ],
+  "raw_columns": [
+    "game_date",
+    "game_year",
+    "game_pk",
+    "at_bat_number",
+    "pitch_number",
+    "game_type",
+    "batter",
+    "pitcher",
+    "stand",
+    "p_throws",
+    "events",
+    "description",
+    "des",
+    "type",
+    "bb_type",
+    "hit_location",
+    "hc_x",
+    "hc_y",
+    "home_team",
+    "away_team",
+    "inning_topbot",
+    "launch_speed",
+    "launch_angle"
+  ],
+  "contract_sha256": "e2fc1173b523f5113893c8c2e94f6d2fa64a817fca0ec2bab3088b6f68a58377",
+  "amendment_sha256": "43966ea62c84438742c8f19cd5a809a690efc9f8e0afb0042d148ac9b72e6746",
+  "collector_sha256": "5c7a20d561c995da1cb30691bc971be53135a606c849ddffd5d28c977d488010",
+  "outputs": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2022-06.csv.gz": "248ec65fc70b716fb90e361ff1702633921b5687270bf681309c28dc884d944e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2022-06.parquet": "c6cbc0e33fd86711d9017ac6e7dd292f133fa75ad100dab6f80ebd5856f4b61b"
+  },
+  "model_fits": 0,
+  "protected_outcomes_used": false
+}

@@ -1,0 +1,125 @@
+{
+  "season": 2017,
+  "month": 6,
+  "requested_url": "https://baseballsavant.mlb.com/statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=hit\\.\\.into\\.\\.play%7C&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2017-06-01&game_date_lt=2017-06-30&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details&",
+  "returned_url": "https://baseballsavant.mlb.com/statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=hit%5C.%5C.into%5C.%5C.play%7C&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2017-06-01&game_date_lt=2017-06-30&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details&",
+  "captured_at": "2026-10-04 17:17:54.205006+00:00",
+  "response_sha256": "e5698589af99fa403d4c337a4bd503ba24052fe55a840d50708154306f94b53c",
+  "response_bytes": 16370562,
+  "raw_rows": 21563,
+  "terminal_rows": 21563,
+  "missing_launch_speed": 332,
+  "missing_launch_angle": 332,
+  "returned_events": [
+    {
+      "events": "catcher_interf",
+      "len": 1
+    },
+    {
+      "events": "double",
+      "len": 1480
+    },
+    {
+      "events": "double_play",
+      "len": 69
+    },
+    {
+      "events": "field_error",
+      "len": 211
+    },
+    {
+      "events": "field_out",
+      "len": 12252
+    },
+    {
+      "events": "fielders_choice",
+      "len": 60
+    },
+    {
+      "events": "fielders_choice_out",
+      "len": 48
+    },
+    {
+      "events": "force_out",
+      "len": 591
+    },
+    {
+      "events": "grounded_into_double_play",
+      "len": 633
+    },
+    {
+      "events": "home_run",
+      "len": 1101
+    },
+    {
+      "events": "sac_bunt",
+      "len": 157
+    },
+    {
+      "events": "sac_fly",
+      "len": 205
+    },
+    {
+      "events": "sac_fly_double_play",
+      "len": 2
+    },
+    {
+      "events": "single",
+      "len": 4634
+    },
+    {
+      "events": "triple",
+      "len": 118
+    },
+    {
+      "events": "triple_play",
+      "len": 1
+    }
+  ],
+  "unusual_pitch_codes": [
+    {
+      "game_pk": "491263",
+      "batter": "467092",
+      "at_bat_number": "9",
+      "pitch_number": "1",
+      "type": "S",
+      "events": "catcher_interf",
+      "description": "hit_into_play",
+      "des": "Wilson Ramos reaches on catcher interference by Chris Stewart. Wilson Ramos to 1st."
+    }
+  ],
+  "raw_columns": [
+    "game_date",
+    "game_year",
+    "game_pk",
+    "at_bat_number",
+    "pitch_number",
+    "game_type",
+    "batter",
+    "pitcher",
+    "stand",
+    "p_throws",
+    "events",
+    "description",
+    "des",
+    "type",
+    "bb_type",
+    "hit_location",
+    "hc_x",
+    "hc_y",
+    "home_team",
+    "away_team",
+    "inning_topbot",
+    "launch_speed",
+    "launch_angle"
+  ],
+  "contract_sha256": "e2fc1173b523f5113893c8c2e94f6d2fa64a817fca0ec2bab3088b6f68a58377",
+  "amendment_sha256": "43966ea62c84438742c8f19cd5a809a690efc9f8e0afb0042d148ac9b72e6746",
+  "collector_sha256": "5c7a20d561c995da1cb30691bc971be53135a606c849ddffd5d28c977d488010",
+  "outputs": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2017-06.csv.gz": "bb690fb7bc164252097b4ae59ff1d1b1d6e96625afe716e5f529172535f1fa25",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2017-06.parquet": "eb907beac58f76c1918a9f9e5ff8c12fdc4e0d09c35bbaeb200bdfafa906cd5d"
+  },
+  "model_fits": 0,
+  "protected_outcomes_used": false
+}

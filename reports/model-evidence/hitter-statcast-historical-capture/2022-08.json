@@ -1,0 +1,125 @@
+{
+  "season": 2022,
+  "month": 8,
+  "requested_url": "https://baseballsavant.mlb.com/statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=hit\\.\\.into\\.\\.play%7C&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2022-08-01&game_date_lt=2022-08-31&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details&",
+  "returned_url": "https://baseballsavant.mlb.com/statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=hit%5C.%5C.into%5C.%5C.play%7C&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2022-08-01&game_date_lt=2022-08-31&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details&",
+  "captured_at": "2026-10-04 17:13:12.396286+00:00",
+  "response_sha256": "d9764cbed63a310580766d58742d0560b74461e19c3496cbcb3f499f586b72e6",
+  "response_bytes": 16309786,
+  "raw_rows": 21629,
+  "terminal_rows": 21629,
+  "missing_launch_speed": 113,
+  "missing_launch_angle": 94,
+  "returned_events": [
+    {
+      "events": "catcher_interf",
+      "len": 1
+    },
+    {
+      "events": "double",
+      "len": 1346
+    },
+    {
+      "events": "double_play",
+      "len": 72
+    },
+    {
+      "events": "field_error",
+      "len": 171
+    },
+    {
+      "events": "field_out",
+      "len": 12782
+    },
+    {
+      "events": "fielders_choice",
+      "len": 60
+    },
+    {
+      "events": "fielders_choice_out",
+      "len": 57
+    },
+    {
+      "events": "force_out",
+      "len": 658
+    },
+    {
+      "events": "grounded_into_double_play",
+      "len": 584
+    },
+    {
+      "events": "home_run",
+      "len": 875
+    },
+    {
+      "events": "sac_bunt",
+      "len": 79
+    },
+    {
+      "events": "sac_fly",
+      "len": 206
+    },
+    {
+      "events": "sac_fly_double_play",
+      "len": 6
+    },
+    {
+      "events": "single",
+      "len": 4621
+    },
+    {
+      "events": "triple",
+      "len": 110
+    },
+    {
+      "events": "triple_play",
+      "len": 1
+    }
+  ],
+  "unusual_pitch_codes": [
+    {
+      "game_pk": "661063",
+      "batter": "542583",
+      "at_bat_number": "23",
+      "pitch_number": "4",
+      "type": "S",
+      "events": "catcher_interf",
+      "description": "hit_into_play",
+      "des": "Jesus Aguilar reaches on catcher interference by Yan Gomes. Jesus Aguilar to 1st."
+    }
+  ],
+  "raw_columns": [
+    "game_date",
+    "game_year",
+    "game_pk",
+    "at_bat_number",
+    "pitch_number",
+    "game_type",
+    "batter",
+    "pitcher",
+    "stand",
+    "p_throws",
+    "events",
+    "description",
+    "des",
+    "type",
+    "bb_type",
+    "hit_location",
+    "hc_x",
+    "hc_y",
+    "home_team",
+    "away_team",
+    "inning_topbot",
+    "launch_speed",
+    "launch_angle"
+  ],
+  "contract_sha256": "e2fc1173b523f5113893c8c2e94f6d2fa64a817fca0ec2bab3088b6f68a58377",
+  "amendment_sha256": "43966ea62c84438742c8f19cd5a809a690efc9f8e0afb0042d148ac9b72e6746",
+  "collector_sha256": "5c7a20d561c995da1cb30691bc971be53135a606c849ddffd5d28c977d488010",
+  "outputs": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2022-08.csv.gz": "6a6de16ef5659296188432b516aa18ca9bed7b4ef9b748af0078d97911b358a9",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-statcast-historical-capture\\2022-08.parquet": "b5374dfbcc8ae370e4cc5ef3601d5ec92a9f88bfb4b77fae59c48b0fcdd71288"
+  },
+  "model_fits": 0,
+  "protected_outcomes_used": false
+}
