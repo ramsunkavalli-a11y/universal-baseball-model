@@ -24,7 +24,33 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: source-qualified research explorer built and browser checked.**
+**Current checkpoint: workload uncertainty scored and fourteen player reviews completed.**
+The [completed comparison](hitter-workload-risk-result.md) keeps all current
+means and probabilities exactly unchanged. Fifty distinct nested heads across
+95 contexts were replayed; all 35 spread estimates were recomputed. Quantile
+loss improves overall 6.2290 to 6.0963 versus the older forest, and upper-minors
+loss 6.1940 to 5.7954, with favorable nominal development intervals. Public
+matched gain is uncertain; absent-player and thin-entry losses are worse than
+forest, and lower-level improvement is uncertain. The stronger reference changes
+means/features/context; an explicit same-rule diagnostic attributes 9.68% of
+the net gain to preexisting retirement/permanent-eligibility rules, not spread.
+The [actual player walks](hitter-workload-risk-player-walkthrough.md) explain
+Langford's improved upper tail, Judge's forest advantage, Kurtz's zero P90 at
+6% debut probability, and Hoskins's falling P90 at a wrongly low return chance.
+Eight focused tests pass. Keep this as qualified workload-risk research, not
+calibrated all-level ranges or an explorer promotion. No current point forecast,
+frozen 2026 or deployed explorer changes. The public MAE gap and upper-minors
+regular-season undercount remain: new risk expects 32.5 upper-minors entrants
+reaching 400 PA against 59 actual. Before choosing another fit, reconcile
+earlier talent-to-workload evidence with this candidate and its readiness
+bottleneck. The older explicit-talent test held participation fixed in a different
+population; it cannot rule out a contribution to arrival here. Do not repeat it
+unchanged, select a favorable ablation or start another library/status sweep.
+Joint batting-performance uncertainty and full player value remain unfinished;
+the full goal stays active. Original pending fit/verification receipts remain
+preserved, with a separate completed final report.
+
+**Previous checkpoint: source-qualified research explorer built and browser checked.**
 The [handoff review](hitter-qualified-handoff-result.md) exposes the completed
 source audit on all 30,506 historical forecasts, with exact original row and
 forecast preservation. The local research explorer at port 8792 retains team,

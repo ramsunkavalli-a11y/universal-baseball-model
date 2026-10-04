@@ -84,8 +84,10 @@ hide optimistic hitting offsetting low workload. The player reviews expose that.
 
 This branch is not certified park-neutral. Historical foreign/signing evidence
 and opportunity conditions are incomplete. Continuous uncertainty is not
-calibrated; support flags and descriptive probability bands are not confidence
-intervals. Do not interpret next-year appearance chance as eventual MLB success
+certified across the population; the separately reviewed workload-risk research
+below does not change this point candidate. Support flags and descriptive
+probability bands are not confidence intervals. Do not interpret next-year
+appearance chance as eventual MLB success
 or use low immediate PA to erase long-term prospect value.
 
 The [completed listing review](hitter-roster-provenance-audit-result.md) confirms
@@ -114,13 +116,22 @@ reviews are hidden by default. Organization is the requested historical year-end
 roster when available, otherwise the last observed club, not his future employer.
 Filtered totals cover known players, not a complete future team budget.
 
-The controlling practical plan now proceeds to useful uncertainty after the
-completed delivered-value and source comparisons. Test active-workload spread
-with fixed current participation probabilities and means before claiming risk
-is usable. Earlier distributions cannot simply be attached to this candidate.
+The [active-workload uncertainty test](hitter-workload-risk-result.md) is now
+complete, with fourteen actual player walkthroughs. A nested, mean-preserving
+distribution improves quantile loss overall and in upper minors versus an older
+forest, but public gains are uncertain and absent/thin entrants remain worse.
+The comparison also changes means and source context; existing retirement rules
+account for 9.68% of its net advantage. Keep the new distribution as qualified
+research, not deployed ranges or certified whole-population risk. Expected PA,
+hitting and offense remain exactly unchanged; no batting-performance or full
+value distribution has been established. Earlier distributions cannot simply
+be attached to this candidate.
 Supported immediate-readiness and talent extrapolation for thin professional
 samples remain substantive unresolved problems, not solved by wider intervals.
-Preserve the established-player benchmark and distinguish uncertain prospect
-ceilings from next-year use; do not reopen a status-flag or library tournament.
+Reconcile the earlier explicit-talent/workload study before selecting a substantive
+readiness repair: it held participation fixed in a different population and did
+not test talent's contribution to arrival in this candidate. Preserve the
+established-player benchmark and distinguish uncertain prospect ceilings from
+next-year use; do not reopen a status-flag or library tournament.
 The historical handoff does not change the frozen 2026 forecast or deployed
 explorers, and does not complete the broader hitter goal.
