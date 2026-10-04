@@ -1,0 +1,1965 @@
+[
+  {
+    "scope": "all",
+    "rows": 30506,
+    "people": 11020,
+    "actual_pa": 1270493,
+    "actual_value": 4264.186901827925,
+    "scores": {
+      "preseason": {
+        "pa_rmse": 60.49910182626437,
+        "pa_mae": 20.61235822996412,
+        "pa_bias": -1.3478241546151606,
+        "value_rmse": 0.4533837583463631,
+        "value_mae": 0.1287883541154738,
+        "value_bias": -0.003011917365026582,
+        "pa_total": 1228732.5119559553,
+        "value_total": 4165.848839961402
+      },
+      "translated_ridge": {
+        "pa_rmse": 60.499101826264365,
+        "pa_mae": 20.61235822996412,
+        "pa_bias": -1.3478241546151608,
+        "value_rmse": 0.45322335136814834,
+        "value_mae": 0.12849838188253188,
+        "value_bias": -0.003161411820255076,
+        "pa_total": 1228732.5119559553,
+        "value_total": 4160.975118139149
+      },
+      "pooled_extended": {
+        "pa_rmse": 60.501543063925865,
+        "pa_mae": 20.65835098367908,
+        "pa_bias": -1.2977159751542633,
+        "value_rmse": 0.4534397452287129,
+        "value_mae": 0.12893993281514265,
+        "value_bias": -0.0028549733070191473,
+        "pa_total": 1230252.744221611,
+        "value_total": 4170.608096179127
+      },
+      "prospect_restricted": {
+        "pa_rmse": 60.502935567174525,
+        "pa_mae": 20.654526042357922,
+        "pa_bias": -1.3071197827063301,
+        "value_rmse": 0.45354639949674713,
+        "value_mae": 0.12901047309387786,
+        "value_bias": -0.0028530843037634286,
+        "pa_total": 1229751.443617743,
+        "value_total": 4170.099815725226
+      },
+      "prospect_extended": {
+        "pa_rmse": 60.52760994120026,
+        "pa_mae": 20.675827112471634,
+        "pa_bias": -1.3174972284155129,
+        "value_rmse": 0.45361931184235915,
+        "value_mae": 0.12905602968812074,
+        "value_bias": -0.0028581824204609294,
+        "pa_total": 1229518.3329884603,
+        "value_total": 4170.146690609531
+      },
+      "pooled_extended_translated": {
+        "pa_rmse": 60.501543063925865,
+        "pa_mae": 20.65835098367909,
+        "pa_bias": -1.2977159751542635,
+        "value_rmse": 0.4532781981118905,
+        "value_mae": 0.12860947402866993,
+        "value_bias": -0.003041781790130029,
+        "pa_total": 1230252.744221611,
+        "value_total": 4164.5663736866845
+      },
+      "prospect_restricted_translated": {
+        "pa_rmse": 60.502935567174525,
+        "pa_mae": 20.654526042357922,
+        "pa_bias": -1.3071197827063301,
+        "value_rmse": 0.4534144516115959,
+        "value_mae": 0.1287180838283461,
+        "value_bias": -0.0030239952157913364,
+        "pa_total": 1229751.443617743,
+        "value_total": 4164.567980364552
+      },
+      "prospect_extended_translated": {
+        "pa_rmse": 60.52760994120026,
+        "pa_mae": 20.675827112471637,
+        "pa_bias": -1.3174972284155129,
+        "value_rmse": 0.4534596647794996,
+        "value_mae": 0.1287369871909515,
+        "value_bias": -0.0030659769033576237,
+        "pa_total": 1229518.3329884603,
+        "value_total": 4163.468763079141
+      }
+    },
+    "conditional": {
+      "preseason": {
+        "rows": 4538,
+        "people": 1493,
+        "rmse": 141.02268124334933,
+        "mae": 111.24110076521345,
+        "bias": -1.9857117002341724,
+        "predicted_total": 1261906.6340405908,
+        "actual_total": 1270493,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "pooled_extended": {
+        "rows": 4538,
+        "people": 1493,
+        "rmse": 141.05019272765682,
+        "mae": 111.35193509083817,
+        "bias": -1.7306133687109038,
+        "predicted_total": 1263114.6651510631,
+        "actual_total": 1270493,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "prospect_restricted": {
+        "rows": 4538,
+        "people": 1493,
+        "rmse": 141.28186004923043,
+        "mae": 111.73150126564501,
+        "bias": -1.3371465014643593,
+        "predicted_total": 1265023.7264554822,
+        "actual_total": 1270493,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "prospect_extended": {
+        "rows": 4538,
+        "people": 1493,
+        "rmse": 141.62797183800484,
+        "mae": 112.02515824264053,
+        "bias": -1.5994563877314059,
+        "predicted_total": 1263742.3724375903,
+        "actual_total": 1270493,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      }
+    }
+  },
+  {
+    "scope": "never_debut",
+    "rows": 24199,
+    "people": 10076,
+    "actual_pa": 98328,
+    "actual_value": 214.74994801805383,
+    "scores": {
+      "preseason": {
+        "pa_rmse": 27.252102384345836,
+        "pa_mae": 4.763865067953442,
+        "pa_bias": -0.6817321849531622,
+        "value_rmse": 0.15225656503000695,
+        "value_mae": 0.019355993107108553,
+        "value_bias": -0.0005511246068797023,
+        "pa_total": 81849.00654070015,
+        "value_total": 199.53923730693418
+      },
+      "translated_ridge": {
+        "pa_rmse": 27.252102384345836,
+        "pa_mae": 4.763865067953442,
+        "pa_bias": -0.6817321849531621,
+        "value_rmse": 0.15166174862325213,
+        "value_mae": 0.018993178701491142,
+        "value_bias": -0.0007359993026401409,
+        "pa_total": 81849.00654070015,
+        "value_total": 194.66551548468306
+      },
+      "pooled_extended": {
+        "pa_rmse": 27.256938145269114,
+        "pa_mae": 4.821364761897601,
+        "pa_bias": -0.6184594345241452,
+        "value_rmse": 0.15246243026744974,
+        "value_mae": 0.019546121185274046,
+        "value_bias": -0.0003527872072472263,
+        "pa_total": 83369.23880635569,
+        "value_total": 204.29849352466044
+      },
+      "prospect_restricted": {
+        "pa_rmse": 27.26338750214884,
+        "pa_mae": 4.817778929917892,
+        "pa_bias": -0.6282972269729437,
+        "value_rmse": 0.1528710752197016,
+        "value_mae": 0.01963876431928774,
+        "value_bias": -0.0003451744269028223,
+        "pa_total": 82867.93820248764,
+        "value_total": 203.79021307075948
+      },
+      "prospect_extended": {
+        "pa_rmse": 27.329388588975426,
+        "pa_mae": 4.843779189643205,
+        "pa_bias": -0.641817574532,
+        "value_rmse": 0.15313527366062063,
+        "value_mae": 0.0196940773588409,
+        "value_bias": -0.0003524943670175821,
+        "pa_total": 82634.82757320545,
+        "value_total": 203.83708795506496
+      },
+      "pooled_extended_translated": {
+        "pa_rmse": 27.256938145269114,
+        "pa_mae": 4.821364761897603,
+        "pa_bias": -0.6184594345241451,
+        "value_rmse": 0.15186418948781005,
+        "value_mae": 0.019132434042438425,
+        "value_bias": -0.0005844297749052306,
+        "pa_total": 83369.23880635569,
+        "value_total": 198.2567710322171
+      },
+      "prospect_restricted_translated": {
+        "pa_rmse": 27.26338750214884,
+        "pa_mae": 4.817778929917892,
+        "pa_bias": -0.6282972269729437,
+        "value_rmse": 0.1523873688909158,
+        "value_mae": 0.019273331799209016,
+        "value_bias": -0.0005568451069605909,
+        "pa_total": 82867.93820248764,
+        "value_total": 198.25837771008528
+      },
+      "prospect_extended_translated": {
+        "pa_rmse": 27.329388588975426,
+        "pa_mae": 4.843779189643202,
+        "pa_bias": -0.6418175745320001,
+        "value_rmse": 0.15254799908824052,
+        "value_mae": 0.01929477998343667,
+        "value_bias": -0.000610801719055841,
+        "pa_total": 82634.82757320545,
+        "value_total": 197.15916042467438
+      }
+    },
+    "conditional": {
+      "preseason": {
+        "rows": 787,
+        "people": 787,
+        "rmse": 122.16153993346808,
+        "mae": 90.72912501330521,
+        "bias": -0.9811970209601627,
+        "predicted_total": 98088.18711940384,
+        "actual_total": 98328,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "pooled_extended": {
+        "rows": 787,
+        "people": 787,
+        "rmse": 122.17619769634886,
+        "mae": 91.26861760779323,
+        "bias": 0.3778855744702782,
+        "predicted_total": 99296.21822987575,
+        "actual_total": 98328,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "prospect_restricted": {
+        "rows": 787,
+        "people": 787,
+        "rmse": 123.68694360788658,
+        "mae": 93.2561546690672,
+        "bias": 2.3711499769950506,
+        "predicted_total": 101205.27953429481,
+        "actual_total": 98328,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "prospect_extended": {
+        "rows": 787,
+        "people": 787,
+        "rmse": 126.05063683931924,
+        "mae": 95.36154266299728,
+        "bias": 1.3058572778450457,
+        "predicted_total": 99923.92551640309,
+        "actual_total": 98328,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      }
+    }
+  },
+  {
+    "scope": "upper_never_debut",
+    "rows": 5454,
+    "people": 3055,
+    "actual_pa": 92891,
+    "actual_value": 203.93926446318383,
+    "scores": {
+      "preseason": {
+        "pa_rmse": 55.12674520539247,
+        "pa_mae": 18.732137202600438,
+        "pa_bias": -3.416978901846813,
+        "value_rmse": 0.3128318977061655,
+        "value_mae": 0.07856357155993558,
+        "value_bias": -0.005198053547361469,
+        "pa_total": 74239.03857057953,
+        "value_total": 179.01457512848606
+      },
+      "translated_ridge": {
+        "pa_rmse": 55.12674520539247,
+        "pa_mae": 18.732137202600438,
+        "pa_bias": -3.416978901846813,
+        "value_rmse": 0.31149059998926887,
+        "value_mae": 0.07748531402772664,
+        "value_bias": -0.005493475194704104,
+        "pa_total": 74239.03857057953,
+        "value_total": 177.48629929052925
+      },
+      "pooled_extended": {
+        "pa_rmse": 55.16657557698153,
+        "pa_mae": 18.829005804430352,
+        "pa_bias": -3.324283475036243,
+        "value_rmse": 0.31335730351591573,
+        "value_mae": 0.07893320408594998,
+        "value_bias": -0.004858334093217232,
+        "pa_total": 74776.86642472763,
+        "value_total": 180.95898174153425
+      },
+      "prospect_restricted": {
+        "pa_rmse": 55.16427339400251,
+        "pa_mae": 18.847477129381158,
+        "pa_bias": -3.3509632669087557,
+        "value_rmse": 0.3140349058832668,
+        "value_mae": 0.07934241972967397,
+        "value_bias": -0.004840456137706797,
+        "pa_total": 74917.84912556897,
+        "value_total": 181.8027006604458
+      },
+      "prospect_extended": {
+        "pa_rmse": 55.34370696475858,
+        "pa_mae": 18.93227497568102,
+        "pa_bias": -3.4370651132357777,
+        "value_rmse": 0.3147124890478635,
+        "value_mae": 0.07950698103767677,
+        "value_bias": -0.004962326853437879,
+        "pa_total": 74374.69326160614,
+        "value_total": 180.92615861940504
+      },
+      "pooled_extended_translated": {
+        "pa_rmse": 55.16657557698153,
+        "pa_mae": 18.829005804430352,
+        "pa_bias": -3.324283475036243,
+        "value_rmse": 0.31199414564206823,
+        "value_mae": 0.07772774290469789,
+        "value_bias": -0.005258613348423855,
+        "pa_total": 74776.86642472763,
+        "value_total": 178.8771479680684
+      },
+      "prospect_restricted_translated": {
+        "pa_rmse": 55.16427339400251,
+        "pa_mae": 18.847477129381158,
+        "pa_bias": -3.3509632669087557,
+        "value_rmse": 0.3128654996242499,
+        "value_mae": 0.07829100272348596,
+        "value_bias": -0.005206307130635831,
+        "pa_total": 74917.84912556897,
+        "value_total": 179.8855900098455
+      },
+      "prospect_extended_translated": {
+        "pa_rmse": 55.34370696475858,
+        "pa_mae": 18.93227497568102,
+        "pa_bias": -3.4370651132357777,
+        "value_rmse": 0.3133148220431822,
+        "value_mae": 0.07835065109247066,
+        "value_bias": -0.005494483699492195,
+        "pa_total": 74374.69326160614,
+        "value_total": 178.1467871215384
+      }
+    },
+    "conditional": {
+      "preseason": {
+        "rows": 730,
+        "people": 730,
+        "rmse": 121.90036513114697,
+        "mae": 90.44521067820764,
+        "bias": -2.1434409349866477,
+        "predicted_total": 91386.5075896722,
+        "actual_total": 92891,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "pooled_extended": {
+        "rows": 730,
+        "people": 730,
+        "rmse": 122.57230303162136,
+        "mae": 91.39180653449826,
+        "bias": -1.1193470411387005,
+        "predicted_total": 92275.44601400649,
+        "actual_total": 92891,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "prospect_restricted": {
+        "rows": 730,
+        "people": 730,
+        "rmse": 123.66523984466244,
+        "mae": 93.12865395754693,
+        "bias": 1.1815912502361765,
+        "predicted_total": 94254.27471848797,
+        "actual_total": 92891,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "prospect_extended": {
+        "rows": 730,
+        "people": 730,
+        "rmse": 126.13213882806332,
+        "mae": 95.34352837749798,
+        "bias": 0.40300536274982435,
+        "predicted_total": 93240.478339768,
+        "actual_total": 92891,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      }
+    }
+  },
+  {
+    "scope": "lower_never_debut",
+    "rows": 17852,
+    "people": 8974,
+    "actual_pa": 5194,
+    "actual_value": 9.56025276109348,
+    "scores": {
+      "preseason": {
+        "pa_rmse": 7.96636270362901,
+        "pa_mae": 0.6216744545061628,
+        "pa_bias": 0.09588994521125105,
+        "value_rmse": 0.04303858531189544,
+        "value_mae": 0.0020659169234858647,
+        "value_bias": 0.000554853903661186,
+        "pa_total": 7054.64556931176,
+        "value_total": 19.472943221761007
+      },
+      "translated_ridge": {
+        "pa_rmse": 7.96636270362901,
+        "pa_mae": 0.6216744545061628,
+        "pa_bias": 0.09588994521125105,
+        "value_rmse": 0.04298673256198734,
+        "value_mae": 0.0018909995059644663,
+        "value_bias": 0.0003733844617340878,
+        "pa_total": 7054.64556931176,
+        "value_total": 16.178953968368184
+      },
+      "pooled_extended": {
+        "pa_rmse": 7.963986115504561,
+        "pa_mae": 0.6715115240105113,
+        "pa_bias": 0.14729119306766655,
+        "value_rmse": 0.04300787410253375,
+        "value_mae": 0.002211783498973182,
+        "value_bias": 0.0007035677217815892,
+        "pa_total": 7996.859108766091,
+        "value_total": 22.1995289831622
+      },
+      "prospect_restricted": {
+        "pa_rmse": 7.92381405235263,
+        "pa_mae": 0.6481823622369717,
+        "pa_bias": 0.1163027701242662,
+        "value_rmse": 0.043053078748967244,
+        "value_mae": 0.0021711514027966164,
+        "value_bias": 0.0006410003423259578,
+        "pa_total": 7376.075315193926,
+        "value_total": 20.892646964127803
+      },
+      "prospect_extended": {
+        "pa_rmse": 7.904399957034179,
+        "pa_mae": 0.6674144300059891,
+        "pa_bias": 0.13218335842001855,
+        "value_rmse": 0.04298805908414809,
+        "value_mae": 0.002221816180885197,
+        "value_bias": 0.0006880148248186923,
+        "pa_total": 7670.237996962967,
+        "value_total": 21.770243324443246
+      },
+      "pooled_extended_translated": {
+        "pa_rmse": 7.963986115504561,
+        "pa_mae": 0.6715115240105113,
+        "pa_bias": 0.14729119306766655,
+        "value_rmse": 0.04296300431144491,
+        "value_mae": 0.002005224072978119,
+        "value_bias": 0.0004891685502785486,
+        "pa_total": 7996.859108766091,
+        "value_total": 18.299503882491347
+      },
+      "prospect_restricted_translated": {
+        "pa_rmse": 7.92381405235263,
+        "pa_mae": 0.6481823622369717,
+        "pa_bias": 0.1163027701242662,
+        "value_rmse": 0.04301845592389194,
+        "value_mae": 0.001977909375680646,
+        "value_bias": 0.00044281248393563056,
+        "pa_total": 7376.075315193926,
+        "value_total": 17.325789417239218
+      },
+      "prospect_extended_translated": {
+        "pa_rmse": 7.904399957034179,
+        "pa_mae": 0.6674144300059891,
+        "pa_bias": 0.13218335842001855,
+        "value_rmse": 0.04294909738068475,
+        "value_mae": 0.0020142528170082994,
+        "value_bias": 0.0004750869925191852,
+        "pa_total": 7670.237996962967,
+        "value_total": 17.926740215001757
+      }
+    },
+    "conditional": {
+      "preseason": {
+        "rows": 54,
+        "people": 54,
+        "rmse": 129.130664154736,
+        "mae": 92.99890399315628,
+        "bias": 4.9386395420023765,
+        "predicted_total": 6266.14292020705,
+        "actual_total": 5194,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "pooled_extended": {
+        "rows": 54,
+        "people": 54,
+        "rmse": 117.30342861766123,
+        "mae": 86.57718657873009,
+        "bias": 13.78509219536275,
+        "predicted_total": 6555.833906715082,
+        "actual_total": 5194,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "prospect_restricted": {
+        "rows": 54,
+        "people": 54,
+        "rmse": 124.28657381667865,
+        "mae": 91.40526607481523,
+        "bias": 16.27480994835542,
+        "predicted_total": 6525.656763040385,
+        "actual_total": 5194,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "prospect_extended": {
+        "rows": 54,
+        "people": 54,
+        "rmse": 131.28906585815312,
+        "mae": 100.17448222223811,
+        "bias": 16.541698435183186,
+        "predicted_total": 6244.396801577701,
+        "actual_total": 5194,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      }
+    }
+  },
+  {
+    "scope": "public",
+    "rows": 2627,
+    "people": 1044,
+    "actual_pa": 660776,
+    "actual_value": 2123.810127060133,
+    "scores": {
+      "preseason": {
+        "pa_rmse": 138.32984746826148,
+        "pa_mae": 106.41075374670471,
+        "pa_bias": -4.36301202314118,
+        "value_rmse": 1.0605043659795657,
+        "value_mae": 0.7106946389775699,
+        "value_bias": 0.033136637674419864,
+        "pa_total": 649254.8423971365,
+        "value_total": 2202.932588584372
+      },
+      "translated_ridge": {
+        "pa_rmse": 138.32984746826148,
+        "pa_mae": 106.41075374670471,
+        "pa_bias": -4.36301202314118,
+        "value_rmse": 1.0605043659795657,
+        "value_mae": 0.7106946389775699,
+        "value_bias": 0.033136637674419864,
+        "pa_total": 649254.8423971365,
+        "value_total": 2202.932588584372
+      },
+      "pooled_extended": {
+        "pa_rmse": 138.32984746826148,
+        "pa_mae": 106.41075374670471,
+        "pa_bias": -4.36301202314118,
+        "value_rmse": 1.0605043659795657,
+        "value_mae": 0.7106946389775699,
+        "value_bias": 0.033136637674419864,
+        "pa_total": 649254.8423971365,
+        "value_total": 2202.932588584372
+      },
+      "prospect_restricted": {
+        "pa_rmse": 138.32984746826148,
+        "pa_mae": 106.41075374670471,
+        "pa_bias": -4.36301202314118,
+        "value_rmse": 1.0605043659795657,
+        "value_mae": 0.7106946389775699,
+        "value_bias": 0.033136637674419864,
+        "pa_total": 649254.8423971365,
+        "value_total": 2202.932588584372
+      },
+      "prospect_extended": {
+        "pa_rmse": 138.32984746826148,
+        "pa_mae": 106.41075374670471,
+        "pa_bias": -4.36301202314118,
+        "value_rmse": 1.0605043659795657,
+        "value_mae": 0.7106946389775699,
+        "value_bias": 0.033136637674419864,
+        "pa_total": 649254.8423971365,
+        "value_total": 2202.932588584372
+      },
+      "pooled_extended_translated": {
+        "pa_rmse": 138.32984746826148,
+        "pa_mae": 106.41075374670471,
+        "pa_bias": -4.36301202314118,
+        "value_rmse": 1.0605043659795657,
+        "value_mae": 0.7106946389775699,
+        "value_bias": 0.033136637674419864,
+        "pa_total": 649254.8423971365,
+        "value_total": 2202.932588584372
+      },
+      "prospect_restricted_translated": {
+        "pa_rmse": 138.32984746826148,
+        "pa_mae": 106.41075374670471,
+        "pa_bias": -4.36301202314118,
+        "value_rmse": 1.0605043659795657,
+        "value_mae": 0.7106946389775699,
+        "value_bias": 0.033136637674419864,
+        "pa_total": 649254.8423971365,
+        "value_total": 2202.932588584372
+      },
+      "prospect_extended_translated": {
+        "pa_rmse": 138.32984746826148,
+        "pa_mae": 106.41075374670471,
+        "pa_bias": -4.36301202314118,
+        "value_rmse": 1.0605043659795657,
+        "value_mae": 0.7106946389775699,
+        "value_bias": 0.033136637674419864,
+        "pa_total": 649254.8423971365,
+        "value_total": 2202.932588584372
+      },
+      "steamer": {
+        "pa_rmse": 135.37946341946525,
+        "pa_mae": 92.08284699683804,
+        "pa_bias": 13.030477094490262,
+        "value_rmse": 1.1186590721165148,
+        "value_mae": 0.7425820935639561,
+        "value_bias": 0.28001886722216474,
+        "pa_total": 695054.8730400801,
+        "value_total": 2851.068786476495
+      }
+    },
+    "conditional": {
+      "preseason": {
+        "rows": 2088,
+        "people": 830,
+        "rmse": 143.6604051717895,
+        "mae": 116.82698194201514,
+        "bias": 0.9606922500901337,
+        "predicted_total": 662934.2244770861,
+        "actual_total": 660776,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "pooled_extended": {
+        "rows": 2088,
+        "people": 830,
+        "rmse": 143.6604051717895,
+        "mae": 116.82698194201514,
+        "bias": 0.9606922500901337,
+        "predicted_total": 662934.2244770861,
+        "actual_total": 660776,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "prospect_restricted": {
+        "rows": 2088,
+        "people": 830,
+        "rmse": 143.6604051717895,
+        "mae": 116.82698194201514,
+        "bias": 0.9606922500901337,
+        "predicted_total": 662934.2244770861,
+        "actual_total": 660776,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "prospect_extended": {
+        "rows": 2088,
+        "people": 830,
+        "rmse": 143.6604051717895,
+        "mae": 116.82698194201514,
+        "bias": 0.9606922500901337,
+        "predicted_total": 662934.2244770861,
+        "actual_total": 660776,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      }
+    }
+  },
+  {
+    "scope": "thin_pro",
+    "rows": 5317,
+    "people": 4431,
+    "actual_pa": 1817,
+    "actual_value": 7.3175754980934276,
+    "scores": {
+      "preseason": {
+        "pa_rmse": 11.372193766045886,
+        "pa_mae": 0.6119483847000206,
+        "pa_bias": -0.1475675463398763,
+        "value_rmse": 0.0884155370175088,
+        "value_mae": 0.0024850378008928376,
+        "value_bias": -0.0009421043334932155,
+        "pa_total": 1310.6843112951515,
+        "value_total": 3.606198401041962
+      },
+      "translated_ridge": {
+        "pa_rmse": 11.372193766045886,
+        "pa_mae": 0.6119483847000208,
+        "pa_bias": -0.1475675463398763,
+        "value_rmse": 0.08814126523729152,
+        "value_mae": 0.002397955962817559,
+        "value_bias": -0.0010123209591645205,
+        "pa_total": 1310.6843112951515,
+        "value_total": 3.2161459385818683
+      },
+      "pooled_extended": {
+        "pa_rmse": 11.37088631499161,
+        "pa_mae": 0.6581308583264558,
+        "pa_bias": -0.10003417287552598,
+        "value_rmse": 0.08840861964434811,
+        "value_mae": 0.0026200436271497205,
+        "value_bias": -0.0008031874777293786,
+        "pa_total": 1554.263086991233,
+        "value_total": 4.324498612166664
+      },
+      "prospect_restricted": {
+        "pa_rmse": 11.356230004060041,
+        "pa_mae": 0.686915370752864,
+        "pa_bias": -0.06964354550724258,
+        "value_rmse": 0.08840841638611534,
+        "value_mae": 0.0027114897858554073,
+        "value_bias": -0.0007115950964274517,
+        "pa_total": 1743.6165055532401,
+        "value_total": 4.8994547797506325
+      },
+      "prospect_extended": {
+        "pa_rmse": 11.382781666682959,
+        "pa_mae": 0.7000557162290522,
+        "pa_bias": -0.05722377973680392,
+        "value_rmse": 0.08846873192754322,
+        "value_mae": 0.002753899962637384,
+        "value_bias": -0.000668655053338064,
+        "pa_total": 1818.093476307901,
+        "value_total": 5.1507458973407125
+      },
+      "pooled_extended_translated": {
+        "pa_rmse": 11.37088631499161,
+        "pa_mae": 0.6581308583264558,
+        "pa_bias": -0.10003417287552598,
+        "value_rmse": 0.08812557434348542,
+        "value_mae": 0.0025090604981530848,
+        "value_bias": -0.0008963598423635779,
+        "pa_total": 1554.263086991233,
+        "value_total": 3.816051484259911
+      },
+      "prospect_restricted_translated": {
+        "pa_rmse": 11.356230004060041,
+        "pa_mae": 0.686915370752864,
+        "pa_bias": -0.0696435455072426,
+        "value_rmse": 0.0881216575110146,
+        "value_mae": 0.0025925287886810326,
+        "value_bias": -0.0008126027086537391,
+        "pa_total": 1743.6165055532401,
+        "value_total": 4.337574811478496
+      },
+      "prospect_extended_translated": {
+        "pa_rmse": 11.382781666682959,
+        "pa_mae": 0.7000557162290522,
+        "pa_bias": -0.05722377973680392,
+        "value_rmse": 0.0882206221065541,
+        "value_mae": 0.002628455031211459,
+        "value_bias": -0.0007768166394300673,
+        "pa_total": 1818.093476307901,
+        "value_total": 4.550679605399135
+      }
+    },
+    "conditional": {
+      "preseason": {
+        "rows": 8,
+        "people": 8,
+        "rmse": 111.89630609059031,
+        "mae": 68.86719117629819,
+        "bias": -12.955536439684021,
+        "predicted_total": 1110.5960333134062,
+        "actual_total": 1817,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "pooled_extended": {
+        "rows": 8,
+        "people": 8,
+        "rmse": 110.8440901265472,
+        "mae": 75.34289743097625,
+        "bias": -2.184675445366288,
+        "predicted_total": 1188.0407152077946,
+        "actual_total": 1817,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "prospect_restricted": {
+        "rows": 8,
+        "people": 8,
+        "rmse": 122.50630392851428,
+        "mae": 91.34893699580837,
+        "bias": 16.874846615717864,
+        "predicted_total": 1311.7558448537686,
+        "actual_total": 1817,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "prospect_extended": {
+        "rows": 8,
+        "people": 8,
+        "rmse": 124.14622587567861,
+        "mae": 102.70138110060425,
+        "bias": 26.63985869293918,
+        "predicted_total": 1315.067255510436,
+        "actual_total": 1817,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      }
+    }
+  },
+  {
+    "scope": "new_draftees",
+    "rows": 2205,
+    "people": 2205,
+    "actual_pa": 2728,
+    "actual_value": 9.36707027409158,
+    "scores": {
+      "preseason": {
+        "pa_rmse": 23.191681428517867,
+        "pa_mae": 2.1290255587954894,
+        "pa_bias": -0.9740925134520558,
+        "value_rmse": 0.1638245229526781,
+        "value_mae": 0.008608352302448307,
+        "value_bias": -0.003908120575515652,
+        "pa_total": 1508.5780211291378,
+        "value_total": 4.844072977926874
+      },
+      "translated_ridge": {
+        "pa_rmse": 23.191681428517867,
+        "pa_mae": 2.1290255587954894,
+        "pa_bias": -0.9740925134520558,
+        "value_rmse": 0.16263177452341426,
+        "value_mae": 0.008340182643214039,
+        "value_bias": -0.003786343862240947,
+        "pa_total": 1508.5780211291378,
+        "value_total": 4.937170908880775
+      },
+      "pooled_extended": {
+        "pa_rmse": 23.326696450030195,
+        "pa_mae": 2.2480087341304182,
+        "pa_bias": -0.8675536810232434,
+        "value_rmse": 0.16405810685338088,
+        "value_mae": 0.008993229842280709,
+        "value_bias": -0.0035943105530964335,
+        "pa_total": 1760.0263010291483,
+        "value_total": 5.594098650587628
+      },
+      "prospect_restricted": {
+        "pa_rmse": 23.06971387283851,
+        "pa_mae": 2.3081146248401185,
+        "pa_bias": -0.7416632267399229,
+        "value_rmse": 0.16376352658429538,
+        "value_mae": 0.009217837948428268,
+        "value_bias": -0.0031971851582346346,
+        "pa_total": 1931.3676038411936,
+        "value_total": 6.1476568554008235
+      },
+      "prospect_extended": {
+        "pa_rmse": 23.090733317993532,
+        "pa_mae": 2.3651154426626335,
+        "pa_bias": -0.6818007010213337,
+        "value_rmse": 0.16394867330171176,
+        "value_mae": 0.009454173849739634,
+        "value_bias": -0.0030014748562761082,
+        "pa_total": 2089.453834469577,
+        "value_total": 6.650145027019729
+      },
+      "pooled_extended_translated": {
+        "pa_rmse": 23.326696450030195,
+        "pa_mae": 2.2480087341304182,
+        "pa_bias": -0.8675536810232434,
+        "value_rmse": 0.16282133634113394,
+        "value_mae": 0.008688562100243106,
+        "value_bias": -0.0035355514029144232,
+        "pa_total": 1760.0263010291483,
+        "value_total": 5.5351186155746035
+      },
+      "prospect_restricted_translated": {
+        "pa_rmse": 23.069713872838506,
+        "pa_mae": 2.3081146248401185,
+        "pa_bias": -0.7416632267399229,
+        "value_rmse": 0.16255188495498063,
+        "value_mae": 0.008908387573362176,
+        "value_bias": -0.0031140046713120403,
+        "pa_total": 1931.3676038411936,
+        "value_total": 6.150798470595477
+      },
+      "prospect_extended_translated": {
+        "pa_rmse": 23.090733317993532,
+        "pa_mae": 2.3651154426626326,
+        "pa_bias": -0.6818007010213337,
+        "value_rmse": 0.1627694325573282,
+        "value_mae": 0.009108310163547602,
+        "value_bias": -0.0029711291578529064,
+        "pa_total": 2089.453834469577,
+        "value_total": 6.531663813704544
+      }
+    },
+    "conditional": {
+      "preseason": {
+        "rows": 11,
+        "people": 11,
+        "rmse": 133.37508506857355,
+        "mae": 85.05498253484751,
+        "bias": -56.77320269056918,
+        "predicted_total": 1782.470277860276,
+        "actual_total": 2728,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "pooled_extended": {
+        "rows": 11,
+        "people": 11,
+        "rmse": 133.869675909444,
+        "mae": 90.85580450245632,
+        "bias": -44.13868724882359,
+        "predicted_total": 1865.12090624528,
+        "actual_total": 2728,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "prospect_restricted": {
+        "rows": 11,
+        "people": 11,
+        "rmse": 123.00425307837989,
+        "mae": 81.99754690537286,
+        "bias": -28.879797003512248,
+        "predicted_total": 2139.022339351848,
+        "actual_total": 2728,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "prospect_extended": {
+        "rows": 11,
+        "people": 11,
+        "rmse": 136.39952466616478,
+        "mae": 110.24214661260976,
+        "bias": -3.651188847090748,
+        "predicted_total": 2240.2123662241556,
+        "actual_total": 2728,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      }
+    }
+  },
+  {
+    "scope": "teenage_dsl",
+    "rows": 2293,
+    "people": 2225,
+    "actual_pa": 0,
+    "actual_value": 0.0,
+    "scores": {
+      "preseason": {
+        "pa_rmse": 0.096426256889245,
+        "pa_mae": 0.08945279878280817,
+        "pa_bias": 0.08945279878280817,
+        "value_rmse": 0.00032608208414546853,
+        "value_mae": 0.0003038211533316638,
+        "value_bias": 0.0003038211533316638,
+        "pa_total": 200.18217269080654,
+        "value_total": 0.6787606275621112
+      },
+      "translated_ridge": {
+        "pa_rmse": 0.096426256889245,
+        "pa_mae": 0.08945279878280817,
+        "pa_bias": 0.08945279878280817,
+        "value_rmse": 0.00022554269872435012,
+        "value_mae": 0.00020313912664501272,
+        "value_bias": 0.00020313912664501272,
+        "pa_total": 200.18217269080654,
+        "value_total": 0.44983106356615676
+      },
+      "pooled_extended": {
+        "pa_rmse": 0.12534196107702977,
+        "pa_mae": 0.11507120661634798,
+        "pa_bias": 0.11507120661634798,
+        "value_rmse": 0.00042336640869314595,
+        "value_mae": 0.0003905309538389824,
+        "value_bias": 0.0003905309538389824,
+        "pa_total": 256.914811356796,
+        "value_total": 0.8706187811366815
+      },
+      "prospect_restricted": {
+        "pa_rmse": 0.14266030544579317,
+        "pa_mae": 0.12746305018867835,
+        "pa_bias": 0.12746305018867835,
+        "value_rmse": 0.00048618853448959085,
+        "value_mae": 0.000435348942266602,
+        "value_bias": 0.000435348942266602,
+        "pa_total": 282.93071687009433,
+        "value_total": 0.9652415584487319
+      },
+      "prospect_extended": {
+        "pa_rmse": 0.13403832410394503,
+        "pa_mae": 0.12257332078785425,
+        "pa_bias": 0.12257332078785425,
+        "value_rmse": 0.0004565156239276318,
+        "value_mae": 0.00041774707944722446,
+        "value_bias": 0.00041774707944722446,
+        "pa_total": 275.2234655991376,
+        "value_total": 0.9368490432468171
+      },
+      "pooled_extended_translated": {
+        "pa_rmse": 0.12534196107702977,
+        "pa_mae": 0.11507120661634798,
+        "pa_bias": 0.11507120661634798,
+        "value_rmse": 0.0002928185889570028,
+        "value_mae": 0.0002614238284682046,
+        "value_bias": 0.0002614238284682046,
+        "pa_total": 256.914811356796,
+        "value_total": 0.5778417229441952
+      },
+      "prospect_restricted_translated": {
+        "pa_rmse": 0.14266030544579317,
+        "pa_mae": 0.12746305018867835,
+        "pa_bias": 0.12746305018867835,
+        "value_rmse": 0.00034265468328062296,
+        "value_mae": 0.0002940017882700838,
+        "value_bias": 0.0002940017882700838,
+        "pa_total": 282.93071687009433,
+        "value_total": 0.6460132299748367
+      },
+      "prospect_extended_translated": {
+        "pa_rmse": 0.13403832410394503,
+        "pa_mae": 0.12257332078785425,
+        "pa_bias": 0.12257332078785425,
+        "value_rmse": 0.00031832575732659786,
+        "value_mae": 0.0002809165318631976,
+        "value_bias": 0.0002809165318631976,
+        "pa_total": 275.2234655991376,
+        "value_total": 0.6246974040577015
+      }
+    },
+    "conditional": {
+      "preseason": {
+        "rows": 0,
+        "rmse": null,
+        "mae": null,
+        "predicted_total": null,
+        "actual_total": null
+      },
+      "pooled_extended": {
+        "rows": 0,
+        "rmse": null,
+        "mae": null,
+        "predicted_total": null,
+        "actual_total": null
+      },
+      "prospect_restricted": {
+        "rows": 0,
+        "rmse": null,
+        "mae": null,
+        "predicted_total": null,
+        "actual_total": null
+      },
+      "prospect_extended": {
+        "rows": 0,
+        "rmse": null,
+        "mae": null,
+        "predicted_total": null,
+        "actual_total": null
+      }
+    }
+  },
+  {
+    "scope": "never_origin_2016",
+    "rows": 3745,
+    "people": 3745,
+    "actual_pa": 10735,
+    "actual_value": 21.282580116879206,
+    "scores": {
+      "preseason": {
+        "pa_rmse": 22.25206051949182,
+        "pa_mae": 3.7006557202694363,
+        "pa_bias": 0.1531283034783822,
+        "value_rmse": 0.13043706625498264,
+        "value_mae": 0.015955327026691477,
+        "value_bias": 0.0016840269073233655,
+        "pa_total": 11308.46549652654,
+        "value_total": 27.58926088480521
+      },
+      "translated_ridge": {
+        "pa_rmse": 22.25206051949182,
+        "pa_mae": 3.7006557202694363,
+        "pa_bias": 0.1531283034783822,
+        "value_rmse": 0.1303603611336191,
+        "value_mae": 0.015527766043383698,
+        "value_bias": 0.0012546560851878403,
+        "pa_total": 11308.46549652654,
+        "value_total": 25.981267155907666
+      },
+      "pooled_extended": {
+        "pa_rmse": 22.34513596484465,
+        "pa_mae": 3.7821765602588395,
+        "pa_bias": 0.20287408445591165,
+        "value_rmse": 0.13063505569278325,
+        "value_mae": 0.016211525414256956,
+        "value_bias": 0.001850610085918607,
+        "pa_total": 11494.763446287388,
+        "value_total": 28.21311488864439
+      },
+      "prospect_restricted": {
+        "pa_rmse": 21.952216320377378,
+        "pa_mae": 3.617738488963715,
+        "pa_bias": -0.12707172027454036,
+        "value_rmse": 0.1294767295797712,
+        "value_mae": 0.015586540563176366,
+        "value_bias": 0.0009567420329817288,
+        "pa_total": 10259.116407571846,
+        "value_total": 24.865579030395775
+      },
+      "prospect_extended": {
+        "pa_rmse": 21.638488557747333,
+        "pa_mae": 3.6272527900086433,
+        "pa_bias": -0.0830011899641449,
+        "value_rmse": 0.1290590824814466,
+        "value_mae": 0.015757084617097506,
+        "value_bias": 0.001108698006182528,
+        "pa_total": 10424.160543584278,
+        "value_total": 25.43465415003277
+      },
+      "pooled_extended_translated": {
+        "pa_rmse": 22.34513596484465,
+        "pa_mae": 3.7821765602588395,
+        "pa_bias": 0.20287408445591165,
+        "value_rmse": 0.13049711497279587,
+        "value_mae": 0.015708469890611927,
+        "value_bias": 0.0013586507239701096,
+        "pa_total": 11494.763446287388,
+        "value_total": 26.370727078147265
+      },
+      "prospect_restricted_translated": {
+        "pa_rmse": 21.952216320377378,
+        "pa_mae": 3.617738488963715,
+        "pa_bias": -0.12707172027454036,
+        "value_rmse": 0.12904704471910355,
+        "value_mae": 0.015159718977293084,
+        "value_bias": 0.0005333686352907846,
+        "pa_total": 10259.116407571846,
+        "value_total": 23.28004565604319
+      },
+      "prospect_extended_translated": {
+        "pa_rmse": 21.638488557747333,
+        "pa_mae": 3.6272527900086433,
+        "pa_bias": -0.0830011899641449,
+        "value_rmse": 0.12835973685439903,
+        "value_mae": 0.0152713308500886,
+        "value_bias": 0.0006158845795022067,
+        "pa_total": 10424.160543584278,
+        "value_total": 23.589067867114967
+      }
+    },
+    "conditional": {
+      "preseason": {
+        "rows": 108,
+        "people": 108,
+        "rmse": 114.70492784025802,
+        "mae": 83.70702816895492,
+        "bias": 23.310560459512864,
+        "predicted_total": 13252.540529627388,
+        "actual_total": 10735,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "pooled_extended": {
+        "rows": 108,
+        "people": 108,
+        "rmse": 113.90946953261657,
+        "mae": 85.28075004696892,
+        "bias": 21.3381399965291,
+        "predicted_total": 13039.519119625142,
+        "actual_total": 10735,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "prospect_restricted": {
+        "rows": 108,
+        "people": 108,
+        "rmse": 112.26261502377079,
+        "mae": 84.96691215742531,
+        "bias": 13.314704019803479,
+        "predicted_total": 12172.988034138778,
+        "actual_total": 10735,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "prospect_extended": {
+        "rows": 108,
+        "people": 108,
+        "rmse": 106.02156466597349,
+        "mae": 79.42797614283633,
+        "bias": 10.598344284193,
+        "predicted_total": 11879.62118269285,
+        "actual_total": 10735,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      }
+    }
+  },
+  {
+    "scope": "never_origin_2017",
+    "rows": 3776,
+    "people": 3776,
+    "actual_pa": 11854,
+    "actual_value": 23.570596116878196,
+    "scores": {
+      "preseason": {
+        "pa_rmse": 24.058889821716924,
+        "pa_mae": 3.7591583723959685,
+        "pa_bias": -0.6157383437804494,
+        "value_rmse": 0.128909104805464,
+        "value_mae": 0.014886500141330972,
+        "value_bias": -0.0004402160729492296,
+        "pa_total": 9528.972013885023,
+        "value_total": 21.90834022542191
+      },
+      "translated_ridge": {
+        "pa_rmse": 24.058889821716924,
+        "pa_mae": 3.7591583723959685,
+        "pa_bias": -0.6157383437804494,
+        "value_rmse": 0.12879311550121136,
+        "value_mae": 0.01443364656606239,
+        "value_bias": -0.0008502002616945503,
+        "pa_total": 9528.972013885023,
+        "value_total": 20.36023992871958
+      },
+      "pooled_extended": {
+        "pa_rmse": 24.176093810102714,
+        "pa_mae": 3.8552082082769306,
+        "pa_bias": -0.5719141660190742,
+        "value_rmse": 0.12885249176596805,
+        "value_mae": 0.015129648452402186,
+        "value_bias": -0.00031138288259954946,
+        "pa_total": 9694.452109111977,
+        "value_total": 22.3948143521823
+      },
+      "prospect_restricted": {
+        "pa_rmse": 23.748915229925537,
+        "pa_mae": 3.6541899797156256,
+        "pa_bias": -0.8091981636010075,
+        "value_rmse": 0.12883970081109491,
+        "value_mae": 0.01478648548252141,
+        "value_bias": -0.0008351822884364814,
+        "pa_total": 8798.467734242597,
+        "value_total": 20.416947795742047
+      },
+      "prospect_extended": {
+        "pa_rmse": 24.305742908700346,
+        "pa_mae": 3.8100881204490644,
+        "pa_bias": -0.759111589684727,
+        "value_rmse": 0.12933124462562312,
+        "value_mae": 0.015070572998282166,
+        "value_bias": -0.0006684016037661995,
+        "pa_total": 8987.59463735047,
+        "value_total": 21.04671166105703
+      },
+      "pooled_extended_translated": {
+        "pa_rmse": 24.176093810102714,
+        "pa_mae": 3.8552082082769306,
+        "pa_bias": -0.5719141660190742,
+        "value_rmse": 0.1286060397394041,
+        "value_mae": 0.014564732466286617,
+        "value_bias": -0.0008014932534037042,
+        "pa_total": 9694.452109111977,
+        "value_total": 20.54415759202582
+      },
+      "prospect_restricted_translated": {
+        "pa_rmse": 23.748915229925537,
+        "pa_mae": 3.6541899797156256,
+        "pa_bias": -0.8091981636010075,
+        "value_rmse": 0.12851408809343823,
+        "value_mae": 0.014232734198554906,
+        "value_bias": -0.0012746305278523071,
+        "pa_total": 8798.467734242597,
+        "value_total": 18.757591243707886
+      },
+      "prospect_extended_translated": {
+        "pa_rmse": 24.305742908700346,
+        "pa_mae": 3.8100881204490644,
+        "pa_bias": -0.759111589684727,
+        "value_rmse": 0.12878668759541773,
+        "value_mae": 0.014468686581305464,
+        "value_bias": -0.0011844236329061413,
+        "pa_total": 8987.59463735047,
+        "value_total": 19.09821247902461
+      }
+    },
+    "conditional": {
+      "preseason": {
+        "rows": 95,
+        "people": 95,
+        "rmse": 114.29735395224061,
+        "mae": 87.06253737672665,
+        "bias": -19.060708694732412,
+        "predicted_total": 10043.232674000421,
+        "actual_total": 11854,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "pooled_extended": {
+        "rows": 95,
+        "people": 95,
+        "rmse": 114.23239441065354,
+        "mae": 87.52311810375697,
+        "bias": -18.026157410077747,
+        "predicted_total": 10141.515046042614,
+        "actual_total": 11854,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "prospect_restricted": {
+        "rows": 95,
+        "people": 95,
+        "rmse": 112.29977084856692,
+        "mae": 82.77521659208682,
+        "bias": -22.75086529310064,
+        "predicted_total": 9692.66779715544,
+        "actual_total": 11854,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "prospect_extended": {
+        "rows": 95,
+        "people": 95,
+        "rmse": 122.9875806506664,
+        "mae": 94.96146938959227,
+        "bias": -23.867832056558782,
+        "predicted_total": 9586.555954626916,
+        "actual_total": 11854,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      }
+    }
+  },
+  {
+    "scope": "never_origin_2018",
+    "rows": 3603,
+    "people": 3603,
+    "actual_pa": 15836,
+    "actual_value": 64.27724740162158,
+    "scores": {
+      "preseason": {
+        "pa_rmse": 28.583594973902624,
+        "pa_mae": 4.49263743756191,
+        "pa_bias": -1.6108872835091466,
+        "value_rmse": 0.21733030126901862,
+        "value_mae": 0.02420379951953278,
+        "value_bias": -0.01102020932677666,
+        "pa_total": 10031.973117516545,
+        "value_total": 24.571433197245263
+      },
+      "translated_ridge": {
+        "pa_rmse": 28.583594973902624,
+        "pa_mae": 4.49263743756191,
+        "pa_bias": -1.6108872835091466,
+        "value_rmse": 0.21498508404749844,
+        "value_mae": 0.023659581706202207,
+        "value_bias": -0.011166807737503903,
+        "pa_total": 10031.973117516545,
+        "value_total": 24.043239123395022
+      },
+      "pooled_extended": {
+        "pa_rmse": 28.75085586919255,
+        "pa_mae": 4.603461001704869,
+        "pa_bias": -1.5551712759472367,
+        "value_rmse": 0.21830066955742908,
+        "value_mae": 0.02448821052135717,
+        "value_bias": -0.010854743443479992,
+        "pa_total": 10232.717892762104,
+        "value_total": 25.167606774763165
+      },
+      "prospect_restricted": {
+        "pa_rmse": 28.97331108023679,
+        "pa_mae": 4.550923169172905,
+        "pa_bias": -1.6879731137399476,
+        "value_rmse": 0.2182146677933268,
+        "value_mae": 0.02451563206075768,
+        "value_bias": -0.011172755655416158,
+        "pa_total": 9754.232871194967,
+        "value_total": 24.021808775157158
+      },
+      "prospect_extended": {
+        "pa_rmse": 29.363292000148565,
+        "pa_mae": 4.7012614744258965,
+        "pa_bias": -1.6518572568092234,
+        "value_rmse": 0.21951394281987932,
+        "value_mae": 0.02481862402804648,
+        "value_bias": -0.011055056387097395,
+        "pa_total": 9884.358303716368,
+        "value_total": 24.445879238909665
+      },
+      "pooled_extended_translated": {
+        "pa_rmse": 28.75085586919255,
+        "pa_mae": 4.603461001704869,
+        "pa_bias": -1.5551712759472367,
+        "value_rmse": 0.21599897775554824,
+        "value_mae": 0.023930347134317537,
+        "value_bias": -0.0110664076181296,
+        "pa_total": 10232.717892762104,
+        "value_total": 24.40498075350063
+      },
+      "prospect_restricted_translated": {
+        "pa_rmse": 28.97331108023679,
+        "pa_mae": 4.550923169172905,
+        "pa_bias": -1.6879731137399476,
+        "value_rmse": 0.21597306156793603,
+        "value_mae": 0.024005338771487496,
+        "value_bias": -0.0113520472438354,
+        "pa_total": 9754.232871194967,
+        "value_total": 23.375821182082632
+      },
+      "prospect_extended_translated": {
+        "pa_rmse": 29.363292000148565,
+        "pa_mae": 4.7012614744258965,
+        "pa_bias": -1.6518572568092234,
+        "value_rmse": 0.21736461668575346,
+        "value_mae": 0.024298912249827432,
+        "value_bias": -0.01129595331877878,
+        "pa_total": 9884.358303716368,
+        "value_total": 23.577927594061634
+      }
+    },
+    "conditional": {
+      "preseason": {
+        "rows": 108,
+        "people": 108,
+        "rmse": 132.45211864807047,
+        "mae": 94.22259911633955,
+        "bias": -28.297497539043405,
+        "predicted_total": 12779.870265783311,
+        "actual_total": 15836,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "pooled_extended": {
+        "rows": 108,
+        "people": 108,
+        "rmse": 132.79284506926604,
+        "mae": 94.01661726699142,
+        "bias": -28.10924709183553,
+        "predicted_total": 12800.20131408176,
+        "actual_total": 15836,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "prospect_restricted": {
+        "rows": 108,
+        "people": 108,
+        "rmse": 134.5712933827412,
+        "mae": 95.39720058499971,
+        "bias": -31.68516427491342,
+        "predicted_total": 12414.002258309352,
+        "actual_total": 15836,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "prospect_extended": {
+        "rows": 108,
+        "people": 108,
+        "rmse": 139.05107653614374,
+        "mae": 100.80653971825814,
+        "bias": -29.598981825063348,
+        "predicted_total": 12639.309962893152,
+        "actual_total": 15836,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      }
+    }
+  },
+  {
+    "scope": "never_origin_2021",
+    "rows": 3379,
+    "people": 3379,
+    "actual_pa": 18944,
+    "actual_value": 35.3616131839542,
+    "scores": {
+      "preseason": {
+        "pa_rmse": 31.617310385520526,
+        "pa_mae": 5.487623547569054,
+        "pa_bias": -2.5192275263360013,
+        "value_rmse": 0.15465470558058306,
+        "value_mae": 0.022808542604814845,
+        "value_bias": -0.0015633818469774274,
+        "pa_total": 10431.530188510651,
+        "value_total": 30.078945923017475
+      },
+      "translated_ridge": {
+        "pa_rmse": 31.617310385520526,
+        "pa_mae": 5.487623547569054,
+        "pa_bias": -2.5192275263360013,
+        "value_rmse": 0.15315054860948624,
+        "value_mae": 0.02211692050701353,
+        "value_bias": -0.0019662281790461806,
+        "pa_total": 10431.530188510651,
+        "value_total": 28.71772816695716
+      },
+      "pooled_extended": {
+        "pa_rmse": 31.614491438410568,
+        "pa_mae": 5.515106134783952,
+        "pa_bias": -2.4367948280621308,
+        "value_rmse": 0.15454868993140228,
+        "value_mae": 0.02296063816247318,
+        "value_bias": -0.0013538226614734884,
+        "pa_total": 10710.07027597806,
+        "value_total": 30.787046410835284
+      },
+      "prospect_restricted": {
+        "pa_rmse": 31.322026898043433,
+        "pa_mae": 5.587495118009611,
+        "pa_bias": -2.273764221243361,
+        "value_rmse": 0.1558454571743404,
+        "value_mae": 0.023394508501971445,
+        "value_bias": -0.0008367278237710079,
+        "pa_total": 11260.950696418684,
+        "value_total": 32.534309867431965
+      },
+      "prospect_extended": {
+        "pa_rmse": 31.736060953731684,
+        "pa_mae": 5.505309163752954,
+        "pa_bias": -2.5361524514348806,
+        "value_rmse": 0.1572741532249477,
+        "value_mae": 0.02317696915876571,
+        "value_bias": -0.0015119743289546963,
+        "pa_total": 10374.340866601538,
+        "value_total": 30.25265192641628
+      },
+      "pooled_extended_translated": {
+        "pa_rmse": 31.614491438410568,
+        "pa_mae": 5.515106134783952,
+        "pa_bias": -2.4367948280621308,
+        "value_rmse": 0.15312938968001039,
+        "value_mae": 0.022231582411999004,
+        "value_bias": -0.001791435505138227,
+        "pa_total": 10710.07027597806,
+        "value_total": 29.308352612092136
+      },
+      "prospect_restricted_translated": {
+        "pa_rmse": 31.322026898043433,
+        "pa_mae": 5.587495118009611,
+        "pa_bias": -2.273764221243361,
+        "value_rmse": 0.15478386393848675,
+        "value_mae": 0.022689357934568298,
+        "value_bias": -0.0013346232678741786,
+        "pa_total": 11260.950696418684,
+        "value_total": 30.851921161807358
+      },
+      "prospect_extended_translated": {
+        "pa_rmse": 31.736060953731684,
+        "pa_mae": 5.505309163752954,
+        "pa_bias": -2.5361524514348806,
+        "value_rmse": 0.1562792285940775,
+        "value_mae": 0.022548310638819423,
+        "value_bias": -0.0019030286000687397,
+        "pa_total": 10374.340866601538,
+        "value_total": 28.931279544321928
+      }
+    },
+    "conditional": {
+      "preseason": {
+        "rows": 158,
+        "people": 158,
+        "rmse": 120.1246739523286,
+        "mae": 89.82427008579828,
+        "bias": 4.7920076606150745,
+        "predicted_total": 19701.13721037718,
+        "actual_total": 18944,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "pooled_extended": {
+        "rows": 158,
+        "people": 158,
+        "rmse": 123.08717453312904,
+        "mae": 92.04629947644548,
+        "bias": 8.983752685974329,
+        "predicted_total": 20363.432924383942,
+        "actual_total": 18944,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "prospect_restricted": {
+        "rows": 158,
+        "people": 158,
+        "rmse": 124.3073020722185,
+        "mae": 96.47361115696097,
+        "bias": 16.566576901690933,
+        "predicted_total": 21561.51915046717,
+        "actual_total": 18944,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "prospect_extended": {
+        "rows": 158,
+        "people": 158,
+        "rmse": 127.21806445083763,
+        "mae": 93.94898299176562,
+        "bias": 6.818120629545612,
+        "predicted_total": 20021.2630594682,
+        "actual_total": 18944,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      }
+    }
+  },
+  {
+    "scope": "never_origin_2022",
+    "rows": 3330,
+    "people": 3330,
+    "actual_pa": 14072,
+    "actual_value": 31.07003851869635,
+    "scores": {
+      "preseason": {
+        "pa_rmse": 27.224585328049727,
+        "pa_mae": 5.074916999148357,
+        "pa_bias": -0.14910675152193903,
+        "value_rmse": 0.13968043806010372,
+        "value_mae": 0.019747283815364114,
+        "value_bias": 0.0010919494510626732,
+        "pa_total": 13575.474517431941,
+        "value_total": 34.706230190735056
+      },
+      "translated_ridge": {
+        "pa_rmse": 27.224585328049727,
+        "pa_mae": 5.074916999148357,
+        "pa_bias": -0.14910675152193903,
+        "value_rmse": 0.1400106580855595,
+        "value_mae": 0.019141494200017452,
+        "value_bias": 0.0002719743255727727,
+        "pa_total": 13575.474517431941,
+        "value_total": 31.97571302285368
+      },
+      "pooled_extended": {
+        "pa_rmse": 27.213658324922218,
+        "pa_mae": 5.160866089270932,
+        "pa_bias": 0.002691377045345666,
+        "value_rmse": 0.1400280430100128,
+        "value_mae": 0.019991248985828693,
+        "value_bias": 0.0015309173702786933,
+        "pa_total": 14080.962285561001,
+        "value_total": 36.1679933617244
+      },
+      "prospect_restricted": {
+        "pa_rmse": 27.624732098221546,
+        "pa_mae": 5.414721957603918,
+        "pa_bias": 0.2995892614356992,
+        "value_rmse": 0.14076511214066806,
+        "value_mae": 0.020610237898711813,
+        "value_bias": 0.0022973533054102403,
+        "pa_total": 15069.632240580879,
+        "value_total": 38.72022502571245
+      },
+      "prospect_extended": {
+        "pa_rmse": 27.32205957724758,
+        "pa_mae": 5.5743466721919495,
+        "pa_bias": 0.6352469553278323,
+        "value_rmse": 0.14005089771502915,
+        "value_mae": 0.02099791427513254,
+        "value_bias": 0.003058887423053021,
+        "pa_total": 16187.372361241683,
+        "value_total": 41.2561336374629
+      },
+      "pooled_extended_translated": {
+        "pa_rmse": 27.213658324922218,
+        "pa_mae": 5.160866089270932,
+        "pa_bias": 0.002691377045345666,
+        "value_rmse": 0.14032240775091886,
+        "value_mae": 0.01932350597490855,
+        "value_bias": 0.0006568653247726221,
+        "pa_total": 14080.962285561001,
+        "value_total": 33.257400050189176
+      },
+      "prospect_restricted_translated": {
+        "pa_rmse": 27.624732098221546,
+        "pa_mae": 5.414721957603918,
+        "pa_bias": 0.2995892614356992,
+        "value_rmse": 0.14119696434977977,
+        "value_mae": 0.019895810748784673,
+        "value_bias": 0.0013664303416583287,
+        "pa_total": 15069.632240580879,
+        "value_total": 35.62025155641858
+      },
+      "prospect_extended_translated": {
+        "pa_rmse": 27.32205957724758,
+        "pa_mae": 5.5743466721919495,
+        "pa_bias": 0.6352469553278323,
+        "value_rmse": 0.1403294302056211,
+        "value_mae": 0.020181106815987195,
+        "value_bias": 0.0019960603870423925,
+        "pa_total": 16187.372361241683,
+        "value_total": 37.71691960754751
+      }
+    },
+    "conditional": {
+      "preseason": {
+        "rows": 106,
+        "people": 106,
+        "rmse": 126.73290767657512,
+        "mae": 98.85631194441737,
+        "bias": 5.117477265542609,
+        "predicted_total": 14614.45259014752,
+        "actual_total": 14072,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "pooled_extended": {
+        "rows": 106,
+        "people": 106,
+        "rmse": 126.04884707885094,
+        "mae": 99.57492083537893,
+        "bias": 8.349160917001859,
+        "predicted_total": 14957.011057202199,
+        "actual_total": 14072,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "prospect_restricted": {
+        "rows": 106,
+        "people": 106,
+        "rmse": 131.1449457929849,
+        "mae": 105.0560332690317,
+        "bias": 21.641933496162338,
+        "predicted_total": 16366.044950593208,
+        "actual_total": 14072,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "prospect_extended": {
+        "rows": 106,
+        "people": 106,
+        "rmse": 135.71277309110252,
+        "mae": 112.52185051942176,
+        "bias": 34.631764373731386,
+        "predicted_total": 17742.96702361553,
+        "actual_total": 14072,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      }
+    }
+  },
+  {
+    "scope": "never_origin_2023",
+    "rows": 3280,
+    "people": 3280,
+    "actual_pa": 11697,
+    "actual_value": 5.118642596467499,
+    "scores": {
+      "preseason": {
+        "pa_rmse": 24.525752750860367,
+        "pa_mae": 5.032088489860386,
+        "pa_bias": 0.9230801208073949,
+        "value_rmse": 0.10330496170694844,
+        "value_mae": 0.016540988581025,
+        "value_bias": 0.009163617743057656,
+        "pa_total": 14724.702796248255,
+        "value_total": 35.175308793696615
+      },
+      "translated_ridge": {
+        "pa_rmse": 24.525752750860367,
+        "pa_mae": 5.032088489860386,
+        "pa_bias": 0.9230801208073949,
+        "value_rmse": 0.10530805237720436,
+        "value_mae": 0.016687188340429423,
+        "value_bias": 0.009574365690733585,
+        "pa_total": 14724.702796248255,
+        "value_total": 36.52256206207365
+      },
+      "pooled_extended": {
+        "pa_rmse": 24.63068875384268,
+        "pa_mae": 5.048737203708972,
+        "pa_bias": 0.9251237223240248,
+        "value_rmse": 0.1039459032293007,
+        "value_mae": 0.016698689349139775,
+        "value_bias": 0.009277244647821483,
+        "pa_total": 14731.405809222802,
+        "value_total": 35.54800504132196
+      },
+      "prospect_restricted": {
+        "pa_rmse": 25.141091419074293,
+        "pa_mae": 5.16460201797056,
+        "pa_bias": 1.1355522316512388,
+        "value_rmse": 0.1041914042702988,
+        "value_mae": 0.017157403655828775,
+        "value_bias": 0.00981148207031749,
+        "pa_total": 15421.611319816062,
+        "value_total": 37.30030378710887
+      },
+      "prospect_extended": {
+        "pa_rmse": 24.736415845156987,
+        "pa_mae": 4.990135095535802,
+        "pa_bias": 0.9894753209038673,
+        "value_rmse": 0.1034007735721028,
+        "value_mae": 0.016746684279015333,
+        "value_bias": 0.009507177696584972,
+        "pa_total": 14942.479052564684,
+        "value_total": 36.30218544126621
+      },
+      "pooled_extended_translated": {
+        "pa_rmse": 24.63068875384268,
+        "pa_mae": 5.048737203708972,
+        "pa_bias": 0.9251237223240248,
+        "value_rmse": 0.10604102596921336,
+        "value_mae": 0.016816883894882954,
+        "value_bias": 0.00966650892655816,
+        "pa_total": 14731.405809222802,
+        "value_total": 36.82479187557827
+      },
+      "prospect_restricted_translated": {
+        "pa_rmse": 25.141091419074293,
+        "pa_mae": 5.16460201797056,
+        "pa_bias": 1.1355522316512388,
+        "value_rmse": 0.10659253512710784,
+        "value_mae": 0.017413585132749165,
+        "value_bias": 0.010268282811036084,
+        "pa_total": 15421.611319816062,
+        "value_total": 38.79861021666585
+      },
+      "prospect_extended_translated": {
+        "pa_rmse": 24.736415845156987,
+        "pa_mae": 4.990135095535802,
+        "pa_bias": 0.9894753209038673,
+        "value_rmse": 0.10545525952880581,
+        "value_mae": 0.016965284438581158,
+        "value_bias": 0.009926247534373852,
+        "pa_total": 14942.479052564684,
+        "value_total": 37.67673450921373
+      }
+    },
+    "conditional": {
+      "preseason": {
+        "rows": 107,
+        "people": 107,
+        "rmse": 113.04807195173909,
+        "mae": 85.25237368366749,
+        "bias": 23.313385411344115,
+        "predicted_total": 14191.532239013817,
+        "actual_total": 11697,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "pooled_extended": {
+        "rows": 107,
+        "people": 107,
+        "rmse": 113.42203463771818,
+        "mae": 84.73280260463336,
+        "bias": 23.018013275804286,
+        "predicted_total": 14159.927420511056,
+        "actual_total": 11697,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "prospect_restricted": {
+        "rows": 107,
+        "people": 107,
+        "rmse": 122.20972133764012,
+        "mae": 93.69700977491313,
+        "bias": 31.208259875988073,
+        "predicted_total": 15036.283806730722,
+        "actual_total": 11697,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "prospect_extended": {
+        "rows": 107,
+        "people": 107,
+        "rmse": 120.43315908428485,
+        "mae": 90.26919990868001,
+        "bias": 29.22592575218507,
+        "predicted_total": 14824.174055483796,
+        "actual_total": 11697,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      }
+    }
+  },
+  {
+    "scope": "never_origin_2024",
+    "rows": 3086,
+    "people": 3086,
+    "actual_pa": 15190,
+    "actual_value": 34.06923008355681,
+    "scores": {
+      "preseason": {
+        "pa_rmse": 31.070700053658012,
+        "pa_mae": 5.799974908868989,
+        "pa_bias": -0.9533738138103761,
+        "value_rmse": 0.1652572779346452,
+        "value_mae": 0.021349510061000658,
+        "value_bias": -0.002773659102898293,
+        "pa_total": 12247.888410581181,
+        "value_total": 25.509718092012676
+      },
+      "translated_ridge": {
+        "pa_rmse": 31.070700053658012,
+        "pa_mae": 5.799974908868989,
+        "pa_bias": -0.9533738138103761,
+        "value_rmse": 0.16450247547533633,
+        "value_mae": 0.021385653547329273,
+        "value_bias": -0.002269755041730551,
+        "pa_total": 12247.888410581181,
+        "value_total": 27.06476602477633
+      },
+      "pooled_extended": {
+        "pa_rmse": 30.715701459484958,
+        "pa_mae": 5.7839981352787175,
+        "pa_bias": -0.8960249554658563,
+        "value_rmse": 0.16459642333641294,
+        "value_mae": 0.021342887411460364,
+        "value_bias": -0.0026083335671963346,
+        "pa_total": 12424.866987432366,
+        "value_total": 26.01991269518892
+      },
+      "prospect_restricted": {
+        "pa_rmse": 30.682452403234585,
+        "pa_mae": 5.73478177798891,
+        "pa_bias": -0.9352148630386876,
+        "value_rmse": 0.16627373268861564,
+        "value_mae": 0.021420542072046713,
+        "value_bias": -0.0026371326294055675,
+        "pa_total": 12303.926932662609,
+        "value_total": 25.931038789211225
+      },
+      "prospect_extended": {
+        "pa_rmse": 30.68402432489553,
+        "pa_mae": 5.698061011138113,
+        "pa_bias": -1.0873228100627241,
+        "value_rmse": 0.16595952029148014,
+        "value_mae": 0.021290692155546548,
+        "value_bias": -0.002906791375125306,
+        "pa_total": 11834.521808146434,
+        "value_total": 25.098871899920113
+      },
+      "pooled_extended_translated": {
+        "pa_rmse": 30.715701459484958,
+        "pa_mae": 5.7839981352787175,
+        "pa_bias": -0.8960249554658563,
+        "value_rmse": 0.16380130703696233,
+        "value_mae": 0.02135151652406239,
+        "value_bias": -0.002113697022965975,
+        "pa_total": 12424.866987432366,
+        "value_total": 27.54636107068381
+      },
+      "prospect_restricted_translated": {
+        "pa_rmse": 30.682452403234585,
+        "pa_mae": 5.73478177798891,
+        "pa_bias": -0.9352148630386876,
+        "value_rmse": 0.16578118604979847,
+        "value_mae": 0.02151677683102549,
+        "value_bias": -0.0021046964971474474,
+        "pa_total": 12303.926932662609,
+        "value_total": 27.574136693359787
+      },
+      "prospect_extended_translated": {
+        "pa_rmse": 30.68402432489553,
+        "pa_mae": 5.698061011138113,
+        "pa_bias": -1.0873228100627241,
+        "value_rmse": 0.16537919038568297,
+        "value_mae": 0.021329828309447404,
+        "value_bias": -0.0024303989825556747,
+        "pa_total": 11834.521808146434,
+        "value_total": 26.569018823389996
+      }
+    },
+    "conditional": {
+      "preseason": {
+        "rows": 105,
+        "people": 105,
+        "rmse": 132.01662696195118,
+        "mae": 96.17875471723217,
+        "bias": -16.04360370995998,
+        "predicted_total": 13505.421610454203,
+        "actual_total": 15190,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "pooled_extended": {
+        "rows": 105,
+        "people": 105,
+        "rmse": 130.10570231685352,
+        "mae": 95.70581492037762,
+        "bias": -12.908463352104345,
+        "predicted_total": 13834.611348029044,
+        "actual_total": 15190,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "prospect_restricted": {
+        "rows": 105,
+        "people": 105,
+        "rmse": 127.19723157821244,
+        "mae": 94.42709914805276,
+        "bias": -11.697394886665409,
+        "predicted_total": 13961.773536900131,
+        "actual_total": 15190,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      },
+      "prospect_extended": {
+        "rows": 105,
+        "people": 105,
+        "rmse": 128.11355810016568,
+        "mae": 95.59477997042686,
+        "bias": -18.666340213117614,
+        "predicted_total": 13230.03427762265,
+        "actual_total": 15190,
+        "interpretation": "Actual-debutant diagnostic only; all non-arrivals remain in primary scoring."
+      }
+    }
+  }
+]

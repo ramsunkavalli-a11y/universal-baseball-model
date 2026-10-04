@@ -24,7 +24,37 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: matched earlier-training comparison and fourteen model walks completed.**
+**Current checkpoint: separate entrant workload comparison and thirteen model walks completed.**
+The [completed comparison](hitter-prospect-workload-specialization-result.md)
+keeps all 30,506 forecasts, fixed arrival/hitting and unchanged established
+players. All 140 actual conditional-subset preflights precede seventy new fits;
+seventy saved pooled controls and seventy new heads replay. Specialization
+does not improve prospect PA/value, with or without older training. Current
+never-debut PA RMSE 27.2521 becomes 27.2634/27.3294; value .152257 becomes
+.152871/.153135. Translated hitting does not rescue it. Upper-minors value
+worsens; lower-minors tiny PA gains accompany worse MAE/overpredicted totals.
+Thirteen actual walks include Yordan/Walker gains, Anthony/Julio harms,
+Alonso/Holliday false low/high, Demeritte's cancelling component errors and
+a genuinely ordinary Vavra. Retain current opportunity and both hitting anchors.
+The [date clarification](hitter-prospect-workload-specialization-date-clarification.md)
+corrects the sealed result's end-of-year wording: inputs combine season-end
+statistics with following-preseason rankings, not a strict December 31 or fully
+refreshed Opening Day forecast. Matched arms and scores are unchanged.
+The exact diagnostic changes the next question: conditional forecasts for all
+787 actual entrants sum to 98,088 versus 98,328 PA, but probability allocation
+leaves expected PA only 81,849. Middle-probability groups underforecast arrivals;
+very-low-probability groups overforecast. This is descriptive accounting, not
+proof of good individual workload or permission for a global probability boost.
+The [legacy clarification](hitter-prospect-workload-specialization-legacy-clarification.md)
+shows the earlier detailed conditional fit used mixed active training but zero
+identity overlap for its primary never-debut queries; established overlap does
+not invalidate that primary evidence. Next address arrival allocation/history
+semantics, reconciling earlier calibration and cancellation tests first. Do not
+repeat conditional multipliers or generic calibration that already failed to
+transfer. Public established-workload and full value remain unfinished. No
+protected 2026, frozen or explorer change; the full goal remains active.
+
+**Previous checkpoint: matched earlier-training comparison and fourteen model walks completed.**
 The [completed comparison](hitter-extended-training-result.md) adds all 13,357
 reviewed origins, retains all 30,506 forecasts, saves 210 actual head preflights
 before fitting and replays every saved head. Restricted outputs reproduce current
