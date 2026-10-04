@@ -24,7 +24,25 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: earlier detailed contact evidence reconciled and identity repair demonstrated.**
+**Current checkpoint: historical contact controls rebuilt and 2016 identity repair reviewed.**
+The [source milestone](hitter-contact-identity-rebuild-progress.md) assembles
+3,983,836 independent player-game controls across eight seasons and retains
+4,591,561 physical contacts with actual league identity. It locks 11,692
+exception games and 2,520 unflagged audit games before official inspection.
+All 2,163 selected 2016 games have sequence coverage: 1,920 contact identities
+change, none of 360 unflagged games disagrees, and controlled absolute count
+residuals fall 3,973 to 137 without changing locations or results. The remaining
+residuals are retained, not forced to zero. Five actual source walks show
+Serrano/Topete/Brown changes and unchanged DSL Henriquez/Herrera; a signed-count
+reporting repair preserves the initial flawed case selection separately.
+Thirty-four focused checks pass and all 31 frozen files remain unchanged.
+The official capture for the other seasons is still running; the full source
+gate and fixed 2018/2024 cases are pending. No new model fit, forecast gain,
+2026 outcome access or explorer promotion is claimed. Finish the same capture,
+review all seasons, then contract one matched detailed-information comparison
+with the preserved current/translated/available-season anchors. Full goal active.
+
+**Previous checkpoint: earlier detailed contact evidence reconciled and identity repair demonstrated.**
 The [completed compatibility review](hitter-detailed-contact-compatibility-result.md)
 inspects 38,114 old contact player-seasons and all six chronological memberships.
 The old ninety-cell block is minor-only, pooled across levels and not park-adjusted;
