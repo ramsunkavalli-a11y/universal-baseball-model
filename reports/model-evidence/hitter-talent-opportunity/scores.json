@@ -1,0 +1,722 @@
+[
+  {
+    "scope": "all",
+    "rows": 30506,
+    "people": 11020,
+    "scores": {
+      "current": {
+        "pa_rmse": 60.499101826264365,
+        "pa_mae": 20.61235822996411,
+        "value_rmse": 0.4533837583463632,
+        "brier": 0.03354049525423285,
+        "logloss": 0.1147361153303961,
+        "expected_pa": 1228732.5119559553,
+        "expected_value": 4165.848839961402,
+        "expected_appearances": 4391.863787413928
+      },
+      "coverage": {
+        "pa_rmse": 60.499101826264365,
+        "pa_mae": 20.61235822996411,
+        "value_rmse": 0.4533837583463632,
+        "brier": 0.03354049525423285,
+        "logloss": 0.11473611533039611,
+        "expected_pa": 1228732.5119559553,
+        "expected_value": 4165.848839961402,
+        "expected_appearances": 4391.863787413928
+      },
+      "talent": {
+        "pa_rmse": 60.42953904861988,
+        "pa_mae": 20.573398260924254,
+        "value_rmse": 0.453114186207483,
+        "brier": 0.03355040248987337,
+        "logloss": 0.11475652255515723,
+        "expected_pa": 1227006.201631831,
+        "expected_value": 4168.349253573775,
+        "expected_appearances": 4390.702646729503
+      }
+    },
+    "actual_pa": 1270493,
+    "actual_value": 4264.186901827925,
+    "actual_appearances": 4538
+  },
+  {
+    "scope": "public",
+    "rows": 2627,
+    "people": 1044,
+    "scores": {
+      "current": {
+        "pa_rmse": 138.3298474682615,
+        "pa_mae": 106.41075374670467,
+        "value_rmse": 1.0605043659795659,
+        "brier": 0.09167817805858978,
+        "logloss": 0.29731380413153397,
+        "expected_pa": 649254.8423971365,
+        "expected_value": 2202.932588584372,
+        "expected_appearances": 2041.5174668228374
+      },
+      "coverage": {
+        "pa_rmse": 138.3298474682615,
+        "pa_mae": 106.41075374670467,
+        "value_rmse": 1.0605043659795657,
+        "brier": 0.09167817805858978,
+        "logloss": 0.29731380413153397,
+        "expected_pa": 649254.8423971365,
+        "expected_value": 2202.932588584372,
+        "expected_appearances": 2041.5174668228374
+      },
+      "talent": {
+        "pa_rmse": 138.00670721300335,
+        "pa_mae": 106.1410268264795,
+        "value_rmse": 1.0601367023611508,
+        "brier": 0.09126106716495638,
+        "logloss": 0.29626036023770114,
+        "expected_pa": 647948.0224526147,
+        "expected_value": 2203.694626725688,
+        "expected_appearances": 2041.6354878769266
+      }
+    },
+    "actual_pa": 660776,
+    "actual_value": 2123.810127060133,
+    "actual_appearances": 2088
+  },
+  {
+    "scope": "current_MLB",
+    "rows": 4541,
+    "people": 1521,
+    "scores": {
+      "current": {
+        "pa_rmse": 140.95127598087853,
+        "pa_mae": 107.69713732752815,
+        "value_rmse": 1.1139627411591426,
+        "brier": 0.09495244796104108,
+        "logloss": 0.3064014203848227,
+        "expected_pa": 1129696.858368429,
+        "expected_value": 3937.085881124297,
+        "expected_appearances": 3547.8661756996835
+      },
+      "coverage": {
+        "pa_rmse": 140.95127598087853,
+        "pa_mae": 107.69713732752815,
+        "value_rmse": 1.1139627411591426,
+        "brier": 0.09495244796104106,
+        "logloss": 0.3064014203848227,
+        "expected_pa": 1129696.858368429,
+        "expected_value": 3937.085881124297,
+        "expected_appearances": 3547.8661756996835
+      },
+      "talent": {
+        "pa_rmse": 140.76847827693064,
+        "pa_mae": 107.48033174279247,
+        "value_rmse": 1.1132716039795143,
+        "brier": 0.09489036451416191,
+        "logloss": 0.3062913834773638,
+        "expected_pa": 1128376.5396088846,
+        "expected_value": 3939.6253774693823,
+        "expected_appearances": 3547.815306954098
+      }
+    },
+    "actual_pa": 1156856,
+    "actual_value": 4027.1318440354066,
+    "actual_appearances": 3596
+  },
+  {
+    "scope": "upper_never_debut",
+    "rows": 5454,
+    "people": 3055,
+    "scores": {
+      "current": {
+        "pa_rmse": 55.12674520539247,
+        "pa_mae": 18.732137202600434,
+        "value_rmse": 0.31283189770616543,
+        "brier": 0.07801654659263814,
+        "logloss": 0.2637467603526994,
+        "expected_pa": 74239.03857057953,
+        "expected_value": 179.01457512848606,
+        "expected_appearances": 589.4630023430029
+      },
+      "coverage": {
+        "pa_rmse": 55.12674520539247,
+        "pa_mae": 18.732137202600434,
+        "value_rmse": 0.31283189770616543,
+        "brier": 0.07801654659263814,
+        "logloss": 0.2637467603526994,
+        "expected_pa": 74239.03857057953,
+        "expected_value": 179.01457512848606,
+        "expected_appearances": 589.4630023430029
+      },
+      "talent": {
+        "pa_rmse": 55.10100774442406,
+        "pa_mae": 18.710326373441642,
+        "value_rmse": 0.3125487596184161,
+        "brier": 0.07809473587517721,
+        "logloss": 0.26383534910521295,
+        "expected_pa": 74005.29528109677,
+        "expected_value": 179.19905474970852,
+        "expected_appearances": 588.5972007618427
+      }
+    },
+    "actual_pa": 92891,
+    "actual_value": 203.93926446318383,
+    "actual_appearances": 730
+  },
+  {
+    "scope": "lower_never_debut",
+    "rows": 17852,
+    "people": 8974,
+    "scores": {
+      "current": {
+        "pa_rmse": 7.9663627036290094,
+        "pa_mae": 0.6216744545061629,
+        "value_rmse": 0.043038585311895444,
+        "brier": 0.0026636719540869165,
+        "logloss": 0.013965784493706926,
+        "expected_pa": 7054.64556931176,
+        "expected_value": 19.472943221761007,
+        "expected_appearances": 81.99030198386187
+      },
+      "coverage": {
+        "pa_rmse": 7.9663627036290094,
+        "pa_mae": 0.6216744545061629,
+        "value_rmse": 0.043038585311895444,
+        "brier": 0.002663671954086917,
+        "logloss": 0.013965784493706926,
+        "expected_pa": 7054.64556931176,
+        "expected_value": 19.472943221761007,
+        "expected_appearances": 81.99030198386187
+      },
+      "talent": {
+        "pa_rmse": 7.971197625493571,
+        "pa_mae": 0.6240563972808818,
+        "value_rmse": 0.04302757578749162,
+        "brier": 0.002667657985092251,
+        "logloss": 0.013992432448214907,
+        "expected_pa": 7099.482681868217,
+        "expected_value": 19.67786302944924,
+        "expected_appearances": 82.15283177018576
+      }
+    },
+    "actual_pa": 5194,
+    "actual_value": 9.56025276109348,
+    "actual_appearances": 54
+  },
+  {
+    "scope": "absent_prior_debut",
+    "rows": 1766,
+    "people": 937,
+    "scores": {
+      "current": {
+        "pa_rmse": 43.84429455110618,
+        "pa_mae": 13.138739065535423,
+        "value_rmse": 0.2197866212220011,
+        "brier": 0.06337749314942355,
+        "logloss": 0.22113664846996264,
+        "expected_pa": 17186.64704682621,
+        "expected_value": 29.223721530169993,
+        "expected_appearances": 166.96460077785784
+      },
+      "coverage": {
+        "pa_rmse": 43.84429455110618,
+        "pa_mae": 13.138739065535423,
+        "value_rmse": 0.2197866212220011,
+        "brier": 0.06337749314942354,
+        "logloss": 0.22113664846996262,
+        "expected_pa": 17186.64704682621,
+        "expected_value": 29.223721530169996,
+        "expected_appearances": 166.96460077785784
+      },
+      "talent": {
+        "pa_rmse": 43.859086296803994,
+        "pa_mae": 13.086176332877924,
+        "value_rmse": 0.21986632805116105,
+        "brier": 0.06348522727162716,
+        "logloss": 0.2214157054830582,
+        "expected_pa": 16983.602324593394,
+        "expected_value": 28.8195266469215,
+        "expected_appearances": 166.57551627486276
+      }
+    },
+    "actual_pa": 15309,
+    "actual_value": 22.305109774464587,
+    "actual_appearances": 155
+  },
+  {
+    "scope": "thin_new_draftee",
+    "rows": 1429,
+    "people": 1429,
+    "scores": {
+      "current": {
+        "pa_rmse": 20.290518195377317,
+        "pa_mae": 1.6197168802101858,
+        "value_rmse": 0.16116239114100953,
+        "brier": 0.0045576763780151045,
+        "logloss": 0.02171376228210295,
+        "expected_pa": 746.1939838705712,
+        "expected_value": 2.2410265009422914,
+        "expected_appearances": 7.39167903190059
+      },
+      "coverage": {
+        "pa_rmse": 20.290518195377317,
+        "pa_mae": 1.6197168802101858,
+        "value_rmse": 0.16116239114100953,
+        "brier": 0.0045576763780151045,
+        "logloss": 0.021713762282102957,
+        "expected_pa": 746.1939838705712,
+        "expected_value": 2.2410265009422914,
+        "expected_appearances": 7.39167903190059
+      },
+      "talent": {
+        "pa_rmse": 20.298095602119435,
+        "pa_mae": 1.6304940278732054,
+        "value_rmse": 0.16122501913992285,
+        "brier": 0.004546376335572029,
+        "logloss": 0.021744388534212806,
+        "expected_pa": 763.4785369013014,
+        "expected_value": 2.3076372529166207,
+        "expected_appearances": 7.4461080792340715
+      }
+    },
+    "actual_pa": 1647,
+    "actual_value": 6.84410121270769,
+    "actual_appearances": 7
+  },
+  {
+    "scope": "origin_2016",
+    "rows": 4663,
+    "people": 4663,
+    "scores": {
+      "current": {
+        "pa_rmse": 57.648052854156674,
+        "pa_mae": 18.692640246908564,
+        "value_rmse": 0.4557421072622776,
+        "brier": 0.031211691914534132,
+        "logloss": 0.10589882032390606,
+        "expected_pa": 171709.23525463397,
+        "expected_value": 596.683351243409,
+        "expected_appearances": 623.4261676611462
+      },
+      "coverage": {
+        "pa_rmse": 57.64805285415666,
+        "pa_mae": 18.692640246908574,
+        "value_rmse": 0.45574210726227776,
+        "brier": 0.031211691914534132,
+        "logloss": 0.10589882032390606,
+        "expected_pa": 171709.23525463397,
+        "expected_value": 596.683351243409,
+        "expected_appearances": 623.4261676611462
+      },
+      "talent": {
+        "pa_rmse": 57.61103786200218,
+        "pa_mae": 18.654726475886076,
+        "value_rmse": 0.4553954418564878,
+        "brier": 0.03124394215204966,
+        "logloss": 0.10594022496631947,
+        "expected_pa": 171715.33756047447,
+        "expected_value": 597.176198453637,
+        "expected_appearances": 623.8287688336067
+      }
+    },
+    "actual_pa": 179968,
+    "actual_value": 706.5549375611811,
+    "actual_appearances": 624
+  },
+  {
+    "scope": "origin_2017",
+    "rows": 4691,
+    "people": 4691,
+    "scores": {
+      "current": {
+        "pa_rmse": 56.64522304623442,
+        "pa_mae": 18.133965410644343,
+        "value_rmse": 0.4067138225152435,
+        "brier": 0.030806837944625076,
+        "logloss": 0.10420183766133626,
+        "expected_pa": 174316.4618598693,
+        "expected_value": 616.2698739623663,
+        "expected_appearances": 616.2927241842597
+      },
+      "coverage": {
+        "pa_rmse": 56.64522304623442,
+        "pa_mae": 18.13396541064434,
+        "value_rmse": 0.4067138225152435,
+        "brier": 0.030806837944625076,
+        "logloss": 0.10420183766133624,
+        "expected_pa": 174316.4618598693,
+        "expected_value": 616.2698739623663,
+        "expected_appearances": 616.2927241842597
+      },
+      "talent": {
+        "pa_rmse": 56.61546264881524,
+        "pa_mae": 18.102508510255714,
+        "value_rmse": 0.4063072534523198,
+        "brier": 0.030870839510414954,
+        "logloss": 0.10441124866026334,
+        "expected_pa": 174183.3211504306,
+        "expected_value": 616.6800631567228,
+        "expected_appearances": 615.7735997451787
+      }
+    },
+    "actual_pa": 179643,
+    "actual_value": 505.4608400276606,
+    "actual_appearances": 628
+  },
+  {
+    "scope": "origin_2018",
+    "rows": 4478,
+    "people": 4478,
+    "scores": {
+      "current": {
+        "pa_rmse": 62.43970142429324,
+        "pa_mae": 20.15274309227662,
+        "value_rmse": 0.5330104801035619,
+        "brier": 0.02966673600428727,
+        "logloss": 0.10188111110207608,
+        "expected_pa": 172104.99899229084,
+        "expected_value": 607.7074660017038,
+        "expected_appearances": 615.0841701700679
+      },
+      "coverage": {
+        "pa_rmse": 62.439701424293254,
+        "pa_mae": 20.152743092276623,
+        "value_rmse": 0.5330104801035619,
+        "brier": 0.029666736004287257,
+        "logloss": 0.10188111110207608,
+        "expected_pa": 172104.99899229084,
+        "expected_value": 607.7074660017038,
+        "expected_appearances": 615.0841701700679
+      },
+      "talent": {
+        "pa_rmse": 62.443056036597135,
+        "pa_mae": 20.15434802768413,
+        "value_rmse": 0.5322982581244422,
+        "brier": 0.029822321723835053,
+        "logloss": 0.10235862696145885,
+        "expected_pa": 172140.70943550588,
+        "expected_value": 608.6020938674612,
+        "expected_appearances": 614.64996364193
+      }
+    },
+    "actual_pa": 181308,
+    "actual_value": 815.4233629440128,
+    "actual_appearances": 638
+  },
+  {
+    "scope": "origin_2021",
+    "rows": 4242,
+    "people": 4242,
+    "scores": {
+      "current": {
+        "pa_rmse": 59.30755896634769,
+        "pa_mae": 20.099963073205604,
+        "value_rmse": 0.41928230556533974,
+        "brier": 0.040443575816189285,
+        "logloss": 0.13897949224694933,
+        "expected_pa": 164798.0764167206,
+        "expected_value": 605.4415460179416,
+        "expected_appearances": 581.3609535170974
+      },
+      "coverage": {
+        "pa_rmse": 59.3075589663477,
+        "pa_mae": 20.099963073205593,
+        "value_rmse": 0.41928230556533974,
+        "brier": 0.040443575816189285,
+        "logloss": 0.13897949224694933,
+        "expected_pa": 164798.0764167206,
+        "expected_value": 605.4415460179416,
+        "expected_appearances": 581.3609535170974
+      },
+      "talent": {
+        "pa_rmse": 59.16412231969138,
+        "pa_mae": 20.10296418533461,
+        "value_rmse": 0.41941766309373496,
+        "brier": 0.04035270193511249,
+        "logloss": 0.13866335374619573,
+        "expected_pa": 165353.34615516313,
+        "expected_value": 607.9935087971808,
+        "expected_appearances": 582.6663775754603
+      }
+    },
+    "actual_pa": 181583,
+    "actual_value": 463.9060836443723,
+    "actual_appearances": 686
+  },
+  {
+    "scope": "origin_2022",
+    "rows": 4244,
+    "people": 4244,
+    "scores": {
+      "current": {
+        "pa_rmse": 61.95586096879842,
+        "pa_mae": 21.510162043414073,
+        "value_rmse": 0.4713698727371777,
+        "brier": 0.03456037946358417,
+        "logloss": 0.11935014764629827,
+        "expected_pa": 177294.80709346556,
+        "expected_value": 582.4557464048191,
+        "expected_appearances": 641.2617474184858
+      },
+      "coverage": {
+        "pa_rmse": 61.95586096879842,
+        "pa_mae": 21.51016204341408,
+        "value_rmse": 0.4713698727371776,
+        "brier": 0.03456037946358417,
+        "logloss": 0.11935014764629825,
+        "expected_pa": 177294.80709346556,
+        "expected_value": 582.4557464048191,
+        "expected_appearances": 641.2617474184858
+      },
+      "talent": {
+        "pa_rmse": 61.808266645144876,
+        "pa_mae": 21.467868996788425,
+        "value_rmse": 0.47069704946058494,
+        "brier": 0.03458204043618754,
+        "logloss": 0.11933330967433611,
+        "expected_pa": 177100.89543502175,
+        "expected_value": 582.9130150649393,
+        "expected_appearances": 640.298362767127
+      }
+    },
+    "actual_pa": 182917,
+    "actual_value": 737.652583233729,
+    "actual_appearances": 649
+  },
+  {
+    "scope": "origin_2023",
+    "rows": 4196,
+    "people": 4196,
+    "scores": {
+      "current": {
+        "pa_rmse": 62.465861419786485,
+        "pa_mae": 22.69433285121333,
+        "value_rmse": 0.4286270808461243,
+        "brier": 0.03332489877697605,
+        "logloss": 0.11653231875590338,
+        "expected_pa": 186453.53525672553,
+        "expected_value": 597.0602789324156,
+        "expected_appearances": 667.3895516797581
+      },
+      "coverage": {
+        "pa_rmse": 62.465861419786485,
+        "pa_mae": 22.694332851213318,
+        "value_rmse": 0.4286270808461243,
+        "brier": 0.033324898776976045,
+        "logloss": 0.11653231875590339,
+        "expected_pa": 186453.53525672553,
+        "expected_value": 597.0602789324156,
+        "expected_appearances": 667.3895516797581
+      },
+      "talent": {
+        "pa_rmse": 62.33359835543124,
+        "pa_mae": 22.5755914486872,
+        "value_rmse": 0.4287090758781886,
+        "brier": 0.0331727740387517,
+        "logloss": 0.11617708001756506,
+        "expected_pa": 185799.42176622368,
+        "expected_value": 596.73100777066,
+        "expected_appearances": 666.8124398788046
+      }
+    },
+    "actual_pa": 182194,
+    "actual_value": 421.33608454352634,
+    "actual_appearances": 647
+  },
+  {
+    "scope": "origin_2024",
+    "rows": 3992,
+    "people": 3992,
+    "scores": {
+      "current": {
+        "pa_rmse": 62.70880755409797,
+        "pa_mae": 23.00270089208631,
+        "value_rmse": 0.4471825908392918,
+        "brier": 0.034769346859434065,
+        "logloss": 0.11630907957630457,
+        "expected_pa": 182055.39708224946,
+        "expected_value": 560.2305773987455,
+        "expected_appearances": 647.0484727831126
+      },
+      "coverage": {
+        "pa_rmse": 62.70880755409797,
+        "pa_mae": 23.0027008920863,
+        "value_rmse": 0.4471825908392918,
+        "brier": 0.03476934685943407,
+        "logloss": 0.11630907957630457,
+        "expected_pa": 182055.39708224946,
+        "expected_value": 560.2305773987455,
+        "expected_appearances": 647.0484727831126
+      },
+      "talent": {
+        "pa_rmse": 62.70960138815855,
+        "pa_mae": 22.955780181833642,
+        "value_rmse": 0.4473442429461879,
+        "brier": 0.034808197632762335,
+        "logloss": 0.11641181385996226,
+        "expected_pa": 180713.17012901153,
+        "expected_value": 558.253366463174,
+        "expected_appearances": 646.6731342873956
+      }
+    },
+    "actual_pa": 182880,
+    "actual_value": 613.853009873443,
+    "actual_appearances": 666
+  },
+  {
+    "scope": "hitting_band_0",
+    "rows": 4251,
+    "people": 2326,
+    "scores": {
+      "current": {
+        "pa_rmse": 62.7250124450071,
+        "pa_mae": 27.173834090284,
+        "value_rmse": 0.3243882443578488,
+        "brier": 0.07767640825839897,
+        "logloss": 0.2567494547511438,
+        "expected_pa": 139061.84275300492,
+        "expected_value": 117.24295723687038,
+        "expected_appearances": 892.710403898498
+      },
+      "coverage": {
+        "pa_rmse": 62.72501244500711,
+        "pa_mae": 27.173834090284,
+        "value_rmse": 0.3243882443578488,
+        "brier": 0.07767640825839899,
+        "logloss": 0.2567494547511438,
+        "expected_pa": 139061.84275300492,
+        "expected_value": 117.2429572368704,
+        "expected_appearances": 892.710403898498
+      },
+      "talent": {
+        "pa_rmse": 62.84239278507348,
+        "pa_mae": 27.128687250681327,
+        "value_rmse": 0.3244746055631858,
+        "brier": 0.07773168050775206,
+        "logloss": 0.2568053925758417,
+        "expected_pa": 138139.7406268686,
+        "expected_value": 116.25628741149812,
+        "expected_appearances": 892.3829029036308
+      }
+    },
+    "actual_pa": 138589,
+    "actual_value": 80.69460920467559,
+    "actual_appearances": 917
+  },
+  {
+    "scope": "hitting_band_1",
+    "rows": 17896,
+    "people": 8639,
+    "scores": {
+      "current": {
+        "pa_rmse": 55.980277757023934,
+        "pa_mae": 17.743948414224153,
+        "value_rmse": 0.36478012598494175,
+        "brier": 0.03409646082123383,
+        "logloss": 0.11680594211416252,
+        "expected_pa": 462840.03442059626,
+        "expected_value": 1082.1517558358742,
+        "expected_appearances": 2085.1183943388623
+      },
+      "coverage": {
+        "pa_rmse": 55.980277757023934,
+        "pa_mae": 17.743948414224153,
+        "value_rmse": 0.3647801259849418,
+        "brier": 0.03409646082123384,
+        "logloss": 0.11680594211416251,
+        "expected_pa": 462840.03442059626,
+        "expected_value": 1082.1517558358742,
+        "expected_appearances": 2085.1183943388623
+      },
+      "talent": {
+        "pa_rmse": 55.94238843751701,
+        "pa_mae": 17.70731488533151,
+        "value_rmse": 0.36469578719847634,
+        "brier": 0.034126073112758906,
+        "logloss": 0.11691417815854345,
+        "expected_pa": 460073.1568517921,
+        "expected_value": 1075.8119592166274,
+        "expected_appearances": 2081.7890034636457
+      }
+    },
+    "actual_pa": 478382,
+    "actual_value": 1112.3919859821822,
+    "actual_appearances": 2162
+  },
+  {
+    "scope": "hitting_band_2",
+    "rows": 7920,
+    "people": 5198,
+    "scores": {
+      "current": {
+        "pa_rmse": 63.50961280983658,
+        "pa_mae": 20.54342095574393,
+        "value_rmse": 0.5246536665276083,
+        "brier": 0.011936155697610893,
+        "logloss": 0.04386745919355396,
+        "expected_pa": 393460.0285228041,
+        "expected_value": 1527.3199552403444,
+        "expected_appearances": 987.0057319583555
+      },
+      "coverage": {
+        "pa_rmse": 63.50961280983659,
+        "pa_mae": 20.54342095574393,
+        "value_rmse": 0.5246536665276083,
+        "brier": 0.011936155697610893,
+        "logloss": 0.04386745919355396,
+        "expected_pa": 393460.0285228041,
+        "expected_value": 1527.3199552403444,
+        "expected_appearances": 987.0057319583555
+      },
+      "talent": {
+        "pa_rmse": 63.30468528296346,
+        "pa_mae": 20.547731433363417,
+        "value_rmse": 0.5247382887482673,
+        "brier": 0.01189183504943225,
+        "logloss": 0.04368196594041531,
+        "expected_pa": 394480.9242245381,
+        "expected_value": 1531.9807318290884,
+        "expected_appearances": 989.1677890849122
+      }
+    },
+    "actual_pa": 410805,
+    "actual_value": 1554.718025609994,
+    "actual_appearances": 1027
+  },
+  {
+    "scope": "hitting_band_3",
+    "rows": 439,
+    "people": 179,
+    "scores": {
+      "current": {
+        "pa_rmse": 150.5759184217695,
+        "pa_mae": 118.12919597992392,
+        "value_rmse": 1.8463183234708078,
+        "brier": 0.012680023637885927,
+        "logloss": 0.06336283387543946,
+        "expected_pa": 233370.60625954994,
+        "expected_value": 1439.134171648312,
+        "expected_appearances": 427.0292572182119
+      },
+      "coverage": {
+        "pa_rmse": 150.5759184217695,
+        "pa_mae": 118.12919597992392,
+        "value_rmse": 1.8463183234708078,
+        "brier": 0.012680023637885928,
+        "logloss": 0.06336283387543946,
+        "expected_pa": 233370.60625954994,
+        "expected_value": 1439.134171648312,
+        "expected_appearances": 427.0292572182119
+      },
+      "talent": {
+        "pa_rmse": 150.29483489395642,
+        "pa_mae": 117.27603775256625,
+        "value_rmse": 1.8430999918836055,
+        "brier": 0.01256185071862729,
+        "logloss": 0.06315244827860633,
+        "expected_pa": 234312.37992863212,
+        "expected_value": 1444.3002751165614,
+        "expected_appearances": 427.3629512773138
+      }
+    },
+    "actual_pa": 242717,
+    "actual_value": 1516.3822810310737,
+    "actual_appearances": 432
+  }
+]

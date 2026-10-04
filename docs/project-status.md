@@ -24,7 +24,27 @@ talent and complete population coverage, integrate value/uncertainty and expose
 a clearly labeled development candidate. This is not another injury-cap sweep
 or an assertion that the post-debut research slice is the full hitter model.
 
-**Current checkpoint: workload uncertainty scored and fourteen player reviews completed.**
+**Current checkpoint: generated hitting and opportunity comparison reviewed.**
+The [completed test](hitter-talent-opportunity-result.md) adds the current
+MLB hitting estimate to both arrival and active-workload models using strictly
+earlier, whole-player-separated training predictions. All 30,506 forecasts
+remain; 135 rate, 140 new opportunity and seventy current heads replay exactly.
+The known-indicator control equals the current forecasts. PA RMSE 60.4991 to
+60.4295 and offense .453384 to .453114 are tiny, uncertain gains; overall
+appearance scores worsen and prospect/return readiness remains unresolved.
+Public MAE 106.14 versus Steamer 92.08 is still 15.27% worse. Upper-minor PA
+totals fall to 74,005 versus 92,891 actual; origin-2021 debut PA remains
+10,589 versus 18,944. [Sixteen actual player walks](hitter-talent-opportunity-player-walkthrough.md)
+include the preserved Soto/Peña review-ID correction, gains and harms, and
+Caceres's unsupported positive DSL hitting estimate driven mostly by age.
+Keep V68/V53/V63, not this additional feature. Before another fit, audit actual
+cross-level hitting target support and representation, and reconcile compatible
+earlier contact/talent evidence under the future-MLB question. A participant-trained
+age polynomial is not validated latent talent at sixteen. No protected 2026,
+frozen forecast or explorer changes; public workload, prospect readiness and
+full player value still prevent completion of the active goal.
+
+**Previous checkpoint: workload uncertainty scored and fourteen player reviews completed.**
 The [completed comparison](hitter-workload-risk-result.md) keeps all current
 means and probabilities exactly unchanged. Fifty distinct nested heads across
 95 contexts were replayed; all 35 spread estimates were recomputed. Quantile

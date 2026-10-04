@@ -1,0 +1,164 @@
+[
+  {
+    "row_id": 57052,
+    "player_id": 701762,
+    "player_name": "Nick Kurtz",
+    "origin_year": 2024,
+    "selection": [
+      "fixed before fit"
+    ],
+    "baseball_review": "Kurtz 2024: 50 A/AA PA, four HR, 12 walks and ten K. Rate -.063 includes age +.619 and draft rank +.165; support 1/0. Current .06056 x 168.16 = 10.18 PA; talent .05719 x 164.28 = 9.40 versus 489 actual. Direct rate paths -.0139 logit/+1.21 PA do not equal the between-fit decrease. Value .0307 to .0283 versus 5.8378. Ariza/Avila/Chevalier/Kopack all zero but lack comparable elite rank, so they do not explain away the miss. No readiness repair."
+  },
+  {
+    "row_id": 53164,
+    "player_id": 694671,
+    "player_name": "Wyatt Langford",
+    "origin_year": 2023,
+    "selection": [
+      "fixed before fit"
+    ],
+    "baseball_review": "Langford 2023: age 21, 200 pro PA with 80 AA/AAA, ten HR, 36 walks and 34 K. Rate +.688 includes young age and college-draft evidence; support 0/0. Current .59910 x 358.74 = 214.92 PA becomes .62317 x 353.96 = 220.58 versus 557. Direct rate +.121 logit/+20.59 PA coexists with lower conditional PA after refitting. Crews 132, DeLauter/Montgomery/Teel zero. Value .9119 to .9359 versus 1.7960. A slight gain does not establish supported full-season readiness."
+  },
+  {
+    "row_id": 33263,
+    "player_id": 624413,
+    "player_name": "Pete Alonso",
+    "origin_year": 2018,
+    "selection": [
+      "fixed before fit"
+    ],
+    "baseball_review": "Alonso 2018: age 23, 574 AA/AAA PA, 36 HR, 73 walks and 128 K. Rate +.286 includes age +.415 and AAA HR +.123; support 7/5. Current .80363 x 267.58 = 215.03 becomes .80667 x 281.51 = 227.08 versus 693. No direct rate classifier path; conditional +9.45 PA. Thaiss 164 and Rooker/Craig/Katoh zero show timing variance. Value .7649 to .8077 versus 6.5980. The workload gain is plausible but both regular-season work and batting breakout are still badly missed."
+  },
+  {
+    "row_id": 23934,
+    "player_id": 592450,
+    "player_name": "Aaron Judge",
+    "origin_year": 2016,
+    "selection": [
+      "fixed before fit"
+    ],
+    "baseball_review": "Judge 2016: 410 AAA PA with 19 HR/98 K, then 95 MLB PA with 42 K/four HR. Rate -.040 reflects near-average estimate including a poor initial MLB sample; support 5/4. Current .925 x 335.05 = 309.92 becomes .92861 x 341.71 = 317.31 versus 678. Rate conditional path only +.19 PA, no classifier split. Renfroe 479; Moya/Waldrop/Patterson zero. Value .9358 to .9581 versus 8.3719. The new summary does not identify his future breakout or regular workload."
+  },
+  {
+    "row_id": 54849,
+    "player_id": 592450,
+    "player_name": "Aaron Judge",
+    "origin_year": 2024,
+    "selection": [
+      "fixed before fit"
+    ],
+    "baseball_review": "Judge 2024: 696/458/704 MLB PA, 62/37/58 HR; rate +4.534 driven by pooled/recent quality, balanced by age. Broad support 1216/931 does not mean equivalent stars. Current .99070 x 535.74 = 530.75 becomes .99257 x 541.52 = 537.50 versus 679. Direct rate +.249 logit/+14.70 PA, partly offset by other splits. Ohtani/Schwarber/Ozuna/Freeman have 727/724/592/627 subsequent PA. Value 5.6683 to 5.7404 versus 9.3932. Slight improvement, workload underestimate remains."
+  },
+  {
+    "row_id": 43306,
+    "player_id": 665742,
+    "player_name": "Juan Soto",
+    "origin_year": 2021,
+    "selection": [
+      "fixed before fit"
+    ],
+    "baseball_review": "Soto 2021 is MLBAM 665742, accidentally selected instead of Pe\u00f1a; preserved and reviewed without changing scores. Age 22, 654 MLB PA with 122 walks and 93 K, raw shortened-2020 counts retained separately. Rate +4.069; support 114/99. Current 608.42 becomes 605.32 PA versus 664, despite positive direct rate paths. Value 6.0323 to 6.0016 versus 5.2366: worse workload but better value. Guerrero/Tucker/Tatis/Acu\u00f1a have 706/609/0/533 PA. Future absences not predictors; no identity confusion in model rows."
+  },
+  {
+    "row_id": 55824,
+    "player_id": 680574,
+    "player_name": "Matt McLain",
+    "origin_year": 2024,
+    "selection": [
+      "fixed before fit"
+    ],
+    "baseball_review": "McLain 2024: no recent PA after 403 MLB/180 AAA in 2023. Rate +.251 retains MLB quality; returned-listing zero remains qualified by documented activation conflict, not synthetically flipped. Support 20/8. Current .44666 x 294.75 = 131.65 becomes .43298 x 292.13 = 126.48 versus 577; value .4662 to .4479 versus .7060. Direct rate +.125 logit but total probability falls. Franco/Marcano/Tejeda/Fox have zero but are not medical/legal matches. Source/return representation remains a substantive harm."
+  },
+  {
+    "row_id": 50571,
+    "player_id": 474832,
+    "player_name": "Brandon Belt",
+    "origin_year": 2023,
+    "selection": [
+      "fixed before fit"
+    ],
+    "baseball_review": "Belt 2023: age 35, 404 MLB PA, 19 HR, 60 walks, rate +.686 balancing productive quality and age. Current .64631 x 377.77 = 244.16 becomes .63583 x 371.73 = 236.36 against zero. Rate path +.194 logit/+14.98 PA is not the net decrease. Value 1.0353 to 1.0022. Martinez/McCutchen/Blackmon/Canha have 495/515/499/462 subsequent PA. Broad support 1143/869. Improvement on an unusual unsigned outcome does not warrant retirement hard-zero or a blanket penalty for productive older free agents."
+  },
+  {
+    "row_id": 51820,
+    "player_id": 677551,
+    "player_name": "Wander Franco",
+    "origin_year": 2023,
+    "selection": [
+      "fixed before fit"
+    ],
+    "baseball_review": "Franco 2023: age 22, 491 MLB PA, 17 HR and 69 K; rate +1.035. Current 559.49 becomes 558.97 PA against zero, value 2.6976 to 2.6951. Direct rate +.283 logit/+5.48 PA rewards hitting but supplies no administrative availability signal. Support 156/137 is not support for legal status. Neto/Abrams/Volpe have 602/602/689 PA, McLain zero for another cause. Known source/availability qualification persists; the major false high is not repaired by forecasting hitting better."
+  },
+  {
+    "row_id": 47281,
+    "player_id": 665833,
+    "player_name": "Oneil Cruz",
+    "origin_year": 2022,
+    "selection": [
+      "largest PA squared-error gain versus current",
+      "largest PA squared-error gain versus coverage"
+    ],
+    "baseball_review": "Cruz 2022 is the largest PA squared-error gain. Age 23, 361 MLB PA with 17 HR/126 K plus 247 AAA; rate -.086, support 654/559. Current 475.03 becomes 444.24 PA versus 40, mainly conditional 485.99 to 454.60 with nearly unchanged .977 probability. Direct rate effect -3.96 PA is far smaller than overall refit change. Garc\u00eda/Allen/Castillo/Abrams have 482/329/1/614 PA. Value 1.4190 to 1.3270 versus .2243. Helpful realized trimming is not prediction of an injury or reason for absence."
+  },
+  {
+    "row_id": 52609,
+    "player_id": 687952,
+    "player_name": "Christian Encarnacion-Strand",
+    "origin_year": 2023,
+    "selection": [
+      "largest PA squared-error harm versus current",
+      "largest PA squared-error harm versus coverage"
+    ],
+    "baseball_review": "Encarnacion-Strand 2023 is the largest PA squared-error harm. Age 23, 241 MLB PA with 13 HR plus 316 AAA PA with 20 HR; rate +1.006, support 735/629. Current .96759 x 460.17 = 445.26 becomes .97110 x 499.78 = 485.33 versus 123. Direct rate +.234 logit/+28.09 PA rewards promising hitting coherently but realized workload and hitting disappoint. Montero/Gelof/Pratto/Naylor have 247/547/0/389 PA. Value 2.1254 to 2.3167 versus -.5867. Count the harm, do not hide it behind gains on stars."
+  },
+  {
+    "row_id": 51984,
+    "player_id": 680574,
+    "player_name": "Matt McLain",
+    "origin_year": 2023,
+    "selection": [
+      "major false high"
+    ],
+    "baseball_review": "McLain 2023 is the major false high: age 23, 403 MLB PA plus 180 AAA, rate +.915 and support 711/605. Current .98526 x 608.34 = 599.38 becomes .98533 x 609.52 = 600.59 versus zero. Value 2.7699 to 2.7755. Rate +.283 logit/+18.55 PA within-fit largely offsets other changes. Neto/Elly/Franco/Duran subsequently have 602/696/0/285 PA. Good recent performance can reasonably forecast workload before later absence; medical information dates must be checked separately, not fit to this outcome."
+  },
+  {
+    "row_id": 47261,
+    "player_id": 665487,
+    "player_name": "Fernando Tatis Jr.",
+    "origin_year": 2022,
+    "selection": [
+      "major false low"
+    ],
+    "baseball_review": "Tatis 2022 is the major false low: 14 AA PA, zero MLB after 546 MLB PA/42 HR in 2021, shortened 2020 adjusted separately. Rate +1.289 retains excellent pooled talent but source listing is zero. Support 75/34. Current .13398 x 296.16 = 39.68 becomes .13546 x 294.83 = 39.94 versus 635. Value .2095 to .2108 versus 3.3332. Positive rate paths cannot repair return representation. Apostel/Welker/Basabe zero and Jones 11 are not comparable established stars and cannot excuse the miss."
+  },
+  {
+    "row_id": 28478,
+    "player_id": 594824,
+    "player_name": "Greg Garcia",
+    "origin_year": 2017,
+    "selection": [
+      "ordinary active forecast"
+    ],
+    "baseball_review": "Garcia 2017 is the ordinary active case: age 27, position X, 290 MLB PA, two HR/37 walks/64 K; rate -.157, support 717/553. Current .95849 x 218.14 = 209.08 becomes .95397 x 217.99 = 207.96 versus 208. Rate direct paths -.0092 logit/-.46 PA, previous role/workload dominate. Kivlehan/Tomlinson/S\u00e1nchez/Hern\u00e1ndez have 14/152/0/462 subsequent PA. Value .5885 to .5853 versus -.1591, so nearly exact workload still misses production; X does not certify a defensive position or integrated WAR."
+  },
+  {
+    "row_id": 43288,
+    "player_id": 665161,
+    "player_name": "Jeremy Pe\u00f1a",
+    "origin_year": 2021,
+    "selection": [
+      "Correct predeclared Pe\u00f1a identity"
+    ],
+    "baseball_review": "Correct Pe\u00f1a 2021 identity is MLBAM 665161. Age 23, 133 AAA PA with ten HR/35 K plus 27 rookie, 2019 A/A+ 474 PA, canceled 2020 missing. Listing one, ranking score zero. Rate -.064 includes AAA power +.119 and age +.437. Support 1533/272 is broad, not equal AAA quality. Current 46.89 becomes 49.98 PA versus 558, value .1419 to .1513 versus 1.3269. Direct rate paths slightly negative; refitting produces gain. Weber/Ortiz/Schneemann zero and Freeman 86 do not explain away retained AAA readiness. Case correction leaves scores unchanged."
+  },
+  {
+    "row_id": 58477,
+    "player_id": 821181,
+    "player_name": "Juneiker Caceres",
+    "origin_year": 2024,
+    "selection": [
+      "Highest projected hitting among origin-2024 lower-minors players under 20; outcome-blind"
+    ],
+    "baseball_review": "Caceres 2024 selected outcome-blind as highest hitting estimate among lower-minors under-20 players. Age 16, 167 DSL PA, 18 K/17 walks, 48 BABIP hits in 126 opportunities, zero HR. Rate +.499 mostly age +1.216 and squared age +.270, with all DSL terms about +.032. Participation support 2463 but active/rate zero. Current .067 becomes .111 expected PA versus zero; direct rate boosts logit/conditional PA. Amoroso/Baker/De La Cruz/Castillo also zero. Sensible immediate non-arrival does not validate extrapolated MLB hitting or eventual prospect value. The age extrapolation needs an explicit claim limit."
+  }
+]

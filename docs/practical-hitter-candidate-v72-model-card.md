@@ -14,7 +14,12 @@ three years of batting counts separated by level, age and MLB history. Recent
 years matter more and small samples shrink toward a prior. Future MLB participants
 provide the hitting labels, weighted by their actual plate appearances. For a
 minor leaguer, this is an uncertain conditional MLB extrapolation, not a career
-grade or a promise that he could immediately hit at that level.
+grade or a promise that he could immediately hit at that level. The
+[completed talent and opportunity review](hitter-talent-opportunity-player-walkthrough.md)
+exposes a concrete low-level limit: Caceres at sixteen has a +.499 estimate
+driven largely by the age polynomial and no refined active training analogue.
+That number must not be read as established MLB ability or eventual prospect
+value. His near-zero next-year MLB opportunity does not validate the rate.
 
 Playing time uses two shallow histogram gradient-boosting models with 251 inputs.
 One estimates the chance of any MLB PA next year; the other estimates PA if the
@@ -128,6 +133,14 @@ value distribution has been established. Earlier distributions cannot simply
 be attached to this candidate.
 Supported immediate-readiness and talent extrapolation for thin professional
 samples remain substantive unresolved problems, not solved by wider intervals.
+
+The [generated hitting feature comparison](hitter-talent-opportunity-result.md)
+has sixteen completed player reviews. Its control equals current forecasts;
+adding the rate yields tiny uncertain workload/offense gains, worsens overall
+arrival scores and leaves cohort/readiness failures. It is not retained. Current
+point outputs and this explorer remain unchanged. Before another fit, audit
+cross-level target support and representation, then reconcile compatible prior
+contact/talent evidence rather than adding another summary of the same inputs.
 Reconcile the earlier explicit-talent/workload study before selecting a substantive
 readiness repair: it held participation fixed in a different population and did
 not test talent's contribution to arrival in this candidate. Preserve the
