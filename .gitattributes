@@ -598,3 +598,9 @@ scripts/review_hitter_absolute_rate.py -text -eol
 scripts/finalize_hitter_absolute_rate.py -text -eol
 tests/test_hitter_absolute_rate.py -text -eol
 reports/model-evidence/hitter-absolute-rate/** -text -eol
+# Preserve the no-fit candidate reconciliation and its provenance checks.
+docs/hitter-candidate-readiness-review-contract.md -text -eol
+docs/hitter-candidate-readiness-review.md -text -eol
+scripts/audit_hitter_candidate_readiness.py -text -eol
+tests/test_hitter_candidate_readiness.py -text -eol
+reports/model-evidence/hitter-candidate-readiness/** -text -eol

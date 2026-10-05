@@ -2,6 +2,35 @@
 
 Updated 2026-10-05. This is the current start-here document.
 
+## One current hitter recipe and a clear remaining gap
+
+The [candidate readiness review](hitter-candidate-readiness-review.md) reconciles
+the historical incumbent, later research and selected frozen forecast. All five
+ordered input lists and the settings of 175 historical plus 25 frozen heads
+agree. The smaller 123/132/186-input research models are not replacements for
+the selected 199/220/262-input hitting routes and 251-input opportunity heads.
+No new fits, scores, raw outcome retrieval or forecast/explorer changes were made.
+
+Completed deeper-workload, separate-entrant, hitting-to-opportunity, history-clock,
+smooth-ranking, employment and uncertainty tests are inventoried with their
+player reviews and limitations. Do not repeat them unchanged. Compatible
+contribution errors around .4351 are not improvements over legacy .4534 scores
+merely because the reference changed. A working public-MAE tolerance is not a
+substitute for meaningful cohort and baseball checks.
+
+The single authorized 2026 evaluation is already complete; its receipt identifies
+the same unchanged frozen forecast. All 53 package files verify. Intermediate
+"not yet evaluated" flags are historical, not current status. No second evaluation
+or 2026-based arm selection is allowed. Both frozen packages stay preserved.
+
+Keep the incumbent and evaluated candidate as qualified references. Next make a
+historical source-to-input/support audit of thin high-pedigree entrants and
+established upper-minors hitters, mapping prior rich-feature tests first. Do not
+fit another model without a concrete nonduplicative gap. No blanket prospect
+boost, algorithm/offset/status sweep, new college collection or team-record
+reopening. Coverage, comparable public benchmarks and full player-value work
+remain unresolved; the goal is active, not complete.
+
 ## Removing the fixed hitting baseline does not improve the full model
 
 The [absolute-rate comparison](hitter-absolute-rate-result.md),

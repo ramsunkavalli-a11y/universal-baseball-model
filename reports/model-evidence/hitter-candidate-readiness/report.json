@@ -1,0 +1,462 @@
+{
+  "status": "completed_evidence_reconciliation_not_model_validation",
+  "new_fits": 0,
+  "new_scores": 0,
+  "raw_2026_outcomes_accessed": false,
+  "existing_final_evaluation_metadata_read": true,
+  "historical_recipe_matches_frozen": {
+    "rate_numeric": {
+      "count": 199,
+      "ordered_names_identical": true,
+      "historical_source": "reports\\generated\\practical-hitter-numeric-repair-v53\\preflight.json",
+      "saved_parameters_identical": true,
+      "historical_heads_checked": 35,
+      "frozen_heads_checked": 5,
+      "model_family": "Ridge",
+      "parameters": {
+        "alpha": 100,
+        "copy_X": true,
+        "fit_intercept": true,
+        "max_iter": null,
+        "positive": false,
+        "random_state": null,
+        "solver": "auto",
+        "tol": 0.0001
+      }
+    },
+    "rate_tracking": {
+      "count": 262,
+      "ordered_names_identical": true,
+      "historical_source": "reports\\generated\\hitter-statcast-next-year\\preflight.json",
+      "saved_parameters_identical": true,
+      "historical_heads_checked": 35,
+      "frozen_heads_checked": 5,
+      "model_family": "Ridge",
+      "parameters": {
+        "alpha": 100,
+        "copy_X": true,
+        "fit_intercept": true,
+        "max_iter": null,
+        "positive": false,
+        "random_state": null,
+        "solver": "auto",
+        "tol": 0.0001
+      }
+    },
+    "rate_prospect": {
+      "count": 220,
+      "ordered_names_identical": true,
+      "historical_source": "reports\\generated\\hitter-talent-bridge-v74\\preflight.json",
+      "saved_parameters_identical": true,
+      "historical_heads_checked": 35,
+      "frozen_heads_checked": 5,
+      "model_family": "Ridge",
+      "parameters": {
+        "alpha": 100,
+        "copy_X": true,
+        "fit_intercept": true,
+        "max_iter": null,
+        "positive": false,
+        "random_state": null,
+        "solver": "auto",
+        "tol": 0.0001
+      }
+    },
+    "participation": {
+      "count": 251,
+      "ordered_names_identical": true,
+      "historical_source": "reports\\generated\\hitter-preseason-readiness-v68\\preflight.json",
+      "saved_parameters_identical": true,
+      "historical_heads_checked": 35,
+      "frozen_heads_checked": 5,
+      "model_family": "HistGradientBoostingClassifier",
+      "parameters": {
+        "categorical_features": "from_dtype",
+        "class_weight": null,
+        "early_stopping": false,
+        "interaction_cst": null,
+        "l2_regularization": 10,
+        "learning_rate": 0.05,
+        "loss": "log_loss",
+        "max_bins": 255,
+        "max_depth": 3,
+        "max_features": 1.0,
+        "max_iter": 250,
+        "max_leaf_nodes": 31,
+        "min_samples_leaf": 30,
+        "monotonic_cst": null,
+        "n_iter_no_change": 10,
+        "random_state": 31,
+        "scoring": "loss",
+        "tol": 1e-07,
+        "validation_fraction": 0.1,
+        "verbose": 0,
+        "warm_start": false
+      }
+    },
+    "conditional_pa": {
+      "count": 251,
+      "ordered_names_identical": true,
+      "historical_source": "reports\\generated\\hitter-preseason-readiness-v68\\preflight.json",
+      "saved_parameters_identical": true,
+      "historical_heads_checked": 35,
+      "frozen_heads_checked": 5,
+      "model_family": "HistGradientBoostingRegressor",
+      "parameters": {
+        "categorical_features": "from_dtype",
+        "early_stopping": false,
+        "interaction_cst": null,
+        "l2_regularization": 10,
+        "learning_rate": 0.05,
+        "loss": "squared_error",
+        "max_bins": 255,
+        "max_depth": 3,
+        "max_features": 1.0,
+        "max_iter": 250,
+        "max_leaf_nodes": 31,
+        "min_samples_leaf": 30,
+        "monotonic_cst": null,
+        "n_iter_no_change": 10,
+        "quantile": null,
+        "random_state": 31,
+        "scoring": "loss",
+        "tol": 1e-07,
+        "validation_fraction": 0.1,
+        "verbose": 0,
+        "warm_start": false
+      }
+    }
+  },
+  "saved_recipe_models_checked": 200,
+  "training_coefficients_identical_claim": false,
+  "training_qualification": "Same recipes, different cutoffs and training sets; production source gates and origin-2020 membership repair remain in the frozen receipts.",
+  "frozen_manifest_sha256": "a1d819ffcdd98a9ee62feecf5637b5ebe1f93b6e931d77d2b7d692ed928da67a",
+  "frozen_files_verified": 53,
+  "frozen_population": 4030,
+  "evaluation_completion": {
+    "status": "already_evaluated_once",
+    "frozen_at_utc": "2026-10-05T08:22:55.538700+00:00",
+    "scored_at_utc": "2026-10-05T08:45:01.395064+00:00",
+    "forecasts_changed": false,
+    "predictive_superiority_established": false,
+    "matched_2026_public_comparison_available": false,
+    "new_2026_scoring": false,
+    "old_pending_flags_are_not_current_status": true
+  },
+  "representation_challenger_feature_counts": {
+    "base": 123,
+    "prospect": 132,
+    "tracking": 186
+  },
+  "historical_original_population": 30506,
+  "compatible_contribution_reference": {
+    "scope": "all",
+    "rows": 30506,
+    "people": 11020,
+    "active_rows": 4538,
+    "actual_PA": 1270493,
+    "actual_value": 4185.433589228993,
+    "scores": {
+      "current": {
+        "value_rmse": 0.4351333510509891,
+        "value_mae": 0.12387447809219296,
+        "value_bias": -0.0007478371616184461,
+        "expected_value": 4155.430076780389,
+        "expected_PA": 1228732.5119559553,
+        "rate_rmse": 1.8048133711486227
+      },
+      "scalar": {
+        "value_rmse": 0.43695026116012464,
+        "value_mae": 0.12422753258523023,
+        "value_bias": 0.00045571513658484834,
+        "expected_value": 4187.11053630045,
+        "expected_PA": 1228732.5119559553,
+        "rate_rmse": 1.8042231978529857
+      },
+      "count": {
+        "value_rmse": 0.43811085622845736,
+        "value_mae": 0.1237075294313326,
+        "value_bias": -0.0018098335116052996,
+        "expected_value": 4117.779499795511,
+        "expected_PA": 1228732.5119559553,
+        "rate_rmse": 1.8134720939169484
+      },
+      "restored": {
+        "value_rmse": 0.43611765740559605,
+        "value_mae": 0.12373283231754582,
+        "value_bias": 8.844361181595191e-05,
+        "expected_value": 4176.979484367263,
+        "expected_PA": 1228732.5119559553,
+        "rate_rmse": 1.8019558516868635
+      },
+      "components": {
+        "value_rmse": 0.4353734483250002,
+        "value_mae": 0.12350678343670508,
+        "value_bias": -7.059649690663208e-06,
+        "expected_value": 4174.413893681969,
+        "expected_PA": 1228732.5119559553,
+        "rate_rmse": 1.79917157025742
+      },
+      "absolute": {
+        "value_rmse": 0.4358588645060721,
+        "value_mae": 0.12413622410328366,
+        "value_bias": -0.0015745332913970661,
+        "expected_value": 4130.825245950026,
+        "expected_PA": 1228732.5119559553,
+        "rate_rmse": 1.8066069905436952
+      }
+    }
+  },
+  "incumbent_workload_cohort_totals": [
+    {
+      "scope": "all",
+      "rows": 30506,
+      "expected_PA": 1228732.5119559553,
+      "actual_PA": 1270493,
+      "expected_appearances": 4391.863787413928,
+      "actual_appearances": 4538
+    },
+    {
+      "scope": "public",
+      "rows": 2627,
+      "expected_PA": 649254.8423971365,
+      "actual_PA": 660776,
+      "expected_appearances": 2041.5174668228374,
+      "actual_appearances": 2088
+    },
+    {
+      "scope": "current_MLB",
+      "rows": 4541,
+      "expected_PA": 1129696.858368429,
+      "actual_PA": 1156856,
+      "expected_appearances": 3547.8661756996835,
+      "actual_appearances": 3596
+    },
+    {
+      "scope": "upper_never_debut",
+      "rows": 5454,
+      "expected_PA": 74239.03857057953,
+      "actual_PA": 92891,
+      "expected_appearances": 589.4630023430029,
+      "actual_appearances": 730
+    },
+    {
+      "scope": "lower_never_debut",
+      "rows": 17852,
+      "expected_PA": 7054.64556931176,
+      "actual_PA": 5194,
+      "expected_appearances": 81.99030198386187,
+      "actual_appearances": 54
+    },
+    {
+      "scope": "absent_prior_debut",
+      "rows": 1766,
+      "expected_PA": 17186.64704682621,
+      "actual_PA": 15309,
+      "expected_appearances": 166.96460077785784,
+      "actual_appearances": 155
+    },
+    {
+      "scope": "thin_new_draftee",
+      "rows": 1429,
+      "expected_PA": 746.1939838705712,
+      "actual_PA": 1647,
+      "expected_appearances": 7.39167903190059,
+      "actual_appearances": 7
+    },
+    {
+      "scope": "origin_2016",
+      "rows": 4663,
+      "expected_PA": 171709.23525463397,
+      "actual_PA": 179968,
+      "expected_appearances": 623.4261676611462,
+      "actual_appearances": 624
+    },
+    {
+      "scope": "origin_2017",
+      "rows": 4691,
+      "expected_PA": 174316.4618598693,
+      "actual_PA": 179643,
+      "expected_appearances": 616.2927241842597,
+      "actual_appearances": 628
+    },
+    {
+      "scope": "origin_2018",
+      "rows": 4478,
+      "expected_PA": 172104.99899229084,
+      "actual_PA": 181308,
+      "expected_appearances": 615.0841701700679,
+      "actual_appearances": 638
+    },
+    {
+      "scope": "origin_2021",
+      "rows": 4242,
+      "expected_PA": 164798.0764167206,
+      "actual_PA": 181583,
+      "expected_appearances": 581.3609535170974,
+      "actual_appearances": 686
+    },
+    {
+      "scope": "origin_2022",
+      "rows": 4244,
+      "expected_PA": 177294.80709346556,
+      "actual_PA": 182917,
+      "expected_appearances": 641.2617474184858,
+      "actual_appearances": 649
+    },
+    {
+      "scope": "origin_2023",
+      "rows": 4196,
+      "expected_PA": 186453.53525672553,
+      "actual_PA": 182194,
+      "expected_appearances": 667.3895516797581,
+      "actual_appearances": 647
+    },
+    {
+      "scope": "origin_2024",
+      "rows": 3992,
+      "expected_PA": 182055.39708224946,
+      "actual_PA": 182880,
+      "expected_appearances": 647.0484727831126,
+      "actual_appearances": 666
+    },
+    {
+      "scope": "hitting_band_0",
+      "rows": 4251,
+      "expected_PA": 139061.84275300492,
+      "actual_PA": 138589,
+      "expected_appearances": 892.710403898498,
+      "actual_appearances": 917
+    },
+    {
+      "scope": "hitting_band_1",
+      "rows": 17896,
+      "expected_PA": 462840.03442059626,
+      "actual_PA": 478382,
+      "expected_appearances": 2085.1183943388623,
+      "actual_appearances": 2162
+    },
+    {
+      "scope": "hitting_band_2",
+      "rows": 7920,
+      "expected_PA": 393460.0285228041,
+      "actual_PA": 410805,
+      "expected_appearances": 987.0057319583555,
+      "actual_appearances": 1027
+    },
+    {
+      "scope": "hitting_band_3",
+      "rows": 439,
+      "expected_PA": 233370.60625954994,
+      "actual_PA": 242717,
+      "expected_appearances": 427.0292572182119,
+      "actual_appearances": 432
+    }
+  ],
+  "incumbent_public_workload": {
+    "rows": 2627,
+    "pa_rmse": 138.3298474682615,
+    "pa_mae": 106.41075374670467,
+    "qualification": "Compare only to the matched saved public export; PA is not a ZiPS talent-only workload claim."
+  },
+  "legacy_offense_scores_not_mixed_with_compatible_scores": true,
+  "completed_comparisons": [
+    {
+      "name": "absolute_rate",
+      "evidence": "reports\\model-evidence\\hitter-absolute-rate\\report.json",
+      "player_walkthrough_status": "complete",
+      "deployment_approved": false
+    },
+    {
+      "name": "workload_risk",
+      "evidence": "reports\\model-evidence\\hitter-workload-risk\\final-report.json",
+      "player_walkthrough_status": "complete",
+      "deployment_approved": false
+    },
+    {
+      "name": "talent_to_opportunity",
+      "evidence": "reports\\model-evidence\\hitter-talent-opportunity\\final-report.json",
+      "player_walkthrough_status": "complete",
+      "deployment_approved": false
+    },
+    {
+      "name": "deeper_conditional_workload",
+      "evidence": "reports\\model-evidence\\hitter-positive-workload-capacity\\final-report.json",
+      "player_walkthrough_status": "complete",
+      "deployment_approved": false
+    },
+    {
+      "name": "separate_entrant_workload",
+      "evidence": "reports\\model-evidence\\hitter-prospect-workload-specialization\\completed-review.json",
+      "player_walkthrough_status": "complete",
+      "deployment_approved": false
+    },
+    {
+      "name": "available_season_history",
+      "evidence": "reports\\model-evidence\\hitter-available-season-history\\final-report.json",
+      "player_walkthrough_status": "complete",
+      "deployment_approved": false
+    },
+    {
+      "name": "smooth_rankings",
+      "evidence": "reports\\model-evidence\\hitter-smooth-preseason-v73\\report.json",
+      "player_walkthrough_status": "complete",
+      "deployment_approved": false
+    },
+    {
+      "name": "corrected_employment",
+      "evidence": "reports\\model-evidence\\hitter-employment-comparison-v2\\report.json",
+      "player_walkthrough_status": "complete",
+      "deployment_approved": false
+    },
+    {
+      "name": "nonmedical_observation",
+      "evidence": "reports\\model-evidence\\hitter-nonmedical-opportunity\\report.json",
+      "player_walkthrough_status": "complete",
+      "deployment_approved": false
+    },
+    {
+      "name": "incumbent_representation",
+      "evidence": "reports\\model-evidence\\hitter-incumbent-representation\\final-review.json",
+      "player_walkthrough_status": "complete",
+      "deployment_approved": false
+    }
+  ],
+  "decision": "Keep the historical incumbent and unchanged evaluated frozen candidate as qualified references. No research-arm promotion or outcome-selected subgroup hybrid.",
+  "next_action": "Historical source-to-fit exposure/support audit of thin high-pedigree and established upper-minors profiles, after mapping prior rich-feature tests; no new fit without a demonstrated nonduplicative gap.",
+  "remaining_requirements": [
+    "prospect readiness and allocation",
+    "public workload and comparable benchmark coverage",
+    "foreign/return entrant coverage",
+    "support for low-level ability claims",
+    "joint uncertainty and later horizons",
+    "nonbatting full value and control/contract valuation"
+  ],
+  "deployment_approved": false,
+  "full_war_or_control_value_claim": false,
+  "goal_complete": false,
+  "evidence_hashes": {
+    "scripts\\audit_hitter_candidate_readiness.py": "150fc10691b6a38ce00c643cfdfc468d3c97c6b584baa46c63fe297628ea9be5",
+    "docs\\hitter-candidate-readiness-review-contract.md": "b7207c1fd21f10e1fa4ade7fc935506585b9b9b48a4a2b47950f3330f9075964",
+    "model_artifacts\\hitter-selected-2026-frozen-2026-10-05\\freeze-manifest.json": "a1d819ffcdd98a9ee62feecf5637b5ebe1f93b6e931d77d2b7d692ed928da67a",
+    "model_artifacts\\hitter-selected-2026-frozen-2026-10-05\\preflight.json": "01891af1a5b82bbcdb456ddf5c3b57069f68d157081860501604da722a035fbe",
+    "reports\\generated\\practical-hitter-numeric-repair-v53\\preflight.json": "0be89ca50288fc050f8ba0b4e4ddab46d19654f2c142d69550ee2360337793e2",
+    "reports\\generated\\hitter-statcast-next-year\\preflight.json": "4e94dc013fa8d5e92c43128541a3a28393f2b6c57c8934edc0baaaa1dec9eb07",
+    "reports\\generated\\hitter-talent-bridge-v74\\preflight.json": "8f95ddcc9a35492d0d9a524886291cb86c062850c102bc86f606b9ec64c943df",
+    "reports\\generated\\hitter-preseason-readiness-v68\\preflight.json": "a6f4ab4548193194a95d878c462edee6dc1d9ce7b3a81a15ed93f1fed8e2429a",
+    "reports\\generated\\hitter-incumbent-representation-audit\\inventory.json": "c88081139dfcea61a41076e5f39c1ce922a36ab89f49f43fc1d154cbdee9f174",
+    "reports\\model-evidence\\hitter-final-2026\\report.json": "8c2acfeb42ece7d109d3b35542a6b79ec372467d7027d5945a4ba800cde913bb",
+    "reports\\model-evidence\\hitter-absolute-rate\\report.json": "9c836f46f678ad1c5ca801cfbdfa0975ab966821430df78fe32be1a8a39dece2",
+    "reports\\model-evidence\\hitter-workload-risk\\final-report.json": "4c307c7515e817aec04f04e3cb0a01b4d31f00731103315d8f4274dca340a4d4",
+    "reports\\model-evidence\\hitter-talent-opportunity\\final-report.json": "81e4312c60c680cf63b143f53a3bcfd0cf530a94466077ab6f9a79e2a26aa83d",
+    "reports\\model-evidence\\hitter-positive-workload-capacity\\final-report.json": "da24a4d0056bca3ddd1009b13b2c84d27bc8dd94c80256c44f597555f32b9f14",
+    "reports\\model-evidence\\hitter-prospect-workload-specialization\\completed-review.json": "27fac56a2ca4c70db0d4b8b4a65b5ae4f4cfa0bf6068616158b1e1d710220e7d",
+    "reports\\model-evidence\\hitter-available-season-history\\final-report.json": "03aa4fdaf3f040de72fb0ce490cf20b743ef0d6f6cb289bef5e90ffff86d40da",
+    "reports\\model-evidence\\hitter-smooth-preseason-v73\\report.json": "263a22ce3918afedc98e12f41b93cb19bf3cfaa16a39126510130508bd0c629b",
+    "reports\\model-evidence\\hitter-employment-comparison-v2\\report.json": "7b1276d6d6b944e5cd6a2b689367e70a4ca4d92933f392bf1a3ca6fbd47bad5e",
+    "reports\\model-evidence\\hitter-nonmedical-opportunity\\report.json": "5f8e0e8ea9b3cb9a3e2ff2f99f66178d621cc2980f562f2967990b20f4785042",
+    "reports\\model-evidence\\hitter-incumbent-representation\\final-review.json": "05057b9a35c1f41b7c795cae5794e68a1b941f2e4340716144ea5e2b9001347a",
+    "reports\\generated\\hitter-mlb-events-restoration\\preflight.json": "bac4cb5631eef77c844294203169632b68357df4b990b25246b607ebe48c5637",
+    "reports\\model-evidence\\hitter-talent-opportunity\\scores.json": "e01e7e5de3ee8b319c11d27ea83e323e58f78bda9d2c5eff3298d3e72e98af54"
+  }
+}
