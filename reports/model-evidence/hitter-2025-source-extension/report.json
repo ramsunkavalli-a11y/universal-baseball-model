@@ -1,0 +1,2754 @@
+{
+  "tracking": {
+    "source_approved_for_existing_tracking_inputs": true,
+    "protected_outcomes_used": false,
+    "new_model_fits": 0,
+    "raw_rows": 124899,
+    "normal_nonbunt_contacts": 123697,
+    "complete_pairs": 123265,
+    "people": 666,
+    "reconciled_people": 765,
+    "exact_player_hit_counts": true,
+    "exact_corrected_player_contacts": true,
+    "corrections": [
+      {
+        "player_id": 692225,
+        "player_name": "Kristian Campbell",
+        "game_pk": 778319,
+        "at_bat_number": 6,
+        "classification": "noncontact_interference_AB",
+        "noncontact_AB": 1,
+        "physical_award_without_AB": 0,
+        "official_description": "Kristian Campbell out to catcher Ben Rortvedt. Kristian Campbell out on batter interference."
+      },
+      {
+        "player_id": 686527,
+        "player_name": "Dominic Canzone",
+        "game_pk": 776272,
+        "at_bat_number": 49,
+        "classification": "measured_shift_award_without_AB",
+        "noncontact_AB": 0,
+        "physical_award_without_AB": 1,
+        "official_description": "Mariners challenged (shift violation), call on the field was overturned: Dominic Canzone reaches on a defensive shift violation error by second baseman Michael Massey."
+      }
+    ],
+    "venue_missing": 0,
+    "historical_fields_compared": 4746150,
+    "historical_equivalence": true,
+    "independent_annual_fields_checked": 10656,
+    "player_walkthrough_status": "complete",
+    "cases": 10,
+    "original_publication_vintage_verified": false,
+    "qualification": "Current provider values may include estimates and retrospective revisions; not camera-only or verified original preseason vintage",
+    "candidate_frozen": false,
+    "input_hashes": {
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\hitter-2025-contact-denominator-amendment.md": "33efe105b7a4d85dcf02d3b88581a5d15872b4673173bd4c127bf1a5b4808dad",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\hitter-2025-source-extension-contract.md": "2d1d20856b4b09ceddd40d0a1ec75e3e36dc1dfc8e3d718b98dfb01687b0823a",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\finalize_hitter_tracking_2025.py": "2e571339c3423b88304f39101a18b3abd530d8bec9adab8d687aa5530474f3f8",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-tracking-2025-audit\\initial-audit.json": "60c2cc96cf3186850d4da6b00ea8dc406337979d9012b9b0908293efc4b24177",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-tracking-2025-audit\\residual-play-review.json": "00461cb0657f67e662c42310722d44bb47f6b4e68fef02ef08e809d25e5e2c03"
+    },
+    "output_hashes": {
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-tracking-2025-audit\\annual-launch-features-through-2025.parquet": "15bc3221a7af0897b79ff845be0a661879e2556dd138d497e9063cce8caba510",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-tracking-2025-audit\\launch-events-reviewed-2025.parquet": "79cf6cc9a652eac1e5a526fad663df02ad4d9f254b83e42ec23406c4482b8361",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-tracking-2025-audit\\reviewed-player-reconciliation.parquet": "40541196cea6db04a3082421fad1548adca65a75741dfee5ca2d75ba5f113a1c",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-tracking-2025-audit\\completed-player-review.json": "274419fb4082d139a39cf960a6436de2213a41637c831df9e14fd6c81aa22992"
+    }
+  },
+  "rosters": {
+    "membership_rows": 1175,
+    "teams": 30,
+    "team_sizes": [
+      {
+        "team_id": 108,
+        "len": 37
+      },
+      {
+        "team_id": 109,
+        "len": 40
+      },
+      {
+        "team_id": 110,
+        "len": 40
+      },
+      {
+        "team_id": 111,
+        "len": 39
+      },
+      {
+        "team_id": 112,
+        "len": 36
+      },
+      {
+        "team_id": 113,
+        "len": 40
+      },
+      {
+        "team_id": 114,
+        "len": 40
+      },
+      {
+        "team_id": 115,
+        "len": 38
+      },
+      {
+        "team_id": 116,
+        "len": 40
+      },
+      {
+        "team_id": 117,
+        "len": 40
+      },
+      {
+        "team_id": 118,
+        "len": 40
+      },
+      {
+        "team_id": 119,
+        "len": 39
+      },
+      {
+        "team_id": 120,
+        "len": 39
+      },
+      {
+        "team_id": 121,
+        "len": 40
+      },
+      {
+        "team_id": 133,
+        "len": 40
+      },
+      {
+        "team_id": 134,
+        "len": 40
+      },
+      {
+        "team_id": 135,
+        "len": 37
+      },
+      {
+        "team_id": 136,
+        "len": 40
+      },
+      {
+        "team_id": 137,
+        "len": 40
+      },
+      {
+        "team_id": 138,
+        "len": 40
+      },
+      {
+        "team_id": 139,
+        "len": 38
+      },
+      {
+        "team_id": 140,
+        "len": 39
+      },
+      {
+        "team_id": 141,
+        "len": 40
+      },
+      {
+        "team_id": 142,
+        "len": 40
+      },
+      {
+        "team_id": 143,
+        "len": 38
+      },
+      {
+        "team_id": 144,
+        "len": 40
+      },
+      {
+        "team_id": 145,
+        "len": 40
+      },
+      {
+        "team_id": 146,
+        "len": 40
+      },
+      {
+        "team_id": 147,
+        "len": 36
+      },
+      {
+        "team_id": 158,
+        "len": 39
+      }
+    ],
+    "duplicate_memberships": [],
+    "date_controls": [
+      {
+        "player_id": 646240,
+        "team_id": 111,
+        "as_of_date": "2025-05-31",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "corroborating_trades": [
+          {
+            "id": 848336,
+            "person": {
+              "id": 646240,
+              "fullName": "Rafael Devers",
+              "link": "/api/v1/people/646240"
+            },
+            "fromTeam": {
+              "id": 111,
+              "name": "Boston Red Sox",
+              "link": "/api/v1/teams/111"
+            },
+            "toTeam": {
+              "id": 137,
+              "name": "San Francisco Giants",
+              "link": "/api/v1/teams/137"
+            },
+            "date": "2025-06-15",
+            "effectiveDate": "2025-06-15",
+            "typeCode": "TR",
+            "typeDesc": "Trade",
+            "description": "Boston Red Sox traded DH Rafael Devers to San Francisco Giants for LHP Kyle Harrison, RHP Jordan Hicks, RHP Jose Bello and RF James Tibbs III."
+          }
+        ]
+      },
+      {
+        "player_id": 646240,
+        "team_id": 137,
+        "as_of_date": "2025-05-31",
+        "expected": false,
+        "actual": false,
+        "passed": true,
+        "corroborating_trades": [
+          {
+            "id": 848336,
+            "person": {
+              "id": 646240,
+              "fullName": "Rafael Devers",
+              "link": "/api/v1/people/646240"
+            },
+            "fromTeam": {
+              "id": 111,
+              "name": "Boston Red Sox",
+              "link": "/api/v1/teams/111"
+            },
+            "toTeam": {
+              "id": 137,
+              "name": "San Francisco Giants",
+              "link": "/api/v1/teams/137"
+            },
+            "date": "2025-06-15",
+            "effectiveDate": "2025-06-15",
+            "typeCode": "TR",
+            "typeDesc": "Trade",
+            "description": "Boston Red Sox traded DH Rafael Devers to San Francisco Giants for LHP Kyle Harrison, RHP Jordan Hicks, RHP Jose Bello and RF James Tibbs III."
+          }
+        ]
+      },
+      {
+        "player_id": 646240,
+        "team_id": 111,
+        "as_of_date": "2025-12-31",
+        "expected": false,
+        "actual": false,
+        "passed": true,
+        "corroborating_trades": [
+          {
+            "id": 848336,
+            "person": {
+              "id": 646240,
+              "fullName": "Rafael Devers",
+              "link": "/api/v1/people/646240"
+            },
+            "fromTeam": {
+              "id": 111,
+              "name": "Boston Red Sox",
+              "link": "/api/v1/teams/111"
+            },
+            "toTeam": {
+              "id": 137,
+              "name": "San Francisco Giants",
+              "link": "/api/v1/teams/137"
+            },
+            "date": "2025-06-15",
+            "effectiveDate": "2025-06-15",
+            "typeCode": "TR",
+            "typeDesc": "Trade",
+            "description": "Boston Red Sox traded DH Rafael Devers to San Francisco Giants for LHP Kyle Harrison, RHP Jordan Hicks, RHP Jose Bello and RF James Tibbs III."
+          }
+        ]
+      },
+      {
+        "player_id": 646240,
+        "team_id": 137,
+        "as_of_date": "2025-12-31",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "corroborating_trades": [
+          {
+            "id": 848336,
+            "person": {
+              "id": 646240,
+              "fullName": "Rafael Devers",
+              "link": "/api/v1/people/646240"
+            },
+            "fromTeam": {
+              "id": 111,
+              "name": "Boston Red Sox",
+              "link": "/api/v1/teams/111"
+            },
+            "toTeam": {
+              "id": 137,
+              "name": "San Francisco Giants",
+              "link": "/api/v1/teams/137"
+            },
+            "date": "2025-06-15",
+            "effectiveDate": "2025-06-15",
+            "typeCode": "TR",
+            "typeDesc": "Trade",
+            "description": "Boston Red Sox traded DH Rafael Devers to San Francisco Giants for LHP Kyle Harrison, RHP Jordan Hicks, RHP Jose Bello and RF James Tibbs III."
+          }
+        ]
+      },
+      {
+        "player_id": 647304,
+        "team_id": 109,
+        "as_of_date": "2025-05-31",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "corroborating_trades": [
+          {
+            "id": 858240,
+            "person": {
+              "id": 647304,
+              "fullName": "Josh Naylor",
+              "link": "/api/v1/people/647304"
+            },
+            "fromTeam": {
+              "id": 109,
+              "name": "Arizona Diamondbacks",
+              "link": "/api/v1/teams/109"
+            },
+            "toTeam": {
+              "id": 136,
+              "name": "Seattle Mariners",
+              "link": "/api/v1/teams/136"
+            },
+            "date": "2025-07-24",
+            "effectiveDate": "2025-07-25",
+            "typeCode": "TR",
+            "typeDesc": "Trade",
+            "description": "Arizona Diamondbacks traded 1B Josh Naylor to Seattle Mariners for LHP Brandyn Garcia and RHP Ashton Izzi."
+          }
+        ]
+      },
+      {
+        "player_id": 647304,
+        "team_id": 136,
+        "as_of_date": "2025-05-31",
+        "expected": false,
+        "actual": false,
+        "passed": true,
+        "corroborating_trades": [
+          {
+            "id": 858240,
+            "person": {
+              "id": 647304,
+              "fullName": "Josh Naylor",
+              "link": "/api/v1/people/647304"
+            },
+            "fromTeam": {
+              "id": 109,
+              "name": "Arizona Diamondbacks",
+              "link": "/api/v1/teams/109"
+            },
+            "toTeam": {
+              "id": 136,
+              "name": "Seattle Mariners",
+              "link": "/api/v1/teams/136"
+            },
+            "date": "2025-07-24",
+            "effectiveDate": "2025-07-25",
+            "typeCode": "TR",
+            "typeDesc": "Trade",
+            "description": "Arizona Diamondbacks traded 1B Josh Naylor to Seattle Mariners for LHP Brandyn Garcia and RHP Ashton Izzi."
+          }
+        ]
+      },
+      {
+        "player_id": 647304,
+        "team_id": 109,
+        "as_of_date": "2025-12-31",
+        "expected": false,
+        "actual": false,
+        "passed": true,
+        "corroborating_trades": [
+          {
+            "id": 858240,
+            "person": {
+              "id": 647304,
+              "fullName": "Josh Naylor",
+              "link": "/api/v1/people/647304"
+            },
+            "fromTeam": {
+              "id": 109,
+              "name": "Arizona Diamondbacks",
+              "link": "/api/v1/teams/109"
+            },
+            "toTeam": {
+              "id": 136,
+              "name": "Seattle Mariners",
+              "link": "/api/v1/teams/136"
+            },
+            "date": "2025-07-24",
+            "effectiveDate": "2025-07-25",
+            "typeCode": "TR",
+            "typeDesc": "Trade",
+            "description": "Arizona Diamondbacks traded 1B Josh Naylor to Seattle Mariners for LHP Brandyn Garcia and RHP Ashton Izzi."
+          }
+        ]
+      },
+      {
+        "player_id": 647304,
+        "team_id": 136,
+        "as_of_date": "2025-12-31",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "corroborating_trades": [
+          {
+            "id": 858240,
+            "person": {
+              "id": 647304,
+              "fullName": "Josh Naylor",
+              "link": "/api/v1/people/647304"
+            },
+            "fromTeam": {
+              "id": 109,
+              "name": "Arizona Diamondbacks",
+              "link": "/api/v1/teams/109"
+            },
+            "toTeam": {
+              "id": 136,
+              "name": "Seattle Mariners",
+              "link": "/api/v1/teams/136"
+            },
+            "date": "2025-07-24",
+            "effectiveDate": "2025-07-25",
+            "typeCode": "TR",
+            "typeDesc": "Trade",
+            "description": "Arizona Diamondbacks traded 1B Josh Naylor to Seattle Mariners for LHP Brandyn Garcia and RHP Ashton Izzi."
+          }
+        ]
+      }
+    ],
+    "input_hashes": {
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\108-2025-12-31.json.gz": "7fc61ee881710f8070b9c81d373ed3ac2ccec97d24d0a0ea670a928fc281e8c3",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\108-2025-12-31.json.receipt.json": "bb5897ad7750394a1668d7bba540f9f82a0e3f3cd7c7f6c670a92d77d5e9d2cc",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\109-2025-05-31.json.gz": "61465fd5ce7bfc6bb49a0f9225c8cea30a7d48b443f98434d144ca43d0ae5d8b",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\109-2025-05-31.json.receipt.json": "674defe0f3cd0f28bdc77da2dc6a169c681889d2b89d12b5cb4ba9f7c42ecc9c",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\109-2025-12-31.json.gz": "e87560b6317387f4f35ac6db74632918913e305923f2900ba96bdc530661c00b",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\109-2025-12-31.json.receipt.json": "9088c179b0cc8bdb356ead6ab7ef8569fc4d5e29bced7d3aa6aa2867b9ea9277",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\110-2025-12-31.json.gz": "dc25a488334810f27b9bc88c5fe796db9f15ce2336a2b6da4c54f7240a05eadc",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\110-2025-12-31.json.receipt.json": "75704bd2a3bd5bf8802071bf7068f2c836c14568f848a5187f94907f506df663",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\111-2025-05-31.json.gz": "b6538f3cbe91e4e371ce8e8e166ea17eb07928296d8609defe05139a09c4429a",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\111-2025-05-31.json.receipt.json": "7c7d6c5adf160d1508aae91fd81c9164c722e75ac9b40f375fd55e82be94399f",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\111-2025-12-31.json.gz": "f7fcca8a9fe8b8767170fb5b7d1f742f65d2e34d79dc0c52708a41354dd8d7db",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\111-2025-12-31.json.receipt.json": "8aa87af6cda3048da10b0892224776315cf7648050d29fc88537eba94c353f31",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\112-2025-12-31.json.gz": "c2a55ee152def353533bb318a74de76509a0a9209e4c2125daf841c506db0f24",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\112-2025-12-31.json.receipt.json": "48f00fbd098d709600827a6cbed6ac8bc215414ecd846e1fe76f17c8aa93df8e",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\113-2025-12-31.json.gz": "7237aeeefe156396cedf74e2f473e503eb616f6bc8db42bd8904dbbae4b9c74e",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\113-2025-12-31.json.receipt.json": "837605dbbdaee6caf5cfcf9b3e36c216c60d4142bb4bbb7aeb93f7737a152be8",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\114-2025-12-31.json.gz": "4c688631309045592fac7abc052cc3bbf0d8e88739857b1e5bae54e4598c338a",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\114-2025-12-31.json.receipt.json": "9d22643cd79b0d9d0d3072629c0669d06d77e714c09cbac8955e1c8ef58e0869",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\115-2025-12-31.json.gz": "e282c30b555eaa07ca770ee584e69f0fa5b0d2f7c25f5622f2443c8440bb48bc",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\115-2025-12-31.json.receipt.json": "2667fe58c22838c7fa8d364123fdaf7a7d1505174ca02b268a5e89f83a0dfc46",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\116-2025-12-31.json.gz": "5ba68e8553f69652992735d5a7cc0426d46c31325b29e6f83df05c14681cf905",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\116-2025-12-31.json.receipt.json": "b9f8630288da8337deb9f2ff885e2a465708d6fb677a7e5bf4e9fe9b841e814e",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\117-2025-12-31.json.gz": "920306b64d78c304b8cce19e872ec6d8233bd378822e21eff8e8f1503530520f",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\117-2025-12-31.json.receipt.json": "e5d2ccb3b9cabac1fef40092c8efa5f5ae7f26df5bc78f73963f21fc6d345281",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\118-2025-12-31.json.gz": "ab79c322aa9b7e079a37d8a92876e40dc4c9927ca2509dc7086f66ebc0672faf",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\118-2025-12-31.json.receipt.json": "8dfcd4df22ab42e4ec196cc4606ea4b88ab3d15108af8f440a74fb4f66c44063",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\119-2025-12-31.json.gz": "f29226071aecc3bbdbc0edf90b9c1bd91bed8b85da81e90459148ecb1f7783d7",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\119-2025-12-31.json.receipt.json": "36fcb13758d13f7aa10dc6a51f2acc763d847a964bf02ff4d4ce3703c0f8538b",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\120-2025-12-31.json.gz": "b24ae8c29484b40ce3ecff49faf0398c9a6520663f95aaee2a7d5c70c9f97f64",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\120-2025-12-31.json.receipt.json": "584a9dfaf2e394986251bff9051750552e05bc3fd51ab2b5514d55427ae3db91",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\121-2025-12-31.json.gz": "384148bcf7100ad04410f1a43059a67dabe5a3690daf81636b4b1c07e85d5716",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\121-2025-12-31.json.receipt.json": "fac781e99b8293ca9a97d13bc4962ce34e7b38eed47058e568a93865cde617de",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\133-2025-12-31.json.gz": "ccc9f25df16dbfcdc92a2039c3bdc9c73d46d2d3fea400cffd0d4428ef41421a",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\133-2025-12-31.json.receipt.json": "3fc8caebdc8ec7cebc3af383678b252b71924383ff7f71d56c97b4ab35e92567",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\134-2025-12-31.json.gz": "25fac45cd29440fbc0830c64cc64b0de93eb56ba153cfc5ba575e08b2ea8a26e",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\134-2025-12-31.json.receipt.json": "ffd66b57bd482b604706c4852ba4dd2ecde4c10b4a5df6213ae5dd85f1abe32d",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\135-2025-12-31.json.gz": "bc4a568c35abaceb38b755d5b43b1e38ce86423c9ace21b41b95499620d20ef0",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\135-2025-12-31.json.receipt.json": "2efb11abfb2d993bae4bf22a8fccd1fa66678fe8eb48c9ce04aec92eb7b210e8",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\136-2025-05-31.json.gz": "6a8d756f424d3cab6946e9cdafe75b7e8db5dd4e2468b8815a5067756bdf2a01",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\136-2025-05-31.json.receipt.json": "b04b0bfca60ba870ec3b0f322e105c65e1f825e4f17f9c0aa4368165b4242e79",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\136-2025-12-31.json.gz": "f94ca155034af2eadeaff1bdcff51ffb28ac0fe7f504c21976f8f55e7ada8fbf",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\136-2025-12-31.json.receipt.json": "dc2454cbc2603d795cc9888ee21cc6d20fdd5f68c9eefdf89b8418af08aa18cc",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\137-2025-05-31.json.gz": "f01ed3bd53f590dcecc763b1e6e63be15b778580fc11070d6651b275273839f0",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\137-2025-05-31.json.receipt.json": "77149689b74966e5ab90800cf8c9b3263c01845e934e90237cc2a24c877dccd8",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\137-2025-12-31.json.gz": "90b910b2145fd6140777ada9e60b58e4f4155f5793be3aa73fafb11ebfd500d8",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\137-2025-12-31.json.receipt.json": "d98420c105a0634d39b26a6eb91c9b5fd4485a152a8a9b69f0ad4746df38f3db",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\138-2025-12-31.json.gz": "03d9edbf760b90ea80af0876715e602dc833bda27ab9fc980950b315f4ffc6ba",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\138-2025-12-31.json.receipt.json": "ee14f2c0fa03de8187c1f46bd5486e34d0817794cbfb413cf597c247bcd97d3e",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\139-2025-12-31.json.gz": "9576bd6d2792cbe94f605513a03a0d1156d0714dd599d2fe704ee7ac3ddd3a00",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\139-2025-12-31.json.receipt.json": "3bc5f234463c1822b5be41d428bbe8a3e6bbdb17682c0dc8529a29b68d71926a",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\140-2025-12-31.json.gz": "a78f44f13e648cac668966b5a96cc78158ba2d133be85d58b014d2c40428aab9",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\140-2025-12-31.json.receipt.json": "44c4c9b6c5a4aec2c9ddaff5a5f8740d41008f74a80bf30f8498531727188fdd",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\141-2025-12-31.json.gz": "a036e2b5b3666cdc2e89c8fd94afe5198a0eeb8a720e1b2ac4511743b3b7ca71",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\141-2025-12-31.json.receipt.json": "0a0b7d1f8157d26dff3d19fa20895fcb68ee0bfb680d5cc1a38eca7c73a127f8",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\142-2025-12-31.json.gz": "573a3024a91e4775c91ed4971e235e262dd6cd3564da26e2d38910a6bceaa36f",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\142-2025-12-31.json.receipt.json": "c3dafbe4341d368658457f12631d2bb16b4a2878a096f3f7ed623fb3d000482e",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\143-2025-12-31.json.gz": "27149d2eff1a017226569daf808f226abcea7083cc91f8a5de711a8bbb417701",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\143-2025-12-31.json.receipt.json": "5b471a3e34c3204e3d6b32e3ae98c26624e85f69f7db49eb2f61e07533db6ff3",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\144-2025-12-31.json.gz": "0cd7ce880a037e76649023fcb1f9922503e17ff983373102d698e32125ff1347",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\144-2025-12-31.json.receipt.json": "6b6973f75011e46e0f5ac0bdf71c3bd853e6c4962da373ef94dbd38315207eb0",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\145-2025-12-31.json.gz": "59f26f9e1a601fcbf2570386f71256902f5da0cdb2f83eb356c46d2ba25723c0",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\145-2025-12-31.json.receipt.json": "845a45e6d7b44edf1da2c46d2e36fa7734b590d4982da26fd153b50d3f4434f5",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\146-2025-12-31.json.gz": "ecc78d9f66219f135cbab36d940134a72f5d7fcfc8386e77da77fe706e410985",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\146-2025-12-31.json.receipt.json": "9fb67ca546c80a361787c02c05310ff73fce358d340fa3ec17aa51c958ac6137",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\147-2025-12-31.json.gz": "e0d370a4bbf7bc2c018d0fbc4494dbee8ae17679daebd94957d7c8a765c36871",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\147-2025-12-31.json.receipt.json": "7b8004c1230c6dafd8e3c94b37a346b187280a255c662f2400ec604e2bdcbafc",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\158-2025-12-31.json.gz": "b8e1c134e90abe7c661002739472dc8b8d4365c4d77f82a027c13b3073987cca",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\158-2025-12-31.json.receipt.json": "2d8cc314852c878e7310c26df5ecdaa34381adb55bfbbf31286585cd73e2d91f",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\teams-2025.json.gz": "fb52f72651f4ff1e842f24ee64fb201b3e792ab3512ce695ff9fe9d01c53e019",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\teams-2025.json.receipt.json": "ae3e5443a70fb5a65a4f59e944d2759a93ee90b01b535eed9949eae1cd80fd60",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\transactions-646240-2025.json.gz": "04a23a095ecfacc5281f729dc7ae6385bb117e4739adc5f7a5dc59f8c6842166",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\transactions-646240-2025.json.receipt.json": "627f7d210820b8e34debc5c2a35445fb0c25e34baf6aaab94be70d33d5694d4a",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\transactions-647304-2025.json.gz": "4976e7ea04bb4402655780c4afb74dfd78dc250aa4e2ab4246000b8c0120145e",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-rosters-2025-source\\captures\\transactions-647304-2025.json.receipt.json": "7f8bb2ea76deb10642d37b9b9c0eae54a7ab6b9666617cd057519d40720d6c2c"
+    },
+    "roster_sha256": "677fab880733417a13426c9864e11e7693be8794171efbb6accfd44a06ff7e31",
+    "source_walkthrough_status": "complete",
+    "approved_for_membership_feature": true,
+    "status_not_health_or_rights": true,
+    "status_conflicts": 0,
+    "parent_team_mismatches": 0,
+    "model_fits": 0,
+    "protected_outcomes_used": false
+  },
+  "preseason_ranks": {
+    "archive_transport_verified": true,
+    "complete_rank_count": 100,
+    "rank_source_approved": true,
+    "verified_available_by": "2026-01-26",
+    "transports": [
+      {
+        "snapshot": "20260126003740",
+        "original": "https://www.mlb.com/milb/prospects/2026/top100/",
+        "memento_datetime": "2026-01-26T00:37:40+00:00",
+        "archived_original_date": "Mon, 26 Jan 2026 00:37:40 GMT",
+        "archive_file": "FC-20260126003129-crawl924/FC-20260126003724-00080.warc.gz",
+        "content_encoding": "gzip",
+        "archive_index_digest": "XJA7KZIHLZO4PHXYW3SFFCNEWASJVLIH",
+        "wire_digest": "XJA7KZIHLZO4PHXYW3SFFCNEWASJVLIH",
+        "exact_archive_index_payload_match": true,
+        "transport_sha256": "8aeeea473714a5d82c8ba67ac108a9affd424c5d87890edef16e0464b385a010",
+        "decoded_sha256": "fc0f106d64f5ae244fdf31b32871604cab50c5b8aa257ed5d0e23ebb2b4adb1b"
+      },
+      {
+        "snapshot": "20260201193617",
+        "original": "https://www.mlb.com/milb/prospects/2026/top100/",
+        "memento_datetime": "2026-02-01T19:36:17+00:00",
+        "archived_original_date": "Sun, 01 Feb 2026 19:36:17 GMT",
+        "archive_file": "FC-20260201193100-crawl924/FC-20260201193614-00057.warc.gz",
+        "content_encoding": "gzip",
+        "archive_index_digest": "UMWU3HW34EAKKBZCS7XSVSX75EN5DHVU",
+        "wire_digest": "UMWU3HW34EAKKBZCS7XSVSX75EN5DHVU",
+        "exact_archive_index_payload_match": true,
+        "transport_sha256": "7f7f6ff96591f458deb7322e1faf365f6af6edfc44d4c57c258484b06db5d61d",
+        "decoded_sha256": "5b21020411355284d2b35dfdbf40991cb187eb471cd9689531639cfc6775212d"
+      }
+    ],
+    "player_walkthrough_status": "complete",
+    "cases": [
+      {
+        "player_id": 804606,
+        "published_2026_rank": {
+          "season": 2026,
+          "player_id": 804606,
+          "rank": 1,
+          "list_capacity": 100,
+          "list_complete": true,
+          "player_name": "Konnor Griffin"
+        },
+        "input_overlay": {
+          "scout_list_available_0": 1.0,
+          "scout_list_capacity_0": 100.0,
+          "scout_listed_0": 1.0,
+          "scout_rank_score_0": 1.0,
+          "scout_list_available_1": 1.0,
+          "scout_list_capacity_1": 100.0,
+          "scout_listed_1": 1.0,
+          "scout_rank_score_1": 0.58,
+          "scout_list_available_2": 1.0,
+          "scout_list_capacity_2": 100.0,
+          "scout_listed_2": 0.0,
+          "scout_rank_score_2": 0.0
+        },
+        "actual_2023_to_2025_history": [
+          {
+            "season": 2025,
+            "bucket": "AA",
+            "position": "6",
+            "plate_appearances": 98,
+            "team_id": 452
+          },
+          {
+            "season": 2025,
+            "bucket": "Aplus",
+            "position": "6",
+            "plate_appearances": 234,
+            "team_id": 477
+          },
+          {
+            "season": 2025,
+            "bucket": "A",
+            "position": "6",
+            "plate_appearances": 231,
+            "team_id": 3390
+          }
+        ],
+        "qualification": "No ranked-list membership implies pitcher/hitter role; reconcile roles from dated records before forecast membership."
+      },
+      {
+        "player_id": 805808,
+        "published_2026_rank": {
+          "season": 2026,
+          "player_id": 805808,
+          "rank": 2,
+          "list_capacity": 100,
+          "list_complete": true,
+          "player_name": "Kevin McGonigle"
+        },
+        "input_overlay": {
+          "scout_list_available_0": 1.0,
+          "scout_list_capacity_0": 100.0,
+          "scout_listed_0": 1.0,
+          "scout_rank_score_0": 0.99,
+          "scout_list_available_1": 1.0,
+          "scout_list_capacity_1": 100.0,
+          "scout_listed_1": 1.0,
+          "scout_rank_score_1": 0.73,
+          "scout_list_available_2": 1.0,
+          "scout_list_capacity_2": 100.0,
+          "scout_listed_2": 0.0,
+          "scout_rank_score_2": 0.0
+        },
+        "actual_2023_to_2025_history": [
+          {
+            "season": 2023,
+            "bucket": "A",
+            "position": "6",
+            "plate_appearances": 48,
+            "team_id": 570
+          },
+          {
+            "season": 2023,
+            "bucket": "RK124",
+            "position": "6",
+            "plate_appearances": 45,
+            "team_id": 473
+          },
+          {
+            "season": 2024,
+            "bucket": "Aplus",
+            "position": "6",
+            "plate_appearances": 57,
+            "team_id": 582
+          },
+          {
+            "season": 2024,
+            "bucket": "A",
+            "position": "6",
+            "plate_appearances": 271,
+            "team_id": 570
+          },
+          {
+            "season": 2025,
+            "bucket": "AA",
+            "position": "6",
+            "plate_appearances": 206,
+            "team_id": 106
+          },
+          {
+            "season": 2025,
+            "bucket": "Aplus",
+            "position": "6",
+            "plate_appearances": 171,
+            "team_id": 582
+          },
+          {
+            "season": 2025,
+            "bucket": "A",
+            "position": "10",
+            "plate_appearances": 20,
+            "team_id": 570
+          }
+        ],
+        "qualification": "No ranked-list membership implies pitcher/hitter role; reconcile roles from dated records before forecast membership."
+      },
+      {
+        "player_id": 815908,
+        "published_2026_rank": {
+          "season": 2026,
+          "player_id": 815908,
+          "rank": 3,
+          "list_capacity": 100,
+          "list_complete": true,
+          "player_name": "Jes\u00fas Made"
+        },
+        "input_overlay": {
+          "scout_list_available_0": 1.0,
+          "scout_list_capacity_0": 100.0,
+          "scout_listed_0": 1.0,
+          "scout_rank_score_0": 0.98,
+          "scout_list_available_1": 1.0,
+          "scout_list_capacity_1": 100.0,
+          "scout_listed_1": 1.0,
+          "scout_rank_score_1": 0.45,
+          "scout_list_available_2": 1.0,
+          "scout_list_capacity_2": 100.0,
+          "scout_listed_2": 0.0,
+          "scout_rank_score_2": 0.0
+        },
+        "actual_2023_to_2025_history": [
+          {
+            "season": 2024,
+            "bucket": "DSL",
+            "position": "6",
+            "plate_appearances": 216,
+            "team_id": 607
+          },
+          {
+            "season": 2025,
+            "bucket": "AA",
+            "position": "6",
+            "plate_appearances": 24,
+            "team_id": 5015
+          },
+          {
+            "season": 2025,
+            "bucket": "Aplus",
+            "position": "6",
+            "plate_appearances": 123,
+            "team_id": 572
+          },
+          {
+            "season": 2025,
+            "bucket": "A",
+            "position": "6",
+            "plate_appearances": 378,
+            "team_id": 249
+          }
+        ],
+        "qualification": "No ranked-list membership implies pitcher/hitter role; reconcile roles from dated records before forecast membership."
+      },
+      {
+        "player_id": 815888,
+        "published_2026_rank": {
+          "season": 2026,
+          "player_id": 815888,
+          "rank": 4,
+          "list_capacity": 100,
+          "list_complete": true,
+          "player_name": "Leo De Vries"
+        },
+        "input_overlay": {
+          "scout_list_available_0": 1.0,
+          "scout_list_capacity_0": 100.0,
+          "scout_listed_0": 1.0,
+          "scout_rank_score_0": 0.97,
+          "scout_list_available_1": 1.0,
+          "scout_list_capacity_1": 100.0,
+          "scout_listed_1": 1.0,
+          "scout_rank_score_1": 0.83,
+          "scout_list_available_2": 1.0,
+          "scout_list_capacity_2": 100.0,
+          "scout_listed_2": 0.0,
+          "scout_rank_score_2": 0.0
+        },
+        "actual_2023_to_2025_history": [
+          {
+            "season": 2024,
+            "bucket": "A",
+            "position": "6",
+            "plate_appearances": 360,
+            "team_id": 103
+          },
+          {
+            "season": 2025,
+            "bucket": "AA",
+            "position": "6",
+            "plate_appearances": 103,
+            "team_id": 237
+          },
+          {
+            "season": 2025,
+            "bucket": "Aplus",
+            "position": "6",
+            "plate_appearances": 433,
+            "team_id": 499
+          }
+        ],
+        "qualification": "No ranked-list membership implies pitcher/hitter role; reconcile roles from dated records before forecast membership."
+      },
+      {
+        "player_id": 802139,
+        "published_2026_rank": {
+          "season": 2026,
+          "player_id": 802139,
+          "rank": 5,
+          "list_capacity": 100,
+          "list_complete": true,
+          "player_name": "JJ Wetherholt"
+        },
+        "input_overlay": {
+          "scout_list_available_0": 1.0,
+          "scout_list_capacity_0": 100.0,
+          "scout_listed_0": 1.0,
+          "scout_rank_score_0": 0.96,
+          "scout_list_available_1": 1.0,
+          "scout_list_capacity_1": 100.0,
+          "scout_listed_1": 1.0,
+          "scout_rank_score_1": 0.78,
+          "scout_list_available_2": 1.0,
+          "scout_list_capacity_2": 100.0,
+          "scout_listed_2": 0.0,
+          "scout_rank_score_2": 0.0
+        },
+        "actual_2023_to_2025_history": [
+          {
+            "season": 2024,
+            "bucket": "A",
+            "position": "6",
+            "plate_appearances": 126,
+            "team_id": 279
+          },
+          {
+            "season": 2025,
+            "bucket": "AAA",
+            "position": "6",
+            "plate_appearances": 221,
+            "team_id": 235
+          },
+          {
+            "season": 2025,
+            "bucket": "AA",
+            "position": "6",
+            "plate_appearances": 275,
+            "team_id": 440
+          }
+        ],
+        "qualification": "No ranked-list membership implies pitcher/hitter role; reconcile roles from dated records before forecast membership."
+      },
+      {
+        "player_id": 690997,
+        "published_2026_rank": {
+          "season": 2026,
+          "player_id": 690997,
+          "rank": 6,
+          "list_capacity": 100,
+          "list_complete": true,
+          "player_name": "Nolan McLean"
+        },
+        "input_overlay": {
+          "scout_list_available_0": 1.0,
+          "scout_list_capacity_0": 100.0,
+          "scout_listed_0": 1.0,
+          "scout_rank_score_0": 0.95,
+          "scout_list_available_1": 1.0,
+          "scout_list_capacity_1": 100.0,
+          "scout_listed_1": 0.0,
+          "scout_rank_score_1": 0.0,
+          "scout_list_available_2": 1.0,
+          "scout_list_capacity_2": 100.0,
+          "scout_listed_2": 0.0,
+          "scout_rank_score_2": 0.0
+        },
+        "actual_2023_to_2025_history": [
+          {
+            "season": 2023,
+            "bucket": "A",
+            "position": "10",
+            "plate_appearances": 13,
+            "team_id": 507
+          },
+          {
+            "season": 2023,
+            "bucket": "RK124",
+            "position": "10",
+            "plate_appearances": 11,
+            "team_id": 468
+          },
+          {
+            "season": 2024,
+            "bucket": "AA",
+            "position": "1",
+            "plate_appearances": 69,
+            "team_id": 505
+          },
+          {
+            "season": 2024,
+            "bucket": "Aplus",
+            "position": "10",
+            "plate_appearances": 74,
+            "team_id": 453
+          }
+        ],
+        "qualification": "No ranked-list membership implies pitcher/hitter role; reconcile roles from dated records before forecast membership."
+      },
+      {
+        "player_id": 806964,
+        "published_2026_rank": {
+          "season": 2026,
+          "player_id": 806964,
+          "rank": 7,
+          "list_capacity": 100,
+          "list_complete": true,
+          "player_name": "Sebastian Walcott"
+        },
+        "input_overlay": {
+          "scout_list_available_0": 1.0,
+          "scout_list_capacity_0": 100.0,
+          "scout_listed_0": 1.0,
+          "scout_rank_score_0": 0.94,
+          "scout_list_available_1": 1.0,
+          "scout_list_capacity_1": 100.0,
+          "scout_listed_1": 1.0,
+          "scout_rank_score_1": 0.84,
+          "scout_list_available_2": 1.0,
+          "scout_list_capacity_2": 100.0,
+          "scout_listed_2": 1.0,
+          "scout_rank_score_2": 0.3
+        },
+        "actual_2023_to_2025_history": [
+          {
+            "season": 2023,
+            "bucket": "Aplus",
+            "position": "10",
+            "plate_appearances": 16,
+            "team_id": 448
+          },
+          {
+            "season": 2023,
+            "bucket": "RK121",
+            "position": "6",
+            "plate_appearances": 199,
+            "team_id": 411
+          },
+          {
+            "season": 2024,
+            "bucket": "AA",
+            "position": "6",
+            "plate_appearances": 24,
+            "team_id": 540
+          },
+          {
+            "season": 2024,
+            "bucket": "Aplus",
+            "position": "6",
+            "plate_appearances": 491,
+            "team_id": 448
+          },
+          {
+            "season": 2025,
+            "bucket": "AA",
+            "position": "6",
+            "plate_appearances": 552,
+            "team_id": 540
+          }
+        ],
+        "qualification": "No ranked-list membership implies pitcher/hitter role; reconcile roles from dated records before forecast membership."
+      },
+      {
+        "player_id": 694212,
+        "published_2026_rank": {
+          "season": 2026,
+          "player_id": 694212,
+          "rank": 8,
+          "list_capacity": 100,
+          "list_complete": true,
+          "player_name": "Samuel Basallo"
+        },
+        "input_overlay": {
+          "scout_list_available_0": 1.0,
+          "scout_list_capacity_0": 100.0,
+          "scout_listed_0": 1.0,
+          "scout_rank_score_0": 0.93,
+          "scout_list_available_1": 1.0,
+          "scout_list_capacity_1": 100.0,
+          "scout_listed_1": 1.0,
+          "scout_rank_score_1": 0.88,
+          "scout_list_available_2": 1.0,
+          "scout_list_capacity_2": 100.0,
+          "scout_listed_2": 1.0,
+          "scout_rank_score_2": 0.84
+        },
+        "actual_2023_to_2025_history": [
+          {
+            "season": 2023,
+            "bucket": "AA",
+            "position": "2",
+            "plate_appearances": 16,
+            "team_id": 418
+          },
+          {
+            "season": 2023,
+            "bucket": "Aplus",
+            "position": "2",
+            "plate_appearances": 115,
+            "team_id": 488
+          },
+          {
+            "season": 2023,
+            "bucket": "A",
+            "position": "2",
+            "plate_appearances": 352,
+            "team_id": 548
+          },
+          {
+            "season": 2024,
+            "bucket": "AAA",
+            "position": "2",
+            "plate_appearances": 86,
+            "team_id": 568
+          },
+          {
+            "season": 2024,
+            "bucket": "AA",
+            "position": "2",
+            "plate_appearances": 446,
+            "team_id": 418
+          },
+          {
+            "season": 2025,
+            "bucket": "MLB",
+            "position": "2",
+            "plate_appearances": 118,
+            "team_id": 110
+          },
+          {
+            "season": 2025,
+            "bucket": "AAA",
+            "position": "2",
+            "plate_appearances": 321,
+            "team_id": 568
+          }
+        ],
+        "qualification": "No ranked-list membership implies pitcher/hitter role; reconcile roles from dated records before forecast membership."
+      },
+      {
+        "player_id": 806068,
+        "published_2026_rank": {
+          "season": 2026,
+          "player_id": 806068,
+          "rank": 9,
+          "list_capacity": 100,
+          "list_complete": true,
+          "player_name": "Colt Emerson"
+        },
+        "input_overlay": {
+          "scout_list_available_0": 1.0,
+          "scout_list_capacity_0": 100.0,
+          "scout_listed_0": 1.0,
+          "scout_rank_score_0": 0.92,
+          "scout_list_available_1": 1.0,
+          "scout_list_capacity_1": 100.0,
+          "scout_listed_1": 1.0,
+          "scout_rank_score_1": 0.81,
+          "scout_list_available_2": 1.0,
+          "scout_list_capacity_2": 100.0,
+          "scout_listed_2": 1.0,
+          "scout_rank_score_2": 0.14
+        },
+        "actual_2023_to_2025_history": [
+          {
+            "season": 2023,
+            "bucket": "A",
+            "position": "6",
+            "plate_appearances": 79,
+            "team_id": 515
+          },
+          {
+            "season": 2023,
+            "bucket": "RK121",
+            "position": "6",
+            "plate_appearances": 35,
+            "team_id": 409
+          },
+          {
+            "season": 2024,
+            "bucket": "Aplus",
+            "position": "6",
+            "plate_appearances": 139,
+            "team_id": 403
+          },
+          {
+            "season": 2024,
+            "bucket": "A",
+            "position": "6",
+            "plate_appearances": 193,
+            "team_id": 515
+          },
+          {
+            "season": 2024,
+            "bucket": "RK121",
+            "position": "6",
+            "plate_appearances": 4,
+            "team_id": 409
+          },
+          {
+            "season": 2025,
+            "bucket": "AAA",
+            "position": "6",
+            "plate_appearances": 27,
+            "team_id": 529
+          },
+          {
+            "season": 2025,
+            "bucket": "AA",
+            "position": "6",
+            "plate_appearances": 161,
+            "team_id": 574
+          },
+          {
+            "season": 2025,
+            "bucket": "Aplus",
+            "position": "6",
+            "plate_appearances": 412,
+            "team_id": 403
+          }
+        ],
+        "qualification": "No ranked-list membership implies pitcher/hitter role; reconcile roles from dated records before forecast membership."
+      },
+      {
+        "player_id": 703601,
+        "published_2026_rank": {
+          "season": 2026,
+          "player_id": 703601,
+          "rank": 10,
+          "list_capacity": 100,
+          "list_complete": true,
+          "player_name": "Max Clark"
+        },
+        "input_overlay": {
+          "scout_list_available_0": 1.0,
+          "scout_list_capacity_0": 100.0,
+          "scout_listed_0": 1.0,
+          "scout_rank_score_0": 0.91,
+          "scout_list_available_1": 1.0,
+          "scout_list_capacity_1": 100.0,
+          "scout_listed_1": 1.0,
+          "scout_rank_score_1": 0.95,
+          "scout_list_available_2": 1.0,
+          "scout_list_capacity_2": 100.0,
+          "scout_listed_2": 1.0,
+          "scout_rank_score_2": 0.88
+        },
+        "actual_2023_to_2025_history": [
+          {
+            "season": 2023,
+            "bucket": "A",
+            "position": "8",
+            "plate_appearances": 51,
+            "team_id": 570
+          },
+          {
+            "season": 2023,
+            "bucket": "RK124",
+            "position": "8",
+            "plate_appearances": 56,
+            "team_id": 473
+          },
+          {
+            "season": 2024,
+            "bucket": "Aplus",
+            "position": "8",
+            "plate_appearances": 157,
+            "team_id": 582
+          },
+          {
+            "season": 2024,
+            "bucket": "A",
+            "position": "8",
+            "plate_appearances": 333,
+            "team_id": 570
+          },
+          {
+            "season": 2025,
+            "bucket": "AA",
+            "position": "8",
+            "plate_appearances": 203,
+            "team_id": 106
+          },
+          {
+            "season": 2025,
+            "bucket": "Aplus",
+            "position": "8",
+            "plate_appearances": 330,
+            "team_id": 582
+          }
+        ],
+        "qualification": "No ranked-list membership implies pitcher/hitter role; reconcile roles from dated records before forecast membership."
+      },
+      {
+        "player_id": 592450,
+        "published_2026_rank": null,
+        "input_overlay": {
+          "scout_list_available_0": 1.0,
+          "scout_list_capacity_0": 100.0,
+          "scout_listed_0": 0.0,
+          "scout_rank_score_0": 0.0,
+          "scout_list_available_1": 1.0,
+          "scout_list_capacity_1": 100.0,
+          "scout_listed_1": 0.0,
+          "scout_rank_score_1": 0.0,
+          "scout_list_available_2": 1.0,
+          "scout_list_capacity_2": 100.0,
+          "scout_listed_2": 0.0,
+          "scout_rank_score_2": 0.0
+        },
+        "actual_2023_to_2025_history": [
+          {
+            "season": 2023,
+            "bucket": "MLB",
+            "position": "9",
+            "plate_appearances": 458,
+            "team_id": 147
+          },
+          {
+            "season": 2024,
+            "bucket": "MLB",
+            "position": "8",
+            "plate_appearances": 704,
+            "team_id": 147
+          },
+          {
+            "season": 2025,
+            "bucket": "MLB",
+            "position": "9",
+            "plate_appearances": 679,
+            "team_id": 147
+          }
+        ],
+        "qualification": "No ranked-list membership implies pitcher/hitter role; reconcile roles from dated records before forecast membership."
+      },
+      {
+        "player_id": 701762,
+        "published_2026_rank": null,
+        "input_overlay": {
+          "scout_list_available_0": 1.0,
+          "scout_list_capacity_0": 100.0,
+          "scout_listed_0": 0.0,
+          "scout_rank_score_0": 0.0,
+          "scout_list_available_1": 1.0,
+          "scout_list_capacity_1": 100.0,
+          "scout_listed_1": 1.0,
+          "scout_rank_score_1": 0.63,
+          "scout_list_available_2": 1.0,
+          "scout_list_capacity_2": 100.0,
+          "scout_listed_2": 0.0,
+          "scout_rank_score_2": 0.0
+        },
+        "actual_2023_to_2025_history": [
+          {
+            "season": 2024,
+            "bucket": "AA",
+            "position": "3",
+            "plate_appearances": 15,
+            "team_id": 237
+          },
+          {
+            "season": 2024,
+            "bucket": "A",
+            "position": "3",
+            "plate_appearances": 35,
+            "team_id": 524
+          },
+          {
+            "season": 2025,
+            "bucket": "MLB",
+            "position": "3",
+            "plate_appearances": 489,
+            "team_id": 133
+          },
+          {
+            "season": 2025,
+            "bucket": "AAA",
+            "position": "3",
+            "plate_appearances": 97,
+            "team_id": 400
+          },
+          {
+            "season": 2025,
+            "bucket": "A",
+            "position": "3",
+            "plate_appearances": 4,
+            "team_id": 524
+          }
+        ],
+        "qualification": "No ranked-list membership implies pitcher/hitter role; reconcile roles from dated records before forecast membership."
+      },
+      {
+        "player_id": 808982,
+        "published_2026_rank": null,
+        "input_overlay": {
+          "scout_list_available_0": 1.0,
+          "scout_list_capacity_0": 100.0,
+          "scout_listed_0": 0.0,
+          "scout_rank_score_0": 0.0,
+          "scout_list_available_1": 1.0,
+          "scout_list_capacity_1": 100.0,
+          "scout_listed_1": 0.0,
+          "scout_rank_score_1": 0.0,
+          "scout_list_available_2": 1.0,
+          "scout_list_capacity_2": 100.0,
+          "scout_listed_2": 0.0,
+          "scout_rank_score_2": 0.0
+        },
+        "actual_2023_to_2025_history": [
+          {
+            "season": 2024,
+            "bucket": "MLB",
+            "position": "8",
+            "plate_appearances": 158,
+            "team_id": 137
+          },
+          {
+            "season": 2025,
+            "bucket": "MLB",
+            "position": "8",
+            "plate_appearances": 617,
+            "team_id": 137
+          }
+        ],
+        "qualification": "No ranked-list membership implies pitcher/hitter role; reconcile roles from dated records before forecast membership."
+      },
+      {
+        "player_id": 693409,
+        "published_2026_rank": null,
+        "input_overlay": {
+          "scout_list_available_0": 1.0,
+          "scout_list_capacity_0": 100.0,
+          "scout_listed_0": 0.0,
+          "scout_rank_score_0": 0.0,
+          "scout_list_available_1": 1.0,
+          "scout_list_capacity_1": 100.0,
+          "scout_listed_1": 0.0,
+          "scout_rank_score_1": 0.0,
+          "scout_list_available_2": 1.0,
+          "scout_list_capacity_2": 100.0,
+          "scout_listed_2": 0.0,
+          "scout_rank_score_2": 0.0
+        },
+        "actual_2023_to_2025_history": [
+          {
+            "season": 2023,
+            "bucket": "AAA",
+            "position": "4",
+            "plate_appearances": 291,
+            "team_id": 235
+          },
+          {
+            "season": 2023,
+            "bucket": "AA",
+            "position": "4",
+            "plate_appearances": 249,
+            "team_id": 418
+          },
+          {
+            "season": 2024,
+            "bucket": "AAA",
+            "position": "5",
+            "plate_appearances": 535,
+            "team_id": 235
+          },
+          {
+            "season": 2025,
+            "bucket": "MLB",
+            "position": "4",
+            "plate_appearances": 6,
+            "team_id": 138
+          },
+          {
+            "season": 2025,
+            "bucket": "AAA",
+            "position": "5",
+            "plate_appearances": 515,
+            "team_id": 235
+          }
+        ],
+        "qualification": "No ranked-list membership implies pitcher/hitter role; reconcile roles from dated records before forecast membership."
+      }
+    ],
+    "live_2026_rankings_accessed": false,
+    "protected_outcomes_used": false,
+    "model_fits": 0,
+    "candidate_frozen": false,
+    "source_hashes": {
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\verify_hitter_preseason_2026_archive.py": "de2ceef2024e117527bdd4059b1c7f64d2fb7cd12c6f8c4775a2ca19f6a7bce6",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-preseason-2026-archive-probe\\metadata-probe.json": "50ee5fde6f22968ea5d52c8a028990da6409d94993aaa2fca89db907124783cb",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-preseason-2026-archive-probe\\archived-rank-review.json": "ef6aa90963b160dff2387f4c6abf4e9b1c880df814b9dba37e8126772d3d1d7e",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-preseason-2026-archive-probe\\preseason-2026-ranks.parquet": "84a65c53540e6992ed49cc9ddd1ec81003277dfa86d2a7bbd31ffd2a839b27ff"
+    }
+  },
+  "all_three_source_families_verified": true,
+  "new_model_fits": 0,
+  "candidate_frozen": false,
+  "source_player_reviews": [
+    {
+      "player_id": 592450,
+      "player_name": "Aaron Judge",
+      "official_2025": {
+        "player_id": 592450,
+        "player_name": "Aaron Judge",
+        "official_contacts": 388,
+        "singles": 94,
+        "doubles": 30,
+        "triples": 2,
+        "home_runs": 53,
+        "plate_appearances": 679,
+        "source_contacts": 388,
+        "singles_source": 94,
+        "doubles_source": 30,
+        "triples_source": 2,
+        "home_runs_source": 53,
+        "contact_residual": 0,
+        "documented_adjustment": 0
+      },
+      "raw_rows": 388,
+      "measured_annual": {
+        "season": 2025,
+        "player_id": 592450,
+        "terminal_nonbunt_contacts": 388,
+        "measured_ev_contacts": 387,
+        "measured_la_contacts": 387,
+        "measured_pair_contacts": 387,
+        "invalid_ev_contacts": 0,
+        "invalid_la_contacts": 0,
+        "mean_ev": 95.4219638242894,
+        "ev95": 113.0,
+        "hard_hit_fraction": 0.5839793281653747,
+        "mean_la": 19.06201550387597,
+        "la_sd": 24.307641372371823,
+        "sweet_spot_fraction": 0.40568475452196384,
+        "hard_sweet_spot_contacts": 103,
+        "hard_air_contacts": 147,
+        "first_date": "2025-03-27",
+        "last_date": "2025-09-28",
+        "pair_coverage": 0.9974226804123711,
+        "hard_air_fraction": 0.3798449612403101
+      },
+      "independently_reconstructed": {
+        "terminal_nonbunt_contacts": 388,
+        "measured_ev_contacts": 387,
+        "measured_la_contacts": 387,
+        "measured_pair_contacts": 387,
+        "mean_ev": 95.42196382428939,
+        "ev95": 113.0,
+        "hard_hit_fraction": 0.5839793281653747,
+        "mean_la": 19.06201550387597,
+        "la_sd": 24.307641372371815,
+        "sweet_spot_fraction": 0.40568475452196384,
+        "hard_sweet_spot_contacts": 103,
+        "hard_air_contacts": 147,
+        "pair_coverage": 0.9974226804123711,
+        "hard_air_fraction": 0.3798449612403101,
+        "first_date": "2025-03-27",
+        "last_date": "2025-09-28"
+      },
+      "input_row": {
+        "row_id": 592450,
+        "player_id": 592450,
+        "origin_year": 2025,
+        "sc_0_source_year_available": 1.0,
+        "sc_0_ev_n": 387,
+        "sc_0_ev_sample": 0.9316116117071067,
+        "sc_0_la_n": 387,
+        "sc_0_la_sample": 0.9316116117071067,
+        "sc_0_pair_n": 387,
+        "sc_0_pair_sample": 0.9316116117071067,
+        "sc_0_pair_coverage": 0.9974226804123711,
+        "sc_0_mean_ev_known": 1.0,
+        "sc_0_mean_ev": 0.5421963824289406,
+        "sc_0_ev95_known": 1.0,
+        "sc_0_ev95": 0.8,
+        "sc_0_hard_hit_fraction_known": 1.0,
+        "sc_0_hard_hit_fraction": 0.5839793281653747,
+        "sc_0_mean_la_known": 1.0,
+        "sc_0_mean_la": 0.9531007751937984,
+        "sc_0_la_sd_known": 1.0,
+        "sc_0_la_sd": 1.2153820686185912,
+        "sc_0_sweet_spot_fraction_known": 1.0,
+        "sc_0_sweet_spot_fraction": 0.40568475452196384,
+        "sc_0_hard_air_fraction_known": 1.0,
+        "sc_0_hard_air_fraction": 0.3798449612403101,
+        "sc_0_ev95_sample": 0.7452892893656854,
+        "sc_0_hard_air_sample": 0.35386797653990876,
+        "sc_1_source_year_available": 1.0,
+        "sc_1_ev_n": 388,
+        "sc_1_ev_sample": 0.932013888147717,
+        "sc_1_la_n": 388,
+        "sc_1_la_sample": 0.932013888147717,
+        "sc_1_pair_n": 388,
+        "sc_1_pair_sample": 0.932013888147717,
+        "sc_1_pair_coverage": 0.9948717948717949,
+        "sc_1_mean_ev_known": 1.0,
+        "sc_1_mean_ev": 0.6222680412371133,
+        "sc_1_ev95_known": 1.0,
+        "sc_1_ev95": 0.8700000000000003,
+        "sc_1_hard_hit_fraction_known": 1.0,
+        "sc_1_hard_hit_fraction": 0.6134020618556701,
+        "sc_1_mean_la_known": 1.0,
+        "sc_1_mean_la": 0.9484536082474226,
+        "sc_1_la_sd_known": 1.0,
+        "sc_1_la_sd": 1.1983667526309447,
+        "sc_1_sweet_spot_fraction_known": 1.0,
+        "sc_1_sweet_spot_fraction": 0.42010309278350516,
+        "sc_1_hard_air_fraction_known": 1.0,
+        "sc_1_hard_air_fraction": 0.422680412371134,
+        "sc_1_ev95_sample": 0.8108520826885142,
+        "sc_1_hard_air_sample": 0.393944014577901,
+        "sc_2_source_year_available": 1.0,
+        "sc_2_ev_n": 239,
+        "sc_2_ev_sample": 0.8565378773644942,
+        "sc_2_la_n": 239,
+        "sc_2_la_sample": 0.8565378773644942,
+        "sc_2_pair_n": 239,
+        "sc_2_pair_sample": 0.8565378773644942,
+        "sc_2_pair_coverage": 0.9958333333333333,
+        "sc_2_mean_ev_known": 1.0,
+        "sc_2_mean_ev": 0.7647280334728037,
+        "sc_2_ev95_known": 1.0,
+        "sc_2_ev95": 0.8139999999999986,
+        "sc_2_hard_hit_fraction_known": 1.0,
+        "sc_2_hard_hit_fraction": 0.6443514644351465,
+        "sc_2_mean_la_known": 1.0,
+        "sc_2_mean_la": 1.0198744769874477,
+        "sc_2_la_sd_known": 1.0,
+        "sc_2_la_sd": 1.1714354051963431,
+        "sc_2_sweet_spot_fraction_known": 1.0,
+        "sc_2_sweet_spot_fraction": 0.39330543933054396,
+        "sc_2_hard_air_fraction_known": 1.0,
+        "sc_2_hard_air_fraction": 0.47280334728033474,
+        "sc_2_ev95_sample": 0.697221832174697,
+        "sc_2_hard_air_sample": 0.4049739754903257,
+        "sc_own_ev_n": 1014,
+        "sc_own_pair_n": 1014,
+        "sc_tracked": true
+      },
+      "corrections": [],
+      "judgment": "Actual sample and missingness enter unchanged definitions; this is not a prediction or approval of accuracy.",
+      "peers": [
+        {
+          "player_id": 664761,
+          "player_name": "Alec Bohm",
+          "terminal_contacts": 388,
+          "mean_ev": 90.80025906735752
+        },
+        {
+          "player_id": 691026,
+          "player_name": "Masyn Winn",
+          "terminal_contacts": 388,
+          "mean_ev": 88.10541237113402
+        },
+        {
+          "player_id": 657757,
+          "player_name": "Gavin Sheets",
+          "terminal_contacts": 389,
+          "mean_ev": 89.92299741602066
+        }
+      ]
+    },
+    {
+      "player_id": 701762,
+      "player_name": "Nick Kurtz",
+      "official_2025": {
+        "player_id": 701762,
+        "player_name": "Nick Kurtz",
+        "official_contacts": 272,
+        "singles": 58,
+        "doubles": 26,
+        "triples": 2,
+        "home_runs": 36,
+        "plate_appearances": 489,
+        "source_contacts": 272,
+        "singles_source": 58,
+        "doubles_source": 26,
+        "triples_source": 2,
+        "home_runs_source": 36,
+        "contact_residual": 0,
+        "documented_adjustment": 0
+      },
+      "raw_rows": 272,
+      "measured_annual": {
+        "season": 2025,
+        "player_id": 701762,
+        "terminal_nonbunt_contacts": 272,
+        "measured_ev_contacts": 271,
+        "measured_la_contacts": 271,
+        "measured_pair_contacts": 271,
+        "invalid_ev_contacts": 0,
+        "invalid_la_contacts": 0,
+        "mean_ev": 92.65793357933579,
+        "ev95": 111.3,
+        "hard_hit_fraction": 0.5129151291512916,
+        "mean_la": 15.25830258302583,
+        "la_sd": 24.63240253986367,
+        "sweet_spot_fraction": 0.4022140221402214,
+        "hard_sweet_spot_contacts": 70,
+        "hard_air_contacts": 100,
+        "first_date": "2025-04-23",
+        "last_date": "2025-09-28",
+        "pair_coverage": 0.9963235294117647,
+        "hard_air_fraction": 0.36900369003690037
+      },
+      "independently_reconstructed": {
+        "terminal_nonbunt_contacts": 272,
+        "measured_ev_contacts": 271,
+        "measured_la_contacts": 271,
+        "measured_pair_contacts": 271,
+        "mean_ev": 92.65793357933579,
+        "ev95": 111.3,
+        "hard_hit_fraction": 0.5129151291512916,
+        "mean_la": 15.25830258302583,
+        "la_sd": 24.63240253986367,
+        "sweet_spot_fraction": 0.4022140221402214,
+        "hard_sweet_spot_contacts": 70,
+        "hard_air_contacts": 100,
+        "pair_coverage": 0.9963235294117647,
+        "hard_air_fraction": 0.36900369003690037,
+        "first_date": "2025-04-23",
+        "last_date": "2025-09-28"
+      },
+      "input_row": {
+        "row_id": 701762,
+        "player_id": 701762,
+        "origin_year": 2025,
+        "sc_0_source_year_available": 1.0,
+        "sc_0_ev_n": 271,
+        "sc_0_ev_sample": 0.8760989129097296,
+        "sc_0_la_n": 271,
+        "sc_0_la_sample": 0.8760989129097296,
+        "sc_0_pair_n": 271,
+        "sc_0_pair_sample": 0.8760989129097296,
+        "sc_0_pair_coverage": 0.9963235294117647,
+        "sc_0_mean_ev_known": 1.0,
+        "sc_0_mean_ev": 0.265793357933579,
+        "sc_0_ev95_known": 1.0,
+        "sc_0_ev95": 0.6299999999999997,
+        "sc_0_hard_hit_fraction_known": 1.0,
+        "sc_0_hard_hit_fraction": 0.5129151291512916,
+        "sc_0_mean_la_known": 1.0,
+        "sc_0_mean_la": 0.7629151291512916,
+        "sc_0_la_sd_known": 1.0,
+        "sc_0_la_sd": 1.2316201269931835,
+        "sc_0_sweet_spot_fraction_known": 1.0,
+        "sc_0_sweet_spot_fraction": 0.4022140221402214,
+        "sc_0_hard_air_fraction_known": 1.0,
+        "sc_0_hard_air_fraction": 0.36900369003690037,
+        "sc_0_ev95_sample": 0.5519423151331294,
+        "sc_0_hard_air_sample": 0.3232837317010072,
+        "sc_1_source_year_available": 1.0,
+        "sc_1_ev_n": 0,
+        "sc_1_ev_sample": 0.0,
+        "sc_1_la_n": 0,
+        "sc_1_la_sample": 0.0,
+        "sc_1_pair_n": 0,
+        "sc_1_pair_sample": 0.0,
+        "sc_1_pair_coverage": 0.0,
+        "sc_1_mean_ev_known": 0.0,
+        "sc_1_mean_ev": 0.0,
+        "sc_1_ev95_known": 0.0,
+        "sc_1_ev95": 0.0,
+        "sc_1_hard_hit_fraction_known": 0.0,
+        "sc_1_hard_hit_fraction": 0.0,
+        "sc_1_mean_la_known": 0.0,
+        "sc_1_mean_la": 0.0,
+        "sc_1_la_sd_known": 0.0,
+        "sc_1_la_sd": 0.0,
+        "sc_1_sweet_spot_fraction_known": 0.0,
+        "sc_1_sweet_spot_fraction": 0.0,
+        "sc_1_hard_air_fraction_known": 0.0,
+        "sc_1_hard_air_fraction": 0.0,
+        "sc_1_ev95_sample": 0.0,
+        "sc_1_hard_air_sample": 0.0,
+        "sc_2_source_year_available": 1.0,
+        "sc_2_ev_n": 0,
+        "sc_2_ev_sample": 0.0,
+        "sc_2_la_n": 0,
+        "sc_2_la_sample": 0.0,
+        "sc_2_pair_n": 0,
+        "sc_2_pair_sample": 0.0,
+        "sc_2_pair_coverage": 0.0,
+        "sc_2_mean_ev_known": 0.0,
+        "sc_2_mean_ev": 0.0,
+        "sc_2_ev95_known": 0.0,
+        "sc_2_ev95": 0.0,
+        "sc_2_hard_hit_fraction_known": 0.0,
+        "sc_2_hard_hit_fraction": 0.0,
+        "sc_2_mean_la_known": 0.0,
+        "sc_2_mean_la": 0.0,
+        "sc_2_la_sd_known": 0.0,
+        "sc_2_la_sd": 0.0,
+        "sc_2_sweet_spot_fraction_known": 0.0,
+        "sc_2_sweet_spot_fraction": 0.0,
+        "sc_2_hard_air_fraction_known": 0.0,
+        "sc_2_hard_air_fraction": 0.0,
+        "sc_2_ev95_sample": 0.0,
+        "sc_2_hard_air_sample": 0.0,
+        "sc_own_ev_n": 271,
+        "sc_own_pair_n": 271,
+        "sc_tracked": true
+      },
+      "corrections": [],
+      "judgment": "Actual sample and missingness enter unchanged definitions; this is not a prediction or approval of accuracy.",
+      "peers": [
+        {
+          "player_id": 669016,
+          "player_name": "Brandon Marsh",
+          "terminal_contacts": 272,
+          "mean_ev": 91.09372693726938
+        },
+        {
+          "player_id": 669397,
+          "player_name": "Nick Allen",
+          "terminal_contacts": 271,
+          "mean_ev": 84.81777777777778
+        },
+        {
+          "player_id": 672356,
+          "player_name": "Gabriel Arias",
+          "terminal_contacts": 273,
+          "mean_ev": 89.92600732600732
+        }
+      ]
+    },
+    {
+      "player_id": 670541,
+      "player_name": "Yordan Alvarez",
+      "official_2025": {
+        "player_id": 670541,
+        "player_name": "Yordan Alvarez",
+        "official_contacts": 138,
+        "singles": 31,
+        "doubles": 8,
+        "triples": 0,
+        "home_runs": 6,
+        "plate_appearances": 199,
+        "source_contacts": 138,
+        "singles_source": 31,
+        "doubles_source": 8,
+        "triples_source": 0,
+        "home_runs_source": 6,
+        "contact_residual": 0,
+        "documented_adjustment": 0
+      },
+      "raw_rows": 138,
+      "measured_annual": {
+        "season": 2025,
+        "player_id": 670541,
+        "terminal_nonbunt_contacts": 138,
+        "measured_ev_contacts": 138,
+        "measured_la_contacts": 138,
+        "measured_pair_contacts": 138,
+        "invalid_ev_contacts": 0,
+        "invalid_la_contacts": 0,
+        "mean_ev": 94.6586956521739,
+        "ev95": 111.94500000000001,
+        "hard_hit_fraction": 0.5289855072463768,
+        "mean_la": 18.28985507246377,
+        "la_sd": 23.907425746371327,
+        "sweet_spot_fraction": 0.43478260869565216,
+        "hard_sweet_spot_contacts": 35,
+        "hard_air_contacts": 47,
+        "first_date": "2025-03-27",
+        "last_date": "2025-09-14",
+        "pair_coverage": 1.0,
+        "hard_air_fraction": 0.34057971014492755
+      },
+      "independently_reconstructed": {
+        "terminal_nonbunt_contacts": 138,
+        "measured_ev_contacts": 138,
+        "measured_la_contacts": 138,
+        "measured_pair_contacts": 138,
+        "mean_ev": 94.6586956521739,
+        "ev95": 111.94500000000001,
+        "hard_hit_fraction": 0.5289855072463768,
+        "mean_la": 18.28985507246377,
+        "la_sd": 23.907425746371327,
+        "sweet_spot_fraction": 0.43478260869565216,
+        "hard_sweet_spot_contacts": 35,
+        "hard_air_contacts": 47,
+        "pair_coverage": 1.0,
+        "hard_air_fraction": 0.34057971014492755,
+        "first_date": "2025-03-27",
+        "last_date": "2025-09-14"
+      },
+      "input_row": {
+        "row_id": 670541,
+        "player_id": 670541,
+        "origin_year": 2025,
+        "sc_0_source_year_available": 1.0,
+        "sc_0_ev_n": 138,
+        "sc_0_ev_sample": 0.7711808582377673,
+        "sc_0_la_n": 138,
+        "sc_0_la_sample": 0.7711808582377673,
+        "sc_0_pair_n": 138,
+        "sc_0_pair_sample": 0.7711808582377673,
+        "sc_0_pair_coverage": 1.0,
+        "sc_0_mean_ev_known": 1.0,
+        "sc_0_mean_ev": 0.4658695652173904,
+        "sc_0_ev95_known": 1.0,
+        "sc_0_ev95": 0.6945000000000008,
+        "sc_0_hard_hit_fraction_known": 1.0,
+        "sc_0_hard_hit_fraction": 0.5289855072463768,
+        "sc_0_mean_la_known": 1.0,
+        "sc_0_mean_la": 0.9144927536231885,
+        "sc_0_la_sd_known": 1.0,
+        "sc_0_la_sd": 1.1953712873185665,
+        "sc_0_sweet_spot_fraction_known": 1.0,
+        "sc_0_sweet_spot_fraction": 0.43478260869565216,
+        "sc_0_hard_air_fraction_known": 1.0,
+        "sc_0_hard_air_fraction": 0.34057971014492755,
+        "sc_0_ev95_sample": 0.53558510604613,
+        "sc_0_hard_air_sample": 0.26264855316793523,
+        "sc_1_source_year_available": 1.0,
+        "sc_1_ev_n": 460,
+        "sc_1_ev_sample": 0.9585538865560611,
+        "sc_1_la_n": 460,
+        "sc_1_la_sample": 0.9585538865560611,
+        "sc_1_pair_n": 460,
+        "sc_1_pair_sample": 0.9585538865560611,
+        "sc_1_pair_coverage": 1.0,
+        "sc_1_mean_ev_known": 1.0,
+        "sc_1_mean_ev": 0.30545652173912996,
+        "sc_1_ev95_known": 1.0,
+        "sc_1_ev95": 0.6709999999999994,
+        "sc_1_hard_hit_fraction_known": 1.0,
+        "sc_1_hard_hit_fraction": 0.49782608695652175,
+        "sc_1_mean_la_known": 1.0,
+        "sc_1_mean_la": 0.9132608695652173,
+        "sc_1_la_sd_known": 1.0,
+        "sc_1_la_sd": 1.3114412805964286,
+        "sc_1_sweet_spot_fraction_known": 1.0,
+        "sc_1_sweet_spot_fraction": 0.3739130434782609,
+        "sc_1_hard_air_fraction_known": 1.0,
+        "sc_1_hard_air_fraction": 0.30869565217391304,
+        "sc_1_ev95_sample": 0.6431896578791164,
+        "sc_1_hard_air_sample": 0.2959014171542623,
+        "sc_2_source_year_available": 1.0,
+        "sc_2_ev_n": 320,
+        "sc_2_ev_sample": 0.9019856987632945,
+        "sc_2_la_n": 320,
+        "sc_2_la_sample": 0.9019856987632945,
+        "sc_2_pair_n": 320,
+        "sc_2_pair_sample": 0.9019856987632945,
+        "sc_2_pair_coverage": 0.9968847352024922,
+        "sc_2_mean_ev_known": 1.0,
+        "sc_2_mean_ev": 0.3264375000000001,
+        "sc_2_ev95_known": 1.0,
+        "sc_2_ev95": 0.6915000000000007,
+        "sc_2_hard_hit_fraction_known": 1.0,
+        "sc_2_hard_hit_fraction": 0.525,
+        "sc_2_mean_la_known": 1.0,
+        "sc_2_mean_la": 0.85375,
+        "sc_2_la_sd_known": 1.0,
+        "sc_2_la_sd": 1.353007216036104,
+        "sc_2_sweet_spot_fraction_known": 1.0,
+        "sc_2_sweet_spot_fraction": 0.38125,
+        "sc_2_hard_air_fraction_known": 1.0,
+        "sc_2_hard_air_fraction": 0.334375,
+        "sc_2_ev95_sample": 0.6237231106948188,
+        "sc_2_hard_air_sample": 0.3016014680239766,
+        "sc_own_ev_n": 918,
+        "sc_own_pair_n": 918,
+        "sc_tracked": true
+      },
+      "corrections": [],
+      "judgment": "Actual sample and missingness enter unchanged definitions; this is not a prediction or approval of accuracy.",
+      "peers": [
+        {
+          "player_id": 650968,
+          "player_name": "Yohel Pozo",
+          "terminal_contacts": 139,
+          "mean_ev": 87.72992700729927
+        },
+        {
+          "player_id": 672744,
+          "player_name": "Alexander Canario",
+          "terminal_contacts": 137,
+          "mean_ev": 87.36204379562044
+        },
+        {
+          "player_id": 691777,
+          "player_name": "Max Muncy",
+          "terminal_contacts": 137,
+          "mean_ev": 87.12132352941177
+        }
+      ]
+    },
+    {
+      "player_id": 808982,
+      "player_name": "Jung Hoo Lee",
+      "official_2025": {
+        "player_id": 808982,
+        "player_name": "Jung Hoo Lee",
+        "official_contacts": 493,
+        "singles": 98,
+        "doubles": 31,
+        "triples": 12,
+        "home_runs": 8,
+        "plate_appearances": 617,
+        "source_contacts": 493,
+        "singles_source": 98,
+        "doubles_source": 31,
+        "triples_source": 12,
+        "home_runs_source": 8,
+        "contact_residual": 0,
+        "documented_adjustment": 0
+      },
+      "raw_rows": 493,
+      "measured_annual": {
+        "season": 2025,
+        "player_id": 808982,
+        "terminal_nonbunt_contacts": 490,
+        "measured_ev_contacts": 489,
+        "measured_la_contacts": 490,
+        "measured_pair_contacts": 489,
+        "invalid_ev_contacts": 0,
+        "invalid_la_contacts": 0,
+        "mean_ev": 87.07934560327199,
+        "ev95": 103.3,
+        "hard_hit_fraction": 0.3231083844580777,
+        "mean_la": 9.93265306122449,
+        "la_sd": 26.826519002308665,
+        "sweet_spot_fraction": 0.3510204081632653,
+        "hard_sweet_spot_contacts": 71,
+        "hard_air_contacts": 79,
+        "first_date": "2025-03-29",
+        "last_date": "2025-09-28",
+        "pair_coverage": 0.9979591836734694,
+        "hard_air_fraction": 0.16155419222903886
+      },
+      "independently_reconstructed": {
+        "terminal_nonbunt_contacts": 490,
+        "measured_ev_contacts": 489,
+        "measured_la_contacts": 490,
+        "measured_pair_contacts": 489,
+        "mean_ev": 87.07934560327197,
+        "ev95": 103.3,
+        "hard_hit_fraction": 0.3231083844580777,
+        "mean_la": 9.93265306122449,
+        "la_sd": 26.826519002308665,
+        "sweet_spot_fraction": 0.3510204081632653,
+        "hard_sweet_spot_contacts": 71,
+        "hard_air_contacts": 79,
+        "pair_coverage": 0.9979591836734694,
+        "hard_air_fraction": 0.16155419222903886,
+        "first_date": "2025-03-29",
+        "last_date": "2025-09-28"
+      },
+      "input_row": {
+        "row_id": 808982,
+        "player_id": 808982,
+        "origin_year": 2025,
+        "sc_0_source_year_available": 1.0,
+        "sc_0_ev_n": 489,
+        "sc_0_ev_sample": 0.9680883779142728,
+        "sc_0_la_n": 490,
+        "sc_0_la_sample": 0.9684070004729294,
+        "sc_0_pair_n": 489,
+        "sc_0_pair_sample": 0.9680883779142728,
+        "sc_0_pair_coverage": 0.9979591836734694,
+        "sc_0_mean_ev_known": 1.0,
+        "sc_0_mean_ev": -0.29206543967280113,
+        "sc_0_ev95_known": 1.0,
+        "sc_0_ev95": -0.1700000000000003,
+        "sc_0_hard_hit_fraction_known": 1.0,
+        "sc_0_hard_hit_fraction": 0.3231083844580777,
+        "sc_0_mean_la_known": 1.0,
+        "sc_0_mean_la": 0.4966326530612245,
+        "sc_0_la_sd_known": 1.0,
+        "sc_0_la_sd": 1.3413259501154333,
+        "sc_0_sweet_spot_fraction_known": 1.0,
+        "sc_0_sweet_spot_fraction": 0.3510204081632653,
+        "sc_0_hard_air_fraction_known": 1.0,
+        "sc_0_hard_air_fraction": 0.16155419222903886,
+        "sc_0_ev95_sample": -0.16457502424542667,
+        "sc_0_hard_air_sample": 0.15639873590026085,
+        "sc_1_source_year_available": 1.0,
+        "sc_1_ev_n": 133,
+        "sc_1_ev_sample": 0.765455517978759,
+        "sc_1_la_n": 134,
+        "sc_1_la_sample": 0.7666174884681535,
+        "sc_1_pair_n": 133,
+        "sc_1_pair_sample": 0.765455517978759,
+        "sc_1_pair_coverage": 0.9925373134328358,
+        "sc_1_mean_ev_known": 1.0,
+        "sc_1_mean_ev": -0.0869924812030078,
+        "sc_1_ev95_known": 1.0,
+        "sc_1_ev95": 0.00799999999999983,
+        "sc_1_hard_hit_fraction_known": 1.0,
+        "sc_1_hard_hit_fraction": 0.42105263157894735,
+        "sc_1_mean_la_known": 1.0,
+        "sc_1_mean_la": 0.4597014925373134,
+        "sc_1_la_sd_known": 1.0,
+        "sc_1_la_sd": 1.397210938428382,
+        "sc_1_sweet_spot_fraction_known": 1.0,
+        "sc_1_sweet_spot_fraction": 0.3208955223880597,
+        "sc_1_hard_air_fraction_known": 1.0,
+        "sc_1_hard_air_fraction": 0.21804511278195488,
+        "sc_1_ev95_sample": 0.006123644143829942,
+        "sc_1_hard_air_sample": 0.16690383474724818,
+        "sc_2_source_year_available": 1.0,
+        "sc_2_ev_n": 0,
+        "sc_2_ev_sample": 0.0,
+        "sc_2_la_n": 0,
+        "sc_2_la_sample": 0.0,
+        "sc_2_pair_n": 0,
+        "sc_2_pair_sample": 0.0,
+        "sc_2_pair_coverage": 0.0,
+        "sc_2_mean_ev_known": 0.0,
+        "sc_2_mean_ev": 0.0,
+        "sc_2_ev95_known": 0.0,
+        "sc_2_ev95": 0.0,
+        "sc_2_hard_hit_fraction_known": 0.0,
+        "sc_2_hard_hit_fraction": 0.0,
+        "sc_2_mean_la_known": 0.0,
+        "sc_2_mean_la": 0.0,
+        "sc_2_la_sd_known": 0.0,
+        "sc_2_la_sd": 0.0,
+        "sc_2_sweet_spot_fraction_known": 0.0,
+        "sc_2_sweet_spot_fraction": 0.0,
+        "sc_2_hard_air_fraction_known": 0.0,
+        "sc_2_hard_air_fraction": 0.0,
+        "sc_2_ev95_sample": 0.0,
+        "sc_2_hard_air_sample": 0.0,
+        "sc_own_ev_n": 622,
+        "sc_own_pair_n": 622,
+        "sc_tracked": true
+      },
+      "corrections": [],
+      "judgment": "Actual sample and missingness enter unchanged definitions; this is not a prediction or approval of accuracy.",
+      "peers": [
+        {
+          "player_id": 592518,
+          "player_name": "Manny Machado",
+          "terminal_contacts": 489,
+          "mean_ev": 92.9081799591002
+        },
+        {
+          "player_id": 676391,
+          "player_name": "Ernie Clement",
+          "terminal_contacts": 489,
+          "mean_ev": 86.5061475409836
+        },
+        {
+          "player_id": 671739,
+          "player_name": "Michael Harris II",
+          "terminal_contacts": 488,
+          "mean_ev": 90.08888888888889
+        }
+      ]
+    },
+    {
+      "player_id": 691406,
+      "player_name": "Junior Caminero",
+      "official_2025": {
+        "player_id": 691406,
+        "player_name": "Junior Caminero",
+        "official_contacts": 484,
+        "singles": 86,
+        "doubles": 28,
+        "triples": 0,
+        "home_runs": 45,
+        "plate_appearances": 653,
+        "source_contacts": 484,
+        "singles_source": 86,
+        "doubles_source": 28,
+        "triples_source": 0,
+        "home_runs_source": 45,
+        "contact_residual": 0,
+        "documented_adjustment": 0
+      },
+      "raw_rows": 484,
+      "measured_annual": {
+        "season": 2025,
+        "player_id": 691406,
+        "terminal_nonbunt_contacts": 484,
+        "measured_ev_contacts": 483,
+        "measured_la_contacts": 484,
+        "measured_pair_contacts": 483,
+        "invalid_ev_contacts": 0,
+        "invalid_la_contacts": 0,
+        "mean_ev": 92.44244306418219,
+        "ev95": 111.39,
+        "hard_hit_fraction": 0.515527950310559,
+        "mean_la": 10.690082644628099,
+        "la_sd": 30.814260646759106,
+        "sweet_spot_fraction": 0.2871900826446281,
+        "hard_sweet_spot_contacts": 93,
+        "hard_air_contacts": 128,
+        "first_date": "2025-03-28",
+        "last_date": "2025-09-28",
+        "pair_coverage": 0.9979338842975206,
+        "hard_air_fraction": 0.2650103519668737
+      },
+      "independently_reconstructed": {
+        "terminal_nonbunt_contacts": 484,
+        "measured_ev_contacts": 483,
+        "measured_la_contacts": 484,
+        "measured_pair_contacts": 483,
+        "mean_ev": 92.44244306418219,
+        "ev95": 111.39,
+        "hard_hit_fraction": 0.515527950310559,
+        "mean_la": 10.690082644628099,
+        "la_sd": 30.814260646759095,
+        "sweet_spot_fraction": 0.2871900826446281,
+        "hard_sweet_spot_contacts": 93,
+        "hard_air_contacts": 128,
+        "pair_coverage": 0.9979338842975206,
+        "hard_air_fraction": 0.2650103519668737,
+        "first_date": "2025-03-28",
+        "last_date": "2025-09-28"
+      },
+      "input_row": {
+        "row_id": 691406,
+        "player_id": 691406,
+        "origin_year": 2025,
+        "sc_0_source_year_available": 1.0,
+        "sc_0_ev_n": 483,
+        "sc_0_ev_sample": 0.9661628795018726,
+        "sc_0_la_n": 484,
+        "sc_0_la_sample": 0.9664854478535135,
+        "sc_0_pair_n": 483,
+        "sc_0_pair_sample": 0.9661628795018726,
+        "sc_0_pair_coverage": 0.9979338842975206,
+        "sc_0_mean_ev_known": 1.0,
+        "sc_0_mean_ev": 0.24424430641821857,
+        "sc_0_ev95_known": 1.0,
+        "sc_0_ev95": 0.639,
+        "sc_0_hard_hit_fraction_known": 1.0,
+        "sc_0_hard_hit_fraction": 0.515527950310559,
+        "sc_0_mean_la_known": 1.0,
+        "sc_0_mean_la": 0.5345041322314049,
+        "sc_0_la_sd_known": 1.0,
+        "sc_0_la_sd": 1.5407130323379552,
+        "sc_0_sweet_spot_fraction_known": 1.0,
+        "sc_0_sweet_spot_fraction": 0.2871900826446281,
+        "sc_0_hard_air_fraction_known": 1.0,
+        "sc_0_hard_air_fraction": 0.2650103519668737,
+        "sc_0_ev95_sample": 0.6173780800016966,
+        "sc_0_hard_air_sample": 0.2560431647541195,
+        "sc_1_source_year_available": 1.0,
+        "sc_1_ev_n": 126,
+        "sc_1_ev_sample": 0.757070440623301,
+        "sc_1_la_n": 127,
+        "sc_1_la_sample": 0.7582962062079754,
+        "sc_1_pair_n": 126,
+        "sc_1_pair_sample": 0.757070440623301,
+        "sc_1_pair_coverage": 0.9921259842519685,
+        "sc_1_mean_ev_known": 1.0,
+        "sc_1_mean_ev": -0.027142857142857225,
+        "sc_1_ev95_known": 1.0,
+        "sc_1_ev95": 0.5825000000000002,
+        "sc_1_hard_hit_fraction_known": 1.0,
+        "sc_1_hard_hit_fraction": 0.4603174603174603,
+        "sc_1_mean_la_known": 1.0,
+        "sc_1_mean_la": 0.337007874015748,
+        "sc_1_la_sd_known": 1.0,
+        "sc_1_la_sd": 1.855153831366215,
+        "sc_1_sweet_spot_fraction_known": 1.0,
+        "sc_1_sweet_spot_fraction": 0.25196850393700787,
+        "sc_1_hard_air_fraction_known": 1.0,
+        "sc_1_hard_air_fraction": 0.23809523809523808,
+        "sc_1_ev95_sample": 0.440993531663073,
+        "sc_1_hard_air_sample": 0.18025486681507166,
+        "sc_2_source_year_available": 1.0,
+        "sc_2_ev_n": 26,
+        "sc_2_ev_sample": 0.5150875934051822,
+        "sc_2_la_n": 26,
+        "sc_2_la_sample": 0.5150875934051822,
+        "sc_2_pair_n": 26,
+        "sc_2_pair_sample": 0.5150875934051822,
+        "sc_2_pair_coverage": 1.0,
+        "sc_2_mean_ev_known": 1.0,
+        "sc_2_mean_ev": -0.4569230769230771,
+        "sc_2_ev95_known": 1.0,
+        "sc_2_ev95": 0.4049999999999997,
+        "sc_2_hard_hit_fraction_known": 1.0,
+        "sc_2_hard_hit_fraction": 0.4230769230769231,
+        "sc_2_mean_la_known": 1.0,
+        "sc_2_mean_la": -0.019230769230769232,
+        "sc_2_la_sd_known": 1.0,
+        "sc_2_la_sd": 1.8810676182996147,
+        "sc_2_sweet_spot_fraction_known": 1.0,
+        "sc_2_sweet_spot_fraction": 0.15384615384615385,
+        "sc_2_hard_air_fraction_known": 1.0,
+        "sc_2_hard_air_fraction": 0.19230769230769232,
+        "sc_2_ev95_sample": 0.20861047532909863,
+        "sc_2_hard_air_sample": 0.0990553064240735,
+        "sc_own_ev_n": 635,
+        "sc_own_pair_n": 635,
+        "sc_tracked": true
+      },
+      "corrections": [],
+      "judgment": "Actual sample and missingness enter unchanged definitions; this is not a prediction or approval of accuracy.",
+      "peers": [
+        {
+          "player_id": 607208,
+          "player_name": "Trea Turner",
+          "terminal_contacts": 484,
+          "mean_ev": 89.34607438016529
+        },
+        {
+          "player_id": 671739,
+          "player_name": "Michael Harris II",
+          "terminal_contacts": 488,
+          "mean_ev": 90.08888888888889
+        },
+        {
+          "player_id": 592518,
+          "player_name": "Manny Machado",
+          "terminal_contacts": 489,
+          "mean_ev": 92.9081799591002
+        }
+      ]
+    },
+    {
+      "player_id": 656555,
+      "player_name": "Rhys Hoskins",
+      "official_2025": {
+        "player_id": 656555,
+        "player_name": "Rhys Hoskins",
+        "official_contacts": 194,
+        "singles": 41,
+        "doubles": 12,
+        "triples": 1,
+        "home_runs": 12,
+        "plate_appearances": 328,
+        "source_contacts": 194,
+        "singles_source": 41,
+        "doubles_source": 12,
+        "triples_source": 1,
+        "home_runs_source": 12,
+        "contact_residual": 0,
+        "documented_adjustment": 0
+      },
+      "raw_rows": 194,
+      "measured_annual": {
+        "season": 2025,
+        "player_id": 656555,
+        "terminal_nonbunt_contacts": 194,
+        "measured_ev_contacts": 194,
+        "measured_la_contacts": 194,
+        "measured_pair_contacts": 194,
+        "invalid_ev_contacts": 0,
+        "invalid_la_contacts": 0,
+        "mean_ev": 90.22628865979382,
+        "ev95": 105.63499999999999,
+        "hard_hit_fraction": 0.4639175257731959,
+        "mean_la": 22.072164948453608,
+        "la_sd": 27.991022773569295,
+        "sweet_spot_fraction": 0.4072164948453608,
+        "hard_sweet_spot_contacts": 45,
+        "hard_air_contacts": 58,
+        "first_date": "2025-03-27",
+        "last_date": "2025-09-24",
+        "pair_coverage": 1.0,
+        "hard_air_fraction": 0.29896907216494845
+      },
+      "independently_reconstructed": {
+        "terminal_nonbunt_contacts": 194,
+        "measured_ev_contacts": 194,
+        "measured_la_contacts": 194,
+        "measured_pair_contacts": 194,
+        "mean_ev": 90.22628865979382,
+        "ev95": 105.63499999999999,
+        "hard_hit_fraction": 0.4639175257731959,
+        "mean_la": 22.072164948453608,
+        "la_sd": 27.991022773569295,
+        "sweet_spot_fraction": 0.4072164948453608,
+        "hard_sweet_spot_contacts": 45,
+        "hard_air_contacts": 58,
+        "pair_coverage": 1.0,
+        "hard_air_fraction": 0.29896907216494845,
+        "first_date": "2025-03-27",
+        "last_date": "2025-09-24"
+      },
+      "input_row": {
+        "row_id": 656555,
+        "player_id": 656555,
+        "origin_year": 2025,
+        "sc_0_source_year_available": 1.0,
+        "sc_0_ev_n": 194,
+        "sc_0_ev_sample": 0.8240871023267511,
+        "sc_0_la_n": 194,
+        "sc_0_la_sample": 0.8240871023267511,
+        "sc_0_pair_n": 194,
+        "sc_0_pair_sample": 0.8240871023267511,
+        "sc_0_pair_coverage": 1.0,
+        "sc_0_mean_ev_known": 1.0,
+        "sc_0_mean_ev": 0.02262886597938234,
+        "sc_0_ev95_known": 1.0,
+        "sc_0_ev95": 0.06349999999999908,
+        "sc_0_hard_hit_fraction_known": 1.0,
+        "sc_0_hard_hit_fraction": 0.4639175257731959,
+        "sc_0_mean_la_known": 1.0,
+        "sc_0_mean_la": 1.1036082474226805,
+        "sc_0_la_sd_known": 1.0,
+        "sc_0_la_sd": 1.3995511386784647,
+        "sc_0_sweet_spot_fraction_known": 1.0,
+        "sc_0_sweet_spot_fraction": 0.4072164948453608,
+        "sc_0_hard_air_fraction_known": 1.0,
+        "sc_0_hard_air_fraction": 0.29896907216494845,
+        "sc_0_ev95_sample": 0.05232953099774794,
+        "sc_0_hard_air_sample": 0.2463765563657297,
+        "sc_1_source_year_available": 1.0,
+        "sc_1_ev_n": 306,
+        "sc_1_ev_sample": 0.8950164537963824,
+        "sc_1_la_n": 306,
+        "sc_1_la_sample": 0.8950164537963824,
+        "sc_1_pair_n": 306,
+        "sc_1_pair_sample": 0.8950164537963824,
+        "sc_1_pair_coverage": 1.0,
+        "sc_1_mean_ev_known": 1.0,
+        "sc_1_mean_ev": -0.1314379084967328,
+        "sc_1_ev95_known": 1.0,
+        "sc_1_ev95": 0.11749999999999972,
+        "sc_1_hard_hit_fraction_known": 1.0,
+        "sc_1_hard_hit_fraction": 0.4215686274509804,
+        "sc_1_mean_la_known": 1.0,
+        "sc_1_mean_la": 1.0421568627450981,
+        "sc_1_la_sd_known": 1.0,
+        "sc_1_la_sd": 1.3974580863776402,
+        "sc_1_sweet_spot_fraction_known": 1.0,
+        "sc_1_sweet_spot_fraction": 0.3137254901960784,
+        "sc_1_hard_air_fraction_known": 1.0,
+        "sc_1_hard_air_fraction": 0.3104575163398693,
+        "sc_1_ev95_sample": 0.10516443332107468,
+        "sc_1_hard_air_sample": 0.27786458532894226,
+        "sc_2_source_year_available": 1.0,
+        "sc_2_ev_n": 0,
+        "sc_2_ev_sample": 0.0,
+        "sc_2_la_n": 0,
+        "sc_2_la_sample": 0.0,
+        "sc_2_pair_n": 0,
+        "sc_2_pair_sample": 0.0,
+        "sc_2_pair_coverage": 0.0,
+        "sc_2_mean_ev_known": 0.0,
+        "sc_2_mean_ev": 0.0,
+        "sc_2_ev95_known": 0.0,
+        "sc_2_ev95": 0.0,
+        "sc_2_hard_hit_fraction_known": 0.0,
+        "sc_2_hard_hit_fraction": 0.0,
+        "sc_2_mean_la_known": 0.0,
+        "sc_2_mean_la": 0.0,
+        "sc_2_la_sd_known": 0.0,
+        "sc_2_la_sd": 0.0,
+        "sc_2_sweet_spot_fraction_known": 0.0,
+        "sc_2_sweet_spot_fraction": 0.0,
+        "sc_2_hard_air_fraction_known": 0.0,
+        "sc_2_hard_air_fraction": 0.0,
+        "sc_2_ev95_sample": 0.0,
+        "sc_2_hard_air_sample": 0.0,
+        "sc_own_ev_n": 500,
+        "sc_own_pair_n": 500,
+        "sc_tracked": true
+      },
+      "corrections": [],
+      "judgment": "Actual sample and missingness enter unchanged definitions; this is not a prediction or approval of accuracy.",
+      "peers": [
+        {
+          "player_id": 695336,
+          "player_name": "Thomas Saggese",
+          "terminal_contacts": 193,
+          "mean_ev": 90.2259067357513
+        },
+        {
+          "player_id": 663698,
+          "player_name": "Joey Bart",
+          "terminal_contacts": 192,
+          "mean_ev": 88.38385416666667
+        },
+        {
+          "player_id": 681297,
+          "player_name": "Colton Cowser",
+          "terminal_contacts": 198,
+          "mean_ev": 90.9020304568528
+        }
+      ]
+    },
+    {
+      "player_id": 692225,
+      "player_name": "Kristian Campbell",
+      "official_2025": {
+        "player_id": 692225,
+        "player_name": "Kristian Campbell",
+        "official_contacts": 158,
+        "singles": 35,
+        "doubles": 10,
+        "triples": 0,
+        "home_runs": 6,
+        "plate_appearances": 263,
+        "source_contacts": 157,
+        "singles_source": 35,
+        "doubles_source": 10,
+        "triples_source": 0,
+        "home_runs_source": 6,
+        "contact_residual": -1,
+        "documented_adjustment": -1
+      },
+      "raw_rows": 157,
+      "measured_annual": {
+        "season": 2025,
+        "player_id": 692225,
+        "terminal_nonbunt_contacts": 157,
+        "measured_ev_contacts": 156,
+        "measured_la_contacts": 157,
+        "measured_pair_contacts": 156,
+        "invalid_ev_contacts": 0,
+        "invalid_la_contacts": 0,
+        "mean_ev": 88.63269230769231,
+        "ev95": 106.75,
+        "hard_hit_fraction": 0.4230769230769231,
+        "mean_la": 4.662420382165605,
+        "la_sd": 29.238969899277638,
+        "sweet_spot_fraction": 0.3184713375796178,
+        "hard_sweet_spot_contacts": 26,
+        "hard_air_contacts": 34,
+        "first_date": "2025-03-27",
+        "last_date": "2025-06-18",
+        "pair_coverage": 0.9936305732484076,
+        "hard_air_fraction": 0.21794871794871795
+      },
+      "independently_reconstructed": {
+        "terminal_nonbunt_contacts": 157,
+        "measured_ev_contacts": 156,
+        "measured_la_contacts": 157,
+        "measured_pair_contacts": 156,
+        "mean_ev": 88.6326923076923,
+        "ev95": 106.75,
+        "hard_hit_fraction": 0.4230769230769231,
+        "mean_la": 4.662420382165605,
+        "la_sd": 29.238969899277638,
+        "sweet_spot_fraction": 0.3184713375796178,
+        "hard_sweet_spot_contacts": 26,
+        "hard_air_contacts": 34,
+        "pair_coverage": 0.9936305732484076,
+        "hard_air_fraction": 0.21794871794871795,
+        "first_date": "2025-03-27",
+        "last_date": "2025-06-18"
+      },
+      "input_row": null,
+      "corrections": [
+        {
+          "player_id": 692225,
+          "player_name": "Kristian Campbell",
+          "game_pk": 778319,
+          "at_bat_number": 6,
+          "classification": "noncontact_interference_AB",
+          "noncontact_AB": 1,
+          "physical_award_without_AB": 0,
+          "official_description": "Kristian Campbell out to catcher Ben Rortvedt. Kristian Campbell out on batter interference."
+        }
+      ],
+      "judgment": "Actual sample and missingness enter unchanged definitions; this is not a prediction or approval of accuracy.",
+      "peers": [
+        {
+          "player_id": 543877,
+          "player_name": "Christian V\u00e1zquez",
+          "terminal_contacts": 157,
+          "mean_ev": 85.92866242038217
+        },
+        {
+          "player_id": 606115,
+          "player_name": "Orlando Arcia",
+          "terminal_contacts": 156,
+          "mean_ev": 87.3961038961039
+        },
+        {
+          "player_id": 695506,
+          "player_name": "Jac Caglianone",
+          "terminal_contacts": 158,
+          "mean_ev": 89.35316455696201
+        }
+      ]
+    },
+    {
+      "player_id": 686527,
+      "player_name": "Dominic Canzone",
+      "official_2025": {
+        "player_id": 686527,
+        "player_name": "Dominic Canzone",
+        "official_contacts": 186,
+        "singles": 51,
+        "doubles": 11,
+        "triples": 0,
+        "home_runs": 11,
+        "plate_appearances": 269,
+        "source_contacts": 187,
+        "singles_source": 51,
+        "doubles_source": 11,
+        "triples_source": 0,
+        "home_runs_source": 11,
+        "contact_residual": 1,
+        "documented_adjustment": 1
+      },
+      "raw_rows": 187,
+      "measured_annual": {
+        "season": 2025,
+        "player_id": 686527,
+        "terminal_nonbunt_contacts": 187,
+        "measured_ev_contacts": 186,
+        "measured_la_contacts": 186,
+        "measured_pair_contacts": 186,
+        "invalid_ev_contacts": 0,
+        "invalid_la_contacts": 0,
+        "mean_ev": 92.35483870967742,
+        "ev95": 109.4,
+        "hard_hit_fraction": 0.5,
+        "mean_la": 10.526881720430108,
+        "la_sd": 25.49025946358863,
+        "sweet_spot_fraction": 0.3924731182795699,
+        "hard_sweet_spot_contacts": 44,
+        "hard_air_contacts": 52,
+        "first_date": "2025-04-09",
+        "last_date": "2025-09-27",
+        "pair_coverage": 0.9946524064171123,
+        "hard_air_fraction": 0.27956989247311825
+      },
+      "independently_reconstructed": {
+        "terminal_nonbunt_contacts": 187,
+        "measured_ev_contacts": 186,
+        "measured_la_contacts": 186,
+        "measured_pair_contacts": 186,
+        "mean_ev": 92.35483870967742,
+        "ev95": 109.4,
+        "hard_hit_fraction": 0.5,
+        "mean_la": 10.526881720430108,
+        "la_sd": 25.490259463588625,
+        "sweet_spot_fraction": 0.3924731182795699,
+        "hard_sweet_spot_contacts": 44,
+        "hard_air_contacts": 52,
+        "pair_coverage": 0.9946524064171123,
+        "hard_air_fraction": 0.27956989247311825,
+        "first_date": "2025-04-09",
+        "last_date": "2025-09-27"
+      },
+      "input_row": null,
+      "corrections": [
+        {
+          "player_id": 686527,
+          "player_name": "Dominic Canzone",
+          "game_pk": 776272,
+          "at_bat_number": 49,
+          "classification": "measured_shift_award_without_AB",
+          "noncontact_AB": 0,
+          "physical_award_without_AB": 1,
+          "official_description": "Mariners challenged (shift violation), call on the field was overturned: Dominic Canzone reaches on a defensive shift violation error by second baseman Michael Massey."
+        }
+      ],
+      "judgment": "Actual sample and missingness enter unchanged definitions; this is not a prediction or approval of accuracy.",
+      "peers": [
+        {
+          "player_id": 663886,
+          "player_name": "Tyler Stephenson",
+          "terminal_contacts": 187,
+          "mean_ev": 90.54838709677419
+        },
+        {
+          "player_id": 624585,
+          "player_name": "Jorge Soler",
+          "terminal_contacts": 188,
+          "mean_ev": 89.65797872340426
+        },
+        {
+          "player_id": 624641,
+          "player_name": "Edmundo Sosa",
+          "terminal_contacts": 188,
+          "mean_ev": 87.73101604278075
+        }
+      ]
+    },
+    {
+      "player_id": 693409,
+      "player_name": "C\u00e9sar Prieto",
+      "official_2025": {
+        "player_id": 693409,
+        "player_name": "C\u00e9sar Prieto",
+        "official_contacts": 1,
+        "singles": 1,
+        "doubles": 0,
+        "triples": 0,
+        "home_runs": 0,
+        "plate_appearances": 6,
+        "source_contacts": 1,
+        "singles_source": 1,
+        "doubles_source": 0,
+        "triples_source": 0,
+        "home_runs_source": 0,
+        "contact_residual": 0,
+        "documented_adjustment": 0
+      },
+      "raw_rows": 1,
+      "measured_annual": {
+        "season": 2025,
+        "player_id": 693409,
+        "terminal_nonbunt_contacts": 1,
+        "measured_ev_contacts": 0,
+        "measured_la_contacts": 0,
+        "measured_pair_contacts": 0,
+        "invalid_ev_contacts": 0,
+        "invalid_la_contacts": 0,
+        "mean_ev": null,
+        "ev95": null,
+        "hard_hit_fraction": null,
+        "mean_la": null,
+        "la_sd": null,
+        "sweet_spot_fraction": null,
+        "hard_sweet_spot_contacts": 0,
+        "hard_air_contacts": 0,
+        "first_date": "2025-08-31",
+        "last_date": "2025-08-31",
+        "pair_coverage": 0.0,
+        "hard_air_fraction": null
+      },
+      "independently_reconstructed": {
+        "terminal_nonbunt_contacts": 1,
+        "measured_ev_contacts": 0,
+        "measured_la_contacts": 0,
+        "measured_pair_contacts": 0,
+        "mean_ev": null,
+        "ev95": null,
+        "hard_hit_fraction": null,
+        "mean_la": null,
+        "la_sd": null,
+        "sweet_spot_fraction": null,
+        "hard_sweet_spot_contacts": 0,
+        "hard_air_contacts": 0,
+        "pair_coverage": 0.0,
+        "hard_air_fraction": null,
+        "first_date": "2025-08-31",
+        "last_date": "2025-08-31"
+      },
+      "input_row": null,
+      "corrections": [],
+      "judgment": "No measured EV; retain explicit unknown metrics, not zero-speed talent.",
+      "peers": [
+        {
+          "player_id": 596117,
+          "player_name": "Garrett Stubbs",
+          "terminal_contacts": 1,
+          "mean_ev": 67.5
+        },
+        {
+          "player_id": 605244,
+          "player_name": "Aramis Garcia",
+          "terminal_contacts": 1,
+          "mean_ev": 91.3
+        },
+        {
+          "player_id": 641302,
+          "player_name": "Tyler Alexander",
+          "terminal_contacts": 1,
+          "mean_ev": 93.6
+        }
+      ]
+    },
+    {
+      "player_id": 679631,
+      "player_name": "Terrin Vavra",
+      "official_2025": {
+        "player_id": 679631,
+        "player_name": "Terrin Vavra",
+        "official_contacts": 1,
+        "singles": 0,
+        "doubles": 0,
+        "triples": 0,
+        "home_runs": 0,
+        "plate_appearances": 1,
+        "source_contacts": 1,
+        "singles_source": 0,
+        "doubles_source": 0,
+        "triples_source": 0,
+        "home_runs_source": 0,
+        "contact_residual": 0,
+        "documented_adjustment": 0
+      },
+      "raw_rows": 1,
+      "measured_annual": {
+        "season": 2025,
+        "player_id": 679631,
+        "terminal_nonbunt_contacts": 1,
+        "measured_ev_contacts": 1,
+        "measured_la_contacts": 1,
+        "measured_pair_contacts": 1,
+        "invalid_ev_contacts": 0,
+        "invalid_la_contacts": 0,
+        "mean_ev": 100.6,
+        "ev95": 100.6,
+        "hard_hit_fraction": 1.0,
+        "mean_la": 8.0,
+        "la_sd": null,
+        "sweet_spot_fraction": 1.0,
+        "hard_sweet_spot_contacts": 1,
+        "hard_air_contacts": 1,
+        "first_date": "2025-08-02",
+        "last_date": "2025-08-02",
+        "pair_coverage": 1.0,
+        "hard_air_fraction": 1.0
+      },
+      "independently_reconstructed": {
+        "terminal_nonbunt_contacts": 1,
+        "measured_ev_contacts": 1,
+        "measured_la_contacts": 1,
+        "measured_pair_contacts": 1,
+        "mean_ev": 100.6,
+        "ev95": 100.6,
+        "hard_hit_fraction": 1.0,
+        "mean_la": 8.0,
+        "la_sd": null,
+        "sweet_spot_fraction": 1.0,
+        "hard_sweet_spot_contacts": 1,
+        "hard_air_contacts": 1,
+        "pair_coverage": 1.0,
+        "hard_air_fraction": 1.0,
+        "first_date": "2025-08-02",
+        "last_date": "2025-08-02"
+      },
+      "input_row": null,
+      "corrections": [],
+      "judgment": "One measured contact is correctly observed but does not establish stable talent.",
+      "peers": [
+        {
+          "player_id": 596117,
+          "player_name": "Garrett Stubbs",
+          "terminal_contacts": 1,
+          "mean_ev": 67.5
+        },
+        {
+          "player_id": 605244,
+          "player_name": "Aramis Garcia",
+          "terminal_contacts": 1,
+          "mean_ev": 91.3
+        },
+        {
+          "player_id": 641302,
+          "player_name": "Tyler Alexander",
+          "terminal_contacts": 1,
+          "mean_ev": 93.6
+        }
+      ]
+    }
+  ],
+  "protected_outcomes_used": false,
+  "next_step": "Construct origin-known 2025 membership and all matching inputs, audit training support, assemble and replay selected candidate, then freeze before final 2026 evaluation"
+}

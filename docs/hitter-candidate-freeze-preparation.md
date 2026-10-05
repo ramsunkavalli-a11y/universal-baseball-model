@@ -86,3 +86,20 @@ development versus frozen 2026 forecasts and actual results. Show hitting-only
 rate and the decomposition of contribution; never label batting contribution
 as full WAR or trade value. Preserve all existing explorers and the original
 31-file protected package byte-for-byte.
+
+## Source completion update
+
+2026-10-05. The [separate 2025 source extension](hitter-2025-source-extension-result.md)
+qualifies 2025 tracking, December 31 rosters and the genuine preseason 2026 rank
+archive for assembly. Preserve the original source-deficiency statement above
+as history; do not reuse its 2024-only helpers. Use the new cutoff-explicit
+tracking adapter and its reviewed annual source through 2025. Ranking availability
+is verified by January 26, 2026, so label the forecast late-January preseason,
+not December-only. Original data vintage/estimate qualifications still apply.
+
+Next reconstruct the origin-known population and every feature family, including
+translation support and any qualified foreign coverage. Audit role, exits,
+eligibility and actual held-player training support before fitting the unchanged
+selected route. The three completed source gates alone are not a new forecast
+freeze. User authorization permits final 2026 outcomes only after the immutable
+candidate is frozen and replayed; those outcomes remain closed.

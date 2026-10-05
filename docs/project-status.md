@@ -1,6 +1,30 @@
 # Project status and handoff
 
-Updated 2026-10-04. This is the current start-here document.
+Updated 2026-10-05. This is the current start-here document.
+
+## Missing forecast source families verified
+
+The [2025 source extension](hitter-2025-source-extension-result.md) completes
+tracking, dated year-end roster and genuine preseason 2026 rank source gates.
+Tracking retains 123,697 non-bunt contacts and 123,265 complete pairs, reconciles
+all 765 official player counts after two explained exceptions, reproduces
+4,746,150 historical input fields, independently checks 10,656 annual fields and
+completes ten source-player walks. Seventeen focused tests pass.
+
+Rosters contain 1,175 unique members from all thirty clubs and pass eight dated
+trade controls. January 26 and February 1 archive captures have identical full
+Top 100 ranks; gzip transport digests match the archive index and exact dates.
+Fourteen rank-to-input walks are complete. No live updated 2026 rank body was
+used, and no completed 2026 outcome was opened. The original protected forecast
+still verifies across all 31 files and 3,907 players.
+
+Next follow the [candidate preparation plan](hitter-candidate-freeze-preparation.md):
+construct origin-known 2025 membership and all matching features, qualify other
+input families and actual held-player training support, assemble/replay the
+unchanged strongest route, then freeze and build the separate team-filtered
+explorer. Only after the immutable new freeze may the authorized final 2026
+evaluation begin. This source milestone is not a predictive win or complete
+candidate delivery; the long-range goal remains active.
 
 ## Forecast assembly boundary repaired before new freeze
 
