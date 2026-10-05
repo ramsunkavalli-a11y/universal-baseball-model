@@ -1,0 +1,64 @@
+{
+  "origin_inputs": 641,
+  "distinct_players": 282,
+  "original_source_origins": 493,
+  "added_source_origins": 148,
+  "original_source_population_preserved": 83300,
+  "existing_forecast_rows_preserved": 30506,
+  "pair_roles_supplemented": 37,
+  "overall_direct_support": [
+    {
+      "league": "NPB",
+      "direct_people": 17,
+      "pairs": 17
+    },
+    {
+      "league": "KBO",
+      "direct_people": 10,
+      "pairs": 10
+    }
+  ],
+  "qualified_fold_groups": 1110,
+  "cases": 11,
+  "future_mutation_invariant": true,
+  "new_fits": 0,
+  "forecasts_changed": false,
+  "eligibility_approved": false,
+  "player_walkthrough_status": "complete_for_inputs_only",
+  "independent_reconstruction_status": "pending",
+  "tests": ".....                                                                    [100%]\n5 passed in 0.41s\n",
+  "protected_freeze": {
+    "contact_available_rows": 3511,
+    "five_model_rows": 3720,
+    "forecast_sha256": "d1953a28d35d87d141ecc65ec4b107906edad877982e79c0d3a216245b9e4708",
+    "players": 3907,
+    "population_prior_rows": 187,
+    "protected_2026_opened": false,
+    "status": "verified",
+    "verified_files": 31
+  },
+  "source_hashes": {
+    "docs\\hitter-foreign-role-input-amendment.md": "d128d9c44683b04dcd903731171df26c2a763614b0661a7b90b01473b4f9d96a",
+    "docs\\hitter-foreign-2020-support-amendment.md": "aa9a1f3bac4f60a3131cdd3aa68325195a251261fb7a20ca46edbe20972ea376",
+    "docs\\hitter-foreign-integration-readiness-contract.md": "cac83e6d7598c32f2202768636adb6a0be2c4c4af87776e219c97b22569a7c3e",
+    "scripts\\prepare_foreign_origin_inputs.py": "5fbca5187eb0f6491a2d9497c21e3a5e7c4aa47594411d876c0fee8755ce18e3",
+    "src\\universal_baseball\\foreign_origin_inputs.py": "365b397718f6a352099224207d08b17d5741de24d2acca21b9ac911f1c4f1e3f",
+    "reports\\generated\\npb-hitting-history\\reviewed-batting.parquet": "a1d70f248fc0098e7ef7e3b4bae154755f74fc2c4bbb46002576822bc09a1f7c",
+    "reports\\generated\\kbo-identity-overlay\\reviewed-batting.parquet": "d20a7c3141118761e0ca80044674a667e19cb9b3c2c932534fc0b84fe11eab63",
+    "reports\\generated\\hitter-preseason-population-source\\population.parquet": "dd0b5852a6322e94cffac12092dfe4ee524bba23cb39b5362c019d8f21646546",
+    "reports\\generated\\practical-hitter-v31\\dated-stints.parquet": "d079aea8ae18cdae378013f8d0f63cd236ee137f25f6d5ebb4dd0a4a12c4518a",
+    "reports\\generated\\hitter-preseason-population-source\\reviewed-role-hints.parquet": "c3932fe91811bc535f551f8f6788a52544b07c862739a2a92423cd217cd19e1a",
+    "reports\\generated\\hitter-minor-statcast-precision\\scored-predictions.parquet": "85eb1001f944491c77ec2169ccd179d2a527a1419132ff0de661c4ad7eef7e05",
+    "reports\\generated\\foreign-mover-support-v2-npb-kbo\\pairs.json": "dd78b7e2af05d66b8710f26c6911b71885962f62b8f2ebde08655f0112e6bcf5",
+    "reports\\generated\\foreign-mover-support-v2-npb-kbo\\independent-review.json": "37d2efc7e504dd0823aa3746ff7cc2ef052cfc125f9ed3c371fe3cb619f16aa7",
+    "reports\\generated\\kbo-identity-overlay\\review.json": "072594c882740f4393f3c9a959538d30a098440f118aea9d526283e7e4c12652"
+  },
+  "output_hashes": {
+    "reports\\generated\\foreign-origin-inputs\\membership-seal.json": "80bca4a81d60ab44bded86d1c7cbde66541f3e564b386b5bc087d2e9202629d7",
+    "reports\\generated\\foreign-origin-inputs\\origin-inputs.json": "232e4b1fcb9d8ae5c03bf3976ab5abccad71058c5b6d5dc073097ef215648b1c",
+    "reports\\generated\\foreign-origin-inputs\\pair-role-evidence.json": "6cf16c679685843edd6c60f049bca5f79f9128e5ba0317dbbf1d2f7f8a16c1a5",
+    "reports\\generated\\foreign-origin-inputs\\player-walkthrough.md": "1f00aec9029de3487b7045cf7122e7a8cbafcc90fa68f078a690f786e1b00d0d",
+    "reports\\generated\\foreign-origin-inputs\\qualified-fold-support.json": "f78bcffa2f4722f0384a381ead89531da968944ea3e40982c4eaeeedde735242",
+    "reports\\generated\\foreign-origin-inputs\\reviewed-cases.json": "ac9b66dd38bdf46e5b1d2fc0b05ea0e465ca477080ece0ed19e6c3de67564c5c"
+  }
+}

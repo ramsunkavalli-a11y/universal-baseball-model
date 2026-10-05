@@ -2,6 +2,31 @@
 
 Updated 2026-10-04. This is the current start-here document.
 
+## Japan and Korea identities and model inputs reviewed
+
+The [foreign input milestone](hitter-foreign-input-readiness-result.md) connects
+the completed 2005–2024 batting histories to cutoff-bounded model inputs. All
+584 prioritized KBO English profiles are collected; exact name/DOB matching
+provides 164 MLBAM joins and retains 300 register matches without an MLBAM key,
+unmatched people and uncollected low-exposure identities. The combined overlay
+has 641 source origins/282 people, not 282 approved hitter forecasts. All 83,300
+population rows and 30,506 saved forecasts remain unchanged.
+
+Independent input reconstruction, eleven fixed player walks, 50 focused tests
+and the 31-file freeze check are complete. A normal 2021 domestic season after
+overseas 2020 is now correctly retained. Dated hitter hints supplement unknown
+domestic metadata without overwriting recorded pitchers or certifying defense.
+At the 30-PA floor there are only 17 direct NPB-to-MLB and 10 KBO-to-MLB distinct
+qualified hitter movers through 2024; actual historical held-player folds and
+specific profiles are thinner. No league translation or new forecast was fitted.
+
+Next is the existing bounded integration comparison: dated context alone versus
+the same context plus translated foreign performance, with original rows kept,
+additions scored separately and player gains/misses reviewed. Source consistency
+does not close the public workload benchmark gap or complete the hitter goal.
+Keep protected 2026, original forecasts/explorers and closed team-record testing
+unchanged. Older pending descriptions below are superseded, not erased.
+
 ## Completed Korean history and international source options
 
 The [complete KBO source review](hitter-kbo-history-source-result.md) supersedes
