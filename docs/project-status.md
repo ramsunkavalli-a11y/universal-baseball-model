@@ -2,6 +2,38 @@
 
 Updated 2026-10-05. This is the current start-here document.
 
+## Prospect exposure audit closes another repeated explanation
+
+The [source-aligned prospect diagnosis](hitter-prospect-exposure-allocation-audit-result.md)
+checks 2,827,104 annual exposure fields and completes fourteen narrated player
+walks with thirty-nine exact two-head replays including outcome-blind peers.
+All forty-two annual level-PA fields are actual playing-time inputs; neither
+coarse stage nor snapshot level is directly an input. A promotion cameo does
+not erase lower-level experience. No fit or forecast changed.
+
+Most historical prospect PA shortage is among players with at least 200 PA at
+their highest level: 46,829 predicted versus 60,532 actual, roughly 83% of the
+overall shortage. The group is short in six of seven origins but over in 2023.
+Conditional PA among all eventual arrivals is nearly right in aggregate, while
+arrival probability and workload allocation still miss individuals. Langford,
+Kurtz, Julio and Alonso are too low; Holliday and Meadows contradict a universal
+elite-prospect boost. Rumfield's substantial Triple-A history is already present.
+Sparse ranked-profile training remains a warning, not an excuse to exclude cases.
+
+Two audit execution stops are preserved and explained. Prediction exports omit
+some fitted inputs and retain six older baseline fields. Current audits must
+join the actual input frame rather than interpret inherited baseline columns
+as current inputs. The source-aligned rank groups and exact model replays pass;
+interrupted rank summaries are not decision evidence. Sixteen focused diagnostic
+tests pass. This milestone establishes no predictive gain or deployment approval.
+
+The next boundary below is now narrower: do not repeat the already tested
+prospect-only conditional head, primary-level recipe or COVID history correction.
+First close international entrant coverage and the genuinely comparable public
+benchmark. Another prospect fit needs a distinct mechanism, actual support and
+a matched historical contrast with false highs retained. Both 2026 freezes,
+the completed final evaluation and the separate 8810 explorer remain unchanged.
+
 ## Completed 2026 evaluation and separate results explorer
 
 The selected candidate was frozen and pushed in `e661958` BEFORE the authorized
