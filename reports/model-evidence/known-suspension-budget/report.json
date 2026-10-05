@@ -1,0 +1,740 @@
+{
+  "player_walkthrough_status": "complete",
+  "component": "Known finite suspension game budget",
+  "source_math_repair_complete": true,
+  "full_Tatis_forecast_repair_complete": false,
+  "new_fits": 0,
+  "forecasts_changed": false,
+  "deployment_approved": false,
+  "protected_2026_outcomes_used": false,
+  "arithmetic_demonstration": {
+    "inputs_not_fitted_player_estimates": true,
+    "probability": 0.97,
+    "conditional_pa_before_suspension": 600.0,
+    "result": {
+      "probability": 0.97,
+      "conditional_pa": 525.925925925926,
+      "expected_pa": 510.1481481481482,
+      "hitting_rate": 1.313,
+      "suspension_factor": 0.8765432098765432,
+      "medical_and_role_risk_in_baseline": true,
+      "baseline_excludes_known_suspension": true
+    }
+  },
+  "old_adjusted_baseline_rejected": true,
+  "public_smell_test": {
+    "saved_steamer_PA": 545.3057250976562,
+    "exact_archive_vintage_unknown": true,
+    "used_as_model_input": false,
+    "compared_for_predictive_gain": false
+  },
+  "cases": [
+    {
+      "player_id": 665487,
+      "origin": 2022,
+      "target": 2023,
+      "player_name": "Fernando Tatis Jr.",
+      "cutoff": "2023-01-26",
+      "budget": {
+        "target_year": 2023,
+        "season_games": 162,
+        "current_channels": [
+          "suspended"
+        ],
+        "medical_recovery_certified": false,
+        "MLB_job_certified": false,
+        "forecast_changed": false,
+        "original_sentence_games": 80,
+        "source_report": {
+          "player_id": 665487,
+          "restriction_event_date": "2022-08-12",
+          "known_date": "2022-10-25",
+          "target_year": 2023,
+          "remaining_games_at_season_start": 20,
+          "reported_eligibility_date": "2023-04-20",
+          "tentative_schedule_date": true,
+          "source_url": "https://www.mlb.com/padres/news/fernando-tatis-jr-return-date-from-suspension-in-2023"
+        },
+        "known_suspension_fraction": 0.8765432098765432,
+        "eligible_games": 142,
+        "state": "reported_finite_season_budget"
+      },
+      "judgment": "Finite missed games do not explain the old near-exit probability. Remaining-game accounting is repaired; an independent role/health baseline is still required. Do not multiply the 61-PA forecast by another absence factor.",
+      "prior_counts": [
+        {
+          "season": 2020,
+          "bucket": "MLB",
+          "plate_appearances": 257,
+          "home_runs": 17,
+          "strike_outs": 61
+        },
+        {
+          "season": 2021,
+          "bucket": "MLB",
+          "plate_appearances": 546,
+          "home_runs": 42,
+          "strike_outs": 153
+        },
+        {
+          "season": 2022,
+          "bucket": "AA",
+          "plate_appearances": 14,
+          "home_runs": 0,
+          "strike_outs": 2
+        }
+      ],
+      "clinical_spells": [
+        {
+          "start": "2019-04-29",
+          "end": "2019-06-06",
+          "open": false,
+          "categories": [
+            "lower"
+          ],
+          "surgery": false,
+          "transaction_ids": [
+            399111
+          ],
+          "entry_is_transfer": false,
+          "closure_kind": "IL_activation"
+        },
+        {
+          "start": "2019-08-14",
+          "end": "2019-11-04",
+          "open": false,
+          "categories": [
+            "trunk"
+          ],
+          "surgery": false,
+          "transaction_ids": [
+            424075,
+            427249
+          ],
+          "entry_is_transfer": false,
+          "closure_kind": "IL_activation"
+        },
+        {
+          "start": "2021-04-06",
+          "end": "2021-04-16",
+          "open": false,
+          "categories": [
+            "upper"
+          ],
+          "surgery": false,
+          "transaction_ids": [
+            476483
+          ],
+          "entry_is_transfer": false,
+          "closure_kind": "IL_activation"
+        },
+        {
+          "start": "2021-05-11",
+          "end": "2021-05-19",
+          "open": false,
+          "categories": [
+            "unspecified"
+          ],
+          "surgery": false,
+          "transaction_ids": [
+            486153
+          ],
+          "entry_is_transfer": false,
+          "closure_kind": "IL_activation"
+        },
+        {
+          "start": "2021-07-31",
+          "end": "2021-08-15",
+          "open": false,
+          "categories": [
+            "upper"
+          ],
+          "surgery": false,
+          "transaction_ids": [
+            508676
+          ],
+          "entry_is_transfer": false,
+          "closure_kind": "IL_activation"
+        },
+        {
+          "start": "2022-04-07",
+          "end": "2022-08-12",
+          "open": false,
+          "categories": [
+            "upper"
+          ],
+          "surgery": false,
+          "transaction_ids": [
+            613008
+          ],
+          "entry_is_transfer": false,
+          "closure_kind": "observation_scope_exit"
+        }
+      ],
+      "literal_40man": false,
+      "historical_MLB_link": true,
+      "old_forecast": {
+        "observation_p": 0.1535420116742711,
+        "observation_conditional_pa": 400.3792846841762,
+        "observation_pa": 61.47504080311409,
+        "observation_rate": 1.313084704567678,
+        "observation_value": 0.32701328749782466,
+        "next_pa": 635,
+        "actual_relative_value": 2.7573718524069553
+      },
+      "medical_recovery_certified": false,
+      "prior_source_to_path_receipt": {
+        "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-nonmedical-opportunity\\player-walks.json",
+        "row_id": 47261
+      },
+      "origin_only_peers_retained": [],
+      "new_full_player_forecast": null
+    },
+    {
+      "player_id": 665487,
+      "origin": 2023,
+      "target": 2024,
+      "player_name": "Fernando Tatis Jr.",
+      "cutoff": "2024-01-26",
+      "budget": {
+        "target_year": 2024,
+        "season_games": 162,
+        "current_channels": [],
+        "medical_recovery_certified": false,
+        "MLB_job_certified": false,
+        "forecast_changed": false,
+        "original_sentence_games": null,
+        "source_report": null,
+        "known_suspension_fraction": 1.0,
+        "eligible_games": 162,
+        "state": "no_current_observed_restriction"
+      },
+      "judgment": "Subsequent origin-known MLB use resolves continuing suspension absence. Do not charge the original sentence again. Medical uncertainty remains independent.",
+      "prior_counts": [
+        {
+          "season": 2021,
+          "bucket": "MLB",
+          "plate_appearances": 546,
+          "home_runs": 42,
+          "strike_outs": 153
+        },
+        {
+          "season": 2022,
+          "bucket": "AA",
+          "plate_appearances": 14,
+          "home_runs": 0,
+          "strike_outs": 2
+        },
+        {
+          "season": 2023,
+          "bucket": "AAA",
+          "plate_appearances": 39,
+          "home_runs": 7,
+          "strike_outs": 3
+        },
+        {
+          "season": 2023,
+          "bucket": "MLB",
+          "plate_appearances": 635,
+          "home_runs": 25,
+          "strike_outs": 141
+        }
+      ],
+      "clinical_spells": [
+        {
+          "start": "2019-04-29",
+          "end": "2019-06-06",
+          "open": false,
+          "categories": [
+            "lower"
+          ],
+          "surgery": false,
+          "transaction_ids": [
+            399111
+          ],
+          "entry_is_transfer": false,
+          "closure_kind": "IL_activation"
+        },
+        {
+          "start": "2019-08-14",
+          "end": "2019-11-04",
+          "open": false,
+          "categories": [
+            "trunk"
+          ],
+          "surgery": false,
+          "transaction_ids": [
+            424075,
+            427249
+          ],
+          "entry_is_transfer": false,
+          "closure_kind": "IL_activation"
+        },
+        {
+          "start": "2021-04-06",
+          "end": "2021-04-16",
+          "open": false,
+          "categories": [
+            "upper"
+          ],
+          "surgery": false,
+          "transaction_ids": [
+            476483
+          ],
+          "entry_is_transfer": false,
+          "closure_kind": "IL_activation"
+        },
+        {
+          "start": "2021-05-11",
+          "end": "2021-05-19",
+          "open": false,
+          "categories": [
+            "unspecified"
+          ],
+          "surgery": false,
+          "transaction_ids": [
+            486153
+          ],
+          "entry_is_transfer": false,
+          "closure_kind": "IL_activation"
+        },
+        {
+          "start": "2021-07-31",
+          "end": "2021-08-15",
+          "open": false,
+          "categories": [
+            "upper"
+          ],
+          "surgery": false,
+          "transaction_ids": [
+            508676
+          ],
+          "entry_is_transfer": false,
+          "closure_kind": "IL_activation"
+        },
+        {
+          "start": "2022-04-07",
+          "end": "2022-08-12",
+          "open": false,
+          "categories": [
+            "upper"
+          ],
+          "surgery": false,
+          "transaction_ids": [
+            613008
+          ],
+          "entry_is_transfer": false,
+          "closure_kind": "observation_scope_exit"
+        }
+      ],
+      "literal_40man": true,
+      "historical_MLB_link": true,
+      "old_forecast": {
+        "observation_p": 0.9902335605421971,
+        "observation_conditional_pa": 608.9899474199368,
+        "observation_pa": 603.0422839680494,
+        "observation_rate": 2.060211697228432,
+        "observation_value": 3.9377227668969135,
+        "next_pa": 438,
+        "actual_relative_value": 3.1621981279438995
+      },
+      "medical_recovery_certified": false,
+      "prior_source_to_path_receipt": {
+        "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-nonmedical-opportunity\\player-walks.json",
+        "row_id": 51287
+      },
+      "origin_only_peers_retained": [],
+      "new_full_player_forecast": null
+    },
+    {
+      "player_id": 677551,
+      "origin": 2023,
+      "target": 2024,
+      "player_name": "Wander Franco",
+      "cutoff": "2024-01-26",
+      "budget": {
+        "target_year": 2024,
+        "season_games": 162,
+        "current_channels": [
+          "administrative",
+          "restricted"
+        ],
+        "medical_recovery_certified": false,
+        "MLB_job_certified": false,
+        "forecast_changed": false,
+        "original_sentence_games": null,
+        "source_report": null,
+        "known_suspension_fraction": null,
+        "eligible_games": null,
+        "state": "unresolved_nonmedical_requires_scenarios"
+      },
+      "judgment": "Unresolved parallel leave/restriction does not have a known numerical return factor. The old high participation is not certified by talent/roster evidence; scenarios are required, not a retroactive permanent ban.",
+      "prior_counts": [
+        {
+          "season": 2021,
+          "bucket": "AAA",
+          "plate_appearances": 180,
+          "home_runs": 7,
+          "strike_outs": 21
+        },
+        {
+          "season": 2021,
+          "bucket": "MLB",
+          "plate_appearances": 308,
+          "home_runs": 7,
+          "strike_outs": 37
+        },
+        {
+          "season": 2022,
+          "bucket": "AAA",
+          "plate_appearances": 25,
+          "home_runs": 0,
+          "strike_outs": 3
+        },
+        {
+          "season": 2022,
+          "bucket": "MLB",
+          "plate_appearances": 344,
+          "home_runs": 6,
+          "strike_outs": 33
+        },
+        {
+          "season": 2022,
+          "bucket": "RK124",
+          "plate_appearances": 7,
+          "home_runs": 0,
+          "strike_outs": 2
+        },
+        {
+          "season": 2023,
+          "bucket": "MLB",
+          "plate_appearances": 491,
+          "home_runs": 17,
+          "strike_outs": 69
+        }
+      ],
+      "clinical_spells": [
+        {
+          "start": "2021-09-11",
+          "end": "2021-09-24",
+          "open": false,
+          "categories": [
+            "lower"
+          ],
+          "surgery": false,
+          "transaction_ids": [
+            516906
+          ],
+          "entry_is_transfer": false,
+          "closure_kind": "unqualified_return"
+        },
+        {
+          "start": "2022-05-31",
+          "end": "2022-06-26",
+          "open": false,
+          "categories": [
+            "lower"
+          ],
+          "surgery": false,
+          "transaction_ids": [
+            625327
+          ],
+          "entry_is_transfer": false,
+          "closure_kind": "unqualified_return"
+        },
+        {
+          "start": "2022-07-10",
+          "end": "2022-09-09",
+          "open": false,
+          "categories": [
+            "upper"
+          ],
+          "surgery": false,
+          "transaction_ids": [
+            636351
+          ],
+          "entry_is_transfer": false,
+          "closure_kind": "IL_activation"
+        }
+      ],
+      "literal_40man": true,
+      "historical_MLB_link": true,
+      "old_forecast": {
+        "observation_p": 0.9906359861533982,
+        "observation_conditional_pa": 549.683809818278,
+        "observation_pa": 544.5365630118868,
+        "observation_rate": 1.0336078118415855,
+        "observation_value": 2.6239887307380108,
+        "next_pa": 0,
+        "actual_relative_value": 0.0
+      },
+      "medical_recovery_certified": false,
+      "prior_source_to_path_receipt": {
+        "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-nonmedical-opportunity\\player-walks.json",
+        "row_id": 51820
+      },
+      "origin_only_peers_retained": [],
+      "new_full_player_forecast": null
+    },
+    {
+      "player_id": 672779,
+      "origin": 2024,
+      "target": 2025,
+      "player_name": "Tucupita Marcano",
+      "cutoff": "2025-01-24",
+      "budget": {
+        "target_year": 2025,
+        "season_games": 162,
+        "current_channels": [
+          "ineligible"
+        ],
+        "medical_recovery_certified": false,
+        "MLB_job_certified": false,
+        "forecast_changed": false,
+        "original_sentence_games": null,
+        "source_report": null,
+        "known_suspension_fraction": 0.0,
+        "eligible_games": 0,
+        "state": "hard_unavailable"
+      },
+      "judgment": "Permanent ineligibility has a factual zero opportunity budget. This does not erase his latent hitting talent or validate rare learned status effects.",
+      "prior_counts": [
+        {
+          "season": 2022,
+          "bucket": "A",
+          "plate_appearances": 4,
+          "home_runs": 0,
+          "strike_outs": 1
+        },
+        {
+          "season": 2022,
+          "bucket": "AA",
+          "plate_appearances": 122,
+          "home_runs": 2,
+          "strike_outs": 25
+        },
+        {
+          "season": 2022,
+          "bucket": "AAA",
+          "plate_appearances": 115,
+          "home_runs": 3,
+          "strike_outs": 16
+        },
+        {
+          "season": 2022,
+          "bucket": "MLB",
+          "plate_appearances": 177,
+          "home_runs": 2,
+          "strike_outs": 44
+        },
+        {
+          "season": 2023,
+          "bucket": "AAA",
+          "plate_appearances": 48,
+          "home_runs": 1,
+          "strike_outs": 8
+        },
+        {
+          "season": 2023,
+          "bucket": "MLB",
+          "plate_appearances": 220,
+          "home_runs": 3,
+          "strike_outs": 35
+        }
+      ],
+      "clinical_spells": [
+        {
+          "start": "2022-06-17",
+          "end": "2022-06-30",
+          "open": false,
+          "categories": [
+            "unspecified"
+          ],
+          "surgery": false,
+          "transaction_ids": [
+            631731
+          ],
+          "entry_is_transfer": false,
+          "closure_kind": "unqualified_return"
+        },
+        {
+          "start": "2023-07-25",
+          "end": "2024-06-04",
+          "open": false,
+          "categories": [
+            "lower"
+          ],
+          "surgery": true,
+          "transaction_ids": [
+            714469,
+            756025,
+            777824
+          ],
+          "entry_is_transfer": false,
+          "closure_kind": "observation_scope_exit"
+        }
+      ],
+      "literal_40man": false,
+      "historical_MLB_link": false,
+      "old_forecast": {
+        "observation_p": 0.0,
+        "observation_conditional_pa": 189.04318815610287,
+        "observation_pa": 0.0,
+        "observation_rate": -1.1430140299259954,
+        "observation_value": 0.0,
+        "next_pa": 0,
+        "actual_relative_value": 0.0
+      },
+      "medical_recovery_certified": false,
+      "prior_source_to_path_receipt": {
+        "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-nonmedical-opportunity\\player-walks.json",
+        "row_id": 55593
+      },
+      "origin_only_peers_retained": [],
+      "new_full_player_forecast": null
+    },
+    {
+      "player_id": 680776,
+      "origin": 2024,
+      "target": 2025,
+      "player_name": "Jarren Duran",
+      "cutoff": "2025-01-24",
+      "budget": {
+        "target_year": 2025,
+        "season_games": 162,
+        "current_channels": [],
+        "medical_recovery_certified": false,
+        "MLB_job_certified": false,
+        "forecast_changed": false,
+        "original_sentence_games": null,
+        "source_report": null,
+        "known_suspension_fraction": 1.0,
+        "eligible_games": 162,
+        "state": "no_current_observed_restriction"
+      },
+      "judgment": "Explicit suspension resolution leaves no current restriction budget. Ordinary participation/health risk remains with the role model; do not reapply past games.",
+      "prior_counts": [
+        {
+          "season": 2022,
+          "bucket": "AAA",
+          "plate_appearances": 307,
+          "home_runs": 10,
+          "strike_outs": 73
+        },
+        {
+          "season": 2022,
+          "bucket": "MLB",
+          "plate_appearances": 223,
+          "home_runs": 3,
+          "strike_outs": 63
+        },
+        {
+          "season": 2023,
+          "bucket": "AAA",
+          "plate_appearances": 51,
+          "home_runs": 2,
+          "strike_outs": 11
+        },
+        {
+          "season": 2023,
+          "bucket": "MLB",
+          "plate_appearances": 362,
+          "home_runs": 8,
+          "strike_outs": 90
+        },
+        {
+          "season": 2024,
+          "bucket": "MLB",
+          "plate_appearances": 735,
+          "home_runs": 21,
+          "strike_outs": 160
+        }
+      ],
+      "clinical_spells": [
+        {
+          "start": "2021-08-06",
+          "end": "2021-08-08",
+          "open": false,
+          "categories": [
+            "unspecified"
+          ],
+          "surgery": false,
+          "transaction_ids": [
+            510073,
+            510085
+          ],
+          "entry_is_transfer": false,
+          "closure_kind": "IL_activation"
+        },
+        {
+          "start": "2021-09-03",
+          "end": "2021-09-23",
+          "open": false,
+          "categories": [
+            "unspecified"
+          ],
+          "surgery": false,
+          "transaction_ids": [
+            515792
+          ],
+          "entry_is_transfer": false,
+          "closure_kind": "observation_scope_exit"
+        },
+        {
+          "start": "2023-08-21",
+          "end": "2023-09-04",
+          "open": false,
+          "categories": [
+            "lower"
+          ],
+          "surgery": false,
+          "transaction_ids": [
+            721327,
+            723505
+          ],
+          "entry_is_transfer": false,
+          "closure_kind": "IL_activation"
+        }
+      ],
+      "literal_40man": true,
+      "historical_MLB_link": true,
+      "old_forecast": {
+        "observation_p": 0.9943855090854603,
+        "observation_conditional_pa": 588.5864323617412,
+        "observation_pa": 585.2818191848249,
+        "observation_rate": 1.2001727412560057,
+        "observation_value": 2.9984941393223417,
+        "next_pa": 696,
+        "actual_relative_value": 3.507010009295988
+      },
+      "medical_recovery_certified": false,
+      "prior_source_to_path_receipt": {
+        "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-nonmedical-opportunity\\player-walks.json",
+        "row_id": 55852
+      },
+      "origin_only_peers_retained": [],
+      "new_full_player_forecast": null
+    }
+  ],
+  "scope": "Five locked source/control cases; no cohort accuracy experiment or improvement claim",
+  "schedule_scope_sources": {
+    "2023": "https://www.mlb.com/press-release/press-release-mlb-announces-2023-regular-season-schedule",
+    "2024": "https://www.mlb.com/orioles/news/mlb-world-tour-2024",
+    "2025": "https://www.mlb.com/press-release/press-release-mlb-announces-2025-regular-season-schedule"
+  },
+  "hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\check_known_suspension_budget.py": "8e74a8f73de558969a33beeb3642fe84b1a2678aba0cf03c2f45b0f636b4ef56",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\src\\universal_baseball\\known_suspension_budget.py": "19817f4f21c07e3049a6e0f6403e65861b966c248eb7072bfa1f09b5a4801646",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\tests\\test_known_suspension_budget.py": "52abae69260cc8897b9893e64c290d0cc449b736fb3fe358cf5803e15d2cbf07",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\known-suspension-budget-contract.md": "102759be7c5e35b14d08a35735f8f874ac4975842ee6cc77de493d87d8eca78b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\hitter-case-repair-queue.md": "b4d605c2030f5310de94d3b68caa8f21409100aa621e455d787eb605f58511f7",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-status-evidence-v2\\status-ledger.json": "851fe103df90fe1218152a134829df57deed3876f94b971c451e7ef4ceab9448",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-nonmedical-observation\\active-origin-evidence.json": "be96973b0277fae5c5f72cf30c790e0d029d238c031c93cef6e580623b3b6bb4",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-nonmedical-opportunity\\player-walks.json": "88b64e8a257a0c038bc0fee0039d2ca71b395086ce2fd52ac4e7bef04774b712",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\config\\reported_suspension_season_budgets.json": "c37e237944869b748fb6ae7ef782fa5b4cafc09eec954f58fd0aa12114f1a8f7",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\config\\hitter_status_return_reports.json": "7787815acc0f27f39e90a336e016372b18d59488b53188e0c0859648ef470952",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-nonmedical-opportunity\\predictions.parquet": "7c0bd7644d7f9c24ba9371db466123f8ab6407aa4f492dfa74cf040ab35e7f50",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-minor-statcast-precision\\scored-predictions.parquet": "85eb1001f944491c77ec2169ccd179d2a527a1419132ff0de661c4ad7eef7e05",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\model_artifacts\\hitter-selected-2026-frozen-2026-10-05\\freeze-manifest.json": "a1d819ffcdd98a9ee62feecf5637b5ebe1f93b6e931d77d2b7d692ed928da67a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\model-evidence\\hitter-final-2026\\report.json": "8c2acfeb42ece7d109d3b35542a6b79ec372467d7027d5945a4ba800cde913bb"
+  }
+}

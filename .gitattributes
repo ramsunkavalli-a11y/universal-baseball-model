@@ -645,3 +645,11 @@ scripts/review_hitter_linked_employment_recency.py -text -eol
 scripts/complete_hitter_linked_employment_recency.py -text -eol
 tests/test_linked_employment_recency.py -text -eol
 reports/model-evidence/hitter-linked-employment-recency/** -text -eol
+# Preserve remaining-game accounting and the unresolved full-player checkpoint.
+docs/known-suspension-budget-contract.md -text -eol
+docs/hitter-case-repair-queue.md -text -eol
+config/reported_suspension_season_budgets.json -text -eol
+src/universal_baseball/known_suspension_budget.py -text -eol
+scripts/check_known_suspension_budget.py -text -eol
+tests/test_known_suspension_budget.py -text -eol
+reports/model-evidence/known-suspension-budget/** -text -eol

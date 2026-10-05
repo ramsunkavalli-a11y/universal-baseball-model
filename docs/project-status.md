@@ -2,6 +2,46 @@
 
 Updated 2026-10-05. This is the current start-here document.
 
+## Resolve the Tatis failure before another forecast comparison
+
+The [one-case-at-a-time repair queue](hitter-case-repair-queue.md) supersedes
+the generic next-step language below. The user's correction is justified:
+recording a finite suspension was not making the forecast account for it. The
+source already supplied a dated tentative return report, but its timing did not
+affect the actual learned heads. Tatis's preceding 546-PA/42-HR MLB record
+remains known; source gaps do not excuse the unsupported near-exit estimate.
+The saved Steamer archive gives about 545 PA, a useful smell test, not a copied
+model input or clean same-date comparison. His health history also matters;
+the previous chat explanation of 2022 as suspension alone was incomplete.
+
+Implemented a separate [reported remaining-game budget](known-suspension-budget-contract.md)
+and five source/control walks. It preserves original versus forecast-season
+games, scopes reports by event/player/season/cutoff, keeps unresolved parallel
+channels unknown, respects hard exclusions and does not charge cleared old
+suspensions again. An already adjusted forecast cannot be supplied as the
+independent role baseline. Hitting rate is unchanged by the suspension factor.
+The arithmetic demonstration is NOT a new Tatis forecast.
+
+**The Tatis forecast repair is still open.** His independent role/health baseline
+must be repaired next, without interpreting suspension-caused zero PA as ordinary
+non-arrival. Do not merely multiply the old 61 PA by another factor. If known
+medical and suspension periods overlap, use their joint unavailable calendar,
+not two independent deductions. The scalar game-fraction helper is limited to
+uniform baseline exposure without such a separate timed-medical deduction; it
+is not a joint medical prognosis model. Before using it for a full projection,
+verify that assumption or use explicit dated availability scenarios instead.
+No arbitrary 97% return rate, 600-PA role or named-player override is adopted.
+
+Forty-four focused tests and lint pass; all five source/control states match
+the contract. The retained exact restriction-profile peer sets are empty for
+these rare cases; no matched-profile predictive certification is claimed. Those
+controls test different state boundaries, not equal health or talent. No new
+fits, historical scoring, 2026 rescoring, frozen forecast/explorer changes or
+predictive improvement claims. Source and completion hashes verify. The earlier
+employment-recency negative remains closed; full baseline repair, rather than
+another synonym/date/penalty variant, is now the next action. The broad goal
+is unfinished.
+
 ## Completed opportunity mechanism test: do not deploy it
 
 The [employment-recency comparison](hitter-linked-employment-recency-result.md)

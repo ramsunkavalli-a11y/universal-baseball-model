@@ -12,6 +12,15 @@ Before designing or interpreting a model experiment, read
 `docs/model-experiment-review-gate.md` and `docs/project-status.md`. Follow the
 controlling execution plan linked there, not an old conversational next step.
 
+- User instruction, 2026-10-05: resolve obvious baseball failures one case at a
+  time. A known suspension, injury interruption, unsigned veteran or new prospect
+  must not be treated as the same zero-PA history without explaining why. Trace
+  the known cause and its actual effect before launching another fit. Recording
+  a flag, replaying the same miss, passing unit tests or adding calendar math
+  does not close the player repair: the forecast must actually use a defensible
+  mechanism. Keep the focal case open until that happens. Do not invent player
+  overrides from later results. Overlapping medical and suspension absences
+  must not be counted twice; known unavailability is distinct from role/talent.
 - Write the estimand, eligibility, source coverage, exact comparison and claim
   limits BEFORE fitting. Separate future MLB performance from same-level proxy
   prediction, conditional talent from unconditional contribution, calendar years
