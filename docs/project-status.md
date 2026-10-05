@@ -2,6 +2,46 @@
 
 Updated 2026-10-04. This is the current start-here document.
 
+## Shared event learning reviewed and current hitter model retained
+
+The [fixed shared-event comparison](hitter-shared-event-result.md) is complete:
+seventy heads replay, 533 independently calculated score fields match and all
+[45 player walks](hitter-shared-event-player-review.md) are complete. Seven new
+input checks plus twelve existing representation/recovery/scoring checks pass.
+One [append-only value-product correction](hitter-shared-event-value-correction.md)
+preserves every fitted head and original output; maximum change is 0.001634 wins.
+
+The new source profiles share event meaning and learning rather than isolated
+foreign coefficients. Established MLB talent and original playing time stay
+unchanged. Neither arm replaces current UBM: contribution RMSE is 0.435174
+versus 0.435133 current; hitting is 1.805797 versus 1.804813. Upper/lower never-
+debut errors worsen. Holliday's smaller optimistic error is the largest gain;
+Alonso, Kwan and Yordan worsen. Kurtz's common production terms now matter but
+the unchanged ten-PA forecast still misses his debut. Public forecasts are
+unchanged by construction, so no Steamer/ZiPS or workload-gap improvement is claimed.
+
+The no-fit saved-head diagnosis records 376–1047 actual never-debut training
+participants, but they carry only 5.8–7.2% of training PA weight. The head also
+conditions on existing MLB rate fields. In five of 35 cells, exchanging a single
+for a strikeout in the common profile raises the conditional rate forecast.
+That is a reasonability warning, not a causal effect or a physical impossibility
+proof. HR-for-other directions are positive. The central remaining distinction
+is an already forecast event distribution versus a new scalar hitting forecast:
+the additional regression is not the defined probability-to-run conversion.
+
+Before another family/penalty fit, contract a bounded check of component
+calibration and its direct, defined run-value conversion, with sample/transport
+uncertainty and existing age/pedigree/MLB routing preserved as explicit comparisons.
+Do not treat these probabilities as certain talent or tune to the player cases.
+This is the coherent next boundary, not a restart of data collection or a model
+tournament. Team-record testing and additional college-source work remain closed.
+
+The goal remains active. A satisfactory selected candidate, new immutable
+forecast freeze, requested research explorer and final 2026 evaluation remain
+unfinished. The original 31-file protected forecast still verifies. User approval
+permits 2026 outcomes only after the new candidate freeze; no such outcomes
+were accessed in this milestone.
+
 ## Evidence comparison complete and learning strength diagnosed
 
 The active long-range goal is a usable hitter model: hitting ability, playing

@@ -286,3 +286,18 @@ scripts/finalize_hitter_evidence_representation.py -text -eol
 scripts/audit_hitter_representation_regularization.py -text -eol
 tests/test_hitter_representation_scoring.py -text -eol
 scripts/publish_hitter_representation_diagnosis.py -text -eol
+# Preserve shared-event fit and source receipt bytes.
+docs/hitter-shared-event-contract.md -text -eol
+docs/hitter-shared-event-source-review.md -text -eol
+docs/hitter-shared-event-result.md -text -eol
+docs/hitter-shared-event-player-review.md -text -eol
+scripts/prepare_hitter_shared_events.py -text -eol
+scripts/fit_hitter_shared_events.py -text -eol
+scripts/review_hitter_shared_events.py -text -eol
+scripts/seal_hitter_shared_source_review.py -text -eol
+scripts/finalize_hitter_shared_events.py -text -eol
+src/universal_baseball/hitter_shared_events.py -text -eol
+tests/test_hitter_shared_events.py -text -eol
+reports/model-evidence/hitter-shared-events/** -text -eol
+docs/hitter-shared-event-value-correction.md -text -eol
+scripts/review_hitter_shared_events_compatible.py -text -eol
