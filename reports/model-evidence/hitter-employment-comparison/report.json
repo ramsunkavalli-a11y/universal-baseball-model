@@ -1,0 +1,57 @@
+{
+  "status": "review_complete_limited_flags_no_promotion",
+  "player_walkthrough_status": "complete",
+  "machine_traces": 113,
+  "manual_review": "All compact comparisons and detailed consequential source/head cases in linked document",
+  "primary_PA_improvement_demonstrated": false,
+  "source_parser_correction_retained": true,
+  "complete_employment_correction_tested": false,
+  "unrepaired_latest_date_rows_in_source_panel": 10267,
+  "next_action": "Rebuild both date-derived employment inputs; finish the same matched contrast with no tuning",
+  "new_heads": 70,
+  "baseline_replayed": 70,
+  "corrected_replayed": 70,
+  "independent_score_and_product_checks": 540,
+  "target_year_maximum": 2025,
+  "completed_2026_evaluation_unchanged": true,
+  "deployment_approved": false,
+  "tests_and_freezes": [
+    {
+      "command": [
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/test_employment_comparison.py"
+      ],
+      "exit_code": 0,
+      "output": ".....                                                                    [100%]\n5 passed in 0.48s\n"
+    },
+    {
+      "command": [
+        "scripts/verify_hitter_selected_2026_freeze.py"
+      ],
+      "exit_code": 0,
+      "output": "{\"status\": \"verified\", \"files\": 53, \"players\": 4030, \"heads_replayed\": 25, \"manifest_sha256\": \"a1d819ffcdd98a9ee62feecf5637b5ebe1f93b6e931d77d2b7d692ed928da67a\", \"protected_outcomes_read\": false, \"predictive_accuracy_not_yet_evaluated\": true}\n"
+    },
+    {
+      "command": [
+        "scripts/verify_hitter_full_2026_freeze.py"
+      ],
+      "exit_code": 0,
+      "output": "{\n  \"contact_available_rows\": 3511,\n  \"five_model_rows\": 3720,\n  \"forecast_sha256\": \"d1953a28d35d87d141ecc65ec4b107906edad877982e79c0d3a216245b9e4708\",\n  \"players\": 3907,\n  \"population_prior_rows\": 187,\n  \"protected_2026_opened\": false,\n  \"status\": \"verified\",\n  \"verified_files\": 31\n}\n"
+    }
+  ],
+  "hashes": {
+    "scripts\\finalize_hitter_employment_comparison.py": "59129d86ba0b6aad67c3d967589b3579f3dff9c766ccd8e80880e4c3a760e029",
+    "docs\\hitter-employment-comparison-result.md": "c8a20ebd055ea2296fbe318ae63bbe04857276001977caef16ababba140a711e",
+    "docs\\hitter-employment-comparison-player-review.md": "a9e2b6db507a5d368de43db8bfa6cff607753816cbaedad696cb0f492081b1a4",
+    "reports\\generated\\hitter-employment-comparison\\review-receipt.json": "344447eca6dcc8a73784409d551ad896b026798bf6968ebdeb26a31463e047be",
+    "reports\\generated\\hitter-employment-comparison\\scores.json": "987d3e9319da84800aa029d3f9084edd53ef1f01878fe508546aaaad44d6e90c",
+    "reports\\generated\\hitter-employment-comparison\\intervals.json": "5f02894704068b23b44417a2eafbe03df05235ebc9f736ce97142048f75ec065",
+    "reports\\generated\\hitter-employment-comparison\\predictions.parquet": "d3ff73f1bad7355359768f3324ed6a3dab25ac9abb1f4aa4bf213648f4ec1f4d",
+    "reports\\generated\\hitter-employment-comparison\\case-selection.json": "3b2691bd472bc0f88dce9753f7c9fa50a824c3032ae698a6bdd9f49241637ea1",
+    "reports\\generated\\hitter-employment-comparison\\player-walks.json": "ad4745a946e8202778180fa22dbbba75edc3319e17564d62c250cd610f50e587"
+  }
+}

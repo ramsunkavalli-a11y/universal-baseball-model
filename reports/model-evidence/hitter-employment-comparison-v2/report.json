@@ -1,0 +1,62 @@
+{
+  "status": "review_complete_full_dependency_correction_no_promotion",
+  "player_walkthrough_status": "complete",
+  "machine_traces": 125,
+  "retained_traces": 113,
+  "complete_employment_correction_tested": true,
+  "source_parser_correction_retained": true,
+  "primary_PA_improvement_demonstrated": false,
+  "source_correction_contrast_closed": true,
+  "further_source_correction_variants_authorized": false,
+  "deployment_approved": false,
+  "new_heads": 70,
+  "baseline_replayed": 70,
+  "corrected_replayed": 70,
+  "target_year_maximum": 2025,
+  "timing_source_checks": 499800,
+  "employment_matrix_checks": 3798840,
+  "independent_score_checks": 704,
+  "independent_case_product_checks": 750,
+  "completed_2026_evaluation_unchanged": true,
+  "next_action": "Inventory prior availability work and cutoff-known restriction timing before any new fit",
+  "tests_and_freezes": [
+    {
+      "command": [
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/test_employment_comparison.py",
+        "tests/test_employment_timing.py"
+      ],
+      "exit_code": 0,
+      "output": "........                                                                 [100%]\n8 passed in 0.67s\n"
+    },
+    {
+      "command": [
+        "scripts/verify_hitter_selected_2026_freeze.py"
+      ],
+      "exit_code": 0,
+      "output": "{\"status\": \"verified\", \"files\": 53, \"players\": 4030, \"heads_replayed\": 25, \"manifest_sha256\": \"a1d819ffcdd98a9ee62feecf5637b5ebe1f93b6e931d77d2b7d692ed928da67a\", \"protected_outcomes_read\": false, \"predictive_accuracy_not_yet_evaluated\": true}\n"
+    },
+    {
+      "command": [
+        "scripts/verify_hitter_full_2026_freeze.py"
+      ],
+      "exit_code": 0,
+      "output": "{\n  \"contact_available_rows\": 3511,\n  \"five_model_rows\": 3720,\n  \"forecast_sha256\": \"d1953a28d35d87d141ecc65ec4b107906edad877982e79c0d3a216245b9e4708\",\n  \"players\": 3907,\n  \"population_prior_rows\": 187,\n  \"protected_2026_opened\": false,\n  \"status\": \"verified\",\n  \"verified_files\": 31\n}\n"
+    }
+  ],
+  "hashes": {
+    "scripts\\finalize_hitter_employment_comparison_v2.py": "04892be188ae1ee244e059eeacf790b0ddf1b6ef0860daf033dce11bf55e3313",
+    "docs\\hitter-employment-comparison-v2-result.md": "9f578c3740b14ede827c01178eff060780d0cba9c521a9c455ff916b5d317183",
+    "docs\\hitter-employment-comparison-v2-player-review.md": "8dfceebf36484197ea9776d0d7181b3c6b1d54a880f05f463f60d70570084b64",
+    "reports\\generated\\hitter-employment-comparison-v2\\review-receipt.json": "c9ad97dcb13356b1d2190ca73b70bf8fad3873100f44eb539e24d028b8c30c65",
+    "reports\\generated\\hitter-employment-comparison-v2\\scores.json": "7f3e2b5e663d6bdf08d85875bca2228356563ff8427f78fb21effdbbe4e429cd",
+    "reports\\generated\\hitter-employment-comparison-v2\\intervals.json": "eb7c069fb3b5de2555bc11413c8907591c0a3de813d82202dfd6fe27f080d8e1",
+    "reports\\generated\\hitter-employment-comparison-v2\\predictions.parquet": "9ae773448d02ed028afd236161349b6eafe4f6f2a09c50830cda6206df8b7575",
+    "reports\\generated\\hitter-employment-comparison-v2\\case-selection.json": "ee0a3b68ad9a366893d6ab6f6f21578143aef7172a8887557be799a90a2c11e4",
+    "reports\\generated\\hitter-employment-comparison-v2\\player-walks.json": "b1292dac966a988217eff77de1f34621248649c89427ed645f5622a5fd58d1bc"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "status": "read_only_inventory_review_complete_source_gap",
+  "player_walkthrough_status": "complete",
+  "new_fits": 0,
+  "forecasts_changed": false,
+  "source_warning_origins": 83,
+  "source_warning_people": 27,
+  "evaluated_warning_origins": 54,
+  "evaluated_warning_people": 23,
+  "source_rows": 63314,
+  "evaluation_rows": 30519,
+  "player_cases": 9,
+  "distinct_case_people": 7,
+  "source_case_replays": 9,
+  "saved_heads_replayed": 18,
+  "independently_reconstructed_warning_membership": true,
+  "legal_reinstatement_or_medical_recovery_certified": false,
+  "predictive_improvement_tested": false,
+  "deployment_approved": false,
+  "completed_2026_evaluation_unchanged": true,
+  "next_action": "Repair systematic nonmedical return coverage and separate history, observed activity and current uncertainty before any fit",
+  "tests_and_freezes": [
+    {
+      "command": [
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/test_availability_inventory.py"
+      ],
+      "exit_code": 0,
+      "output": ".....                                                                    [100%]\n5 passed in 0.28s\n"
+    },
+    {
+      "command": [
+        "scripts/verify_hitter_selected_2026_freeze.py"
+      ],
+      "exit_code": 0,
+      "output": "{\"status\": \"verified\", \"files\": 53, \"players\": 4030, \"heads_replayed\": 25, \"manifest_sha256\": \"a1d819ffcdd98a9ee62feecf5637b5ebe1f93b6e931d77d2b7d692ed928da67a\", \"protected_outcomes_read\": false, \"predictive_accuracy_not_yet_evaluated\": true}\n"
+    },
+    {
+      "command": [
+        "scripts/verify_hitter_full_2026_freeze.py"
+      ],
+      "exit_code": 0,
+      "output": "{\n  \"contact_available_rows\": 3511,\n  \"five_model_rows\": 3720,\n  \"forecast_sha256\": \"d1953a28d35d87d141ecc65ec4b107906edad877982e79c0d3a216245b9e4708\",\n  \"players\": 3907,\n  \"population_prior_rows\": 187,\n  \"protected_2026_opened\": false,\n  \"status\": \"verified\",\n  \"verified_files\": 31\n}\n"
+    }
+  ],
+  "hashes": {
+    "scripts\\finalize_hitter_availability_inventory.py": "c71c3086b2180d3acce22d02478970c551a2870b4b61fef638496870285bb202",
+    "docs\\hitter-availability-inventory-result.md": "4258ecd861b4b541f1c4edb785b373cd08d64ded10aefffb73a165073ff9fac5",
+    "reports\\generated\\hitter-availability-inventory\\audit-receipt.json": "da021815819baf46339985774c991e4615e5575d437957069220122c6fd59cd9",
+    "reports\\generated\\hitter-availability-inventory\\source-seal.json": "34527821b8b0b93fc5e68c8a85e0df19b18ccaa7e288864d9d3c297651beb7c6",
+    "reports\\generated\\hitter-availability-inventory\\warnings.json": "90a1b2407a0443bd05627d441d08b86321971d612abe753e7ac40231490c1dd0",
+    "reports\\generated\\hitter-availability-inventory\\player-walks.json": "694f425b21ebacc5b70713eea192efbde88cd8de0e1c2dd79faad0034269cadb",
+    "reports\\generated\\hitter-availability-inventory\\summary.json": "f776ae0ccf2c4ddf1bdb9939aba4486de0c87e227eb762bd5e2b4ad1d9c44e16"
+  }
+}

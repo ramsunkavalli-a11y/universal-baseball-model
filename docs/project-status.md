@@ -2,6 +2,53 @@
 
 Updated 2026-10-05. This is the current start-here document.
 
+## Employment correction closed and availability source gap identified
+
+The [complete employment comparison](hitter-employment-comparison-v2-result.md)
+and [125 player traces](hitter-employment-comparison-v2-player-review.md) are
+reviewed. The earlier flag-only test is preserved; its discovered date dependency
+was repaired under an appended contract. All twelve employment-dependent inputs
+now reconstruct consistently. All 30,506 original forecasts and thirteen
+additions remain, with unchanged hitting, chronology, settings and player folds.
+Seventy saved baseline heads replay, 140 prefit checks are persisted and seventy
+new heads replay. Eight focused tests and both frozen packages verify unchanged.
+
+PA RMSE changes 60.253 to 60.270 and batting-contribution RMSE .435319 to
+.435456; paired intervals include no change. This is no demonstrated gain.
+Five of seven origin PA RMSEs worsen, though no populated major stage worsens
+over 2%. Pooled value totals remain close through cancellation: never-debut upper
+minors still receive too little PA while lower minors receive too much. Public
+matched PA MAE remains 14.34% worse than Steamer, with source-date and unit
+qualifications. Keep the source correction, not the refitted model. Close this
+contrast without more variants. No model/explorer promotion or 2026 retuning.
+
+The following [read-only availability inventory](hitter-availability-inventory-result.md)
+finds another source-design boundary, not a missing feature name. The existing
+branch already has finite/unresolved/permanent status, game duration and return
+timing. But 83 source origins for 27 people retain active nonmedical restriction
+despite positive MLB PA in a strictly later year; 54 evaluated origins for 23
+people are affected. Nine source cases and eighteen saved heads replay, and
+five focused warning tests pass. These are observation contradictions, not
+certified legal reinstatement or medical recovery.
+
+Tatis retains the 2022 suspension at the 2024 and 2025 cutoffs after 635/438
+MLB PA; Grandal and Reyes retain much older restricted channels. The captured
+inputs lack relevant returns, so replay correctness does not certify current
+unavailability. Duran's captured explicit return clears correctly; Franco's
+same-year late restriction cannot be cleared by annual PA; Marcano's permanent
+zero remains separate. Ruiz's eventual exit shows why this is not a universal
+return boost. Employment-test arms held these other inputs fixed; their near-null
+result is not a rejection of all health/contract information.
+
+Next repair systematic cutoff-safe nonmedical return coverage and distinguish
+historical restriction, subsequent observed MLB activity and current legal
+uncertainty. Preserve original sources and predictions, parallel channels,
+same-year late restrictions, permanent bans, unknowns and all difficult people.
+No further availability fit before the source review, no named-player overrides
+or team-record reruns. The broad hitter goal stays active; foreign roles, elite
+prospect readiness, public error and cohort calibration remain substantive gaps.
+The selected 2026 forecast was frozen and evaluated once; that evaluation is final.
+
 ## Assignment/signing source defect corrected before another fit
 
 The [employment and role review](hitter-overseas-role-source-result.md) completes
