@@ -1,0 +1,44 @@
+{
+  "status": "source_admission_review_complete_for_integration",
+  "source_additions": 148,
+  "qualified_batting_inputs": 32,
+  "dispositions": {
+    "pitcher_only_not_hitter_admission": 115,
+    "qualified_batting": 30,
+    "qualified_batting_with_mixed_role_flag": 2,
+    "unresolved_role": 1
+  },
+  "qualified_with_real_recent_domestic_history": 16,
+  "count_fields_reconstructed": 1680,
+  "future_mutation_origins_checked": 14,
+  "tests": "....                                                                     [100%]\n4 passed in 0.27s\n",
+  "player_walkthrough_status": "complete_for_source_only",
+  "fixed_player_cases": 8,
+  "original_forecasts_unchanged": true,
+  "whole_population_coverage_certified": false,
+  "unknown_Colas_role_retained": true,
+  "new_fits": 0,
+  "predictive_gain_established": false,
+  "deployment_approved": false,
+  "goal_achieved": false,
+  "source_hashes": {
+    "scripts\\prepare_foreign_hitter_additions.py": "cc03facfc53fe92ad6361449496ec6c92f7dd1e19fe85292e815a970683fb09c",
+    "src\\universal_baseball\\foreign_hitter_admission.py": "a893b14a20b76ccd900a67a46d592cfaba772a4ab8dde7b1685ab9bf2f2e6438",
+    "tests\\test_foreign_hitter_admission.py": "827964b5303aff83eee3bfc2859325db52c7fe19bd9c57cc1d4ccdce251fbe64",
+    "docs\\hitter-foreign-additions-contract.md": "5f939e2df5b570fc03168878023add306cdc2ef729e52bbbb2b9c7eb0d106760",
+    "reports\\generated\\hitter-preseason-population-source\\population.parquet": "dd0b5852a6322e94cffac12092dfe4ee524bba23cb39b5362c019d8f21646546",
+    "reports\\generated\\hitter-preseason-population-source\\reviewed-role-hints.parquet": "c3932fe91811bc535f551f8f6788a52544b07c862739a2a92423cd217cd19e1a",
+    "reports\\generated\\foreign-origin-inputs\\origin-inputs.json": "232e4b1fcb9d8ae5c03bf3976ab5abccad71058c5b6d5dc073097ef215648b1c",
+    "reports\\generated\\practical-hitter-v31\\dated-stints.parquet": "d079aea8ae18cdae378013f8d0f63cd236ee137f25f6d5ebb4dd0a4a12c4518a",
+    "reports\\generated\\hitter-status-evidence-v2\\final-review.json": "7deb4334150d68966c5be78f3ab8bc079ad21880d8c224d77b97435d4beb87d4"
+  },
+  "artifact_hashes": {
+    "reports\\generated\\foreign-hitter-additions\\membership-seal.json": "452c2d17bd97a988058f3a299532b1a6e8de0e4f310f31b24711670ea8a56030",
+    "reports\\generated\\foreign-hitter-additions\\origin-inputs.json": "40d6faf354ac71e5695ab1b228729d7da47c430a57fa973dafe5320856b219cc",
+    "reports\\generated\\foreign-hitter-additions\\case-membership-seal.json": "e698cd770ec5a74de041a7db41944304a1ce258632621d5f923a1c0cc832ed8d",
+    "reports\\generated\\foreign-hitter-additions\\reviewed-cases.json": "fd63a2b8d722c8bd5594f754da7c7a4f754b4d9fb505d8db60c1fc2ce4867efa",
+    "docs\\hitter-foreign-additions-player-review.md": "bc16f015ea55ad25cb35077567d26fdce773eac80efb0fb0f38931bbc8a93a10",
+    "scripts\\finalize_foreign_hitter_additions.py": "9dec3e7a84ad434be9800a5fe3313377cd2862ade33b0dc3c34201c313f720ee",
+    "reports\\generated\\foreign-hitter-additions\\source-review.json": "ac848331a19bbce003cf02ca6aba0fbfb93c866040118e60df9408bc46a01573"
+  }
+}

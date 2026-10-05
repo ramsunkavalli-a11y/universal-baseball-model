@@ -236,3 +236,11 @@ scripts/recover_hitter_status_evidence_v2.py -text -eol
 scripts/review_hitter_status_evidence.py -text -eol
 scripts/finalize_hitter_status_evidence.py -text -eol
 reports/model-evidence/hitter-status-evidence/** -text -eol
+# Preserve the foreign batting-admission contract and reviewed source bytes.
+docs/hitter-foreign-additions-contract.md -text -eol
+docs/hitter-foreign-additions-player-review.md -text -eol
+src/universal_baseball/foreign_hitter_admission.py -text -eol
+tests/test_foreign_hitter_admission.py -text -eol
+scripts/prepare_foreign_hitter_additions.py -text -eol
+scripts/finalize_foreign_hitter_additions.py -text -eol
+reports/model-evidence/foreign-hitter-additions/** -text -eol

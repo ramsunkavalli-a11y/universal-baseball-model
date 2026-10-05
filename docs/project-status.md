@@ -2,6 +2,30 @@
 
 Updated 2026-10-04. This is the current start-here document.
 
+## Foreign batting additions qualified with actual domestic histories
+
+The [source admission review](hitter-foreign-additions-player-review.md) retains
+all 148 origins absent from the old model frame. Thirty hitter-hint origins and
+two mixed-role origins support batting inputs; 115 pitcher-only origins and one
+unknown remain explicit rather than being silently treated as hitters. Sixteen
+of the thirty-two have real recent US history. All histories/joins and 1,680
+aggregate fields reconstruct; future mutations leave fourteen origins unchanged.
+Four focused tests pass. No model fit, original forecast or protected 2026 change.
+
+Eight actual player walks include Ohtani, Suzuki, Yoshida and Lee; Bogusevic's
+898 recent domestic PA are preserved; Nakajima retains his zero future MLB PA;
+Vogelsong shows why positive batting counts do not make a position-player
+forecast. Unknown Colas remains a dated-role coverage gap. Exposure/age peers
+do not match newcomer jobs and cannot independently certify arrival probability.
+Original forecast absences are not assigned zero baseline predictions.
+
+Proceed to the same sealed complete foreign/status comparison, constructing
+feature rows from retained histories, keeping newer MLB evidence and evidence
+age, and reporting original/additional populations separately. Do not run another
+source-only context model, tune overseas translation or reopen team-record work.
+The public workload gap, uncertain rare restrictions, other nonforeign additions
+and broad hitter goal remain open. No deployment is approved by admission.
+
 ## Employment and scoped availability reviewed for integration
 
 The [source result](hitter-status-evidence-result.md) keeps all 83,300 origins
