@@ -2,6 +2,57 @@
 
 Updated 2026-10-04. This is the current start-here document.
 
+## Overseas calibration history repaired but point estimate remains withheld
+
+The [matched history repair](hitter-foreign-component-history-repair-result.md)
+fixes a discovered mismatch between one-season calibration and three-season
+forecast inputs. All mover targets, identities, weights, settings and prediction
+histories remain fixed; the original fit/result are preserved. Independent
+reconstruction checks all corrected component fits and 3,205 profiles, with the
+same fourteen player walks, ordinary/unmapped controls, nineteen focused tests
+and unchanged 31-file protected forecast check.
+
+The repair does not solve compression: Lee's debut K remains 21.28% versus
+8.23% observed, and Ohtani's debut HR remains 2.82% versus 5.99%. Ha-Seong's
+debut K and Yoshida's power provide contrasting reasonable matches. Neither
+affine version is approved as a replacement for hitting talent. No new whole
+model score, eligibility, workload forecast or explorer promotion is claimed.
+
+Retain complete league references, matched calibration histories and raw
+league-relative production/exposure. The justified next component alternative
+borrows rate stability from the much larger domestic history instead of asking
+twenty-seven selected overseas movers to estimate every reliability slope.
+Seal that mapping before fits and preserve the same diagnostic controls. It
+remains within the existing foreign/status/additions integration, not a new
+algorithm tournament. The public workload gap and coherent temporary-status
+representation still require work. Protected 2026 and the broad goal are unchanged.
+
+## Overseas component inputs prepared with a material adjustment warning
+
+The [foreign component review](hitter-foreign-component-translation-result.md)
+connects all 641 reviewed source origins to 3,205 chronological outer-fold
+profiles using complete league references, not the selected MLBAM crosswalk.
+Independent reconstruction checks 1,680 small fitted component optima and every
+profile. Fourteen fixed/context player walks, ordinary and unmapped controls,
+sixteen focused tests and the unchanged 31-file protected forecast check are
+complete. Original features, forecasts, membership and explorers are unchanged.
+
+The first affine adjustment is withheld as a talent replacement. Lee's 2024
+K projection is 20.8% versus 8.2% observed after 5.9% in his weighted KBO
+history; Ohtani's debut HR projection is 2.90% versus 5.99%. Yoshida/Suzuki
+power and Ha-Seong's first-year K are more reasonable descriptive matches.
+This is a component input checkpoint, not a new whole-model improvement claim.
+Sparse forward-mover support, selected movers, one-season calibration versus
+multi-season inputs and missing qualified park exposure limit the adjustment.
+
+Keep raw league-relative components and professional exposure visible to the
+main pipeline rather than replacing talent with the compressed estimate.
+Continue the same bounded foreign/status integration: reconcile finite absence
+and ordered employment evidence, qualify source additions with actual domestic
+history, then seal the whole-model contrast and public/cohort/player checks.
+Do not tune named cases, repeat the context-only test, reopen closed team-record
+work, promote protected forecasts or claim the broad hitter goal complete.
+
 ## Dated context comparison reviewed but not approved
 
 The [context comparison](hitter-dated-context-integration-result.md) preserves

@@ -188,3 +188,20 @@ scripts/review_hitter_dated_context.py -text -eol
 scripts/review_hitter_dated_context_v2.py -text -eol
 scripts/finalize_hitter_dated_context.py -text -eol
 reports/model-evidence/hitter-dated-context-integration/** -text -eol
+# Preserve sealed foreign-component contracts, corrections and evidence.
+docs/hitter-foreign-component-integration-contract.md -text -eol
+docs/hitter-foreign-component-translation-result.md -text -eol
+docs/hitter-foreign-component-history-amendment.md -text -eol
+docs/hitter-foreign-component-history-repair-result.md -text -eol
+src/universal_baseball/foreign_component_translation.py -text -eol
+src/universal_baseball/foreign_component_translation_v2.py -text -eol
+tests/test_foreign_component_translation.py -text -eol
+tests/test_foreign_component_translation_v2.py -text -eol
+scripts/prepare_foreign_component_translation.py -text -eol
+scripts/review_foreign_component_translation.py -text -eol
+scripts/finalize_foreign_component_translation.py -text -eol
+scripts/prepare_foreign_component_translation_v2.py -text -eol
+scripts/review_foreign_component_translation_v2.py -text -eol
+scripts/finalize_foreign_component_translation_v2.py -text -eol
+reports/model-evidence/foreign-component-translation/** -text -eol
+reports/model-evidence/foreign-component-translation-v2/** -text -eol
