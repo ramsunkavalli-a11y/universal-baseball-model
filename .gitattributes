@@ -663,3 +663,11 @@ scripts/run_hitter_finite_return_baseline.py -text -eol
 scripts/complete_hitter_finite_return_baseline.py -text -eol
 tests/test_finite_return_baseline.py -text -eol
 reports/model-evidence/hitter-finite-return-baseline/** -text -eol
+# Preserve the role/health defect repair and its source-to-player receipts.
+docs/hitter-role-health-separation-contract.md -text -eol
+docs/hitter-role-health-separation-result.md -text -eol
+src/universal_baseball/role_health_separation.py -text -eol
+scripts/run_hitter_role_health_separation.py -text -eol
+scripts/audit_travis_medical_span.py -text -eol
+tests/test_role_health_separation.py -text -eol
+reports/model-evidence/hitter-role-health-separation/** -text -eol

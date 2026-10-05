@@ -2,6 +2,41 @@
 
 Updated 2026-10-05. This is the current start-here document.
 
+## Role estimate no longer receives unsafe injury boosts; clinical risk remains open
+
+The [role/health separation repair](hitter-role-health-separation-result.md)
+traces the failure and reviews eighteen players. In the early Travis fold,
+four medical inputs added 434 conditional PA, supported by one scope-exit case
+and three surgery cases. Official dated game logs confirm 313 PA in 74 games
+inside his recorded continuous absence. Missing activation cannot certify
+injury days. The new source audit leaves medical days/recovery unknown rather
+than rewriting a transaction or inferring clearance.
+
+The new fixed role reference omits all six unsafe clinical/capture predictors
+from both heads; twenty other role inputs, actual training subsets and settings
+remain fixed. Prior PA/outcomes still carry ordinary durability risk; this is
+not a healthy-season maximum. Travis moves 800 → 417 PA (197 actual). Tatis's
+reported-ready 2023 construction is 550 PA after the known remaining suspension,
+versus 605 with the unsafe inputs and 635 actual. Retained-gap sensitivity is
+466; neither is a confidence interval or validated clinical-recovery forecast.
+
+Do not deploy the reference. On the same 1,988 unrestricted established rows,
+PA RMSE improves 159.04 → 155.43 but still loses to the stronger benchmark's
+154.06. Participation scores, five origins and exits are worse than that
+benchmark. Moustakas improves 119 → 355 but still misses 635; Reynolds remains
+191 before 593; Judge and Acuña retain aggressive quality-to-workload effects.
+Retire the failed medical reference from further use, not its preserved evidence.
+
+This repair is closed; do not repeat this feature-removal comparison or tune
+its coefficients. Tatis's individualized unconditional health availability is
+still open. Next reconcile medical spans against dated observed appearances
+before any clinical adjustment; scope-exit bounds and incomplete coverage are
+not true injury-day labels. No arbitrary recovery probability, extra overlapping
+deduction, unsigned-player variant or next component is authorized by this result.
+All other 30,518 stronger-benchmark forecasts, hitting rates, frozen packages,
+the final 2026 evaluation and explorer remain unchanged. See the new contract
+and completion receipt; the older sections below are retained historical status.
+
 ## A working Tatis reconstruction is provisional not a new approved forecast
 
 The [finite-return baseline result](hitter-finite-return-baseline-result.md) and
