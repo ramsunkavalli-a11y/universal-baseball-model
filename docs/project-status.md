@@ -2,6 +2,33 @@
 
 Updated 2026-10-04. This is the current start-here document.
 
+## Dated context comparison reviewed but not approved
+
+The [context comparison](hitter-dated-context-integration-result.md) preserves
+all 30,506 original forecasts and completes independent source reconstruction,
+140 old/new head replays and thirteen actual player walks. Appearance Brier and
+log loss improve, but PA and season-relative contribution gains are uncertain.
+Public matched PA MAE remains 106.135 versus Steamer 92.083, outside the unchanged
+15% allowance. The initial value-score reference error is preserved and corrected
+under an [explicit amendment](hitter-dated-context-scoring-amendment.md); no fits
+or forecasts were changed to repair scoring.
+
+Hyeseong Kim moves from .36 to 19.82 expected PA against 170 actual, but his KBO
+production is still unused. Hoskins improves 26 to 193 against 517 actual.
+Voit worsens 345 to 180 against 568 because his trade-date returned absence
+conflicts with dated acquisition/activation evidence. Tatis's temporary absence,
+foreign professional experience and elite thin-sample readiness remain lost
+representations, not solved by listing corrections. McLain's later injury cannot
+be backdated to the forecast. All cases include inputs, head mechanics and peers.
+
+Do not deploy this candidate or repeat this completed comparison. Continue the
+existing foreign integration with one coherent status/role representation:
+reconcile event order and temporary absences, distinguish listings from known
+agreements, and add translated foreign counts. Preserve original rows and score
+qualified additions separately. No blanket job-loss inference, cumulative-event
+employment flag, named override, new algorithm sweep or closed team-record test.
+Protected 2026 and the current explorer remain unchanged; the broad goal is open.
+
 ## Japan and Korea identities and model inputs reviewed
 
 The [foreign input milestone](hitter-foreign-input-readiness-result.md) connects

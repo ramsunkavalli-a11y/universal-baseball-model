@@ -176,3 +176,15 @@ reports/model-evidence/kbo-identity-overlay/** -text -eol
 reports/model-evidence/foreign-mover-support-npb/** -text -eol
 reports/model-evidence/foreign-mover-support-v2-npb-kbo/** -text -eol
 reports/model-evidence/foreign-origin-inputs/** -text -eol
+# Preserve sealed dated-context experiment and amended review bytes.
+docs/hitter-dated-context-integration-contract.md -text -eol
+docs/hitter-dated-context-scoring-amendment.md -text -eol
+docs/hitter-dated-context-integration-result.md -text -eol
+src/universal_baseball/hitter_dated_context.py -text -eol
+tests/test_hitter_dated_context.py -text -eol
+tests/test_hitter_dated_context_scoring.py -text -eol
+scripts/run_hitter_dated_context.py -text -eol
+scripts/review_hitter_dated_context.py -text -eol
+scripts/review_hitter_dated_context_v2.py -text -eol
+scripts/finalize_hitter_dated_context.py -text -eol
+reports/model-evidence/hitter-dated-context-integration/** -text -eol

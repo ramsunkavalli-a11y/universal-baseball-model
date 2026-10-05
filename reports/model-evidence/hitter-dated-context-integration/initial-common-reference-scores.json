@@ -1,0 +1,542 @@
+[
+  {
+    "scope": "all",
+    "rows": 30506,
+    "people": 11020,
+    "scores": {
+      "current": {
+        "pa_rmse": 60.499101826264415,
+        "pa_mae": 20.612358229964137,
+        "pa_bias": -1.3478241546151601,
+        "value_rmse": 0.45115284353512697,
+        "value_mae": 0.1272883580109208,
+        "value_bias": -0.0033198937251100805,
+        "brier": 0.0335404952542329,
+        "logloss": 0.11473611533039627,
+        "expected_pa": 1228732.5119559553,
+        "expected_appearances": 4391.863787413928,
+        "expected_relative_value": 4155.430076780389
+      },
+      "ctx": {
+        "pa_rmse": 60.331221289073646,
+        "pa_mae": 20.549964100204626,
+        "pa_bias": -1.281839661723555,
+        "value_rmse": 0.45080547883433314,
+        "value_mae": 0.1272747512124183,
+        "value_bias": -0.0031566642228109975,
+        "brier": 0.033107952326783686,
+        "logloss": 0.11329045032274646,
+        "expected_pa": 1230622.4601419326,
+        "expected_appearances": 4403.1557638415625,
+        "expected_relative_value": 4160.265545348236
+      }
+    },
+    "actual_pa": 1270493,
+    "actual_appearances": 4538,
+    "actual_relative_value": 4264.186901827925
+  },
+  {
+    "scope": "public",
+    "rows": 2627,
+    "people": 1044,
+    "scores": {
+      "current": {
+        "pa_rmse": 138.32984746826148,
+        "pa_mae": 106.41075374670471,
+        "pa_bias": -4.363012023141175,
+        "value_rmse": 1.053196107234399,
+        "value_mae": 0.701389676330017,
+        "value_bias": 0.03612876078651432,
+        "brier": 0.09167817805858973,
+        "logloss": 0.2973138041315338,
+        "expected_pa": 649254.8423971365,
+        "expected_appearances": 2041.5174668228374,
+        "expected_relative_value": 2210.567858660615
+      },
+      "ctx": {
+        "pa_rmse": 138.05516468445467,
+        "pa_mae": 106.13493756032638,
+        "pa_bias": -3.5505851544185876,
+        "value_rmse": 1.0536727988243024,
+        "value_mae": 0.7031569037259842,
+        "value_bias": 0.03755939520513521,
+        "brier": 0.0885715214500936,
+        "logloss": 0.2879398920778777,
+        "expected_pa": 651397.6423944829,
+        "expected_appearances": 2049.480309839762,
+        "expected_relative_value": 2214.4082709968334
+      }
+    },
+    "actual_pa": 660776,
+    "actual_appearances": 2088,
+    "actual_relative_value": 2123.810127060133
+  },
+  {
+    "scope": "current_MLB",
+    "rows": 4541,
+    "people": 1521,
+    "scores": {
+      "current": {
+        "pa_rmse": 140.95127598087853,
+        "pa_mae": 107.69713732752818,
+        "pa_bias": -5.977975688254117,
+        "value_rmse": 1.108511271309867,
+        "value_mae": 0.7365492048750264,
+        "value_bias": -0.02037014777192119,
+        "brier": 0.09495244796104105,
+        "logloss": 0.30640142038482254,
+        "expected_pa": 1129696.858368429,
+        "expected_appearances": 3547.8661756996835,
+        "expected_relative_value": 3932.723474975929
+      },
+      "ctx": {
+        "pa_rmse": 140.58588875149488,
+        "pa_mae": 107.25834982807078,
+        "pa_bias": -5.717057003107242,
+        "value_rmse": 1.1077168895578642,
+        "value_mae": 0.7365924913020502,
+        "value_bias": -0.019615167560647274,
+        "brier": 0.09243933052826361,
+        "logloss": 0.2986932579889362,
+        "expected_pa": 1130992.4259288022,
+        "expected_appearances": 3553.5986582259943,
+        "expected_relative_value": 3936.415258748567
+      }
+    },
+    "actual_pa": 1156856,
+    "actual_appearances": 3596,
+    "actual_relative_value": 4027.1318440354066
+  },
+  {
+    "scope": "upper_never_debut",
+    "rows": 5454,
+    "people": 3055,
+    "scores": {
+      "current": {
+        "pa_rmse": 55.12674520539247,
+        "pa_mae": 18.732137202600423,
+        "pa_bias": -3.4169789018468157,
+        "value_rmse": 0.31149059998926887,
+        "value_mae": 0.07748531402772664,
+        "value_bias": -0.005493475194704103,
+        "brier": 0.07801654659263811,
+        "logloss": 0.2637467603526992,
+        "expected_pa": 74239.03857057953,
+        "expected_appearances": 589.4630023430029,
+        "expected_relative_value": 177.48629929052925
+      },
+      "ctx": {
+        "pa_rmse": 55.04473354707947,
+        "pa_mae": 18.729609413425834,
+        "pa_bias": -3.351936085764813,
+        "value_rmse": 0.31110749812285343,
+        "value_mae": 0.07740443841120573,
+        "value_bias": -0.005349472760263392,
+        "brier": 0.07773282565028795,
+        "logloss": 0.2629475117641106,
+        "expected_pa": 74609.78955603733,
+        "expected_appearances": 592.9392407146495,
+        "expected_relative_value": 178.29853530269028
+      }
+    },
+    "actual_pa": 92891,
+    "actual_appearances": 730,
+    "actual_relative_value": 203.93926446318383
+  },
+  {
+    "scope": "lower_never_debut",
+    "rows": 17852,
+    "people": 8974,
+    "scores": {
+      "current": {
+        "pa_rmse": 7.966362703629001,
+        "pa_mae": 0.6216744545061635,
+        "pa_bias": 0.0958899452112507,
+        "value_rmse": 0.04298673256198737,
+        "value_mae": 0.0018909995059644676,
+        "value_bias": 0.0003733844617340876,
+        "brier": 0.0026636719540869135,
+        "logloss": 0.013965784493706921,
+        "expected_pa": 7054.64556931176,
+        "expected_appearances": 81.99030198386187,
+        "expected_relative_value": 16.178953968368184
+      },
+      "ctx": {
+        "pa_rmse": 7.9752118786247745,
+        "pa_mae": 0.6161495745936904,
+        "pa_bias": 0.08933248673835632,
+        "value_rmse": 0.0430083040487703,
+        "value_mae": 0.001884938266381117,
+        "value_bias": 0.0003585804000836497,
+        "brier": 0.0026542749944843042,
+        "logloss": 0.013922948001842397,
+        "expected_pa": 6940.086749756299,
+        "expected_appearances": 81.29161307716791,
+        "expected_relative_value": 15.917791570875615
+      }
+    },
+    "actual_pa": 5194,
+    "actual_appearances": 54,
+    "actual_relative_value": 9.56025276109348
+  },
+  {
+    "scope": "absent_prior_debut",
+    "rows": 1766,
+    "people": 937,
+    "scores": {
+      "current": {
+        "pa_rmse": 43.84429455110619,
+        "pa_mae": 13.138739065535423,
+        "pa_bias": 1.0353348005081326,
+        "value_rmse": 0.21935987021823505,
+        "value_mae": 0.04441623970050468,
+        "value_bias": 0.0034956534629749475,
+        "brier": 0.06337749314942355,
+        "logloss": 0.22113664846996267,
+        "expected_pa": 17186.64704682621,
+        "expected_appearances": 166.96460077785784,
+        "expected_relative_value": 28.04108631977663
+      },
+      "ctx": {
+        "pa_rmse": 43.29986724329163,
+        "pa_mae": 13.250110607715246,
+        "pa_bias": 1.2148766516280136,
+        "value_rmse": 0.21865268014954972,
+        "value_mae": 0.04410127634887907,
+        "value_bias": 0.00379328509552504,
+        "brier": 0.06369528863739748,
+        "logloss": 0.2216219473328646,
+        "expected_pa": 17533.08138453812,
+        "expected_appearances": 169.75408136082248,
+        "expected_relative_value": 28.65554397586183
+      }
+    },
+    "actual_pa": 15309,
+    "actual_appearances": 155,
+    "actual_relative_value": 22.305109774464576
+  },
+  {
+    "scope": "changed_context",
+    "rows": 182,
+    "people": 165,
+    "scores": {
+      "current": {
+        "pa_rmse": 159.97144106335907,
+        "pa_mae": 126.03165020897214,
+        "pa_bias": -25.516181421054306,
+        "value_rmse": 1.0821176008863076,
+        "value_mae": 0.7534273913731303,
+        "value_bias": -0.015288198222096911,
+        "brier": 0.1717250838898394,
+        "logloss": 0.5483743537760625,
+        "expected_pa": 36402.41207566191,
+        "expected_appearances": 135.30348727090967,
+        "expected_relative_value": 113.1244560887363
+      },
+      "ctx": {
+        "pa_rmse": 149.82507147952725,
+        "pa_mae": 116.92714103838385,
+        "pa_bias": 16.126693438606257,
+        "value_rmse": 1.0688715881249353,
+        "value_mae": 0.7658341466541827,
+        "value_bias": 0.09755982040914933,
+        "brier": 0.08532781717196768,
+        "logloss": 0.2641464241012959,
+        "expected_pa": 44069.45937790656,
+        "expected_appearances": 149.39245642243523,
+        "expected_relative_value": 134.96668952057396
+      }
+    },
+    "actual_pa": 41687,
+    "actual_appearances": 162,
+    "actual_relative_value": 121.92492829875377
+  },
+  {
+    "scope": "foreign_history",
+    "rows": 253,
+    "people": 138,
+    "scores": {
+      "current": {
+        "pa_rmse": 81.31108219097655,
+        "pa_mae": 27.31187750051075,
+        "pa_bias": -1.540305631950494,
+        "value_rmse": 0.5202413381493859,
+        "value_mae": 0.1400303295169711,
+        "value_bias": -0.056346726097459075,
+        "brier": 0.05797056574294097,
+        "logloss": 0.22243278931753255,
+        "expected_pa": 7463.664247697228,
+        "expected_appearances": 33.89410988230683,
+        "expected_relative_value": 20.275691681097562
+      },
+      "ctx": {
+        "pa_rmse": 80.75142485543766,
+        "pa_mae": 27.141906360586397,
+        "pa_bias": -1.07758682259826,
+        "value_rmse": 0.5189398495418464,
+        "value_mae": 0.13964943548305772,
+        "value_bias": -0.0553130575194699,
+        "brier": 0.055955951221339784,
+        "logloss": 0.20592570864373008,
+        "expected_pa": 7569.466787534998,
+        "expected_appearances": 34.50593192635806,
+        "expected_relative_value": 20.515818860233345
+      }
+    },
+    "actual_pa": 7776,
+    "actual_appearances": 28,
+    "actual_relative_value": 34.3186926242949
+  },
+  {
+    "scope": "origin_2016",
+    "rows": 4663,
+    "people": 4663,
+    "scores": {
+      "current": {
+        "pa_rmse": 57.64805285415671,
+        "pa_mae": 18.692640246908606,
+        "pa_bias": -1.7711269022873615,
+        "value_rmse": 0.45490062995736574,
+        "value_mae": 0.12058414578268437,
+        "value_bias": -0.023460658177165465,
+        "brier": 0.03121169191453417,
+        "logloss": 0.10589882032390599,
+        "expected_pa": 171709.23525463397,
+        "expected_appearances": 623.4261676611462,
+        "expected_relative_value": 597.1578884810591
+      },
+      "ctx": {
+        "pa_rmse": 57.352069988261576,
+        "pa_mae": 18.577717783121596,
+        "pa_bias": -1.7917083070139943,
+        "value_rmse": 0.45671315430681886,
+        "value_mae": 0.12100873133162547,
+        "value_bias": -0.02334917171233364,
+        "brier": 0.031324746787617305,
+        "logloss": 0.10555764836690402,
+        "expected_pa": 171613.26416439383,
+        "expected_appearances": 624.3640725336606,
+        "expected_relative_value": 597.6777498665695
+      }
+    },
+    "actual_pa": 179968,
+    "actual_appearances": 624,
+    "actual_relative_value": 706.5549375611812
+  },
+  {
+    "scope": "origin_2017",
+    "rows": 4691,
+    "people": 4691,
+    "scores": {
+      "current": {
+        "pa_rmse": 56.64522304623456,
+        "pa_mae": 18.133965410644365,
+        "pa_bias": -1.1354803112621454,
+        "value_rmse": 0.4057212509407472,
+        "value_mae": 0.11076933610100473,
+        "value_bias": 0.02184224621358214,
+        "brier": 0.030806837944624906,
+        "logloss": 0.10420183766133598,
+        "expected_pa": 174316.4618598693,
+        "expected_appearances": 616.2927241842597,
+        "expected_relative_value": 607.9228170155743
+      },
+      "ctx": {
+        "pa_rmse": 56.57383717910677,
+        "pa_mae": 18.023888276642538,
+        "pa_bias": -1.2375613420556262,
+        "value_rmse": 0.40528762314916855,
+        "value_mae": 0.11022915866210706,
+        "value_bias": 0.02152971744584965,
+        "brier": 0.03029861857954729,
+        "logloss": 0.10292450379446635,
+        "expected_pa": 173837.59974441706,
+        "expected_appearances": 616.7076518009696,
+        "expected_relative_value": 606.4567445661413
+      }
+    },
+    "actual_pa": 179643,
+    "actual_appearances": 628,
+    "actual_relative_value": 505.4608400276606
+  },
+  {
+    "scope": "origin_2018",
+    "rows": 4478,
+    "people": 4478,
+    "scores": {
+      "current": {
+        "pa_rmse": 62.439701424293474,
+        "pa_mae": 20.152743092276527,
+        "pa_bias": -2.0551587779609406,
+        "value_rmse": 0.5306251869660004,
+        "value_mae": 0.14508177273543155,
+        "value_bias": -0.04821110038965022,
+        "brier": 0.02966673600428741,
+        "logloss": 0.10188111110207652,
+        "expected_pa": 172104.99899229084,
+        "expected_appearances": 615.0841701700679,
+        "expected_relative_value": 599.5340553991582
+      },
+      "ctx": {
+        "pa_rmse": 62.33667324019478,
+        "pa_mae": 20.141556081185012,
+        "pa_bias": -2.073477665474547,
+        "value_rmse": 0.5270027217716884,
+        "value_mae": 0.14414114225587382,
+        "value_bias": -0.04795125427116422,
+        "brier": 0.02924491946431234,
+        "logloss": 0.10055438372669624,
+        "expected_pa": 172022.96701400497,
+        "expected_appearances": 614.2506053537365,
+        "expected_relative_value": 600.6976463177399
+      }
+    },
+    "actual_pa": 181308,
+    "actual_appearances": 638,
+    "actual_relative_value": 815.4233629440128
+  },
+  {
+    "scope": "origin_2021",
+    "rows": 4242,
+    "people": 4242,
+    "scores": {
+      "current": {
+        "pa_rmse": 59.307558966347734,
+        "pa_mae": 20.099963073205682,
+        "pa_bias": -3.9568419573973377,
+        "value_rmse": 0.41577104186310715,
+        "value_mae": 0.12379695612119311,
+        "value_bias": 0.03381577344370248,
+        "brier": 0.040443575816189424,
+        "logloss": 0.13897949224694953,
+        "expected_pa": 164798.0764167206,
+        "expected_appearances": 581.3609535170974,
+        "expected_relative_value": 607.3525945925586
+      },
+      "ctx": {
+        "pa_rmse": 59.35104982546491,
+        "pa_mae": 20.080803930671028,
+        "pa_bias": -3.5380491203321376,
+        "value_rmse": 0.41700098811220054,
+        "value_mae": 0.1247925866028112,
+        "value_bias": 0.03466240879194084,
+        "brier": 0.03953142019055247,
+        "logloss": 0.1361248534630521,
+        "expected_pa": 166574.5956315511,
+        "expected_appearances": 588.036224472504,
+        "expected_relative_value": 610.9440217397852
+      }
+    },
+    "actual_pa": 181583,
+    "actual_appearances": 686,
+    "actual_relative_value": 463.9060836443723
+  },
+  {
+    "scope": "origin_2022",
+    "rows": 4244,
+    "people": 4244,
+    "scores": {
+      "current": {
+        "pa_rmse": 61.95586096879839,
+        "pa_mae": 21.51016204341405,
+        "pa_bias": -1.324739139145718,
+        "value_rmse": 0.4681303774835258,
+        "value_mae": 0.13352148245736506,
+        "value_bias": -0.03809831371684166,
+        "brier": 0.034560379463584215,
+        "logloss": 0.11935014764629831,
+        "expected_pa": 177294.80709346556,
+        "expected_appearances": 641.2617474184858,
+        "expected_relative_value": 575.9633398194536
+      },
+      "ctx": {
+        "pa_rmse": 61.254060496212574,
+        "pa_mae": 21.29931647536691,
+        "pa_bias": -1.1117791922507827,
+        "value_rmse": 0.4664059067273548,
+        "value_mae": 0.1333257645356861,
+        "value_bias": -0.0373333353426054,
+        "brier": 0.03370832875134943,
+        "logloss": 0.11699354820220609,
+        "expected_pa": 178198.6091080877,
+        "expected_appearances": 644.1499045297372,
+        "expected_relative_value": 579.2099080397111
+      }
+    },
+    "actual_pa": 182917,
+    "actual_appearances": 649,
+    "actual_relative_value": 737.652583233729
+  },
+  {
+    "scope": "origin_2023",
+    "rows": 4196,
+    "people": 4196,
+    "scores": {
+      "current": {
+        "pa_rmse": 62.46586141978641,
+        "pa_mae": 22.69433285121342,
+        "pa_bias": 1.015141862899324,
+        "value_rmse": 0.4275435385871186,
+        "value_mae": 0.1274321453060258,
+        "value_bias": 0.04444158443926889,
+        "brier": 0.03332489877697598,
+        "logloss": 0.11653231875590285,
+        "expected_pa": 186453.53525672553,
+        "expected_appearances": 667.3895516797581,
+        "expected_relative_value": 607.8129728506993
+      },
+      "ctx": {
+        "pa_rmse": 62.018063736481835,
+        "pa_mae": 22.568098659996892,
+        "pa_bias": 0.9258337411253382,
+        "value_rmse": 0.42733517680999233,
+        "value_mae": 0.12740042446472652,
+        "value_bias": 0.043888226328452296,
+        "brier": 0.03281827506150835,
+        "logloss": 0.11527448603744378,
+        "expected_pa": 186078.79837776194,
+        "expected_appearances": 667.7563914318715,
+        "expected_relative_value": 605.4910822177133
+      }
+    },
+    "actual_pa": 182194,
+    "actual_appearances": 647,
+    "actual_relative_value": 421.33608454352634
+  },
+  {
+    "scope": "origin_2024",
+    "rows": 3992,
+    "people": 3992,
+    "scores": {
+      "current": {
+        "pa_rmse": 62.708807554097966,
+        "pa_mae": 23.002700892086303,
+        "pa_bias": -0.20656385715194006,
+        "value_rmse": 0.44368877042717986,
+        "value_mae": 0.12983266757274098,
+        "value_bias": -0.01356878788866673,
+        "brier": 0.03476934685943418,
+        "logloss": 0.11630907957630461,
+        "expected_pa": 182055.39708224946,
+        "expected_appearances": 647.0484727831126,
+        "expected_relative_value": 559.6864086218851
+      },
+      "ctx": {
+        "pa_rmse": 63.106471518981685,
+        "pa_mae": 23.158367494448406,
+        "pa_bias": -0.14613574606313365,
+        "value_rmse": 0.44492985899337806,
+        "value_mae": 0.13002545063409784,
+        "value_bias": -0.013543240799816504,
+        "brier": 0.03482935745259857,
+        "logloss": 0.11560372866845667,
+        "expected_pa": 182296.62610171598,
+        "expected_appearances": 647.8909137190825,
+        "expected_relative_value": 559.7883926005759
+      }
+    },
+    "actual_pa": 182880,
+    "actual_appearances": 666,
+    "actual_relative_value": 613.853009873443
+  }
+]

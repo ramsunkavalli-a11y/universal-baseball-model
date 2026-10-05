@@ -1,0 +1,75 @@
+{
+  "execution_verification_status": "complete",
+  "player_walkthrough_status": "complete",
+  "cases": 13,
+  "old_new_head_replays": 140,
+  "source_rows": 63282,
+  "forecast_rows": 30506,
+  "changed_forecast_rows": 182,
+  "profile_support": [
+    {
+      "head": "conditional_pa",
+      "rows": 30506,
+      "zero_people": 754,
+      "fewer_than_twenty_people": 10676
+    },
+    {
+      "head": "participation",
+      "rows": 30506,
+      "zero_people": 3,
+      "fewer_than_twenty_people": 221
+    }
+  ],
+  "predictive_status": "Appearance improvement; uncertain PA and value effect; public value slightly worse",
+  "public_pa_rmse_excess": 0.019764454647740015,
+  "public_pa_mae_excess": 0.15260269444070151,
+  "public_pa_rmse_allowance_pass": true,
+  "public_pa_mae_allowance_pass": false,
+  "baseball_reasonability_status": "Deployment fails source/cutoff consistency and unresolved representation gaps",
+  "disposition": "Retain diagnostic comparison; do not deploy or reject foreign production",
+  "next_work": "Reconcile dated listing/contract/temporary status, integrate translated foreign production and qualified additions",
+  "new_foreign_forecasts": 0,
+  "deployment_approved": false,
+  "full_goal_complete": false,
+  "protected_freeze": {
+    "contact_available_rows": 3511,
+    "five_model_rows": 3720,
+    "forecast_sha256": "d1953a28d35d87d141ecc65ec4b107906edad877982e79c0d3a216245b9e4708",
+    "players": 3907,
+    "population_prior_rows": 187,
+    "protected_2026_opened": false,
+    "status": "verified",
+    "verified_files": 31
+  },
+  "hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\finalize_hitter_dated_context.py": "73cb79a017b6982f32c4aaa519dd09dba5e98fdb8f35eeac0585d7b995856099",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\hitter-dated-context-integration-result.md": "dff4468a5a2bdfbdabab59c2d51a62419c01b4118fe84c52a31e2c071bdbb878",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\hitter-dated-context-scoring-amendment.md": "baf84b61af98361484e7d6932bdd5c6dd11e27f988c5288c96a9c40a27cada3f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\review_hitter_dated_context.py": "e6bc81d8133f7bc9f9aec369743671eb3cdb9587ffd168d120c5f8e60dd3a646",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\review_hitter_dated_context_v2.py": "f9750c48363d989aac0d07b27b8d95d6118f03e9be3af7e2240ad20a74106c5c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\run_hitter_dated_context.py": "9c4f319fd97629bf09378bf7b1687ff8a410deb8cc4607262ab7b030f0a20718",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\src\\universal_baseball\\hitter_dated_context.py": "72999a9e3e8bdd19a0fe78703b6ea9682ca1e0a5189deac494d5a4bf63980ea3",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\tests\\test_hitter_dated_context.py": "87ab7986ca3c461eeaf05c941b22096796eb219c5f1f26b4ccc0bb20504af7a9",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\tests\\test_hitter_dated_context_scoring.py": "15f9ade4126e60c917f447701fc35207f501b74b74b2c3a61d0ea845011b01f5",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-dated-context-integration\\verification.json": "cb32f2ddc602e589c7537a1ef9f214fb9a5e988ae2431a4b915ec59716f90124",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-dated-context-integration\\completed-case-manifest.json": "c5944f96d45b5f6fcd97fd8b75c633c7e04d45450541e25e4b648905d3e61562",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-dated-context-integration\\source-conflict-diagnostic.json": "6a2345a396eaf36b096faba25b8498465f365c1a85548f8959b008abd676e466",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-dated-context-integration\\checks.json": "d9f515454509366614d01cd9a4f5b11ac2a54c768467a055171acb2ec51d1831",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-dated-context-integration\\preflight.json": "647012aa3a939ab0f0a02975fa39c026a4014efc336632ada459e4bdd4d39ebe",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-dated-context-integration\\fit-report.json": "4e0a7af35b0e495947410dc0885f2431a295793db9169e4a7395ea150ed6c136",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-dated-context-integration\\fit-seal.json": "916f2c620c84a04f6515a2ea0fe54ce5ba72ed4f5bc9e729279e8bacce709255"
+  },
+  "public_artifact_hashes": {
+    "checks.json": "d9f515454509366614d01cd9a4f5b11ac2a54c768467a055171acb2ec51d1831",
+    "completed-case-manifest.json": "c5944f96d45b5f6fcd97fd8b75c633c7e04d45450541e25e4b648905d3e61562",
+    "initial-common-reference-intervals.json": "03ecb7c216ef3b34574faf4eba4bed0883be825fad068b5f0752e268f438c4b7",
+    "initial-common-reference-scores.json": "a4bb9d8a7b566ae07c46ed65dff6545f60c47cd74952c940f44ad7c6a048734b",
+    "initial-public-benchmark.json": "0aa016e578432f8cd39b095bd6edbd67d741453ae42bb1e27adcc3f8c6452515",
+    "intervals-relative.json": "3fffdbf5d0a67dd15d41545edd668eb93fca0e70e242088aae13405e187f65f2",
+    "player-walkthrough.md": "3a4c2999be1d6bf209fc88006fece97d728faf56e4a6c730f79d9c4a53a72f2d",
+    "public-benchmark-relative-review.json": "0aa016e578432f8cd39b095bd6edbd67d741453ae42bb1e27adcc3f8c6452515",
+    "scores-relative.json": "6696cc3b4ce18bf4fb557bfaf6283349ebb5a0ae61b4d12213298ae585dc6d03",
+    "source-conflict-diagnostic.json": "6a2345a396eaf36b096faba25b8498465f365c1a85548f8959b008abd676e466",
+    "verification.json": "cb32f2ddc602e589c7537a1ef9f214fb9a5e988ae2431a4b915ec59716f90124"
+  }
+}
