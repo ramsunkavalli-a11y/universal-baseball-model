@@ -627,3 +627,11 @@ tests/test_international_hitter_snapshot_2026.py -text -eol
 tests/test_npb_hitter_2026_identity.py -text -eol
 tests/test_international_snapshot_completion.py -text -eol
 reports/model-evidence/international-hitter-snapshot-2026-10-05/** -text -eol
+# Preserve the basics-reset competence evidence byte-for-byte.
+docs/hitter-basics-reset-plan.md -text -eol
+docs/hitter-basics-reset-assessment.md -text -eol
+docs/hitter-basics-floor-result.md -text -eol
+scripts/check_hitter_basics_floor.py -text -eol
+scripts/complete_hitter_basics_floor.py -text -eol
+tests/test_hitter_basics_floor.py -text -eol
+reports/model-evidence/hitter-basics-floor/** -text -eol

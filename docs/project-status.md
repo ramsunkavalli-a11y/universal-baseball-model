@@ -2,6 +2,50 @@
 
 Updated 2026-10-05. This is the current start-here document.
 
+## Reset around baseball basics, not another model sweep
+
+The [new controlling goal](hitter-basics-reset-plan.md) and
+[plain-language component map and decision ledger](hitter-basics-reset-assessment.md)
+supersede the older next-action paragraphs below. The selected hitter model is
+three hitting routes plus separate participation and active-workload heads;
+its evaluated contribution is batting plus replacement, not the full player-value
+system. Collected defensive, running, weather and opponent experiments are not
+automatically integrated into it.
+
+The [new no-fit competence check](hitter-basics-floor-result.md) retains 30,506
+historical forecasts and independently reconstructs their past-production floor.
+Selected hitting error is 1.8048 versus the floor's 1.9092; contribution error
+is .43513 versus .45469 with identical playing time. Both favor selected in all
+seven origins. Lower-minor hitting slightly favors the floor, with only 54
+observed next-year MLB rates. Ten actual source-to-forecast walks retain the
+largest floor gain/harm, temporary absences, missed prospects and ordinary cases.
+This establishes a competence floor, NOT a new accuracy gain or public-system win.
+
+Keep useful hitting inputs. The priority is the opportunity mechanism that treats
+interrupted established careers and ready prospects too much like ordinary weak
+MLB-evidence cases. Existing source/path, exposure, employment and handoff reviews
+must be USED, not rerun. The work order in the reset assessment requires one
+specific influential-path defect and one bounded correction before another fit;
+no generic status addition, prospect multiplier or algorithm tournament.
+
+The measured public gap is roughly 15.6% in PA mean absolute error, not an
+established 20% whole-model loss to AI's predecessors. Hitting comparisons are
+closer and qualified. Wrong source facts must be repaired even without a score
+gain; unused or confounded feature trials do not reject broader baseball ideas.
+Both frozen forecasts, the one-time 2026 evaluation and the explorer remain
+unchanged. The broader goal remains unfinished; the old product goal could not
+be replaced while still open, so this repo plan records the user's new scope.
+
+Verification: 21 focused tests and lint pass. A separate completion receipt checks
+six headline equations with a different aggregation implementation and records
+the reviewed ten walks; the raw receipt's pending marker is preserved as history.
+Both freeze verifiers pass (53 selected files / 4,030 players; 31 legacy files /
+3,907 players), and the existing final-evaluation report hash is unchanged. The
+completion command first stopped on a wrong manifest filename; fixing that path
+completed verification without changing source data, scores or forecasts. The
+selected freeze verifier's old "not yet evaluated" field remains historical,
+not current status. These are integrity checks, not prediction improvements.
+
 ## Overseas source snapshot is complete without a forecast change
 
 The [dated source result](hitter-international-2026-snapshot-result.md) and
