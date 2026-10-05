@@ -2,15 +2,34 @@
 
 Updated 2026-10-04. This is the current start-here document.
 
-## Complete the evidence comparison then evaluate a frozen candidate
+## Evidence comparison complete and learning strength diagnosed
 
 The active long-range goal is a usable hitter model: hitting ability, playing
 time and delivered contribution, with public comparisons, actual player checks
-and a team-filtered research explorer. Finish the fixed
-[representation comparison](hitter-evidence-representation-contract.md), including
-its [prefit corrections](hitter-evidence-representation-prefit-correction.md),
-before choosing another experiment. Preparation is not predictive validation;
-no repaired-model scores or promotion exist yet.
+and a team-filtered research explorer. The fixed
+[representation comparison is complete](hitter-evidence-representation-result.md):
+140 heads replay, 462 headline/year score fields independently reconstruct,
+twelve focused checks pass, and all [41 player walks](hitter-evidence-representation-player-review.md)
+are complete. Original pending receipts and documented execution recovery remain.
+
+Repaired PA RMSE improves 60.4991 to 60.2530, but delivered contribution RMSE
+worsens 0.43513 to 0.43606 and PA-weighted hitting 1.80481 to 1.80850. Neither
+complete candidate replaces current UBM. Hoskins's expected PA improves 26 to
+365 against 517 actual; Thames's professional job is better represented. Yordan,
+Kurtz, Kwan and Caminero remain material misses; finite Tatis and unresolved
+Franco restrictions remain poorly handled. Public PA MAE passes the practical
+tolerance but still trails Steamer by about 14.3%.
+
+The no-fit [learning-strength diagnosis](hitter-evidence-learning-diagnosis.md)
+finds that attenuation plus inherited Ridge penalty barely learns the sparse
+foreign production contrasts. Seven to thirty-one training participants carry
+only 0.24–0.68% of training PA weight. Dropping the redundant other coordinate
+also changes the penalty geometry. All 35 saved rate coefficient vectors
+reconstruct independently; original fitted training-rate labels are compatible.
+This loss does not reject foreign/minor evidence. Next design shared translated
+event learning with coherent priors/reliability, preserving useful current talent
+routing, before another fit. No coefficient tweak, source collection or algorithm
+tournament is authorized by the diagnosis alone. Team record remains closed.
 
 The user has now authorized a completed-2026 final evaluation **after** candidate
 freeze. The [freeze and evaluation sequence](hitter-2026-final-evaluation-authorization.md)

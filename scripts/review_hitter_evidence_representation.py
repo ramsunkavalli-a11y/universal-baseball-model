@@ -19,6 +19,7 @@ from prepare_practical_hitter_v33 import safe_matrix
 from review_hitter_overseas_integration import score, errors, origin_weights
 from supplement_hitter_overseas_scores import rate_score
 from evaluate_hitter_readiness_v49 import logit_trace
+from universal_baseball.hitter_evidence_representation import RECENCY, minor_evidence, foreign_evidence
 
 NEW = ['repaired_domestic', 'repaired_overseas']
 
@@ -57,6 +58,24 @@ def linear_trace(m, x, names):
     return dict(intercept=float(m.intercept_), prediction=prediction,
                 feature_effects=sorted(terms, key=lambda r: -abs(r['effect'])),
                 interpretation='Exact fixed-unit linear accounting, not causal attribution')
+
+
+def rate_interval(g, candidate, baseline):
+    g=g.filter(pl.col('next_pa')>0)
+    years=g['origin_year'].to_numpy();pa=g['next_pa'].to_numpy().astype(float)
+    ys=np.unique(years)
+    w=np.array([n/(len(ys)*pa[years==y].sum()) for n,y in zip(pa,years,strict=True)])
+    delta=(g[candidate+'_rate']-g['actual_relative_rate']).to_numpy()**2-(g[baseline+'_rate']-g['actual_relative_rate']).to_numpy()**2
+    people,pi=np.unique(g['player_id'].to_numpy(),return_inverse=True)
+    total=np.zeros(len(people));den=np.zeros(len(people))
+    np.add.at(total,pi,w*delta);np.add.at(den,pi,w)
+    rng=np.random.default_rng(84);draws=[]
+    for _ in range(2000):
+        counts=np.bincount(rng.integers(len(people),size=len(people)),minlength=len(people))
+        draws.append(float(counts@total/(counts@den)))
+    return dict(metric='PA_weighted_relative_rate_mse',change=float(w@delta),
+                lower=float(np.quantile(draws,.025)),upper=float(np.quantile(draws,.975)),
+                fixed_original_origin_PA_weights=True,nominal_exposed_development_interval=True)
 
 
 def main():
@@ -132,7 +151,8 @@ def main():
             if name in ['original_all','public','original_foreign','additions']:
                 pairs = [('repaired_overseas','repaired_domestic')]
                 if name!='additions': pairs += [(a,'current') for a in NEW]
-                for a,b in pairs: comparisons.append(dict(scope=name,candidate=a,baseline=b,intervals=interval(g,a,b)))
+                for a,b in pairs: comparisons.append(dict(scope=name,candidate=a,baseline=b,intervals=interval(g,a,b),
+                                                          rate_interval=rate_interval(g,a,b)))
     paerr = (public['steamer_pa']-public['next_pa']).to_numpy(); w=origin_weights(public)
     public_value = public['steamer_pa']*(public['steamer_rate']/600+public['origin_replacement_rate'])
     ve = (public_value-public['actual_relative_value']).to_numpy()
@@ -155,11 +175,25 @@ def main():
         choose(z.filter(pl.col('next_pa').is_between(200,399)).sort(pl.col('error').abs()),arm+' ordinary')
     oldcases={c['origin']['row_id']:c for c in read(OLD/'reviewed-cases.json')['cases']}
     sources={c['row_id']:c for c in read(OUT/'source-cases.json')}
+    counts=pl.read_parquet(GEN/'practical-hitter-v31/counts.parquet')
+    foreign_sources={r['candidate_key']:r for r in read(GEN/'foreign-origin-inputs/origin-inputs.json')['rows']}
+    foreign_profiles={(r['candidate_key'],r['outer_fold']):r for r in read(GEN/'foreign-borrowed-stability/profiles.json')['profiles']}
     support=pl.read_parquet(OUT/'profile-support.parquet'); cases=[]
     with threadpool_limits(limits=2):
         for rid, why in chosen.items():
             o=q.filter(pl.col('row_id')==rid).row(0,named=True); y,k=o['origin_year'],o['outer_fold']
             one=frames[k].filter(pl.col('row_id')==rid); a=one.row(0,named=True)
+            if rid not in sources:
+                key=f'{y}:{o["player_id"]}';s=foreign_sources.get(key);p=foreign_profiles.get((key,k))
+                graph=next(g for g in read(GEN/f'hitter-talent-bridge-v74/translation-{k}.json')['graphs'] if g['cutoff']==y)
+                nmlb=sum(RECENCY[lag]*a[f'pa_{lag}'] for lag in range(3))
+                _,fn=foreign_evidence(s,p,origin=y,outer_fold=k,own_fold=k,mlb_exposure=nmlb,minor_exposure=0.)
+                mi,mn=minor_evidence(counts.filter(pl.col('player_id')==o['player_id']).to_dicts(),graph,origin=y,
+                                     mlb_exposure=nmlb,foreign_exposure=fn['supported_precision_PA'])
+                fo,fn=foreign_evidence(s,p,origin=y,outer_fold=k,own_fold=k,mlb_exposure=nmlb,
+                                      minor_exposure=mn['supported_precision_PA'])
+                assert all(np.isclose(a[n],v,atol=1e-12) for n,v in {**mi,**fo}.items())
+                sources[rid]=dict(minor=mn,foreign=fn,translation_graph_cutoff=y,held_fold=k)
             cell=next(c for c in fit['cells'] if c['origin']==y and c['fold']==k)
             mechanics={}
             for h in cell['heads']:

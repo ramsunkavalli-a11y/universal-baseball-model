@@ -1,0 +1,4288 @@
+{
+  "new_fits": 0,
+  "all_35_Ridge_coefficients_independently_reconstructed": true,
+  "incumbent_feature_training_rate_labels_match_compatible_relative_target": true,
+  "summary": {
+    "minor": {
+      "training_people_min": 816,
+      "training_people_max": 1547,
+      "median_design_information_fraction": 0.017935842639750302,
+      "maximum_design_information_fraction": 0.4568768069989171,
+      "PA_weight_fraction_min": 0.7990451965551473,
+      "PA_weight_fraction_max": 0.8197119849063308
+    },
+    "foreign": {
+      "training_people_min": 7,
+      "training_people_max": 31,
+      "median_design_information_fraction": 0.00023063021793681752,
+      "maximum_design_information_fraction": 0.014718229448438603,
+      "PA_weight_fraction_min": 0.00237945309781047,
+      "PA_weight_fraction_max": 0.006823240674376618
+    }
+  },
+  "cells": [
+    {
+      "origin": 2016,
+      "fold": 0,
+      "active_training_rows": 2492,
+      "active_training_people": 848,
+      "families": {
+        "minor": {
+          "active_training_rows": 2204,
+          "active_training_people": 818,
+          "actual_PA_weight_fraction": 0.8065044374896251,
+          "features": [
+            {
+              "feature": "evidence_minor_K",
+              "weighted_centered_sum_squares": 44.504948404221864,
+              "conditional_regularized_design_information": 32.40227423086523,
+              "design_information_fraction": 0.24472596425622203,
+              "coefficient": 0.1604529866799234
+            },
+            {
+              "feature": "evidence_minor_UBB",
+              "weighted_centered_sum_squares": 6.207361566682602,
+              "conditional_regularized_design_information": 4.3733918945792425,
+              "design_information_fraction": 0.041901406241511445,
+              "coefficient": 0.11899186436173374
+            },
+            {
+              "feature": "evidence_minor_HBP",
+              "weighted_centered_sum_squares": 0.4227835046915025,
+              "conditional_regularized_design_information": 0.3868571346080216,
+              "design_information_fraction": 0.0038536631751434117,
+              "coefficient": 0.03859400080747352
+            },
+            {
+              "feature": "evidence_minor_1B",
+              "weighted_centered_sum_squares": 6.532501048418748,
+              "conditional_regularized_design_information": 4.411849892395395,
+              "design_information_fraction": 0.04225430252353687,
+              "coefficient": -0.03884914908909543
+            },
+            {
+              "feature": "evidence_minor_2B",
+              "weighted_centered_sum_squares": 1.1257717752791538,
+              "conditional_regularized_design_information": 0.8413900452081577,
+              "design_information_fraction": 0.008343697412649256,
+              "coefficient": 0.0925735002100002
+            },
+            {
+              "feature": "evidence_minor_3B",
+              "weighted_centered_sum_squares": 0.4925466103495919,
+              "conditional_regularized_design_information": 0.29045023701171147,
+              "design_information_fraction": 0.0028960906679081017,
+              "coefficient": -0.013341614225608974
+            },
+            {
+              "feature": "evidence_minor_HR",
+              "weighted_centered_sum_squares": 1.6185534231424954,
+              "conditional_regularized_design_information": 1.011493181381823,
+              "design_information_fraction": 0.010013644482668225,
+              "coefficient": 0.13678546984683732
+            }
+          ]
+        },
+        "foreign": {
+          "active_training_rows": 9,
+          "active_training_people": 7,
+          "actual_PA_weight_fraction": 0.0036731476533982312,
+          "features": [
+            {
+              "feature": "evidence_foreign_K",
+              "weighted_centered_sum_squares": 0.5010136730338698,
+              "conditional_regularized_design_information": 0.3976577834281869,
+              "design_information_fraction": 0.0039608272962501825,
+              "coefficient": -0.021089341331702795
+            },
+            {
+              "feature": "evidence_foreign_UBB",
+              "weighted_centered_sum_squares": 0.0288620762057352,
+              "conditional_regularized_design_information": 0.02375698405279536,
+              "design_information_fraction": 0.00023751341450394664,
+              "coefficient": 0.005136488488842572
+            },
+            {
+              "feature": "evidence_foreign_HBP",
+              "weighted_centered_sum_squares": 0.0005175058783767674,
+              "conditional_regularized_design_information": 0.0004846768256783207,
+              "design_information_fraction": 4.846744765734528e-06,
+              "coefficient": 0.0007124619806623837
+            },
+            {
+              "feature": "evidence_foreign_1B",
+              "weighted_centered_sum_squares": 0.0745875300732885,
+              "conditional_regularized_design_information": 0.05928180291020624,
+              "design_information_fraction": 0.0005924668040989481,
+              "coefficient": 0.007424886423879404
+            },
+            {
+              "feature": "evidence_foreign_2B",
+              "weighted_centered_sum_squares": 0.0019214557335871583,
+              "conditional_regularized_design_information": 0.001552341017131198,
+              "design_information_fraction": 1.552316919878935e-05,
+              "coefficient": -0.00119908436268476
+            },
+            {
+              "feature": "evidence_foreign_3B",
+              "weighted_centered_sum_squares": 0.00019858910187288208,
+              "conditional_regularized_design_information": 0.00019280734528592802,
+              "design_information_fraction": 1.928069735399208e-06,
+              "coefficient": -0.00028584833772563685
+            },
+            {
+              "feature": "evidence_foreign_HR",
+              "weighted_centered_sum_squares": 0.007144769331689317,
+              "conditional_regularized_design_information": 0.006278932805344084,
+              "design_information_fraction": 6.278538580125481e-05,
+              "coefficient": -0.0008319731205452736
+            }
+          ]
+        }
+      }
+    },
+    {
+      "origin": 2017,
+      "fold": 0,
+      "active_training_rows": 2999,
+      "active_training_people": 943,
+      "families": {
+        "minor": {
+          "active_training_rows": 2657,
+          "active_training_people": 914,
+          "actual_PA_weight_fraction": 0.8106761046099091,
+          "features": [
+            {
+              "feature": "evidence_minor_K",
+              "weighted_centered_sum_squares": 54.75866446132614,
+              "conditional_regularized_design_information": 39.40630616319751,
+              "design_information_fraction": 0.28267233561920857,
+              "coefficient": 0.203380443452092
+            },
+            {
+              "feature": "evidence_minor_UBB",
+              "weighted_centered_sum_squares": 7.537646221272908,
+              "conditional_regularized_design_information": 5.145465341194665,
+              "design_information_fraction": 0.04893663577880174,
+              "coefficient": 0.16384113315024612
+            },
+            {
+              "feature": "evidence_minor_HBP",
+              "weighted_centered_sum_squares": 0.5012608264604841,
+              "conditional_regularized_design_information": 0.4581231618070092,
+              "design_information_fraction": 0.0045603396458951785,
+              "coefficient": 0.036524268675306844
+            },
+            {
+              "feature": "evidence_minor_1B",
+              "weighted_centered_sum_squares": 7.959850646953902,
+              "conditional_regularized_design_information": 5.337721485126423,
+              "design_information_fraction": 0.05067246006341711,
+              "coefficient": -0.031790560269343786
+            },
+            {
+              "feature": "evidence_minor_2B",
+              "weighted_centered_sum_squares": 1.3381279601380873,
+              "conditional_regularized_design_information": 0.9626381146664471,
+              "design_information_fraction": 0.009534597477268262,
+              "coefficient": 0.10726134044259455
+            },
+            {
+              "feature": "evidence_minor_3B",
+              "weighted_centered_sum_squares": 0.6071243176962378,
+              "conditional_regularized_design_information": 0.353009802718546,
+              "design_information_fraction": 0.0035176802710005315,
+              "coefficient": -0.015783732561185815
+            },
+            {
+              "feature": "evidence_minor_HR",
+              "weighted_centered_sum_squares": 2.081283439884715,
+              "conditional_regularized_design_information": 1.2127543195546053,
+              "design_information_fraction": 0.011982228205406101,
+              "coefficient": 0.15702642655666177
+            }
+          ]
+        },
+        "foreign": {
+          "active_training_rows": 15,
+          "active_training_people": 12,
+          "actual_PA_weight_fraction": 0.004824736946196231,
+          "features": [
+            {
+              "feature": "evidence_foreign_K",
+              "weighted_centered_sum_squares": 0.5506489105281218,
+              "conditional_regularized_design_information": 0.43895825493700613,
+              "design_information_fraction": 0.004370398325148195,
+              "coefficient": -0.014023421395052936
+            },
+            {
+              "feature": "evidence_foreign_UBB",
+              "weighted_centered_sum_squares": 0.04840284303523294,
+              "conditional_regularized_design_information": 0.03961461709570813,
+              "design_information_fraction": 0.0003959893013116267,
+              "coefficient": 0.009020944251764085
+            },
+            {
+              "feature": "evidence_foreign_HBP",
+              "weighted_centered_sum_squares": 0.004763994544573069,
+              "conditional_regularized_design_information": 0.004177083716527363,
+              "design_information_fraction": 4.1769092435314976e-05,
+              "coefficient": 0.0025193762879148667
+            },
+            {
+              "feature": "evidence_foreign_1B",
+              "weighted_centered_sum_squares": 0.08051934606967426,
+              "conditional_regularized_design_information": 0.0643966408693899,
+              "design_information_fraction": 0.0006435519828347051,
+              "coefficient": 0.004169504109104863
+            },
+            {
+              "feature": "evidence_foreign_2B",
+              "weighted_centered_sum_squares": 0.010423869398640408,
+              "conditional_regularized_design_information": 0.009969591587278614,
+              "design_information_fraction": 9.968597758795084e-05,
+              "coefficient": 0.002260360985634672
+            },
+            {
+              "feature": "evidence_foreign_3B",
+              "weighted_centered_sum_squares": 0.0010271793351369722,
+              "conditional_regularized_design_information": 0.0009861615758524067,
+              "design_information_fraction": 9.861518508017746e-06,
+              "coefficient": 0.0006616092749991787
+            },
+            {
+              "feature": "evidence_foreign_HR",
+              "weighted_centered_sum_squares": 0.01792928313401887,
+              "conditional_regularized_design_information": 0.017239813320117037,
+              "design_information_fraction": 0.0001723684172078209,
+              "coefficient": 0.00311743917271611
+            }
+          ]
+        }
+      }
+    },
+    {
+      "origin": 2018,
+      "fold": 0,
+      "active_training_rows": 3505,
+      "active_training_people": 1024,
+      "families": {
+        "minor": {
+          "active_training_rows": 3113,
+          "active_training_people": 998,
+          "actual_PA_weight_fraction": 0.815264408840701,
+          "features": [
+            {
+              "feature": "evidence_minor_K",
+              "weighted_centered_sum_squares": 64.49689961132196,
+              "conditional_regularized_design_information": 45.93798368403026,
+              "design_information_fraction": 0.314777431648572,
+              "coefficient": 0.20009822588233625
+            },
+            {
+              "feature": "evidence_minor_UBB",
+              "weighted_centered_sum_squares": 9.103589504909268,
+              "conditional_regularized_design_information": 5.947387935866189,
+              "design_information_fraction": 0.05613529556260848,
+              "coefficient": 0.19590218021252342
+            },
+            {
+              "feature": "evidence_minor_HBP",
+              "weighted_centered_sum_squares": 0.6018521232402376,
+              "conditional_regularized_design_information": 0.552462684093598,
+              "design_information_fraction": 0.00549427303266827,
+              "coefficient": 0.04738360214211468
+            },
+            {
+              "feature": "evidence_minor_1B",
+              "weighted_centered_sum_squares": 9.3188822986086,
+              "conditional_regularized_design_information": 6.189005109155929,
+              "design_information_fraction": 0.05828291830019504,
+              "coefficient": -0.04068399962670264
+            },
+            {
+              "feature": "evidence_minor_2B",
+              "weighted_centered_sum_squares": 1.5527989682181318,
+              "conditional_regularized_design_information": 1.0874187735697944,
+              "design_information_fraction": 0.01075721179512509,
+              "coefficient": 0.1108119255702215
+            },
+            {
+              "feature": "evidence_minor_3B",
+              "weighted_centered_sum_squares": 0.705967963832141,
+              "conditional_regularized_design_information": 0.4072798057029132,
+              "design_information_fraction": 0.004056277657267841,
+              "coefficient": -0.01632418023116402
+            },
+            {
+              "feature": "evidence_minor_HR",
+              "weighted_centered_sum_squares": 2.648984559976276,
+              "conditional_regularized_design_information": 1.4091296837512743,
+              "design_information_fraction": 0.013895491344277441,
+              "coefficient": 0.17559760393479296
+            }
+          ]
+        },
+        "foreign": {
+          "active_training_rows": 18,
+          "active_training_people": 13,
+          "actual_PA_weight_fraction": 0.004964855124418085,
+          "features": [
+            {
+              "feature": "evidence_foreign_K",
+              "weighted_centered_sum_squares": 0.5870935163285467,
+              "conditional_regularized_design_information": 0.5021982250930961,
+              "design_information_fraction": 0.004996887968244546,
+              "coefficient": -0.006472485287238875
+            },
+            {
+              "feature": "evidence_foreign_UBB",
+              "weighted_centered_sum_squares": 0.06962282699766373,
+              "conditional_regularized_design_information": 0.05516525072471268,
+              "design_information_fraction": 0.0005513483545449754,
+              "coefficient": 0.011805008661370194
+            },
+            {
+              "feature": "evidence_foreign_HBP",
+              "weighted_centered_sum_squares": 0.005560529193723735,
+              "conditional_regularized_design_information": 0.004956849204134528,
+              "design_information_fraction": 4.956603512772753e-05,
+              "coefficient": 0.001870216458616861
+            },
+            {
+              "feature": "evidence_foreign_1B",
+              "weighted_centered_sum_squares": 0.08266470938084661,
+              "conditional_regularized_design_information": 0.06751260955586247,
+              "design_information_fraction": 0.0006746706078253754,
+              "coefficient": 0.004273166729643315
+            },
+            {
+              "feature": "evidence_foreign_2B",
+              "weighted_centered_sum_squares": 0.012037542293843472,
+              "conditional_regularized_design_information": 0.01153081169589143,
+              "design_information_fraction": 0.00011529482253003324,
+              "coefficient": 0.0016775918975405258
+            },
+            {
+              "feature": "evidence_foreign_3B",
+              "weighted_centered_sum_squares": 0.0012630426880468329,
+              "conditional_regularized_design_information": 0.001195041475398284,
+              "design_information_fraction": 1.1950271943276695e-05,
+              "coefficient": 0.0004987991476489989
+            },
+            {
+              "feature": "evidence_foreign_HR",
+              "weighted_centered_sum_squares": 0.022826647844016085,
+              "conditional_regularized_design_information": 0.021725317074611894,
+              "design_information_fraction": 0.00021720598205781185,
+              "coefficient": 0.005012706688463855
+            }
+          ]
+        }
+      }
+    },
+    {
+      "origin": 2021,
+      "fold": 0,
+      "active_training_rows": 4552,
+      "active_training_people": 1264,
+      "families": {
+        "minor": {
+          "active_training_rows": 4034,
+          "active_training_people": 1237,
+          "actual_PA_weight_fraction": 0.8178268700715426,
+          "features": [
+            {
+              "feature": "evidence_minor_K",
+              "weighted_centered_sum_squares": 83.12830641128265,
+              "conditional_regularized_design_information": 59.497504971103666,
+              "design_information_fraction": 0.37303094479053384,
+              "coefficient": 0.12758634930286866
+            },
+            {
+              "feature": "evidence_minor_UBB",
+              "weighted_centered_sum_squares": 11.689457785753588,
+              "conditional_regularized_design_information": 7.57531392239521,
+              "design_information_fraction": 0.07041870152347442,
+              "coefficient": 0.2352328290213215
+            },
+            {
+              "feature": "evidence_minor_HBP",
+              "weighted_centered_sum_squares": 0.9228836120199501,
+              "conditional_regularized_design_information": 0.849986828571474,
+              "design_information_fraction": 0.008428229445545818,
+              "coefficient": 0.05456883749691605
+            },
+            {
+              "feature": "evidence_minor_1B",
+              "weighted_centered_sum_squares": 11.903958211470233,
+              "conditional_regularized_design_information": 7.720389731518651,
+              "design_information_fraction": 0.07167064425556649,
+              "coefficient": -0.043937695718748865
+            },
+            {
+              "feature": "evidence_minor_2B",
+              "weighted_centered_sum_squares": 1.9480492053826992,
+              "conditional_regularized_design_information": 1.3817062164607137,
+              "design_information_fraction": 0.013628752839399093,
+              "coefficient": 0.1457885333489309
+            },
+            {
+              "feature": "evidence_minor_3B",
+              "weighted_centered_sum_squares": 0.8504510906076359,
+              "conditional_regularized_design_information": 0.49979594958647056,
+              "design_information_fraction": 0.004973104122889785,
+              "coefficient": -0.017443694458126473
+            },
+            {
+              "feature": "evidence_minor_HR",
+              "weighted_centered_sum_squares": 3.3905758630641856,
+              "conditional_regularized_design_information": 1.8470600951985858,
+              "design_information_fraction": 0.018135625058515188,
+              "coefficient": 0.23920177958769984
+            }
+          ]
+        },
+        "foreign": {
+          "active_training_rows": 26,
+          "active_training_people": 18,
+          "actual_PA_weight_fraction": 0.005094296326504049,
+          "features": [
+            {
+              "feature": "evidence_foreign_K",
+              "weighted_centered_sum_squares": 0.6548631338214689,
+              "conditional_regularized_design_information": 0.5702798141712577,
+              "design_information_fraction": 0.005670460649259327,
+              "coefficient": -0.005400419518196877
+            },
+            {
+              "feature": "evidence_foreign_UBB",
+              "weighted_centered_sum_squares": 0.10270983640404342,
+              "conditional_regularized_design_information": 0.07751654491637794,
+              "design_information_fraction": 0.0007745650331119806,
+              "coefficient": 0.010580909964739274
+            },
+            {
+              "feature": "evidence_foreign_HBP",
+              "weighted_centered_sum_squares": 0.007175603131988042,
+              "conditional_regularized_design_information": 0.0065036796872846026,
+              "design_information_fraction": 6.503256736297231e-05,
+              "coefficient": 0.0018797719392181869
+            },
+            {
+              "feature": "evidence_foreign_1B",
+              "weighted_centered_sum_squares": 0.09002053715905099,
+              "conditional_regularized_design_information": 0.07574762365730692,
+              "design_information_fraction": 0.000756902900612462,
+              "coefficient": 0.005221672766297889
+            },
+            {
+              "feature": "evidence_foreign_2B",
+              "weighted_centered_sum_squares": 0.012831571315060367,
+              "conditional_regularized_design_information": 0.012333366647055755,
+              "design_information_fraction": 0.00012331845715309335,
+              "coefficient": 0.0016237812642538824
+            },
+            {
+              "feature": "evidence_foreign_3B",
+              "weighted_centered_sum_squares": 0.001380786571249322,
+              "conditional_regularized_design_information": 0.0013070871534210937,
+              "design_information_fraction": 1.3070700688761372e-05,
+              "coefficient": 0.0005516935848376066
+            },
+            {
+              "feature": "evidence_foreign_HR",
+              "weighted_centered_sum_squares": 0.028679492139542323,
+              "conditional_regularized_design_information": 0.026951628302072095,
+              "design_information_fraction": 0.00026944366356603314,
+              "coefficient": 0.004594710226905867
+            }
+          ]
+        }
+      }
+    },
+    {
+      "origin": 2022,
+      "fold": 0,
+      "active_training_rows": 5112,
+      "active_training_people": 1397,
+      "families": {
+        "minor": {
+          "active_training_rows": 4526,
+          "active_training_people": 1371,
+          "actual_PA_weight_fraction": 0.8154584134307683,
+          "features": [
+            {
+              "feature": "evidence_minor_K",
+              "weighted_centered_sum_squares": 92.1357791775414,
+              "conditional_regularized_design_information": 65.43883770787502,
+              "design_information_fraction": 0.3955470106930042,
+              "coefficient": 0.08964126394267898
+            },
+            {
+              "feature": "evidence_minor_UBB",
+              "weighted_centered_sum_squares": 12.634530980494523,
+              "conditional_regularized_design_information": 8.258208161251304,
+              "design_information_fraction": 0.07628251290609438,
+              "coefficient": 0.23023782185647704
+            },
+            {
+              "feature": "evidence_minor_HBP",
+              "weighted_centered_sum_squares": 1.0338864215679142,
+              "conditional_regularized_design_information": 0.9554585889563896,
+              "design_information_fraction": 0.00946415976224299,
+              "coefficient": 0.05360824525724527
+            },
+            {
+              "feature": "evidence_minor_1B",
+              "weighted_centered_sum_squares": 12.956152955048003,
+              "conditional_regularized_design_information": 8.292249795370438,
+              "design_information_fraction": 0.0765728832029948,
+              "coefficient": -0.036133019125771805
+            },
+            {
+              "feature": "evidence_minor_2B",
+              "weighted_centered_sum_squares": 2.104671567916436,
+              "conditional_regularized_design_information": 1.5009450949468857,
+              "design_information_fraction": 0.01478749871287266,
+              "coefficient": 0.16111639926610213
+            },
+            {
+              "feature": "evidence_minor_3B",
+              "weighted_centered_sum_squares": 0.9122995973953867,
+              "conditional_regularized_design_information": 0.5353055599929917,
+              "design_information_fraction": 0.005324552971826955,
+              "coefficient": -0.017863608771972454
+            },
+            {
+              "feature": "evidence_minor_HR",
+              "weighted_centered_sum_squares": 3.65286868161794,
+              "conditional_regularized_design_information": 2.020265991887925,
+              "design_information_fraction": 0.01980259483001706,
+              "coefficient": 0.25588042256465016
+            }
+          ]
+        },
+        "foreign": {
+          "active_training_rows": 31,
+          "active_training_people": 21,
+          "actual_PA_weight_fraction": 0.005557734353625728,
+          "features": [
+            {
+              "feature": "evidence_foreign_K",
+              "weighted_centered_sum_squares": 0.7901940943281764,
+              "conditional_regularized_design_information": 0.6608461253041469,
+              "design_information_fraction": 0.006565076201341638,
+              "coefficient": -0.011814600076200749
+            },
+            {
+              "feature": "evidence_foreign_UBB",
+              "weighted_centered_sum_squares": 0.18095811113034724,
+              "conditional_regularized_design_information": 0.13268582818918162,
+              "design_information_fraction": 0.0013251000619003484,
+              "coefficient": 0.014542057069737012
+            },
+            {
+              "feature": "evidence_foreign_HBP",
+              "weighted_centered_sum_squares": 0.008203878546689391,
+              "conditional_regularized_design_information": 0.0072940795088669574,
+              "design_information_fraction": 7.293547511712436e-05,
+              "coefficient": 0.002504900340683738
+            },
+            {
+              "feature": "evidence_foreign_1B",
+              "weighted_centered_sum_squares": 0.0936717213604491,
+              "conditional_regularized_design_information": 0.07860658093996165,
+              "design_information_fraction": 0.000785448395271046,
+              "coefficient": 0.005255452737948302
+            },
+            {
+              "feature": "evidence_foreign_2B",
+              "weighted_centered_sum_squares": 0.013599351242588188,
+              "conditional_regularized_design_information": 0.013106863218837361,
+              "design_information_fraction": 0.00013105145545336104,
+              "coefficient": 0.0017460485423284934
+            },
+            {
+              "feature": "evidence_foreign_3B",
+              "weighted_centered_sum_squares": 0.0014911953225874182,
+              "conditional_regularized_design_information": 0.0014327527749316005,
+              "design_information_fraction": 1.4327322474205682e-05,
+              "coefficient": 0.0004971356256906593
+            },
+            {
+              "feature": "evidence_foreign_HR",
+              "weighted_centered_sum_squares": 0.04082037328387256,
+              "conditional_regularized_design_information": 0.037087279754118185,
+              "design_information_fraction": 0.00037073530190261794,
+              "coefficient": 0.006491959659084066
+            }
+          ]
+        }
+      }
+    },
+    {
+      "origin": 2023,
+      "fold": 0,
+      "active_training_rows": 5637,
+      "active_training_people": 1486,
+      "families": {
+        "minor": {
+          "active_training_rows": 4956,
+          "active_training_people": 1460,
+          "actual_PA_weight_fraction": 0.8056529535122825,
+          "features": [
+            {
+              "feature": "evidence_minor_K",
+              "weighted_centered_sum_squares": 103.6509364437792,
+              "conditional_regularized_design_information": 71.15673324958928,
+              "design_information_fraction": 0.41574019262113976,
+              "coefficient": 0.08297068826365012
+            },
+            {
+              "feature": "evidence_minor_UBB",
+              "weighted_centered_sum_squares": 13.6189405401634,
+              "conditional_regularized_design_information": 9.077036344756621,
+              "design_information_fraction": 0.08321674890457324,
+              "coefficient": 0.2656473872416035
+            },
+            {
+              "feature": "evidence_minor_HBP",
+              "weighted_centered_sum_squares": 1.157453185403297,
+              "conditional_regularized_design_information": 1.0633717298452297,
+              "design_information_fraction": 0.01052183112085111,
+              "coefficient": 0.0619689924285599
+            },
+            {
+              "feature": "evidence_minor_1B",
+              "weighted_centered_sum_squares": 14.256604811014856,
+              "conditional_regularized_design_information": 8.851559110940443,
+              "design_information_fraction": 0.08131770627115244,
+              "coefficient": -0.0532058472843367
+            },
+            {
+              "feature": "evidence_minor_2B",
+              "weighted_centered_sum_squares": 2.2419760787064154,
+              "conditional_regularized_design_information": 1.6172192660792035,
+              "design_information_fraction": 0.01591481520316554,
+              "coefficient": 0.15949569902098856
+            },
+            {
+              "feature": "evidence_minor_3B",
+              "weighted_centered_sum_squares": 0.9696757463219934,
+              "conditional_regularized_design_information": 0.5683436202615155,
+              "design_information_fraction": 0.005651317301272637,
+              "coefficient": -0.015672311125279483
+            },
+            {
+              "feature": "evidence_minor_HR",
+              "weighted_centered_sum_squares": 3.88644700462763,
+              "conditional_regularized_design_information": 2.209997421310433,
+              "design_information_fraction": 0.02162212579069742,
+              "coefficient": 0.25751243662836554
+            }
+          ]
+        },
+        "foreign": {
+          "active_training_rows": 34,
+          "active_training_people": 22,
+          "actual_PA_weight_fraction": 0.006160127613045167,
+          "features": [
+            {
+              "feature": "evidence_foreign_K",
+              "weighted_centered_sum_squares": 1.3528943169377505,
+              "conditional_regularized_design_information": 1.0719753572054458,
+              "design_information_fraction": 0.010606059230730415,
+              "coefficient": -0.027890052446520205
+            },
+            {
+              "feature": "evidence_foreign_UBB",
+              "weighted_centered_sum_squares": 0.24629403187488236,
+              "conditional_regularized_design_information": 0.16930838119859004,
+              "design_information_fraction": 0.0016902221242686409,
+              "coefficient": 0.019879940916202297
+            },
+            {
+              "feature": "evidence_foreign_HBP",
+              "weighted_centered_sum_squares": 0.010751437579342183,
+              "conditional_regularized_design_information": 0.009051456722303897,
+              "design_information_fraction": 9.050637507766789e-05,
+              "coefficient": 0.003536159954012518
+            },
+            {
+              "feature": "evidence_foreign_1B",
+              "weighted_centered_sum_squares": 0.10778501173840091,
+              "conditional_regularized_design_information": 0.08747895799599803,
+              "design_information_fraction": 0.0008740249920043502,
+              "coefficient": 0.006384504013265324
+            },
+            {
+              "feature": "evidence_foreign_2B",
+              "weighted_centered_sum_squares": 0.016227817875913257,
+              "conditional_regularized_design_information": 0.015486160344295286,
+              "design_information_fraction": 0.00015483762504006586,
+              "coefficient": 0.0025473325368166938
+            },
+            {
+              "feature": "evidence_foreign_3B",
+              "weighted_centered_sum_squares": 0.0015181870950636204,
+              "conditional_regularized_design_information": 0.0014681940162546425,
+              "design_information_fraction": 1.4681724606344272e-05,
+              "coefficient": 0.0003839940767728949
+            },
+            {
+              "feature": "evidence_foreign_HR",
+              "weighted_centered_sum_squares": 0.053010863759167054,
+              "conditional_regularized_design_information": 0.04584734193377926,
+              "design_information_fraction": 0.0004582633177875295,
+              "coefficient": 0.009218730699236498
+            }
+          ]
+        }
+      }
+    },
+    {
+      "origin": 2024,
+      "fold": 0,
+      "active_training_rows": 6162,
+      "active_training_people": 1574,
+      "families": {
+        "minor": {
+          "active_training_rows": 5414,
+          "active_training_people": 1547,
+          "actual_PA_weight_fraction": 0.805357252310693,
+          "features": [
+            {
+              "feature": "evidence_minor_K",
+              "weighted_centered_sum_squares": 118.05553146980358,
+              "conditional_regularized_design_information": 78.52268661115906,
+              "design_information_fraction": 0.4398471034787283,
+              "coefficient": 0.09597295780601235
+            },
+            {
+              "feature": "evidence_minor_UBB",
+              "weighted_centered_sum_squares": 14.924443130820979,
+              "conditional_regularized_design_information": 10.102440154475246,
+              "design_information_fraction": 0.09175491606091003,
+              "coefficient": 0.24882104874314653
+            },
+            {
+              "feature": "evidence_minor_HBP",
+              "weighted_centered_sum_squares": 1.3252353550631562,
+              "conditional_regularized_design_information": 1.2127743909456399,
+              "design_information_fraction": 0.011982424138095093,
+              "coefficient": 0.05736759021078789
+            },
+            {
+              "feature": "evidence_minor_1B",
+              "weighted_centered_sum_squares": 15.84004604388236,
+              "conditional_regularized_design_information": 9.517876329992873,
+              "design_information_fraction": 0.08690705708458192,
+              "coefficient": -0.03742526966065293
+            },
+            {
+              "feature": "evidence_minor_2B",
+              "weighted_centered_sum_squares": 2.447491733508716,
+              "conditional_regularized_design_information": 1.7510843883473655,
+              "design_information_fraction": 0.017209491170276918,
+              "coefficient": 0.16745096132751444
+            },
+            {
+              "feature": "evidence_minor_3B",
+              "weighted_centered_sum_squares": 1.0412791419390188,
+              "conditional_regularized_design_information": 0.6071636320455127,
+              "design_information_fraction": 0.006034994031499743,
+              "coefficient": -0.012695533156166106
+            },
+            {
+              "feature": "evidence_minor_HR",
+              "weighted_centered_sum_squares": 4.173808649977636,
+              "conditional_regularized_design_information": 2.369152419887172,
+              "design_information_fraction": 0.023143225902365862,
+              "coefficient": 0.26930997811150126
+            }
+          ]
+        },
+        "foreign": {
+          "active_training_rows": 37,
+          "active_training_people": 23,
+          "actual_PA_weight_fraction": 0.0063062951913474465,
+          "features": [
+            {
+              "feature": "evidence_foreign_K",
+              "weighted_centered_sum_squares": 1.610701071175351,
+              "conditional_regularized_design_information": 1.2465705018185247,
+              "design_information_fraction": 0.012312224459949827,
+              "coefficient": -0.02780737375758229
+            },
+            {
+              "feature": "evidence_foreign_UBB",
+              "weighted_centered_sum_squares": 0.26667051981470574,
+              "conditional_regularized_design_information": 0.17691113176312,
+              "design_information_fraction": 0.0017659870898836963,
+              "coefficient": 0.020759298206182837
+            },
+            {
+              "feature": "evidence_foreign_HBP",
+              "weighted_centered_sum_squares": 0.011280606075459233,
+              "conditional_regularized_design_information": 0.009381945427648475,
+              "design_information_fraction": 9.381065301221383e-05,
+              "coefficient": 0.0036138032289616023
+            },
+            {
+              "feature": "evidence_foreign_1B",
+              "weighted_centered_sum_squares": 0.11236526705148192,
+              "conditional_regularized_design_information": 0.09022031246649931,
+              "design_information_fraction": 0.0009013898878915959,
+              "coefficient": 0.005899575522970308
+            },
+            {
+              "feature": "evidence_foreign_2B",
+              "weighted_centered_sum_squares": 0.01801890823995573,
+              "conditional_regularized_design_information": 0.01701331939759143,
+              "design_information_fraction": 0.00017010425359594114,
+              "coefficient": 0.0024349462575855114
+            },
+            {
+              "feature": "evidence_foreign_3B",
+              "weighted_centered_sum_squares": 0.002384241887688507,
+              "conditional_regularized_design_information": 0.0023057762596749853,
+              "design_information_fraction": 2.30572309485925e-05,
+              "coefficient": 8.373029516602027e-05
+            },
+            {
+              "feature": "evidence_foreign_HR",
+              "weighted_centered_sum_squares": 0.05750144666000072,
+              "conditional_regularized_design_information": 0.049011670103311644,
+              "design_information_fraction": 0.0004898766043278899,
+              "coefficient": 0.010345437451178387
+            }
+          ]
+        }
+      }
+    },
+    {
+      "origin": 2016,
+      "fold": 1,
+      "active_training_rows": 2567,
+      "active_training_people": 872,
+      "families": {
+        "minor": {
+          "active_training_rows": 2276,
+          "active_training_people": 840,
+          "actual_PA_weight_fraction": 0.806403494247001,
+          "features": [
+            {
+              "feature": "evidence_minor_K",
+              "weighted_centered_sum_squares": 45.212384886400955,
+              "conditional_regularized_design_information": 33.896509929763795,
+              "design_information_fraction": 0.2531545441142895,
+              "coefficient": 0.2008910824337302
+            },
+            {
+              "feature": "evidence_minor_UBB",
+              "weighted_centered_sum_squares": 6.221822339193645,
+              "conditional_regularized_design_information": 4.176993006870546,
+              "design_information_fraction": 0.040095158118021994,
+              "coefficient": 0.13651583185973448
+            },
+            {
+              "feature": "evidence_minor_HBP",
+              "weighted_centered_sum_squares": 0.4192731003612215,
+              "conditional_regularized_design_information": 0.38268143235571017,
+              "design_information_fraction": 0.0038122256438585522,
+              "coefficient": 0.034510321149868864
+            },
+            {
+              "feature": "evidence_minor_1B",
+              "weighted_centered_sum_squares": 6.174334374978251,
+              "conditional_regularized_design_information": 4.086232078665915,
+              "design_information_fraction": 0.03925814199497238,
+              "coefficient": -0.02876082425531787
+            },
+            {
+              "feature": "evidence_minor_2B",
+              "weighted_centered_sum_squares": 1.1423161813154092,
+              "conditional_regularized_design_information": 0.8057866869039998,
+              "design_information_fraction": 0.007993456659454671,
+              "coefficient": 0.07907806976473601
+            },
+            {
+              "feature": "evidence_minor_3B",
+              "weighted_centered_sum_squares": 0.4605857072146966,
+              "conditional_regularized_design_information": 0.27893416254147496,
+              "design_information_fraction": 0.0027815828406128887,
+              "coefficient": 0.010302879394938
+            },
+            {
+              "feature": "evidence_minor_HR",
+              "weighted_centered_sum_squares": 1.704181483940196,
+              "conditional_regularized_design_information": 1.049027746753083,
+              "design_information_fraction": 0.010381373974048855,
+              "coefficient": 0.1373765756777235
+            }
+          ]
+        },
+        "foreign": {
+          "active_training_rows": 12,
+          "active_training_people": 9,
+          "actual_PA_weight_fraction": 0.00237945309781047,
+          "features": [
+            {
+              "feature": "evidence_foreign_K",
+              "weighted_centered_sum_squares": 0.016620611424940413,
+              "conditional_regularized_design_information": 0.016239601195451314,
+              "design_information_fraction": 0.00016236964377190212,
+              "coefficient": 0.0011372511984509143
+            },
+            {
+              "feature": "evidence_foreign_UBB",
+              "weighted_centered_sum_squares": 0.012905545801019252,
+              "conditional_regularized_design_information": 0.011556323868930463,
+              "design_information_fraction": 0.00011554988537032106,
+              "coefficient": -0.00021003346300969904
+            },
+            {
+              "feature": "evidence_foreign_HBP",
+              "weighted_centered_sum_squares": 0.00042108778335753097,
+              "conditional_regularized_design_information": 0.00039842902661746393,
+              "design_information_fraction": 3.984274391668963e-06,
+              "coefficient": 0.0001818885305580896
+            },
+            {
+              "feature": "evidence_foreign_1B",
+              "weighted_centered_sum_squares": 0.00536342227861486,
+              "conditional_regularized_design_information": 0.0052422089587338405,
+              "design_information_fraction": 5.241934165591401e-05,
+              "coefficient": -0.0005835729016379926
+            },
+            {
+              "feature": "evidence_foreign_2B",
+              "weighted_centered_sum_squares": 0.0014076139641071616,
+              "conditional_regularized_design_information": 0.0012905186799798685,
+              "design_information_fraction": 1.2905020258101599e-05,
+              "coefficient": -0.0003560080549591198
+            },
+            {
+              "feature": "evidence_foreign_3B",
+              "weighted_centered_sum_squares": 0.00011064126332023213,
+              "conditional_regularized_design_information": 0.00010000617045591298,
+              "design_information_fraction": 1.000060704436717e-06,
+              "coefficient": -8.911306480411894e-05
+            },
+            {
+              "feature": "evidence_foreign_HR",
+              "weighted_centered_sum_squares": 0.004891767131751613,
+              "conditional_regularized_design_information": 0.004625832300789057,
+              "design_information_fraction": 4.625618327442355e-05,
+              "coefficient": 0.00034214875478206396
+            }
+          ]
+        }
+      }
+    },
+    {
+      "origin": 2017,
+      "fold": 1,
+      "active_training_rows": 3064,
+      "active_training_people": 958,
+      "families": {
+        "minor": {
+          "active_training_rows": 2712,
+          "active_training_people": 927,
+          "actual_PA_weight_fraction": 0.8064508238194414,
+          "features": [
+            {
+              "feature": "evidence_minor_K",
+              "weighted_centered_sum_squares": 56.977790463526,
+              "conditional_regularized_design_information": 41.65079159333109,
+              "design_information_fraction": 0.29403853748242664,
+              "coefficient": 0.23950113841275553
+            },
+            {
+              "feature": "evidence_minor_UBB",
+              "weighted_centered_sum_squares": 7.495792273833128,
+              "conditional_regularized_design_information": 4.9156067624634545,
+              "design_information_fraction": 0.04685296033785274,
+              "coefficient": 0.16658931878317115
+            },
+            {
+              "feature": "evidence_minor_HBP",
+              "weighted_centered_sum_squares": 0.49795513332461966,
+              "conditional_regularized_design_information": 0.4554515002821091,
+              "design_information_fraction": 0.004533865444632739,
+              "coefficient": 0.03469905116253035
+            },
+            {
+              "feature": "evidence_minor_1B",
+              "weighted_centered_sum_squares": 7.64962117276959,
+              "conditional_regularized_design_information": 4.902761264011303,
+              "design_information_fraction": 0.04673624607146809,
+              "coefficient": -0.035503124658174186
+            },
+            {
+              "feature": "evidence_minor_2B",
+              "weighted_centered_sum_squares": 1.354476355553436,
+              "conditional_regularized_design_information": 0.9227209989377911,
+              "design_information_fraction": 0.009142847020023397,
+              "coefficient": 0.09275941524709488
+            },
+            {
+              "feature": "evidence_minor_3B",
+              "weighted_centered_sum_squares": 0.5684880756156161,
+              "conditional_regularized_design_information": 0.33780282348323,
+              "design_information_fraction": 0.0033666555772354427,
+              "coefficient": 0.005549974948802508
+            },
+            {
+              "feature": "evidence_minor_HR",
+              "weighted_centered_sum_squares": 2.150028681843457,
+              "conditional_regularized_design_information": 1.254760995961803,
+              "design_information_fraction": 0.012392118490229262,
+              "coefficient": 0.1635110861384803
+            }
+          ]
+        },
+        "foreign": {
+          "active_training_rows": 18,
+          "active_training_people": 15,
+          "actual_PA_weight_fraction": 0.0037441264308004296,
+          "features": [
+            {
+              "feature": "evidence_foreign_K",
+              "weighted_centered_sum_squares": 0.06051340679472875,
+              "conditional_regularized_design_information": 0.05902430967711325,
+              "design_information_fraction": 0.0005898949153695153,
+              "coefficient": 0.00894062159150877
+            },
+            {
+              "feature": "evidence_foreign_UBB",
+              "weighted_centered_sum_squares": 0.04207024088899474,
+              "conditional_regularized_design_information": 0.0370332935274007,
+              "design_information_fraction": 0.00037019583956211577,
+              "coefficient": 0.003853289323073457
+            },
+            {
+              "feature": "evidence_foreign_HBP",
+              "weighted_centered_sum_squares": 0.002780579450797258,
+              "conditional_regularized_design_information": 0.002611871314996961,
+              "design_information_fraction": 2.6118030980610384e-05,
+              "coefficient": 0.0018651577565280833
+            },
+            {
+              "feature": "evidence_foreign_1B",
+              "weighted_centered_sum_squares": 0.04209059220117065,
+              "conditional_regularized_design_information": 0.037662030330977814,
+              "design_information_fraction": 0.0003764785138576994,
+              "coefficient": -0.005247571618607794
+            },
+            {
+              "feature": "evidence_foreign_2B",
+              "weighted_centered_sum_squares": 0.006667244184694618,
+              "conditional_regularized_design_information": 0.006384519854790938,
+              "design_information_fraction": 6.384112259876153e-05,
+              "coefficient": 0.002702139468527232
+            },
+            {
+              "feature": "evidence_foreign_3B",
+              "weighted_centered_sum_squares": 0.0012548568347736132,
+              "conditional_regularized_design_information": 0.0011889244218679096,
+              "design_information_fraction": 1.1889102866231579e-05,
+              "coefficient": 0.0011199503189068098
+            },
+            {
+              "feature": "evidence_foreign_HR",
+              "weighted_centered_sum_squares": 0.018011015480349633,
+              "conditional_regularized_design_information": 0.01606889028879266,
+              "design_information_fraction": 0.00016066308611288453,
+              "coefficient": 0.004097934479016358
+            }
+          ]
+        }
+      }
+    },
+    {
+      "origin": 2018,
+      "fold": 1,
+      "active_training_rows": 3579,
+      "active_training_people": 1040,
+      "families": {
+        "minor": {
+          "active_training_rows": 3170,
+          "active_training_people": 1011,
+          "actual_PA_weight_fraction": 0.8101910539777047,
+          "features": [
+            {
+              "feature": "evidence_minor_K",
+              "weighted_centered_sum_squares": 67.53265221661827,
+              "conditional_regularized_design_information": 48.58831759302868,
+              "design_information_fraction": 0.326999580990668,
+              "coefficient": 0.2669721738344081
+            },
+            {
+              "feature": "evidence_minor_UBB",
+              "weighted_centered_sum_squares": 9.14148249892457,
+              "conditional_regularized_design_information": 5.689513310400514,
+              "design_information_fraction": 0.05383233522602124,
+              "coefficient": 0.225548586193645
+            },
+            {
+              "feature": "evidence_minor_HBP",
+              "weighted_centered_sum_squares": 0.58512160719946,
+              "conditional_regularized_design_information": 0.5378300626644119,
+              "design_information_fraction": 0.005349529250125916,
+              "coefficient": 0.044117801073542365
+            },
+            {
+              "feature": "evidence_minor_1B",
+              "weighted_centered_sum_squares": 9.011511459973544,
+              "conditional_regularized_design_information": 5.728543581707186,
+              "design_information_fraction": 0.05418161820492834,
+              "coefficient": -0.05902942688476924
+            },
+            {
+              "feature": "evidence_minor_2B",
+              "weighted_centered_sum_squares": 1.5905416686194602,
+              "conditional_regularized_design_information": 1.0407184435660213,
+              "design_information_fraction": 0.0102999905344823,
+              "coefficient": 0.09112166379076282
+            },
+            {
+              "feature": "evidence_minor_3B",
+              "weighted_centered_sum_squares": 0.6589100957737044,
+              "conditional_regularized_design_information": 0.38801438280061973,
+              "design_information_fraction": 0.0038651465036556977,
+              "coefficient": 0.0005658091346738014
+            },
+            {
+              "feature": "evidence_minor_HR",
+              "weighted_centered_sum_squares": 2.7043895841840375,
+              "conditional_regularized_design_information": 1.4694859388953603,
+              "design_information_fraction": 0.0144820477338407,
+              "coefficient": 0.1907264286207852
+            }
+          ]
+        },
+        "foreign": {
+          "active_training_rows": 20,
+          "active_training_people": 15,
+          "actual_PA_weight_fraction": 0.003647000211408116,
+          "features": [
+            {
+              "feature": "evidence_foreign_K",
+              "weighted_centered_sum_squares": 0.07306662029847011,
+              "conditional_regularized_design_information": 0.0708349549559415,
+              "design_information_fraction": 0.0007078481456442914,
+              "coefficient": 0.008875895800293004
+            },
+            {
+              "feature": "evidence_foreign_UBB",
+              "weighted_centered_sum_squares": 0.05227129272674785,
+              "conditional_regularized_design_information": 0.04573337220271867,
+              "design_information_fraction": 0.00045712466350339626,
+              "coefficient": 0.004207699622793677
+            },
+            {
+              "feature": "evidence_foreign_HBP",
+              "weighted_centered_sum_squares": 0.0031271369372480764,
+              "conditional_regularized_design_information": 0.002910234609686313,
+              "design_information_fraction": 2.9101499174962204e-05,
+              "coefficient": 0.0019715695747118274
+            },
+            {
+              "feature": "evidence_foreign_1B",
+              "weighted_centered_sum_squares": 0.051516230566641,
+              "conditional_regularized_design_information": 0.04517917982573749,
+              "design_information_fraction": 0.00045158777460461524,
+              "coefficient": -0.005427124571729003
+            },
+            {
+              "feature": "evidence_foreign_2B",
+              "weighted_centered_sum_squares": 0.007505606231102173,
+              "conditional_regularized_design_information": 0.007143896235305647,
+              "design_information_fraction": 7.143385919227889e-05,
+              "coefficient": 0.002840737580880685
+            },
+            {
+              "feature": "evidence_foreign_3B",
+              "weighted_centered_sum_squares": 0.001550751588092834,
+              "conditional_regularized_design_information": 0.0014531431910427273,
+              "design_information_fraction": 1.4531220750982354e-05,
+              "coefficient": 0.0011537735891044149
+            },
+            {
+              "feature": "evidence_foreign_HR",
+              "weighted_centered_sum_squares": 0.01952237563266334,
+              "conditional_regularized_design_information": 0.01728546630570804,
+              "design_information_fraction": 0.00017282478948632584,
+              "coefficient": 0.004326518363570148
+            }
+          ]
+        }
+      }
+    },
+    {
+      "origin": 2021,
+      "fold": 1,
+      "active_training_rows": 4648,
+      "active_training_people": 1267,
+      "families": {
+        "minor": {
+          "active_training_rows": 4104,
+          "active_training_people": 1236,
+          "actual_PA_weight_fraction": 0.8120589567538273,
+          "features": [
+            {
+              "feature": "evidence_minor_K",
+              "weighted_centered_sum_squares": 85.71885811009714,
+              "conditional_regularized_design_information": 62.018661620501206,
+              "design_information_fraction": 0.38278714933325686,
+              "coefficient": 0.23260413521394518
+            },
+            {
+              "feature": "evidence_minor_UBB",
+              "weighted_centered_sum_squares": 11.909753103218181,
+              "conditional_regularized_design_information": 7.129904146032928,
+              "design_information_fraction": 0.06655381802931401,
+              "coefficient": 0.26292699173159256
+            },
+            {
+              "feature": "evidence_minor_HBP",
+              "weighted_centered_sum_squares": 0.8447952438955033,
+              "conditional_regularized_design_information": 0.7788347854004485,
+              "design_information_fraction": 0.007728158269133671,
+              "coefficient": 0.04351231952055372
+            },
+            {
+              "feature": "evidence_minor_1B",
+              "weighted_centered_sum_squares": 11.44764910847994,
+              "conditional_regularized_design_information": 7.1887481038771455,
+              "design_information_fraction": 0.0670662567764155,
+              "coefficient": -0.045965619391811534
+            },
+            {
+              "feature": "evidence_minor_2B",
+              "weighted_centered_sum_squares": 1.9814648238333858,
+              "conditional_regularized_design_information": 1.3186182731215723,
+              "design_information_fraction": 0.013014570229994771,
+              "coefficient": 0.12088911986385295
+            },
+            {
+              "feature": "evidence_minor_3B",
+              "weighted_centered_sum_squares": 0.7890267486732211,
+              "conditional_regularized_design_information": 0.4676895143741575,
+              "design_information_fraction": 0.00465512361869578,
+              "coefficient": -0.0007687351648142089
+            },
+            {
+              "feature": "evidence_minor_HR",
+              "weighted_centered_sum_squares": 3.4403657469668074,
+              "conditional_regularized_design_information": 1.840531346809712,
+              "design_information_fraction": 0.01807268012518445,
+              "coefficient": 0.23749849765503067
+            }
+          ]
+        },
+        "foreign": {
+          "active_training_rows": 29,
+          "active_training_people": 22,
+          "actual_PA_weight_fraction": 0.004078872437007762,
+          "features": [
+            {
+              "feature": "evidence_foreign_K",
+              "weighted_centered_sum_squares": 0.13300059074256218,
+              "conditional_regularized_design_information": 0.13131474862679227,
+              "design_information_fraction": 0.0013114253913118934,
+              "coefficient": 0.011430134691046472
+            },
+            {
+              "feature": "evidence_foreign_UBB",
+              "weighted_centered_sum_squares": 0.09058445388550662,
+              "conditional_regularized_design_information": 0.07905794554267231,
+              "design_information_fraction": 0.0007899549332857544,
+              "coefficient": -0.0015794722924911608
+            },
+            {
+              "feature": "evidence_foreign_HBP",
+              "weighted_centered_sum_squares": 0.004168928156480713,
+              "conditional_regularized_design_information": 0.003930712872374897,
+              "design_information_fraction": 3.9305583734109576e-05,
+              "coefficient": 0.0023218698385043817
+            },
+            {
+              "feature": "evidence_foreign_1B",
+              "weighted_centered_sum_squares": 0.07141295144241755,
+              "conditional_regularized_design_information": 0.06512634494967529,
+              "design_information_fraction": 0.0006508395814658584,
+              "coefficient": -0.004257748720524547
+            },
+            {
+              "feature": "evidence_foreign_2B",
+              "weighted_centered_sum_squares": 0.00937724360712917,
+              "conditional_regularized_design_information": 0.009130917234315916,
+              "design_information_fraction": 9.130083573941356e-05,
+              "coefficient": 0.002725538366569532
+            },
+            {
+              "feature": "evidence_foreign_3B",
+              "weighted_centered_sum_squares": 0.0017099016229068925,
+              "conditional_regularized_design_information": 0.0016013863126715933,
+              "design_information_fraction": 1.6013606687010282e-05,
+              "coefficient": 0.0010917647165247936
+            },
+            {
+              "feature": "evidence_foreign_HR",
+              "weighted_centered_sum_squares": 0.022891056993232996,
+              "conditional_regularized_design_information": 0.021126246891839173,
+              "design_information_fraction": 0.00021121784651465742,
+              "coefficient": 0.003169159257793176
+            }
+          ]
+        }
+      }
+    },
+    {
+      "origin": 2022,
+      "fold": 1,
+      "active_training_rows": 5204,
+      "active_training_people": 1393,
+      "families": {
+        "minor": {
+          "active_training_rows": 4587,
+          "active_training_people": 1364,
+          "actual_PA_weight_fraction": 0.8083256246277308,
+          "features": [
+            {
+              "feature": "evidence_minor_K",
+              "weighted_centered_sum_squares": 94.41512360040194,
+              "conditional_regularized_design_information": 67.48262610071126,
+              "design_information_fraction": 0.4029231429660791,
+              "coefficient": 0.21954253280085848
+            },
+            {
+              "feature": "evidence_minor_UBB",
+              "weighted_centered_sum_squares": 12.785854572964976,
+              "conditional_regularized_design_information": 7.716362960609047,
+              "design_information_fraction": 0.07163594043210365,
+              "coefficient": 0.25470958314499353
+            },
+            {
+              "feature": "evidence_minor_HBP",
+              "weighted_centered_sum_squares": 0.9441325026116559,
+              "conditional_regularized_design_information": 0.8732906614887384,
+              "design_information_fraction": 0.00865730319455259,
+              "coefficient": 0.04040418182970836
+            },
+            {
+              "feature": "evidence_minor_1B",
+              "weighted_centered_sum_squares": 12.458520562245607,
+              "conditional_regularized_design_information": 7.713353949070623,
+              "design_information_fraction": 0.07161000624600061,
+              "coefficient": -0.04274369667118541
+            },
+            {
+              "feature": "evidence_minor_2B",
+              "weighted_centered_sum_squares": 2.1226297524079074,
+              "conditional_regularized_design_information": 1.4193569597995008,
+              "design_information_fraction": 0.01399493156283868,
+              "coefficient": 0.129615014336794
+            },
+            {
+              "feature": "evidence_minor_3B",
+              "weighted_centered_sum_squares": 0.8474272641418471,
+              "conditional_regularized_design_information": 0.5003165619475709,
+              "design_information_fraction": 0.0049782585673666,
+              "coefficient": -0.002586991382629495
+            },
+            {
+              "feature": "evidence_minor_HR",
+              "weighted_centered_sum_squares": 3.6635958577378216,
+              "conditional_regularized_design_information": 2.0069930358753396,
+              "design_information_fraction": 0.019675053407068772,
+              "coefficient": 0.25015681575362114
+            }
+          ]
+        },
+        "foreign": {
+          "active_training_rows": 36,
+          "active_training_people": 26,
+          "actual_PA_weight_fraction": 0.004651591204094002,
+          "features": [
+            {
+              "feature": "evidence_foreign_K",
+              "weighted_centered_sum_squares": 0.16501469023083837,
+              "conditional_regularized_design_information": 0.16228206702716363,
+              "design_information_fraction": 0.0016201913901938336,
+              "coefficient": 0.009370446859431112
+            },
+            {
+              "feature": "evidence_foreign_UBB",
+              "weighted_centered_sum_squares": 0.10571224777427739,
+              "conditional_regularized_design_information": 0.09049277511314813,
+              "design_information_fraction": 0.0009041095972668502,
+              "coefficient": -0.0008403332091747115
+            },
+            {
+              "feature": "evidence_foreign_HBP",
+              "weighted_centered_sum_squares": 0.004673838572514567,
+              "conditional_regularized_design_information": 0.004373340352927357,
+              "design_information_fraction": 4.373149100233063e-05,
+              "coefficient": 0.0027083118522527616
+            },
+            {
+              "feature": "evidence_foreign_1B",
+              "weighted_centered_sum_squares": 0.0775347706214124,
+              "conditional_regularized_design_information": 0.06985977763233109,
+              "design_information_fraction": 0.0006981100781750689,
+              "coefficient": -0.005638358716633203
+            },
+            {
+              "feature": "evidence_foreign_2B",
+              "weighted_centered_sum_squares": 0.009821634583648486,
+              "conditional_regularized_design_information": 0.009581024454405451,
+              "design_information_fraction": 9.580106582051066e-05,
+              "coefficient": 0.003157201492951037
+            },
+            {
+              "feature": "evidence_foreign_3B",
+              "weighted_centered_sum_squares": 0.0017587250307149896,
+              "conditional_regularized_design_information": 0.0016475855872783995,
+              "design_information_fraction": 1.6475584423429614e-05,
+              "coefficient": 0.0012180706405267323
+            },
+            {
+              "feature": "evidence_foreign_HR",
+              "weighted_centered_sum_squares": 0.02448619705813667,
+              "conditional_regularized_design_information": 0.022629821373499226,
+              "design_information_fraction": 0.00022624701443976167,
+              "coefficient": 0.003727184298365894
+            }
+          ]
+        }
+      }
+    },
+    {
+      "origin": 2023,
+      "fold": 1,
+      "active_training_rows": 5722,
+      "active_training_people": 1475,
+      "families": {
+        "minor": {
+          "active_training_rows": 5008,
+          "active_training_people": 1445,
+          "actual_PA_weight_fraction": 0.7990451965551473,
+          "features": [
+            {
+              "feature": "evidence_minor_K",
+              "weighted_centered_sum_squares": 106.59480756330419,
+              "conditional_regularized_design_information": 73.31047217904006,
+              "design_information_fraction": 0.4230008219197855,
+              "coefficient": 0.2356358920189117
+            },
+            {
+              "feature": "evidence_minor_UBB",
+              "weighted_centered_sum_squares": 13.860639472416494,
+              "conditional_regularized_design_information": 8.664354696568267,
+              "design_information_fraction": 0.07973502185479685,
+              "coefficient": 0.3083029454916879
+            },
+            {
+              "feature": "evidence_minor_HBP",
+              "weighted_centered_sum_squares": 1.055761174057262,
+              "conditional_regularized_design_information": 0.9712284953456987,
+              "design_information_fraction": 0.009618863807232649,
+              "coefficient": 0.04622396863076879
+            },
+            {
+              "feature": "evidence_minor_1B",
+              "weighted_centered_sum_squares": 13.958386601250627,
+              "conditional_regularized_design_information": 8.347027444118098,
+              "design_information_fraction": 0.07703974572281852,
+              "coefficient": -0.054744777962019694
+            },
+            {
+              "feature": "evidence_minor_2B",
+              "weighted_centered_sum_squares": 2.255638805780395,
+              "conditional_regularized_design_information": 1.529084965543916,
+              "design_information_fraction": 0.015060560883246844,
+              "coefficient": 0.1307243942457741
+            },
+            {
+              "feature": "evidence_minor_3B",
+              "weighted_centered_sum_squares": 0.904792835230774,
+              "conditional_regularized_design_information": 0.5305212235252696,
+              "design_information_fraction": 0.005277215487082561,
+              "coefficient": -0.0031207039775219955
+            },
+            {
+              "feature": "evidence_minor_HR",
+              "weighted_centered_sum_squares": 3.904978799076081,
+              "conditional_regularized_design_information": 2.2130691600352463,
+              "design_information_fraction": 0.02165152830476344,
+              "coefficient": 0.248996390464165
+            }
+          ]
+        },
+        "foreign": {
+          "active_training_rows": 40,
+          "active_training_people": 28,
+          "actual_PA_weight_fraction": 0.005073264495544237,
+          "features": [
+            {
+              "feature": "evidence_foreign_K",
+              "weighted_centered_sum_squares": 0.7841255268730118,
+              "conditional_regularized_design_information": 0.7320975909931491,
+              "design_information_fraction": 0.0072677687499938335,
+              "coefficient": -0.012683275232102382
+            },
+            {
+              "feature": "evidence_foreign_UBB",
+              "weighted_centered_sum_squares": 0.13329268162724364,
+              "conditional_regularized_design_information": 0.10820798375486618,
+              "design_information_fraction": 0.001080910206408107,
+              "coefficient": 0.002881207240638281
+            },
+            {
+              "feature": "evidence_foreign_HBP",
+              "weighted_centered_sum_squares": 0.006452564841685807,
+              "conditional_regularized_design_information": 0.005736309942761864,
+              "design_information_fraction": 5.735980909118659e-05,
+              "coefficient": 0.003847276154893894
+            },
+            {
+              "feature": "evidence_foreign_1B",
+              "weighted_centered_sum_squares": 0.12294006955932246,
+              "conditional_regularized_design_information": 0.11909941849613404,
+              "design_information_fraction": 0.0011895774051891986,
+              "coefficient": 0.000407706440330395
+            },
+            {
+              "feature": "evidence_foreign_2B",
+              "weighted_centered_sum_squares": 0.009934658653124732,
+              "conditional_regularized_design_information": 0.009728909879328285,
+              "design_information_fraction": 9.7279634545307e-05,
+              "coefficient": 0.0028756568574232464
+            },
+            {
+              "feature": "evidence_foreign_3B",
+              "weighted_centered_sum_squares": 0.0017862548113683886,
+              "conditional_regularized_design_information": 0.0016957545545466246,
+              "design_information_fraction": 1.695725799199152e-05,
+              "coefficient": 0.0010626277911987617
+            },
+            {
+              "feature": "evidence_foreign_HR",
+              "weighted_centered_sum_squares": 0.024704909557703873,
+              "conditional_regularized_design_information": 0.02299833765094661,
+              "design_information_fraction": 0.0002299304963175605,
+              "coefficient": 0.0032393028430866317
+            }
+          ]
+        }
+      }
+    },
+    {
+      "origin": 2024,
+      "fold": 1,
+      "active_training_rows": 6232,
+      "active_training_people": 1562,
+      "families": {
+        "minor": {
+          "active_training_rows": 5455,
+          "active_training_people": 1532,
+          "actual_PA_weight_fraction": 0.7991134776669598,
+          "features": [
+            {
+              "feature": "evidence_minor_K",
+              "weighted_centered_sum_squares": 120.78390514593787,
+              "conditional_regularized_design_information": 80.22855293778221,
+              "design_information_fraction": 0.44514896019543804,
+              "coefficient": 0.23500918400124945
+            },
+            {
+              "feature": "evidence_minor_UBB",
+              "weighted_centered_sum_squares": 15.128967140117933,
+              "conditional_regularized_design_information": 9.694494189236508,
+              "design_information_fraction": 0.08837721766155658,
+              "coefficient": 0.2867841730300677
+            },
+            {
+              "feature": "evidence_minor_HBP",
+              "weighted_centered_sum_squares": 1.197656718384915,
+              "conditional_regularized_design_information": 1.0988414590679696,
+              "design_information_fraction": 0.010868981713433968,
+              "coefficient": 0.03737323945751636
+            },
+            {
+              "feature": "evidence_minor_1B",
+              "weighted_centered_sum_squares": 15.595072501409202,
+              "conditional_regularized_design_information": 8.98496320916685,
+              "design_information_fraction": 0.08244222821750803,
+              "coefficient": -0.03619380409956408
+            },
+            {
+              "feature": "evidence_minor_2B",
+              "weighted_centered_sum_squares": 2.4459757200730095,
+              "conditional_regularized_design_information": 1.6392623606441816,
+              "design_information_fraction": 0.01612823944774044,
+              "coefficient": 0.13917365466943113
+            },
+            {
+              "feature": "evidence_minor_3B",
+              "weighted_centered_sum_squares": 0.9723030786284644,
+              "conditional_regularized_design_information": 0.5632640630589805,
+              "design_information_fraction": 0.0056010916939388655,
+              "coefficient": -0.0014819997336173371
+            },
+            {
+              "feature": "evidence_minor_HR",
+              "weighted_centered_sum_squares": 4.153571372463245,
+              "conditional_regularized_design_information": 2.3508884452561603,
+              "design_information_fraction": 0.02296891097836993,
+              "coefficient": 0.2549788287257551
+            }
+          ]
+        },
+        "foreign": {
+          "active_training_rows": 42,
+          "active_training_people": 29,
+          "actual_PA_weight_fraction": 0.00490348558898758,
+          "features": [
+            {
+              "feature": "evidence_foreign_K",
+              "weighted_centered_sum_squares": 0.9259619591406794,
+              "conditional_regularized_design_information": 0.8509049522864274,
+              "design_information_fraction": 0.00843725648955752,
+              "coefficient": -0.018070230194242136
+            },
+            {
+              "feature": "evidence_foreign_UBB",
+              "weighted_centered_sum_squares": 0.14191872133354735,
+              "conditional_regularized_design_information": 0.11310855720144275,
+              "design_information_fraction": 0.0011298076628678065,
+              "coefficient": 0.004018446600251922
+            },
+            {
+              "feature": "evidence_foreign_HBP",
+              "weighted_centered_sum_squares": 0.0067759527560414924,
+              "conditional_regularized_design_information": 0.005951052682178215,
+              "design_information_fraction": 5.95069855297237e-05,
+              "coefficient": 0.004130349094329874
+            },
+            {
+              "feature": "evidence_foreign_1B",
+              "weighted_centered_sum_squares": 0.13024612061640956,
+              "conditional_regularized_design_information": 0.1271428690727845,
+              "design_information_fraction": 0.0012698142125061706,
+              "coefficient": 0.001493546142028335
+            },
+            {
+              "feature": "evidence_foreign_2B",
+              "weighted_centered_sum_squares": 0.009906339464293626,
+              "conditional_regularized_design_information": 0.009710338441053068,
+              "design_information_fraction": 9.709395625877215e-05,
+              "coefficient": 0.0028991936967790346
+            },
+            {
+              "feature": "evidence_foreign_3B",
+              "weighted_centered_sum_squares": 0.0017872936735024068,
+              "conditional_regularized_design_information": 0.0017042865831058407,
+              "design_information_fraction": 1.7042575376732845e-05,
+              "coefficient": 0.0010260789698624468
+            },
+            {
+              "feature": "evidence_foreign_HR",
+              "weighted_centered_sum_squares": 0.024704041972884363,
+              "conditional_regularized_design_information": 0.023068342050436286,
+              "design_information_fraction": 0.00023063021793681752,
+              "coefficient": 0.0034827996396999926
+            }
+          ]
+        }
+      }
+    },
+    {
+      "origin": 2016,
+      "fold": 2,
+      "active_training_rows": 2584,
+      "active_training_people": 868,
+      "families": {
+        "minor": {
+          "active_training_rows": 2306,
+          "active_training_people": 837,
+          "actual_PA_weight_fraction": 0.8172513835712429,
+          "features": [
+            {
+              "feature": "evidence_minor_K",
+              "weighted_centered_sum_squares": 44.26253812441549,
+              "conditional_regularized_design_information": 32.60464512079773,
+              "design_information_fraction": 0.24587860471325232,
+              "coefficient": 0.20940970382214977
+            },
+            {
+              "feature": "evidence_minor_UBB",
+              "weighted_centered_sum_squares": 6.471344181550153,
+              "conditional_regularized_design_information": 4.672280307388334,
+              "design_information_fraction": 0.0446372267200769,
+              "coefficient": 0.15525738749959164
+            },
+            {
+              "feature": "evidence_minor_HBP",
+              "weighted_centered_sum_squares": 0.355021862309946,
+              "conditional_regularized_design_information": 0.3261558929900872,
+              "design_information_fraction": 0.0032509557461562833,
+              "coefficient": 0.03038261175416673
+            },
+            {
+              "feature": "evidence_minor_1B",
+              "weighted_centered_sum_squares": 6.487068293078478,
+              "conditional_regularized_design_information": 4.4781612619323425,
+              "design_information_fraction": 0.04286217528948803,
+              "coefficient": -0.03038384433433599
+            },
+            {
+              "feature": "evidence_minor_2B",
+              "weighted_centered_sum_squares": 1.1663068531266965,
+              "conditional_regularized_design_information": 0.8260833839483439,
+              "design_information_fraction": 0.008193151575694922,
+              "coefficient": 0.06986308717952604
+            },
+            {
+              "feature": "evidence_minor_3B",
+              "weighted_centered_sum_squares": 0.47261906826422967,
+              "conditional_regularized_design_information": 0.2833890011584117,
+              "design_information_fraction": 0.0028258817734524125,
+              "coefficient": -0.001892494712737044
+            },
+            {
+              "feature": "evidence_minor_HR",
+              "weighted_centered_sum_squares": 1.743347114740147,
+              "conditional_regularized_design_information": 1.0270057904893974,
+              "design_information_fraction": 0.010165656028836588,
+              "coefficient": 0.12648953436632082
+            }
+          ]
+        },
+        "foreign": {
+          "active_training_rows": 16,
+          "active_training_people": 11,
+          "actual_PA_weight_fraction": 0.0056516930207038945,
+          "features": [
+            {
+              "feature": "evidence_foreign_K",
+              "weighted_centered_sum_squares": 0.5058465869003829,
+              "conditional_regularized_design_information": 0.4399881804835104,
+              "design_information_fraction": 0.0043806076489463835,
+              "coefficient": -0.024995696147906202
+            },
+            {
+              "feature": "evidence_foreign_UBB",
+              "weighted_centered_sum_squares": 0.02015729210514565,
+              "conditional_regularized_design_information": 0.015970036619449957,
+              "design_information_fraction": 0.00015967486605991774,
+              "coefficient": 0.0019486937082476413
+            },
+            {
+              "feature": "evidence_foreign_HBP",
+              "weighted_centered_sum_squares": 0.0017747730329473962,
+              "conditional_regularized_design_information": 0.001657168665616382,
+              "design_information_fraction": 1.6571412039916043e-05,
+              "coefficient": 0.0006638052306684014
+            },
+            {
+              "feature": "evidence_foreign_1B",
+              "weighted_centered_sum_squares": 0.09703086973479733,
+              "conditional_regularized_design_information": 0.08300038576544466,
+              "design_information_fraction": 0.0008293155225714996,
+              "coefficient": 0.010035924869546757
+            },
+            {
+              "feature": "evidence_foreign_2B",
+              "weighted_centered_sum_squares": 0.007042774431367603,
+              "conditional_regularized_design_information": 0.006041360476928048,
+              "design_information_fraction": 6.0409955186123736e-05,
+              "coefficient": -0.002618808616564023
+            },
+            {
+              "feature": "evidence_foreign_3B",
+              "weighted_centered_sum_squares": 0.0003745407375269464,
+              "conditional_regularized_design_information": 0.00030512838777951856,
+              "design_information_fraction": 3.051274567490291e-06,
+              "coefficient": -0.0006609224764543698
+            },
+            {
+              "feature": "evidence_foreign_HR",
+              "weighted_centered_sum_squares": 0.039799857570319154,
+              "conditional_regularized_design_information": 0.038494567182340234,
+              "design_information_fraction": 0.000384797545673667,
+              "coefficient": -0.003732095035017149
+            }
+          ]
+        }
+      }
+    },
+    {
+      "origin": 2017,
+      "fold": 2,
+      "active_training_rows": 3070,
+      "active_training_people": 959,
+      "families": {
+        "minor": {
+          "active_training_rows": 2730,
+          "active_training_people": 929,
+          "actual_PA_weight_fraction": 0.8133347532053637,
+          "features": [
+            {
+              "feature": "evidence_minor_K",
+              "weighted_centered_sum_squares": 56.39947538563056,
+              "conditional_regularized_design_information": 40.67103021516982,
+              "design_information_fraction": 0.28912157786119563,
+              "coefficient": 0.3017405832749806
+            },
+            {
+              "feature": "evidence_minor_UBB",
+              "weighted_centered_sum_squares": 7.912759153245405,
+              "conditional_regularized_design_information": 5.473850596211022,
+              "design_information_fraction": 0.051897703224723854,
+              "coefficient": 0.19136711812722199
+            },
+            {
+              "feature": "evidence_minor_HBP",
+              "weighted_centered_sum_squares": 0.41632061522422414,
+              "conditional_regularized_design_information": 0.38245941334669453,
+              "design_information_fraction": 0.003810022344360327,
+              "coefficient": 0.030329606656501234
+            },
+            {
+              "feature": "evidence_minor_1B",
+              "weighted_centered_sum_squares": 8.085717665240884,
+              "conditional_regularized_design_information": 5.4227884104443405,
+              "design_information_fraction": 0.051438483957867875,
+              "coefficient": -0.039017804175557794
+            },
+            {
+              "feature": "evidence_minor_2B",
+              "weighted_centered_sum_squares": 1.3533283265453444,
+              "conditional_regularized_design_information": 0.9366336735742493,
+              "design_information_fraction": 0.009279422539524072,
+              "coefficient": 0.08323817486103384
+            },
+            {
+              "feature": "evidence_minor_3B",
+              "weighted_centered_sum_squares": 0.5833085000054407,
+              "conditional_regularized_design_information": 0.34266308125383205,
+              "design_information_fraction": 0.0034149291112231693,
+              "coefficient": -0.004820976413353993
+            },
+            {
+              "feature": "evidence_minor_HR",
+              "weighted_centered_sum_squares": 2.2745543112440285,
+              "conditional_regularized_design_information": 1.2501270531425774,
+              "design_information_fraction": 0.012346918364718993,
+              "coefficient": 0.15759431235290142
+            }
+          ]
+        },
+        "foreign": {
+          "active_training_rows": 19,
+          "active_training_people": 13,
+          "actual_PA_weight_fraction": 0.006338140499938836,
+          "features": [
+            {
+              "feature": "evidence_foreign_K",
+              "weighted_centered_sum_squares": 0.5403089955672934,
+              "conditional_regularized_design_information": 0.47600190393315245,
+              "design_information_fraction": 0.0047374685986039345,
+              "coefficient": -0.017051141625617428
+            },
+            {
+              "feature": "evidence_foreign_UBB",
+              "weighted_centered_sum_squares": 0.034241593582789324,
+              "conditional_regularized_design_information": 0.027095744073349692,
+              "design_information_fraction": 0.000270884042686555,
+              "coefficient": 0.004806146297027491
+            },
+            {
+              "feature": "evidence_foreign_HBP",
+              "weighted_centered_sum_squares": 0.007467485464553208,
+              "conditional_regularized_design_information": 0.006551116997215445,
+              "design_information_fraction": 6.550687853990007e-05,
+              "coefficient": 0.0033516863503811425
+            },
+            {
+              "feature": "evidence_foreign_1B",
+              "weighted_centered_sum_squares": 0.1114592083321843,
+              "conditional_regularized_design_information": 0.10251448624963189,
+              "design_information_fraction": 0.0010240950167511884,
+              "coefficient": 0.005046966663859855
+            },
+            {
+              "feature": "evidence_foreign_2B",
+              "weighted_centered_sum_squares": 0.013202631131645427,
+              "conditional_regularized_design_information": 0.01260643197497302,
+              "design_information_fraction": 0.0001260484295402047,
+              "coefficient": 0.001339117050658739
+            },
+            {
+              "feature": "evidence_foreign_3B",
+              "weighted_centered_sum_squares": 0.0015807008352831833,
+              "conditional_regularized_design_information": 0.0015347782131840404,
+              "design_information_fraction": 1.534754658103922e-05,
+              "coefficient": 0.0009685748144627741
+            },
+            {
+              "feature": "evidence_foreign_HR",
+              "weighted_centered_sum_squares": 0.05048586619497345,
+              "conditional_regularized_design_information": 0.04872883166881081,
+              "design_information_fraction": 0.0004870509824347362,
+              "coefficient": 0.0006959442179387023
+            }
+          ]
+        }
+      }
+    },
+    {
+      "origin": 2018,
+      "fold": 2,
+      "active_training_rows": 3555,
+      "active_training_people": 1034,
+      "families": {
+        "minor": {
+          "active_training_rows": 3157,
+          "active_training_people": 1006,
+          "actual_PA_weight_fraction": 0.8135151647528279,
+          "features": [
+            {
+              "feature": "evidence_minor_K",
+              "weighted_centered_sum_squares": 67.0297554733452,
+              "conditional_regularized_design_information": 47.20814300591056,
+              "design_information_fraction": 0.3206897529032419,
+              "coefficient": 0.3200661946569034
+            },
+            {
+              "feature": "evidence_minor_UBB",
+              "weighted_centered_sum_squares": 9.569991602988795,
+              "conditional_regularized_design_information": 6.311799509221075,
+              "design_information_fraction": 0.05937063936796229,
+              "coefficient": 0.23050762390871896
+            },
+            {
+              "feature": "evidence_minor_HBP",
+              "weighted_centered_sum_squares": 0.48676060310453156,
+              "conditional_regularized_design_information": 0.4483380147860174,
+              "design_information_fraction": 0.004463369167143631,
+              "coefficient": 0.0395214593681702
+            },
+            {
+              "feature": "evidence_minor_1B",
+              "weighted_centered_sum_squares": 9.427351956404287,
+              "conditional_regularized_design_information": 6.213435842668332,
+              "design_information_fraction": 0.05849952779865026,
+              "coefficient": -0.05701067755477539
+            },
+            {
+              "feature": "evidence_minor_2B",
+              "weighted_centered_sum_squares": 1.5565521729239575,
+              "conditional_regularized_design_information": 1.0505239311649035,
+              "design_information_fraction": 0.010396026564696636,
+              "coefficient": 0.08114034035774402
+            },
+            {
+              "feature": "evidence_minor_3B",
+              "weighted_centered_sum_squares": 0.6805635600716252,
+              "conditional_regularized_design_information": 0.39402544313352905,
+              "design_information_fraction": 0.003924789761087108,
+              "coefficient": -0.004837554869590636
+            },
+            {
+              "feature": "evidence_minor_HR",
+              "weighted_centered_sum_squares": 2.768113448891604,
+              "conditional_regularized_design_information": 1.4324011141128352,
+              "design_information_fraction": 0.014121731304589392,
+              "coefficient": 0.18260644875148563
+            }
+          ]
+        },
+        "foreign": {
+          "active_training_rows": 21,
+          "active_training_people": 14,
+          "actual_PA_weight_fraction": 0.006091577388918115,
+          "features": [
+            {
+              "feature": "evidence_foreign_K",
+              "weighted_centered_sum_squares": 0.5759253011148499,
+              "conditional_regularized_design_information": 0.5282885131343136,
+              "design_information_fraction": 0.005255122920602504,
+              "coefficient": -0.007126244727571845
+            },
+            {
+              "feature": "evidence_foreign_UBB",
+              "weighted_centered_sum_squares": 0.040566770244914785,
+              "conditional_regularized_design_information": 0.031008884084315014,
+              "design_information_fraction": 0.0003099927155613119,
+              "coefficient": 0.00600290576998126
+            },
+            {
+              "feature": "evidence_foreign_HBP",
+              "weighted_centered_sum_squares": 0.008848467177228835,
+              "conditional_regularized_design_information": 0.007883201757678648,
+              "design_information_fraction": 7.882580357965318e-05,
+              "coefficient": 0.0026630586480558714
+            },
+            {
+              "feature": "evidence_foreign_1B",
+              "weighted_centered_sum_squares": 0.11625496532238508,
+              "conditional_regularized_design_information": 0.10771164822043033,
+              "design_information_fraction": 0.001075957550592408,
+              "coefficient": 0.005840502034435252
+            },
+            {
+              "feature": "evidence_foreign_2B",
+              "weighted_centered_sum_squares": 0.01473436997525355,
+              "conditional_regularized_design_information": 0.014172479420366813,
+              "design_information_fraction": 0.00014170471113264516,
+              "coefficient": 0.000835650804623275
+            },
+            {
+              "feature": "evidence_foreign_3B",
+              "weighted_centered_sum_squares": 0.0017171050537947475,
+              "conditional_regularized_design_information": 0.0016698379230604132,
+              "design_information_fraction": 1.6698100399391232e-05,
+              "coefficient": 0.0009112156763120775
+            },
+            {
+              "feature": "evidence_foreign_HR",
+              "weighted_centered_sum_squares": 0.052257642758075804,
+              "conditional_regularized_design_information": 0.05053096548397207,
+              "design_information_fraction": 0.0005050544459519615,
+              "coefficient": 0.0008368735046426686
+            }
+          ]
+        }
+      }
+    },
+    {
+      "origin": 2021,
+      "fold": 2,
+      "active_training_rows": 4533,
+      "active_training_people": 1247,
+      "families": {
+        "minor": {
+          "active_training_rows": 4015,
+          "active_training_people": 1218,
+          "actual_PA_weight_fraction": 0.8146226929942366,
+          "features": [
+            {
+              "feature": "evidence_minor_K",
+              "weighted_centered_sum_squares": 85.04988168689869,
+              "conditional_regularized_design_information": 60.36493445456571,
+              "design_information_fraction": 0.3764222812167718,
+              "coefficient": 0.27393683598889235
+            },
+            {
+              "feature": "evidence_minor_UBB",
+              "weighted_centered_sum_squares": 12.240367968808448,
+              "conditional_regularized_design_information": 7.781801220595582,
+              "design_information_fraction": 0.07219958408997705,
+              "coefficient": 0.26490950643092287
+            },
+            {
+              "feature": "evidence_minor_HBP",
+              "weighted_centered_sum_squares": 0.7576259855729249,
+              "conditional_regularized_design_information": 0.699569245821138,
+              "design_information_fraction": 0.00694709273396588,
+              "coefficient": 0.0523301065053903
+            },
+            {
+              "feature": "evidence_minor_1B",
+              "weighted_centered_sum_squares": 11.807104437702751,
+              "conditional_regularized_design_information": 7.612894044675031,
+              "design_information_fraction": 0.07074332599506682,
+              "coefficient": -0.07463766888657503
+            },
+            {
+              "feature": "evidence_minor_2B",
+              "weighted_centered_sum_squares": 1.8954272801841034,
+              "conditional_regularized_design_information": 1.3090021365926106,
+              "design_information_fraction": 0.012920886683176614,
+              "coefficient": 0.11548082382972844
+            },
+            {
+              "feature": "evidence_minor_3B",
+              "weighted_centered_sum_squares": 0.7928769493180777,
+              "conditional_regularized_design_information": 0.4598677060206029,
+              "design_information_fraction": 0.0045776260363624074,
+              "coefficient": -0.006298414767314423
+            },
+            {
+              "feature": "evidence_minor_HR",
+              "weighted_centered_sum_squares": 3.438002323124221,
+              "conditional_regularized_design_information": 1.800179073876393,
+              "design_information_fraction": 0.017683456849029736,
+              "coefficient": 0.2460236214687115
+            }
+          ]
+        },
+        "foreign": {
+          "active_training_rows": 25,
+          "active_training_people": 16,
+          "actual_PA_weight_fraction": 0.005905488027471863,
+          "features": [
+            {
+              "feature": "evidence_foreign_K",
+              "weighted_centered_sum_squares": 0.6298981876152393,
+              "conditional_regularized_design_information": 0.5834008000312707,
+              "design_information_fraction": 0.005800169763509222,
+              "coefficient": -0.005954961338560392
+            },
+            {
+              "feature": "evidence_foreign_UBB",
+              "weighted_centered_sum_squares": 0.05749359777247573,
+              "conditional_regularized_design_information": 0.047625936389522394,
+              "design_information_fraction": 0.00047603264888867086,
+              "coefficient": 0.002051608156584042
+            },
+            {
+              "feature": "evidence_foreign_HBP",
+              "weighted_centered_sum_squares": 0.009588907708348048,
+              "conditional_regularized_design_information": 0.008595795114302973,
+              "design_information_fraction": 8.595056300873391e-05,
+              "coefficient": 0.003114248328493334
+            },
+            {
+              "feature": "evidence_foreign_1B",
+              "weighted_centered_sum_squares": 0.1274832534466987,
+              "conditional_regularized_design_information": 0.11793239934230826,
+              "design_information_fraction": 0.0011779348266193618,
+              "coefficient": 0.006269357246154233
+            },
+            {
+              "feature": "evidence_foreign_2B",
+              "weighted_centered_sum_squares": 0.015241727387541017,
+              "conditional_regularized_design_information": 0.014758413411641413,
+              "design_information_fraction": 0.00014756235625383823,
+              "coefficient": 0.00022399943307103138
+            },
+            {
+              "feature": "evidence_foreign_3B",
+              "weighted_centered_sum_squares": 0.001754906753686409,
+              "conditional_regularized_design_information": 0.0017125394659274207,
+              "design_information_fraction": 1.7125101385154405e-05,
+              "coefficient": 0.00084991910324311
+            },
+            {
+              "feature": "evidence_foreign_HR",
+              "weighted_centered_sum_squares": 0.0553386466076417,
+              "conditional_regularized_design_information": 0.053994828353253865,
+              "design_information_fraction": 0.0005396568967174595,
+              "coefficient": -0.0005240602170085232
+            }
+          ]
+        }
+      }
+    },
+    {
+      "origin": 2022,
+      "fold": 2,
+      "active_training_rows": 5062,
+      "active_training_people": 1373,
+      "families": {
+        "minor": {
+          "active_training_rows": 4472,
+          "active_training_people": 1344,
+          "actual_PA_weight_fraction": 0.8091158388948017,
+          "features": [
+            {
+              "feature": "evidence_minor_K",
+              "weighted_centered_sum_squares": 94.14922623058553,
+              "conditional_regularized_design_information": 66.57486582720153,
+              "design_information_fraction": 0.3996693348458932,
+              "coefficient": 0.23301255881471064
+            },
+            {
+              "feature": "evidence_minor_UBB",
+              "weighted_centered_sum_squares": 13.077416756797865,
+              "conditional_regularized_design_information": 8.396505041058191,
+              "design_information_fraction": 0.07746103103488236,
+              "coefficient": 0.26437990410157836
+            },
+            {
+              "feature": "evidence_minor_HBP",
+              "weighted_centered_sum_squares": 0.8242354186880952,
+              "conditional_regularized_design_information": 0.7641181110298163,
+              "design_information_fraction": 0.007583236228871184,
+              "coefficient": 0.053480110802863315
+            },
+            {
+              "feature": "evidence_minor_1B",
+              "weighted_centered_sum_squares": 12.777900788347772,
+              "conditional_regularized_design_information": 8.135173853959202,
+              "design_information_fraction": 0.0752315233241875,
+              "coefficient": -0.06476101045169189
+            },
+            {
+              "feature": "evidence_minor_2B",
+              "weighted_centered_sum_squares": 2.041328318818075,
+              "conditional_regularized_design_information": 1.4164264850398638,
+              "design_information_fraction": 0.013966440488304956,
+              "coefficient": 0.1292942651226759
+            },
+            {
+              "feature": "evidence_minor_3B",
+              "weighted_centered_sum_squares": 0.843844445113531,
+              "conditional_regularized_design_information": 0.48816356825003027,
+              "design_information_fraction": 0.004857921081605566,
+              "coefficient": -0.006028016453481961
+            },
+            {
+              "feature": "evidence_minor_HR",
+              "weighted_centered_sum_squares": 3.665225493525489,
+              "conditional_regularized_design_information": 1.946736794137749,
+              "design_information_fraction": 0.019095626357014422,
+              "coefficient": 0.2597972417425256
+            }
+          ]
+        },
+        "foreign": {
+          "active_training_rows": 31,
+          "active_training_people": 21,
+          "actual_PA_weight_fraction": 0.006154883739077452,
+          "features": [
+            {
+              "feature": "evidence_foreign_K",
+              "weighted_centered_sum_squares": 0.7401412931611763,
+              "conditional_regularized_design_information": 0.6714502175009187,
+              "design_information_fraction": 0.006669718336730511,
+              "coefficient": -0.009649115438289425
+            },
+            {
+              "feature": "evidence_foreign_UBB",
+              "weighted_centered_sum_squares": 0.09416269005799835,
+              "conditional_regularized_design_information": 0.07727422235778647,
+              "design_information_fraction": 0.0007721455541054594,
+              "coefficient": 0.006112749947247581
+            },
+            {
+              "feature": "evidence_foreign_HBP",
+              "weighted_centered_sum_squares": 0.009803752438338989,
+              "conditional_regularized_design_information": 0.00877915574253052,
+              "design_information_fraction": 8.778385074433156e-05,
+              "coefficient": 0.0029694500150608573
+            },
+            {
+              "feature": "evidence_foreign_1B",
+              "weighted_centered_sum_squares": 0.13558642010568223,
+              "conditional_regularized_design_information": 0.12397011779039246,
+              "design_information_fraction": 0.0012381662217803428,
+              "coefficient": 0.006322334103237782
+            },
+            {
+              "feature": "evidence_foreign_2B",
+              "weighted_centered_sum_squares": 0.015773215572837274,
+              "conditional_regularized_design_information": 0.015220982062857047,
+              "design_information_fraction": 0.0001521866563249092,
+              "coefficient": -2.302221210770673e-05
+            },
+            {
+              "feature": "evidence_foreign_3B",
+              "weighted_centered_sum_squares": 0.0018443633648499646,
+              "conditional_regularized_design_information": 0.0018003249515174957,
+              "design_information_fraction": 1.8002925404016906e-05,
+              "coefficient": 0.0006871195410101908
+            },
+            {
+              "feature": "evidence_foreign_HR",
+              "weighted_centered_sum_squares": 0.0573177512755158,
+              "conditional_regularized_design_information": 0.05589568440936432,
+              "design_information_fraction": 0.0005586445858789503,
+              "coefficient": 0.00035482542429469575
+            }
+          ]
+        }
+      }
+    },
+    {
+      "origin": 2023,
+      "fold": 2,
+      "active_training_rows": 5563,
+      "active_training_people": 1458,
+      "families": {
+        "minor": {
+          "active_training_rows": 4888,
+          "active_training_people": 1429,
+          "actual_PA_weight_fraction": 0.8014309884935655,
+          "features": [
+            {
+              "feature": "evidence_minor_K",
+              "weighted_centered_sum_squares": 106.4510592243645,
+              "conditional_regularized_design_information": 72.71760117895008,
+              "design_information_fraction": 0.42102021266268325,
+              "coefficient": 0.22864127660236117
+            },
+            {
+              "feature": "evidence_minor_UBB",
+              "weighted_centered_sum_squares": 14.084937430536534,
+              "conditional_regularized_design_information": 9.323922912468419,
+              "design_information_fraction": 0.08528712347739054,
+              "coefficient": 0.3021233852451823
+            },
+            {
+              "feature": "evidence_minor_HBP",
+              "weighted_centered_sum_squares": 0.9133380336053813,
+              "conditional_regularized_design_information": 0.8450446181420403,
+              "design_information_fraction": 0.008379634530797923,
+              "coefficient": 0.0637961224948753
+            },
+            {
+              "feature": "evidence_minor_1B",
+              "weighted_centered_sum_squares": 14.23280729565247,
+              "conditional_regularized_design_information": 8.781934998231051,
+              "design_information_fraction": 0.08072971857297682,
+              "coefficient": -0.06615097624864355
+            },
+            {
+              "feature": "evidence_minor_2B",
+              "weighted_centered_sum_squares": 2.1698051690453948,
+              "conditional_regularized_design_information": 1.5163192381524482,
+              "design_information_fraction": 0.014936704261264984,
+              "coefficient": 0.13171691754021772
+            },
+            {
+              "feature": "evidence_minor_3B",
+              "weighted_centered_sum_squares": 0.8993117816016094,
+              "conditional_regularized_design_information": 0.5197140516929863,
+              "design_information_fraction": 0.0051702698977607485,
+              "coefficient": -0.0033880073423487953
+            },
+            {
+              "feature": "evidence_minor_HR",
+              "weighted_centered_sum_squares": 3.8904740835907927,
+              "conditional_regularized_design_information": 2.137469255798166,
+              "design_information_fraction": 0.020927376323031675,
+              "coefficient": 0.2647705616014839
+            }
+          ]
+        },
+        "foreign": {
+          "active_training_rows": 35,
+          "active_training_people": 23,
+          "actual_PA_weight_fraction": 0.006468945359715825,
+          "features": [
+            {
+              "feature": "evidence_foreign_K",
+              "weighted_centered_sum_squares": 1.3789701293249472,
+              "conditional_regularized_design_information": 1.1878870591343542,
+              "design_information_fraction": 0.011739419545742182,
+              "coefficient": -0.03105292465459177
+            },
+            {
+              "feature": "evidence_foreign_UBB",
+              "weighted_centered_sum_squares": 0.12333485928525624,
+              "conditional_regularized_design_information": 0.0953320049932671,
+              "design_information_fraction": 0.0009524120963853884,
+              "coefficient": 0.010639365581458704
+            },
+            {
+              "feature": "evidence_foreign_HBP",
+              "weighted_centered_sum_squares": 0.010722518881100604,
+              "conditional_regularized_design_information": 0.009307935260977729,
+              "design_information_fraction": 9.30706896502377e-05,
+              "coefficient": 0.0035847948980024646
+            },
+            {
+              "feature": "evidence_foreign_1B",
+              "weighted_centered_sum_squares": 0.1771357106842145,
+              "conditional_regularized_design_information": 0.15517250385178727,
+              "design_information_fraction": 0.001549320918456005,
+              "coefficient": 0.011124177339916603
+            },
+            {
+              "feature": "evidence_foreign_2B",
+              "weighted_centered_sum_squares": 0.016184530902818822,
+              "conditional_regularized_design_information": 0.015710042323149764,
+              "design_information_fraction": 0.00015707574656523285,
+              "coefficient": 0.00033275826307149693
+            },
+            {
+              "feature": "evidence_foreign_3B",
+              "weighted_centered_sum_squares": 0.0018690157379165858,
+              "conditional_regularized_design_information": 0.0018245923652528973,
+              "design_information_fraction": 1.8245590744873245e-05,
+              "coefficient": 0.0005611303157982685
+            },
+            {
+              "feature": "evidence_foreign_HR",
+              "weighted_centered_sum_squares": 0.057968967433394955,
+              "conditional_regularized_design_information": 0.05654843885567118,
+              "design_information_fraction": 0.0005651647966872233,
+              "coefficient": 0.000914009351418577
+            }
+          ]
+        }
+      }
+    },
+    {
+      "origin": 2024,
+      "fold": 2,
+      "active_training_rows": 6072,
+      "active_training_people": 1547,
+      "families": {
+        "minor": {
+          "active_training_rows": 5336,
+          "active_training_people": 1517,
+          "actual_PA_weight_fraction": 0.801531380903822,
+          "features": [
+            {
+              "feature": "evidence_minor_K",
+              "weighted_centered_sum_squares": 120.85047161288466,
+              "conditional_regularized_design_information": 80.16352592440722,
+              "design_information_fraction": 0.44494869598656794,
+              "coefficient": 0.25258653554788346
+            },
+            {
+              "feature": "evidence_minor_UBB",
+              "weighted_centered_sum_squares": 15.384451956357259,
+              "conditional_regularized_design_information": 10.358342156704808,
+              "design_information_fraction": 0.09386098009696757,
+              "coefficient": 0.2791074706935567
+            },
+            {
+              "feature": "evidence_minor_HBP",
+              "weighted_centered_sum_squares": 1.0545162654894373,
+              "conditional_regularized_design_information": 0.9788080330844906,
+              "design_information_fraction": 0.009693202486246381,
+              "coefficient": 0.057922901779417314
+            },
+            {
+              "feature": "evidence_minor_1B",
+              "weighted_centered_sum_squares": 15.847606653832472,
+              "conditional_regularized_design_information": 9.47815785012024,
+              "design_information_fraction": 0.08657578859790643,
+              "coefficient": -0.059616910090445
+            },
+            {
+              "feature": "evidence_minor_2B",
+              "weighted_centered_sum_squares": 2.3687322299620677,
+              "conditional_regularized_design_information": 1.6385132534654474,
+              "design_information_fraction": 0.01612098800952877,
+              "coefficient": 0.1409584933658335
+            },
+            {
+              "feature": "evidence_minor_3B",
+              "weighted_centered_sum_squares": 0.9659023961842949,
+              "conditional_regularized_design_information": 0.554301962563585,
+              "design_information_fraction": 0.005512463929886877,
+              "coefficient": 0.0005154849783505575
+            },
+            {
+              "feature": "evidence_minor_HR",
+              "weighted_centered_sum_squares": 4.165765631668628,
+              "conditional_regularized_design_information": 2.2824589713448233,
+              "design_information_fraction": 0.02231525321447611,
+              "coefficient": 0.2774702343887322
+            }
+          ]
+        },
+        "foreign": {
+          "active_training_rows": 39,
+          "active_training_people": 25,
+          "actual_PA_weight_fraction": 0.006648754361038821,
+          "features": [
+            {
+              "feature": "evidence_foreign_K",
+              "weighted_centered_sum_squares": 1.6841433402864552,
+              "conditional_regularized_design_information": 1.4124232891679327,
+              "design_information_fraction": 0.01392751739242579,
+              "coefficient": -0.03432022971417413
+            },
+            {
+              "feature": "evidence_foreign_UBB",
+              "weighted_centered_sum_squares": 0.13773629510920693,
+              "conditional_regularized_design_information": 0.10257977335217561,
+              "design_information_fraction": 0.001024746550832478,
+              "coefficient": 0.011915339595796976
+            },
+            {
+              "feature": "evidence_foreign_HBP",
+              "weighted_centered_sum_squares": 0.011014107435979612,
+              "conditional_regularized_design_information": 0.009474067978715084,
+              "design_information_fraction": 9.47317048410368e-05,
+              "coefficient": 0.0036901709179717815
+            },
+            {
+              "feature": "evidence_foreign_1B",
+              "weighted_centered_sum_squares": 0.18667396863643876,
+              "conditional_regularized_design_information": 0.160755523195931,
+              "design_information_fraction": 0.0016049751457665683,
+              "coefficient": 0.011647050605476284
+            },
+            {
+              "feature": "evidence_foreign_2B",
+              "weighted_centered_sum_squares": 0.017733634387090427,
+              "conditional_regularized_design_information": 0.017327765735899447,
+              "design_information_fraction": 0.00017324763741424036,
+              "coefficient": 0.00023090538546230246
+            },
+            {
+              "feature": "evidence_foreign_3B",
+              "weighted_centered_sum_squares": 0.0024832458116210185,
+              "conditional_regularized_design_information": 0.0024433764727689322,
+              "design_information_fraction": 2.443316773341737e-05,
+              "coefficient": 0.0003360813011336803
+            },
+            {
+              "feature": "evidence_foreign_HR",
+              "weighted_centered_sum_squares": 0.05902085461862312,
+              "conditional_regularized_design_information": 0.05763648882718542,
+              "design_information_fraction": 0.0005760328831435202,
+              "coefficient": 0.001810729521454072
+            }
+          ]
+        }
+      }
+    },
+    {
+      "origin": 2016,
+      "fold": 3,
+      "active_training_rows": 2518,
+      "active_training_people": 858,
+      "families": {
+        "minor": {
+          "active_training_rows": 2237,
+          "active_training_people": 829,
+          "actual_PA_weight_fraction": 0.8088143019479092,
+          "features": [
+            {
+              "feature": "evidence_minor_K",
+              "weighted_centered_sum_squares": 43.57253003622487,
+              "conditional_regularized_design_information": 31.88674096835203,
+              "design_information_fraction": 0.2417736668161637,
+              "coefficient": 0.08998939933056083
+            },
+            {
+              "feature": "evidence_minor_UBB",
+              "weighted_centered_sum_squares": 6.53244351890475,
+              "conditional_regularized_design_information": 4.28496540095955,
+              "design_information_fraction": 0.04108900438797214,
+              "coefficient": 0.13274498544156565
+            },
+            {
+              "feature": "evidence_minor_HBP",
+              "weighted_centered_sum_squares": 0.405125856994947,
+              "conditional_regularized_design_information": 0.37136127233044647,
+              "design_information_fraction": 0.003699872828493961,
+              "coefficient": 0.03008170895481849
+            },
+            {
+              "feature": "evidence_minor_1B",
+              "weighted_centered_sum_squares": 6.420591307516952,
+              "conditional_regularized_design_information": 4.411723889874295,
+              "design_information_fraction": 0.0422531467302221,
+              "coefficient": -0.019470662278997696
+            },
+            {
+              "feature": "evidence_minor_2B",
+              "weighted_centered_sum_squares": 1.1857824365658105,
+              "conditional_regularized_design_information": 0.8265082005827367,
+              "design_information_fraction": 0.00819733039786019,
+              "coefficient": 0.0718251565847882
+            },
+            {
+              "feature": "evidence_minor_3B",
+              "weighted_centered_sum_squares": 0.4610675603944469,
+              "conditional_regularized_design_information": 0.2735521974333466,
+              "design_information_fraction": 0.00272805930814874,
+              "coefficient": 0.002655804410153048
+            },
+            {
+              "feature": "evidence_minor_HR",
+              "weighted_centered_sum_squares": 1.709240672057163,
+              "conditional_regularized_design_information": 1.023504351865597,
+              "design_information_fraction": 0.010131348723567577,
+              "coefficient": 0.1083008360791298
+            }
+          ]
+        },
+        "foreign": {
+          "active_training_rows": 13,
+          "active_training_people": 8,
+          "actual_PA_weight_fraction": 0.004957376513159323,
+          "features": [
+            {
+              "feature": "evidence_foreign_K",
+              "weighted_centered_sum_squares": 0.3827947507622057,
+              "conditional_regularized_design_information": 0.3364821712030448,
+              "design_information_fraction": 0.0033535376557143884,
+              "coefficient": -0.016040393126407843
+            },
+            {
+              "feature": "evidence_foreign_UBB",
+              "weighted_centered_sum_squares": 0.02484318748320307,
+              "conditional_regularized_design_information": 0.019942995159098587,
+              "design_information_fraction": 0.00019939018721560175,
+              "coefficient": 0.002300194551374009
+            },
+            {
+              "feature": "evidence_foreign_HBP",
+              "weighted_centered_sum_squares": 0.0025348792528771436,
+              "conditional_regularized_design_information": 0.0021664132059981966,
+              "design_information_fraction": 2.166366273553156e-05,
+              "coefficient": 0.0008817985704869711
+            },
+            {
+              "feature": "evidence_foreign_1B",
+              "weighted_centered_sum_squares": 0.08217739490079373,
+              "conditional_regularized_design_information": 0.0717982671477273,
+              "design_information_fraction": 0.0007174675422146155,
+              "coefficient": 0.007427788720343812
+            },
+            {
+              "feature": "evidence_foreign_2B",
+              "weighted_centered_sum_squares": 0.006249013706346292,
+              "conditional_regularized_design_information": 0.00546061716835311,
+              "design_information_fraction": 5.460319001236282e-05,
+              "coefficient": -0.002624074739027766
+            },
+            {
+              "feature": "evidence_foreign_3B",
+              "weighted_centered_sum_squares": 0.0002190579569810507,
+              "conditional_regularized_design_information": 0.00017977869650565026,
+              "design_information_fraction": 1.7977837330243413e-06,
+              "coefficient": -0.00041793770599857016
+            },
+            {
+              "feature": "evidence_foreign_HR",
+              "weighted_centered_sum_squares": 0.04224541774828582,
+              "conditional_regularized_design_information": 0.04079650372861465,
+              "design_information_fraction": 0.0004077986696866626,
+              "coefficient": -0.0038010642691499066
+            }
+          ]
+        }
+      }
+    },
+    {
+      "origin": 2017,
+      "fold": 3,
+      "active_training_rows": 3023,
+      "active_training_people": 949,
+      "families": {
+        "minor": {
+          "active_training_rows": 2682,
+          "active_training_people": 920,
+          "actual_PA_weight_fraction": 0.8075754019810555,
+          "features": [
+            {
+              "feature": "evidence_minor_K",
+              "weighted_centered_sum_squares": 55.31612827061815,
+              "conditional_regularized_design_information": 39.808719777670746,
+              "design_information_fraction": 0.2847370310019012,
+              "coefficient": 0.11096104526440714
+            },
+            {
+              "feature": "evidence_minor_UBB",
+              "weighted_centered_sum_squares": 7.851407129862255,
+              "conditional_regularized_design_information": 5.031267628511074,
+              "design_information_fraction": 0.047902569797656336,
+              "coefficient": 0.17225932223605422
+            },
+            {
+              "feature": "evidence_minor_HBP",
+              "weighted_centered_sum_squares": 0.47981736846069045,
+              "conditional_regularized_design_information": 0.4384663927500867,
+              "design_information_fraction": 0.004365522578127859,
+              "coefficient": 0.029397827812104774
+            },
+            {
+              "feature": "evidence_minor_1B",
+              "weighted_centered_sum_squares": 7.9795743233908665,
+              "conditional_regularized_design_information": 5.307620587079384,
+              "design_information_fraction": 0.05040110637283355,
+              "coefficient": -0.02546837093187662
+            },
+            {
+              "feature": "evidence_minor_2B",
+              "weighted_centered_sum_squares": 1.3888681958514981,
+              "conditional_regularized_design_information": 0.9382603626306576,
+              "design_information_fraction": 0.009295388678781115,
+              "coefficient": 0.08795968322033695
+            },
+            {
+              "feature": "evidence_minor_3B",
+              "weighted_centered_sum_squares": 0.5488649219867974,
+              "conditional_regularized_design_information": 0.32140172652987076,
+              "design_information_fraction": 0.0032037204524513383,
+              "coefficient": -0.0009068711120566009
+            },
+            {
+              "feature": "evidence_minor_HR",
+              "weighted_centered_sum_squares": 2.136165259008523,
+              "conditional_regularized_design_information": 1.2214760027878526,
+              "design_information_fraction": 0.012067360119844633,
+              "coefficient": 0.13482098192399528
+            }
+          ]
+        },
+        "foreign": {
+          "active_training_rows": 18,
+          "active_training_people": 13,
+          "actual_PA_weight_fraction": 0.005632061705264596,
+          "features": [
+            {
+              "feature": "evidence_foreign_K",
+              "weighted_centered_sum_squares": 0.4030298714374193,
+              "conditional_regularized_design_information": 0.36655322732244144,
+              "design_information_fraction": 0.0036521452170647614,
+              "coefficient": -0.010829931848960646
+            },
+            {
+              "feature": "evidence_foreign_UBB",
+              "weighted_centered_sum_squares": 0.03323662276275572,
+              "conditional_regularized_design_information": 0.027997646768184836,
+              "design_information_fraction": 0.0002798981027997156,
+              "coefficient": 0.004423676575973319
+            },
+            {
+              "feature": "evidence_foreign_HBP",
+              "weighted_centered_sum_squares": 0.00781819980038425,
+              "conditional_regularized_design_information": 0.0064923431095564865,
+              "design_information_fraction": 6.491921631729751e-05,
+              "coefficient": 0.0038539833479976993
+            },
+            {
+              "feature": "evidence_foreign_1B",
+              "weighted_centered_sum_squares": 0.11906961073208933,
+              "conditional_regularized_design_information": 0.11270440052817321,
+              "design_information_fraction": 0.0011257752070832942,
+              "coefficient": -7.236252715775962e-05
+            },
+            {
+              "feature": "evidence_foreign_2B",
+              "weighted_centered_sum_squares": 0.010516894405507803,
+              "conditional_regularized_design_information": 0.010038624031238896,
+              "design_information_fraction": 0.00010037616392667539,
+              "coefficient": 0.00022642170184842715
+            },
+            {
+              "feature": "evidence_foreign_3B",
+              "weighted_centered_sum_squares": 0.001109701136124068,
+              "conditional_regularized_design_information": 0.0010676344179216812,
+              "design_information_fraction": 1.0676230196108702e-05,
+              "coefficient": 0.0005916274092485588
+            },
+            {
+              "feature": "evidence_foreign_HR",
+              "weighted_centered_sum_squares": 0.06254603139031917,
+              "conditional_regularized_design_information": 0.05998757473405192,
+              "design_information_fraction": 0.0005995161121646917,
+              "coefficient": 0.0021113329425141254
+            }
+          ]
+        }
+      }
+    },
+    {
+      "origin": 2018,
+      "fold": 3,
+      "active_training_rows": 3523,
+      "active_training_people": 1023,
+      "families": {
+        "minor": {
+          "active_training_rows": 3125,
+          "active_training_people": 997,
+          "actual_PA_weight_fraction": 0.8109329405864888,
+          "features": [
+            {
+              "feature": "evidence_minor_K",
+              "weighted_centered_sum_squares": 66.72343749181744,
+              "conditional_regularized_design_information": 47.36099137965192,
+              "design_information_fraction": 0.3213943590921829,
+              "coefficient": 0.12534149493438382
+            },
+            {
+              "feature": "evidence_minor_UBB",
+              "weighted_centered_sum_squares": 9.457066299050801,
+              "conditional_regularized_design_information": 5.882207429645348,
+              "design_information_fraction": 0.055554257626843004,
+              "coefficient": 0.22793726799871758
+            },
+            {
+              "feature": "evidence_minor_HBP",
+              "weighted_centered_sum_squares": 0.5748727230796452,
+              "conditional_regularized_design_information": 0.528318752910863,
+              "design_information_fraction": 0.005255422148354244,
+              "coefficient": 0.03864617808907275
+            },
+            {
+              "feature": "evidence_minor_1B",
+              "weighted_centered_sum_squares": 9.535877025821476,
+              "conditional_regularized_design_information": 6.2261814693313084,
+              "design_information_fraction": 0.05861249442661061,
+              "coefficient": -0.04028163656566861
+            },
+            {
+              "feature": "evidence_minor_2B",
+              "weighted_centered_sum_squares": 1.612164472239861,
+              "conditional_regularized_design_information": 1.0610794356257713,
+              "design_information_fraction": 0.01049938751447496,
+              "coefficient": 0.08492594089992477
+            },
+            {
+              "feature": "evidence_minor_3B",
+              "weighted_centered_sum_squares": 0.6422321536094356,
+              "conditional_regularized_design_information": 0.373600135207397,
+              "design_information_fraction": 0.0037220955978877128,
+              "coefficient": -0.006495256750396407
+            },
+            {
+              "feature": "evidence_minor_HR",
+              "weighted_centered_sum_squares": 2.6675049376067186,
+              "conditional_regularized_design_information": 1.4367662596382473,
+              "design_information_fraction": 0.014164156770935406,
+              "coefficient": 0.15442601298634662
+            }
+          ]
+        },
+        "foreign": {
+          "active_training_rows": 21,
+          "active_training_people": 14,
+          "actual_PA_weight_fraction": 0.005657837681799602,
+          "features": [
+            {
+              "feature": "evidence_foreign_K",
+              "weighted_centered_sum_squares": 0.45170365725278694,
+              "conditional_regularized_design_information": 0.4273182582042665,
+              "design_information_fraction": 0.004255000189346959,
+              "coefficient": -0.0034669626954567326
+            },
+            {
+              "feature": "evidence_foreign_UBB",
+              "weighted_centered_sum_squares": 0.040434831057416507,
+              "conditional_regularized_design_information": 0.033586741086665484,
+              "design_information_fraction": 0.0003357546418244188,
+              "coefficient": 0.005642122447045107
+            },
+            {
+              "feature": "evidence_foreign_HBP",
+              "weighted_centered_sum_squares": 0.008640747885097576,
+              "conditional_regularized_design_information": 0.00722967980733813,
+              "design_information_fraction": 7.229157162422517e-05,
+              "coefficient": 0.0032970154071095183
+            },
+            {
+              "feature": "evidence_foreign_1B",
+              "weighted_centered_sum_squares": 0.13077363486085772,
+              "conditional_regularized_design_information": 0.12526040336541655,
+              "design_information_fraction": 0.001251036979687159,
+              "coefficient": 0.0018654855827648857
+            },
+            {
+              "feature": "evidence_foreign_2B",
+              "weighted_centered_sum_squares": 0.011709164810818642,
+              "conditional_regularized_design_information": 0.011252560426214586,
+              "design_information_fraction": 0.0001125129436751715,
+              "coefficient": -0.0006283174151216652
+            },
+            {
+              "feature": "evidence_foreign_3B",
+              "weighted_centered_sum_squares": 0.001407117015289107,
+              "conditional_regularized_design_information": 0.0013492836279880294,
+              "design_information_fraction": 1.3492654225705845e-05,
+              "coefficient": 0.0004345385181538631
+            },
+            {
+              "feature": "evidence_foreign_HR",
+              "weighted_centered_sum_squares": 0.06502580065054153,
+              "conditional_regularized_design_information": 0.062462814873683215,
+              "design_information_fraction": 0.0006242382319656287,
+              "coefficient": 0.0015992422311909625
+            }
+          ]
+        }
+      }
+    },
+    {
+      "origin": 2021,
+      "fold": 3,
+      "active_training_rows": 4570,
+      "active_training_people": 1256,
+      "families": {
+        "minor": {
+          "active_training_rows": 4036,
+          "active_training_people": 1227,
+          "actual_PA_weight_fraction": 0.8116584234537949,
+          "features": [
+            {
+              "feature": "evidence_minor_K",
+              "weighted_centered_sum_squares": 86.98452574738052,
+              "conditional_regularized_design_information": 62.39087432683499,
+              "design_information_fraction": 0.384201849922086,
+              "coefficient": 0.044931418984608874
+            },
+            {
+              "feature": "evidence_minor_UBB",
+              "weighted_centered_sum_squares": 12.483110852589677,
+              "conditional_regularized_design_information": 7.467407872533485,
+              "design_information_fraction": 0.06948532601987141,
+              "coefficient": 0.2624215608797053
+            },
+            {
+              "feature": "evidence_minor_HBP",
+              "weighted_centered_sum_squares": 0.8470240838042286,
+              "conditional_regularized_design_information": 0.7814793109196927,
+              "design_information_fraction": 0.007754195674274244,
+              "coefficient": 0.04100826538071898
+            },
+            {
+              "feature": "evidence_minor_1B",
+              "weighted_centered_sum_squares": 12.230627808593901,
+              "conditional_regularized_design_information": 7.789539553052762,
+              "design_information_fraction": 0.07226619192689696,
+              "coefficient": -0.027408973888031266
+            },
+            {
+              "feature": "evidence_minor_2B",
+              "weighted_centered_sum_squares": 2.0006572483643867,
+              "conditional_regularized_design_information": 1.3489764234634265,
+              "design_information_fraction": 0.013310212604684218,
+              "coefficient": 0.13007356251558985
+            },
+            {
+              "feature": "evidence_minor_3B",
+              "weighted_centered_sum_squares": 0.774320899808983,
+              "conditional_regularized_design_information": 0.45874136106174035,
+              "design_information_fraction": 0.004566465345339779,
+              "coefficient": -0.014590747969112427
+            },
+            {
+              "feature": "evidence_minor_HR",
+              "weighted_centered_sum_squares": 3.4323067936414455,
+              "conditional_regularized_design_information": 1.826341232935448,
+              "design_information_fraction": 0.017935842639750302,
+              "coefficient": 0.2042028492878218
+            }
+          ]
+        },
+        "foreign": {
+          "active_training_rows": 31,
+          "active_training_people": 21,
+          "actual_PA_weight_fraction": 0.00601036891692425,
+          "features": [
+            {
+              "feature": "evidence_foreign_K",
+              "weighted_centered_sum_squares": 0.5342854837543296,
+              "conditional_regularized_design_information": 0.5076802769373501,
+              "design_information_fraction": 0.005051159031215281,
+              "coefficient": -0.0033367788420273245
+            },
+            {
+              "feature": "evidence_foreign_UBB",
+              "weighted_centered_sum_squares": 0.06746358760358266,
+              "conditional_regularized_design_information": 0.05707366457058072,
+              "design_information_fraction": 0.0005704110911929464,
+              "coefficient": 0.00036183622743295114
+            },
+            {
+              "feature": "evidence_foreign_HBP",
+              "weighted_centered_sum_squares": 0.010981261818871478,
+              "conditional_regularized_design_information": 0.00912119408997114,
+              "design_information_fraction": 9.120362204032802e-05,
+              "coefficient": 0.003387423115539024
+            },
+            {
+              "feature": "evidence_foreign_1B",
+              "weighted_centered_sum_squares": 0.14917766948024408,
+              "conditional_regularized_design_information": 0.14472465485724229,
+              "design_information_fraction": 0.0014451550529099469,
+              "coefficient": 0.00509278520947534
+            },
+            {
+              "feature": "evidence_foreign_2B",
+              "weighted_centered_sum_squares": 0.012710991543742643,
+              "conditional_regularized_design_information": 0.012321792250887142,
+              "design_information_fraction": 0.00012320274172298893,
+              "coefficient": -0.0015290326585727695
+            },
+            {
+              "feature": "evidence_foreign_3B",
+              "weighted_centered_sum_squares": 0.0016127247560123487,
+              "conditional_regularized_design_information": 0.0015404257576960845,
+              "design_information_fraction": 1.5404020289464584e-05,
+              "coefficient": 0.0001769677662826621
+            },
+            {
+              "feature": "evidence_foreign_HR",
+              "weighted_centered_sum_squares": 0.06985336518134763,
+              "conditional_regularized_design_information": 0.0675815674545106,
+              "design_information_fraction": 0.0006753592561738347,
+              "coefficient": -0.0008316326044006293
+            }
+          ]
+        }
+      }
+    },
+    {
+      "origin": 2022,
+      "fold": 3,
+      "active_training_rows": 5114,
+      "active_training_people": 1382,
+      "families": {
+        "minor": {
+          "active_training_rows": 4509,
+          "active_training_people": 1354,
+          "actual_PA_weight_fraction": 0.8083090284746425,
+          "features": [
+            {
+              "feature": "evidence_minor_K",
+              "weighted_centered_sum_squares": 95.91256752119713,
+              "conditional_regularized_design_information": 68.1390115965201,
+              "design_information_fraction": 0.4052540273046921,
+              "coefficient": 0.02820908627948086
+            },
+            {
+              "feature": "evidence_minor_UBB",
+              "weighted_centered_sum_squares": 13.4033338903026,
+              "conditional_regularized_design_information": 8.041819409873739,
+              "design_information_fraction": 0.0744324693326926,
+              "coefficient": 0.2696696847071127
+            },
+            {
+              "feature": "evidence_minor_HBP",
+              "weighted_centered_sum_squares": 0.9484551749401081,
+              "conditional_regularized_design_information": 0.877621189715299,
+              "design_information_fraction": 0.008699860081601275,
+              "coefficient": 0.03934424625196406
+            },
+            {
+              "feature": "evidence_minor_1B",
+              "weighted_centered_sum_squares": 13.159134279052102,
+              "conditional_regularized_design_information": 8.290471845205587,
+              "design_information_fraction": 0.07655772205939129,
+              "coefficient": -0.027766878606204706
+            },
+            {
+              "feature": "evidence_minor_2B",
+              "weighted_centered_sum_squares": 2.1503204745697393,
+              "conditional_regularized_design_information": 1.4491091276585593,
+              "design_information_fraction": 0.014284099092827634,
+              "coefficient": 0.14316941698731706
+            },
+            {
+              "feature": "evidence_minor_3B",
+              "weighted_centered_sum_squares": 0.8316566558547429,
+              "conditional_regularized_design_information": 0.49045201271718497,
+              "design_information_fraction": 0.004880583208592968,
+              "coefficient": -0.01596649508726994
+            },
+            {
+              "feature": "evidence_minor_HR",
+              "weighted_centered_sum_squares": 3.664299024428451,
+              "conditional_regularized_design_information": 1.9898356987332733,
+              "design_information_fraction": 0.019510137310261275,
+              "coefficient": 0.22260742019355773
+            }
+          ]
+        },
+        "foreign": {
+          "active_training_rows": 37,
+          "active_training_people": 24,
+          "actual_PA_weight_fraction": 0.006560190808376392,
+          "features": [
+            {
+              "feature": "evidence_foreign_K",
+              "weighted_centered_sum_squares": 0.6455108118780093,
+              "conditional_regularized_design_information": 0.5996290349524713,
+              "design_information_fraction": 0.005960549166082267,
+              "coefficient": -0.010840170416786175
+            },
+            {
+              "feature": "evidence_foreign_UBB",
+              "weighted_centered_sum_squares": 0.1083924196294632,
+              "conditional_regularized_design_information": 0.0884551153314419,
+              "design_information_fraction": 0.0008837694140599483,
+              "coefficient": 0.004337999403365098
+            },
+            {
+              "feature": "evidence_foreign_HBP",
+              "weighted_centered_sum_squares": 0.013214827299018498,
+              "conditional_regularized_design_information": 0.01052265397581209,
+              "design_information_fraction": 0.00010521546829846283,
+              "coefficient": 0.004421066053380882
+            },
+            {
+              "feature": "evidence_foreign_1B",
+              "weighted_centered_sum_squares": 0.15949138604434335,
+              "conditional_regularized_design_information": 0.1548705041506082,
+              "design_information_fraction": 0.001546310263006032,
+              "coefficient": 0.004611577827984592
+            },
+            {
+              "feature": "evidence_foreign_2B",
+              "weighted_centered_sum_squares": 0.013173952356417619,
+              "conditional_regularized_design_information": 0.012769290446470904,
+              "design_information_fraction": 0.0001276766010686864,
+              "coefficient": -0.001362938199760481
+            },
+            {
+              "feature": "evidence_foreign_3B",
+              "weighted_centered_sum_squares": 0.0017026227788994551,
+              "conditional_regularized_design_information": 0.0016413540888748912,
+              "design_information_fraction": 1.6413271488846212e-05,
+              "coefficient": 0.00011251948341572973
+            },
+            {
+              "feature": "evidence_foreign_HR",
+              "weighted_centered_sum_squares": 0.07384242036065951,
+              "conditional_regularized_design_information": 0.07102886744405623,
+              "design_information_fraction": 0.0007097845225329139,
+              "coefficient": 0.0006858493046409658
+            }
+          ]
+        }
+      }
+    },
+    {
+      "origin": 2023,
+      "fold": 3,
+      "active_training_rows": 5636,
+      "active_training_people": 1471,
+      "families": {
+        "minor": {
+          "active_training_rows": 4939,
+          "active_training_people": 1444,
+          "actual_PA_weight_fraction": 0.7998473974489034,
+          "features": [
+            {
+              "feature": "evidence_minor_K",
+              "weighted_centered_sum_squares": 108.31300776131704,
+              "conditional_regularized_design_information": 74.4138708717436,
+              "design_information_fraction": 0.42665110578541277,
+              "coefficient": 0.052254180787881924
+            },
+            {
+              "feature": "evidence_minor_UBB",
+              "weighted_centered_sum_squares": 14.424907720660231,
+              "conditional_regularized_design_information": 8.90504401054784,
+              "design_information_fraction": 0.08176888491671107,
+              "coefficient": 0.2997918429790212
+            },
+            {
+              "feature": "evidence_minor_HBP",
+              "weighted_centered_sum_squares": 1.0766557713470233,
+              "conditional_regularized_design_information": 0.9911875091668207,
+              "design_information_fraction": 0.009814594061257594,
+              "coefficient": 0.04831711240854603
+            },
+            {
+              "feature": "evidence_minor_1B",
+              "weighted_centered_sum_squares": 14.51572742162361,
+              "conditional_regularized_design_information": 8.890349787375726,
+              "design_information_fraction": 0.08164497409307096,
+              "coefficient": -0.0447353843135034
+            },
+            {
+              "feature": "evidence_minor_2B",
+              "weighted_centered_sum_squares": 2.2821378898949156,
+              "conditional_regularized_design_information": 1.5552864528296908,
+              "design_information_fraction": 0.015314677425011143,
+              "coefficient": 0.14269357299465874
+            },
+            {
+              "feature": "evidence_minor_3B",
+              "weighted_centered_sum_squares": 0.8787261559221977,
+              "conditional_regularized_design_information": 0.5193494382290424,
+              "design_information_fraction": 0.0051666613555651,
+              "coefficient": -0.01395259928606171
+            },
+            {
+              "feature": "evidence_minor_HR",
+              "weighted_centered_sum_squares": 3.9271389002055996,
+              "conditional_regularized_design_information": 2.201420064649966,
+              "design_information_fraction": 0.02154001444654492,
+              "coefficient": 0.22784442531177085
+            }
+          ]
+        },
+        "foreign": {
+          "active_training_rows": 41,
+          "active_training_people": 25,
+          "actual_PA_weight_fraction": 0.006823240674376618,
+          "features": [
+            {
+              "feature": "evidence_foreign_K",
+              "weighted_centered_sum_squares": 0.6807108967118485,
+              "conditional_regularized_design_information": 0.6236401320005882,
+              "design_information_fraction": 0.006197749665808965,
+              "coefficient": -0.014914471778044294
+            },
+            {
+              "feature": "evidence_foreign_UBB",
+              "weighted_centered_sum_squares": 0.12261920029458975,
+              "conditional_regularized_design_information": 0.09795550909331041,
+              "design_information_fraction": 0.0009785965017478477,
+              "coefficient": 0.00635373431336016
+            },
+            {
+              "feature": "evidence_foreign_HBP",
+              "weighted_centered_sum_squares": 0.014049037350626094,
+              "conditional_regularized_design_information": 0.010874255999937077,
+              "design_information_fraction": 0.00010873073634075046,
+              "coefficient": 0.004900621143999523
+            },
+            {
+              "feature": "evidence_foreign_1B",
+              "weighted_centered_sum_squares": 0.16085353708338954,
+              "conditional_regularized_design_information": 0.1564381639653618,
+              "design_information_fraction": 0.0015619381722546688,
+              "coefficient": 0.004303966077695347
+            },
+            {
+              "feature": "evidence_foreign_2B",
+              "weighted_centered_sum_squares": 0.013238960788258609,
+              "conditional_regularized_design_information": 0.012831287550355341,
+              "design_information_fraction": 0.00012829641342183045,
+              "coefficient": -0.0014288147115066494
+            },
+            {
+              "feature": "evidence_foreign_3B",
+              "weighted_centered_sum_squares": 0.0017261460162340775,
+              "conditional_regularized_design_information": 0.0016701273546999573,
+              "design_information_fraction": 1.6700994619119934e-05,
+              "coefficient": 2.5119725033597434e-05
+            },
+            {
+              "feature": "evidence_foreign_HR",
+              "weighted_centered_sum_squares": 0.07510553906688153,
+              "conditional_regularized_design_information": 0.07192735499788228,
+              "design_information_fraction": 0.0007187565673910249,
+              "coefficient": 0.0014023889922989917
+            }
+          ]
+        }
+      }
+    },
+    {
+      "origin": 2024,
+      "fold": 3,
+      "active_training_rows": 6154,
+      "active_training_people": 1558,
+      "families": {
+        "minor": {
+          "active_training_rows": 5392,
+          "active_training_people": 1530,
+          "actual_PA_weight_fraction": 0.8006879208950088,
+          "features": [
+            {
+              "feature": "evidence_minor_K",
+              "weighted_centered_sum_squares": 123.1735716749329,
+              "conditional_regularized_design_information": 81.9678482939174,
+              "design_information_fraction": 0.45045236871472816,
+              "coefficient": 0.07427192332050628
+            },
+            {
+              "feature": "evidence_minor_UBB",
+              "weighted_centered_sum_squares": 15.750135529316676,
+              "conditional_regularized_design_information": 9.89457998159429,
+              "design_information_fraction": 0.09003701532187926,
+              "coefficient": 0.28330677506887175
+            },
+            {
+              "feature": "evidence_minor_HBP",
+              "weighted_centered_sum_squares": 1.2595398763524053,
+              "conditional_regularized_design_information": 1.153544075291606,
+              "design_information_fraction": 0.011403891834308727,
+              "coefficient": 0.043965100307815606
+            },
+            {
+              "feature": "evidence_minor_1B",
+              "weighted_centered_sum_squares": 16.05658930076145,
+              "conditional_regularized_design_information": 9.526981897339908,
+              "design_information_fraction": 0.08698296741408969,
+              "coefficient": -0.03924843519207658
+            },
+            {
+              "feature": "evidence_minor_2B",
+              "weighted_centered_sum_squares": 2.498048972592438,
+              "conditional_regularized_design_information": 1.6820687293578658,
+              "design_information_fraction": 0.01654243221422791,
+              "coefficient": 0.15167263729276237
+            },
+            {
+              "feature": "evidence_minor_3B",
+              "weighted_centered_sum_squares": 0.9385618221213173,
+              "conditional_regularized_design_information": 0.549518605115324,
+              "design_information_fraction": 0.005465154013053306,
+              "coefficient": -0.013822174458938843
+            },
+            {
+              "feature": "evidence_minor_HR",
+              "weighted_centered_sum_squares": 4.222235782045115,
+              "conditional_regularized_design_information": 2.356243236877802,
+              "design_information_fraction": 0.023020024596104697,
+              "coefficient": 0.2387825356127113
+            }
+          ]
+        },
+        "foreign": {
+          "active_training_rows": 44,
+          "active_training_people": 27,
+          "actual_PA_weight_fraction": 0.0066972916085031855,
+          "features": [
+            {
+              "feature": "evidence_foreign_K",
+              "weighted_centered_sum_squares": 0.8003069876218922,
+              "conditional_regularized_design_information": 0.7266745381003403,
+              "design_information_fraction": 0.0072143207490233605,
+              "coefficient": -0.013529426624689346
+            },
+            {
+              "feature": "evidence_foreign_UBB",
+              "weighted_centered_sum_squares": 0.13060318808610097,
+              "conditional_regularized_design_information": 0.10197943521339425,
+              "design_information_fraction": 0.0010187554310991018,
+              "coefficient": 0.006801296805757836
+            },
+            {
+              "feature": "evidence_foreign_HBP",
+              "weighted_centered_sum_squares": 0.014125850352716938,
+              "conditional_regularized_design_information": 0.010906387243707627,
+              "design_information_fraction": 0.00010905197880597076,
+              "coefficient": 0.004931409270953448
+            },
+            {
+              "feature": "evidence_foreign_1B",
+              "weighted_centered_sum_squares": 0.1609647043925985,
+              "conditional_regularized_design_information": 0.15674086917822194,
+              "design_information_fraction": 0.0015649557665115346,
+              "coefficient": 0.004021866013006161
+            },
+            {
+              "feature": "evidence_foreign_2B",
+              "weighted_centered_sum_squares": 0.014218819515685377,
+              "conditional_regularized_design_information": 0.013862244543190627,
+              "design_information_fraction": 0.00013860323191295374,
+              "coefficient": -0.0015987405705699118
+            },
+            {
+              "feature": "evidence_foreign_3B",
+              "weighted_centered_sum_squares": 0.0026076313313914573,
+              "conditional_regularized_design_information": 0.002525758824091895,
+              "design_information_fraction": 2.5256950311267765e-05,
+              "coefficient": -0.00020078873568511106
+            },
+            {
+              "feature": "evidence_foreign_HR",
+              "weighted_centered_sum_squares": 0.07576221582069,
+              "conditional_regularized_design_information": 0.07263722406948148,
+              "design_information_fraction": 0.0007258450070306608,
+              "coefficient": 0.002196931019633562
+            }
+          ]
+        }
+      }
+    },
+    {
+      "origin": 2016,
+      "fold": 4,
+      "active_training_rows": 2503,
+      "active_training_people": 850,
+      "families": {
+        "minor": {
+          "active_training_rows": 2221,
+          "active_training_people": 816,
+          "actual_PA_weight_fraction": 0.8166176038311319,
+          "features": [
+            {
+              "feature": "evidence_minor_K",
+              "weighted_centered_sum_squares": 44.49066526570883,
+              "conditional_regularized_design_information": 33.31571501227441,
+              "design_information_fraction": 0.24990088384709203,
+              "coefficient": 0.2180492919820102
+            },
+            {
+              "feature": "evidence_minor_UBB",
+              "weighted_centered_sum_squares": 6.321373115621148,
+              "conditional_regularized_design_information": 4.58447503911718,
+              "design_information_fraction": 0.043835139368462415,
+              "coefficient": 0.1497837290653132
+            },
+            {
+              "feature": "evidence_minor_HBP",
+              "weighted_centered_sum_squares": 0.34284612426090927,
+              "conditional_regularized_design_information": 0.3201061827892886,
+              "design_information_fraction": 0.0031908477270352546,
+              "coefficient": 0.029499675838440216
+            },
+            {
+              "feature": "evidence_minor_1B",
+              "weighted_centered_sum_squares": 6.566407290542943,
+              "conditional_regularized_design_information": 4.497573057133707,
+              "design_information_fraction": 0.043039976198056516,
+              "coefficient": -0.07834971794257965
+            },
+            {
+              "feature": "evidence_minor_2B",
+              "weighted_centered_sum_squares": 1.0895080031792281,
+              "conditional_regularized_design_information": 0.8206591583020071,
+              "design_information_fraction": 0.008139791637480387,
+              "coefficient": 0.07807969750060184
+            },
+            {
+              "feature": "evidence_minor_3B",
+              "weighted_centered_sum_squares": 0.4273764811343367,
+              "conditional_regularized_design_information": 0.26034277854974164,
+              "design_information_fraction": 0.0025966675490505186,
+              "coefficient": -0.006614829367153937
+            },
+            {
+              "feature": "evidence_minor_HR",
+              "weighted_centered_sum_squares": 1.6519533171810445,
+              "conditional_regularized_design_information": 0.9771959215206607,
+              "design_information_fraction": 0.00967739213396395,
+              "coefficient": 0.1382413405969234
+            }
+          ]
+        },
+        "foreign": {
+          "active_training_rows": 16,
+          "active_training_people": 11,
+          "actual_PA_weight_fraction": 0.005799554516148464,
+          "features": [
+            {
+              "feature": "evidence_foreign_K",
+              "weighted_centered_sum_squares": 0.5501448107997376,
+              "conditional_regularized_design_information": 0.47127983361448855,
+              "design_information_fraction": 0.004690692050454137,
+              "coefficient": -0.024375483991359595
+            },
+            {
+              "feature": "evidence_foreign_UBB",
+              "weighted_centered_sum_squares": 0.009625691937588592,
+              "conditional_regularized_design_information": 0.0086106330947473,
+              "design_information_fraction": 8.609891728560698e-05,
+              "coefficient": -0.0006394384169311683
+            },
+            {
+              "feature": "evidence_foreign_HBP",
+              "weighted_centered_sum_squares": 0.0018676444106468328,
+              "conditional_regularized_design_information": 0.0017971703428827368,
+              "design_information_fraction": 1.7971380452507668e-05,
+              "coefficient": 0.0004859750927851531
+            },
+            {
+              "feature": "evidence_foreign_1B",
+              "weighted_centered_sum_squares": 0.14611437208411174,
+              "conditional_regularized_design_information": 0.12105805239181677,
+              "design_information_fraction": 0.0012091167906802278,
+              "coefficient": 0.011852383662488865
+            },
+            {
+              "feature": "evidence_foreign_2B",
+              "weighted_centered_sum_squares": 0.00686163862346257,
+              "conditional_regularized_design_information": 0.005870977670923594,
+              "design_information_fraction": 5.870633007370589e-05,
+              "coefficient": -0.002386756280498535
+            },
+            {
+              "feature": "evidence_foreign_3B",
+              "weighted_centered_sum_squares": 0.00038753696346405334,
+              "conditional_regularized_design_information": 0.0003139867563106691,
+              "design_information_fraction": 3.139857704369332e-06,
+              "coefficient": -0.0006036946365823221
+            },
+            {
+              "feature": "evidence_foreign_HR",
+              "weighted_centered_sum_squares": 0.04155805331169517,
+              "conditional_regularized_design_information": 0.03991069276581527,
+              "design_information_fraction": 0.0003989477048653676,
+              "coefficient": -0.0040463829195346
+            }
+          ]
+        }
+      }
+    },
+    {
+      "origin": 2017,
+      "fold": 4,
+      "active_training_rows": 3008,
+      "active_training_people": 943,
+      "families": {
+        "minor": {
+          "active_training_rows": 2667,
+          "active_training_people": 910,
+          "actual_PA_weight_fraction": 0.8147448864780458,
+          "features": [
+            {
+              "feature": "evidence_minor_K",
+              "weighted_centered_sum_squares": 57.84788346419318,
+              "conditional_regularized_design_information": 42.077244565899605,
+              "design_information_fraction": 0.2961575211742155,
+              "coefficient": 0.26123213385903093
+            },
+            {
+              "feature": "evidence_minor_UBB",
+              "weighted_centered_sum_squares": 7.666315235441001,
+              "conditional_regularized_design_information": 5.3961339519322,
+              "design_information_fraction": 0.05119859476433171,
+              "coefficient": 0.18220910358458522
+            },
+            {
+              "feature": "evidence_minor_HBP",
+              "weighted_centered_sum_squares": 0.42485824256597593,
+              "conditional_regularized_design_information": 0.3948701701980042,
+              "design_information_fraction": 0.003933170783811826,
+              "coefficient": 0.029215804695740553
+            },
+            {
+              "feature": "evidence_minor_1B",
+              "weighted_centered_sum_squares": 8.257617322745652,
+              "conditional_regularized_design_information": 5.415709992995545,
+              "design_information_fraction": 0.05137479027893847,
+              "coefficient": -0.0872514188324919
+            },
+            {
+              "feature": "evidence_minor_2B",
+              "weighted_centered_sum_squares": 1.277692542315592,
+              "conditional_regularized_design_information": 0.9438335280445642,
+              "design_information_fraction": 0.009350086033559891,
+              "coefficient": 0.09608331335063373
+            },
+            {
+              "feature": "evidence_minor_3B",
+              "weighted_centered_sum_squares": 0.5212871207917072,
+              "conditional_regularized_design_information": 0.31368253512818,
+              "design_information_fraction": 0.0031270164468175476,
+              "coefficient": -0.00692799348284502
+            },
+            {
+              "feature": "evidence_minor_HR",
+              "weighted_centered_sum_squares": 2.130047905160319,
+              "conditional_regularized_design_information": 1.1872038208914404,
+              "design_information_fraction": 0.011732746593066013,
+              "coefficient": 0.16459737883401376
+            }
+          ]
+        },
+        "foreign": {
+          "active_training_rows": 20,
+          "active_training_people": 14,
+          "actual_PA_weight_fraction": 0.005301350525291708,
+          "features": [
+            {
+              "feature": "evidence_foreign_K",
+              "weighted_centered_sum_squares": 0.5851876678923449,
+              "conditional_regularized_design_information": 0.5000690994124568,
+              "design_information_fraction": 0.004975808513303603,
+              "coefficient": -0.02231615195185036
+            },
+            {
+              "feature": "evidence_foreign_UBB",
+              "weighted_centered_sum_squares": 0.01131571562993801,
+              "conditional_regularized_design_information": 0.010450050295816027,
+              "design_information_fraction": 0.00010448958374410512,
+              "coefficient": -0.0005143659807840933
+            },
+            {
+              "feature": "evidence_foreign_HBP",
+              "weighted_centered_sum_squares": 0.002239419385195879,
+              "conditional_regularized_design_information": 0.0021370870450709845,
+              "design_information_fraction": 2.1370413746366192e-05,
+              "coefficient": 0.00014865131933292043
+            },
+            {
+              "feature": "evidence_foreign_1B",
+              "weighted_centered_sum_squares": 0.14674131823706504,
+              "conditional_regularized_design_information": 0.12356783730567145,
+              "design_information_fraction": 0.00123415335644512,
+              "coefficient": 0.013890894492791296
+            },
+            {
+              "feature": "evidence_foreign_2B",
+              "weighted_centered_sum_squares": 0.007291136840567087,
+              "conditional_regularized_design_information": 0.0063937839923937645,
+              "design_information_fraction": 6.393375213792772e-05,
+              "coefficient": -0.002664957381163616
+            },
+            {
+              "feature": "evidence_foreign_3B",
+              "weighted_centered_sum_squares": 0.0006314090739190652,
+              "conditional_regularized_design_information": 0.0005706011761787977,
+              "design_information_fraction": 5.70597920340353e-06,
+              "coefficient": -0.0006271603597579543
+            },
+            {
+              "feature": "evidence_foreign_HR",
+              "weighted_centered_sum_squares": 0.041799200865168674,
+              "conditional_regularized_design_information": 0.040301774117310174,
+              "design_information_fraction": 0.00040285538330650213,
+              "coefficient": -0.004376117612873407
+            }
+          ]
+        }
+      }
+    },
+    {
+      "origin": 2018,
+      "fold": 4,
+      "active_training_rows": 3518,
+      "active_training_people": 1019,
+      "families": {
+        "minor": {
+          "active_training_rows": 3127,
+          "active_training_people": 988,
+          "actual_PA_weight_fraction": 0.8186489410444475,
+          "features": [
+            {
+              "feature": "evidence_minor_K",
+              "weighted_centered_sum_squares": 69.27243532926711,
+              "conditional_regularized_design_information": 49.437756840479125,
+              "design_information_fraction": 0.3308250731657638,
+              "coefficient": 0.27286620695741476
+            },
+            {
+              "feature": "evidence_minor_UBB",
+              "weighted_centered_sum_squares": 9.269759530329264,
+              "conditional_regularized_design_information": 6.267518961716846,
+              "design_information_fraction": 0.05897868909478103,
+              "coefficient": 0.22367821841310281
+            },
+            {
+              "feature": "evidence_minor_HBP",
+              "weighted_centered_sum_squares": 0.5196028590038476,
+              "conditional_regularized_design_information": 0.4846040050344982,
+              "design_information_fraction": 0.004822669202241355,
+              "coefficient": 0.03975809966771182
+            },
+            {
+              "feature": "evidence_minor_1B",
+              "weighted_centered_sum_squares": 9.703910847673797,
+              "conditional_regularized_design_information": 6.24636030009448,
+              "design_information_fraction": 0.05879128736694169,
+              "coefficient": -0.0937683740579566
+            },
+            {
+              "feature": "evidence_minor_2B",
+              "weighted_centered_sum_squares": 1.4976736584885333,
+              "conditional_regularized_design_information": 1.0801122603048299,
+              "design_information_fraction": 0.010685704993315493,
+              "coefficient": 0.09435102270426295
+            },
+            {
+              "feature": "evidence_minor_3B",
+              "weighted_centered_sum_squares": 0.6090235428636488,
+              "conditional_regularized_design_information": 0.364382082597146,
+              "design_information_fraction": 0.0036305916006862823,
+              "coefficient": -0.00660836733658701
+            },
+            {
+              "feature": "evidence_minor_HR",
+              "weighted_centered_sum_squares": 2.6438379905199665,
+              "conditional_regularized_design_information": 1.363917710323932,
+              "design_information_fraction": 0.013455653068005053,
+              "coefficient": 0.18104447161839987
+            }
+          ]
+        },
+        "foreign": {
+          "active_training_rows": 22,
+          "active_training_people": 15,
+          "actual_PA_weight_fraction": 0.005089627667213324,
+          "features": [
+            {
+              "feature": "evidence_foreign_K",
+              "weighted_centered_sum_squares": 0.6295932354797907,
+              "conditional_regularized_design_information": 0.5651492743552353,
+              "design_information_fraction": 0.005619732864050469,
+              "coefficient": -0.01229428371737789
+            },
+            {
+              "feature": "evidence_foreign_UBB",
+              "weighted_centered_sum_squares": 0.013495938338539964,
+              "conditional_regularized_design_information": 0.012450960545947964,
+              "design_information_fraction": 0.00012449410474761548,
+              "coefficient": 0.0007895173514587883
+            },
+            {
+              "feature": "evidence_foreign_HBP",
+              "weighted_centered_sum_squares": 0.002471666219775872,
+              "conditional_regularized_design_information": 0.0023973667620964534,
+              "design_information_fraction": 2.3973092898003552e-05,
+              "coefficient": -0.00044527999601752614
+            },
+            {
+              "feature": "evidence_foreign_1B",
+              "weighted_centered_sum_squares": 0.15186301807396918,
+              "conditional_regularized_design_information": 0.1270216962436308,
+              "design_information_fraction": 0.0012686055581377204,
+              "coefficient": 0.015044980821183327
+            },
+            {
+              "feature": "evidence_foreign_2B",
+              "weighted_centered_sum_squares": 0.00792694216419787,
+              "conditional_regularized_design_information": 0.006978954908859691,
+              "design_information_fraction": 6.978467884732687e-05,
+              "coefficient": -0.003183737302895235
+            },
+            {
+              "feature": "evidence_foreign_3B",
+              "weighted_centered_sum_squares": 0.0007619433472205529,
+              "conditional_regularized_design_information": 0.0007119020624060113,
+              "design_information_fraction": 7.1189699439662595e-06,
+              "coefficient": -0.0006809067385658928
+            },
+            {
+              "feature": "evidence_foreign_HR",
+              "weighted_centered_sum_squares": 0.04197155061681514,
+              "conditional_regularized_design_information": 0.040510981083386355,
+              "design_information_fraction": 0.000404945763332282,
+              "coefficient": -0.004083106557875751
+            }
+          ]
+        }
+      }
+    },
+    {
+      "origin": 2021,
+      "fold": 4,
+      "active_training_rows": 4577,
+      "active_training_people": 1254,
+      "families": {
+        "minor": {
+          "active_training_rows": 4059,
+          "active_training_people": 1222,
+          "actual_PA_weight_fraction": 0.8197119849063308,
+          "features": [
+            {
+              "feature": "evidence_minor_K",
+              "weighted_centered_sum_squares": 90.47086778663686,
+              "conditional_regularized_design_information": 64.59263062416645,
+              "design_information_fraction": 0.3924393843103361,
+              "coefficient": 0.21995611856401587
+            },
+            {
+              "feature": "evidence_minor_UBB",
+              "weighted_centered_sum_squares": 12.32562392017361,
+              "conditional_regularized_design_information": 7.943815866151297,
+              "design_information_fraction": 0.07359213496770865,
+              "coefficient": 0.27082540120653176
+            },
+            {
+              "feature": "evidence_minor_HBP",
+              "weighted_centered_sum_squares": 0.7913029130608407,
+              "conditional_regularized_design_information": 0.7405118771470853,
+              "design_information_fraction": 0.007350686068084889,
+              "coefficient": 0.04239258415240763
+            },
+            {
+              "feature": "evidence_minor_1B",
+              "weighted_centered_sum_squares": 12.376406860826679,
+              "conditional_regularized_design_information": 7.784993780031783,
+              "design_information_fraction": 0.07222706526215923,
+              "coefficient": -0.08798814927176818
+            },
+            {
+              "feature": "evidence_minor_2B",
+              "weighted_centered_sum_squares": 1.8787718334412256,
+              "conditional_regularized_design_information": 1.3557082044864188,
+              "design_information_fraction": 0.013375745959480254,
+              "coefficient": 0.12900497616099152
+            },
+            {
+              "feature": "evidence_minor_3B",
+              "weighted_centered_sum_squares": 0.7405161908663863,
+              "conditional_regularized_design_information": 0.448055241811943,
+              "design_information_fraction": 0.004460566615583793,
+              "coefficient": -0.013528927136875141
+            },
+            {
+              "feature": "evidence_minor_HR",
+              "weighted_centered_sum_squares": 3.4433577907732396,
+              "conditional_regularized_design_information": 1.7578294338051421,
+              "design_information_fraction": 0.01727463570701097,
+              "coefficient": 0.24870102247528778
+            }
+          ]
+        },
+        "foreign": {
+          "active_training_rows": 31,
+          "active_training_people": 22,
+          "actual_PA_weight_fraction": 0.005224672097441663,
+          "features": [
+            {
+              "feature": "evidence_foreign_K",
+              "weighted_centered_sum_squares": 0.7581593415254908,
+              "conditional_regularized_design_information": 0.6767471983147431,
+              "design_information_fraction": 0.00672198116394916,
+              "coefficient": -0.011041883814534059
+            },
+            {
+              "feature": "evidence_foreign_UBB",
+              "weighted_centered_sum_squares": 0.03506298199727781,
+              "conditional_regularized_design_information": 0.03280424191689235,
+              "design_information_fraction": 0.0003279348426298174,
+              "coefficient": -0.0037832421840991817
+            },
+            {
+              "feature": "evidence_foreign_HBP",
+              "weighted_centered_sum_squares": 0.004748830200623578,
+              "conditional_regularized_design_information": 0.004596019904411719,
+              "design_information_fraction": 4.595808680130011e-05,
+              "coefficient": -0.0006783156921677103
+            },
+            {
+              "feature": "evidence_foreign_1B",
+              "weighted_centered_sum_squares": 0.1691296385971499,
+              "conditional_regularized_design_information": 0.14005285791991184,
+              "design_information_fraction": 0.0013985698421651602,
+              "coefficient": 0.017385188969703678
+            },
+            {
+              "feature": "evidence_foreign_2B",
+              "weighted_centered_sum_squares": 0.00911813876470284,
+              "conditional_regularized_design_information": 0.008230769498808854,
+              "design_information_fraction": 8.230092098898654e-05,
+              "coefficient": -0.004392180126523088
+            },
+            {
+              "feature": "evidence_foreign_3B",
+              "weighted_centered_sum_squares": 0.0009083439571842351,
+              "conditional_regularized_design_information": 0.0008755776763962331,
+              "design_information_fraction": 8.755700101006834e-06,
+              "coefficient": -0.000955047217421944
+            },
+            {
+              "feature": "evidence_foreign_HR",
+              "weighted_centered_sum_squares": 0.04567930821214621,
+              "conditional_regularized_design_information": 0.044061840877859026,
+              "design_information_fraction": 0.000440424349702437,
+              "coefficient": -0.005778209656750792
+            }
+          ]
+        }
+      }
+    },
+    {
+      "origin": 2022,
+      "fold": 4,
+      "active_training_rows": 5140,
+      "active_training_people": 1391,
+      "families": {
+        "minor": {
+          "active_training_rows": 4554,
+          "active_training_people": 1359,
+          "actual_PA_weight_fraction": 0.8169540682048211,
+          "features": [
+            {
+              "feature": "evidence_minor_K",
+              "weighted_centered_sum_squares": 100.12205252467282,
+              "conditional_regularized_design_information": 71.00945403139929,
+              "design_information_fraction": 0.41523700799817265,
+              "coefficient": 0.20521179219303604
+            },
+            {
+              "feature": "evidence_minor_UBB",
+              "weighted_centered_sum_squares": 13.325572864927594,
+              "conditional_regularized_design_information": 8.641041559056305,
+              "design_information_fraction": 0.07953754340949605,
+              "coefficient": 0.2628094553548004
+            },
+            {
+              "feature": "evidence_minor_HBP",
+              "weighted_centered_sum_squares": 0.897129187931743,
+              "conditional_regularized_design_information": 0.842161503574161,
+              "design_information_fraction": 0.00835128373903719,
+              "coefficient": 0.04203215295380522
+            },
+            {
+              "feature": "evidence_minor_1B",
+              "weighted_centered_sum_squares": 13.356472933602294,
+              "conditional_regularized_design_information": 8.322793361421816,
+              "design_information_fraction": 0.07683326013992825,
+              "coefficient": -0.08582392607289835
+            },
+            {
+              "feature": "evidence_minor_2B",
+              "weighted_centered_sum_squares": 2.0395259006214754,
+              "conditional_regularized_design_information": 1.4754265515696119,
+              "design_information_fraction": 0.014539742297311784,
+              "coefficient": 0.1444836478775178
+            },
+            {
+              "feature": "evidence_minor_3B",
+              "weighted_centered_sum_squares": 0.7950510681880848,
+              "conditional_regularized_design_information": 0.4797002533501171,
+              "design_information_fraction": 0.004774101158150333,
+              "coefficient": -0.016294535504422364
+            },
+            {
+              "feature": "evidence_minor_HR",
+              "weighted_centered_sum_squares": 3.7020880385222124,
+              "conditional_regularized_design_information": 1.918634677249372,
+              "design_information_fraction": 0.01882516071104371,
+              "coefficient": 0.2663552615364425
+            }
+          ]
+        },
+        "foreign": {
+          "active_training_rows": 39,
+          "active_training_people": 27,
+          "actual_PA_weight_fraction": 0.005974459132663772,
+          "features": [
+            {
+              "feature": "evidence_foreign_K",
+              "weighted_centered_sum_squares": 0.9234720938392822,
+              "conditional_regularized_design_information": 0.795324623994631,
+              "design_information_fraction": 0.007890491220316995,
+              "coefficient": -0.018425660931187166
+            },
+            {
+              "feature": "evidence_foreign_UBB",
+              "weighted_centered_sum_squares": 0.06846531913417211,
+              "conditional_regularized_design_information": 0.061467366400705714,
+              "design_information_fraction": 0.0006142960723894564,
+              "coefficient": 4.881473355715151e-06
+            },
+            {
+              "feature": "evidence_foreign_HBP",
+              "weighted_centered_sum_squares": 0.007021360785549731,
+              "conditional_regularized_design_information": 0.006637498793793384,
+              "design_information_fraction": 6.63705825913149e-05,
+              "coefficient": 0.00027852897071454916
+            },
+            {
+              "feature": "evidence_foreign_1B",
+              "weighted_centered_sum_squares": 0.18189680969837718,
+              "conditional_regularized_design_information": 0.1489708519400068,
+              "design_information_fraction": 0.001487492589017664,
+              "coefficient": 0.017347571852915133
+            },
+            {
+              "feature": "evidence_foreign_2B",
+              "weighted_centered_sum_squares": 0.009901341136362306,
+              "conditional_regularized_design_information": 0.009037367819573205,
+              "design_information_fraction": 9.036551153207286e-05,
+              "coefficient": -0.003889889278803163
+            },
+            {
+              "feature": "evidence_foreign_3B",
+              "weighted_centered_sum_squares": 0.0010111089583837785,
+              "conditional_regularized_design_information": 0.0009677631965274713,
+              "design_information_fraction": 9.677538309620623e-06,
+              "coefficient": -0.0009659210716812031
+            },
+            {
+              "feature": "evidence_foreign_HR",
+              "weighted_centered_sum_squares": 0.0479502844150804,
+              "conditional_regularized_design_information": 0.04657982563625751,
+              "design_information_fraction": 0.00046558138936321486,
+              "coefficient": -0.00441747995875686
+            }
+          ]
+        }
+      }
+    },
+    {
+      "origin": 2023,
+      "fold": 4,
+      "active_training_rows": 5674,
+      "active_training_people": 1474,
+      "families": {
+        "minor": {
+          "active_training_rows": 4993,
+          "active_training_people": 1442,
+          "actual_PA_weight_fraction": 0.8064328622962678,
+          "features": [
+            {
+              "feature": "evidence_minor_K",
+              "weighted_centered_sum_squares": 111.37817720109378,
+              "conditional_regularized_design_information": 76.61863344429804,
+              "design_information_fraction": 0.4338083244679957,
+              "coefficient": 0.19736671652699594
+            },
+            {
+              "feature": "evidence_minor_UBB",
+              "weighted_centered_sum_squares": 14.320716382402916,
+              "conditional_regularized_design_information": 9.535708380077295,
+              "design_information_fraction": 0.08705570558771025,
+              "coefficient": 0.2974562556907379
+            },
+            {
+              "feature": "evidence_minor_HBP",
+              "weighted_centered_sum_squares": 1.0059552585348999,
+              "conditional_regularized_design_information": 0.9382923898101296,
+              "design_information_fraction": 0.00929570302404731,
+              "coefficient": 0.04828450892034322
+            },
+            {
+              "feature": "evidence_minor_1B",
+              "weighted_centered_sum_squares": 14.56186669945584,
+              "conditional_regularized_design_information": 8.870661715196562,
+              "design_information_fraction": 0.08147889959925138,
+              "coefficient": -0.09853204284495555
+            },
+            {
+              "feature": "evidence_minor_2B",
+              "weighted_centered_sum_squares": 2.169572477525981,
+              "conditional_regularized_design_information": 1.5826106332720826,
+              "design_information_fraction": 0.015579542831258156,
+              "coefficient": 0.14880590492165796
+            },
+            {
+              "feature": "evidence_minor_3B",
+              "weighted_centered_sum_squares": 0.847745108306512,
+              "conditional_regularized_design_information": 0.5109104064599421,
+              "design_information_fraction": 0.005083133805015315,
+              "coefficient": -0.012900340032470809
+            },
+            {
+              "feature": "evidence_minor_HR",
+              "weighted_centered_sum_squares": 3.9387449585729897,
+              "conditional_regularized_design_information": 2.108563039624599,
+              "design_information_fraction": 0.020650207748064604,
+              "coefficient": 0.2677514839999731
+            }
+          ]
+        },
+        "foreign": {
+          "active_training_rows": 44,
+          "active_training_people": 29,
+          "actual_PA_weight_fraction": 0.006615411717213509,
+          "features": [
+            {
+              "feature": "evidence_foreign_K",
+              "weighted_centered_sum_squares": 1.580589978955305,
+              "conditional_regularized_design_information": 1.2911461325798683,
+              "design_information_fraction": 0.012746880471565487,
+              "coefficient": -0.041335939206887724
+            },
+            {
+              "feature": "evidence_foreign_UBB",
+              "weighted_centered_sum_squares": 0.09290422768679683,
+              "conditional_regularized_design_information": 0.07881775465051533,
+              "design_information_fraction": 0.0007875568119094091,
+              "coefficient": 0.004543776198304605
+            },
+            {
+              "feature": "evidence_foreign_HBP",
+              "weighted_centered_sum_squares": 0.008664207112288604,
+              "conditional_regularized_design_information": 0.007787349571103164,
+              "design_information_fraction": 7.786743190190739e-05,
+              "coefficient": 0.0014605148402565776
+            },
+            {
+              "feature": "evidence_foreign_1B",
+              "weighted_centered_sum_squares": 0.23303768084234122,
+              "conditional_regularized_design_information": 0.18293653465474335,
+              "design_information_fraction": 0.0018260248799101923,
+              "coefficient": 0.022174062788717547
+            },
+            {
+              "feature": "evidence_foreign_2B",
+              "weighted_centered_sum_squares": 0.010558704521383746,
+              "conditional_regularized_design_information": 0.009949109051788696,
+              "design_information_fraction": 9.948119302550684e-05,
+              "coefficient": -0.0029864699871855246
+            },
+            {
+              "feature": "evidence_foreign_3B",
+              "weighted_centered_sum_squares": 0.0010372968803165359,
+              "conditional_regularized_design_information": 0.0009929462666491418,
+              "design_information_fraction": 9.92936407324155e-06,
+              "coefficient": -0.0009826206869890431
+            },
+            {
+              "feature": "evidence_foreign_HR",
+              "weighted_centered_sum_squares": 0.04876855331368364,
+              "conditional_regularized_design_information": 0.047749482111342445,
+              "design_information_fraction": 0.0004772669286267165,
+              "coefficient": -0.0034562298583376925
+            }
+          ]
+        }
+      }
+    },
+    {
+      "origin": 2024,
+      "fold": 4,
+      "active_training_rows": 6204,
+      "active_training_people": 1559,
+      "families": {
+        "minor": {
+          "active_training_rows": 5455,
+          "active_training_people": 1526,
+          "actual_PA_weight_fraction": 0.8049479664513426,
+          "features": [
+            {
+              "feature": "evidence_minor_K",
+              "weighted_centered_sum_squares": 126.480043179666,
+              "conditional_regularized_design_information": 84.12029036624222,
+              "design_information_fraction": 0.4568768069989171,
+              "coefficient": 0.21362121281628352
+            },
+            {
+              "feature": "evidence_minor_UBB",
+              "weighted_centered_sum_squares": 15.655586337968622,
+              "conditional_regularized_design_information": 10.595340708170156,
+              "design_information_fraction": 0.09580277650329108,
+              "coefficient": 0.2829952674195955
+            },
+            {
+              "feature": "evidence_minor_HBP",
+              "weighted_centered_sum_squares": 1.1641404158484763,
+              "conditional_regularized_design_information": 1.0820185957552724,
+              "design_information_fraction": 0.010704362761911735,
+              "coefficient": 0.045519354333602075
+            },
+            {
+              "feature": "evidence_minor_1B",
+              "weighted_centered_sum_squares": 16.152558779228634,
+              "conditional_regularized_design_information": 9.49996633723427,
+              "design_information_fraction": 0.08675771011633553,
+              "coefficient": -0.09884367396973007
+            },
+            {
+              "feature": "evidence_minor_2B",
+              "weighted_centered_sum_squares": 2.363478165178781,
+              "conditional_regularized_design_information": 1.7107171402689687,
+              "design_information_fraction": 0.01681943838730115,
+              "coefficient": 0.1572643599161193
+            },
+            {
+              "feature": "evidence_minor_3B",
+              "weighted_centered_sum_squares": 0.9113758455394447,
+              "conditional_regularized_design_information": 0.5453044124896707,
+              "design_information_fraction": 0.0054234697052837535,
+              "coefficient": -0.01103030996412327
+            },
+            {
+              "feature": "evidence_minor_HR",
+              "weighted_centered_sum_squares": 4.231046421701321,
+              "conditional_regularized_design_information": 2.2547962891551947,
+              "design_information_fraction": 0.02205076310336683,
+              "coefficient": 0.27576479308855856
+            }
+          ]
+        },
+        "foreign": {
+          "active_training_rows": 48,
+          "active_training_people": 31,
+          "actual_PA_weight_fraction": 0.0067265541430939985,
+          "features": [
+            {
+              "feature": "evidence_foreign_K",
+              "weighted_centered_sum_squares": 1.873608063917656,
+              "conditional_regularized_design_information": 1.493809170974444,
+              "design_information_fraction": 0.014718229448438603,
+              "coefficient": -0.04369645412652226
+            },
+            {
+              "feature": "evidence_foreign_UBB",
+              "weighted_centered_sum_squares": 0.10302572436772502,
+              "conditional_regularized_design_information": 0.08459234878384336,
+              "design_information_fraction": 0.0008452085061109935,
+              "coefficient": 0.005670155696224782
+            },
+            {
+              "feature": "evidence_foreign_HBP",
+              "weighted_centered_sum_squares": 0.008999259235270847,
+              "conditional_regularized_design_information": 0.00798387406200618,
+              "design_information_fraction": 7.983236690442743e-05,
+              "coefficient": 0.0015386779271994151
+            },
+            {
+              "feature": "evidence_foreign_1B",
+              "weighted_centered_sum_squares": 0.2431965381239026,
+              "conditional_regularized_design_information": 0.18777620754455882,
+              "design_information_fraction": 0.0018742426935953738,
+              "coefficient": 0.022623814909041248
+            },
+            {
+              "feature": "evidence_foreign_2B",
+              "weighted_centered_sum_squares": 0.012013482458487023,
+              "conditional_regularized_design_information": 0.011591495699107668,
+              "design_information_fraction": 0.00011590152227110742,
+              "coefficient": -0.003012356870711181
+            },
+            {
+              "feature": "evidence_foreign_3B",
+              "weighted_centered_sum_squares": 0.0019793548395490653,
+              "conditional_regularized_design_information": 0.001957747723196235,
+              "design_information_fraction": 1.957709396185104e-05,
+              "coefficient": -0.00121944710628972
+            },
+            {
+              "feature": "evidence_foreign_HR",
+              "weighted_centered_sum_squares": 0.05035683337135055,
+              "conditional_regularized_design_information": 0.049426781182475565,
+              "design_information_fraction": 0.0004940236318452538,
+              "coefficient": -0.002500817244151804
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "incumbent_coordinate_accounting": [
+    {
+      "player_id": 670541,
+      "origin": 2018,
+      "minor_share": 0.37694704049844235,
+      "incumbent_equivalent_seven_coordinate_coefficients": {
+        "K": 0.1367341188993989,
+        "UBB": 0.48810774605357576,
+        "HBP": 0.4752492799892458,
+        "1B": 0.3288616167794668,
+        "2B": 0.6733569594200841,
+        "3B": 0.349773364040884,
+        "HR": 0.7732164823710275
+      },
+      "qualification": "Eight centered coordinates sum to zero, so subtracting the other coefficient preserves the old predicted sum. It does not preserve an ordinary seven-coordinate Ridge penalty."
+    },
+    {
+      "player_id": 701762,
+      "origin": 2024,
+      "minor_share": 0.04,
+      "incumbent_equivalent_seven_coordinate_coefficients": {
+        "K": 0.03575082691051634,
+        "UBB": 0.5963556840365846,
+        "HBP": 0.5454016763826407,
+        "1B": 0.323950279181604,
+        "2B": 0.8185219693704451,
+        "3B": 0.4424150178666394,
+        "HR": 1.0382752810570945
+      },
+      "qualification": "Eight centered coordinates sum to zero, so subtracting the other coefficient preserves the old predicted sum. It does not preserve an ordinary seven-coordinate Ridge penalty."
+    },
+    {
+      "player_id": 643217,
+      "origin": 2017,
+      "minor_share": 0.196609332565221,
+      "incumbent_equivalent_seven_coordinate_coefficients": {
+        "K": 0.2625187996186522,
+        "UBB": 0.5551447324588223,
+        "HBP": 0.4898830403509717,
+        "1B": 0.3337676142298882,
+        "2B": 0.666878949042683,
+        "3B": 0.3979107877894922,
+        "HR": 0.7602494653727321
+      },
+      "qualification": "Eight centered coordinates sum to zero, so subtracting the other coefficient preserves the old predicted sum. It does not preserve an ordinary seven-coordinate Ridge penalty."
+    }
+  ],
+  "interpretation": "Regularized centered design diagnostics, not exact multivariate shrinkage relative to OLS, posterior precision, predictive validation or a selected replacement penalty",
+  "local_geometry": "If every row of an input were multiplied by the same share r, alpha 100 would impose effective raw-coefficient penalty 100/r squared. Actual shares vary, so no single effective alpha applies.",
+  "protected_outcomes_used": false,
+  "deployment_approved": false,
+  "hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\audit_hitter_representation_regularization.py": "560b7a98c04696b8537f91eda66596dab0aaf09922cebcfd92456140351a7cf0",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-evidence-representation\\preflight.json": "b1ba045943b53444990bcfbcd42eafd7fc83da0e90faa0797105dfb0369d956d",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-evidence-representation\\fit-report.json": "604492f341792efd6f92400ad62282b7dea0340eda89b663141d7a4908d0f84a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-evidence-representation\\final-review.json": "6767e8dbd88f7d0768f73a5a3851bb5ed16d7e1de646a8ca60e7a7a80a6f2548"
+  },
+  "readable_diagnosis": "docs\\hitter-evidence-learning-diagnosis.md",
+  "publication_hashes": {
+    "scripts\\publish_hitter_representation_diagnosis.py": "1a970ca7f7c09eff50e98e801e85a42dcb23e54e1fd82ddfeb91edc5a96de4e7",
+    "docs\\hitter-evidence-learning-diagnosis.md": "6ccb9abefca747364d1991438f2737ee709711a925a044f111aec15c60e47d92",
+    "reports\\generated\\hitter-evidence-representation\\regularization-audit.json": "ee3cf0e78adf5dedc4744b6b191fda82a8c5a9522012f3c0a7b55e3399838434"
+  }
+}

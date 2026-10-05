@@ -1,0 +1,3038 @@
+{
+  "status": "review_complete_keep_current_no_integrated_promotion",
+  "player_walkthrough_status": "complete",
+  "manual_case_count": 41,
+  "manual_classifications": {
+    "useful_professional_job_repair": 1,
+    "stable_talent_incomplete_opportunity": 1,
+    "modest_talent_and_workload_gain": 1,
+    "professional_job_gain_talent_failure": 3,
+    "recognized_star_still_regressed": 1,
+    "fast_track_prospect_failure": 1,
+    "emerging_regular_failure": 1,
+    "brief_debut_prospect_harm": 1,
+    "retained_employment_harm": 1,
+    "finite_absence_not_resolved": 1,
+    "plausible_small_gain": 1,
+    "unresolved_restriction_ignored": 1,
+    "explicit_permanent_rule": 1,
+    "useful_returner_job_gain": 1,
+    "surprising_unsigned_exit": 1,
+    "mixed_role_source_and_support_gap": 1,
+    "plausible_workload_rate_miss": 1,
+    "later_injury_uncertainty": 1,
+    "employment_opportunity_harm": 1,
+    "retained_nonarrival": 5,
+    "job_source_gap_and_small_sample_rate": 1,
+    "tiny_foreign_source_stable_nonarrival": 1,
+    "sparse_return_small_observed_sample": 1,
+    "retained_false_positive_cost": 1,
+    "source_amplification_fixed_talent_not_solved": 1,
+    "sensible_newer_MLB_weighting": 1,
+    "brief_debut_star_false_low": 1,
+    "later_injury_star_false_high": 1,
+    "ordinary_modest_harm": 1,
+    "stable_postdebut_forecast": 1,
+    "pooled_MLB_head_harm_not_foreign_amplification": 1,
+    "ordinary_minor_harm": 1,
+    "largest_gain_retained_employment": 1,
+    "largest_harm_talent_decline_interaction": 1,
+    "ordinary_product_cancellation": 1
+  },
+  "execution_integrity": "140 heads replay and compatible targets independently reconstructed; interrupted-model hash timing qualified",
+  "independently_recomputed_score_fields": 462,
+  "profile_support_decision": "Sparse intersections retained; no unqualified full-cohort claim",
+  "predictive_performance": "Small uncertain PA gain; no delivered-value or overall hitting gain versus current",
+  "baseball_reasonability": "Source amplification repaired; prospect talent/readiness and rare availability remain unresolved",
+  "tests": {
+    "args": [
+      "-m",
+      "pytest",
+      "tests/test_hitter_evidence_representation.py",
+      "tests/test_hitter_representation_fit_recovery.py",
+      "tests/test_hitter_representation_scoring.py",
+      "-q",
+      "-p",
+      "no:cacheprovider"
+    ],
+    "exit_code": 0,
+    "stdout": "............                                                             [100%]\n12 passed in 3.07s\n"
+  },
+  "protected_forecast": {
+    "args": [
+      "scripts/verify_hitter_full_2026_freeze.py"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"contact_available_rows\": 3511,\n  \"five_model_rows\": 3720,\n  \"forecast_sha256\": \"d1953a28d35d87d141ecc65ec4b107906edad877982e79c0d3a216245b9e4708\",\n  \"players\": 3907,\n  \"population_prior_rows\": 187,\n  \"protected_2026_opened\": false,\n  \"status\": \"verified\",\n  \"verified_files\": 31\n}\n"
+  },
+  "protected_outcomes_used": false,
+  "deployable_candidate_selected": false,
+  "deployment_approved": false,
+  "current_forecast_and_explorer_changed": false,
+  "broad_goal_achieved": false,
+  "scores": {
+    "scopes": [
+      {
+        "scope": "original_all",
+        "rows": 30506,
+        "players": 11020,
+        "actual_pa": 1270493,
+        "actual_arrivals": 4538,
+        "actual_value": 4185.433589228993,
+        "scores": {
+          "current": {
+            "pa_rmse": 60.49910182626439,
+            "pa_mae": 20.612358229964073,
+            "pa_bias": -1.3478241546151575,
+            "value_rmse": 0.43513335105098866,
+            "value_mae": 0.12387447809219285,
+            "value_bias": -0.0007478371616184461,
+            "brier": 0.033540495254232784,
+            "logloss": 0.11473611533039621,
+            "conditional_rate_rmse": 3.872306607358004,
+            "expected_pa": 1228732.5119559553,
+            "expected_arrivals": 4391.863787413928,
+            "expected_value": 4155.430076780389
+          },
+          "domestic": {
+            "pa_rmse": 60.311126122679724,
+            "pa_mae": 20.540995456841365,
+            "pa_bias": -1.0094326510929221,
+            "value_rmse": 0.44491290925236426,
+            "value_mae": 0.1259575930217502,
+            "value_bias": -0.009414717323155686,
+            "brier": 0.03252459918469897,
+            "logloss": 0.11152414862347713,
+            "conditional_rate_rmse": 3.86116265465043,
+            "expected_pa": 1238853.9033264318,
+            "expected_arrivals": 4402.357276065594,
+            "expected_value": 3891.428010955977
+          },
+          "overseas": {
+            "pa_rmse": 60.297789459531444,
+            "pa_mae": 20.539816902400176,
+            "pa_bias": -1.019609480799326,
+            "value_rmse": 0.44977976100752604,
+            "value_mae": 0.12688323871652946,
+            "value_bias": -0.00978180885689526,
+            "brier": 0.03252427499913318,
+            "logloss": 0.11152749568881178,
+            "conditional_rate_rmse": 3.897353458885102,
+            "expected_pa": 1238539.3707844962,
+            "expected_arrivals": 4402.211045274322,
+            "expected_value": 3879.0894176011625
+          },
+          "repaired_domestic": {
+            "pa_rmse": 60.25302837523291,
+            "pa_mae": 20.49199424506105,
+            "pa_bias": -1.1356129724101405,
+            "value_rmse": 0.4360641004219398,
+            "value_mae": 0.12406591385742854,
+            "value_bias": -0.0016913748150520242,
+            "brier": 0.03243337758571229,
+            "logloss": 0.11122637196246149,
+            "conditional_rate_rmse": 3.880934301194403,
+            "expected_pa": 1235119.0171268883,
+            "expected_arrivals": 4401.230188028912,
+            "expected_value": 4128.496217067859
+          },
+          "repaired_overseas": {
+            "pa_rmse": 60.25302837523291,
+            "pa_mae": 20.49199424506105,
+            "pa_bias": -1.1356129724101405,
+            "value_rmse": 0.4360646167819028,
+            "value_mae": 0.12406556431699617,
+            "value_bias": -0.0016917862176893778,
+            "brier": 0.03243337758571229,
+            "logloss": 0.11122637196246149,
+            "conditional_rate_rmse": 3.8809280447990684,
+            "expected_pa": 1235119.0171268883,
+            "expected_arrivals": 4401.230188028912,
+            "expected_value": 4128.4833763172755
+          }
+        },
+        "mechanical_diagnostics": {
+          "repaired_domestic_workload_only": {
+            "value_rmse": 0.4353190623221787,
+            "value_bias": 5.628276845881465e-05
+          },
+          "repaired_domestic_talent_only": {
+            "value_rmse": 0.43611463103611625,
+            "value_bias": -0.002435719072089862
+          },
+          "repaired_overseas_workload_only": {
+            "value_rmse": 0.4353190623221787,
+            "value_bias": 5.628276845881465e-05
+          },
+          "repaired_overseas_talent_only": {
+            "value_rmse": 0.436114779121368,
+            "value_bias": -0.002436103789315461
+          }
+        }
+      },
+      {
+        "scope": "additions",
+        "rows": 13,
+        "players": 13,
+        "actual_pa": 1625,
+        "actual_arrivals": 6,
+        "actual_value": 8.336613824082338,
+        "scores": {
+          "repaired_domestic": {
+            "pa_rmse": 175.08893895794097,
+            "pa_mae": 108.8638603916482,
+            "pa_bias": -82.51804071896323,
+            "value_rmse": 1.5552022609227074,
+            "value_mae": 0.8977910363694657,
+            "value_bias": -0.7050985481444371,
+            "brier": 0.2783727910799681,
+            "logloss": 0.9892791539798462,
+            "conditional_rate_rmse": 3.000225495552626,
+            "expected_pa": 741.7649911737769,
+            "expected_arrivals": 2.5942917067227604,
+            "expected_value": 1.5660861668881336
+          },
+          "repaired_overseas": {
+            "pa_rmse": 175.08893895794097,
+            "pa_mae": 108.8638603916482,
+            "pa_bias": -82.51804071896323,
+            "value_rmse": 1.5549109787169855,
+            "value_mae": 0.8978094616765355,
+            "value_bias": -0.704632776405124,
+            "brier": 0.2783727910799681,
+            "logloss": 0.9892791539798462,
+            "conditional_rate_rmse": 2.999518760238977,
+            "expected_pa": 741.7649911737769,
+            "expected_arrivals": 2.5942917067227604,
+            "expected_value": 1.5694759769988398
+          }
+        },
+        "mechanical_diagnostics": {}
+      },
+      {
+        "scope": "public",
+        "rows": 2627,
+        "players": 1044,
+        "actual_pa": 660776,
+        "actual_arrivals": 2088,
+        "actual_value": 2159.109280389232,
+        "scores": {
+          "current": {
+            "pa_rmse": 138.3298474682615,
+            "pa_mae": 106.41075374670466,
+            "pa_bias": -4.363012023141187,
+            "value_rmse": 1.0239813329483616,
+            "value_mae": 0.6852995445457328,
+            "value_bias": 0.019974003803383548,
+            "brier": 0.09167817805858981,
+            "logloss": 0.29731380413153374,
+            "conditional_rate_rmse": 3.3970787873669943,
+            "expected_pa": 649254.8423971365,
+            "expected_arrivals": 2041.5174668228376,
+            "expected_value": 2210.567858660615
+          },
+          "domestic": {
+            "pa_rmse": 137.94306178458487,
+            "pa_mae": 105.63240733450807,
+            "pa_bias": -1.8442910067104634,
+            "value_rmse": 1.0505332539897594,
+            "value_mae": 0.6943904542575892,
+            "value_bias": -0.034766286641344284,
+            "brier": 0.08509571645439704,
+            "logloss": 0.2792674356496103,
+            "conditional_rate_rmse": 3.382291223000241,
+            "expected_pa": 655964.1052979102,
+            "expected_arrivals": 2045.337126891089,
+            "expected_value": 2066.202059973272
+          },
+          "overseas": {
+            "pa_rmse": 137.90078902066637,
+            "pa_mae": 105.67521314024248,
+            "pa_bias": -1.8842217272135249,
+            "value_rmse": 1.058133162991793,
+            "value_mae": 0.6966260873252463,
+            "value_bias": -0.03423345600409831,
+            "brier": 0.08510047396554325,
+            "logloss": 0.27932304691255155,
+            "conditional_rate_rmse": 3.3905651471217433,
+            "expected_pa": 655848.7692731444,
+            "expected_arrivals": 2045.2399258636883,
+            "expected_value": 2067.5953795208256
+          },
+          "repaired_domestic": {
+            "pa_rmse": 137.8139251772453,
+            "pa_mae": 105.27430437820382,
+            "pa_bias": -3.18591836376552,
+            "value_rmse": 1.0261982419039894,
+            "value_mae": 0.682079383224994,
+            "value_bias": -0.00039157904576896997,
+            "brier": 0.08479125251887132,
+            "logloss": 0.27778902492562435,
+            "conditional_rate_rmse": 3.382377158561642,
+            "expected_pa": 652404.6172658494,
+            "expected_arrivals": 2043.728832934369,
+            "expected_value": 2156.343833176608
+          },
+          "repaired_overseas": {
+            "pa_rmse": 137.8139251772453,
+            "pa_mae": 105.27430437820382,
+            "pa_bias": -3.18591836376552,
+            "value_rmse": 1.026198333546763,
+            "value_mae": 0.6820771007674302,
+            "value_bias": -0.00039244171553117976,
+            "brier": 0.08479125251887132,
+            "logloss": 0.27778902492562435,
+            "conditional_rate_rmse": 3.3823764748947456,
+            "expected_pa": 652404.6172658494,
+            "expected_arrivals": 2043.728832934369,
+            "expected_value": 2156.341459058865
+          }
+        },
+        "mechanical_diagnostics": {
+          "repaired_domestic_workload_only": {
+            "value_rmse": 1.0253373309839513,
+            "value_bias": 0.024522399750164476
+          },
+          "repaired_domestic_talent_only": {
+            "value_rmse": 1.0254149064339693,
+            "value_bias": -0.004110306476489679
+          },
+          "repaired_overseas_workload_only": {
+            "value_rmse": 1.0253373309839513,
+            "value_bias": 0.024522399750164476
+          },
+          "repaired_overseas_talent_only": {
+            "value_rmse": 1.0254154620790927,
+            "value_bias": -0.004111086760591621
+          }
+        }
+      },
+      {
+        "scope": "original_foreign",
+        "rows": 253,
+        "players": 138,
+        "actual_pa": 7776,
+        "actual_arrivals": 28,
+        "actual_value": 33.407002404619796,
+        "scores": {
+          "current": {
+            "pa_rmse": 81.31108219097655,
+            "pa_mae": 27.311877500510754,
+            "pa_bias": -1.5403056319504946,
+            "value_rmse": 0.49309284270602477,
+            "value_mae": 0.13483131581049573,
+            "value_bias": -0.05262159751389349,
+            "brier": 0.057970565742940953,
+            "logloss": 0.22243278931753244,
+            "conditional_rate_rmse": 4.162274501715797,
+            "expected_pa": 7463.664247697227,
+            "expected_arrivals": 33.894109882306836,
+            "expected_value": 20.27569168109756
+          },
+          "domestic": {
+            "pa_rmse": 79.14725599181725,
+            "pa_mae": 25.99162056175738,
+            "pa_bias": -1.3628206335778446,
+            "value_rmse": 0.5133715553811983,
+            "value_mae": 0.14262152731673902,
+            "value_bias": -0.061649212516405975,
+            "brier": 0.048817833468168946,
+            "logloss": 0.1787726580439067,
+            "conditional_rate_rmse": 4.2123192218297705,
+            "expected_pa": 7494.339114956841,
+            "expected_arrivals": 32.89778474397973,
+            "expected_value": 17.988004729581426
+          },
+          "overseas": {
+            "pa_rmse": 79.47347900251877,
+            "pa_mae": 26.67691257534672,
+            "pa_bias": 0.05905972309774654,
+            "value_rmse": 0.8870849526778103,
+            "value_mae": 0.2639330466724397,
+            "value_bias": -0.04115758759381081,
+            "brier": 0.04883703425329586,
+            "logloss": 0.17887281669806293,
+            "conditional_rate_rmse": 8.574615465613261,
+            "expected_pa": 7854.979717188693,
+            "expected_arrivals": 32.85902737728472,
+            "expected_value": 23.6858670212928
+          },
+          "repaired_domestic": {
+            "pa_rmse": 74.47259553937604,
+            "pa_mae": 26.977455044486835,
+            "pa_bias": 2.8793146212169947,
+            "value_rmse": 0.4674344488347078,
+            "value_mae": 0.13549509820869457,
+            "value_bias": -0.02712292626718088,
+            "brier": 0.046827485717837694,
+            "logloss": 0.17778602232201562,
+            "conditional_rate_rmse": 4.237955890145857,
+            "expected_pa": 8562.698736059061,
+            "expected_arrivals": 36.25674848173895,
+            "expected_value": 26.666830284726498
+          },
+          "repaired_overseas": {
+            "pa_rmse": 74.47259553937604,
+            "pa_mae": 26.977455044486835,
+            "pa_bias": 2.8793146212169947,
+            "value_rmse": 0.467483852011071,
+            "value_mae": 0.1354786697396435,
+            "value_bias": -0.02711937107330923,
+            "brier": 0.046827485717837694,
+            "logloss": 0.17778602232201562,
+            "conditional_rate_rmse": 4.23754264404584,
+            "expected_pa": 8562.698736059061,
+            "expected_arrivals": 36.25674848173895,
+            "expected_value": 26.667222572944635
+          }
+        },
+        "mechanical_diagnostics": {
+          "repaired_domestic_workload_only": {
+            "value_rmse": 0.4753705752143584,
+            "value_bias": -0.045080485955542184
+          },
+          "repaired_domestic_talent_only": {
+            "value_rmse": 0.48816414802437424,
+            "value_bias": -0.037617266864263914
+          },
+          "repaired_overseas_workload_only": {
+            "value_rmse": 0.4753705752143584,
+            "value_bias": -0.045080485955542184
+          },
+          "repaired_overseas_talent_only": {
+            "value_rmse": 0.4881656170791511,
+            "value_bias": -0.037615355502658605
+          }
+        }
+      },
+      {
+        "scope": "original_upper_never_debut",
+        "rows": 5454,
+        "players": 3055,
+        "actual_pa": 92891,
+        "actual_arrivals": 730,
+        "actual_value": 196.73395271672237,
+        "scores": {
+          "current": {
+            "pa_rmse": 55.126745205392474,
+            "pa_mae": 18.732137202600416,
+            "pa_bias": -3.4169789018468144,
+            "value_rmse": 0.3016947425069942,
+            "value_mae": 0.07630526694523009,
+            "value_bias": -0.003916551170919217,
+            "brier": 0.07801654659263803,
+            "logloss": 0.26374676035269945,
+            "conditional_rate_rmse": 5.0206809931990115,
+            "expected_pa": 74239.03857057952,
+            "expected_arrivals": 589.463002343003,
+            "expected_value": 177.48629929052927
+          },
+          "domestic": {
+            "pa_rmse": 55.039240461098174,
+            "pa_mae": 18.832186408266328,
+            "pa_bias": -3.307310693147257,
+            "value_rmse": 0.30501198288462844,
+            "value_mae": 0.07655019508323105,
+            "value_bias": -0.005922323399531811,
+            "brier": 0.07806550512479643,
+            "logloss": 0.2627950659194542,
+            "conditional_rate_rmse": 4.986335843358989,
+            "expected_pa": 75005.77463996336,
+            "expected_arrivals": 594.9568226107232,
+            "expected_value": 167.9120196748276
+          },
+          "overseas": {
+            "pa_rmse": 55.021595547079144,
+            "pa_mae": 18.814034136871665,
+            "pa_bias": -3.3379811644187103,
+            "value_rmse": 0.3047510859354271,
+            "value_mae": 0.07646931916378936,
+            "value_bias": -0.005902315781687562,
+            "brier": 0.07806449948491029,
+            "logloss": 0.262790961794875,
+            "conditional_rate_rmse": 4.984643934280268,
+            "expected_pa": 74828.57633269746,
+            "expected_arrivals": 595.0160640816684,
+            "expected_value": 168.0384287243009
+          },
+          "repaired_domestic": {
+            "pa_rmse": 55.23749179188946,
+            "pa_mae": 18.784517043077745,
+            "pa_bias": -3.706211769215253,
+            "value_rmse": 0.3018405889216122,
+            "value_mae": 0.07767419883988941,
+            "value_bias": -0.003740556975067927,
+            "brier": 0.07811486967096012,
+            "logloss": 0.26281428974591436,
+            "conditional_rate_rmse": 5.074167379493733,
+            "expected_pa": 72749.49652979914,
+            "expected_arrivals": 591.2321287413888,
+            "expected_value": 178.13191964360294
+          },
+          "repaired_overseas": {
+            "pa_rmse": 55.23749179188946,
+            "pa_mae": 18.784517043077745,
+            "pa_bias": -3.706211769215253,
+            "value_rmse": 0.30184049460058643,
+            "value_mae": 0.077673632925589,
+            "value_bias": -0.0037413794785581375,
+            "brier": 0.07811486967096012,
+            "logloss": 0.26281428974591436,
+            "conditional_rate_rmse": 5.074143765331757,
+            "expected_pa": 72749.49652979914,
+            "expected_arrivals": 591.2321287413888,
+            "expected_value": 178.127390840288
+          }
+        },
+        "mechanical_diagnostics": {
+          "repaired_domestic_workload_only": {
+            "value_rmse": 0.3011479516051941,
+            "value_bias": -0.004686546056348039
+          },
+          "repaired_domestic_talent_only": {
+            "value_rmse": 0.3024303821578188,
+            "value_bias": -0.003015847502561016
+          },
+          "repaired_overseas_workload_only": {
+            "value_rmse": 0.3011479516051941,
+            "value_bias": -0.004686546056348039
+          },
+          "repaired_overseas_talent_only": {
+            "value_rmse": 0.30243026271042805,
+            "value_bias": -0.003016677118033718
+          }
+        }
+      },
+      {
+        "scope": "original_lower_never_debut",
+        "rows": 17852,
+        "players": 8974,
+        "actual_pa": 5194,
+        "actual_arrivals": 54,
+        "actual_value": 9.483089121724282,
+        "scores": {
+          "current": {
+            "pa_rmse": 7.966362703629022,
+            "pa_mae": 0.6216744545061641,
+            "pa_bias": 0.09588994521125092,
+            "value_rmse": 0.045813006346647756,
+            "value_mae": 0.0019031200193213784,
+            "value_bias": 0.0003785436596244934,
+            "brier": 0.0026636719540869083,
+            "logloss": 0.013965784493706912,
+            "conditional_rate_rmse": 4.891204090045915,
+            "expected_pa": 7054.64556931176,
+            "expected_arrivals": 81.99030198386191,
+            "expected_value": 16.178953968368184
+          },
+          "domestic": {
+            "pa_rmse": 7.979736156066332,
+            "pa_mae": 0.6780632130810507,
+            "pa_bias": 0.15908194697235192,
+            "value_rmse": 0.046389893229602054,
+            "value_mae": 0.0027411813843662295,
+            "value_bias": 0.0006712200012937961,
+            "brier": 0.002652856165789261,
+            "logloss": 0.014243580135677891,
+            "conditional_rate_rmse": 5.174160310847457,
+            "expected_pa": 8226.834119018746,
+            "expected_arrivals": 94.155125185169,
+            "expected_value": 21.398739601853812
+          },
+          "overseas": {
+            "pa_rmse": 7.977334136240579,
+            "pa_mae": 0.6760769664033898,
+            "pa_bias": 0.15716320746980764,
+            "value_rmse": 0.04639185570376213,
+            "value_mae": 0.0027288028175754177,
+            "value_bias": 0.0006628830045486347,
+            "brier": 0.002652309236962435,
+            "logloss": 0.014246229731082534,
+            "conditional_rate_rmse": 5.165533770837037,
+            "expected_pa": 8195.491545513078,
+            "expected_arrivals": 94.31404468472623,
+            "expected_value": 21.258842396257503
+          },
+          "repaired_domestic": {
+            "pa_rmse": 7.967748674913435,
+            "pa_mae": 0.6796826315996712,
+            "pa_bias": 0.1521011815352145,
+            "value_rmse": 0.04588033942306783,
+            "value_mae": 0.0022881579381144597,
+            "value_bias": 0.0007645791490998822,
+            "brier": 0.0026764205909138223,
+            "logloss": 0.014322357344115947,
+            "conditional_rate_rmse": 5.056655384480827,
+            "expected_pa": 8114.21658487082,
+            "expected_arrivals": 92.8625077159708,
+            "expected_value": 23.29017346880686
+          },
+          "repaired_overseas": {
+            "pa_rmse": 7.967748674913435,
+            "pa_mae": 0.6796826315996712,
+            "pa_bias": 0.1521011815352145,
+            "value_rmse": 0.04588030858925369,
+            "value_mae": 0.002288111504190454,
+            "value_bias": 0.0007645320147188657,
+            "brier": 0.0026764205909138223,
+            "logloss": 0.014322357344115947,
+            "conditional_rate_rmse": 5.056642564589439,
+            "expected_pa": 8114.21658487082,
+            "expected_arrivals": 92.8625077159708,
+            "expected_value": 23.289331464866887
+          }
+        },
+        "mechanical_diagnostics": {
+          "repaired_domestic_workload_only": {
+            "value_rmse": 0.04578446187487245,
+            "value_bias": 0.0004883245753361702
+          },
+          "repaired_domestic_talent_only": {
+            "value_rmse": 0.04589990597062193,
+            "value_bias": 0.0006028394556523575
+          },
+          "repaired_overseas_workload_only": {
+            "value_rmse": 0.04578446187487245,
+            "value_bias": 0.0004883245753361702
+          },
+          "repaired_overseas_talent_only": {
+            "value_rmse": 0.04589987775443241,
+            "value_bias": 0.0006028007259742378
+          }
+        }
+      },
+      {
+        "scope": "original_current_MLB",
+        "rows": 4541,
+        "players": 1521,
+        "actual_pa": 1156856,
+        "actual_arrivals": 3596,
+        "actual_value": 3954.8064877137617,
+        "scores": {
+          "current": {
+            "pa_rmse": 140.9512759808785,
+            "pa_mae": 107.69713732752822,
+            "pa_bias": -5.977975688254119,
+            "value_rmse": 1.0677587851599466,
+            "value_mae": 0.7151824398628562,
+            "value_bias": -0.005441443471029621,
+            "brier": 0.09495244796104088,
+            "logloss": 0.306401420384823,
+            "conditional_rate_rmse": 3.447065401835286,
+            "expected_pa": 1129696.8583684287,
+            "expected_arrivals": 3547.866175699684,
+            "expected_value": 3932.7234749759286
+          },
+          "domestic": {
+            "pa_rmse": 140.64494166182706,
+            "pa_mae": 107.00798236640694,
+            "pa_bias": -4.330048620848449,
+            "value_rmse": 1.0935810984883938,
+            "value_mae": 0.725369615226327,
+            "value_bias": -0.06229441378931897,
+            "brier": 0.08991076323421522,
+            "logloss": 0.2924509960504094,
+            "conditional_rate_rmse": 3.4386630882343767,
+            "expected_pa": 1137411.0953570064,
+            "expected_arrivals": 3544.0221958051447,
+            "expected_value": 3673.9002512755615
+          },
+          "overseas": {
+            "pa_rmse": 140.61978073793364,
+            "pa_mae": 107.03131880919436,
+            "pa_bias": -4.355141227091691,
+            "value_rmse": 1.106993301512242,
+            "value_mae": 0.730769445636557,
+            "value_bias": -0.06484617377227157,
+            "brier": 0.08992053490815434,
+            "logloss": 0.2925156193041824,
+            "conditional_rate_rmse": 3.4754427490488156,
+            "expected_pa": 1137281.7749357037,
+            "expected_arrivals": 3543.8803244660107,
+            "expected_value": 3662.5014268394716
+          },
+          "repaired_domestic": {
+            "pa_rmse": 140.51545697992927,
+            "pa_mae": 106.50132133713952,
+            "pa_bias": -5.352946015193197,
+            "value_rmse": 1.071158962950875,
+            "value_mae": 0.713145455811188,
+            "value_bias": -0.014582404341392212,
+            "brier": 0.08948611492199131,
+            "logloss": 0.2908514526505104,
+            "conditional_rate_rmse": 3.43778815842117,
+            "expected_pa": 1132698.233702572,
+            "expected_arrivals": 3541.142252037524,
+            "expected_value": 3888.2280924852976
+          },
+          "repaired_overseas": {
+            "pa_rmse": 140.51545697992927,
+            "pa_mae": 106.50132133713952,
+            "pa_bias": -5.352946015193197,
+            "value_rmse": 1.071158943008135,
+            "value_mae": 0.7131434064040397,
+            "value_bias": -0.014583467577895387,
+            "brier": 0.08948611492199131,
+            "logloss": 0.2908514526505104,
+            "conditional_rate_rmse": 3.4377871377669575,
+            "expected_pa": 1132698.233702572,
+            "expected_arrivals": 3541.142252037524,
+            "expected_value": 3888.2231621921646
+          }
+        },
+        "mechanical_diagnostics": {
+          "repaired_domestic_workload_only": {
+            "value_rmse": 1.0691190054443804,
+            "value_bias": -0.0015888682051881633
+          },
+          "repaired_domestic_talent_only": {
+            "value_rmse": 1.0702847595679985,
+            "value_bias": -0.017672123065640255
+          },
+          "repaired_overseas_workload_only": {
+            "value_rmse": 1.0691190054443804,
+            "value_bias": -0.0015888682051881633
+          },
+          "repaired_overseas_talent_only": {
+            "value_rmse": 1.0702850265715955,
+            "value_bias": -0.017673047330945848
+          }
+        }
+      },
+      {
+        "scope": "current_regular",
+        "rows": 1445,
+        "players": 559,
+        "actual_pa": 672511,
+        "actual_arrivals": 1409,
+        "actual_value": 2857.7709589604083,
+        "scores": {
+          "current": {
+            "pa_rmse": 152.55393555916316,
+            "pa_mae": 122.31074550967126,
+            "pa_bias": -11.091570458686437,
+            "value_rmse": 1.448696347420243,
+            "value_mae": 1.1293489179620273,
+            "value_bias": -0.02195388249055271,
+            "brier": 0.020390269930258526,
+            "logloss": 0.08755516613583345,
+            "conditional_rate_rmse": 1.8554732258640803,
+            "expected_pa": 656903.2374983686,
+            "expected_arrivals": 1381.235150297427,
+            "expected_value": 2825.041229831655
+          },
+          "domestic": {
+            "pa_rmse": 152.90690542997154,
+            "pa_mae": 122.42845671533057,
+            "pa_bias": -9.29030284922639,
+            "value_rmse": 1.4921338787897864,
+            "value_mae": 1.1518529821063233,
+            "value_bias": -0.1545915262107598,
+            "brier": 0.01897238457763981,
+            "logloss": 0.08162073964243544,
+            "conditional_rate_rmse": 1.857936862220551,
+            "expected_pa": 659485.5370013496,
+            "expected_arrivals": 1383.3223814816386,
+            "expected_value": 2636.266680625147
+          },
+          "overseas": {
+            "pa_rmse": 152.9275578702711,
+            "pa_mae": 122.50450781566306,
+            "pa_bias": -9.329294159819547,
+            "value_rmse": 1.500722501926667,
+            "value_mae": 1.155876121595996,
+            "value_bias": -0.1513816972603245,
+            "brier": 0.018959544740535676,
+            "logloss": 0.0816072628985271,
+            "conditional_rate_rmse": 1.866192609574936,
+            "expected_pa": 659428.4254362514,
+            "expected_arrivals": 1383.252012243537,
+            "expected_value": 2641.1434784600933
+          },
+          "repaired_domestic": {
+            "pa_rmse": 153.4217110979156,
+            "pa_mae": 122.7958387832039,
+            "pa_bias": -9.784199664260791,
+            "value_rmse": 1.453919433600416,
+            "value_mae": 1.1311912998941658,
+            "value_bias": -0.03371840219205451,
+            "brier": 0.019119581847005802,
+            "logloss": 0.08146223000828377,
+            "conditional_rate_rmse": 1.8579146425744342,
+            "expected_pa": 658745.7317385252,
+            "expected_arrivals": 1385.4033923484826,
+            "expected_value": 2811.2186985820076
+          },
+          "repaired_overseas": {
+            "pa_rmse": 153.4217110979156,
+            "pa_mae": 122.7958387832039,
+            "pa_bias": -9.784199664260791,
+            "value_rmse": 1.4539209268652562,
+            "value_mae": 1.1311867299067722,
+            "value_bias": -0.03372141545610936,
+            "brier": 0.019119581847005802,
+            "logloss": 0.08146223000828377,
+            "conditional_rate_rmse": 1.8579157200300846,
+            "expected_pa": 658745.7317385252,
+            "expected_arrivals": 1385.4033923484826,
+            "expected_value": 2811.214399009761
+          }
+        },
+        "mechanical_diagnostics": {
+          "repaired_domestic_workload_only": {
+            "value_rmse": 1.450468168288371,
+            "value_bias": -0.01596449626225729
+          },
+          "repaired_domestic_talent_only": {
+            "value_rmse": 1.4525456024843075,
+            "value_bias": -0.038748993654288494
+          },
+          "repaired_overseas_workload_only": {
+            "value_rmse": 1.450468168288371,
+            "value_bias": -0.01596449626225729
+          },
+          "repaired_overseas_talent_only": {
+            "value_rmse": 1.4525472970005262,
+            "value_bias": -0.03875185903130975
+          }
+        }
+      },
+      {
+        "scope": "current_partial",
+        "rows": 3096,
+        "players": 1417,
+        "actual_pa": 484345,
+        "actual_arrivals": 2187,
+        "actual_value": 1097.035528753353,
+        "scores": {
+          "current": {
+            "pa_rmse": 135.23106281665852,
+            "pa_mae": 100.89943698487703,
+            "pa_bias": -3.791046354426039,
+            "value_rmse": 0.8309656928637933,
+            "value_mae": 0.5211297085040585,
+            "value_bias": 0.0013937885464228353,
+            "brier": 0.12988058174317627,
+            "logloss": 0.4090143775224216,
+            "conditional_rate_rmse": 4.154674510904041,
+            "expected_pa": 472793.62087006035,
+            "expected_arrivals": 2166.631025402257,
+            "expected_value": 1107.6822451442738
+          },
+          "domestic": {
+            "pa_rmse": 134.55114950734114,
+            "pa_mae": 99.80448742170552,
+            "pa_bias": -2.231693658754284,
+            "value_rmse": 0.8436796581519457,
+            "value_mae": 0.5251585085074488,
+            "value_bias": -0.021752728037207264,
+            "brier": 0.12322659729811108,
+            "logloss": 0.3914987006400439,
+            "conditional_rate_rmse": 4.142078980045018,
+            "expected_pa": 477925.5583556568,
+            "expected_arrivals": 2160.6998143235064,
+            "expected_value": 1037.6335706504146
+          },
+          "overseas": {
+            "pa_rmse": 134.50205769804913,
+            "pa_mae": 99.80517118972357,
+            "pa_bias": -2.2471272126592083,
+            "value_rmse": 0.8620014207722663,
+            "value_mae": 0.5311321270748717,
+            "value_bias": -0.026951108228137316,
+            "brier": 0.12324844831263693,
+            "logloss": 0.39160399241497845,
+            "conditional_rate_rmse": 4.190729596530164,
+            "expected_pa": 477853.34949945245,
+            "expected_arrivals": 2160.628312222474,
+            "expected_value": 1021.3579483793782
+          },
+          "repaired_domestic": {
+            "pa_rmse": 134.04253891205454,
+            "pa_mae": 98.88567096566032,
+            "pa_bias": -3.4882573727295987,
+            "value_rmse": 0.8330468430344742,
+            "value_mae": 0.5174009851034528,
+            "value_bias": -0.007622950956380709,
+            "brier": 0.12250273285292183,
+            "logloss": 0.3891469753666178,
+            "conditional_rate_rmse": 4.141742093428931,
+            "expected_pa": 473952.5019640469,
+            "expected_arrivals": 2155.7388596890414,
+            "expected_value": 1077.0093939032902
+          },
+          "repaired_overseas": {
+            "pa_rmse": 134.04253891205454,
+            "pa_mae": 98.88567096566032,
+            "pa_bias": -3.4882573727295987,
+            "value_rmse": 0.8330457275924278,
+            "value_mae": 0.5174002505276304,
+            "value_bias": -0.0076231297908431195,
+            "brier": 0.12250273285292183,
+            "logloss": 0.3891469753666178,
+            "conditional_rate_rmse": 4.1417404377268365,
+            "expected_pa": 473952.5019640469,
+            "expected_arrivals": 2155.7388596890414,
+            "expected_value": 1077.0087631824033
+          }
+        },
+        "mechanical_diagnostics": {
+          "repaired_domestic_workload_only": {
+            "value_rmse": 0.8318405938136803,
+            "value_bias": 0.004294391418427454
+          },
+          "repaired_domestic_talent_only": {
+            "value_rmse": 0.8327804161619164,
+            "value_bias": -0.009835341975039607
+          },
+          "repaired_overseas_workload_only": {
+            "value_rmse": 0.8318405938136803,
+            "value_bias": 0.004294391418427454
+          },
+          "repaired_overseas_talent_only": {
+            "value_rmse": 0.832779683550176,
+            "value_bias": -0.009835381895326394
+          }
+        }
+      },
+      {
+        "scope": "absent_prior_debut",
+        "rows": 1766,
+        "players": 937,
+        "actual_pa": 15309,
+        "actual_arrivals": 155,
+        "actual_value": 23.18761798355899,
+        "scores": {
+          "current": {
+            "pa_rmse": 43.84429455110619,
+            "pa_mae": 13.138739065535406,
+            "pa_bias": 1.035334800508133,
+            "value_rmse": 0.21557412206811552,
+            "value_mae": 0.04388730239972121,
+            "value_bias": 0.003226291212572796,
+            "brier": 0.06337749314942352,
+            "logloss": 0.22113664846996262,
+            "conditional_rate_rmse": 6.15272082357576,
+            "expected_pa": 17186.64704682621,
+            "expected_arrivals": 166.9646007778578,
+            "expected_value": 28.041086319776635
+          },
+          "domestic": {
+            "pa_rmse": 42.514859244333216,
+            "pa_mae": 12.732808924596297,
+            "pa_bias": 1.2141917943559721,
+            "value_rmse": 0.21452923575817343,
+            "value_mae": 0.04434453106187283,
+            "value_bias": 0.0023015640398185507,
+            "brier": 0.059657204746904106,
+            "logloss": 0.2051094192347538,
+            "conditional_rate_rmse": 6.049398465353592,
+            "expected_pa": 17468.535141033757,
+            "expected_arrivals": 162.26770254447797,
+            "expected_value": 26.2576308023103
+          },
+          "overseas": {
+            "pa_rmse": 42.52200920733819,
+            "pa_mae": 12.74548092131229,
+            "pa_bias": 1.2292183622850665,
+            "value_rmse": 0.21809045463772664,
+            "value_mae": 0.04738491274408498,
+            "value_bias": 0.002336741430984811,
+            "brier": 0.059640506671646464,
+            "logloss": 0.2050137087740646,
+            "conditional_rate_rmse": 6.25617454866468,
+            "expected_pa": 17498.480879086896,
+            "expected_arrivals": 162.09267553660757,
+            "expected_value": 26.255455266738597
+          },
+          "repaired_domestic": {
+            "pa_rmse": 41.6827181518865,
+            "pa_mae": 13.41726484766485,
+            "pa_bias": 2.9847427093784407,
+            "value_rmse": 0.20592839645639233,
+            "value_mae": 0.04451248834022615,
+            "value_bias": 0.007895371090137647,
+            "brier": 0.058972454122366305,
+            "logloss": 0.20382875092054126,
+            "conditional_rate_rmse": 6.173947424479622,
+            "expected_pa": 20694.720630378277,
+            "expected_arrivals": 169.12093796051596,
+            "expected_value": 36.73751310614732
+          },
+          "repaired_overseas": {
+            "pa_rmse": 41.6827181518865,
+            "pa_mae": 13.41726484766485,
+            "pa_bias": 2.9847427093784407,
+            "value_rmse": 0.20594584186638687,
+            "value_mae": 0.044512339475358646,
+            "value_bias": 0.007892660464138236,
+            "brier": 0.058972454122366305,
+            "logloss": 0.20382875092054126,
+            "conditional_rate_rmse": 6.1739407479498585,
+            "expected_pa": 20694.720630378277,
+            "expected_arrivals": 169.12093796051596,
+            "expected_value": 36.73241465573621
+          }
+        },
+        "mechanical_diagnostics": {
+          "repaired_domestic_workload_only": {
+            "value_rmse": 0.20806452990011257,
+            "value_bias": 0.007556358658442911
+          },
+          "repaired_domestic_talent_only": {
+            "value_rmse": 0.2153623733458951,
+            "value_bias": 0.0034894102393580335
+          },
+          "repaired_overseas_workload_only": {
+            "value_rmse": 0.20806452990011257,
+            "value_bias": 0.007556358658442911
+          },
+          "repaired_overseas_talent_only": {
+            "value_rmse": 0.21536389685039464,
+            "value_bias": 0.0034883881164708853
+          }
+        }
+      },
+      {
+        "scope": "original_no_arrival",
+        "rows": 25968,
+        "players": 10802,
+        "actual_pa": 0,
+        "actual_arrivals": 0,
+        "actual_value": 0.0,
+        "scores": {
+          "current": {
+            "pa_rmse": 22.78743068319891,
+            "pa_mae": 4.590397873289857,
+            "pa_bias": 4.590397873289857,
+            "value_rmse": 0.06938758045835762,
+            "value_mae": 0.008965811113551391,
+            "value_bias": 0.008712633583483197,
+            "brier": 0.013826414175520732,
+            "logloss": 0.052658020949029695,
+            "conditional_rate_rmse": null,
+            "expected_pa": 118748.04588403799,
+            "expected_arrivals": 950.8963768969672,
+            "expected_value": 225.92651204587753
+          },
+          "domestic": {
+            "pa_rmse": 22.250748988844933,
+            "pa_mae": 4.480218242995376,
+            "pa_bias": 4.480218242995376,
+            "value_rmse": 0.06784827099478374,
+            "value_mae": 0.009263119587462563,
+            "value_bias": 0.007966531205757237,
+            "brier": 0.013311889643836021,
+            "logloss": 0.051626307508337625,
+            "conditional_rate_rmse": null,
+            "expected_pa": 115902.66003148432,
+            "expected_arrivals": 932.9356741550865,
+            "expected_value": 206.67876302934695
+          },
+          "overseas": {
+            "pa_rmse": 22.243142870346112,
+            "pa_mae": 4.473247953975221,
+            "pa_bias": 4.473247953975221,
+            "value_rmse": 0.07372763829143315,
+            "value_mae": 0.009622273513169478,
+            "value_bias": 0.007713251658528558,
+            "brier": 0.013308188596946076,
+            "logloss": 0.05163012677979888,
+            "conditional_rate_rmse": null,
+            "expected_pa": 115724.68802248398,
+            "expected_arrivals": 932.9317782032815,
+            "expected_value": 199.6291756544894
+          },
+          "repaired_domestic": {
+            "pa_rmse": 21.88572772661978,
+            "pa_mae": 4.420844126167785,
+            "pa_bias": 4.420844126167785,
+            "value_rmse": 0.06633985876602702,
+            "value_mae": 0.00911861783813153,
+            "value_bias": 0.008910654865882809,
+            "brier": 0.013193659659472676,
+            "logloss": 0.051329210604487766,
+            "conditional_rate_rmse": null,
+            "expected_pa": 114413.61990650851,
+            "expected_arrivals": 929.6319993215001,
+            "expected_value": 231.43756296897723
+          },
+          "repaired_overseas": {
+            "pa_rmse": 21.88572772661978,
+            "pa_mae": 4.420844126167785,
+            "pa_bias": 4.420844126167785,
+            "value_rmse": 0.06633915760531578,
+            "value_mae": 0.009118352715571302,
+            "value_bias": 0.008910388228102174,
+            "brier": 0.013193659659472676,
+            "logloss": 0.051329210604487766,
+            "conditional_rate_rmse": null,
+            "expected_pa": 114413.61990650851,
+            "expected_arrivals": 929.6319993215001,
+            "expected_value": 231.43064049479156
+          }
+        },
+        "mechanical_diagnostics": {
+          "repaired_domestic_workload_only": {
+            "value_rmse": 0.06757997750250483,
+            "value_bias": 0.00850143352808876
+          },
+          "repaired_domestic_talent_only": {
+            "value_rmse": 0.06833334071506876,
+            "value_bias": 0.00906951609247618
+          },
+          "repaired_overseas_workload_only": {
+            "value_rmse": 0.06757997750250483,
+            "value_bias": 0.00850143352808876
+          },
+          "repaired_overseas_talent_only": {
+            "value_rmse": 0.0683329600719495,
+            "value_bias": 0.00906930873520451
+          }
+        }
+      },
+      {
+        "scope": "origin_2016",
+        "rows": 4663,
+        "players": 4663,
+        "actual_pa": 179968,
+        "actual_arrivals": 624,
+        "actual_value": 638.3050711187233,
+        "scores": {
+          "current": {
+            "pa_rmse": 57.648052854156674,
+            "pa_mae": 18.692640246908578,
+            "pa_bias": -1.7711269022873726,
+            "value_rmse": 0.4363772969113821,
+            "value_mae": 0.11702946432365403,
+            "value_bias": -0.008824186711915968,
+            "brier": 0.03121169191453413,
+            "logloss": 0.10589882032390599,
+            "conditional_rate_rmse": 4.282609452141883,
+            "expected_pa": 171709.23525463397,
+            "expected_arrivals": 623.4261676611462,
+            "expected_value": 597.1578884810591
+          },
+          "domestic": {
+            "pa_rmse": 57.463737532297195,
+            "pa_mae": 18.588581222733424,
+            "pa_bias": -1.875317001045534,
+            "value_rmse": 0.4503339260105586,
+            "value_mae": 0.11922190230556065,
+            "value_bias": -0.02527699371483384,
+            "brier": 0.030969775789878837,
+            "logloss": 0.10503085048642719,
+            "conditional_rate_rmse": 4.286734500745063,
+            "expected_pa": 171223.39682412468,
+            "expected_arrivals": 625.1473934925808,
+            "expected_value": 520.4384494264532
+          },
+          "overseas": {
+            "pa_rmse": 57.463737532297195,
+            "pa_mae": 18.588581222733424,
+            "pa_bias": -1.875317001045534,
+            "value_rmse": 0.4586684108454579,
+            "value_mae": 0.12061033742069663,
+            "value_bias": -0.02642412650124181,
+            "brier": 0.030969775789878837,
+            "logloss": 0.10503085048642719,
+            "conditional_rate_rmse": 4.314978523927664,
+            "expected_pa": 171223.39682412468,
+            "expected_arrivals": 625.1473934925808,
+            "expected_value": 515.0893692434327
+          },
+          "repaired_domestic": {
+            "pa_rmse": 57.28952942899129,
+            "pa_mae": 18.509039861511784,
+            "pa_bias": -1.8524744417210224,
+            "value_rmse": 0.4394879087164347,
+            "value_mae": 0.11810532893070368,
+            "value_bias": -0.007386973120712065,
+            "brier": 0.03093251969162118,
+            "logloss": 0.10478759565316988,
+            "conditional_rate_rmse": 4.314533925953255,
+            "expected_pa": 171329.91167825487,
+            "expected_arrivals": 625.8599281810482,
+            "expected_value": 603.8596154568429
+          },
+          "repaired_overseas": {
+            "pa_rmse": 57.28952942899129,
+            "pa_mae": 18.509039861511784,
+            "pa_bias": -1.8524744417210224,
+            "value_rmse": 0.43949117966206397,
+            "value_mae": 0.11810521652255813,
+            "value_bias": -0.007387591029250858,
+            "brier": 0.03093251969162118,
+            "logloss": 0.10478759565316988,
+            "conditional_rate_rmse": 4.314536774314672,
+            "expected_pa": 171329.91167825487,
+            "expected_arrivals": 625.8599281810482,
+            "expected_value": 603.8567341493267
+          }
+        },
+        "mechanical_diagnostics": {
+          "repaired_domestic_workload_only": {
+            "value_rmse": 0.4392129809480721,
+            "value_bias": -0.008717907507729005
+          },
+          "repaired_domestic_talent_only": {
+            "value_rmse": 0.43708483778341445,
+            "value_bias": -0.007464147868571474
+          },
+          "repaired_overseas_workload_only": {
+            "value_rmse": 0.4392129809480721,
+            "value_bias": -0.008717907507729005
+          },
+          "repaired_overseas_talent_only": {
+            "value_rmse": 0.43708515144994076,
+            "value_bias": -0.007464167015545147
+          }
+        }
+      },
+      {
+        "scope": "origin_2017",
+        "rows": 4691,
+        "players": 4691,
+        "actual_pa": 179643,
+        "actual_arrivals": 628,
+        "actual_value": 631.2706607285975,
+        "scores": {
+          "current": {
+            "pa_rmse": 56.64522304623439,
+            "pa_mae": 18.13396541064435,
+            "pa_bias": -1.135480311262139,
+            "value_rmse": 0.42341793911100223,
+            "value_mae": 0.11348656776049286,
+            "value_bias": -0.004977157048182324,
+            "brier": 0.030806837944625014,
+            "logloss": 0.10420183766133603,
+            "conditional_rate_rmse": 3.4353734364874104,
+            "expected_pa": 174316.46185986933,
+            "expected_arrivals": 616.2927241842596,
+            "expected_value": 607.9228170155743
+          },
+          "domestic": {
+            "pa_rmse": 56.59775778303834,
+            "pa_mae": 18.035841084423687,
+            "pa_bias": -0.9145981723650111,
+            "value_rmse": 0.4373876372052247,
+            "value_mae": 0.11682818759631947,
+            "value_bias": -0.011778892063883514,
+            "brier": 0.03002255032623575,
+            "logloss": 0.10255912935476115,
+            "conditional_rate_rmse": 3.42553958583166,
+            "expected_pa": 175352.61997343577,
+            "expected_arrivals": 615.5140747243302,
+            "expected_value": 576.01587805692
+          },
+          "overseas": {
+            "pa_rmse": 56.59775778303834,
+            "pa_mae": 18.035841084423687,
+            "pa_bias": -0.9145981723650111,
+            "value_rmse": 0.43909599426572765,
+            "value_mae": 0.11758853732250821,
+            "value_bias": -0.012187785241030955,
+            "brier": 0.03002255032623575,
+            "logloss": 0.10255912935476115,
+            "conditional_rate_rmse": 3.4507888893843974,
+            "expected_pa": 175352.61997343577,
+            "expected_arrivals": 615.5140747243302,
+            "expected_value": 574.0977601629213
+          },
+          "repaired_domestic": {
+            "pa_rmse": 56.419319539390806,
+            "pa_mae": 17.945167051606767,
+            "pa_bias": -0.9894898684004166,
+            "value_rmse": 0.4244896773712372,
+            "value_mae": 0.11360308619115445,
+            "value_bias": -0.003570460597320857,
+            "brier": 0.029925107081583874,
+            "logloss": 0.10250076041831291,
+            "conditional_rate_rmse": 3.446649381554173,
+            "expected_pa": 175001.30302733366,
+            "expected_arrivals": 616.1946215281575,
+            "expected_value": 614.5216300665655
+          },
+          "repaired_overseas": {
+            "pa_rmse": 56.419319539390806,
+            "pa_mae": 17.945167051606767,
+            "pa_bias": -0.9894898684004166,
+            "value_rmse": 0.42448900132967576,
+            "value_mae": 0.11360237315977118,
+            "value_bias": -0.0035712021732763905,
+            "brier": 0.029925107081583874,
+            "logloss": 0.10250076041831291,
+            "conditional_rate_rmse": 3.446646434375124,
+            "expected_pa": 175001.30302733366,
+            "expected_arrivals": 616.1946215281575,
+            "expected_value": 614.5181513337579
+          }
+        },
+        "mechanical_diagnostics": {
+          "repaired_domestic_workload_only": {
+            "value_rmse": 0.42275738612969693,
+            "value_bias": -0.004465655413787469
+          },
+          "repaired_domestic_talent_only": {
+            "value_rmse": 0.42529465237074,
+            "value_bias": -0.003994587629517406
+          },
+          "repaired_overseas_workload_only": {
+            "value_rmse": 0.42275738612969693,
+            "value_bias": -0.004465655413787469
+          },
+          "repaired_overseas_talent_only": {
+            "value_rmse": 0.4252938747407783,
+            "value_bias": -0.00399532030974245
+          }
+        }
+      },
+      {
+        "scope": "origin_2018",
+        "rows": 4478,
+        "players": 4478,
+        "actual_pa": 181308,
+        "actual_arrivals": 638,
+        "actual_value": 639.6141484360919,
+        "scores": {
+          "current": {
+            "pa_rmse": 62.43970142429325,
+            "pa_mae": 20.152743092276616,
+            "pa_bias": -2.0551587779609486,
+            "value_rmse": 0.47234880736189044,
+            "value_mae": 0.1323648706291499,
+            "value_bias": -0.008950445073008835,
+            "brier": 0.029666736004287254,
+            "logloss": 0.10188111110207601,
+            "conditional_rate_rmse": 3.9626404270596876,
+            "expected_pa": 172104.99899229087,
+            "expected_arrivals": 615.084170170068,
+            "expected_value": 599.5340553991584
+          },
+          "domestic": {
+            "pa_rmse": 62.5108942601288,
+            "pa_mae": 20.2384225011997,
+            "pa_bias": -1.9079474760104,
+            "value_rmse": 0.47229208875130674,
+            "value_mae": 0.13401964003155967,
+            "value_bias": -0.011735780398624591,
+            "brier": 0.029123695668697446,
+            "logloss": 0.09973487756940368,
+            "conditional_rate_rmse": 3.962094366858037,
+            "expected_pa": 172764.21120242545,
+            "expected_arrivals": 611.8238243171454,
+            "expected_value": 587.0613238110511
+          },
+          "overseas": {
+            "pa_rmse": 62.507685668467886,
+            "pa_mae": 20.23634853295369,
+            "pa_bias": -1.9138298571854542,
+            "value_rmse": 0.48386390025327036,
+            "value_mae": 0.13618508443694005,
+            "value_bias": -0.013036022076312288,
+            "brier": 0.029142278902677964,
+            "logloss": 0.09977927919452445,
+            "conditional_rate_rmse": 4.085877797146783,
+            "expected_pa": 172737.86989952356,
+            "expected_arrivals": 611.7099630524684,
+            "expected_value": 581.2388415783654
+          },
+          "repaired_domestic": {
+            "pa_rmse": 62.65917183254521,
+            "pa_mae": 20.33926229487076,
+            "pa_bias": -1.8240875041464912,
+            "value_rmse": 0.47265875676263247,
+            "value_mae": 0.13324138631912172,
+            "value_bias": -0.007018886879627826,
+            "brier": 0.02903635295142449,
+            "logloss": 0.099390035297848,
+            "conditional_rate_rmse": 3.976639202926768,
+            "expected_pa": 173139.736156432,
+            "expected_arrivals": 612.4047696747842,
+            "expected_value": 608.1835729891184
+          },
+          "repaired_overseas": {
+            "pa_rmse": 62.65917183254521,
+            "pa_mae": 20.33926229487076,
+            "pa_bias": -1.8240875041464912,
+            "value_rmse": 0.4726593995404334,
+            "value_mae": 0.13324158310789636,
+            "value_bias": -0.0070190681572660785,
+            "brier": 0.02903635295142449,
+            "logloss": 0.099390035297848,
+            "conditional_rate_rmse": 3.976633320740809,
+            "expected_pa": 173139.736156432,
+            "expected_arrivals": 612.4047696747842,
+            "expected_value": 608.1827612278545
+          }
+        },
+        "mechanical_diagnostics": {
+          "repaired_domestic_workload_only": {
+            "value_rmse": 0.47048996920782593,
+            "value_bias": -0.007747834281011497
+          },
+          "repaired_domestic_talent_only": {
+            "value_rmse": 0.4746024753492207,
+            "value_bias": -0.008208486888699908
+          },
+          "repaired_overseas_workload_only": {
+            "value_rmse": 0.47048996920782593,
+            "value_bias": -0.007747834281011497
+          },
+          "repaired_overseas_talent_only": {
+            "value_rmse": 0.4746030891657242,
+            "value_bias": -0.008208635243995434
+          }
+        }
+      },
+      {
+        "scope": "origin_2021",
+        "rows": 4242,
+        "players": 4242,
+        "actual_pa": 181583,
+        "actual_arrivals": 686,
+        "actual_value": 568.3444608474305,
+        "scores": {
+          "current": {
+            "pa_rmse": 59.3075589663477,
+            "pa_mae": 20.09996307320558,
+            "pa_bias": -3.956841957397311,
+            "value_rmse": 0.4238083093363311,
+            "value_mae": 0.12464780395672181,
+            "value_bias": 0.009195693952175421,
+            "brier": 0.04044357581618932,
+            "logloss": 0.1389794922469497,
+            "conditional_rate_rmse": 4.267216069459313,
+            "expected_pa": 164798.07641672058,
+            "expected_arrivals": 581.3609535170976,
+            "expected_value": 607.3525945925586
+          },
+          "domestic": {
+            "pa_rmse": 58.80093625404573,
+            "pa_mae": 19.97046380933731,
+            "pa_bias": -3.020963273784177,
+            "value_rmse": 0.4279037570590596,
+            "value_mae": 0.12646360193745532,
+            "value_bias": 0.0034399803900153894,
+            "brier": 0.038372233122109,
+            "logloss": 0.13193021841364083,
+            "conditional_rate_rmse": 4.292603368236571,
+            "expected_pa": 168768.0737926075,
+            "expected_arrivals": 589.1380704930896,
+            "expected_value": 582.9368576618757
+          },
+          "overseas": {
+            "pa_rmse": 58.83594546863031,
+            "pa_mae": 19.978515808006893,
+            "pa_bias": -3.0369969707797124,
+            "value_rmse": 0.4305402344688596,
+            "value_mae": 0.12692387591699889,
+            "value_bias": 0.0014520779984616935,
+            "brier": 0.03837943157390239,
+            "logloss": 0.13195301927414044,
+            "conditional_rate_rmse": 4.2956981821240605,
+            "expected_pa": 168700.0588499525,
+            "expected_arrivals": 589.1274137939696,
+            "expected_value": 574.504175716905
+          },
+          "repaired_domestic": {
+            "pa_rmse": 58.9183846259497,
+            "pa_mae": 19.84029004633811,
+            "pa_bias": -3.297840040052674,
+            "value_rmse": 0.42407124526110734,
+            "value_mae": 0.12384877078994862,
+            "value_bias": -0.0009704274676071296,
+            "brier": 0.03846587752185238,
+            "logloss": 0.13206848100665797,
+            "conditional_rate_rmse": 4.245130688367674,
+            "expected_pa": 167593.56255009654,
+            "expected_arrivals": 588.6887294604437,
+            "expected_value": 564.227907529841
+          },
+          "repaired_overseas": {
+            "pa_rmse": 58.9183846259497,
+            "pa_mae": 19.84029004633811,
+            "pa_bias": -3.297840040052674,
+            "value_rmse": 0.4240708273326732,
+            "value_mae": 0.12384846257086463,
+            "value_bias": -0.0009708456687103202,
+            "brier": 0.03846587752185238,
+            "logloss": 0.13206848100665797,
+            "conditional_rate_rmse": 4.245126207875156,
+            "expected_pa": 167593.56255009654,
+            "expected_arrivals": 588.6887294604437,
+            "expected_value": 564.2261335207613
+          }
+        },
+        "mechanical_diagnostics": {
+          "repaired_domestic_workload_only": {
+            "value_rmse": 0.42288909941120384,
+            "value_bias": 0.010755091022335026
+          },
+          "repaired_domestic_talent_only": {
+            "value_rmse": 0.42552671695657046,
+            "value_bias": -0.002294163996585381
+          },
+          "repaired_overseas_workload_only": {
+            "value_rmse": 0.42288909941120384,
+            "value_bias": 0.010755091022335026
+          },
+          "repaired_overseas_talent_only": {
+            "value_rmse": 0.4255263126240877,
+            "value_bias": -0.002294589181333019
+          }
+        }
+      },
+      {
+        "scope": "origin_2022",
+        "rows": 4244,
+        "players": 4244,
+        "actual_pa": 182917,
+        "actual_arrivals": 649,
+        "actual_value": 571.7691585722233,
+        "scores": {
+          "current": {
+            "pa_rmse": 61.955860968798355,
+            "pa_mae": 21.510162043414013,
+            "pa_bias": -1.32473913914572,
+            "value_rmse": 0.4165803030072922,
+            "value_mae": 0.12367438675286666,
+            "value_bias": 0.0009882613683389137,
+            "brier": 0.03456037946358421,
+            "logloss": 0.11935014764629807,
+            "conditional_rate_rmse": 3.8725065265695067,
+            "expected_pa": 177294.80709346558,
+            "expected_arrivals": 641.2617474184859,
+            "expected_value": 575.9633398194537
+          },
+          "domestic": {
+            "pa_rmse": 61.502842744689104,
+            "pa_mae": 21.502216701721437,
+            "pa_bias": -0.2497494503106388,
+            "value_rmse": 0.42621053579550155,
+            "value_mae": 0.1248494234371923,
+            "value_bias": -0.011184137168919106,
+            "brier": 0.033175584525277205,
+            "logloss": 0.11585538924856116,
+            "conditional_rate_rmse": 3.845733906080797,
+            "expected_pa": 181857.06333288166,
+            "expected_arrivals": 650.8842278366079,
+            "expected_value": 524.3036804273306
+          },
+          "overseas": {
+            "pa_rmse": 61.45073868990748,
+            "pa_mae": 21.45884851992065,
+            "pa_bias": -0.3665944353675326,
+            "value_rmse": 0.4247088464705489,
+            "value_mae": 0.1241219838988131,
+            "value_bias": -0.011515313395892783,
+            "brier": 0.03315379576745627,
+            "logloss": 0.11576786307444292,
+            "conditional_rate_rmse": 3.8714629508258622,
+            "expected_pa": 181361.17321630017,
+            "expected_arrivals": 650.5915512784555,
+            "expected_value": 522.8981685200544
+          },
+          "repaired_domestic": {
+            "pa_rmse": 61.151351312151085,
+            "pa_mae": 21.335276565207025,
+            "pa_bias": -0.7842796803303904,
+            "value_rmse": 0.41544581738529646,
+            "value_mae": 0.12166586359159995,
+            "value_bias": -0.006920327262818315,
+            "brier": 0.03311217943427788,
+            "logloss": 0.11553748732704756,
+            "conditional_rate_rmse": 3.860689675487841,
+            "expected_pa": 179588.51703667783,
+            "expected_arrivals": 648.2119933044787,
+            "expected_value": 542.3992896688223
+          },
+          "repaired_overseas": {
+            "pa_rmse": 61.151351312151085,
+            "pa_mae": 21.335276565207025,
+            "pa_bias": -0.7842796803303904,
+            "value_rmse": 0.4154469335265258,
+            "value_mae": 0.12166574149155736,
+            "value_bias": -0.006921332329044062,
+            "brier": 0.03311217943427788,
+            "logloss": 0.11553748732704756,
+            "conditional_rate_rmse": 3.8606856239097693,
+            "expected_pa": 179588.51703667783,
+            "expected_arrivals": 648.2119933044787,
+            "expected_value": 542.3950241677602
+          }
+        },
+        "mechanical_diagnostics": {
+          "repaired_domestic_workload_only": {
+            "value_rmse": 0.41531198705590855,
+            "value_bias": 0.0027964166063708354
+          },
+          "repaired_domestic_talent_only": {
+            "value_rmse": 0.41708223611424083,
+            "value_bias": -0.008593095820685938
+          },
+          "repaired_overseas_workload_only": {
+            "value_rmse": 0.41531198705590855,
+            "value_bias": 0.0027964166063708354
+          },
+          "repaired_overseas_talent_only": {
+            "value_rmse": 0.4170833760988329,
+            "value_bias": -0.008594066320671638
+          }
+        }
+      },
+      {
+        "scope": "origin_2023",
+        "rows": 4196,
+        "players": 4196,
+        "actual_pa": 182194,
+        "actual_arrivals": 647,
+        "actual_value": 564.69985016683,
+        "scores": {
+          "current": {
+            "pa_rmse": 62.46586141978649,
+            "pa_mae": 22.694332851213304,
+            "pa_bias": 1.0151418628993183,
+            "value_rmse": 0.4390354861807622,
+            "value_mae": 0.1280794427513013,
+            "value_bias": 0.010274814748300607,
+            "brier": 0.033324898776976086,
+            "logloss": 0.11653231875590354,
+            "conditional_rate_rmse": 3.6570040350085113,
+            "expected_pa": 186453.53525672553,
+            "expected_arrivals": 667.3895516797581,
+            "expected_value": 607.8129728506993
+          },
+          "domestic": {
+            "pa_rmse": 61.965476162338675,
+            "pa_mae": 22.460646267188093,
+            "pa_bias": 1.0371142746187794,
+            "value_rmse": 0.45381895226634617,
+            "value_mae": 0.13179227985371594,
+            "value_bias": 0.009488174918381857,
+            "brier": 0.03248230308812008,
+            "logloss": 0.11383819716700404,
+            "conditional_rate_rmse": 3.6498843068555797,
+            "expected_pa": 186545.73149630037,
+            "expected_arrivals": 663.5890137448821,
+            "expected_value": 604.5122321243603
+          },
+          "overseas": {
+            "pa_rmse": 61.90453612392695,
+            "pa_mae": 22.468228684100378,
+            "pa_bias": 1.0673151820438118,
+            "value_rmse": 0.45594284194547285,
+            "value_mae": 0.13265685533368504,
+            "value_bias": 0.01040633353089599,
+            "brier": 0.03247960535189393,
+            "logloss": 0.1138556666912572,
+            "conditional_rate_rmse": 3.6545104977602865,
+            "expected_pa": 186672.45450385584,
+            "expected_arrivals": 663.61367105249,
+            "expected_value": 608.3648256624695
+          },
+          "repaired_domestic": {
+            "pa_rmse": 62.06972496325305,
+            "pa_mae": 22.50102985295071,
+            "pa_bias": 0.9943863372334182,
+            "value_rmse": 0.4369995372120029,
+            "value_mae": 0.12868131594990762,
+            "value_bias": 0.015571200749196582,
+            "brier": 0.0324090830415033,
+            "logloss": 0.11378108098267692,
+            "conditional_rate_rmse": 3.6773736294656576,
+            "expected_pa": 186366.44507103143,
+            "expected_arrivals": 664.3079433491408,
+            "expected_value": 630.0366085104587
+          },
+          "repaired_overseas": {
+            "pa_rmse": 62.06972496325305,
+            "pa_mae": 22.50102985295071,
+            "pa_bias": 0.9943863372334182,
+            "value_rmse": 0.4369988695651473,
+            "value_mae": 0.12867978573018737,
+            "value_bias": 0.01557136933171766,
+            "brier": 0.0324090830415033,
+            "logloss": 0.11378108098267692,
+            "conditional_rate_rmse": 3.6773508122128526,
+            "expected_pa": 186366.44507103143,
+            "expected_arrivals": 664.3079433491408,
+            "expected_value": 630.0373158827172
+          }
+        },
+        "mechanical_diagnostics": {
+          "repaired_domestic_workload_only": {
+            "value_rmse": 0.43926479371375443,
+            "value_bias": 0.010269009612138443
+          },
+          "repaired_domestic_talent_only": {
+            "value_rmse": 0.43679334151283933,
+            "value_bias": 0.01554738793386637
+          },
+          "repaired_overseas_workload_only": {
+            "value_rmse": 0.43926479371375443,
+            "value_bias": 0.010269009612138443
+          },
+          "repaired_overseas_talent_only": {
+            "value_rmse": 0.43679281154663513,
+            "value_bias": 0.015547745428036424
+          }
+        }
+      },
+      {
+        "scope": "origin_2024",
+        "rows": 3992,
+        "players": 3992,
+        "actual_pa": 182880,
+        "actual_arrivals": 666,
+        "actual_value": 571.4302393590965,
+        "scores": {
+          "current": {
+            "pa_rmse": 62.70880755409798,
+            "pa_mae": 23.00270089208626,
+            "pa_bias": -0.2065638571519391,
+            "value_rmse": 0.43204299566015925,
+            "value_mae": 0.12783881047116327,
+            "value_bias": -0.002941841367036891,
+            "brier": 0.0347693468594341,
+            "logloss": 0.11630907957630442,
+            "conditional_rate_rmse": 3.541064446463706,
+            "expected_pa": 182055.39708224943,
+            "expected_arrivals": 647.0484727831126,
+            "expected_value": 559.6864086218852
+          },
+          "domestic": {
+            "pa_rmse": 63.001224708696185,
+            "pa_mae": 22.99079661128591,
+            "pa_bias": -0.13456745875343482,
+            "value_rmse": 0.4446969563401792,
+            "value_mae": 0.1285281159904482,
+            "value_bias": -0.01885537322422602,
+            "brier": 0.03352605177257423,
+            "logloss": 0.11172037812454343,
+            "conditional_rate_rmse": 3.4660734278139724,
+            "expected_pa": 182342.80670465628,
+            "expected_arrivals": 646.2606714569583,
+            "expected_value": 496.1595894479861
+          },
+          "overseas": {
+            "pa_rmse": 62.9931143350144,
+            "pa_mae": 23.012354464662973,
+            "pa_bias": -0.09724511089586355,
+            "value_rmse": 0.45296819285655754,
+            "value_mae": 0.1300959966860679,
+            "value_bias": -0.01716782631314667,
+            "brier": 0.033522487281886615,
+            "logloss": 0.11174666174612456,
+            "conditional_rate_rmse": 3.508200630002721,
+            "expected_pa": 182491.79751730373,
+            "expected_arrivals": 646.5069778800275,
+            "expected_value": 502.896276717015
+          },
+          "repaired_domestic": {
+            "pa_rmse": 62.91324036508914,
+            "pa_mae": 22.973894042942167,
+            "pa_bias": -0.19550560945343587,
+            "value_rmse": 0.43693894942742206,
+            "value_mae": 0.12931564522956177,
+            "value_bias": -0.0015437491264744848,
+            "brier": 0.03315252337772235,
+            "logloss": 0.11051916305151423,
+            "conditional_rate_rmse": 3.560079620044865,
+            "expected_pa": 182099.54160706187,
+            "expected_arrivals": 645.5622025308596,
+            "expected_value": 565.2675928462103
+          },
+          "repaired_overseas": {
+            "pa_rmse": 62.91324036508914,
+            "pa_mae": 22.973894042942167,
+            "pa_bias": -0.19550560945343587,
+            "value_rmse": 0.4369392402463647,
+            "value_mae": 0.12931578763613766,
+            "value_bias": -0.0015438334979955147,
+            "brier": 0.03315252337772235,
+            "logloss": 0.11051916305151423,
+            "conditional_rate_rmse": 3.5600711552847324,
+            "expected_pa": 182099.54160706187,
+            "expected_arrivals": 645.5622025308596,
+            "expected_value": 565.2672560350983
+          }
+        },
+        "mechanical_diagnostics": {
+          "repaired_domestic_workload_only": {
+            "value_rmse": 0.435032579092884,
+            "value_bias": -0.0024951406591046396
+          },
+          "repaired_domestic_talent_only": {
+            "value_rmse": 0.4340352425179553,
+            "value_bias": -0.0020429392344353007
+          },
+          "repaired_overseas_workload_only": {
+            "value_rmse": 0.435032579092884,
+            "value_bias": -0.0024951406591046396
+          },
+          "repaired_overseas_talent_only": {
+            "value_rmse": 0.4340358932722026,
+            "value_bias": -0.002043693881956978
+          }
+        }
+      }
+    ],
+    "rates": [
+      {
+        "scope": "original_all",
+        "active_rows": 4538,
+        "PA_weighted_relative_rmse": {
+          "current": 1.8048133711486227,
+          "domestic": 1.8646123354800768,
+          "overseas": 1.898423622697466,
+          "repaired_domestic": 1.8084974965581095,
+          "repaired_overseas": 1.808499510716202
+        },
+        "PA_weighted_common_rmse": {
+          "current": 1.8625221605090083,
+          "domestic": 1.9301965900995837,
+          "overseas": 1.9635875483776182,
+          "repaired_domestic": 1.8697693029596205,
+          "repaired_overseas": 1.8697717504029918
+        }
+      },
+      {
+        "scope": "additions",
+        "active_rows": 6,
+        "PA_weighted_relative_rmse": {
+          "repaired_domestic": 2.968643823464389,
+          "repaired_overseas": 2.9681298177664175
+        },
+        "PA_weighted_common_rmse": {
+          "repaired_domestic": 2.8643172589532875,
+          "repaired_overseas": 2.8637053344451076
+        }
+      },
+      {
+        "scope": "public",
+        "active_rows": 2088,
+        "PA_weighted_relative_rmse": {
+          "current": 1.6647505688498578,
+          "domestic": 1.7042587750832305,
+          "overseas": 1.7291032558327488,
+          "repaired_domestic": 1.6627183896965039,
+          "repaired_overseas": 1.662716037861217
+        },
+        "PA_weighted_common_rmse": {
+          "current": 1.7284811660509019,
+          "domestic": 1.7782844366810122,
+          "overseas": 1.8007128150826814,
+          "repaired_domestic": 1.7340058295822003,
+          "repaired_overseas": 1.7340050479877398
+        }
+      },
+      {
+        "scope": "original_foreign",
+        "active_rows": 28,
+        "PA_weighted_relative_rmse": {
+          "current": 1.880241315509279,
+          "domestic": 1.960711471349862,
+          "overseas": 5.4470934033978144,
+          "repaired_domestic": 1.75225060372666,
+          "repaired_overseas": 1.7523781017758373
+        },
+        "PA_weighted_common_rmse": {
+          "current": 1.9770108339937937,
+          "domestic": 2.0737624283060154,
+          "overseas": 5.536714600647433,
+          "repaired_domestic": 1.8493913568530915,
+          "repaired_overseas": 1.8495119225399819
+        }
+      },
+      {
+        "scope": "original_upper_never_debut",
+        "active_rows": 730,
+        "PA_weighted_relative_rmse": {
+          "current": 2.5632484045024824,
+          "domestic": 2.7377882360941355,
+          "overseas": 2.7307829332401465,
+          "repaired_domestic": 2.5862758399562806,
+          "repaired_overseas": 2.5862697415496627
+        },
+        "PA_weighted_common_rmse": {
+          "current": 2.605440905166676,
+          "domestic": 2.783105741348929,
+          "overseas": 2.7779626738924725,
+          "repaired_domestic": 2.6256182863619086,
+          "repaired_overseas": 2.625611327837897
+        }
+      },
+      {
+        "scope": "original_lower_never_debut",
+        "active_rows": 54,
+        "PA_weighted_relative_rmse": {
+          "current": 3.179084066656938,
+          "domestic": 3.279530970243063,
+          "overseas": 3.2652466533497417,
+          "repaired_domestic": 3.303406558189015,
+          "repaired_overseas": 3.3033957360279866
+        },
+        "PA_weighted_common_rmse": {
+          "current": 3.0377819585731514,
+          "domestic": 3.2191361480168244,
+          "overseas": 3.2095081683846916,
+          "repaired_domestic": 3.164361594351866,
+          "repaired_overseas": 3.1643488772488793
+        }
+      },
+      {
+        "scope": "original_current_MLB",
+        "active_rows": 3596,
+        "PA_weighted_relative_rmse": {
+          "current": 1.7054630915243987,
+          "domestic": 1.7525808797246791,
+          "overseas": 1.786661620531179,
+          "repaired_domestic": 1.706643754978743,
+          "repaired_overseas": 1.706643552116357
+        },
+        "PA_weighted_common_rmse": {
+          "current": 1.7670062477153197,
+          "domestic": 1.8219833050058507,
+          "overseas": 1.8555246002742858,
+          "repaired_domestic": 1.772619008905299,
+          "repaired_overseas": 1.7726193109874466
+        }
+      },
+      {
+        "scope": "current_regular",
+        "active_rows": 1409,
+        "PA_weighted_relative_rmse": {
+          "current": 1.4730898272837576,
+          "domestic": 1.5181878320896172,
+          "overseas": 1.5242523473120284,
+          "repaired_domestic": 1.474840258613345,
+          "repaired_overseas": 1.4748419038427707
+        },
+        "PA_weighted_common_rmse": {
+          "current": 1.5418192862518312,
+          "domestic": 1.5956549350987372,
+          "overseas": 1.5997367011017485,
+          "repaired_domestic": 1.5492989554359904,
+          "repaired_overseas": 1.5493018092069577
+        }
+      },
+      {
+        "scope": "current_partial",
+        "active_rows": 2187,
+        "PA_weighted_relative_rmse": {
+          "current": 1.9838223014588479,
+          "domestic": 2.033456518522675,
+          "overseas": 2.0974055230611044,
+          "repaired_domestic": 1.98465264969966,
+          "repaired_overseas": 1.984650607956621
+        },
+        "PA_weighted_common_rmse": {
+          "current": 2.0387884000637406,
+          "domestic": 2.0953454200651187,
+          "overseas": 2.1607034552071207,
+          "repaired_domestic": 2.042680584521549,
+          "repaired_overseas": 2.04267829036865
+        }
+      },
+      {
+        "scope": "absent_prior_debut",
+        "active_rows": 155,
+        "PA_weighted_relative_rmse": {
+          "current": 2.920961325676773,
+          "domestic": 2.936941917704494,
+          "overseas": 3.1942772974345526,
+          "repaired_domestic": 2.908370933563557,
+          "repaired_overseas": 2.9085252122531
+        },
+        "PA_weighted_common_rmse": {
+          "current": 2.9758696645711926,
+          "domestic": 2.9989380323278123,
+          "overseas": 3.245353285927582,
+          "repaired_domestic": 2.963323889414658,
+          "repaired_overseas": 2.963486638007492
+        }
+      },
+      {
+        "scope": "origin_2016",
+        "active_rows": 624,
+        "PA_weighted_relative_rmse": {
+          "current": 1.865875568516953,
+          "domestic": 1.9801978965512161,
+          "overseas": 2.0109126542755393,
+          "repaired_domestic": 1.8789807974017305,
+          "repaired_overseas": 1.8790042261782673
+        },
+        "PA_weighted_common_rmse": {
+          "current": 1.8846739171984537,
+          "domestic": 2.029541987677713,
+          "overseas": 2.06036320172925,
+          "repaired_domestic": 1.8956405000070138,
+          "repaired_overseas": 1.8956649929727705
+        }
+      },
+      {
+        "scope": "origin_2017",
+        "active_rows": 628,
+        "PA_weighted_relative_rmse": {
+          "current": 1.7331736184194841,
+          "domestic": 1.8086752970501547,
+          "overseas": 1.8451315554520928,
+          "repaired_domestic": 1.7397346647040566,
+          "repaired_overseas": 1.7397350719322047
+        },
+        "PA_weighted_common_rmse": {
+          "current": 1.7786303518389068,
+          "domestic": 1.8237621986958457,
+          "overseas": 1.8604320783215305,
+          "repaired_domestic": 1.7866419595203022,
+          "repaired_overseas": 1.7866398844278857
+        }
+      },
+      {
+        "scope": "origin_2018",
+        "active_rows": 638,
+        "PA_weighted_relative_rmse": {
+          "current": 1.970487621885993,
+          "domestic": 1.9944215975238357,
+          "overseas": 2.0628081240885674,
+          "repaired_domestic": 1.977974626161003,
+          "repaired_overseas": 1.9779774138496427
+        },
+        "PA_weighted_common_rmse": {
+          "current": 2.0710451380118795,
+          "domestic": 2.1056078413816217,
+          "overseas": 2.1783744416025805,
+          "repaired_domestic": 2.075913453167366,
+          "repaired_overseas": 2.075916874784442
+        }
+      },
+      {
+        "scope": "origin_2021",
+        "active_rows": 686,
+        "PA_weighted_relative_rmse": {
+          "current": 1.8238582949123354,
+          "domestic": 1.863498465256248,
+          "overseas": 1.8571744449085092,
+          "repaired_domestic": 1.811819597476022,
+          "repaired_overseas": 1.8118169910933064
+        },
+        "PA_weighted_common_rmse": {
+          "current": 1.9152461687705553,
+          "domestic": 1.9353870024585158,
+          "overseas": 1.9274955666394917,
+          "repaired_domestic": 1.8720337258573028,
+          "repaired_overseas": 1.8720302741158714
+        }
+      },
+      {
+        "scope": "origin_2022",
+        "active_rows": 649,
+        "PA_weighted_relative_rmse": {
+          "current": 1.7503748349529011,
+          "domestic": 1.793265647359119,
+          "overseas": 1.8105896558843828,
+          "repaired_domestic": 1.7467445773168173,
+          "repaired_overseas": 1.7467481652930814
+        },
+        "PA_weighted_common_rmse": {
+          "current": 1.788161674191497,
+          "domestic": 1.8884033795182595,
+          "overseas": 1.902416642265331,
+          "repaired_domestic": 1.8292071776181553,
+          "repaired_overseas": 1.8292145656119227
+        }
+      },
+      {
+        "scope": "origin_2023",
+        "active_rows": 647,
+        "PA_weighted_relative_rmse": {
+          "current": 1.7479642994943867,
+          "domestic": 1.8093088085478257,
+          "overseas": 1.8114559851859369,
+          "repaired_domestic": 1.7466958184883594,
+          "repaired_overseas": 1.7466856854245136
+        },
+        "PA_weighted_common_rmse": {
+          "current": 1.8474524305099647,
+          "domestic": 1.900289985176164,
+          "overseas": 1.9037409302079797,
+          "repaired_domestic": 1.8641407301322392,
+          "repaired_overseas": 1.8641328271863922
+        }
+      },
+      {
+        "scope": "origin_2024",
+        "active_rows": 666,
+        "PA_weighted_relative_rmse": {
+          "current": 1.7284689470437418,
+          "domestic": 1.7903128235973018,
+          "overseas": 1.875079634194594,
+          "repaired_domestic": 1.7436341498651329,
+          "repaired_overseas": 1.7436292219916152
+        },
+        "PA_weighted_common_rmse": {
+          "current": 1.7318779920484575,
+          "domestic": 1.8105210066099136,
+          "overseas": 1.8919448730230244,
+          "repaired_domestic": 1.746932119765729,
+          "repaired_overseas": 1.74692633083443
+        }
+      }
+    ],
+    "public_steamer": {
+      "rows": 2627,
+      "pa_rmse": 135.37946341946525,
+      "pa_mae": 92.08284699683804,
+      "value_rmse": 1.0901135149479162,
+      "qualification": "Raw public forecasts, origin-centered actual common rates; release, park and environment differences remain. ZiPS PA is not a certified workload estimate.",
+      "PA_weighted_common_rate_rmse": {
+        "steamer": 1.774588665893598,
+        "zips": 1.7533614545512477
+      }
+    }
+  },
+  "intervals": {
+    "seed": 84,
+    "repetitions": 2000,
+    "comparisons": [
+      {
+        "scope": "original_all",
+        "candidate": "repaired_overseas",
+        "baseline": "repaired_domestic",
+        "intervals": [
+          {
+            "metric": "pa_mse",
+            "change": 0.0,
+            "lower": 0.0,
+            "upper": 0.0,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "pa_mae",
+            "change": 0.0,
+            "lower": 0.0,
+            "upper": 0.0,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "pa_bias",
+            "change": 0.0,
+            "lower": 0.0,
+            "upper": 0.0,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "value_mse",
+            "change": 4.503323532326093e-07,
+            "lower": -5.813411962414379e-07,
+            "upper": 1.6749118932304128e-06,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "value_mae",
+            "change": -3.4954043217026783e-07,
+            "lower": -7.259144234422062e-07,
+            "upper": 9.156771046239804e-09,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "value_bias",
+            "change": -4.114026373550399e-07,
+            "lower": -1.0079427535801175e-06,
+            "upper": 2.1269564330498063e-07,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "brier",
+            "change": 0.0,
+            "lower": 0.0,
+            "upper": 0.0,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "logloss",
+            "change": 0.0,
+            "lower": 0.0,
+            "upper": 0.0,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          }
+        ],
+        "rate_interval": {
+          "metric": "PA_weighted_relative_rate_mse",
+          "change": 7.285203793753302e-06,
+          "lower": -1.609790196241612e-05,
+          "upper": 4.008210521844765e-05,
+          "fixed_original_origin_PA_weights": true,
+          "nominal_exposed_development_interval": true
+        }
+      },
+      {
+        "scope": "original_all",
+        "candidate": "repaired_domestic",
+        "baseline": "current",
+        "intervals": [
+          {
+            "metric": "pa_mse",
+            "change": -29.713893398076173,
+            "lower": -74.77135776108327,
+            "upper": 13.01872031070701,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "pa_mae",
+            "change": -0.12036398490308182,
+            "lower": -0.24289681711362518,
+            "upper": 0.0029469819012706427,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "pa_bias",
+            "change": 0.21221118220501636,
+            "lower": 0.07567273749290977,
+            "upper": 0.34929736897596136,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "value_mse",
+            "change": 0.0008108664799320559,
+            "lower": -0.0006333993587369877,
+            "upper": 0.002204527416562597,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "value_mae",
+            "change": 0.00019143576523530793,
+            "lower": -0.0003198912396231973,
+            "upper": 0.0006680399048686982,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "value_bias",
+            "change": -0.0009435376534335701,
+            "lower": -0.0015022174475893696,
+            "upper": -0.00036327887440090463,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "brier",
+            "change": -0.0011071176685206602,
+            "lower": -0.001460930383604071,
+            "upper": -0.0007806251564304349,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "logloss",
+            "change": -0.003509743367935231,
+            "lower": -0.004541313289287739,
+            "upper": -0.0025625819280176592,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          }
+        ],
+        "rate_interval": {
+          "metric": "PA_weighted_relative_rate_mse",
+          "change": 0.01331189038009242,
+          "lower": -0.006099711948035947,
+          "upper": 0.034831151159579896,
+          "fixed_original_origin_PA_weights": true,
+          "nominal_exposed_development_interval": true
+        }
+      },
+      {
+        "scope": "original_all",
+        "candidate": "repaired_overseas",
+        "baseline": "current",
+        "intervals": [
+          {
+            "metric": "pa_mse",
+            "change": -29.713893398076173,
+            "lower": -74.77135776108327,
+            "upper": 13.01872031070701,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "pa_mae",
+            "change": -0.12036398490308182,
+            "lower": -0.24289681711362518,
+            "upper": 0.0029469819012706427,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "pa_bias",
+            "change": 0.21221118220501636,
+            "lower": 0.07567273749290977,
+            "upper": 0.34929736897596136,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "value_mse",
+            "change": 0.0008113168122852869,
+            "lower": -0.0006331361285250571,
+            "upper": 0.0022045643795031125,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "value_mae",
+            "change": 0.00019108622480313662,
+            "lower": -0.0003202806950503732,
+            "upper": 0.0006674202654222922,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "value_bias",
+            "change": -0.000943949056070927,
+            "lower": -0.0015033705436824248,
+            "upper": -0.0003637944348040287,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "brier",
+            "change": -0.0011071176685206602,
+            "lower": -0.001460930383604071,
+            "upper": -0.0007806251564304349,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "logloss",
+            "change": -0.003509743367935231,
+            "lower": -0.004541313289287739,
+            "upper": -0.0025625819280176592,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          }
+        ],
+        "rate_interval": {
+          "metric": "PA_weighted_relative_rate_mse",
+          "change": 0.013319175583886168,
+          "lower": -0.006091534192697844,
+          "upper": 0.03486789776987017,
+          "fixed_original_origin_PA_weights": true,
+          "nominal_exposed_development_interval": true
+        }
+      },
+      {
+        "scope": "additions",
+        "candidate": "repaired_overseas",
+        "baseline": "repaired_domestic",
+        "intervals": [
+          {
+            "metric": "pa_mse",
+            "change": 0.0,
+            "lower": 0.0,
+            "upper": 0.0,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "pa_mae",
+            "change": 0.0,
+            "lower": 0.0,
+            "upper": 0.0,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "pa_bias",
+            "change": 0.0,
+            "lower": 0.0,
+            "upper": 0.0,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "value_mse",
+            "change": -0.0009059206444866268,
+            "lower": -0.003948630002707512,
+            "upper": 0.0005741515746971974,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "value_mae",
+            "change": 1.8425307069908374e-05,
+            "lower": -0.0008375791609098955,
+            "upper": 0.0007727057449982556,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "value_bias",
+            "change": 0.0004657717393131832,
+            "lower": -0.0001795583130061848,
+            "upper": 0.0012119233698910767,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "brier",
+            "change": 0.0,
+            "lower": 0.0,
+            "upper": 0.0,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "logloss",
+            "change": 0.0,
+            "lower": 0.0,
+            "upper": 0.0,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          }
+        ],
+        "rate_interval": {
+          "metric": "PA_weighted_relative_rate_mse",
+          "change": -0.003051535479160107,
+          "lower": -0.014973359276661309,
+          "upper": 0.008070795037692296,
+          "fixed_original_origin_PA_weights": true,
+          "nominal_exposed_development_interval": true
+        }
+      },
+      {
+        "scope": "public",
+        "candidate": "repaired_overseas",
+        "baseline": "repaired_domestic",
+        "intervals": [
+          {
+            "metric": "pa_mse",
+            "change": 0.0,
+            "lower": 0.0,
+            "upper": 0.0,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "pa_mae",
+            "change": 0.0,
+            "lower": 0.0,
+            "upper": 0.0,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "pa_bias",
+            "change": 0.0,
+            "lower": 0.0,
+            "upper": 0.0,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "value_mse",
+            "change": 1.880873130845974e-07,
+            "lower": -7.376404867403813e-06,
+            "upper": 6.372173052826203e-06,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "value_mae",
+            "change": -2.282457564144805e-06,
+            "lower": -5.47073658092602e-06,
+            "upper": 2.530834822767709e-07,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "value_bias",
+            "change": -8.626697621995106e-07,
+            "lower": -4.536474918903858e-06,
+            "upper": 4.4074998400979695e-06,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "brier",
+            "change": 0.0,
+            "lower": 0.0,
+            "upper": 0.0,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "logloss",
+            "change": 0.0,
+            "lower": 0.0,
+            "upper": 0.0,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          }
+        ],
+        "rate_interval": {
+          "metric": "PA_weighted_relative_rate_mse",
+          "change": -7.820874031565354e-06,
+          "lower": -3.113856534781055e-05,
+          "upper": 9.42147904727245e-06,
+          "fixed_original_origin_PA_weights": true,
+          "nominal_exposed_development_interval": true
+        }
+      },
+      {
+        "scope": "public",
+        "candidate": "repaired_domestic",
+        "baseline": "current",
+        "intervals": [
+          {
+            "metric": "pa_mse",
+            "change": -142.46872783313,
+            "lower": -457.185880035116,
+            "upper": 157.6207519157122,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "pa_mae",
+            "change": -1.136449368500829,
+            "lower": -2.088186505416133,
+            "upper": -0.21215341414551186,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "pa_bias",
+            "change": 1.17709365937566,
+            "lower": 0.16525771107808043,
+            "upper": 2.2195599477739587,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "value_mse",
+            "change": 0.004545061460135725,
+            "lower": -0.007739009444581595,
+            "upper": 0.016915303985226414,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "value_mae",
+            "change": -0.0032201613207382867,
+            "lower": -0.007575989109165959,
+            "upper": 0.0014195492643285293,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "value_bias",
+            "change": -0.020365582849152537,
+            "lower": -0.024713251823039656,
+            "upper": -0.01577443209751815,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "brier",
+            "change": -0.006886925539718357,
+            "lower": -0.009409809255699857,
+            "upper": -0.004517053649110211,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "logloss",
+            "change": -0.01952477920590914,
+            "lower": -0.02572283329098311,
+            "upper": -0.01354094361800852,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          }
+        ],
+        "rate_interval": {
+          "metric": "PA_weighted_relative_rate_mse",
+          "change": -0.0067620130509902,
+          "lower": -0.036039298366756546,
+          "upper": 0.02387938804415227,
+          "fixed_original_origin_PA_weights": true,
+          "nominal_exposed_development_interval": true
+        }
+      },
+      {
+        "scope": "public",
+        "candidate": "repaired_overseas",
+        "baseline": "current",
+        "intervals": [
+          {
+            "metric": "pa_mse",
+            "change": -142.46872783313,
+            "lower": -457.185880035116,
+            "upper": 157.6207519157122,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "pa_mae",
+            "change": -1.136449368500829,
+            "lower": -2.088186505416133,
+            "upper": -0.21215341414551186,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "pa_bias",
+            "change": 1.17709365937566,
+            "lower": 0.16525771107808043,
+            "upper": 2.2195599477739587,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "value_mse",
+            "change": 0.0045452495474488114,
+            "lower": -0.007735791429480025,
+            "upper": 0.01691470309138805,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "value_mae",
+            "change": -0.0032224437783024335,
+            "lower": -0.007578099319584123,
+            "upper": 0.0014153900350386973,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "value_bias",
+            "change": -0.020366445518914714,
+            "lower": -0.02471553955183968,
+            "upper": -0.015773628993507132,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "brier",
+            "change": -0.006886925539718357,
+            "lower": -0.009409809255699857,
+            "upper": -0.004517053649110211,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "logloss",
+            "change": -0.01952477920590914,
+            "lower": -0.02572283329098311,
+            "upper": -0.01354094361800852,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          }
+        ],
+        "rate_interval": {
+          "metric": "PA_weighted_relative_rate_mse",
+          "change": -0.006769833925021769,
+          "lower": -0.03605699975664758,
+          "upper": 0.02387661983758478,
+          "fixed_original_origin_PA_weights": true,
+          "nominal_exposed_development_interval": true
+        }
+      },
+      {
+        "scope": "original_foreign",
+        "candidate": "repaired_overseas",
+        "baseline": "repaired_domestic",
+        "intervals": [
+          {
+            "metric": "pa_mse",
+            "change": 0.0,
+            "lower": 0.0,
+            "upper": 0.0,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "pa_mae",
+            "change": 0.0,
+            "lower": 0.0,
+            "upper": 0.0,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "pa_bias",
+            "change": 0.0,
+            "lower": 0.0,
+            "upper": 0.0,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "value_mse",
+            "change": 4.618793370180227e-05,
+            "lower": -6.934559101874484e-05,
+            "upper": 0.0001885783585925215,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "value_mae",
+            "change": -1.64284690511046e-05,
+            "lower": -6.0789216839491665e-05,
+            "upper": 2.5836038553918038e-05,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "value_bias",
+            "change": 3.5551938716489956e-06,
+            "lower": -6.522892623657868e-05,
+            "upper": 7.1339483826974e-05,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "brier",
+            "change": 0.0,
+            "lower": 0.0,
+            "upper": 0.0,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "logloss",
+            "change": 0.0,
+            "lower": 0.0,
+            "upper": 0.0,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          }
+        ],
+        "rate_interval": {
+          "metric": "PA_weighted_relative_rate_mse",
+          "change": 0.00044683332304203984,
+          "lower": -0.0033979293033739454,
+          "upper": 0.003828885370230536,
+          "fixed_original_origin_PA_weights": true,
+          "nominal_exposed_development_interval": true
+        }
+      },
+      {
+        "scope": "original_foreign",
+        "candidate": "repaired_domestic",
+        "baseline": "current",
+        "intervals": [
+          {
+            "metric": "pa_mse",
+            "change": -1065.3246006962509,
+            "lower": -2953.262068144298,
+            "upper": 84.0436617866364,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "pa_mae",
+            "change": -0.33442245602391685,
+            "lower": -3.3095071596937644,
+            "upper": 1.9176754164248255,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "pa_bias",
+            "change": 4.41962025316749,
+            "lower": 1.9717045736402605,
+            "upper": 7.708169685071093,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "value_mse",
+            "change": -0.02464558757050134,
+            "lower": -0.07707320664789477,
+            "upper": 0.011510273100023605,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "value_mae",
+            "change": 0.0006637823981988037,
+            "lower": -0.01012668536770663,
+            "upper": 0.009113007157440987,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "value_bias",
+            "change": 0.02549867124671261,
+            "lower": 0.014364991889173694,
+            "upper": 0.039551475848031974,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "brier",
+            "change": -0.011143080025103287,
+            "lower": -0.022114267742564784,
+            "upper": -0.003464860066505936,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "logloss",
+            "change": -0.044646766995516944,
+            "lower": -0.0991817132572187,
+            "upper": -0.010705733746104973,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          }
+        ],
+        "rate_interval": {
+          "metric": "PA_weighted_relative_rate_mse",
+          "change": -0.46492522628762006,
+          "lower": -0.7729640608436341,
+          "upper": -0.012704906566448546,
+          "fixed_original_origin_PA_weights": true,
+          "nominal_exposed_development_interval": true
+        }
+      },
+      {
+        "scope": "original_foreign",
+        "candidate": "repaired_overseas",
+        "baseline": "current",
+        "intervals": [
+          {
+            "metric": "pa_mse",
+            "change": -1065.3246006962509,
+            "lower": -2953.262068144298,
+            "upper": 84.0436617866364,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "pa_mae",
+            "change": -0.33442245602391685,
+            "lower": -3.3095071596937644,
+            "upper": 1.9176754164248255,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "pa_bias",
+            "change": 4.41962025316749,
+            "lower": 1.9717045736402605,
+            "upper": 7.708169685071093,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "value_mse",
+            "change": -0.024599399636799545,
+            "lower": -0.07695531382924506,
+            "upper": 0.011505707594714885,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "value_mae",
+            "change": 0.0006473539291476982,
+            "lower": -0.010115217952396458,
+            "upper": 0.009087081970912911,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "value_bias",
+            "change": 0.02550222644058427,
+            "lower": 0.014362401483987942,
+            "upper": 0.03958799671738628,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "brier",
+            "change": -0.011143080025103287,
+            "lower": -0.022114267742564784,
+            "upper": -0.003464860066505936,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          },
+          {
+            "metric": "logloss",
+            "change": -0.044646766995516944,
+            "lower": -0.0991817132572187,
+            "upper": -0.010705733746104973,
+            "fixed_original_origin_weights": true,
+            "nominal_exposed_development_interval": true
+          }
+        ],
+        "rate_interval": {
+          "metric": "PA_weighted_relative_rate_mse",
+          "change": -0.46447839296457805,
+          "lower": -0.7709554357505572,
+          "upper": -0.014453671441139123,
+          "fixed_original_origin_PA_weights": true,
+          "nominal_exposed_development_interval": true
+        }
+      }
+    ]
+  },
+  "mechanics_probes": {
+    "new_fits": 0,
+    "results": [
+      {
+        "player_id": 670541,
+        "name": "Yordan Alvarez",
+        "origin": 2018,
+        "removed_level": "DSL",
+        "baseline_rate": 0.31277185567652666,
+        "coherent_source_removed_rate": 0.31204893942513023,
+        "change": -0.0007229162513964216,
+        "old_precision_PA": 726.0,
+        "new_precision_PA": 691.8,
+        "features_changed": [
+          "evidence_minor_K",
+          "evidence_minor_UBB",
+          "evidence_minor_HBP",
+          "evidence_minor_1B",
+          "evidence_minor_2B",
+          "evidence_minor_3B",
+          "evidence_minor_HR",
+          "evidence_minor_share",
+          "evidence_minor_supported_fraction",
+          "evidence_minor_missing"
+        ],
+        "model_sha256": "423961a8e4aafbfe3663996d538623ff77858ecf0d077d281e8d477134027870",
+        "qualification": "Same fitted parameters and recomputed coherent minor profile; artificial history, no validation or deployment"
+      },
+      {
+        "player_id": 643217,
+        "name": "Andrew Benintendi",
+        "origin": 2017,
+        "removed_level": "Aminus",
+        "baseline_rate": 1.2414655648483033,
+        "coherent_source_removed_rate": 1.245403893678461,
+        "change": 0.003938328830157767,
+        "old_precision_PA": 477.80000000000007,
+        "new_precision_PA": 386.0,
+        "features_changed": [
+          "evidence_minor_K",
+          "evidence_minor_UBB",
+          "evidence_minor_HBP",
+          "evidence_minor_1B",
+          "evidence_minor_2B",
+          "evidence_minor_3B",
+          "evidence_minor_HR",
+          "evidence_minor_share",
+          "evidence_minor_supported_fraction",
+          "evidence_minor_missing"
+        ],
+        "model_sha256": "4092a429da3f8d9d5a9f834443a0f18ef36202494e6fc4345f69aaa9426af07f",
+        "qualification": "Same fitted parameters and recomputed coherent minor profile; artificial history, no validation or deployment"
+      },
+      {
+        "player_id": 808982,
+        "name": "Jung Hoo Lee",
+        "origin": 2024,
+        "baseline_rate": -0.27481116530898364,
+        "foreign_production_effect": 0.006570859406717672,
+        "foreign_exposure_and_missingness_effect": 0.2991293820338507,
+        "qualification": "Exact linear accounting; production neutrality with exposure unchanged is a mechanics probe, not an alternative forecast"
+      },
+      {
+        "player_id": 660271,
+        "name": "Shohei Ohtani",
+        "origin": 2018,
+        "baseline_rate": 1.9257230162984529,
+        "foreign_production_effect": 0.0007836475794186739,
+        "foreign_exposure_and_missingness_effect": 0.1554785424921584,
+        "qualification": "Exact linear accounting; production neutrality with exposure unchanged is a mechanics probe, not an alternative forecast"
+      },
+      {
+        "player_id": 807799,
+        "name": "Masataka Yoshida",
+        "origin": 2024,
+        "baseline_rate": 0.9365572975157979,
+        "foreign_production_effect": 0.002072698991124175,
+        "foreign_exposure_and_missingness_effect": 0.429783054028288,
+        "qualification": "Exact linear accounting; production neutrality with exposure unchanged is a mechanics probe, not an alternative forecast"
+      },
+      {
+        "player_id": 673548,
+        "name": "Seiya Suzuki",
+        "origin": 2021,
+        "baseline_rate": -0.8823485845125789,
+        "foreign_production_effect": -0.0032377666774519387,
+        "foreign_exposure_and_missingness_effect": 0.15589121745190504,
+        "qualification": "Exact linear accounting; production neutrality with exposure unchanged is a mechanics probe, not an alternative forecast"
+      },
+      {
+        "player_id": 807799,
+        "name": "Masataka Yoshida",
+        "origin": 2022,
+        "baseline_rate": -0.6336337619500925,
+        "foreign_production_effect": 0.007032115599209018,
+        "foreign_exposure_and_missingness_effect": 0.40027318897128217,
+        "qualification": "Exact linear accounting; production neutrality with exposure unchanged is a mechanics probe, not an alternative forecast"
+      }
+    ],
+    "protected_outcomes_used": false,
+    "hashes": {
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\probe_hitter_representation_mechanics.py": "30f7568dc725f901b17e9491b97a5e451c75bff243a62d6fc462bf0bd7fa3add",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-evidence-representation\\reviewed-cases.json": "7deaa1ab456ec21fbc7e37c94273dd36963225c29dfe39e56d8c6d00a7fe078e",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-evidence-representation\\fit-report.json": "604492f341792efd6f92400ad62282b7dea0340eda89b663141d7a4908d0f84a"
+    }
+  },
+  "profile_support": [
+    {
+      "head": "conditional_pa",
+      "rows": 30519,
+      "unsupported": 1227,
+      "under_20_people": 11021
+    },
+    {
+      "head": "domestic_rate",
+      "rows": 30519,
+      "unsupported": 1227,
+      "under_20_people": 11021
+    },
+    {
+      "head": "overseas_rate",
+      "rows": 30519,
+      "unsupported": 1227,
+      "under_20_people": 11021
+    },
+    {
+      "head": "participation",
+      "rows": 30519,
+      "unsupported": 32,
+      "under_20_people": 479
+    }
+  ],
+  "readable_result": "docs\\hitter-evidence-representation-result.md",
+  "player_walkthrough_artifact": "docs\\hitter-evidence-representation-player-review.md",
+  "next_work": "Audit why the pooled head barely uses non-established MLB production; preserve useful current talent routing before any new fit. Freeze before authorized 2026 access.",
+  "hashes": {
+    "docs\\hitter-evidence-representation-result.md": "7bcaffa0a672c0805c4742b9670cf2d11eea57f9136a6b5376638d73ff4c2b43",
+    "docs\\hitter-evidence-representation-player-review.md": "c6c6eae3ce15da699c255ac9348cf2b7e7efb202abf655b25c3724a63d0ec20d",
+    "scripts\\finalize_hitter_evidence_representation.py": "444aa12a2f8cfe1418ecbac57d12f87c1eebedb871e2118334a00a5d065433ba",
+    "reports\\generated\\hitter-evidence-representation\\review-receipt.json": "f9cb56eaef3cf076a5fe89ba55082f955279e607002d6361961658dcea28c3dd",
+    "reports\\generated\\hitter-evidence-representation\\reviewed-cases.json": "7deaa1ab456ec21fbc7e37c94273dd36963225c29dfe39e56d8c6d00a7fe078e",
+    "reports\\generated\\hitter-evidence-representation\\scores.json": "fd4e4ca6fb74e8b4c36cf3c6352a0337c8420533f62d8abd41335e6eb23e9c16",
+    "reports\\generated\\hitter-evidence-representation\\intervals.json": "3a6748bd5bde12eb1fc5aaf2f6837b094e77dfd4dee5d6533327823a7cade7bc",
+    "reports\\generated\\hitter-evidence-representation\\mechanics-probes.json": "46f4326b32085619991d349cb71a7920ed360b586af84c985752377cf05e3ad5",
+    "reports\\generated\\hitter-evidence-representation\\fit-seal.json": "b7bb6b2c07cc6d0e828ccb5d4d789de1339510f8adce8c1cdbd7a0cc687909f2",
+    "reports\\generated\\hitter-evidence-representation\\resume-seal.json": "696edca8145697f674b93923587ad17fa26a75bd3b09a8e2ba9f9c0489af1520"
+  }
+}
