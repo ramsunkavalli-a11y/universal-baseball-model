@@ -478,3 +478,16 @@ tests/test_nonmedical_observation.py -text -eol
 scripts/repair_hitter_nonmedical_observation.py -text -eol
 scripts/finalize_hitter_nonmedical_observation.py -text -eol
 reports/model-evidence/hitter-nonmedical-observation/** -text -eol
+# Preserve the matched nonmedical opportunity contrast without old-result edits.
+docs/hitter-nonmedical-opportunity-contract.md -text -eol
+src/universal_baseball/nonmedical_opportunity.py -text -eol
+tests/test_nonmedical_opportunity.py -text -eol
+scripts/run_hitter_nonmedical_opportunity.py -text -eol
+scripts/review_hitter_nonmedical_opportunity.py -text -eol
+scripts/finalize_hitter_nonmedical_opportunity.py -text -eol
+docs/hitter-nonmedical-opportunity-result.md -text -eol
+docs/hitter-nonmedical-opportunity-player-review.md -text -eol
+reports/model-evidence/hitter-nonmedical-opportunity/** -text -eol
+scripts/audit_nonmedical_feature_use.py -text -eol
+docs/source-correction-impact-gate.md -text -eol
+docs/hitter-nonmedical-opportunity-review-clarification.md -text -eol

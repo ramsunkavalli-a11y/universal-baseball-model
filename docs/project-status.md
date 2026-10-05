@@ -2,6 +2,40 @@
 
 Updated 2026-10-05. This is the current start-here document.
 
+## Corrected availability contrast closed: the fitted models ignored those inputs
+
+The [matched comparison](hitter-nonmedical-opportunity-result.md) and
+[43 player walks](hitter-nonmedical-opportunity-player-review.md) are complete;
+read the [Colabello prose clarification](hitter-nonmedical-opportunity-review-clarification.md)
+with them. All 30,519 forecasts are exactly unchanged from complete employment
+V2. The corrected observations change 122 input origins and 89 evaluated
+forecasts, but none of the eight tested fields appears in either saved tree
+ensemble. All 140 heads were inspected; seventy paired initial predictions,
+17,500 paired node arrays and 213,633 forecast-field comparisons match exactly.
+This closes the contrast without promotion; it does not reject the baseball
+importance of availability. Correct source observations are retained.
+
+The independent completion receipt verifies 1,332,800 source values, 5,065,120
+matrix values, 752 score checks and 344 player-product checks. Focused tests and
+both frozen packages pass. Tatis still receives 61 expected PA before 635 actual;
+Franco still receives 545 before zero. Their restrictions were unused, while
+roster/current-work/employment inputs influenced the forecasts. Both exact rare
+profiles lack training people. Upper-minors underallocation, lower-minors
+overallocation, ready prospects and foreign-professional misses remain.
+
+Apply the new [source-correction impact gate](source-correction-impact-gate.md)
+before another refit. Next work is an influential-input/route-support diagnosis,
+not another suspension, employment or generic injury-feature batch. Prior binary
+scouting V49, compact V57, talent-to-opportunity, demonstrated-workload V61,
+uncertainty and deeper/LightGBM conditional-workload tests already addressed
+parts of these mechanisms; inspect their contracts and actual receipts rather
+than claiming the ideas are untried. Do not reuse a rejected generic return boost,
+unconditional PA anchor, tree-capacity sweep or favorable-subgroup hybrid.
+
+The selected candidate and the authorized one-time completed 2026 evaluation
+remain sealed and unchanged. All new comparison labels end in 2025. The practical
+hitter goal remains active; this source milestone is not full-model certification.
+
 ## Nonmedical absence observations repaired before another fit
 
 The [separate observation repair](hitter-nonmedical-observation-result.md) and

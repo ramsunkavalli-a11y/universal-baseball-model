@@ -1,0 +1,82 @@
+{
+  "status": "historical_comparison_review_complete_no_promotion",
+  "player_walkthrough_status": "complete",
+  "evaluation_rows": 30519,
+  "original_rows": 30506,
+  "additions": 13,
+  "source_rows": 63314,
+  "changed_source_input_rows": 122,
+  "changed_evaluated_origins": 89,
+  "source_numeric_checks": 1332800,
+  "matrix_numeric_checks": 5065120,
+  "independent_score_checks": 752,
+  "case_product_checks": 344,
+  "player_cases": 43,
+  "distinct_case_people": 38,
+  "new_heads": 70,
+  "replayed_heads": 140,
+  "decision": {
+    "source_repair_retained": true,
+    "primary_improvement_interval_below_zero": false,
+    "major_stage_deteriorations_over_two_percent": [],
+    "predictive_improvement_not_established": true,
+    "rare_profile_certification": false,
+    "deployment_approved": false,
+    "disposition": "retain_corrected_source_withhold_candidate_close_contrast",
+    "no_setting_or_feature_variants_authorized": true,
+    "exact_null_due_to_unused_tested_inputs": true,
+    "baseball_value_of_availability_rejected": false
+  },
+  "tests_and_freezes": [
+    {
+      "command": [
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/test_nonmedical_observation.py",
+        "tests/test_nonmedical_opportunity.py"
+      ],
+      "exit_code": 0,
+      "output": ".....................                                                    [100%]\n21 passed in 1.28s\n"
+    },
+    {
+      "command": [
+        "scripts/verify_hitter_selected_2026_freeze.py"
+      ],
+      "exit_code": 0,
+      "output": "{\"status\": \"verified\", \"files\": 53, \"players\": 4030, \"heads_replayed\": 25, \"manifest_sha256\": \"a1d819ffcdd98a9ee62feecf5637b5ebe1f93b6e931d77d2b7d692ed928da67a\", \"protected_outcomes_read\": false, \"predictive_accuracy_not_yet_evaluated\": true}\n"
+    },
+    {
+      "command": [
+        "scripts/verify_hitter_full_2026_freeze.py"
+      ],
+      "exit_code": 0,
+      "output": "{\n  \"contact_available_rows\": 3511,\n  \"five_model_rows\": 3720,\n  \"forecast_sha256\": \"d1953a28d35d87d141ecc65ec4b107906edad877982e79c0d3a216245b9e4708\",\n  \"players\": 3907,\n  \"population_prior_rows\": 187,\n  \"protected_2026_opened\": false,\n  \"status\": \"verified\",\n  \"verified_files\": 31\n}\n"
+    }
+  ],
+  "exact_prediction_field_checks": 213633,
+  "tested_feature_splits": 0,
+  "paired_tree_node_array_matches": 17500,
+  "talent_changed": false,
+  "selected_forecast_changed": false,
+  "completed_2026_evaluation_unchanged": true,
+  "hashes": {
+    "scripts\\finalize_hitter_nonmedical_opportunity.py": "4aa640547361ae8c6cda1fb2fc2b765863c96ccc0d571097eb4fb3d844121df0",
+    "docs\\hitter-nonmedical-opportunity-result.md": "0d96b7386ddf29f916686af2ff9edfbad0785d9654abf1913b0681ba793e9d59",
+    "docs\\hitter-nonmedical-opportunity-player-review.md": "2a91785f8d4c85b86e7429b4c03be73c39f65408af99026009466f152aa70a44",
+    "reports\\generated\\hitter-nonmedical-opportunity\\preflight.json": "9cfc929576836920cbcd5b4be8fe8637c9a71d1052b58e802a1eae1f29bb2bfc",
+    "reports\\generated\\hitter-nonmedical-opportunity\\fit-report.json": "a715a29a02d3a9c41770b4ad3971a3a72ef3aca24b0524837e22aee7775d8b1d",
+    "reports\\generated\\hitter-nonmedical-opportunity\\predictions.parquet": "7c0bd7644d7f9c24ba9371db466123f8ab6407aa4f492dfa74cf040ab35e7f50",
+    "reports\\generated\\hitter-nonmedical-opportunity\\review-receipt.json": "f674e0365fe43f9a8b18db2ac600cf1d541f8fbcee8d364dec4b6d510603dda1",
+    "reports\\generated\\hitter-nonmedical-opportunity\\scores.json": "ba0811e66f1c8fa7b88d82d792331978b0c92cffad9d13cea2a1347c3b1ef0ec",
+    "reports\\generated\\hitter-nonmedical-opportunity\\intervals.json": "aef68b97f82d084967dd9db9a623fc313a95a1183d5e66201ca98446f9b89bf7",
+    "reports\\generated\\hitter-nonmedical-opportunity\\case-selection.json": "48283c36a09b1afed4dec8cbb0594c750b9a681ad6b42a341ac06ba698bfaae4",
+    "reports\\generated\\hitter-nonmedical-opportunity\\player-walks.json": "88b64e8a257a0c038bc0fee0039d2ca71b395086ce2fd52ac4e7bef04774b712",
+    "scripts\\audit_nonmedical_feature_use.py": "83d9750b267fac1e43c33e42e1bd1fda5e6f0a1053e0cc3246e7f4377044c3ff",
+    "docs\\source-correction-impact-gate.md": "d9be5838c872b61aacc0c71524e2549aa1900799679f142754a8f530c66023d3",
+    "reports\\generated\\hitter-nonmedical-opportunity\\feature-use-audit.json": "91254f3f4df80e03ba04c2590cabd2d51a70aad4a1d6cbccc491833c5187367b",
+    "reports\\generated\\hitter-nonmedical-opportunity\\feature-use-source-seal.json": "15f1d3acd458401210aa34a8c0515e6e0cfe4eed4c8f80f1aec4b33928774baf"
+  }
+}
