@@ -2,6 +2,36 @@
 
 Updated 2026-10-05. This is the current start-here document.
 
+## Matched direct-value comparison complete: useful recovery, incumbent stays
+
+The [same-input direct-rate result](hitter-past-direct-value-result.md) and
+[sixteen player walks](hitter-past-direct-value-player-review.md) are complete.
+All 105 residual-Ridge heads replay after 105 preflight checks; all original
+forecasts, additions and playing time remain. Source matrices, routes and folds
+are identical to counts. No frozen forecast/explorer or 2026 evaluation changed.
+
+Hitting RMSE is incumbent 1.80481, count 1.81347, direct 1.80422. Direct recovers
+count loss but its tiny incumbent gain is uncertain. Delivered RMSE is 0.43513,
+0.43811, 0.43695 respectively; direct worsens versus incumbent in six of seven
+origins. Its near-exact total 4,187.11 versus actual 4,185.43 does not establish
+correct player allocation. At least 600 weighted MLB PA still loses. Thirteen
+additions' conditional rate worsens 7.0% versus count and remains sparse.
+
+Davis becomes less overoptimistic than counts, but Judge 2023 loses a real gain.
+Misner's rate is nearly exact while count delivered value was partly lucky.
+New walks include Suzuki 2022 (largest gain), Thames 2017 (largest harm) and
+Nola 2021 (ordinary cancellation). All source/removal/linear terms and
+origin-selected successful/failed peers are saved; sparse foreign adaptation
+remains unresolved. This is not a pure isolated loss test: scalar output and
+penalty geometry differ. Retain the incumbent; no new blend or favorable cohort.
+
+Next audit the four removed MLB-quality inputs and their raw-count/reference
+meaning, then prospectively specify one matched restoration on the same
+direct-rate learner if justified. Keep the source pool, weights, alpha, PA and
+anchors fixed. This follows the established-MLB loss rather than another
+algorithm/feature sweep. No closed opportunity tests or 2026 reopening. The
+long hitter goal remains active.
+
 ## Count-error diagnosis complete: isolate learning before changing more inputs
 
 The [no-fit diagnosis](hitter-count-error-diagnosis-result.md) and

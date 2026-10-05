@@ -542,3 +542,13 @@ scripts/diagnose_hitter_count_errors.py -text -eol
 scripts/qualify_hitter_count_error_diagnosis.py -text -eol
 scripts/finalize_hitter_count_error_diagnosis.py -text -eol
 reports/model-evidence/hitter-count-error-diagnosis/** -text -eol
+# Preserve the prospective matched direct-rate contrast.
+docs/hitter-past-direct-value-contract.md -text -eol
+docs/hitter-past-direct-value-result.md -text -eol
+docs/hitter-past-direct-value-player-review.md -text -eol
+src/universal_baseball/hitter_past_direct_value.py -text -eol
+tests/test_hitter_past_direct_value.py -text -eol
+scripts/run_hitter_past_direct_value.py -text -eol
+scripts/review_hitter_past_direct_value.py -text -eol
+scripts/finalize_hitter_past_direct_value.py -text -eol
+reports/model-evidence/hitter-past-direct-value/** -text -eol
