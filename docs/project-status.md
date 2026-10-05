@@ -2,6 +2,44 @@
 
 Updated 2026-10-05. This is the current start-here document.
 
+## Actual training routes reviewed without another playing time refit
+
+The [route diagnostic](hitter-route-support-diagnostic-result.md) and
+[thirteen source and model walks](hitter-route-support-player-review.md) are
+complete. All seventy heads reproduce the same 30,519 forecasts; 244,152 support
+values, 282 score checks and 26 player products independently verify. No model
+was fitted and neither frozen package nor the completed 2026 evaluation changed.
+
+Missing current MLB production is explicitly flagged, although the checked
+missingness flags are unused; numeric exposure, prior quality, roster, professional
+work and draft/scouting signals are used. Negative zero-work paths alone are
+not source bugs. Previously debuted absentees receive 20,250 expected PA versus
+15,326 actual, so the Tatis miss does not justify a generic comeback boost.
+Never-debuted AA/AAA players receive 74,183 versus 92,651, while other never-debuted
+players receive 8,712 versus 5,267. The small positive foreign-first-team/no-MLB
+route receives 993 versus 2,018. These are specific origin-defined audit groups,
+not renamed earlier explorer-stage tables or a league budget.
+
+The [school-support qualification](hitter-route-support-school-amendment.md)
+uses already recovered V65 facts only. Kurtz has two/one matching full/active
+people rather than one/zero: Zunino and Brooks Lee, with only Zunino participating
+next year for 193 PA. This is still thin support, not proof of zero analogues or
+a guaranteed full season. V66 already tested the school substitution without
+a useful gain; do not repeat it. Tatis still lacks the audited age/job/roster
+analogue, and Franco's plentiful sporting peers do not match his restriction.
+
+Close the no-fit diagnostic and return to the substantive
+[common production learning direction](hitter-evidence-learning-diagnosis.md).
+Before a talent-only comparison, resolve coherent event pooling, count precision,
+translation reference alignment, penalty/prior geometry and actual nested source
+membership. Preserve the useful incumbent talent branches and all evaluation
+identities; hold opportunity fixed rather than bundle another job-model change.
+Use the same historical full/public benchmarks, source-removal checks and actual
+player gains/harms. Do not mistake the failed heavily attenuated pooled Ridge
+for a conclusive test of minor/foreign production. No coefficient tweak selected
+from named outcomes, school/return/tree-capacity rerun, team-record testing or
+2026 reopening follows. The practical goal remains active.
+
 ## Corrected availability contrast closed: the fitted models ignored those inputs
 
 The [matched comparison](hitter-nonmedical-opportunity-result.md) and

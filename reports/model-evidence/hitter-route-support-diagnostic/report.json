@@ -1,0 +1,64 @@
+{
+  "status": "diagnostic_and_player_review_complete",
+  "new_fits": 0,
+  "heads_replayed": 70,
+  "saved_case_paths_replayed": 26,
+  "player_cases": 13,
+  "player_walkthrough_status": "complete",
+  "independent_support_value_checks": 244152,
+  "independent_score_checks": 282,
+  "player_product_checks": 26,
+  "tests_and_freezes": [
+    {
+      "command": [
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/test_hitter_route_support.py"
+      ],
+      "exit_code": 0,
+      "output": "....                                                                     [100%]\n4 passed in 0.29s\n"
+    },
+    {
+      "command": [
+        "scripts/verify_hitter_selected_2026_freeze.py"
+      ],
+      "exit_code": 0,
+      "output": "{\"status\": \"verified\", \"files\": 53, \"players\": 4030, \"heads_replayed\": 25, \"manifest_sha256\": \"a1d819ffcdd98a9ee62feecf5637b5ebe1f93b6e931d77d2b7d692ed928da67a\", \"protected_outcomes_read\": false, \"predictive_accuracy_not_yet_evaluated\": true}\n"
+    },
+    {
+      "command": [
+        "scripts/verify_hitter_full_2026_freeze.py"
+      ],
+      "exit_code": 0,
+      "output": "{\n  \"contact_available_rows\": 3511,\n  \"five_model_rows\": 3720,\n  \"forecast_sha256\": \"d1953a28d35d87d141ecc65ec4b107906edad877982e79c0d3a216245b9e4708\",\n  \"players\": 3907,\n  \"population_prior_rows\": 187,\n  \"protected_2026_opened\": false,\n  \"status\": \"verified\",\n  \"verified_files\": 31\n}\n"
+    }
+  ],
+  "school_qualification_is_not_predictor_substitution": true,
+  "original_forecasts_unchanged": true,
+  "completed_2026_evaluation_unchanged": true,
+  "deployment_approved": false,
+  "no_universal_return_or_prospect_boost": true,
+  "next_design": "source_qualified_common_production_learning_with_existing_talent_routes_and_fixed_opportunity",
+  "hashes": {
+    "scripts\\finalize_hitter_route_support.py": "a9f1c678845d74f59c4059e18bb826333b69159e65617ecbf400293f418b46ba",
+    "docs\\hitter-route-support-diagnostic-result.md": "b932e8446f7db88076699016376324eb40b6b55cc6e784f57ca3c03090f56517",
+    "docs\\hitter-route-support-player-review.md": "68d59810f3005d1aa880f7dad4324868777ca23d19396bc021e67cef10dd4e22",
+    "reports\\generated\\hitter-route-support-diagnostic\\execution-receipt.json": "2f0f17ae9b2a896e94eed94bcf013f7bfa68b01af574a6282f6d52f703a13a31",
+    "reports\\generated\\hitter-route-support-diagnostic\\feature-use.json": "bdf6f6288160d99dc0bca1eb5a35df8e839b2234fa75118557f2f9cd41ffc07c",
+    "reports\\generated\\hitter-route-support-diagnostic\\full-player-walks.json": "e88cbc8c4171ce950970b3bf749e5b47a34206f0e11ecada699b7fd8e79d56ea",
+    "reports\\generated\\hitter-route-support-diagnostic\\player-support-walks.json": "2168edd1d1943228b928bf8e178c6f108a46d3f2a919e5f19f526a5e2b28d840",
+    "reports\\generated\\hitter-route-support-diagnostic\\route-summaries.json": "865e59473d3d3df597eef16dbf545d795f7d2d80a4981ce7a2266fc834e319e8",
+    "reports\\generated\\hitter-route-support-diagnostic\\school-qualified-support.parquet": "a4e3f637d275f125730a6525c3cfd59d538c30fddab79a40e50137f2d6942762",
+    "reports\\generated\\hitter-route-support-diagnostic\\school-support-amendment.json": "d9f901d46e501f08618c3523cb135f51c19c1b076153cd8a3291a0bbc73be178",
+    "reports\\generated\\hitter-route-support-diagnostic\\school-support-source-changes.json": "98a3ca5f692d61232eeca189acf214486b84ed15e21accca7aef13aa0d0c4a40",
+    "reports\\generated\\hitter-route-support-diagnostic\\school-support-source-seal.json": "63c086bf317576fd1699ccb66212874cee28329324d6e07ccb9c1c6c1e61c1dd",
+    "reports\\generated\\hitter-route-support-diagnostic\\source-seal.json": "887505ea60451b0cb2f35b051ed5e4c6a37e60cbf9b8384f57e2845e8875f5a2",
+    "reports\\generated\\hitter-route-support-diagnostic\\support.parquet": "aa4d407fc8c1a54d6e90ba176fd89f00579a1e3ce094184dbe2cc8084b2d8761",
+    "reports\\generated\\hitter-route-support-diagnostic\\training-route-evidence.json": "f11c7564814d78a035f839057880b7932222a485e997e4e5c9f399cddfe4b384",
+    "reports\\generated\\hitter-route-support-diagnostic\\walk-recovery-seal.json": "588d38578d57880881ac7b063923c8653cd62ab13d6148b135460922e7821b81",
+    "reports\\generated\\hitter-route-support-diagnostic\\walk-source-seal.json": "43ce2c1cb11f98a0528dbede1cf13158943f2ab1fdde9823a63decd78cd68b3c"
+  }
+}

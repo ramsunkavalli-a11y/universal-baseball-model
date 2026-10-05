@@ -491,3 +491,17 @@ reports/model-evidence/hitter-nonmedical-opportunity/** -text -eol
 scripts/audit_nonmedical_feature_use.py -text -eol
 docs/source-correction-impact-gate.md -text -eol
 docs/hitter-nonmedical-opportunity-review-clarification.md -text -eol
+# Preserve the actual-fold route diagnostic and its source-only qualification.
+docs/hitter-route-support-diagnostic-contract.md -text -eol
+docs/hitter-route-support-school-amendment.md -text -eol
+docs/hitter-route-walk-execution-note.md -text -eol
+docs/hitter-route-support-diagnostic-result.md -text -eol
+docs/hitter-route-support-player-review.md -text -eol
+src/universal_baseball/hitter_route_support.py -text -eol
+tests/test_hitter_route_support.py -text -eol
+scripts/diagnose_hitter_route_support.py -text -eol
+scripts/qualify_hitter_route_school_support.py -text -eol
+scripts/review_hitter_route_support.py -text -eol
+scripts/recover_hitter_route_walks.py -text -eol
+scripts/finalize_hitter_route_support.py -text -eol
+reports/model-evidence/hitter-route-support-diagnostic/** -text -eol
