@@ -2,6 +2,36 @@
 
 Updated 2026-10-04. This is the current start-here document.
 
+## Employment and scoped availability reviewed for integration
+
+The [source result](hitter-status-evidence-result.md) keeps all 83,300 origins
+and independently replays ordered employment, separate restriction channels and
+every status indicator. Twelve focused tests and the protected 31-file check
+pass. Clinical spells are unchanged and reuse their previously reviewed
+normalizer; this is not a fresh certification of all clinical parsing.
+
+The [fifteen player walks](hitter-status-player-review.md) trace actual histories,
+cutoffs, source states, unchanged forecasts, actual next-year PA and exposure/status
+peers. Voit's trade-day activation survives a contradictory negative listing;
+Tatis's eighty-game suspension has a separately dated tentative return report;
+Duran's clearing activation is traced; Franco's restrictions and Marcano's
+permanent ban remain distinct. Belt is unsigned, not forced retired. McLain's
+later injury stays unavailable to the cutoff. Solano retains a prior-model harm.
+
+A [list-scope correction](hitter-status-list-scope-amendment.md) prevents a return
+from one list clearing another restriction. Sixty-seven displayed labels change,
+without changes to numeric status indicators. Original ledgers and failed
+serialization/comparison receipts remain preserved. There are 243 negative
+listing/explicit-major contradictions, with 72 latest events older than a year;
+do not turn an old activation into a guaranteed current job.
+
+Qualify foreign additions and their actual domestic histories next, then seal
+the planned complete foreign/status contrast against fixed original and public
+benchmarks. Preserve ambiguous roles, newer MLB evidence and original membership;
+do not repeat the context-only test or tune translation again. No new fits,
+forecasts, explorer promotion or protected 2026 outcomes were used. The broad
+hitter goal and public workload gap remain open.
+
 ## Borrowed overseas stability reviewed and retained for integration
 
 The [completed comparison](hitter-foreign-borrowed-stability-result.md) borrows

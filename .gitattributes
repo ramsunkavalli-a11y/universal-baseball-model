@@ -217,3 +217,22 @@ scripts/prepare_foreign_borrowed_stability.py -text -eol
 scripts/review_foreign_borrowed_stability.py -text -eol
 scripts/finalize_foreign_borrowed_stability.py -text -eol
 reports/model-evidence/foreign-borrowed-stability/** -text -eol
+# Preserve status-source contracts, recoveries, scoped rules and reviewed bytes.
+docs/hitter-status-evidence-contract.md -text -eol
+docs/hitter-status-serialization-amendment.md -text -eol
+docs/hitter-status-list-scope-amendment.md -text -eol
+docs/hitter-status-v2-comparison-amendment.md -text -eol
+docs/hitter-status-evidence-result.md -text -eol
+docs/hitter-status-player-review.md -text -eol
+config/hitter_status_return_reports.json -text -eol
+src/universal_baseball/hitter_status_evidence.py -text -eol
+src/universal_baseball/hitter_status_evidence_v2.py -text -eol
+tests/test_hitter_status_evidence.py -text -eol
+tests/test_hitter_status_list_scopes.py -text -eol
+scripts/prepare_hitter_status_evidence.py -text -eol
+scripts/recover_hitter_status_evidence.py -text -eol
+scripts/prepare_hitter_status_evidence_v2.py -text -eol
+scripts/recover_hitter_status_evidence_v2.py -text -eol
+scripts/review_hitter_status_evidence.py -text -eol
+scripts/finalize_hitter_status_evidence.py -text -eol
+reports/model-evidence/hitter-status-evidence/** -text -eol
