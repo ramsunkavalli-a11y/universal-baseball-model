@@ -103,3 +103,17 @@ eligibility and actual held-player training support before fitting the unchanged
 selected route. The three completed source gates alone are not a new forecast
 freeze. User authorization permits final 2026 outcomes only after the immutable
 candidate is frozen and replayed; those outcomes remain closed.
+
+## Completed assembly and correction to the training statement
+
+2026-10-05. The [frozen candidate result](hitter-selected-2026-freeze-result.md)
+supersedes this document's earlier pending-assembly status. Preserve that status
+and the earlier incorrect 2020-origin exclusion as history. The
+[actual tested-training audit](hitter-tested-2020-training-correction.md) shows
+that retained models use the repaired origin-2020 cohort, excluding target 2020
+only. Production preserves that verified procedure, not the mistaken earlier
+plan. The new package contains 4,030 fixed hitters and 25 heads, with exact
+construction replay and explicit foreign/source-support limits. It is a
+qualified batting candidate, not a full-value or universal-coverage solution.
+Completed 2026 outcomes remain unopened at this milestone. Follow the separate
+final evaluation contract before outcome access; do not retune to that result.

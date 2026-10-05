@@ -1,5 +1,29 @@
 * text=auto eol=lf
 
+# Preserve the byte-hashed selected-candidate construction and freeze evidence.
+reports/model-evidence/hitter-selected-2026-freeze/** -text -eol
+src/universal_baseball/hitter_forecast_base*.py -text -eol
+src/universal_baseball/hitter_forecast_translation.py -text -eol
+scripts/assemble_hitter_base_inputs_2025.py -text -eol
+scripts/review_hitter_base_inputs_2025.py -text -eol
+scripts/assemble_hitter_translation_inputs_2025.py -text -eol
+scripts/audit_hitter_tested_training_membership.py -text -eol
+scripts/capture_hitter_availability_2025.py -text -eol
+scripts/review_hitter_availability_2025.py -text -eol
+scripts/audit_hitter_forecast_population_2025.py -text -eol
+scripts/prepare_hitter_production_2026.py -text -eol
+scripts/fit_hitter_production_2026.py -text -eol
+scripts/replay_hitter_production_2026.py -text -eol
+scripts/freeze_hitter_selected_2026.py -text -eol
+scripts/export_hitter_selected_2026_freeze_evidence.py -text -eol
+docs/hitter-2025-population-and-base-input-contract.md -text -eol
+docs/hitter-2025-base-equivalence-amendment.md -text -eol
+docs/hitter-2025-translation-input-contract.md -text -eol
+docs/hitter-tested-2020-training-correction.md -text -eol
+docs/hitter-2025-availability-source-contract.md -text -eol
+docs/hitter-2026-production-fit-contract.md -text -eol
+docs/hitter-2026-final-evaluation-contract.md -text -eol
+
 # Preserve bytes in the reviewed preseason-source provenance chain.
 reports/model-evidence/hitter-preseason-population-source/** -text -eol
 docs/hitter-preseason-population-* -text -eol

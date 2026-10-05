@@ -2,6 +2,33 @@
 
 Updated 2026-10-05. This is the current start-here document.
 
+## Selected candidate frozen; final 2026 outcomes still closed
+
+The [new selected hitter candidate](hitter-selected-2026-freeze-result.md) is
+frozen for 4,030 hitters with 25 models in a separate 53-file checked package.
+All outputs replay and 37 fitted construction walks are complete. All modern
+source rows, actual retained training memberships, translation profiles and
+historical availability overrides reproduce. Twenty-six focused tests pass.
+The original legacy 31-file freeze remains unchanged.
+
+Two assembly assumptions were repaired before fitting: career MLB exposure
+must include split-level seasons, and the retained models actually admit the
+repaired origin-2020 cohort. The earlier plan's blanket exclusion was wrong;
+the [tested-training correction](hitter-tested-2020-training-correction.md)
+supersedes it. Preserve old receipts rather than hiding either mistake.
+
+This is a qualified domestic-history candidate, not full WAR or universal
+coverage. Three rostered non-pitchers remain explicitly unmodeled: Austin,
+Song and Murakami. Sparse/unseen profiles and unknown ages stay flagged, not
+deleted. The frozen total is 181,374 expected PA; that alone proves no accuracy.
+
+Next verify the new frozen replay package, then retrieve certified completed
+2026 outcomes under the user's recorded authorization and execute the
+[single final evaluation](hitter-2026-final-evaluation-contract.md), including
+big misses, cohort totals and coverage gaps. Do not refit to the same season.
+Build the separate team-filtered forecast/results explorer afterward. No 2026
+outcome has yet been accessed, and the broad long-range goal remains active.
+
 ## Missing forecast source families verified
 
 The [2025 source extension](hitter-2025-source-extension-result.md) completes
