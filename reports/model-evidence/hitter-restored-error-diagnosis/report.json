@@ -1,0 +1,2385 @@
+{
+  "new_fits": 0,
+  "original_rows": 30506,
+  "additions_separate": 13,
+  "inherited_actual_source_model_walks": 17,
+  "player_walkthrough_status": "complete",
+  "diagnostic_not_forecast_improvement": true,
+  "integrity_status": "Immutable forecasts/models/sources and independently reconstructed labels, profiles, equations and partitions verified",
+  "profile_status": "Prior absent/sparse joint support remains qualified; six cells are descriptive, not deployment branches",
+  "predictive_status": "Nominal incumbent contrast remains uncertain near-tie; matched seven-input gain preserved",
+  "reasonability_status": "Actual player checks distinguish reinforcing errors, cancellation, missed opportunity and unobserved absent-player talent",
+  "disposition": "Retain incumbent; prospective same-input absolute-rate question requires a separate contract and prefit checks",
+  "raw_internal_labels_qualification": "Legacy inactive hitting labels and zero-weight internal rate deltas are not observed batting ability; public case labels are null and hitting contributions use active PA only",
+  "protected_outcomes_used": false,
+  "completed_2026_evaluation_unchanged": true,
+  "deployment_approved": false,
+  "research_goal_remains_active": true,
+  "readable_result": "docs/hitter-restored-error-diagnosis-result.md",
+  "readable_walks": "docs/hitter-restored-error-diagnosis-player-review.md",
+  "attribution": {
+    "scores": {
+      "current": {
+        "value_rmse": 0.4351333510509891,
+        "value_mae": 0.12387447809219296,
+        "rate_rmse": 1.8048133711486232,
+        "expected_PA": 1228732.5119559553,
+        "expected_value": 4155.430076780389
+      },
+      "restored": {
+        "value_rmse": 0.43611765740559605,
+        "value_mae": 0.12373283231754582,
+        "rate_rmse": 1.8019558516868632,
+        "expected_PA": 1228732.5119559553,
+        "expected_value": 4176.979484367263
+      },
+      "components": {
+        "value_rmse": 0.4353734483250002,
+        "value_mae": 0.12350678343670508,
+        "rate_rmse": 1.7991715702574198,
+        "expected_PA": 1228732.5119559553,
+        "expected_value": 4174.413893681969
+      }
+    },
+    "original_rows": 30506,
+    "actual_PA": 1270493,
+    "actual_value": 4185.433589228993,
+    "contrasts": {
+      "current": {
+        "global_MSE_terms": {
+          "delta": 0.00020900630953831,
+          "active_hitting_squared": 0.0016860289327451762,
+          "active_interaction": -0.0017668487776456427,
+          "nonarrival": 0.0002898261544387805
+        },
+        "global_rate_MSE_change": -0.02033296545430633,
+        "joint_profile": [
+          {
+            "group": "none__domestic",
+            "rows": 24761,
+            "people": 10309,
+            "active_rows": 798,
+            "active_people": 797,
+            "global_value_weight": 0.8109867897333525,
+            "global_rate_weight": 0.07778404628730834,
+            "actual_PA": 98870,
+            "expected_PA": 83080.1485946139,
+            "actual_value": 202.36697328769037,
+            "predicted_value": {
+              "current": 196.27736090353238,
+              "restored": 175.07083745042095,
+              "components": 175.39477525014468
+            },
+            "global_MSE_terms": {
+              "delta": -0.0002497805639554835,
+              "active_hitting_squared": -0.00012132555708099876,
+              "active_interaction": -6.43043700515283e-05,
+              "nonarrival": -6.415063682295514e-05
+            },
+            "global_rate_MSE_change": -0.008618292352619197
+          },
+          {
+            "group": "none__foreign",
+            "rows": 91,
+            "people": 68,
+            "active_rows": 5,
+            "active_people": 5,
+            "global_value_weight": 0.002970289354497004,
+            "global_rate_weight": 0.0010328795149659941,
+            "actual_PA": 1309,
+            "expected_PA": 129.86598511419862,
+            "actual_value": 7.593153963835891,
+            "predicted_value": {
+              "current": 0.17755010170528318,
+              "restored": 0.4093498999830872,
+              "components": 0.40686754897128147
+            },
+            "global_MSE_terms": {
+              "delta": -3.536919421657657e-05,
+              "active_hitting_squared": -3.285677725234064e-07,
+              "active_interaction": -3.508721520354697e-05,
+              "nonarrival": 4.6588759493866716e-08
+            },
+            "global_rate_MSE_change": -0.004429473391871196
+          },
+          {
+            "group": "positive_under600__domestic",
+            "rows": 3502,
+            "people": 1445,
+            "active_rows": 1895,
+            "active_people": 987,
+            "global_value_weight": 0.11531108886302585,
+            "global_rate_weight": 0.29942816826176943,
+            "actual_PA": 380547,
+            "expected_PA": 370474.3174231847,
+            "actual_value": 834.2130174811701,
+            "predicted_value": {
+              "current": 859.0731575831649,
+              "restored": 884.0258820167592,
+              "components": 881.3788471193465
+            },
+            "global_MSE_terms": {
+              "delta": -0.0005373403547314263,
+              "active_hitting_squared": 0.0006464018029776414,
+              "active_interaction": -0.0011715100970736152,
+              "nonarrival": -1.223206063545287e-05
+            },
+            "global_rate_MSE_change": -0.012409312145576334
+          },
+          {
+            "group": "positive_under600__foreign",
+            "rows": 157,
+            "people": 101,
+            "active_rows": 19,
+            "active_people": 16,
+            "global_value_weight": 0.005166023170122723,
+            "global_rate_weight": 0.003614155220280411,
+            "actual_PA": 4592,
+            "expected_PA": 5252.717231973203,
+            "actual_value": 15.64340281725306,
+            "predicted_value": {
+              "current": 12.604369488191209,
+              "restored": 24.225641805241356,
+              "components": 24.142642595230484
+            },
+            "global_MSE_terms": {
+              "delta": 7.921997482267698e-05,
+              "active_hitting_squared": 0.0001551995457761193,
+              "active_interaction": -0.00014452705398919753,
+              "nonarrival": 6.85474830357551e-05
+            },
+            "global_rate_MSE_change": 0.0017389215948263568
+          },
+          {
+            "group": "600plus__domestic",
+            "rows": 1990,
+            "people": 637,
+            "active_rows": 1817,
+            "active_people": 597,
+            "global_value_weight": 0.06539977771124247,
+            "global_rate_weight": 0.6166713596181836,
+            "actual_PA": 783300,
+            "expected_PA": 767714.3816904594,
+            "actual_value": 3115.4465960555126,
+            "predicted_value": {
+              "current": 3079.803866612594,
+              "restored": 3081.969554304605,
+              "components": 3081.786146312944
+            },
+            "global_MSE_terms": {
+              "delta": 0.0009748478964740698,
+              "active_hitting_squared": 0.0010498382253770451,
+              "active_interaction": -0.00028788326120496186,
+              "nonarrival": 0.00021289293230198478
+            },
+            "global_rate_MSE_change": 0.00556974473788293
+          },
+          {
+            "group": "600plus__foreign",
+            "rows": 5,
+            "people": 5,
+            "active_rows": 4,
+            "active_people": 4,
+            "global_value_weight": 0.00016603116775932935,
+            "global_rate_weight": 0.0014693910974921567,
+            "actual_PA": 1875,
+            "expected_PA": 2081.081030609825,
+            "actual_value": 10.170445623530842,
+            "predicted_value": {
+              "current": 7.493772091201068,
+              "restored": 11.278218890253251,
+              "components": 11.304614855332243
+            },
+            "global_MSE_terms": {
+              "delta": -2.2571448854951916e-05,
+              "active_hitting_squared": -4.375651653211025e-05,
+              "active_interaction": -6.353678012279653e-05,
+              "nonarrival": 8.472184779995476e-05
+            },
+            "global_rate_MSE_change": -0.002184553896948879
+          }
+        ],
+        "origin": [
+          {
+            "group": "2016",
+            "rows": 4663,
+            "people": 4663,
+            "active_rows": 624,
+            "active_people": 624,
+            "global_value_weight": 0.14285714285714288,
+            "global_rate_weight": 0.14285714285714288,
+            "actual_PA": 179968,
+            "expected_PA": 171709.23525463394,
+            "actual_value": 638.3050711187234,
+            "predicted_value": {
+              "current": 597.1578884810591,
+              "restored": 559.5675788766481,
+              "components": 559.8358244020098
+            },
+            "global_MSE_terms": {
+              "delta": 0.00029211570490490454,
+              "active_hitting_squared": -0.00022768676148894978,
+              "active_interaction": 0.0004508679866156229,
+              "nonarrival": 6.893447977823056e-05
+            },
+            "global_rate_MSE_change": -0.00796079994065926
+          },
+          {
+            "group": "2017",
+            "rows": 4691,
+            "people": 4691,
+            "active_rows": 628,
+            "active_people": 628,
+            "global_value_weight": 0.14285714285714285,
+            "global_rate_weight": 0.14285714285714285,
+            "actual_PA": 179643,
+            "expected_PA": 174316.4618598693,
+            "actual_value": 631.2706607285976,
+            "predicted_value": {
+              "current": 607.9228170155743,
+              "restored": 598.8729110172166,
+              "components": 600.0176610758068
+            },
+            "global_MSE_terms": {
+              "delta": 0.0002552592321997048,
+              "active_hitting_squared": 0.00011558962618279189,
+              "active_interaction": 0.0001233516382765772,
+              "nonarrival": 1.6317967740335946e-05
+            },
+            "global_rate_MSE_change": -0.004018661036704178
+          },
+          {
+            "group": "2018",
+            "rows": 4478,
+            "people": 4478,
+            "active_rows": 638,
+            "active_people": 638,
+            "global_value_weight": 0.14285714285714285,
+            "global_rate_weight": 0.14285714285714285,
+            "actual_PA": 181308,
+            "expected_PA": 172104.99899229087,
+            "actual_value": 639.6141484360919,
+            "predicted_value": {
+              "current": 599.5340553991583,
+              "restored": 651.4822992248785,
+              "components": 650.7750029770554
+            },
+            "global_MSE_terms": {
+              "delta": -0.00021747595692640141,
+              "active_hitting_squared": 0.0010040773011518616,
+              "active_interaction": -0.0013450132625639484,
+              "nonarrival": 0.0001234600044856834
+            },
+            "global_rate_MSE_change": -0.010878754211276775
+          },
+          {
+            "group": "2021",
+            "rows": 4242,
+            "people": 4242,
+            "active_rows": 686,
+            "active_people": 686,
+            "global_value_weight": 0.14285714285714285,
+            "global_rate_weight": 0.14285714285714285,
+            "actual_PA": 181583,
+            "expected_PA": 164798.0764167206,
+            "actual_value": 568.3444608474305,
+            "predicted_value": {
+              "current": 607.3525945925585,
+              "restored": 617.454212379981,
+              "components": 617.4222878046613
+            },
+            "global_MSE_terms": {
+              "delta": 0.00020023975151157376,
+              "active_hitting_squared": 0.0003189893438581285,
+              "active_interaction": -0.0002360594812116979,
+              "nonarrival": 0.00011730988886514414
+            },
+            "global_rate_MSE_change": 0.0023454372550824184
+          },
+          {
+            "group": "2022",
+            "rows": 4244,
+            "people": 4244,
+            "active_rows": 649,
+            "active_people": 649,
+            "global_value_weight": 0.14285714285714285,
+            "global_rate_weight": 0.14285714285714285,
+            "actual_PA": 182917,
+            "expected_PA": 177294.80709346558,
+            "actual_value": 571.7691585722233,
+            "predicted_value": {
+              "current": 575.9633398194536,
+              "restored": 593.0022348682944,
+              "components": 593.7149099628641
+            },
+            "global_MSE_terms": {
+              "delta": 5.963489318464023e-05,
+              "active_hitting_squared": 0.0005389514575832413,
+              "active_interaction": -0.00047899790735322044,
+              "nonarrival": -3.186570453814407e-07
+            },
+            "global_rate_MSE_change": 0.006054064809422577
+          },
+          {
+            "group": "2023",
+            "rows": 4196,
+            "people": 4196,
+            "active_rows": 647,
+            "active_people": 647,
+            "global_value_weight": 0.14285714285714282,
+            "global_rate_weight": 0.14285714285714285,
+            "actual_PA": 182194,
+            "expected_PA": 186453.53525672553,
+            "actual_value": 564.69985016683,
+            "predicted_value": {
+              "current": 607.8129728506993,
+              "restored": 560.3621894649783,
+              "components": 558.9285981722537
+            },
+            "global_MSE_terms": {
+              "delta": -5.8275732727174407e-05,
+              "active_hitting_squared": -0.0006337585373506227,
+              "active_interaction": 0.0006291969416308579,
+              "nonarrival": -5.371413700740974e-05
+            },
+            "global_rate_MSE_change": -0.005973939943487411
+          },
+          {
+            "group": "2024",
+            "rows": 3992,
+            "people": 3992,
+            "active_rows": 666,
+            "active_people": 666,
+            "global_value_weight": 0.14285714285714285,
+            "global_rate_weight": 0.14285714285714285,
+            "actual_PA": 182880,
+            "expected_PA": 182055.39708224946,
+            "actual_value": 571.4302393590965,
+            "predicted_value": {
+              "current": 559.6864086218852,
+              "restored": 596.2380585352657,
+              "components": 593.7196092873182
+            },
+            "global_MSE_terms": {
+              "delta": -0.00032249158260893766,
+              "active_hitting_squared": 0.0005698665028087209,
+              "active_interaction": -0.000910194693039837,
+              "nonarrival": 1.783660762217809e-05
+            },
+            "global_rate_MSE_change": 9.96876133162925e-05
+          }
+        ],
+        "participation": [
+          {
+            "group": "active",
+            "rows": 4538,
+            "people": 1493,
+            "active_rows": 4538,
+            "active_people": 1493,
+            "global_value_weight": 0.14940474354013838,
+            "global_rate_weight": 1.0,
+            "actual_PA": 1270493,
+            "expected_PA": 1109984.4660719174,
+            "actual_value": 4185.433589228993,
+            "predicted_value": {
+              "current": 3929.5035647345107,
+              "restored": 3959.0448722914016,
+              "components": 3958.052148641053
+            },
+            "global_MSE_terms": {
+              "delta": -8.081984490047055e-05,
+              "active_hitting_squared": 0.001686028932745172,
+              "active_interaction": -0.0017668487776456472,
+              "nonarrival": 0.0
+            },
+            "global_rate_MSE_change": -0.02033296545430634
+          },
+          {
+            "group": "nonarrival",
+            "rows": 25968,
+            "people": 10802,
+            "active_rows": 0,
+            "active_people": 0,
+            "global_value_weight": 0.8505952564598616,
+            "global_rate_weight": 0.0,
+            "actual_PA": 0,
+            "expected_PA": 118748.045884038,
+            "actual_value": 0.0,
+            "predicted_value": {
+              "current": 225.92651204587756,
+              "restored": 217.93461207586057,
+              "components": 216.36174504091582
+            },
+            "global_MSE_terms": {
+              "delta": 0.000289826154438781,
+              "active_hitting_squared": 0.0,
+              "active_interaction": 0.0,
+              "nonarrival": 0.000289826154438781
+            },
+            "global_rate_MSE_change": 0.0
+          }
+        ]
+      },
+      "restored": {
+        "global_MSE_terms": {
+          "delta": -0.0006485715945432582,
+          "active_hitting_squared": -0.0006455802059776842,
+          "active_interaction": 4.9026922816145095e-05,
+          "nonarrival": -5.20183113817178e-05
+        },
+        "global_rate_MSE_change": -0.010026552205978626,
+        "joint_profile": [
+          {
+            "group": "none__domestic",
+            "rows": 24761,
+            "people": 10309,
+            "active_rows": 798,
+            "active_people": 797,
+            "global_value_weight": 0.8109867897333525,
+            "global_rate_weight": 0.07778404628730834,
+            "actual_PA": 98870,
+            "expected_PA": 83080.1485946139,
+            "actual_value": 202.36697328769037,
+            "predicted_value": {
+              "current": 196.27736090353238,
+              "restored": 175.07083745042095,
+              "components": 175.39477525014468
+            },
+            "global_MSE_terms": {
+              "delta": 4.601531577059558e-06,
+              "active_hitting_squared": -1.2716229587784308e-06,
+              "active_interaction": 5.080739662794172e-06,
+              "nonarrival": 7.924148730434089e-07
+            },
+            "global_rate_MSE_change": 0.0003950390325700584
+          },
+          {
+            "group": "none__foreign",
+            "rows": 91,
+            "people": 68,
+            "active_rows": 5,
+            "active_people": 5,
+            "global_value_weight": 0.002970289354497004,
+            "global_rate_weight": 0.0010328795149659941,
+            "actual_PA": 1309,
+            "expected_PA": 129.86598511419862,
+            "actual_value": 7.593153963835891,
+            "predicted_value": {
+              "current": 0.17755010170528318,
+              "restored": 0.4093498999830872,
+              "components": 0.40686754897128147
+            },
+            "global_MSE_terms": {
+              "delta": 7.705751912754695e-08,
+              "active_hitting_squared": -7.948444677047682e-10,
+              "active_interaction": 7.883658204814077e-08,
+              "nonarrival": -9.842184529374733e-10
+            },
+            "global_rate_MSE_change": -5.791961224605888e-06
+          },
+          {
+            "group": "positive_under600__domestic",
+            "rows": 3502,
+            "people": 1445,
+            "active_rows": 1895,
+            "active_people": 987,
+            "global_value_weight": 0.11531108886302585,
+            "global_rate_weight": 0.29942816826176943,
+            "actual_PA": 380547,
+            "expected_PA": 370474.3174231847,
+            "actual_value": 834.2130174811701,
+            "predicted_value": {
+              "current": 859.0731575831649,
+              "restored": 884.0258820167592,
+              "components": 881.3788471193465
+            },
+            "global_MSE_terms": {
+              "delta": -0.00013031522422543207,
+              "active_hitting_squared": -8.721006198801247e-05,
+              "active_interaction": 4.451148872076635e-06,
+              "nonarrival": -4.755631110949645e-05
+            },
+            "global_rate_MSE_change": -0.0030658047474854083
+          },
+          {
+            "group": "positive_under600__foreign",
+            "rows": 157,
+            "people": 101,
+            "active_rows": 19,
+            "active_people": 16,
+            "global_value_weight": 0.005166023170122723,
+            "global_rate_weight": 0.003614155220280411,
+            "actual_PA": 4592,
+            "expected_PA": 5252.717231973203,
+            "actual_value": 15.64340281725306,
+            "predicted_value": {
+              "current": 12.604369488191209,
+              "restored": 24.225641805241356,
+              "components": 24.142642595230484
+            },
+            "global_MSE_terms": {
+              "delta": -4.113364382678406e-06,
+              "active_hitting_squared": -3.1554806491391126e-06,
+              "active_interaction": -1.5654146786089773e-06,
+              "nonarrival": 6.075309450695833e-07
+            },
+            "global_rate_MSE_change": -9.235538462414183e-05
+          },
+          {
+            "group": "600plus__domestic",
+            "rows": 1990,
+            "people": 637,
+            "active_rows": 1817,
+            "active_people": 597,
+            "global_value_weight": 0.06539977771124247,
+            "global_rate_weight": 0.6166713596181836,
+            "actual_PA": 783300,
+            "expected_PA": 767714.3816904594,
+            "actual_value": 3115.4465960555126,
+            "predicted_value": {
+              "current": 3079.803866612594,
+              "restored": 3081.969554304605,
+              "components": 3081.786146312944
+            },
+            "global_MSE_terms": {
+              "delta": -0.0005252829470752616,
+              "active_hitting_squared": -0.0005570939306659455,
+              "active_interaction": 3.954026946675089e-05,
+              "nonarrival": -7.729285876063526e-06
+            },
+            "global_rate_MSE_change": -0.007284489506800052
+          },
+          {
+            "group": "600plus__foreign",
+            "rows": 5,
+            "people": 5,
+            "active_rows": 4,
+            "active_people": 4,
+            "global_value_weight": 0.00016603116775932935,
+            "global_rate_weight": 0.0014693910974921567,
+            "actual_PA": 1875,
+            "expected_PA": 2081.081030609825,
+            "actual_value": 10.170445623530842,
+            "predicted_value": {
+              "current": 7.493772091201068,
+              "restored": 11.278218890253251,
+              "components": 11.304614855332243
+            },
+            "global_MSE_terms": {
+              "delta": 6.46135204392582e-06,
+              "active_hitting_squared": 3.1516851286592797e-06,
+              "active_interaction": 1.441342911084475e-06,
+              "nonarrival": 1.8683240041820505e-06
+            },
+            "global_rate_MSE_change": 2.685036158552371e-05
+          }
+        ],
+        "origin": [
+          {
+            "group": "2016",
+            "rows": 4663,
+            "people": 4663,
+            "active_rows": 624,
+            "active_people": 624,
+            "global_value_weight": 0.14285714285714288,
+            "global_rate_weight": 0.14285714285714288,
+            "actual_PA": 179968,
+            "expected_PA": 171709.23525463394,
+            "actual_value": 638.3050711187234,
+            "predicted_value": {
+              "current": 597.1578884810591,
+              "restored": 559.5675788766481,
+              "components": 559.8358244020098
+            },
+            "global_MSE_terms": {
+              "delta": 8.658717028521966e-06,
+              "active_hitting_squared": 1.0962681511940974e-05,
+              "active_interaction": -3.8730652413335277e-07,
+              "nonarrival": -1.91665795928605e-06
+            },
+            "global_rate_MSE_change": 0.0009708089698560593
+          },
+          {
+            "group": "2017",
+            "rows": 4691,
+            "people": 4691,
+            "active_rows": 628,
+            "active_people": 628,
+            "global_value_weight": 0.14285714285714285,
+            "global_rate_weight": 0.14285714285714285,
+            "actual_PA": 179643,
+            "expected_PA": 174316.4618598693,
+            "actual_value": 631.2706607285976,
+            "predicted_value": {
+              "current": 607.9228170155743,
+              "restored": 598.8729110172166,
+              "components": 600.0176610758068
+            },
+            "global_MSE_terms": {
+              "delta": -6.263730091186463e-05,
+              "active_hitting_squared": -3.620751080755184e-05,
+              "active_interaction": -2.4792694422059537e-05,
+              "nonarrival": -1.6370956822521166e-06
+            },
+            "global_rate_MSE_change": -0.0005629417929568304
+          },
+          {
+            "group": "2018",
+            "rows": 4478,
+            "people": 4478,
+            "active_rows": 638,
+            "active_people": 638,
+            "global_value_weight": 0.14285714285714285,
+            "global_rate_weight": 0.14285714285714285,
+            "actual_PA": 181308,
+            "expected_PA": 172104.99899229087,
+            "actual_value": 639.6141484360919,
+            "predicted_value": {
+              "current": 599.5340553991583,
+              "restored": 651.4822992248785,
+              "components": 650.7750029770554
+            },
+            "global_MSE_terms": {
+              "delta": -3.3061406723670145e-05,
+              "active_hitting_squared": -5.442758082435241e-06,
+              "active_interaction": -1.904258316623603e-05,
+              "nonarrival": -8.576065474998267e-06
+            },
+            "global_rate_MSE_change": -0.0008930167212705027
+          },
+          {
+            "group": "2021",
+            "rows": 4242,
+            "people": 4242,
+            "active_rows": 686,
+            "active_people": 686,
+            "global_value_weight": 0.14285714285714285,
+            "global_rate_weight": 0.14285714285714285,
+            "actual_PA": 181583,
+            "expected_PA": 164798.0764167206,
+            "actual_value": 568.3444608474305,
+            "predicted_value": {
+              "current": 607.3525945925585,
+              "restored": 617.454212379981,
+              "components": 617.4222878046613
+            },
+            "global_MSE_terms": {
+              "delta": -0.00010466619566849217,
+              "active_hitting_squared": -6.598295088944975e-05,
+              "active_interaction": -2.9872160669846468e-05,
+              "nonarrival": -8.811084109196012e-06
+            },
+            "global_rate_MSE_change": -0.002360982885610457
+          },
+          {
+            "group": "2022",
+            "rows": 4244,
+            "people": 4244,
+            "active_rows": 649,
+            "active_people": 649,
+            "global_value_weight": 0.14285714285714285,
+            "global_rate_weight": 0.14285714285714285,
+            "actual_PA": 182917,
+            "expected_PA": 177294.80709346558,
+            "actual_value": 571.7691585722233,
+            "predicted_value": {
+              "current": 575.9633398194536,
+              "restored": 593.0022348682944,
+              "components": 593.7149099628641
+            },
+            "global_MSE_terms": {
+              "delta": -0.0001667351517556507,
+              "active_hitting_squared": -0.00017530393984218926,
+              "active_interaction": 1.2739157812367886e-05,
+              "nonarrival": -4.170369725828604e-06
+            },
+            "global_rate_MSE_change": -0.0021167530120871007
+          },
+          {
+            "group": "2023",
+            "rows": 4196,
+            "people": 4196,
+            "active_rows": 647,
+            "active_people": 647,
+            "global_value_weight": 0.14285714285714282,
+            "global_rate_weight": 0.14285714285714285,
+            "actual_PA": 182194,
+            "expected_PA": 186453.53525672553,
+            "actual_value": 564.69985016683,
+            "predicted_value": {
+              "current": 607.8129728506993,
+              "restored": 560.3621894649783,
+              "components": 558.9285981722537
+            },
+            "global_MSE_terms": {
+              "delta": -0.00018955679668093087,
+              "active_hitting_squared": -0.0001788540208677322,
+              "active_interaction": 2.2441456915921286e-06,
+              "nonarrival": -1.2946921504790971e-05
+            },
+            "global_rate_MSE_change": -0.002783935137028953
+          },
+          {
+            "group": "2024",
+            "rows": 3992,
+            "people": 3992,
+            "active_rows": 666,
+            "active_people": 666,
+            "global_value_weight": 0.14285714285714285,
+            "global_rate_weight": 0.14285714285714285,
+            "actual_PA": 182880,
+            "expected_PA": 182055.39708224946,
+            "actual_value": 571.4302393590965,
+            "predicted_value": {
+              "current": 559.6864086218852,
+              "restored": 596.2380585352657,
+              "components": 593.7196092873182
+            },
+            "global_MSE_terms": {
+              "delta": -0.00010057345983117307,
+              "active_hitting_squared": -0.00019475170700026652,
+              "active_interaction": 0.0001081383640944606,
+              "nonarrival": -1.3960116925365849e-05
+            },
+            "global_rate_MSE_change": -0.002279731626880843
+          }
+        ],
+        "participation": [
+          {
+            "group": "active",
+            "rows": 4538,
+            "people": 1493,
+            "active_rows": 4538,
+            "active_people": 1493,
+            "global_value_weight": 0.14940474354013838,
+            "global_rate_weight": 1.0,
+            "actual_PA": 1270493,
+            "expected_PA": 1109984.4660719174,
+            "actual_value": 4185.433589228993,
+            "predicted_value": {
+              "current": 3929.5035647345107,
+              "restored": 3959.0448722914016,
+              "components": 3958.052148641053
+            },
+            "global_MSE_terms": {
+              "delta": -0.0005965532831615413,
+              "active_hitting_squared": -0.0006455802059776842,
+              "active_interaction": 4.902692281614521e-05,
+              "nonarrival": 0.0
+            },
+            "global_rate_MSE_change": -0.010026552205978626
+          },
+          {
+            "group": "nonarrival",
+            "rows": 25968,
+            "people": 10802,
+            "active_rows": 0,
+            "active_people": 0,
+            "global_value_weight": 0.8505952564598616,
+            "global_rate_weight": 0.0,
+            "actual_PA": 0,
+            "expected_PA": 118748.045884038,
+            "actual_value": 0.0,
+            "predicted_value": {
+              "current": 225.92651204587756,
+              "restored": 217.93461207586057,
+              "components": 216.36174504091582
+            },
+            "global_MSE_terms": {
+              "delta": -5.2018311381717945e-05,
+              "active_hitting_squared": 0.0,
+              "active_interaction": 0.0,
+              "nonarrival": -5.2018311381717945e-05
+            },
+            "global_rate_MSE_change": 0.0
+          }
+        ]
+      }
+    },
+    "weights": "Original global equal-origin weights; partitions sum to the same headline. Different partition families overlap and must not be added.",
+    "uncertainty": "No new significance claim; existing player-bootstrap paired intervals remain nominal development evidence."
+  },
+  "cases": [
+    {
+      "row_id": 23934,
+      "player_name": "Aaron Judge",
+      "player_id": 592450,
+      "origin": 2016,
+      "target": 2017,
+      "information_date": "2017-01-28",
+      "fold": 3,
+      "branch": "tracking",
+      "why": [
+        "fixed before fitting",
+        "false low"
+      ],
+      "joint_profile": "positive_under600__domestic",
+      "recent_MLB_mass": 95.0,
+      "recent_foreign_mass": 0.0,
+      "expected_PA": 309.92244450715344,
+      "actual_PA": 678,
+      "actual_rate": 5.329875619792154,
+      "actual_value": 8.114762516384888,
+      "baseline": -0.7260567953714964,
+      "fitted_intercept": -0.27270816453099994,
+      "fitted_residual": 0.4474270272321545,
+      "added_component_effect": -0.03293419562025921,
+      "other_coefficient_change": 0.008407829539739953,
+      "full_source_model_walk": {
+        "report": "reports\\model-evidence\\hitter-mlb-events-restoration\\report.json",
+        "sha256": "08619dfe03becd381ed888a58a27edb67606ba856f0f65c3acd7d5fe63c8f1c8",
+        "case_row_id": 23934,
+        "fields": [
+          "raw_history",
+          "source",
+          "MLB_source",
+          "MLB_event_source",
+          "feature_terms",
+          "probes",
+          "support",
+          "origin_selected_peers"
+        ]
+      },
+      "arms": {
+        "current": {
+          "rate": 0.2641513942762992,
+          "value": 1.0927253509289323,
+          "delivered_error": -7.022037165455956,
+          "hitting_error_at_expected_PA": -2.6166360586183006,
+          "opportunity_error_at_observed_rate": -4.405401106837654,
+          "opposing_errors": false
+        },
+        "restored": {
+          "rate": -0.25410340205882265,
+          "value": 0.8250273619993692,
+          "delivered_error": -7.289735154385518,
+          "hitting_error_at_expected_PA": -2.8843340475478634,
+          "opportunity_error_at_observed_rate": -4.405401106837654,
+          "opposing_errors": false
+        },
+        "components": {
+          "rate": -0.27862976813934187,
+          "value": 0.8123585764484494,
+          "delivered_error": -7.302403939936438,
+          "hitting_error_at_expected_PA": -2.8970028330987834,
+          "opportunity_error_at_observed_rate": -4.405401106837654,
+          "opposing_errors": false
+        }
+      },
+      "contrasts": {
+        "current": {
+          "delta": 4.016097348954503,
+          "active_hitting_squared": 1.5458411517208637,
+          "active_interaction": 2.470256197233643,
+          "nonarrival": 0.0
+        },
+        "restored": {
+          "delta": 0.18486468091516173,
+          "active_hitting_squared": 0.07324251713853869,
+          "active_interaction": 0.11162216377662361,
+          "nonarrival": 0.0
+        }
+      }
+    },
+    {
+      "row_id": 27981,
+      "player_name": "Eric Thames",
+      "player_id": 519346,
+      "origin": 2017,
+      "target": 2018,
+      "information_date": "2018-01-27",
+      "fold": 4,
+      "branch": "tracking",
+      "why": [
+        "fixed before fitting",
+        "largest harm"
+      ],
+      "joint_profile": "positive_under600__foreign",
+      "recent_MLB_mass": 551.0,
+      "recent_foreign_mass": 780.2,
+      "expected_PA": 444.3516226652818,
+      "actual_PA": 278,
+      "actual_rate": 0.6224207227882264,
+      "actual_value": 1.1435651483353064,
+      "baseline": 3.149684888618647,
+      "fitted_intercept": -0.350170387702868,
+      "fitted_residual": -0.06635231689712812,
+      "added_component_effect": 0.026388810236533708,
+      "other_coefficient_change": -0.012272423434569673,
+      "full_source_model_walk": {
+        "report": "reports\\model-evidence\\hitter-mlb-events-restoration\\report.json",
+        "sha256": "08619dfe03becd381ed888a58a27edb67606ba856f0f65c3acd7d5fe63c8f1c8",
+        "case_row_id": 27981,
+        "fields": [
+          "raw_history",
+          "source",
+          "MLB_source",
+          "MLB_event_source",
+          "feature_terms",
+          "probes",
+          "support",
+          "origin_selected_peers"
+        ]
+      },
+      "arms": {
+        "current": {
+          "rate": 0.3701786459871783,
+          "value": 1.6410528573581205,
+          "delivered_error": 0.49748770902281403,
+          "hitting_error_at_expected_PA": -0.1868069602183439,
+          "opportunity_error_at_observed_rate": 0.6842946692411579,
+          "opposing_errors": true
+        },
+        "restored": {
+          "rate": 3.0692161849195547,
+          "value": 3.6399223741233038,
+          "delivered_error": 2.4963572257879973,
+          "hitting_error_at_expected_PA": 1.8120625565468398,
+          "opportunity_error_at_observed_rate": 0.6842946692411579,
+          "opposing_errors": false
+        },
+        "components": {
+          "rate": 3.0833325717215185,
+          "value": 3.650376773092676,
+          "delivered_error": 2.5068116247573697,
+          "hitting_error_at_expected_PA": 1.822516955516212,
+          "opportunity_error_at_observed_rate": 0.6842946692411579,
+          "opposing_errors": false
+        }
+      },
+      "contrasts": {
+        "current": {
+          "delta": 6.036610501389916,
+          "active_hitting_squared": 3.286671212758064,
+          "active_interaction": 2.7499392886318526,
+          "nonarrival": 0.0
+        },
+        "restored": {
+          "delta": 0.052305123274737575,
+          "active_hitting_squared": 0.037997344305013225,
+          "active_interaction": 0.014307778969723262,
+          "nonarrival": 0.0
+        }
+      }
+    },
+    {
+      "row_id": 31364,
+      "player_name": "Kevin Maitan",
+      "player_id": 670867,
+      "origin": 2017,
+      "target": 2018,
+      "information_date": "2018-01-27",
+      "fold": 4,
+      "branch": "prospect",
+      "why": [
+        "fixed before fitting"
+      ],
+      "joint_profile": "none__domestic",
+      "recent_MLB_mass": 0.0,
+      "recent_foreign_mass": 0.0,
+      "expected_PA": 1.985172279135291,
+      "actual_PA": 0,
+      "actual_rate": null,
+      "actual_value": 0.0,
+      "baseline": -1.132280582958422,
+      "fitted_intercept": -0.28488630254739444,
+      "fitted_residual": 0.8391994635380136,
+      "added_component_effect": 0.0,
+      "other_coefficient_change": 0.006781043661909625,
+      "full_source_model_walk": {
+        "report": "reports\\model-evidence\\hitter-mlb-events-restoration\\report.json",
+        "sha256": "08619dfe03becd381ed888a58a27edb67606ba856f0f65c3acd7d5fe63c8f1c8",
+        "case_row_id": 31364,
+        "fields": [
+          "raw_history",
+          "source",
+          "MLB_source",
+          "MLB_event_source",
+          "feature_terms",
+          "probes",
+          "support",
+          "origin_selected_peers"
+        ]
+      },
+      "arms": {
+        "current": {
+          "rate": -0.37964678801911067,
+          "value": 0.004850631846566749,
+          "delivered_error": 0.004850631846566749,
+          "hitting_error_at_expected_PA": null,
+          "opportunity_error_at_observed_rate": null,
+          "opposing_errors": null
+        },
+        "restored": {
+          "rate": -0.29986216308232105,
+          "value": 0.005114608889442951,
+          "delivered_error": 0.005114608889442951,
+          "hitting_error_at_expected_PA": null,
+          "opportunity_error_at_observed_rate": null,
+          "opposing_errors": null
+        },
+        "components": {
+          "rate": -0.29308111942041126,
+          "value": 0.005137044789278333,
+          "delivered_error": 0.005137044789278333,
+          "hitting_error_at_expected_PA": null,
+          "opportunity_error_at_observed_rate": null,
+          "opposing_errors": null
+        }
+      },
+      "contrasts": {
+        "current": {
+          "delta": 2.8605998561241196e-06,
+          "active_hitting_squared": 0.0,
+          "active_interaction": 0.0,
+          "nonarrival": 2.8605998561241196e-06
+        },
+        "restored": {
+          "delta": 2.3000507508281294e-07,
+          "active_hitting_squared": 0.0,
+          "active_interaction": 0.0,
+          "nonarrival": 2.3000507508281294e-07
+        }
+      }
+    },
+    {
+      "row_id": 32325,
+      "player_name": "Khris Davis",
+      "player_id": 501981,
+      "origin": 2018,
+      "target": 2019,
+      "information_date": "2019-01-27",
+      "fold": 3,
+      "branch": "tracking",
+      "why": [
+        "fixed before fitting"
+      ],
+      "joint_profile": "600plus__domestic",
+      "recent_MLB_mass": 1541.6,
+      "recent_foreign_mass": 0.0,
+      "expected_PA": 572.7777765601047,
+      "actual_PA": 533,
+      "actual_rate": -1.5184802696788609,
+      "actual_value": 0.2927419234142192,
+      "baseline": 1.4282791200609803,
+      "fitted_intercept": -0.39815113102022465,
+      "fitted_residual": 0.9733169912263928,
+      "added_component_effect": 0.01947907407129935,
+      "other_coefficient_change": -0.03966563603803322,
+      "full_source_model_walk": {
+        "report": "reports\\model-evidence\\hitter-mlb-events-restoration\\report.json",
+        "sha256": "08619dfe03becd381ed888a58a27edb67606ba856f0f65c3acd7d5fe63c8f1c8",
+        "case_row_id": 32325,
+        "fields": [
+          "raw_history",
+          "source",
+          "MLB_source",
+          "MLB_event_source",
+          "feature_terms",
+          "probes",
+          "support",
+          "origin_selected_peers"
+        ]
+      },
+      "arms": {
+        "current": {
+          "rate": 2.287558823171266,
+          "value": 3.9479469276161927,
+          "delivered_error": 3.6552050042019735,
+          "hitting_error_at_expected_PA": 3.6333576818392226,
+          "opportunity_error_at_observed_rate": 0.021847322362750648,
+          "opposing_errors": false
+        },
+        "restored": {
+          "rate": 2.421782673254104,
+          "value": 4.076080991635833,
+          "delivered_error": 3.783339068221614,
+          "hitting_error_at_expected_PA": 3.761491745858864,
+          "opportunity_error_at_observed_rate": 0.021847322362750648,
+          "opposing_errors": false
+        },
+        "components": {
+          "rate": 2.40159611128737,
+          "value": 4.056810301503003,
+          "delivered_error": 3.7640683780887834,
+          "hitting_error_at_expected_PA": 3.742221055726033,
+          "opportunity_error_at_observed_rate": 0.021847322362750648,
+          "opposing_errors": false
+        }
+      },
+      "contrasts": {
+        "current": {
+          "delta": 0.8076871321847765,
+          "active_hitting_squared": 0.8029303857391756,
+          "active_interaction": 0.004756746445603592,
+          "nonarrival": 0.0
+        },
+        "restored": {
+          "delta": -0.14544375020406441,
+          "active_hitting_squared": -0.1446017242450992,
+          "active_interaction": -0.000842025958969274,
+          "nonarrival": 0.0
+        }
+      }
+    },
+    {
+      "row_id": 32754,
+      "player_name": "Stevie Wilkerson",
+      "player_id": 592859,
+      "origin": 2018,
+      "target": 2019,
+      "information_date": "2019-01-27",
+      "fold": 3,
+      "branch": "tracking",
+      "why": [
+        "fixed before fitting"
+      ],
+      "joint_profile": "positive_under600__domestic",
+      "recent_MLB_mass": 49.0,
+      "recent_foreign_mass": 0.0,
+      "expected_PA": 109.5357282041853,
+      "actual_PA": 361,
+      "actual_rate": -1.6503062517626916,
+      "actual_value": 0.11895831119707237,
+      "baseline": -1.1129168934277038,
+      "fitted_intercept": -0.39815113102022465,
+      "fitted_residual": -0.2657611634538424,
+      "added_component_effect": -0.03012052958527048,
+      "other_coefficient_change": 0.011193056472920713,
+      "full_source_model_walk": {
+        "report": "reports\\model-evidence\\hitter-mlb-events-restoration\\report.json",
+        "sha256": "08619dfe03becd381ed888a58a27edb67606ba856f0f65c3acd7d5fe63c8f1c8",
+        "case_row_id": 32754,
+        "fields": [
+          "raw_history",
+          "source",
+          "MLB_source",
+          "MLB_event_source",
+          "feature_terms",
+          "probes",
+          "support",
+          "origin_selected_peers"
+        ]
+      },
+      "arms": {
+        "current": {
+          "rate": -1.2888433310966019,
+          "value": 0.10208320302036315,
+          "delivered_error": -0.016875108176709175,
+          "hitting_error_at_expected_PA": 0.06598850705661967,
+          "opportunity_error_at_observed_rate": -0.08286361523332884,
+          "opposing_errors": true
+        },
+        "restored": {
+          "rate": -1.359750583769196,
+          "value": 0.08913840709294525,
+          "delivered_error": -0.029819904104127118,
+          "hitting_error_at_expected_PA": 0.05304371112920171,
+          "opportunity_error_at_observed_rate": -0.08286361523332884,
+          "opposing_errors": true
+        },
+        "components": {
+          "rate": -1.3786780568815458,
+          "value": 0.08568301617556795,
+          "delivered_error": -0.03327529502150442,
+          "hitting_error_at_expected_PA": 0.04958832021182445,
+          "opportunity_error_at_observed_rate": -0.08286361523332884,
+          "opposing_errors": true
+        }
+      },
+      "contrasts": {
+        "current": {
+          "delta": 0.0008224759827925199,
+          "active_hitting_squared": -0.001895481562131107,
+          "active_interaction": 0.0027179575449236245,
+          "nonarrival": 0.0
+        },
+        "restored": {
+          "delta": 0.0002180185779888195,
+          "active_hitting_squared": -0.0003546337889277604,
+          "active_interaction": 0.000572652366916577,
+          "nonarrival": 0.0
+        }
+      }
+    },
+    {
+      "row_id": 34339,
+      "player_name": "Ty France",
+      "player_id": 664034,
+      "origin": 2018,
+      "target": 2019,
+      "information_date": "2019-01-27",
+      "fold": 1,
+      "branch": "prospect",
+      "why": [
+        "fixed before fitting",
+        "ordinary"
+      ],
+      "joint_profile": "none__domestic",
+      "recent_MLB_mass": 0.0,
+      "recent_foreign_mass": 0.0,
+      "expected_PA": 87.00854818299347,
+      "actual_PA": 201,
+      "actual_rate": -1.0599849112408408,
+      "actual_value": 0.26399205503219275,
+      "baseline": -0.9649888749246779,
+      "fitted_intercept": -0.25000002086982565,
+      "fitted_residual": 0.9344479665546046,
+      "added_component_effect": 0.0,
+      "other_coefficient_change": -0.005681216306074268,
+      "full_source_model_walk": {
+        "report": "reports\\model-evidence\\hitter-mlb-events-restoration\\report.json",
+        "sha256": "08619dfe03becd381ed888a58a27edb67606ba856f0f65c3acd7d5fe63c8f1c8",
+        "case_row_id": 34339,
+        "fields": [
+          "raw_history",
+          "source",
+          "MLB_source",
+          "MLB_event_source",
+          "feature_terms",
+          "probes",
+          "support",
+          "origin_selected_peers"
+        ]
+      },
+      "arms": {
+        "current": {
+          "rate": -0.2214123077242372,
+          "value": 0.23588141960612066,
+          "delivered_error": -0.02811063542607209,
+          "hitting_error_at_expected_PA": 0.12160497463002114,
+          "opportunity_error_at_observed_rate": -0.1497156100560932,
+          "opposing_errors": true
+        },
+        "restored": {
+          "rate": -0.02485969206399885,
+          "value": 0.26438434915639936,
+          "delivered_error": 0.0003922941242066047,
+          "hitting_error_at_expected_PA": 0.15010790418029987,
+          "opportunity_error_at_observed_rate": -0.1497156100560932,
+          "opposing_errors": true
+        },
+        "components": {
+          "rate": -0.030540908370073505,
+          "value": 0.2635604918518909,
+          "delivered_error": -0.0004315631803018527,
+          "hitting_error_at_expected_PA": 0.1492840468757914,
+          "opportunity_error_at_observed_rate": -0.1497156100560932,
+          "opposing_errors": true
+        }
+      },
+      "contrasts": {
+        "current": {
+          "delta": -0.0007900215772789469,
+          "active_hitting_squared": 0.007497956796845397,
+          "active_interaction": -0.008287978374124342,
+          "nonarrival": 0.0
+        },
+        "restored": {
+          "delta": 3.235209870522241e-08,
+          "active_hitting_squared": -0.0002466562457886061,
+          "active_interaction": 0.0002466885978873128,
+          "nonarrival": 0.0
+        }
+      }
+    },
+    {
+      "row_id": 35088,
+      "player_name": "Yordan Alvarez",
+      "player_id": 670541,
+      "origin": 2018,
+      "target": 2019,
+      "information_date": "2019-01-27",
+      "fold": 2,
+      "branch": "prospect",
+      "why": [
+        "fixed before fitting"
+      ],
+      "joint_profile": "none__domestic",
+      "recent_MLB_mass": 0.0,
+      "recent_foreign_mass": 0.0,
+      "expected_PA": 72.17437375116249,
+      "actual_PA": 369,
+      "actual_rate": 5.647886806977912,
+      "actual_value": 4.609983237584529,
+      "baseline": -0.46774251230929736,
+      "fitted_intercept": -0.3559531578856663,
+      "fitted_residual": 0.9322543152128837,
+      "added_component_effect": 0.0,
+      "other_coefficient_change": -0.007232698259881806,
+      "full_source_model_walk": {
+        "report": "reports\\model-evidence\\hitter-mlb-events-restoration\\report.json",
+        "sha256": "08619dfe03becd381ed888a58a27edb67606ba856f0f65c3acd7d5fe63c8f1c8",
+        "case_row_id": 35088,
+        "fields": [
+          "raw_history",
+          "source",
+          "MLB_source",
+          "MLB_event_source",
+          "feature_terms",
+          "probes",
+          "support",
+          "origin_selected_peers"
+        ]
+      },
+      "arms": {
+        "current": {
+          "rate": 0.45465027367510036,
+          "value": 0.2769897494264361,
+          "delivered_error": -4.332993488158093,
+          "hitting_error_at_expected_PA": -0.6246976575546476,
+          "opportunity_error_at_observed_rate": -3.708295830603445,
+          "opposing_errors": false
+        },
+        "restored": {
+          "rate": 0.47174450116346817,
+          "value": 0.2790460246993242,
+          "delivered_error": -4.330937212885204,
+          "hitting_error_at_expected_PA": -0.6226413822817595,
+          "opportunity_error_at_observed_rate": -3.708295830603445,
+          "opposing_errors": false
+        },
+        "components": {
+          "rate": 0.46451180290358635,
+          "value": 0.27817599892026074,
+          "delivered_error": -4.331807238664268,
+          "hitting_error_at_expected_PA": -0.623511408060823,
+          "opportunity_error_at_observed_rate": -3.708295830603445,
+          "opposing_errors": false
+        }
+      },
+      "contrasts": {
+        "current": {
+          "delta": -0.010278615476281061,
+          "active_hitting_squared": -0.0014806873722736924,
+          "active_interaction": -0.008797928104010573,
+          "nonarrival": 0.0
+        },
+        "restored": {
+          "delta": 0.007536810990295351,
+          "active_hitting_squared": 0.0010841850522498864,
+          "active_interaction": 0.0064526259380372104,
+          "nonarrival": 0.0
+        }
+      }
+    },
+    {
+      "row_id": 42235,
+      "player_name": "Austin Nola",
+      "player_id": 543592,
+      "origin": 2021,
+      "target": 2022,
+      "information_date": "2022-03-18",
+      "fold": 2,
+      "branch": "tracking",
+      "why": [
+        "fixed before fitting"
+      ],
+      "joint_profile": "positive_under600__domestic",
+      "recent_MLB_mass": 501.4,
+      "recent_foreign_mass": 0.0,
+      "expected_PA": 245.8621536281355,
+      "actual_PA": 397,
+      "actual_rate": -0.9247109394926357,
+      "actual_value": 0.6322336601074253,
+      "baseline": 0.610893726081968,
+      "fitted_intercept": -0.6427822995377699,
+      "fitted_residual": -0.8437497443822786,
+      "added_component_effect": 0.07056260607818875,
+      "other_coefficient_change": -0.03643634144029412,
+      "full_source_model_walk": {
+        "report": "reports\\model-evidence\\hitter-mlb-events-restoration\\report.json",
+        "sha256": "08619dfe03becd381ed888a58a27edb67606ba856f0f65c3acd7d5fe63c8f1c8",
+        "case_row_id": 42235,
+        "fields": [
+          "raw_history",
+          "source",
+          "MLB_source",
+          "MLB_event_source",
+          "feature_terms",
+          "probes",
+          "support",
+          "origin_selected_peers"
+        ]
+      },
+      "arms": {
+        "current": {
+          "rate": -0.2806610651475506,
+          "value": 0.6554548730261962,
+          "delivered_error": 0.023221212918770884,
+          "hitting_error_at_expected_PA": 0.26391248191735445,
+          "opportunity_error_at_observed_rate": -0.24069126899858348,
+          "opposing_errors": true
+        },
+        "restored": {
+          "rate": -0.2669822829382087,
+          "value": 0.6610600311145279,
+          "delivered_error": 0.028826371007102614,
+          "hitting_error_at_expected_PA": 0.2695176400056862,
+          "opportunity_error_at_observed_rate": -0.24069126899858348,
+          "opposing_errors": true
+        },
+        "components": {
+          "rate": -0.23285601830031433,
+          "value": 0.675043959313122,
+          "delivered_error": 0.04281029920569668,
+          "hitting_error_at_expected_PA": 0.2835015682042802,
+          "opportunity_error_at_observed_rate": -0.24069126899858348,
+          "opposing_errors": true
+        }
+      },
+      "contrasts": {
+        "current": {
+          "delta": 0.0012934969886623819,
+          "active_hitting_squared": 0.01072334106250819,
+          "active_interaction": -0.009429844073845811,
+          "nonarrival": 0.0
+        },
+        "restored": {
+          "delta": 0.0010017620526421474,
+          "active_hitting_squared": 0.007733380900051476,
+          "active_interaction": -0.006731618847409335,
+          "nonarrival": 0.0
+        }
+      }
+    },
+    {
+      "row_id": 43296,
+      "player_name": "Fernando Tatis Jr.",
+      "player_id": 665487,
+      "origin": 2021,
+      "target": 2022,
+      "information_date": "2022-03-18",
+      "fold": 0,
+      "branch": "tracking",
+      "why": [
+        "fixed before fitting",
+        "false high"
+      ],
+      "joint_profile": "600plus__domestic",
+      "recent_MLB_mass": 974.8000000000001,
+      "recent_foreign_mass": 0.0,
+      "expected_PA": 552.9744971779307,
+      "actual_PA": 0,
+      "actual_rate": null,
+      "actual_value": 0.0,
+      "baseline": 2.085676439130123,
+      "fitted_intercept": -0.4531736656282324,
+      "fitted_residual": 1.135084810816265,
+      "added_component_effect": -0.04271659623666176,
+      "other_coefficient_change": 0.0023220773222326838,
+      "full_source_model_walk": {
+        "report": "reports\\model-evidence\\hitter-mlb-events-restoration\\report.json",
+        "sha256": "08619dfe03becd381ed888a58a27edb67606ba856f0f65c3acd7d5fe63c8f1c8",
+        "case_row_id": 43296,
+        "fields": [
+          "raw_history",
+          "source",
+          "MLB_source",
+          "MLB_event_source",
+          "feature_terms",
+          "probes",
+          "support",
+          "origin_selected_peers"
+        ]
+      },
+      "arms": {
+        "current": {
+          "rate": 2.9193332375275407,
+          "value": 4.42339142467406,
+          "delivered_error": 4.42339142467406,
+          "hitting_error_at_expected_PA": null,
+          "opportunity_error_at_observed_rate": null,
+          "opposing_errors": null
+        },
+        "restored": {
+          "rate": 3.261155768860817,
+          "value": 4.738423328654236,
+          "delivered_error": 4.738423328654236,
+          "hitting_error_at_expected_PA": null,
+          "opportunity_error_at_observed_rate": null,
+          "opposing_errors": null
+        },
+        "components": {
+          "rate": 3.2207612499463876,
+          "value": 4.701194764011818,
+          "delivered_error": 4.701194764011818,
+          "hitting_error_at_expected_PA": null,
+          "opportunity_error_at_observed_rate": null,
+          "opposing_errors": null
+        }
+      },
+      "contrasts": {
+        "current": {
+          "delta": 2.5348405132921243,
+          "active_hitting_squared": 0.0,
+          "active_interaction": 0.0,
+          "nonarrival": 2.5348405132921243
+        },
+        "restored": {
+          "delta": -0.3514234323625587,
+          "active_hitting_squared": 0.0,
+          "active_interaction": 0.0,
+          "nonarrival": -0.3514234323625587
+        }
+      }
+    },
+    {
+      "row_id": 47765,
+      "player_name": "Seiya Suzuki",
+      "player_id": 673548,
+      "origin": 2022,
+      "target": 2023,
+      "information_date": "2023-01-26",
+      "fold": 1,
+      "branch": "tracking",
+      "why": [
+        "fixed before fitting",
+        "largest gain"
+      ],
+      "joint_profile": "positive_under600__foreign",
+      "recent_MLB_mass": 446.0,
+      "recent_foreign_mass": 734.8,
+      "expected_PA": 406.27129985550164,
+      "actual_PA": 583,
+      "actual_rate": 1.9967165482142206,
+      "actual_value": 3.7655005028205655,
+      "baseline": 2.57730497223195,
+      "fitted_intercept": -0.4505736404478404,
+      "fitted_residual": -0.02413702751682123,
+      "added_component_effect": -0.037482987545979604,
+      "other_coefficient_change": -0.007970903760965967,
+      "full_source_model_walk": {
+        "report": "reports\\model-evidence\\hitter-mlb-events-restoration\\report.json",
+        "sha256": "08619dfe03becd381ed888a58a27edb67606ba856f0f65c3acd7d5fe63c8f1c8",
+        "case_row_id": 47765,
+        "fields": [
+          "raw_history",
+          "source",
+          "MLB_source",
+          "MLB_event_source",
+          "feature_terms",
+          "probes",
+          "support",
+          "origin_selected_peers"
+        ]
+      },
+      "arms": {
+        "current": {
+          "rate": 0.16007640390168365,
+          "value": 1.3804154490967022,
+          "delivered_error": -2.3850850537238633,
+          "hitting_error_at_expected_PA": -1.2436236313277511,
+          "opportunity_error_at_observed_rate": -1.1414614223961124,
+          "opposing_errors": false
+        },
+        "restored": {
+          "rate": 2.5986218360220747,
+          "value": 3.0316004865371142,
+          "delivered_error": -0.7339000162834513,
+          "hitting_error_at_expected_PA": 0.4075614061126612,
+          "opportunity_error_at_observed_rate": -1.1414614223961124,
+          "opposing_errors": true
+        },
+        "components": {
+          "rate": 2.553167944715129,
+          "value": 3.000822800695842,
+          "delivered_error": -0.7646777021247235,
+          "hitting_error_at_expected_PA": 0.3767837202713886,
+          "opportunity_error_at_observed_rate": -1.1414614223961124,
+          "opposing_errors": true
+        }
+      },
+      "contrasts": {
+        "current": {
+          "delta": -5.103898725370216,
+          "active_hitting_squared": -1.4046337645352742,
+          "active_interaction": -3.6992649608349426,
+          "nonarrival": 0.0
+        },
+        "restored": {
+          "delta": 0.0461227542258974,
+          "active_hitting_squared": -0.0241403278909815,
+          "active_interaction": 0.0702630821168793,
+          "nonarrival": 0.0
+        }
+      }
+    },
+    {
+      "row_id": 50698,
+      "player_name": "Aaron Judge",
+      "player_id": 592450,
+      "origin": 2023,
+      "target": 2024,
+      "information_date": "2024-01-26",
+      "fold": 3,
+      "branch": "tracking",
+      "why": [
+        "fixed before fitting"
+      ],
+      "joint_profile": "600plus__domestic",
+      "recent_MLB_mass": 1394.6000000000001,
+      "recent_foreign_mass": 0.0,
+      "expected_PA": 536.0010718010594,
+      "actual_PA": 704,
+      "actual_rate": 7.557649414891912,
+      "actual_value": 11.047279576281156,
+      "baseline": 2.7569530694626048,
+      "fitted_intercept": -0.6155836505043665,
+      "fitted_residual": 0.9916696116739435,
+      "added_component_effect": 0.09299357511303126,
+      "other_coefficient_change": -0.1183611241988865,
+      "full_source_model_walk": {
+        "report": "reports\\model-evidence\\hitter-mlb-events-restoration\\report.json",
+        "sha256": "08619dfe03becd381ed888a58a27edb67606ba856f0f65c3acd7d5fe63c8f1c8",
+        "case_row_id": 50698,
+        "fields": [
+          "raw_history",
+          "source",
+          "MLB_source",
+          "MLB_event_source",
+          "feature_terms",
+          "probes",
+          "support",
+          "origin_selected_peers"
+        ]
+      },
+      "arms": {
+        "current": {
+          "rate": 3.898806733708158,
+          "value": 5.142441104551988,
+          "delivered_error": -5.9048384717291675,
+          "hitting_error_at_expected_PA": -3.2685726644432576,
+          "opportunity_error_at_observed_rate": -2.63626580728591,
+          "opposing_errors": false
+        },
+        "restored": {
+          "rate": 3.7739902302224038,
+          "value": 5.030938138473947,
+          "delivered_error": -6.016341437807209,
+          "hitting_error_at_expected_PA": -3.380075630521299,
+          "opportunity_error_at_observed_rate": -2.63626580728591,
+          "opposing_errors": false
+        },
+        "components": {
+          "rate": 3.748622681136548,
+          "value": 5.008276415975639,
+          "delivered_error": -6.0390031603055165,
+          "hitting_error_at_expected_PA": -3.4027373530196066,
+          "opportunity_error_at_observed_rate": -2.63626580728591,
+          "opposing_errors": false
+        }
+      },
+      "contrasts": {
+        "current": {
+          "delta": 1.60244179296717,
+          "active_hitting_squared": 0.8950542308891833,
+          "active_interaction": 0.7073875620779828,
+          "nonarrival": 0.0
+        },
+        "restored": {
+          "delta": 0.27319487390390407,
+          "active_hitting_squared": 0.15371022559092218,
+          "active_interaction": 0.11948464831298067,
+          "nonarrival": 0.0
+        }
+      }
+    },
+    {
+      "row_id": 55509,
+      "player_name": "Kameron Misner",
+      "player_id": 670224,
+      "origin": 2024,
+      "target": 2025,
+      "information_date": "2025-01-24",
+      "fold": 3,
+      "branch": "tracking",
+      "why": [
+        "fixed before fitting"
+      ],
+      "joint_profile": "positive_under600__domestic",
+      "recent_MLB_mass": 15.0,
+      "recent_foreign_mass": 0.0,
+      "expected_PA": 84.52689941342628,
+      "actual_PA": 217,
+      "actual_rate": -2.0256349404735814,
+      "actual_value": -0.054940748455363175,
+      "baseline": -0.733207088616975,
+      "fitted_intercept": -0.6519036023086631,
+      "fitted_residual": -1.3383701443433802,
+      "added_component_effect": -0.12428411365671142,
+      "other_coefficient_change": 0.012094320874472406,
+      "full_source_model_walk": {
+        "report": "reports\\model-evidence\\hitter-mlb-events-restoration\\report.json",
+        "sha256": "08619dfe03becd381ed888a58a27edb67606ba856f0f65c3acd7d5fe63c8f1c8",
+        "case_row_id": 55509,
+        "fields": [
+          "raw_history",
+          "source",
+          "MLB_source",
+          "MLB_event_source",
+          "feature_terms",
+          "probes",
+          "support",
+          "origin_selected_peers"
+        ]
+      },
+      "arms": {
+        "current": {
+          "rate": -1.8400519350863322,
+          "value": 0.004743804818030153,
+          "delivered_error": 0.05968455327339333,
+          "hitting_error_at_expected_PA": 0.026144593382015593,
+          "opportunity_error_at_observed_rate": 0.033539959891377744,
+          "opposing_errors": false
+        },
+        "restored": {
+          "rate": -1.9593874401781135,
+          "value": -0.012067962240875538,
+          "delivered_error": 0.04287278621448764,
+          "hitting_error_at_expected_PA": 0.009332826323109902,
+          "opportunity_error_at_observed_rate": 0.033539959891377744,
+          "opposing_errors": false
+        },
+        "components": {
+          "rate": -2.0715772329603523,
+          "value": -0.027873054457071247,
+          "delivered_error": 0.02706769399829193,
+          "hitting_error_at_expected_PA": -0.006472265893085831,
+          "opportunity_error_at_observed_rate": 0.033539959891377744,
+          "opposing_errors": true
+        }
+      },
+      "contrasts": {
+        "current": {
+          "delta": -0.0028295858410593575,
+          "active_hitting_squared": -0.0006416495373201314,
+          "active_interaction": -0.002187936303739228,
+          "nonarrival": 0.0
+        },
+        "restored": {
+          "delta": -0.0011054157394079925,
+          "active_hitting_squared": -4.521142138653098e-05,
+          "active_interaction": -0.001060204318021463,
+          "nonarrival": 0.0
+        }
+      }
+    },
+    {
+      "row_id": 55587,
+      "player_name": "Geraldo Perdomo",
+      "player_id": 672695,
+      "origin": 2024,
+      "target": 2025,
+      "information_date": "2025-01-24",
+      "fold": 1,
+      "branch": "tracking",
+      "why": [
+        "fixed before fitting"
+      ],
+      "joint_profile": "600plus__domestic",
+      "recent_MLB_mass": 1084.0,
+      "recent_foreign_mass": 0.0,
+      "expected_PA": 472.6028562807011,
+      "actual_PA": 720,
+      "actual_rate": 2.727891390157092,
+      "actual_value": 5.521939712480949,
+      "baseline": -0.26499471031318733,
+      "fitted_intercept": -0.5689279278080881,
+      "fitted_residual": -0.411614656638019,
+      "added_component_effect": 0.15560298769820127,
+      "other_coefficient_change": -0.13907171679885558,
+      "full_source_model_walk": {
+        "report": "reports\\model-evidence\\hitter-mlb-events-restoration\\report.json",
+        "sha256": "08619dfe03becd381ed888a58a27edb67606ba856f0f65c3acd7d5fe63c8f1c8",
+        "case_row_id": 55587,
+        "fields": [
+          "raw_history",
+          "source",
+          "MLB_source",
+          "MLB_event_source",
+          "feature_terms",
+          "probes",
+          "support",
+          "origin_selected_peers"
+        ]
+      },
+      "arms": {
+        "current": {
+          "rate": -0.9331365756328288,
+          "value": 0.7408746556407222,
+          "delivered_error": -4.781065056840227,
+          "hitting_error_at_expected_PA": -2.883687122593069,
+          "opportunity_error_at_observed_rate": -1.8973779342471577,
+          "opposing_errors": false
+        },
+        "restored": {
+          "rate": -0.693140637850552,
+          "value": 0.9299125984601712,
+          "delivered_error": -4.592027114020778,
+          "hitting_error_at_expected_PA": -2.69464917977362,
+          "opportunity_error_at_observed_rate": -1.8973779342471577,
+          "opposing_errors": false
+        },
+        "components": {
+          "rate": -0.6766093669512062,
+          "value": 0.942933808201806,
+          "delivered_error": -4.579005904279143,
+          "hitting_error_at_expected_PA": -2.681627970031985,
+          "opportunity_error_at_observed_rate": -1.8973779342471577,
+          "opposing_errors": false
+        }
+      },
+      "contrasts": {
+        "current": {
+          "delta": -1.891288006315392,
+          "active_hitting_squared": -1.1245228513512293,
+          "active_interaction": -0.7667651549641616,
+          "nonarrival": 0.0
+        },
+        "restored": {
+          "delta": -0.11941794447874443,
+          "active_hitting_squared": -0.0700056323967777,
+          "active_interaction": -0.04941231208196438,
+          "nonarrival": 0.0
+        }
+      }
+    },
+    {
+      "row_id": 57052,
+      "player_name": "Nick Kurtz",
+      "player_id": 701762,
+      "origin": 2024,
+      "target": 2025,
+      "information_date": "2025-01-24",
+      "fold": 2,
+      "branch": "prospect",
+      "why": [
+        "fixed before fitting"
+      ],
+      "joint_profile": "none__domestic",
+      "recent_MLB_mass": 0.0,
+      "recent_foreign_mass": 0.0,
+      "expected_PA": 10.18398717782357,
+      "actual_PA": 489,
+      "actual_rate": 5.150009420178844,
+      "actual_value": 5.724343582527705,
+      "baseline": 0.23819182687891396,
+      "fitted_intercept": -0.5934119650200536,
+      "fitted_residual": 0.3931862037685523,
+      "added_component_effect": 0.0,
+      "other_coefficient_change": -0.022360575083233504,
+      "full_source_model_walk": {
+        "report": "reports\\model-evidence\\hitter-mlb-events-restoration\\report.json",
+        "sha256": "08619dfe03becd381ed888a58a27edb67606ba856f0f65c3acd7d5fe63c8f1c8",
+        "case_row_id": 57052,
+        "fields": [
+          "raw_history",
+          "source",
+          "MLB_source",
+          "MLB_event_source",
+          "feature_terms",
+          "probes",
+          "support",
+          "origin_selected_peers"
+        ]
+      },
+      "arms": {
+        "current": {
+          "rate": 1.0242540793494719,
+          "value": 0.049188303602651105,
+          "delivered_error": -5.675155278925054,
+          "hitting_error_at_expected_PA": -0.0700277324830724,
+          "opportunity_error_at_observed_rate": -5.605127546441982,
+          "opposing_errors": false
+        },
+        "restored": {
+          "rate": 0.6537386057307031,
+          "value": 0.04289942888178649,
+          "delivered_error": -5.681444153645919,
+          "hitting_error_at_expected_PA": -0.07631660720393703,
+          "opportunity_error_at_observed_rate": -5.605127546441982,
+          "opposing_errors": false
+        },
+        "components": {
+          "rate": 0.631378030647469,
+          "value": 0.04251989586522579,
+          "delivered_error": -5.681823686662479,
+          "hitting_error_at_expected_PA": -0.07669614022049771,
+          "opportunity_error_at_observed_rate": -5.605127546441982,
+          "opposing_errors": false
+        }
+      },
+      "contrasts": {
+        "current": {
+          "delta": 0.07573296640790517,
+          "active_hitting_squared": 0.0009784146080014941,
+          "active_interaction": 0.07475455179989898,
+          "nonarrival": 0.0
+        },
+        "restored": {
+          "delta": 0.004312735321413186,
+          "active_hitting_squared": 5.8073389602234654e-05,
+          "active_interaction": 0.00425466193181703,
+          "nonarrival": 0.0
+        }
+      }
+    },
+    {
+      "row_id": 57778,
+      "player_name": "Masataka Yoshida",
+      "player_id": 807799,
+      "origin": 2024,
+      "target": 2025,
+      "information_date": "2025-01-24",
+      "fold": 3,
+      "branch": "tracking",
+      "why": [
+        "fixed before fitting"
+      ],
+      "joint_profile": "600plus__foreign",
+      "recent_MLB_mass": 885.0,
+      "recent_foreign_mass": 304.8,
+      "expected_PA": 476.21907982332925,
+      "actual_PA": 205,
+      "actual_rate": -0.44379814023360176,
+      "actual_value": 0.48855835636456085,
+      "baseline": 1.5968210118554054,
+      "fitted_intercept": -0.6519036023086631,
+      "fitted_residual": -0.20401183717269777,
+      "added_component_effect": 0.09212936246715579,
+      "other_coefficient_change": -0.06238115906943014,
+      "full_source_model_walk": {
+        "report": "reports\\model-evidence\\hitter-mlb-events-restoration\\report.json",
+        "sha256": "08619dfe03becd381ed888a58a27edb67606ba856f0f65c3acd7d5fe63c8f1c8",
+        "case_row_id": 57778,
+        "fields": [
+          "raw_history",
+          "source",
+          "MLB_source",
+          "MLB_event_source",
+          "feature_terms",
+          "probes",
+          "support",
+          "origin_selected_peers"
+        ]
+      },
+      "arms": {
+        "current": {
+          "rate": 0.3266834087403425,
+          "value": 1.7464608087054372,
+          "delivered_error": 1.2579024523408764,
+          "hitting_error_at_expected_PA": 0.6115300237887086,
+          "opportunity_error_at_observed_rate": 0.6463724285521676,
+          "opposing_errors": false
+        },
+        "restored": {
+          "rate": 1.3630609712849826,
+          "value": 2.5690320906796926,
+          "delivered_error": 2.080473734315132,
+          "hitting_error_at_expected_PA": 1.4341013057629641,
+          "opportunity_error_at_observed_rate": 0.6463724285521676,
+          "opposing_errors": false
+        },
+        "components": {
+          "rate": 1.3928091746827085,
+          "value": 2.592643194093797,
+          "delivered_error": 2.104084837729236,
+          "hitting_error_at_expected_PA": 1.457712409177068,
+          "opportunity_error_at_observed_rate": 0.6463724285521676,
+          "opposing_errors": false
+        }
+      },
+      "contrasts": {
+        "current": {
+          "delta": 2.8448544247568743,
+          "active_hitting_squared": 1.7509564978737928,
+          "active_interaction": 1.09389792688308,
+          "nonarrival": 0.0
+        },
+        "restored": {
+          "delta": 0.0988020451869156,
+          "active_hitting_squared": 0.06827891267777275,
+          "active_interaction": 0.030523132509141262,
+          "nonarrival": 0.0
+        }
+      }
+    },
+    {
+      "row_id": 58061,
+      "player_name": "Jung Hoo Lee",
+      "player_id": 808982,
+      "origin": 2024,
+      "target": 2025,
+      "information_date": "2025-01-24",
+      "fold": 1,
+      "branch": "tracking",
+      "why": [
+        "fixed before fitting"
+      ],
+      "joint_profile": "positive_under600__foreign",
+      "recent_MLB_mass": 158.0,
+      "recent_foreign_mass": 685.8,
+      "expected_PA": 153.64680423205337,
+      "actual_PA": 617,
+      "actual_rate": 0.4631003549313502,
+      "actual_value": 2.403035444610564,
+      "baseline": 1.8399757632353662,
+      "fitted_intercept": -0.5689279278080881,
+      "fitted_residual": -0.4076333377778682,
+      "added_component_effect": 0.18296304742330774,
+      "other_coefficient_change": -0.06173329912175734,
+      "full_source_model_walk": {
+        "report": "reports\\model-evidence\\hitter-mlb-events-restoration\\report.json",
+        "sha256": "08619dfe03becd381ed888a58a27edb67606ba856f0f65c3acd7d5fe63c8f1c8",
+        "case_row_id": 58061,
+        "fields": [
+          "raw_history",
+          "source",
+          "MLB_source",
+          "MLB_event_source",
+          "feature_terms",
+          "probes",
+          "support",
+          "origin_selected_peers"
+        ]
+      },
+      "arms": {
+        "current": {
+          "rate": -0.6456662409815414,
+          "value": 0.31447884900587864,
+          "delivered_error": -2.088556595604685,
+          "hitting_error_at_expected_PA": -0.28393074016878045,
+          "opportunity_error_at_observed_rate": -1.804625855435905,
+          "opposing_errors": false
+        },
+        "restored": {
+          "rate": 1.3111126771559474,
+          "value": 0.8155668946066785,
+          "delivered_error": -1.5874685500038854,
+          "hitting_error_at_expected_PA": 0.21715730543201942,
+          "opportunity_error_at_observed_rate": -1.804625855435905,
+          "opposing_errors": true
+        },
+        "components": {
+          "rate": 1.4323424254574977,
+          "value": 0.8466111669473275,
+          "delivered_error": -1.5564242776632364,
+          "hitting_error_at_expected_PA": 0.24820157777266844,
+          "opportunity_error_at_observed_rate": -1.804625855435905,
+          "opposing_errors": true
+        }
+      },
+      "contrasts": {
+        "current": {
+          "delta": -1.9396121209443047,
+          "active_hitting_squared": -0.01901264200394953,
+          "active_interaction": -1.9205994789403562,
+          "nonarrival": 0.0
+        },
+        "restored": {
+          "delta": -0.09759986515191077,
+          "active_hitting_squared": 0.014446727906346608,
+          "active_interaction": -0.11204659305825788,
+          "nonarrival": 0.0
+        }
+      }
+    },
+    {
+      "row_id": 63309,
+      "player_name": "Seiya Suzuki",
+      "player_id": 673548,
+      "origin": 2021,
+      "target": 2022,
+      "information_date": "2022-03-18",
+      "fold": 1,
+      "branch": "prospect",
+      "why": [
+        "fixed before fitting"
+      ],
+      "joint_profile": "none__foreign",
+      "recent_MLB_mass": 0.0,
+      "recent_foreign_mass": 1311.4,
+      "expected_PA": 191.48137919298472,
+      "actual_PA": 446,
+      "actual_rate": 1.1745890599212874,
+      "actual_value": 2.270747203782431,
+      "baseline": 3.9205238678975673,
+      "fitted_intercept": -0.26014273100927854,
+      "fitted_residual": -0.6061526706531708,
+      "added_component_effect": 0.0,
+      "other_coefficient_change": -0.06038025244288793,
+      "full_source_model_walk": {
+        "report": "reports\\model-evidence\\hitter-mlb-events-restoration\\report.json",
+        "sha256": "08619dfe03becd381ed888a58a27edb67606ba856f0f65c3acd7d5fe63c8f1c8",
+        "case_row_id": 63309,
+        "fields": [
+          "raw_history",
+          "source",
+          "MLB_source",
+          "MLB_event_source",
+          "feature_terms",
+          "probes",
+          "support",
+          "origin_selected_peers"
+        ]
+      },
+      "arms": {
+        "restored": {
+          "rate": 3.3747514496872792,
+          "value": 1.677051125898269,
+          "delivered_error": -0.593696077884162,
+          "hitting_error_at_expected_PA": 0.7021502147348755,
+          "opportunity_error_at_observed_rate": -1.2958462926190377,
+          "opposing_errors": true
+        },
+        "components": {
+          "rate": 3.314371197244392,
+          "value": 1.6577816358752944,
+          "delivered_error": -0.6129655679071366,
+          "hitting_error_at_expected_PA": 0.6828807247119011,
+          "opportunity_error_at_observed_rate": -1.2958462926190377,
+          "opposing_errors": true
+        }
+      },
+      "contrasts": {
+        "restored": {
+          "delta": 0.02325175454468159,
+          "active_hitting_squared": -0.026688839869180525,
+          "active_interaction": 0.049940594413861825,
+          "nonarrival": 0.0
+        }
+      }
+    }
+  ],
+  "additions": [
+    {
+      "row_id": 63296,
+      "player_name": "Brian Bogusevic",
+      "origin": 2016,
+      "expected_PA": 9.32590906664988,
+      "actual_PA": 0,
+      "actual_rate": null,
+      "actual_value": 0.0,
+      "component_error": 0.006611502734891394,
+      "matched_restored_change": {
+        "delta": -1.4596194027306538e-05,
+        "active_hitting_squared": 0.0,
+        "active_interaction": 0.0,
+        "nonarrival": -1.4596194027306538e-05
+      },
+      "incumbent_available": false
+    },
+    {
+      "row_id": 63297,
+      "player_name": "Jae-Gyun Hwang",
+      "origin": 2016,
+      "expected_PA": 2.153756911903962,
+      "actual_PA": 57,
+      "actual_rate": -5.451421583931952,
+      "actual_value": -0.34200868651612265,
+      "component_error": 0.3511640777101256,
+      "matched_restored_change": {
+        "delta": -2.5799776243701222e-05,
+        "active_hitting_squared": -1.6233386617295407e-06,
+        "active_interaction": -2.417643758198858e-05,
+        "nonarrival": 0.0
+      },
+      "incumbent_available": false
+    },
+    {
+      "row_id": 63298,
+      "player_name": "Shohei Ohtani",
+      "origin": 2017,
+      "expected_PA": 20.02982718421417,
+      "actual_PA": 367,
+      "actual_rate": 3.6930405107294653,
+      "actual_value": 3.387866307841291,
+      "component_error": -3.2470232835680966,
+      "matched_restored_change": {
+        "delta": 0.00199220564042335,
+        "active_hitting_squared": 2.693836885308957e-05,
+        "active_interaction": 0.0019652672715709738,
+        "nonarrival": 0.0
+      },
+      "incumbent_available": false
+    },
+    {
+      "row_id": 63304,
+      "player_name": "Eric Thames",
+      "origin": 2021,
+      "expected_PA": 10.04618486057165,
+      "actual_PA": 0,
+      "actual_rate": null,
+      "actual_value": 0.0,
+      "component_error": 0.021768280354994292,
+      "matched_restored_change": {
+        "delta": -6.07594850157787e-05,
+        "active_hitting_squared": 0.0,
+        "active_interaction": 0.0,
+        "nonarrival": -6.07594850157787e-05
+      },
+      "incumbent_available": false
+    },
+    {
+      "row_id": 63305,
+      "player_name": "Stefen Romero",
+      "origin": 2021,
+      "expected_PA": 0.9556771382871387,
+      "actual_PA": 0,
+      "actual_rate": null,
+      "actual_value": 0.0,
+      "component_error": 0.0034871647500751375,
+      "matched_restored_change": {
+        "delta": 6.233632129543594e-09,
+        "active_hitting_squared": 0.0,
+        "active_interaction": 0.0,
+        "nonarrival": 6.233632129543594e-09
+      },
+      "incumbent_available": false
+    },
+    {
+      "row_id": 63306,
+      "player_name": "Dixon Machado",
+      "origin": 2021,
+      "expected_PA": 6.936149107790077,
+      "actual_PA": 17,
+      "actual_rate": -3.3097110084234043,
+      "actual_value": -0.04050202406430738,
+      "component_error": 0.05387643458260065,
+      "matched_restored_change": {
+        "delta": 1.6943455514130054e-05,
+        "active_hitting_squared": 9.392006469907828e-06,
+        "active_interaction": 7.551449044221166e-06,
+        "nonarrival": 0.0
+      },
+      "incumbent_available": false
+    },
+    {
+      "row_id": 63307,
+      "player_name": "Rusney Castillo",
+      "origin": 2021,
+      "expected_PA": 0.8745011786057423,
+      "actual_PA": 0,
+      "actual_rate": null,
+      "actual_value": 0.0,
+      "component_error": 0.0007465497836131271,
+      "matched_restored_change": {
+        "delta": 3.99458170675764e-09,
+        "active_hitting_squared": 0.0,
+        "active_interaction": 0.0,
+        "nonarrival": 3.99458170675764e-09
+      },
+      "incumbent_available": false
+    },
+    {
+      "row_id": 63308,
+      "player_name": "Roberto Ramos",
+      "origin": 2021,
+      "expected_PA": 4.498629923747337,
+      "actual_PA": 0,
+      "actual_rate": null,
+      "actual_value": 0.0,
+      "component_error": 0.022305563693998595,
+      "matched_restored_change": {
+        "delta": 2.150590398390141e-06,
+        "active_hitting_squared": 0.0,
+        "active_interaction": 0.0,
+        "nonarrival": 2.150590398390141e-06
+      },
+      "incumbent_available": false
+    },
+    {
+      "row_id": 63309,
+      "player_name": "Seiya Suzuki",
+      "origin": 2021,
+      "expected_PA": 191.48137919298472,
+      "actual_PA": 446,
+      "actual_rate": 1.1745890599212874,
+      "actual_value": 2.270747203782431,
+      "component_error": -0.6129655679071366,
+      "matched_restored_change": {
+        "delta": 0.02325175454468159,
+        "active_hitting_squared": -0.026688839869180525,
+        "active_interaction": 0.049940594413861825,
+        "nonarrival": 0.0
+      },
+      "incumbent_available": false
+    },
+    {
+      "row_id": 63310,
+      "player_name": "Jantzen Witte",
+      "origin": 2022,
+      "expected_PA": 4.002407702039497,
+      "actual_PA": 0,
+      "actual_rate": null,
+      "actual_value": 0.0,
+      "component_error": 0.0026614657315277026,
+      "matched_restored_change": {
+        "delta": -9.533505750262902e-07,
+        "active_hitting_squared": 0.0,
+        "active_interaction": 0.0,
+        "nonarrival": -9.533505750262902e-07
+      },
+      "incumbent_available": false
+    },
+    {
+      "row_id": 63311,
+      "player_name": "Masataka Yoshida",
+      "origin": 2022,
+      "expected_PA": 269.8516327088163,
+      "actual_PA": 580,
+      "actual_rate": 1.0929330922378333,
+      "actual_value": 2.872466658598345,
+      "component_error": -1.0595724240581312,
+      "matched_restored_change": {
+        "delta": 0.03953932989405318,
+        "active_hitting_squared": -0.018292967671460963,
+        "active_interaction": 0.05783229756551387,
+        "nonarrival": 0.0
+      },
+      "incumbent_available": false
+    },
+    {
+      "row_id": 63312,
+      "player_name": "Jung Hoo Lee",
+      "origin": 2023,
+      "expected_PA": 182.3477656692727,
+      "actual_PA": 158,
+      "actual_rate": -1.1435531553369929,
+      "actual_value": 0.18804436444070058,
+      "component_error": 1.0489608786807585,
+      "matched_restored_change": {
+        "delta": -0.03317497390270718,
+        "active_hitting_squared": -0.03226531930037124,
+        "active_interaction": -0.0009096546023354686,
+        "nonarrival": 0.0
+      },
+      "incumbent_available": false
+    },
+    {
+      "row_id": 63313,
+      "player_name": "Yonathan Perlaza",
+      "origin": 2024,
+      "expected_PA": 40.88647537964422,
+      "actual_PA": 0,
+      "actual_rate": null,
+      "actual_value": 0.0,
+      "component_error": 0.11963159923326962,
+      "matched_restored_change": {
+        "delta": -0.0007747490798089493,
+        "active_hitting_squared": 0.0,
+        "active_interaction": 0.0,
+        "nonarrival": -0.0007747490798089493
+      },
+      "incumbent_available": false
+    }
+  ],
+  "hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\finalize_hitter_restored_error_diagnosis.py": "9ddf0e2812df0a26646a4dbf875e0d50661c1c9aded11e5f8205d3bedf200852",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\hitter-restored-error-diagnosis-result.md": "050118019944a7468d8b9112ecc8274bc8a1e5e612e6c2553feeda8a7d19aa8a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\hitter-restored-error-diagnosis-player-review.md": "32a5f12c51c1a9b4c8b28f3c4658ebb055fa76c5fcd5b970389d17cd0a2831c4",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-restored-error-diagnosis\\receipt.json": "2d006913f3ab3d9ddf7b59b056bdba5a079f532ec7ef99869ebcc696ef34f2ed",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\tests\\test_hitter_restored_error_diagnosis.py": "3cdde3ed7ea0174aa6cd9c6efd99a647827ce06c50da3e5d2bdd7b65e63c7489"
+  }
+}

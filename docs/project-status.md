@@ -2,6 +2,38 @@
 
 Updated 2026-10-05. This is the current start-here document.
 
+## Remaining hitter gap is located without another fit
+
+The [saved-forecast diagnosis](hitter-restored-error-diagnosis-result.md) and
+[seventeen actual player checks](hitter-restored-error-diagnosis-player-review.md)
+are complete. No model, PA, forecast, evaluation person or 2026 outcome changed.
+Independent source profiles, labels, every-row error identities and six exhaustive
+global attribution cells verify. All 105 saved model hashes remain intact.
+
+Established domestic MLB hitters supply the main remaining loss versus incumbent:
++0.000974848 global delivered MSE, partly offset by gains on players with little
+or no MLB history. Foreign groups together supply only +0.000021279. Non-arrivals
+reverse a slight active-player delivered gain; lower total value on absentees
+does not mean lower squared error. Neither 2021 alone nor foreign entrants alone
+explains the difference. No player or hard year is discarded.
+
+The incumbent contrast remains an uncertain near-tie: delivered RMSE 0.435133
+versus 0.435373, while hitting and MAE favor the seven-input model. Matched gains
+from the seven inputs are preserved. Lee's matched value improvement conceals
+worse hitting; Suzuki has the opposite compensation trap. France's nearly exact
+value still offsets hitting and PA mistakes; Misner's K evidence genuinely helps.
+This diagnosis establishes arithmetic and player mechanics, not causal failure.
+
+Next write one prospective same-input absolute-rate contrast: let the current
+123/132/186-input learner estimate batting rate rather than require the fixed
+past-production baseline plus a residual. Retain the current residual arm,
+incumbent, all other anchors, alpha, units, weights, memberships, routes, PA,
+source/profile warnings and seventeen walks. Check target/offset mechanics before
+any fit. This is a hypothesis about an imposed offset, not a source-prior sweep,
+algorithm tournament or post-result subgroup hybrid. Do not chase the tiny net
+headline alone. The incumbent/explorer and already completed one-time 2026
+evaluation stay unchanged; the long hitter goal remains active.
+
 ## Separate MLB components help but the incumbent still wins delivered error
 
 The [seven-input result](hitter-mlb-events-restoration-result.md),
