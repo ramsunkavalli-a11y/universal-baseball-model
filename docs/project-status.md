@@ -2,6 +2,30 @@
 
 Updated 2026-10-05. This is the current start-here document.
 
+## Removed MLB component sources are reconstructed before the next fit
+
+The [seven-component source audit](hitter-mlb-events-source-audit-result.md)
+is complete, with all seventeen prior cases retained. Independently derived
+MLB counts match all 19,623 annual player rows; 2,215,990 saved input comparisons
+and seventeen future-count mutations pass. Four denominator/coverage/prior tests
+pass. This is source reconstruction only: no fit, forecast, PA or final 2026
+evaluation changed, and no predictive improvement is claimed.
+
+The fields preserve separate MLB K, unintentional BB, HBP, HR, BABIP, doubles
+and triples. BABIP uses BIP opportunities, others PA. Their original prior is
+100 denominator opportunities versus 1200 PA for batting-quality summaries.
+Judge's 95-PA debut therefore supplies 48.7% of PA component evidence but only
+7.3% of yearly quality evidence; that difference is real and not newly justified.
+No-MLB players get zero centered evidence, not observed average talent. Raw
+components do not solve foreign translation or park adjustment.
+
+Next write one prospective seven-input restoration contract on the completed
+four-summary direct-rate model, with source prior, baseline, units, alpha,
+weights, population, routes and PA fixed; retain all seventeen cases and anchors.
+The source gate permits that specification, not an automatic fit or promotion.
+Do not restart an algorithm tournament, closed team-record tests or 2026 tuning.
+The incumbent stays and the long hitter goal remains active.
+
 ## Separate MLB history partly recovers accuracy but the incumbent remains
 
 The [four-summary result](hitter-mlb-detail-restoration-result.md),

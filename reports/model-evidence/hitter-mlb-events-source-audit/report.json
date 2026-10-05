@@ -1,0 +1,4822 @@
+{
+  "before_fitting": true,
+  "fitted_models": 0,
+  "annual_MLB_rows": 19623,
+  "covered_source_seasons": [
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "reconstructed_rows": 63314,
+  "matrices": 5,
+  "column_checks": 2215990,
+  "source_cases": 17,
+  "future_mutation_cases": 17,
+  "new_features": [
+    "pooled_MLB_K",
+    "pooled_MLB_BB",
+    "pooled_MLB_HBP",
+    "pooled_MLB_HR",
+    "pooled_MLB_BABIP",
+    "pooled_MLB_2B",
+    "pooled_MLB_3B"
+  ],
+  "protected_outcomes_used": false,
+  "completed_2026_evaluation_unchanged": true,
+  "deployment_approved": false,
+  "source_walkthrough_status": "complete",
+  "hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\audit_hitter_mlb_events.py": "7172b6207da0f9f6ba136771ea3c00afa3ffe837bc523864f198554d1dbb7c5d",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\src\\universal_baseball\\hitter_mlb_events.py": "fd3c28eb9ccfe6b28d55ff94bfef51978fb058b57e799a912c2bbc2d62a4caea",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\tests\\test_hitter_mlb_events.py": "b16ae5e7447b28d6f8678e601197330f5b15e9ea40314ce411658a3942f41ef6",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\hitter-mlb-events-source-audit-contract.md": "579969ed5123026e7fbf83de7b356aecb91c2f8ea7607a15167e0479370bd19e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-v31\\counts.parquet": "62de048f7eb6cae53dd29755e26953c31b204fbdfc0e6be261b63acd42da5e66",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-v31\\dated-stints.parquet": "d079aea8ae18cdae378013f8d0f63cd236ee137f25f6d5ebb4dd0a4a12c4518a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-mlb-detail-restoration\\final-review.json": "527e5dc49b584e44d078af1bbabec3a21862bedba846c31d292f3aaf2ee2c235",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-mlb-detail-restoration\\player-walks.json": "87e8c79dd0f3fd5f06efc3cd82b7183216649c0dff5a668244a6285ee836f0f5",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\src\\universal_baseball\\practical_hitter_v30.py": "c6bb0941a64554d0513a0df4d2ca01387941c20d8d84a3addc7973dbc5127a0c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\prepare_practical_hitter_v33.py": "e75809ea801bad6ae132d4eb6b3fdd0a210a79e99bbe352dd7aa1db2d69f09cc",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-count-baseline\\features-0.parquet": "fec55299b73d248b86ac722709ebc21c9e89de42074835db03703b446cd20571",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-count-baseline\\features-1.parquet": "f2543757069e5d6e25abf909fada7ce401548bbb474e7cd6b9e4708e2d45200b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-count-baseline\\features-2.parquet": "a1dc1a80c112d0dac10cab0ee85e04619d3209b5a41382f25cbdfdd75d58de5b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-count-baseline\\features-3.parquet": "5a93628596fddd427d3335171d87a9c7f13179cebb5d5140950f0dc0670221c9",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-count-baseline\\features-4.parquet": "e178c495baa043683eaa9ce78f9cca9882418b8294487631437d4578d0934fe7",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-mlb-events-source-audit\\source-walks.json": "38d516741694aabd287a3ef2044cb3145b1651e928e47e2520df94de2791eaf2"
+  },
+  "source_gate_status": "Reconstruction passed; reliability and raw-environment interpretation qualified",
+  "disposition": "Sources eligible for one prospective contract; no fitted or predictive result, no deployment",
+  "fit_authorized": false,
+  "research_goal_remains_active": true,
+  "completion_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\finalize_hitter_mlb_events_audit.py": "880ec0aa7bfc5bebd3d798745f0175cadd54039b94296153b66633136cb74687",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\hitter-mlb-events-source-audit-result.md": "6ba1d4a632030271331cfdd7243b013da7feda291d6aee3b669c39c5149d5f23",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-mlb-events-source-audit\\audit.json": "c59c89092dbe04f31a877426a6fef29f873f16993bc0b5b56c8eb748e04abff3",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-mlb-events-source-audit\\source-walks.json": "38d516741694aabd287a3ef2044cb3145b1651e928e47e2520df94de2791eaf2"
+  },
+  "player_source_cases": [
+    {
+      "row_id": 23934,
+      "player_id": 592450,
+      "player_name": "Aaron Judge",
+      "origin": 2016,
+      "fold": 3,
+      "information_date": "2017-01-28",
+      "source": {
+        "cutoff": 2016,
+        "events": {
+          "K": {
+            "annual": [
+              {
+                "season": 2016,
+                "weight": 1.0,
+                "numerator": 42.0,
+                "denominator": 95.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2015,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2014,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 42.0,
+            "denominator": 95.0,
+            "prior_center": 0.23,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.48717948717948717,
+            "unshrunk_rate": 0.4421052631578947,
+            "shrunk_rate": 0.3333333333333333,
+            "model_coordinate": 1.033333333333333
+          },
+          "BB": {
+            "annual": [
+              {
+                "season": 2016,
+                "weight": 1.0,
+                "numerator": 9.0,
+                "denominator": 95.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2015,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2014,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 9.0,
+            "denominator": 95.0,
+            "prior_center": 0.08,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.48717948717948717,
+            "unshrunk_rate": 0.09473684210526316,
+            "shrunk_rate": 0.08717948717948718,
+            "model_coordinate": 0.07179487179487173
+          },
+          "HBP": {
+            "annual": [
+              {
+                "season": 2016,
+                "weight": 1.0,
+                "numerator": 1.0,
+                "denominator": 95.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2015,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2014,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 1.0,
+            "denominator": 95.0,
+            "prior_center": 0.01,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.48717948717948717,
+            "unshrunk_rate": 0.010526315789473684,
+            "shrunk_rate": 0.010256410256410256,
+            "model_coordinate": 0.002564102564102562
+          },
+          "HR": {
+            "annual": [
+              {
+                "season": 2016,
+                "weight": 1.0,
+                "numerator": 4.0,
+                "denominator": 95.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2015,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2014,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 4.0,
+            "denominator": 95.0,
+            "prior_center": 0.03,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.48717948717948717,
+            "unshrunk_rate": 0.042105263157894736,
+            "shrunk_rate": 0.035897435897435895,
+            "model_coordinate": 0.05897435897435896
+          },
+          "BABIP": {
+            "annual": [
+              {
+                "season": 2016,
+                "weight": 1.0,
+                "numerator": 11.0,
+                "denominator": 39.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2015,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2014,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 11.0,
+            "denominator": 39.0,
+            "prior_center": 0.3,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.2805755395683453,
+            "unshrunk_rate": 0.28205128205128205,
+            "shrunk_rate": 0.2949640287769784,
+            "model_coordinate": -0.050359712230215736
+          },
+          "2B": {
+            "annual": [
+              {
+                "season": 2016,
+                "weight": 1.0,
+                "numerator": 2.0,
+                "denominator": 95.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2015,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2014,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 2.0,
+            "denominator": 95.0,
+            "prior_center": 0.05,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.48717948717948717,
+            "unshrunk_rate": 0.021052631578947368,
+            "shrunk_rate": 0.035897435897435895,
+            "model_coordinate": -0.14102564102564108
+          },
+          "3B": {
+            "annual": [
+              {
+                "season": 2016,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 95.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2015,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2014,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 95.0,
+            "prior_center": 0.005,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.48717948717948717,
+            "unshrunk_rate": 0.0,
+            "shrunk_rate": 0.002564102564102564,
+            "model_coordinate": -0.02435897435897436
+          }
+        }
+      },
+      "features": {
+        "pooled_MLB_K": 0.3333333333333333,
+        "pooled_MLB_BB": 0.08717948717948718,
+        "pooled_MLB_HBP": 0.010256410256410256,
+        "pooled_MLB_HR": 0.035897435897435895,
+        "pooled_MLB_BABIP": 0.2949640287769784,
+        "pooled_MLB_2B": 0.035897435897435895,
+        "pooled_MLB_3B": 0.002564102564102564
+      },
+      "future_mutation_unchanged": true,
+      "raw_annual_MLB_counts": [
+        {
+          "season": 2016,
+          "player_id": 592450,
+          "babip_hits": 11,
+          "babip_opportunities": 39,
+          "doubles": 2,
+          "hit_by_pitch": 1,
+          "home_runs": 4,
+          "plate_appearances": 95,
+          "strike_outs": 42,
+          "triples": 0,
+          "unintentional_walks": 9
+        }
+      ],
+      "previous_forecast_unchanged": {
+        "current": 0.2641513942762992,
+        "scalar": -0.09549894304672779,
+        "restored": -0.25410340205882265
+      },
+      "previous_source_and_peer_walk": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-mlb-detail-restoration\\player-walks.json"
+    },
+    {
+      "row_id": 27981,
+      "player_id": 519346,
+      "player_name": "Eric Thames",
+      "origin": 2017,
+      "fold": 4,
+      "information_date": "2018-01-27",
+      "source": {
+        "cutoff": 2017,
+        "events": {
+          "K": {
+            "annual": [
+              {
+                "season": 2017,
+                "weight": 1.0,
+                "numerator": 163.0,
+                "denominator": 551.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2016,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2015,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 163.0,
+            "denominator": 551.0,
+            "prior_center": 0.23,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.8463901689708141,
+            "unshrunk_rate": 0.2958257713248639,
+            "shrunk_rate": 0.2857142857142857,
+            "model_coordinate": 0.5571428571428568
+          },
+          "BB": {
+            "annual": [
+              {
+                "season": 2017,
+                "weight": 1.0,
+                "numerator": 70.0,
+                "denominator": 551.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2016,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2015,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 70.0,
+            "denominator": 551.0,
+            "prior_center": 0.08,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.8463901689708141,
+            "unshrunk_rate": 0.12704174228675136,
+            "shrunk_rate": 0.11981566820276497,
+            "model_coordinate": 0.3981566820276497
+          },
+          "HBP": {
+            "annual": [
+              {
+                "season": 2017,
+                "weight": 1.0,
+                "numerator": 7.0,
+                "denominator": 551.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2016,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2015,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 7.0,
+            "denominator": 551.0,
+            "prior_center": 0.01,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.8463901689708141,
+            "unshrunk_rate": 0.012704174228675136,
+            "shrunk_rate": 0.01228878648233487,
+            "model_coordinate": 0.022887864823348692
+          },
+          "HR": {
+            "annual": [
+              {
+                "season": 2017,
+                "weight": 1.0,
+                "numerator": 31.0,
+                "denominator": 551.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2016,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2015,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 31.0,
+            "denominator": 551.0,
+            "prior_center": 0.03,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.8463901689708141,
+            "unshrunk_rate": 0.056261343012704176,
+            "shrunk_rate": 0.05222734254992319,
+            "model_coordinate": 0.22227342549923193
+          },
+          "BABIP": {
+            "annual": [
+              {
+                "season": 2017,
+                "weight": 1.0,
+                "numerator": 85.0,
+                "denominator": 275.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2016,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2015,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 85.0,
+            "denominator": 275.0,
+            "prior_center": 0.3,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.7333333333333333,
+            "unshrunk_rate": 0.3090909090909091,
+            "shrunk_rate": 0.30666666666666664,
+            "model_coordinate": 0.06666666666666654
+          },
+          "2B": {
+            "annual": [
+              {
+                "season": 2017,
+                "weight": 1.0,
+                "numerator": 26.0,
+                "denominator": 551.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2016,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2015,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 26.0,
+            "denominator": 551.0,
+            "prior_center": 0.05,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.8463901689708141,
+            "unshrunk_rate": 0.047186932849364795,
+            "shrunk_rate": 0.047619047619047616,
+            "model_coordinate": -0.023809523809523864
+          },
+          "3B": {
+            "annual": [
+              {
+                "season": 2017,
+                "weight": 1.0,
+                "numerator": 4.0,
+                "denominator": 551.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2016,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2015,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 4.0,
+            "denominator": 551.0,
+            "prior_center": 0.005,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.8463901689708141,
+            "unshrunk_rate": 0.007259528130671506,
+            "shrunk_rate": 0.0069124423963133645,
+            "model_coordinate": 0.019124423963133644
+          }
+        }
+      },
+      "features": {
+        "pooled_MLB_K": 0.2857142857142857,
+        "pooled_MLB_BB": 0.11981566820276497,
+        "pooled_MLB_HBP": 0.01228878648233487,
+        "pooled_MLB_HR": 0.05222734254992319,
+        "pooled_MLB_BABIP": 0.30666666666666664,
+        "pooled_MLB_2B": 0.047619047619047616,
+        "pooled_MLB_3B": 0.0069124423963133645
+      },
+      "future_mutation_unchanged": true,
+      "raw_annual_MLB_counts": [
+        {
+          "season": 2017,
+          "player_id": 519346,
+          "babip_hits": 85,
+          "babip_opportunities": 275,
+          "doubles": 26,
+          "hit_by_pitch": 7,
+          "home_runs": 31,
+          "plate_appearances": 551,
+          "strike_outs": 163,
+          "triples": 4,
+          "unintentional_walks": 70
+        }
+      ],
+      "previous_forecast_unchanged": {
+        "current": 0.3701786459871783,
+        "scalar": 3.071787687911362,
+        "restored": 3.0692161849195547
+      },
+      "previous_source_and_peer_walk": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-mlb-detail-restoration\\player-walks.json"
+    },
+    {
+      "row_id": 31364,
+      "player_id": 670867,
+      "player_name": "Kevin Maitan",
+      "origin": 2017,
+      "fold": 4,
+      "information_date": "2018-01-27",
+      "source": {
+        "cutoff": 2017,
+        "events": {
+          "K": {
+            "annual": [
+              {
+                "season": 2017,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2016,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2015,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "prior_center": 0.23,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.0,
+            "unshrunk_rate": null,
+            "shrunk_rate": 0.23,
+            "model_coordinate": 0.0
+          },
+          "BB": {
+            "annual": [
+              {
+                "season": 2017,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2016,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2015,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "prior_center": 0.08,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.0,
+            "unshrunk_rate": null,
+            "shrunk_rate": 0.08,
+            "model_coordinate": 0.0
+          },
+          "HBP": {
+            "annual": [
+              {
+                "season": 2017,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2016,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2015,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "prior_center": 0.01,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.0,
+            "unshrunk_rate": null,
+            "shrunk_rate": 0.01,
+            "model_coordinate": 0.0
+          },
+          "HR": {
+            "annual": [
+              {
+                "season": 2017,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2016,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2015,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "prior_center": 0.03,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.0,
+            "unshrunk_rate": null,
+            "shrunk_rate": 0.03,
+            "model_coordinate": 0.0
+          },
+          "BABIP": {
+            "annual": [
+              {
+                "season": 2017,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2016,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2015,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "prior_center": 0.3,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.0,
+            "unshrunk_rate": null,
+            "shrunk_rate": 0.3,
+            "model_coordinate": 0.0
+          },
+          "2B": {
+            "annual": [
+              {
+                "season": 2017,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2016,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2015,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "prior_center": 0.05,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.0,
+            "unshrunk_rate": null,
+            "shrunk_rate": 0.05,
+            "model_coordinate": 0.0
+          },
+          "3B": {
+            "annual": [
+              {
+                "season": 2017,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2016,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2015,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "prior_center": 0.005,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.0,
+            "unshrunk_rate": null,
+            "shrunk_rate": 0.005,
+            "model_coordinate": 0.0
+          }
+        }
+      },
+      "features": {
+        "pooled_MLB_K": 0.23,
+        "pooled_MLB_BB": 0.08,
+        "pooled_MLB_HBP": 0.01,
+        "pooled_MLB_HR": 0.03,
+        "pooled_MLB_BABIP": 0.3,
+        "pooled_MLB_2B": 0.05,
+        "pooled_MLB_3B": 0.005
+      },
+      "future_mutation_unchanged": true,
+      "raw_annual_MLB_counts": [],
+      "previous_forecast_unchanged": {
+        "current": -0.37964678801911067,
+        "scalar": -0.36017234446463986,
+        "restored": -0.29986216308232105
+      },
+      "previous_source_and_peer_walk": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-mlb-detail-restoration\\player-walks.json"
+    },
+    {
+      "row_id": 32325,
+      "player_id": 501981,
+      "player_name": "Khris Davis",
+      "origin": 2018,
+      "fold": 3,
+      "information_date": "2019-01-27",
+      "source": {
+        "cutoff": 2018,
+        "events": {
+          "K": {
+            "annual": [
+              {
+                "season": 2018,
+                "weight": 1.0,
+                "numerator": 175.0,
+                "denominator": 654.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2017,
+                "weight": 0.8,
+                "numerator": 195.0,
+                "denominator": 652.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2016,
+                "weight": 0.6,
+                "numerator": 166.0,
+                "denominator": 610.0,
+                "covered_absence": false
+              }
+            ],
+            "numerator": 430.6,
+            "denominator": 1541.6,
+            "prior_center": 0.23,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.9390838206627681,
+            "unshrunk_rate": 0.2793201868188895,
+            "shrunk_rate": 0.27631578947368424,
+            "model_coordinate": 0.46315789473684227
+          },
+          "BB": {
+            "annual": [
+              {
+                "season": 2018,
+                "weight": 1.0,
+                "numerator": 54.0,
+                "denominator": 654.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2017,
+                "weight": 0.8,
+                "numerator": 72.0,
+                "denominator": 652.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2016,
+                "weight": 0.6,
+                "numerator": 42.0,
+                "denominator": 610.0,
+                "covered_absence": false
+              }
+            ],
+            "numerator": 136.8,
+            "denominator": 1541.6,
+            "prior_center": 0.08,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.9390838206627681,
+            "unshrunk_rate": 0.08873897249610795,
+            "shrunk_rate": 0.0882066276803119,
+            "model_coordinate": 0.08206627680311898
+          },
+          "HBP": {
+            "annual": [
+              {
+                "season": 2018,
+                "weight": 1.0,
+                "numerator": 12.0,
+                "denominator": 654.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2017,
+                "weight": 0.8,
+                "numerator": 6.0,
+                "denominator": 652.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2016,
+                "weight": 0.6,
+                "numerator": 8.0,
+                "denominator": 610.0,
+                "covered_absence": false
+              }
+            ],
+            "numerator": 21.6,
+            "denominator": 1541.6,
+            "prior_center": 0.01,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.9390838206627681,
+            "unshrunk_rate": 0.014011416709911781,
+            "shrunk_rate": 0.013767056530214426,
+            "model_coordinate": 0.03767056530214426
+          },
+          "HR": {
+            "annual": [
+              {
+                "season": 2018,
+                "weight": 1.0,
+                "numerator": 48.0,
+                "denominator": 654.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2017,
+                "weight": 0.8,
+                "numerator": 43.0,
+                "denominator": 652.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2016,
+                "weight": 0.6,
+                "numerator": 42.0,
+                "denominator": 610.0,
+                "covered_absence": false
+              }
+            ],
+            "numerator": 107.6,
+            "denominator": 1541.6,
+            "prior_center": 0.03,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.9390838206627681,
+            "unshrunk_rate": 0.06979761286974571,
+            "shrunk_rate": 0.06737329434697856,
+            "model_coordinate": 0.3737329434697856
+          },
+          "BABIP": {
+            "annual": [
+              {
+                "season": 2018,
+                "weight": 1.0,
+                "numerator": 94.0,
+                "denominator": 360.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2017,
+                "weight": 0.8,
+                "numerator": 97.0,
+                "denominator": 335.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2016,
+                "weight": 0.6,
+                "numerator": 95.0,
+                "denominator": 352.0,
+                "covered_absence": false
+              }
+            ],
+            "numerator": 228.60000000000002,
+            "denominator": 839.2,
+            "prior_center": 0.3,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.893526405451448,
+            "unshrunk_rate": 0.2724022878932317,
+            "shrunk_rate": 0.2753407155025554,
+            "model_coordinate": -0.2465928449744459
+          },
+          "2B": {
+            "annual": [
+              {
+                "season": 2018,
+                "weight": 1.0,
+                "numerator": 28.0,
+                "denominator": 654.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2017,
+                "weight": 0.8,
+                "numerator": 28.0,
+                "denominator": 652.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2016,
+                "weight": 0.6,
+                "numerator": 24.0,
+                "denominator": 610.0,
+                "covered_absence": false
+              }
+            ],
+            "numerator": 64.8,
+            "denominator": 1541.6,
+            "prior_center": 0.05,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.9390838206627681,
+            "unshrunk_rate": 0.04203425012973534,
+            "shrunk_rate": 0.042519493177387915,
+            "model_coordinate": -0.07480506822612087
+          },
+          "3B": {
+            "annual": [
+              {
+                "season": 2018,
+                "weight": 1.0,
+                "numerator": 1.0,
+                "denominator": 654.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2017,
+                "weight": 0.8,
+                "numerator": 1.0,
+                "denominator": 652.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2016,
+                "weight": 0.6,
+                "numerator": 2.0,
+                "denominator": 610.0,
+                "covered_absence": false
+              }
+            ],
+            "numerator": 3.0,
+            "denominator": 1541.6,
+            "prior_center": 0.005,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.9390838206627681,
+            "unshrunk_rate": 0.0019460300985988585,
+            "shrunk_rate": 0.0021320662768031192,
+            "model_coordinate": -0.028679337231968808
+          }
+        }
+      },
+      "features": {
+        "pooled_MLB_K": 0.27631578947368424,
+        "pooled_MLB_BB": 0.0882066276803119,
+        "pooled_MLB_HBP": 0.013767056530214426,
+        "pooled_MLB_HR": 0.06737329434697856,
+        "pooled_MLB_BABIP": 0.2753407155025554,
+        "pooled_MLB_2B": 0.042519493177387915,
+        "pooled_MLB_3B": 0.0021320662768031192
+      },
+      "future_mutation_unchanged": true,
+      "raw_annual_MLB_counts": [
+        {
+          "season": 2016,
+          "player_id": 501981,
+          "babip_hits": 95,
+          "babip_opportunities": 352,
+          "doubles": 24,
+          "hit_by_pitch": 8,
+          "home_runs": 42,
+          "plate_appearances": 610,
+          "strike_outs": 166,
+          "triples": 2,
+          "unintentional_walks": 42
+        },
+        {
+          "season": 2017,
+          "player_id": 501981,
+          "babip_hits": 97,
+          "babip_opportunities": 335,
+          "doubles": 28,
+          "hit_by_pitch": 6,
+          "home_runs": 43,
+          "plate_appearances": 652,
+          "strike_outs": 195,
+          "triples": 1,
+          "unintentional_walks": 72
+        },
+        {
+          "season": 2018,
+          "player_id": 501981,
+          "babip_hits": 94,
+          "babip_opportunities": 360,
+          "doubles": 28,
+          "hit_by_pitch": 12,
+          "home_runs": 48,
+          "plate_appearances": 654,
+          "strike_outs": 175,
+          "triples": 1,
+          "unintentional_walks": 54
+        }
+      ],
+      "previous_forecast_unchanged": {
+        "current": 2.287558823171266,
+        "scalar": 2.4330749006087804,
+        "restored": 2.421782673254104
+      },
+      "previous_source_and_peer_walk": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-mlb-detail-restoration\\player-walks.json"
+    },
+    {
+      "row_id": 32754,
+      "player_id": 592859,
+      "player_name": "Stevie Wilkerson",
+      "origin": 2018,
+      "fold": 3,
+      "information_date": "2019-01-27",
+      "source": {
+        "cutoff": 2018,
+        "events": {
+          "K": {
+            "annual": [
+              {
+                "season": 2018,
+                "weight": 1.0,
+                "numerator": 16.0,
+                "denominator": 49.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2017,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2016,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 16.0,
+            "denominator": 49.0,
+            "prior_center": 0.23,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.3288590604026846,
+            "unshrunk_rate": 0.32653061224489793,
+            "shrunk_rate": 0.26174496644295303,
+            "model_coordinate": 0.3174496644295302
+          },
+          "BB": {
+            "annual": [
+              {
+                "season": 2018,
+                "weight": 1.0,
+                "numerator": 3.0,
+                "denominator": 49.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2017,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2016,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 3.0,
+            "denominator": 49.0,
+            "prior_center": 0.08,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.3288590604026846,
+            "unshrunk_rate": 0.061224489795918366,
+            "shrunk_rate": 0.0738255033557047,
+            "model_coordinate": -0.06174496644295299
+          },
+          "HBP": {
+            "annual": [
+              {
+                "season": 2018,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 49.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2017,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2016,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 49.0,
+            "prior_center": 0.01,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.3288590604026846,
+            "unshrunk_rate": 0.0,
+            "shrunk_rate": 0.006711409395973154,
+            "model_coordinate": -0.032885906040268455
+          },
+          "HR": {
+            "annual": [
+              {
+                "season": 2018,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 49.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2017,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2016,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 49.0,
+            "prior_center": 0.03,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.3288590604026846,
+            "unshrunk_rate": 0.0,
+            "shrunk_rate": 0.020134228187919462,
+            "model_coordinate": -0.09865771812080537
+          },
+          "BABIP": {
+            "annual": [
+              {
+                "season": 2018,
+                "weight": 1.0,
+                "numerator": 8.0,
+                "denominator": 30.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2017,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2016,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 8.0,
+            "denominator": 30.0,
+            "prior_center": 0.3,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.23076923076923078,
+            "unshrunk_rate": 0.26666666666666666,
+            "shrunk_rate": 0.2923076923076923,
+            "model_coordinate": -0.07692307692307665
+          },
+          "2B": {
+            "annual": [
+              {
+                "season": 2018,
+                "weight": 1.0,
+                "numerator": 3.0,
+                "denominator": 49.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2017,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2016,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 3.0,
+            "denominator": 49.0,
+            "prior_center": 0.05,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.3288590604026846,
+            "unshrunk_rate": 0.061224489795918366,
+            "shrunk_rate": 0.053691275167785234,
+            "model_coordinate": 0.03691275167785231
+          },
+          "3B": {
+            "annual": [
+              {
+                "season": 2018,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 49.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2017,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2016,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 49.0,
+            "prior_center": 0.005,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.3288590604026846,
+            "unshrunk_rate": 0.0,
+            "shrunk_rate": 0.003355704697986577,
+            "model_coordinate": -0.016442953020134227
+          }
+        }
+      },
+      "features": {
+        "pooled_MLB_K": 0.26174496644295303,
+        "pooled_MLB_BB": 0.0738255033557047,
+        "pooled_MLB_HBP": 0.006711409395973154,
+        "pooled_MLB_HR": 0.020134228187919462,
+        "pooled_MLB_BABIP": 0.2923076923076923,
+        "pooled_MLB_2B": 0.053691275167785234,
+        "pooled_MLB_3B": 0.003355704697986577
+      },
+      "future_mutation_unchanged": true,
+      "raw_annual_MLB_counts": [
+        {
+          "season": 2018,
+          "player_id": 592859,
+          "babip_hits": 8,
+          "babip_opportunities": 30,
+          "doubles": 3,
+          "hit_by_pitch": 0,
+          "home_runs": 0,
+          "plate_appearances": 49,
+          "strike_outs": 16,
+          "triples": 0,
+          "unintentional_walks": 3
+        }
+      ],
+      "previous_forecast_unchanged": {
+        "current": -1.2888433310966019,
+        "scalar": -1.4246217777037014,
+        "restored": -1.359750583769196
+      },
+      "previous_source_and_peer_walk": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-mlb-detail-restoration\\player-walks.json"
+    },
+    {
+      "row_id": 34339,
+      "player_id": 664034,
+      "player_name": "Ty France",
+      "origin": 2018,
+      "fold": 1,
+      "information_date": "2019-01-27",
+      "source": {
+        "cutoff": 2018,
+        "events": {
+          "K": {
+            "annual": [
+              {
+                "season": 2018,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2017,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2016,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "prior_center": 0.23,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.0,
+            "unshrunk_rate": null,
+            "shrunk_rate": 0.23,
+            "model_coordinate": 0.0
+          },
+          "BB": {
+            "annual": [
+              {
+                "season": 2018,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2017,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2016,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "prior_center": 0.08,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.0,
+            "unshrunk_rate": null,
+            "shrunk_rate": 0.08,
+            "model_coordinate": 0.0
+          },
+          "HBP": {
+            "annual": [
+              {
+                "season": 2018,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2017,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2016,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "prior_center": 0.01,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.0,
+            "unshrunk_rate": null,
+            "shrunk_rate": 0.01,
+            "model_coordinate": 0.0
+          },
+          "HR": {
+            "annual": [
+              {
+                "season": 2018,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2017,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2016,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "prior_center": 0.03,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.0,
+            "unshrunk_rate": null,
+            "shrunk_rate": 0.03,
+            "model_coordinate": 0.0
+          },
+          "BABIP": {
+            "annual": [
+              {
+                "season": 2018,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2017,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2016,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "prior_center": 0.3,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.0,
+            "unshrunk_rate": null,
+            "shrunk_rate": 0.3,
+            "model_coordinate": 0.0
+          },
+          "2B": {
+            "annual": [
+              {
+                "season": 2018,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2017,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2016,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "prior_center": 0.05,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.0,
+            "unshrunk_rate": null,
+            "shrunk_rate": 0.05,
+            "model_coordinate": 0.0
+          },
+          "3B": {
+            "annual": [
+              {
+                "season": 2018,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2017,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2016,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "prior_center": 0.005,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.0,
+            "unshrunk_rate": null,
+            "shrunk_rate": 0.005,
+            "model_coordinate": 0.0
+          }
+        }
+      },
+      "features": {
+        "pooled_MLB_K": 0.23,
+        "pooled_MLB_BB": 0.08,
+        "pooled_MLB_HBP": 0.01,
+        "pooled_MLB_HR": 0.03,
+        "pooled_MLB_BABIP": 0.3,
+        "pooled_MLB_2B": 0.05,
+        "pooled_MLB_3B": 0.005
+      },
+      "future_mutation_unchanged": true,
+      "raw_annual_MLB_counts": [],
+      "previous_forecast_unchanged": {
+        "current": -0.2214123077242372,
+        "scalar": 0.03750358053767211,
+        "restored": -0.02485969206399885
+      },
+      "previous_source_and_peer_walk": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-mlb-detail-restoration\\player-walks.json"
+    },
+    {
+      "row_id": 35088,
+      "player_id": 670541,
+      "player_name": "Yordan Alvarez",
+      "origin": 2018,
+      "fold": 2,
+      "information_date": "2019-01-27",
+      "source": {
+        "cutoff": 2018,
+        "events": {
+          "K": {
+            "annual": [
+              {
+                "season": 2018,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2017,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2016,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "prior_center": 0.23,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.0,
+            "unshrunk_rate": null,
+            "shrunk_rate": 0.23,
+            "model_coordinate": 0.0
+          },
+          "BB": {
+            "annual": [
+              {
+                "season": 2018,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2017,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2016,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "prior_center": 0.08,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.0,
+            "unshrunk_rate": null,
+            "shrunk_rate": 0.08,
+            "model_coordinate": 0.0
+          },
+          "HBP": {
+            "annual": [
+              {
+                "season": 2018,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2017,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2016,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "prior_center": 0.01,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.0,
+            "unshrunk_rate": null,
+            "shrunk_rate": 0.01,
+            "model_coordinate": 0.0
+          },
+          "HR": {
+            "annual": [
+              {
+                "season": 2018,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2017,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2016,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "prior_center": 0.03,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.0,
+            "unshrunk_rate": null,
+            "shrunk_rate": 0.03,
+            "model_coordinate": 0.0
+          },
+          "BABIP": {
+            "annual": [
+              {
+                "season": 2018,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2017,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2016,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "prior_center": 0.3,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.0,
+            "unshrunk_rate": null,
+            "shrunk_rate": 0.3,
+            "model_coordinate": 0.0
+          },
+          "2B": {
+            "annual": [
+              {
+                "season": 2018,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2017,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2016,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "prior_center": 0.05,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.0,
+            "unshrunk_rate": null,
+            "shrunk_rate": 0.05,
+            "model_coordinate": 0.0
+          },
+          "3B": {
+            "annual": [
+              {
+                "season": 2018,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2017,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2016,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "prior_center": 0.005,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.0,
+            "unshrunk_rate": null,
+            "shrunk_rate": 0.005,
+            "model_coordinate": 0.0
+          }
+        }
+      },
+      "features": {
+        "pooled_MLB_K": 0.23,
+        "pooled_MLB_BB": 0.08,
+        "pooled_MLB_HBP": 0.01,
+        "pooled_MLB_HR": 0.03,
+        "pooled_MLB_BABIP": 0.3,
+        "pooled_MLB_2B": 0.05,
+        "pooled_MLB_3B": 0.005
+      },
+      "future_mutation_unchanged": true,
+      "raw_annual_MLB_counts": [],
+      "previous_forecast_unchanged": {
+        "current": 0.45465027367510036,
+        "scalar": 0.49301804137329003,
+        "restored": 0.47174450116346817
+      },
+      "previous_source_and_peer_walk": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-mlb-detail-restoration\\player-walks.json"
+    },
+    {
+      "row_id": 42235,
+      "player_id": 543592,
+      "player_name": "Austin Nola",
+      "origin": 2021,
+      "fold": 2,
+      "information_date": "2022-03-18",
+      "source": {
+        "cutoff": 2021,
+        "events": {
+          "K": {
+            "annual": [
+              {
+                "season": 2021,
+                "weight": 1.0,
+                "numerator": 19.0,
+                "denominator": 194.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2020,
+                "weight": 0.8,
+                "numerator": 34.0,
+                "denominator": 184.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2019,
+                "weight": 0.6,
+                "numerator": 63.0,
+                "denominator": 267.0,
+                "covered_absence": false
+              }
+            ],
+            "numerator": 84.0,
+            "denominator": 501.4,
+            "prior_center": 0.23,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.8337213169271699,
+            "unshrunk_rate": 0.1675309134423614,
+            "shrunk_rate": 0.17791819088792818,
+            "model_coordinate": -0.5208180911207183
+          },
+          "BB": {
+            "annual": [
+              {
+                "season": 2021,
+                "weight": 1.0,
+                "numerator": 14.0,
+                "denominator": 194.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2020,
+                "weight": 0.8,
+                "numerator": 17.0,
+                "denominator": 184.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2019,
+                "weight": 0.6,
+                "numerator": 22.0,
+                "denominator": 267.0,
+                "covered_absence": false
+              }
+            ],
+            "numerator": 40.8,
+            "denominator": 501.4,
+            "prior_center": 0.08,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.8337213169271699,
+            "unshrunk_rate": 0.08137215795771839,
+            "shrunk_rate": 0.08114399733954107,
+            "model_coordinate": 0.011439973395410696
+          },
+          "HBP": {
+            "annual": [
+              {
+                "season": 2021,
+                "weight": 1.0,
+                "numerator": 5.0,
+                "denominator": 194.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2020,
+                "weight": 0.8,
+                "numerator": 3.0,
+                "denominator": 184.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2019,
+                "weight": 0.6,
+                "numerator": 4.0,
+                "denominator": 267.0,
+                "covered_absence": false
+              }
+            ],
+            "numerator": 9.8,
+            "denominator": 501.4,
+            "prior_center": 0.01,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.8337213169271699,
+            "unshrunk_rate": 0.019545273234942165,
+            "shrunk_rate": 0.017958097771865647,
+            "model_coordinate": 0.07958097771865646
+          },
+          "HR": {
+            "annual": [
+              {
+                "season": 2021,
+                "weight": 1.0,
+                "numerator": 2.0,
+                "denominator": 194.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2020,
+                "weight": 0.8,
+                "numerator": 7.0,
+                "denominator": 184.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2019,
+                "weight": 0.6,
+                "numerator": 10.0,
+                "denominator": 267.0,
+                "covered_absence": false
+              }
+            ],
+            "numerator": 13.600000000000001,
+            "denominator": 501.4,
+            "prior_center": 0.03,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.8337213169271699,
+            "unshrunk_rate": 0.0271240526525728,
+            "shrunk_rate": 0.027602261390089793,
+            "model_coordinate": -0.023977386099102056
+          },
+          "BABIP": {
+            "annual": [
+              {
+                "season": 2021,
+                "weight": 1.0,
+                "numerator": 45.0,
+                "denominator": 154.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2020,
+                "weight": 0.8,
+                "numerator": 37.0,
+                "denominator": 122.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2019,
+                "weight": 0.6,
+                "numerator": 54.0,
+                "denominator": 166.0,
+                "covered_absence": false
+              }
+            ],
+            "numerator": 107.0,
+            "denominator": 351.2,
+            "prior_center": 0.3,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.7783687943262412,
+            "unshrunk_rate": 0.30466970387243736,
+            "shrunk_rate": 0.30363475177304966,
+            "model_coordinate": 0.036347517730496715
+          },
+          "2B": {
+            "annual": [
+              {
+                "season": 2021,
+                "weight": 1.0,
+                "numerator": 12.0,
+                "denominator": 194.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2020,
+                "weight": 0.8,
+                "numerator": 9.0,
+                "denominator": 184.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2019,
+                "weight": 0.6,
+                "numerator": 12.0,
+                "denominator": 267.0,
+                "covered_absence": false
+              }
+            ],
+            "numerator": 26.4,
+            "denominator": 501.4,
+            "prior_center": 0.05,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.8337213169271699,
+            "unshrunk_rate": 0.05265257279617072,
+            "shrunk_rate": 0.052211506484868636,
+            "model_coordinate": 0.022115064848686333
+          },
+          "3B": {
+            "annual": [
+              {
+                "season": 2021,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 194.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2020,
+                "weight": 0.8,
+                "numerator": 1.0,
+                "denominator": 184.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2019,
+                "weight": 0.6,
+                "numerator": 1.0,
+                "denominator": 267.0,
+                "covered_absence": false
+              }
+            ],
+            "numerator": 1.4,
+            "denominator": 501.4,
+            "prior_center": 0.005,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.8337213169271699,
+            "unshrunk_rate": 0.002792181890706023,
+            "shrunk_rate": 0.003159294978383771,
+            "model_coordinate": -0.018407050216162287
+          }
+        }
+      },
+      "features": {
+        "pooled_MLB_K": 0.17791819088792818,
+        "pooled_MLB_BB": 0.08114399733954107,
+        "pooled_MLB_HBP": 0.017958097771865647,
+        "pooled_MLB_HR": 0.027602261390089793,
+        "pooled_MLB_BABIP": 0.30363475177304966,
+        "pooled_MLB_2B": 0.052211506484868636,
+        "pooled_MLB_3B": 0.003159294978383771
+      },
+      "future_mutation_unchanged": true,
+      "raw_annual_MLB_counts": [
+        {
+          "season": 2019,
+          "player_id": 543592,
+          "babip_hits": 54,
+          "babip_opportunities": 166,
+          "doubles": 12,
+          "hit_by_pitch": 4,
+          "home_runs": 10,
+          "plate_appearances": 267,
+          "strike_outs": 63,
+          "triples": 1,
+          "unintentional_walks": 22
+        },
+        {
+          "season": 2020,
+          "player_id": 543592,
+          "babip_hits": 37,
+          "babip_opportunities": 122,
+          "doubles": 9,
+          "hit_by_pitch": 3,
+          "home_runs": 7,
+          "plate_appearances": 184,
+          "strike_outs": 34,
+          "triples": 1,
+          "unintentional_walks": 17
+        },
+        {
+          "season": 2021,
+          "player_id": 543592,
+          "babip_hits": 45,
+          "babip_opportunities": 154,
+          "doubles": 12,
+          "hit_by_pitch": 5,
+          "home_runs": 2,
+          "plate_appearances": 194,
+          "strike_outs": 19,
+          "triples": 0,
+          "unintentional_walks": 14
+        }
+      ],
+      "previous_forecast_unchanged": {
+        "current": -0.2806610651475506,
+        "scalar": -0.340646768158675,
+        "restored": -0.2669822829382087
+      },
+      "previous_source_and_peer_walk": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-mlb-detail-restoration\\player-walks.json"
+    },
+    {
+      "row_id": 43296,
+      "player_id": 665487,
+      "player_name": "Fernando Tatis Jr.",
+      "origin": 2021,
+      "fold": 0,
+      "information_date": "2022-03-18",
+      "source": {
+        "cutoff": 2021,
+        "events": {
+          "K": {
+            "annual": [
+              {
+                "season": 2021,
+                "weight": 1.0,
+                "numerator": 153.0,
+                "denominator": 546.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2020,
+                "weight": 0.8,
+                "numerator": 61.0,
+                "denominator": 257.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2019,
+                "weight": 0.6,
+                "numerator": 110.0,
+                "denominator": 372.0,
+                "covered_absence": false
+              }
+            ],
+            "numerator": 267.8,
+            "denominator": 974.8,
+            "prior_center": 0.23,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.9069594343133606,
+            "unshrunk_rate": 0.2747230201066886,
+            "shrunk_rate": 0.27056196501674734,
+            "model_coordinate": 0.4056196501674733
+          },
+          "BB": {
+            "annual": [
+              {
+                "season": 2021,
+                "weight": 1.0,
+                "numerator": 56.0,
+                "denominator": 546.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2020,
+                "weight": 0.8,
+                "numerator": 26.0,
+                "denominator": 257.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2019,
+                "weight": 0.6,
+                "numerator": 29.0,
+                "denominator": 372.0,
+                "covered_absence": false
+              }
+            ],
+            "numerator": 94.2,
+            "denominator": 974.8,
+            "prior_center": 0.08,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.9069594343133606,
+            "unshrunk_rate": 0.09663520722199426,
+            "shrunk_rate": 0.09508745813174545,
+            "model_coordinate": 0.15087458131745446
+          },
+          "HBP": {
+            "annual": [
+              {
+                "season": 2021,
+                "weight": 1.0,
+                "numerator": 2.0,
+                "denominator": 546.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2020,
+                "weight": 0.8,
+                "numerator": 5.0,
+                "denominator": 257.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2019,
+                "weight": 0.6,
+                "numerator": 5.0,
+                "denominator": 372.0,
+                "covered_absence": false
+              }
+            ],
+            "numerator": 9.0,
+            "denominator": 974.8,
+            "prior_center": 0.01,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.9069594343133606,
+            "unshrunk_rate": 0.009232663110381617,
+            "shrunk_rate": 0.009304056568663939,
+            "model_coordinate": -0.006959434313360616
+          },
+          "HR": {
+            "annual": [
+              {
+                "season": 2021,
+                "weight": 1.0,
+                "numerator": 42.0,
+                "denominator": 546.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2020,
+                "weight": 0.8,
+                "numerator": 17.0,
+                "denominator": 257.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2019,
+                "weight": 0.6,
+                "numerator": 22.0,
+                "denominator": 372.0,
+                "covered_absence": false
+              }
+            ],
+            "numerator": 68.8,
+            "denominator": 974.8,
+            "prior_center": 0.03,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.9069594343133606,
+            "unshrunk_rate": 0.07057858022158392,
+            "shrunk_rate": 0.06680312616300707,
+            "model_coordinate": 0.3680312616300707
+          },
+          "BABIP": {
+            "annual": [
+              {
+                "season": 2021,
+                "weight": 1.0,
+                "numerator": 93.0,
+                "denominator": 287.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2020,
+                "weight": 0.8,
+                "numerator": 45.0,
+                "denominator": 147.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2019,
+                "weight": 0.6,
+                "numerator": 84.0,
+                "denominator": 205.0,
+                "covered_absence": false
+              }
+            ],
+            "numerator": 179.4,
+            "denominator": 527.6,
+            "prior_center": 0.3,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.8406628425748884,
+            "unshrunk_rate": 0.3400303260045489,
+            "shrunk_rate": 0.33365200764818354,
+            "model_coordinate": 0.33652007648183546
+          },
+          "2B": {
+            "annual": [
+              {
+                "season": 2021,
+                "weight": 1.0,
+                "numerator": 31.0,
+                "denominator": 546.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2020,
+                "weight": 0.8,
+                "numerator": 11.0,
+                "denominator": 257.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2019,
+                "weight": 0.6,
+                "numerator": 13.0,
+                "denominator": 372.0,
+                "covered_absence": false
+              }
+            ],
+            "numerator": 47.6,
+            "denominator": 974.8,
+            "prior_center": 0.05,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.9069594343133606,
+            "unshrunk_rate": 0.04883052933935166,
+            "shrunk_rate": 0.048939337551172316,
+            "model_coordinate": -0.010606624488276872
+          },
+          "3B": {
+            "annual": [
+              {
+                "season": 2021,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 546.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2020,
+                "weight": 0.8,
+                "numerator": 2.0,
+                "denominator": 257.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2019,
+                "weight": 0.6,
+                "numerator": 6.0,
+                "denominator": 372.0,
+                "covered_absence": false
+              }
+            ],
+            "numerator": 5.199999999999999,
+            "denominator": 974.8,
+            "prior_center": 0.005,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.9069594343133606,
+            "unshrunk_rate": 0.005334427574887156,
+            "shrunk_rate": 0.005303312244138444,
+            "model_coordinate": 0.0030331224413844386
+          }
+        }
+      },
+      "features": {
+        "pooled_MLB_K": 0.27056196501674734,
+        "pooled_MLB_BB": 0.09508745813174545,
+        "pooled_MLB_HBP": 0.009304056568663939,
+        "pooled_MLB_HR": 0.06680312616300707,
+        "pooled_MLB_BABIP": 0.33365200764818354,
+        "pooled_MLB_2B": 0.048939337551172316,
+        "pooled_MLB_3B": 0.005303312244138444
+      },
+      "future_mutation_unchanged": true,
+      "raw_annual_MLB_counts": [
+        {
+          "season": 2019,
+          "player_id": 665487,
+          "babip_hits": 84,
+          "babip_opportunities": 205,
+          "doubles": 13,
+          "hit_by_pitch": 5,
+          "home_runs": 22,
+          "plate_appearances": 372,
+          "strike_outs": 110,
+          "triples": 6,
+          "unintentional_walks": 29
+        },
+        {
+          "season": 2020,
+          "player_id": 665487,
+          "babip_hits": 45,
+          "babip_opportunities": 147,
+          "doubles": 11,
+          "hit_by_pitch": 5,
+          "home_runs": 17,
+          "plate_appearances": 257,
+          "strike_outs": 61,
+          "triples": 2,
+          "unintentional_walks": 26
+        },
+        {
+          "season": 2021,
+          "player_id": 665487,
+          "babip_hits": 93,
+          "babip_opportunities": 287,
+          "doubles": 31,
+          "hit_by_pitch": 2,
+          "home_runs": 42,
+          "plate_appearances": 546,
+          "strike_outs": 153,
+          "triples": 0,
+          "unintentional_walks": 56
+        }
+      ],
+      "previous_forecast_unchanged": {
+        "current": 2.9193332375275407,
+        "scalar": 2.9897746133721332,
+        "restored": 3.261155768860817
+      },
+      "previous_source_and_peer_walk": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-mlb-detail-restoration\\player-walks.json"
+    },
+    {
+      "row_id": 47765,
+      "player_id": 673548,
+      "player_name": "Seiya Suzuki",
+      "origin": 2022,
+      "fold": 1,
+      "information_date": "2023-01-26",
+      "source": {
+        "cutoff": 2022,
+        "events": {
+          "K": {
+            "annual": [
+              {
+                "season": 2022,
+                "weight": 1.0,
+                "numerator": 110.0,
+                "denominator": 446.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2021,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2020,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 110.0,
+            "denominator": 446.0,
+            "prior_center": 0.23,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.8168498168498168,
+            "unshrunk_rate": 0.24663677130044842,
+            "shrunk_rate": 0.24358974358974358,
+            "model_coordinate": 0.13589743589743575
+          },
+          "BB": {
+            "annual": [
+              {
+                "season": 2022,
+                "weight": 1.0,
+                "numerator": 39.0,
+                "denominator": 446.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2021,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2020,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 39.0,
+            "denominator": 446.0,
+            "prior_center": 0.08,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.8168498168498168,
+            "unshrunk_rate": 0.08744394618834081,
+            "shrunk_rate": 0.08608058608058608,
+            "model_coordinate": 0.060805860805860784
+          },
+          "HBP": {
+            "annual": [
+              {
+                "season": 2022,
+                "weight": 1.0,
+                "numerator": 4.0,
+                "denominator": 446.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2021,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2020,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 4.0,
+            "denominator": 446.0,
+            "prior_center": 0.01,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.8168498168498168,
+            "unshrunk_rate": 0.008968609865470852,
+            "shrunk_rate": 0.009157509157509158,
+            "model_coordinate": -0.008424908424908423
+          },
+          "HR": {
+            "annual": [
+              {
+                "season": 2022,
+                "weight": 1.0,
+                "numerator": 14.0,
+                "denominator": 446.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2021,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2020,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 14.0,
+            "denominator": 446.0,
+            "prior_center": 0.03,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.8168498168498168,
+            "unshrunk_rate": 0.03139013452914798,
+            "shrunk_rate": 0.031135531135531136,
+            "model_coordinate": 0.01135531135531137
+          },
+          "BABIP": {
+            "annual": [
+              {
+                "season": 2022,
+                "weight": 1.0,
+                "numerator": 90.0,
+                "denominator": 276.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2021,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2020,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 90.0,
+            "denominator": 276.0,
+            "prior_center": 0.3,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.7340425531914894,
+            "unshrunk_rate": 0.32608695652173914,
+            "shrunk_rate": 0.3191489361702128,
+            "model_coordinate": 0.19148936170212794
+          },
+          "2B": {
+            "annual": [
+              {
+                "season": 2022,
+                "weight": 1.0,
+                "numerator": 22.0,
+                "denominator": 446.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2021,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2020,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 22.0,
+            "denominator": 446.0,
+            "prior_center": 0.05,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.8168498168498168,
+            "unshrunk_rate": 0.04932735426008968,
+            "shrunk_rate": 0.04945054945054945,
+            "model_coordinate": -0.005494505494505544
+          },
+          "3B": {
+            "annual": [
+              {
+                "season": 2022,
+                "weight": 1.0,
+                "numerator": 2.0,
+                "denominator": 446.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2021,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2020,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 2.0,
+            "denominator": 446.0,
+            "prior_center": 0.005,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.8168498168498168,
+            "unshrunk_rate": 0.004484304932735426,
+            "shrunk_rate": 0.004578754578754579,
+            "model_coordinate": -0.004212454212454211
+          }
+        }
+      },
+      "features": {
+        "pooled_MLB_K": 0.24358974358974358,
+        "pooled_MLB_BB": 0.08608058608058608,
+        "pooled_MLB_HBP": 0.009157509157509158,
+        "pooled_MLB_HR": 0.031135531135531136,
+        "pooled_MLB_BABIP": 0.3191489361702128,
+        "pooled_MLB_2B": 0.04945054945054945,
+        "pooled_MLB_3B": 0.004578754578754579
+      },
+      "future_mutation_unchanged": true,
+      "raw_annual_MLB_counts": [
+        {
+          "season": 2022,
+          "player_id": 673548,
+          "babip_hits": 90,
+          "babip_opportunities": 276,
+          "doubles": 22,
+          "hit_by_pitch": 4,
+          "home_runs": 14,
+          "plate_appearances": 446,
+          "strike_outs": 110,
+          "triples": 2,
+          "unintentional_walks": 39
+        }
+      ],
+      "previous_forecast_unchanged": {
+        "current": 0.16007640390168365,
+        "scalar": 2.7191177205714796,
+        "restored": 2.5986218360220747
+      },
+      "previous_source_and_peer_walk": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-mlb-detail-restoration\\player-walks.json"
+    },
+    {
+      "row_id": 50698,
+      "player_id": 592450,
+      "player_name": "Aaron Judge",
+      "origin": 2023,
+      "fold": 3,
+      "information_date": "2024-01-26",
+      "source": {
+        "cutoff": 2023,
+        "events": {
+          "K": {
+            "annual": [
+              {
+                "season": 2023,
+                "weight": 1.0,
+                "numerator": 130.0,
+                "denominator": 458.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2022,
+                "weight": 0.8,
+                "numerator": 175.0,
+                "denominator": 696.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2021,
+                "weight": 0.6,
+                "numerator": 158.0,
+                "denominator": 633.0,
+                "covered_absence": false
+              }
+            ],
+            "numerator": 364.8,
+            "denominator": 1394.6000000000001,
+            "prior_center": 0.23,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.9330924662116954,
+            "unshrunk_rate": 0.2615803814713896,
+            "shrunk_rate": 0.25946741603104506,
+            "model_coordinate": 0.2946741603104505
+          },
+          "BB": {
+            "annual": [
+              {
+                "season": 2023,
+                "weight": 1.0,
+                "numerator": 79.0,
+                "denominator": 458.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2022,
+                "weight": 0.8,
+                "numerator": 92.0,
+                "denominator": 696.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2021,
+                "weight": 0.6,
+                "numerator": 73.0,
+                "denominator": 633.0,
+                "covered_absence": false
+              }
+            ],
+            "numerator": 196.4,
+            "denominator": 1394.6000000000001,
+            "prior_center": 0.08,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.9330924662116954,
+            "unshrunk_rate": 0.14082891151584684,
+            "shrunk_rate": 0.13675899906329453,
+            "model_coordinate": 0.5675899906329452
+          },
+          "HBP": {
+            "annual": [
+              {
+                "season": 2023,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 458.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2022,
+                "weight": 0.8,
+                "numerator": 6.0,
+                "denominator": 696.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2021,
+                "weight": 0.6,
+                "numerator": 3.0,
+                "denominator": 633.0,
+                "covered_absence": false
+              }
+            ],
+            "numerator": 6.6000000000000005,
+            "denominator": 1394.6000000000001,
+            "prior_center": 0.01,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.9330924662116954,
+            "unshrunk_rate": 0.0047325397963573785,
+            "shrunk_rate": 0.005084972567911147,
+            "model_coordinate": -0.04915027432088853
+          },
+          "HR": {
+            "annual": [
+              {
+                "season": 2023,
+                "weight": 1.0,
+                "numerator": 37.0,
+                "denominator": 458.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2022,
+                "weight": 0.8,
+                "numerator": 62.0,
+                "denominator": 696.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2021,
+                "weight": 0.6,
+                "numerator": 39.0,
+                "denominator": 633.0,
+                "covered_absence": false
+              }
+            ],
+            "numerator": 110.0,
+            "denominator": 1394.6000000000001,
+            "prior_center": 0.03,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.9330924662116954,
+            "unshrunk_rate": 0.07887566327262296,
+            "shrunk_rate": 0.07560551318078415,
+            "model_coordinate": 0.4560551318078415
+          },
+          "BABIP": {
+            "annual": [
+              {
+                "season": 2023,
+                "weight": 1.0,
+                "numerator": 61.0,
+                "denominator": 203.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2022,
+                "weight": 0.8,
+                "numerator": 115.0,
+                "denominator": 338.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2021,
+                "weight": 0.6,
+                "numerator": 119.0,
+                "denominator": 358.0,
+                "covered_absence": false
+              }
+            ],
+            "numerator": 224.39999999999998,
+            "denominator": 688.2,
+            "prior_center": 0.3,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.8731286475513829,
+            "unshrunk_rate": 0.32606800348735826,
+            "shrunk_rate": 0.32276072062928185,
+            "model_coordinate": 0.2276072062928186
+          },
+          "2B": {
+            "annual": [
+              {
+                "season": 2023,
+                "weight": 1.0,
+                "numerator": 16.0,
+                "denominator": 458.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2022,
+                "weight": 0.8,
+                "numerator": 28.0,
+                "denominator": 696.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2021,
+                "weight": 0.6,
+                "numerator": 24.0,
+                "denominator": 633.0,
+                "covered_absence": false
+              }
+            ],
+            "numerator": 52.8,
+            "denominator": 1394.6000000000001,
+            "prior_center": 0.05,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.9330924662116954,
+            "unshrunk_rate": 0.03786031837085902,
+            "shrunk_rate": 0.03867255452964003,
+            "model_coordinate": -0.11327445470359972
+          },
+          "3B": {
+            "annual": [
+              {
+                "season": 2023,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 458.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2022,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 696.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2021,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 633.0,
+                "covered_absence": false
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 1394.6000000000001,
+            "prior_center": 0.005,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.9330924662116954,
+            "unshrunk_rate": 0.0,
+            "shrunk_rate": 0.00033453766894152277,
+            "model_coordinate": -0.046654623310584765
+          }
+        }
+      },
+      "features": {
+        "pooled_MLB_K": 0.25946741603104506,
+        "pooled_MLB_BB": 0.13675899906329453,
+        "pooled_MLB_HBP": 0.005084972567911147,
+        "pooled_MLB_HR": 0.07560551318078415,
+        "pooled_MLB_BABIP": 0.32276072062928185,
+        "pooled_MLB_2B": 0.03867255452964003,
+        "pooled_MLB_3B": 0.00033453766894152277
+      },
+      "future_mutation_unchanged": true,
+      "raw_annual_MLB_counts": [
+        {
+          "season": 2021,
+          "player_id": 592450,
+          "babip_hits": 119,
+          "babip_opportunities": 358,
+          "doubles": 24,
+          "hit_by_pitch": 3,
+          "home_runs": 39,
+          "plate_appearances": 633,
+          "strike_outs": 158,
+          "triples": 0,
+          "unintentional_walks": 73
+        },
+        {
+          "season": 2022,
+          "player_id": 592450,
+          "babip_hits": 115,
+          "babip_opportunities": 338,
+          "doubles": 28,
+          "hit_by_pitch": 6,
+          "home_runs": 62,
+          "plate_appearances": 696,
+          "strike_outs": 175,
+          "triples": 0,
+          "unintentional_walks": 92
+        },
+        {
+          "season": 2023,
+          "player_id": 592450,
+          "babip_hits": 61,
+          "babip_opportunities": 203,
+          "doubles": 16,
+          "hit_by_pitch": 0,
+          "home_runs": 37,
+          "plate_appearances": 458,
+          "strike_outs": 130,
+          "triples": 0,
+          "unintentional_walks": 79
+        }
+      ],
+      "previous_forecast_unchanged": {
+        "current": 3.898806733708158,
+        "scalar": 3.5112957786353047,
+        "restored": 3.7739902302224038
+      },
+      "previous_source_and_peer_walk": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-mlb-detail-restoration\\player-walks.json"
+    },
+    {
+      "row_id": 55509,
+      "player_id": 670224,
+      "player_name": "Kameron Misner",
+      "origin": 2024,
+      "fold": 3,
+      "information_date": "2025-01-24",
+      "source": {
+        "cutoff": 2024,
+        "events": {
+          "K": {
+            "annual": [
+              {
+                "season": 2024,
+                "weight": 1.0,
+                "numerator": 10.0,
+                "denominator": 15.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2023,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2022,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 10.0,
+            "denominator": 15.0,
+            "prior_center": 0.23,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.13043478260869565,
+            "unshrunk_rate": 0.6666666666666666,
+            "shrunk_rate": 0.28695652173913044,
+            "model_coordinate": 0.5695652173913043
+          },
+          "BB": {
+            "annual": [
+              {
+                "season": 2024,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 15.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2023,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2022,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 15.0,
+            "prior_center": 0.08,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.13043478260869565,
+            "unshrunk_rate": 0.0,
+            "shrunk_rate": 0.06956521739130435,
+            "model_coordinate": -0.10434782608695653
+          },
+          "HBP": {
+            "annual": [
+              {
+                "season": 2024,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 15.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2023,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2022,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 15.0,
+            "prior_center": 0.01,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.13043478260869565,
+            "unshrunk_rate": 0.0,
+            "shrunk_rate": 0.008695652173913044,
+            "model_coordinate": -0.013043478260869566
+          },
+          "HR": {
+            "annual": [
+              {
+                "season": 2024,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 15.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2023,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2022,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 15.0,
+            "prior_center": 0.03,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.13043478260869565,
+            "unshrunk_rate": 0.0,
+            "shrunk_rate": 0.02608695652173913,
+            "model_coordinate": -0.0391304347826087
+          },
+          "BABIP": {
+            "annual": [
+              {
+                "season": 2024,
+                "weight": 1.0,
+                "numerator": 1.0,
+                "denominator": 5.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2023,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2022,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 1.0,
+            "denominator": 5.0,
+            "prior_center": 0.3,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.047619047619047616,
+            "unshrunk_rate": 0.2,
+            "shrunk_rate": 0.29523809523809524,
+            "model_coordinate": -0.04761904761904745
+          },
+          "2B": {
+            "annual": [
+              {
+                "season": 2024,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 15.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2023,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2022,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 15.0,
+            "prior_center": 0.05,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.13043478260869565,
+            "unshrunk_rate": 0.0,
+            "shrunk_rate": 0.043478260869565216,
+            "model_coordinate": -0.06521739130434787
+          },
+          "3B": {
+            "annual": [
+              {
+                "season": 2024,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 15.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2023,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2022,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 15.0,
+            "prior_center": 0.005,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.13043478260869565,
+            "unshrunk_rate": 0.0,
+            "shrunk_rate": 0.004347826086956522,
+            "model_coordinate": -0.006521739130434783
+          }
+        }
+      },
+      "features": {
+        "pooled_MLB_K": 0.28695652173913044,
+        "pooled_MLB_BB": 0.06956521739130435,
+        "pooled_MLB_HBP": 0.008695652173913044,
+        "pooled_MLB_HR": 0.02608695652173913,
+        "pooled_MLB_BABIP": 0.29523809523809524,
+        "pooled_MLB_2B": 0.043478260869565216,
+        "pooled_MLB_3B": 0.004347826086956522
+      },
+      "future_mutation_unchanged": true,
+      "raw_annual_MLB_counts": [
+        {
+          "season": 2024,
+          "player_id": 670224,
+          "babip_hits": 1,
+          "babip_opportunities": 5,
+          "doubles": 0,
+          "hit_by_pitch": 0,
+          "home_runs": 0,
+          "plate_appearances": 15,
+          "strike_outs": 10,
+          "triples": 0,
+          "unintentional_walks": 0
+        }
+      ],
+      "previous_forecast_unchanged": {
+        "current": -1.8400519350863322,
+        "scalar": -2.01609420305879,
+        "restored": -1.9593874401781135
+      },
+      "previous_source_and_peer_walk": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-mlb-detail-restoration\\player-walks.json"
+    },
+    {
+      "row_id": 55587,
+      "player_id": 672695,
+      "player_name": "Geraldo Perdomo",
+      "origin": 2024,
+      "fold": 1,
+      "information_date": "2025-01-24",
+      "source": {
+        "cutoff": 2024,
+        "events": {
+          "K": {
+            "annual": [
+              {
+                "season": 2024,
+                "weight": 1.0,
+                "numerator": 58.0,
+                "denominator": 388.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2023,
+                "weight": 0.8,
+                "numerator": 86.0,
+                "denominator": 495.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2022,
+                "weight": 0.6,
+                "numerator": 103.0,
+                "denominator": 500.0,
+                "covered_absence": false
+              }
+            ],
+            "numerator": 188.6,
+            "denominator": 1084.0,
+            "prior_center": 0.23,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.9155405405405406,
+            "unshrunk_rate": 0.17398523985239853,
+            "shrunk_rate": 0.17871621621621622,
+            "model_coordinate": -0.5128378378378379
+          },
+          "BB": {
+            "annual": [
+              {
+                "season": 2024,
+                "weight": 1.0,
+                "numerator": 36.0,
+                "denominator": 388.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2023,
+                "weight": 0.8,
+                "numerator": 63.0,
+                "denominator": 495.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2022,
+                "weight": 0.6,
+                "numerator": 50.0,
+                "denominator": 500.0,
+                "covered_absence": false
+              }
+            ],
+            "numerator": 116.4,
+            "denominator": 1084.0,
+            "prior_center": 0.08,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.9155405405405406,
+            "unshrunk_rate": 0.10738007380073801,
+            "shrunk_rate": 0.10506756756756758,
+            "model_coordinate": 0.2506756756756757
+          },
+          "HBP": {
+            "annual": [
+              {
+                "season": 2024,
+                "weight": 1.0,
+                "numerator": 3.0,
+                "denominator": 388.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2023,
+                "weight": 0.8,
+                "numerator": 6.0,
+                "denominator": 495.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2022,
+                "weight": 0.6,
+                "numerator": 5.0,
+                "denominator": 500.0,
+                "covered_absence": false
+              }
+            ],
+            "numerator": 10.8,
+            "denominator": 1084.0,
+            "prior_center": 0.01,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.9155405405405406,
+            "unshrunk_rate": 0.00996309963099631,
+            "shrunk_rate": 0.009966216216216217,
+            "model_coordinate": -0.0003378378378378344
+          },
+          "HR": {
+            "annual": [
+              {
+                "season": 2024,
+                "weight": 1.0,
+                "numerator": 3.0,
+                "denominator": 388.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2023,
+                "weight": 0.8,
+                "numerator": 6.0,
+                "denominator": 495.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2022,
+                "weight": 0.6,
+                "numerator": 5.0,
+                "denominator": 500.0,
+                "covered_absence": false
+              }
+            ],
+            "numerator": 10.8,
+            "denominator": 1084.0,
+            "prior_center": 0.03,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.9155405405405406,
+            "unshrunk_rate": 0.00996309963099631,
+            "shrunk_rate": 0.011655405405405406,
+            "model_coordinate": -0.18344594594594593
+          },
+          "BABIP": {
+            "annual": [
+              {
+                "season": 2024,
+                "weight": 1.0,
+                "numerator": 89.0,
+                "denominator": 281.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2023,
+                "weight": 0.8,
+                "numerator": 94.0,
+                "denominator": 319.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2022,
+                "weight": 0.6,
+                "numerator": 79.0,
+                "denominator": 325.0,
+                "covered_absence": false
+              }
+            ],
+            "numerator": 211.6,
+            "denominator": 731.2,
+            "prior_center": 0.3,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.8796920115495669,
+            "unshrunk_rate": 0.2893873085339168,
+            "shrunk_rate": 0.2906641000962464,
+            "model_coordinate": -0.09335899903753608
+          },
+          "2B": {
+            "annual": [
+              {
+                "season": 2024,
+                "weight": 1.0,
+                "numerator": 21.0,
+                "denominator": 388.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2023,
+                "weight": 0.8,
+                "numerator": 20.0,
+                "denominator": 495.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2022,
+                "weight": 0.6,
+                "numerator": 10.0,
+                "denominator": 500.0,
+                "covered_absence": false
+              }
+            ],
+            "numerator": 43.0,
+            "denominator": 1084.0,
+            "prior_center": 0.05,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.9155405405405406,
+            "unshrunk_rate": 0.03966789667896679,
+            "shrunk_rate": 0.04054054054054054,
+            "model_coordinate": -0.0945945945945946
+          },
+          "3B": {
+            "annual": [
+              {
+                "season": 2024,
+                "weight": 1.0,
+                "numerator": 2.0,
+                "denominator": 388.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2023,
+                "weight": 0.8,
+                "numerator": 4.0,
+                "denominator": 495.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2022,
+                "weight": 0.6,
+                "numerator": 2.0,
+                "denominator": 500.0,
+                "covered_absence": false
+              }
+            ],
+            "numerator": 6.4,
+            "denominator": 1084.0,
+            "prior_center": 0.005,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.9155405405405406,
+            "unshrunk_rate": 0.005904059040590407,
+            "shrunk_rate": 0.005827702702702703,
+            "model_coordinate": 0.00827702702702703
+          }
+        }
+      },
+      "features": {
+        "pooled_MLB_K": 0.17871621621621622,
+        "pooled_MLB_BB": 0.10506756756756758,
+        "pooled_MLB_HBP": 0.009966216216216217,
+        "pooled_MLB_HR": 0.011655405405405406,
+        "pooled_MLB_BABIP": 0.2906641000962464,
+        "pooled_MLB_2B": 0.04054054054054054,
+        "pooled_MLB_3B": 0.005827702702702703
+      },
+      "future_mutation_unchanged": true,
+      "raw_annual_MLB_counts": [
+        {
+          "season": 2022,
+          "player_id": 672695,
+          "babip_hits": 79,
+          "babip_opportunities": 325,
+          "doubles": 10,
+          "hit_by_pitch": 5,
+          "home_runs": 5,
+          "plate_appearances": 500,
+          "strike_outs": 103,
+          "triples": 2,
+          "unintentional_walks": 50
+        },
+        {
+          "season": 2023,
+          "player_id": 672695,
+          "babip_hits": 94,
+          "babip_opportunities": 319,
+          "doubles": 20,
+          "hit_by_pitch": 6,
+          "home_runs": 6,
+          "plate_appearances": 495,
+          "strike_outs": 86,
+          "triples": 4,
+          "unintentional_walks": 63
+        },
+        {
+          "season": 2024,
+          "player_id": 672695,
+          "babip_hits": 89,
+          "babip_opportunities": 281,
+          "doubles": 21,
+          "hit_by_pitch": 3,
+          "home_runs": 3,
+          "plate_appearances": 388,
+          "strike_outs": 58,
+          "triples": 2,
+          "unintentional_walks": 36
+        }
+      ],
+      "previous_forecast_unchanged": {
+        "current": -0.9331365756328288,
+        "scalar": -0.6367472747417267,
+        "restored": -0.693140637850552
+      },
+      "previous_source_and_peer_walk": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-mlb-detail-restoration\\player-walks.json"
+    },
+    {
+      "row_id": 57052,
+      "player_id": 701762,
+      "player_name": "Nick Kurtz",
+      "origin": 2024,
+      "fold": 2,
+      "information_date": "2025-01-24",
+      "source": {
+        "cutoff": 2024,
+        "events": {
+          "K": {
+            "annual": [
+              {
+                "season": 2024,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2023,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2022,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "prior_center": 0.23,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.0,
+            "unshrunk_rate": null,
+            "shrunk_rate": 0.23,
+            "model_coordinate": 0.0
+          },
+          "BB": {
+            "annual": [
+              {
+                "season": 2024,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2023,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2022,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "prior_center": 0.08,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.0,
+            "unshrunk_rate": null,
+            "shrunk_rate": 0.08,
+            "model_coordinate": 0.0
+          },
+          "HBP": {
+            "annual": [
+              {
+                "season": 2024,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2023,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2022,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "prior_center": 0.01,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.0,
+            "unshrunk_rate": null,
+            "shrunk_rate": 0.01,
+            "model_coordinate": 0.0
+          },
+          "HR": {
+            "annual": [
+              {
+                "season": 2024,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2023,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2022,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "prior_center": 0.03,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.0,
+            "unshrunk_rate": null,
+            "shrunk_rate": 0.03,
+            "model_coordinate": 0.0
+          },
+          "BABIP": {
+            "annual": [
+              {
+                "season": 2024,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2023,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2022,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "prior_center": 0.3,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.0,
+            "unshrunk_rate": null,
+            "shrunk_rate": 0.3,
+            "model_coordinate": 0.0
+          },
+          "2B": {
+            "annual": [
+              {
+                "season": 2024,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2023,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2022,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "prior_center": 0.05,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.0,
+            "unshrunk_rate": null,
+            "shrunk_rate": 0.05,
+            "model_coordinate": 0.0
+          },
+          "3B": {
+            "annual": [
+              {
+                "season": 2024,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2023,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2022,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "prior_center": 0.005,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.0,
+            "unshrunk_rate": null,
+            "shrunk_rate": 0.005,
+            "model_coordinate": 0.0
+          }
+        }
+      },
+      "features": {
+        "pooled_MLB_K": 0.23,
+        "pooled_MLB_BB": 0.08,
+        "pooled_MLB_HBP": 0.01,
+        "pooled_MLB_HR": 0.03,
+        "pooled_MLB_BABIP": 0.3,
+        "pooled_MLB_2B": 0.05,
+        "pooled_MLB_3B": 0.005
+      },
+      "future_mutation_unchanged": true,
+      "raw_annual_MLB_counts": [],
+      "previous_forecast_unchanged": {
+        "current": 1.0242540793494719,
+        "scalar": 0.6881554004216173,
+        "restored": 0.6537386057307031
+      },
+      "previous_source_and_peer_walk": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-mlb-detail-restoration\\player-walks.json"
+    },
+    {
+      "row_id": 57778,
+      "player_id": 807799,
+      "player_name": "Masataka Yoshida",
+      "origin": 2024,
+      "fold": 3,
+      "information_date": "2025-01-24",
+      "source": {
+        "cutoff": 2024,
+        "events": {
+          "K": {
+            "annual": [
+              {
+                "season": 2024,
+                "weight": 1.0,
+                "numerator": 52.0,
+                "denominator": 421.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2023,
+                "weight": 0.8,
+                "numerator": 81.0,
+                "denominator": 580.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2022,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 116.8,
+            "denominator": 885.0,
+            "prior_center": 0.23,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.8984771573604061,
+            "unshrunk_rate": 0.1319774011299435,
+            "shrunk_rate": 0.1419289340101523,
+            "model_coordinate": -0.8807106598984771
+          },
+          "BB": {
+            "annual": [
+              {
+                "season": 2024,
+                "weight": 1.0,
+                "numerator": 27.0,
+                "denominator": 421.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2023,
+                "weight": 0.8,
+                "numerator": 34.0,
+                "denominator": 580.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2022,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 54.2,
+            "denominator": 885.0,
+            "prior_center": 0.08,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.8984771573604061,
+            "unshrunk_rate": 0.061242937853107346,
+            "shrunk_rate": 0.06314720812182742,
+            "model_coordinate": -0.16852791878172582
+          },
+          "HBP": {
+            "annual": [
+              {
+                "season": 2024,
+                "weight": 1.0,
+                "numerator": 14.0,
+                "denominator": 421.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2023,
+                "weight": 0.8,
+                "numerator": 7.0,
+                "denominator": 580.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2022,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 19.6,
+            "denominator": 885.0,
+            "prior_center": 0.01,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.8984771573604061,
+            "unshrunk_rate": 0.022146892655367234,
+            "shrunk_rate": 0.020913705583756347,
+            "model_coordinate": 0.10913705583756346
+          },
+          "HR": {
+            "annual": [
+              {
+                "season": 2024,
+                "weight": 1.0,
+                "numerator": 10.0,
+                "denominator": 421.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2023,
+                "weight": 0.8,
+                "numerator": 15.0,
+                "denominator": 580.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2022,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 22.0,
+            "denominator": 885.0,
+            "prior_center": 0.03,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.8984771573604061,
+            "unshrunk_rate": 0.024858757062146894,
+            "shrunk_rate": 0.025380710659898477,
+            "model_coordinate": -0.04619289340101522
+          },
+          "BABIP": {
+            "annual": [
+              {
+                "season": 2024,
+                "weight": 1.0,
+                "numerator": 96.0,
+                "denominator": 318.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2023,
+                "weight": 0.8,
+                "numerator": 140.0,
+                "denominator": 443.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2022,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 208.0,
+            "denominator": 672.4000000000001,
+            "prior_center": 0.3,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.8705334023821855,
+            "unshrunk_rate": 0.30933967876264123,
+            "shrunk_rate": 0.30813050233039874,
+            "model_coordinate": 0.08130502330398748
+          },
+          "2B": {
+            "annual": [
+              {
+                "season": 2024,
+                "weight": 1.0,
+                "numerator": 21.0,
+                "denominator": 421.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2023,
+                "weight": 0.8,
+                "numerator": 33.0,
+                "denominator": 580.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2022,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 47.400000000000006,
+            "denominator": 885.0,
+            "prior_center": 0.05,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.8984771573604061,
+            "unshrunk_rate": 0.053559322033898314,
+            "shrunk_rate": 0.05319796954314721,
+            "model_coordinate": 0.0319796954314721
+          },
+          "3B": {
+            "annual": [
+              {
+                "season": 2024,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 421.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2023,
+                "weight": 0.8,
+                "numerator": 3.0,
+                "denominator": 580.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2022,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 2.4000000000000004,
+            "denominator": 885.0,
+            "prior_center": 0.005,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.8984771573604061,
+            "unshrunk_rate": 0.0027118644067796616,
+            "shrunk_rate": 0.0029441624365482235,
+            "model_coordinate": -0.020558375634517765
+          }
+        }
+      },
+      "features": {
+        "pooled_MLB_K": 0.1419289340101523,
+        "pooled_MLB_BB": 0.06314720812182742,
+        "pooled_MLB_HBP": 0.020913705583756347,
+        "pooled_MLB_HR": 0.025380710659898477,
+        "pooled_MLB_BABIP": 0.30813050233039874,
+        "pooled_MLB_2B": 0.05319796954314721,
+        "pooled_MLB_3B": 0.0029441624365482235
+      },
+      "future_mutation_unchanged": true,
+      "raw_annual_MLB_counts": [
+        {
+          "season": 2023,
+          "player_id": 807799,
+          "babip_hits": 140,
+          "babip_opportunities": 443,
+          "doubles": 33,
+          "hit_by_pitch": 7,
+          "home_runs": 15,
+          "plate_appearances": 580,
+          "strike_outs": 81,
+          "triples": 3,
+          "unintentional_walks": 34
+        },
+        {
+          "season": 2024,
+          "player_id": 807799,
+          "babip_hits": 96,
+          "babip_opportunities": 318,
+          "doubles": 21,
+          "hit_by_pitch": 14,
+          "home_runs": 10,
+          "plate_appearances": 421,
+          "strike_outs": 52,
+          "triples": 0,
+          "unintentional_walks": 27
+        }
+      ],
+      "previous_forecast_unchanged": {
+        "current": 0.3266834087403425,
+        "scalar": 1.322126685149453,
+        "restored": 1.3630609712849826
+      },
+      "previous_source_and_peer_walk": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-mlb-detail-restoration\\player-walks.json"
+    },
+    {
+      "row_id": 58061,
+      "player_id": 808982,
+      "player_name": "Jung Hoo Lee",
+      "origin": 2024,
+      "fold": 1,
+      "information_date": "2025-01-24",
+      "source": {
+        "cutoff": 2024,
+        "events": {
+          "K": {
+            "annual": [
+              {
+                "season": 2024,
+                "weight": 1.0,
+                "numerator": 13.0,
+                "denominator": 158.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2023,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2022,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 13.0,
+            "denominator": 158.0,
+            "prior_center": 0.23,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.6124031007751938,
+            "unshrunk_rate": 0.08227848101265822,
+            "shrunk_rate": 0.13953488372093023,
+            "model_coordinate": -0.9046511627906978
+          },
+          "BB": {
+            "annual": [
+              {
+                "season": 2024,
+                "weight": 1.0,
+                "numerator": 10.0,
+                "denominator": 158.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2023,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2022,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 10.0,
+            "denominator": 158.0,
+            "prior_center": 0.08,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.6124031007751938,
+            "unshrunk_rate": 0.06329113924050633,
+            "shrunk_rate": 0.06976744186046512,
+            "model_coordinate": -0.10232558139534886
+          },
+          "HBP": {
+            "annual": [
+              {
+                "season": 2024,
+                "weight": 1.0,
+                "numerator": 1.0,
+                "denominator": 158.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2023,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2022,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 1.0,
+            "denominator": 158.0,
+            "prior_center": 0.01,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.6124031007751938,
+            "unshrunk_rate": 0.006329113924050633,
+            "shrunk_rate": 0.007751937984496124,
+            "model_coordinate": -0.022480620155038763
+          },
+          "HR": {
+            "annual": [
+              {
+                "season": 2024,
+                "weight": 1.0,
+                "numerator": 2.0,
+                "denominator": 158.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2023,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2022,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 2.0,
+            "denominator": 158.0,
+            "prior_center": 0.03,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.6124031007751938,
+            "unshrunk_rate": 0.012658227848101266,
+            "shrunk_rate": 0.01937984496124031,
+            "model_coordinate": -0.10620155038759689
+          },
+          "BABIP": {
+            "annual": [
+              {
+                "season": 2024,
+                "weight": 1.0,
+                "numerator": 36.0,
+                "denominator": 132.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2023,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2022,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 36.0,
+            "denominator": 132.0,
+            "prior_center": 0.3,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.5689655172413793,
+            "unshrunk_rate": 0.2727272727272727,
+            "shrunk_rate": 0.28448275862068967,
+            "model_coordinate": -0.1551724137931032
+          },
+          "2B": {
+            "annual": [
+              {
+                "season": 2024,
+                "weight": 1.0,
+                "numerator": 4.0,
+                "denominator": 158.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2023,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2022,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 4.0,
+            "denominator": 158.0,
+            "prior_center": 0.05,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.6124031007751938,
+            "unshrunk_rate": 0.02531645569620253,
+            "shrunk_rate": 0.03488372093023256,
+            "model_coordinate": -0.15116279069767444
+          },
+          "3B": {
+            "annual": [
+              {
+                "season": 2024,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 158.0,
+                "covered_absence": false
+              },
+              {
+                "season": 2023,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2022,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 158.0,
+            "prior_center": 0.005,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.6124031007751938,
+            "unshrunk_rate": 0.0,
+            "shrunk_rate": 0.001937984496124031,
+            "model_coordinate": -0.03062015503875969
+          }
+        }
+      },
+      "features": {
+        "pooled_MLB_K": 0.13953488372093023,
+        "pooled_MLB_BB": 0.06976744186046512,
+        "pooled_MLB_HBP": 0.007751937984496124,
+        "pooled_MLB_HR": 0.01937984496124031,
+        "pooled_MLB_BABIP": 0.28448275862068967,
+        "pooled_MLB_2B": 0.03488372093023256,
+        "pooled_MLB_3B": 0.001937984496124031
+      },
+      "future_mutation_unchanged": true,
+      "raw_annual_MLB_counts": [
+        {
+          "season": 2024,
+          "player_id": 808982,
+          "babip_hits": 36,
+          "babip_opportunities": 132,
+          "doubles": 4,
+          "hit_by_pitch": 1,
+          "home_runs": 2,
+          "plate_appearances": 158,
+          "strike_outs": 13,
+          "triples": 0,
+          "unintentional_walks": 10
+        }
+      ],
+      "previous_forecast_unchanged": {
+        "current": -0.6456662409815414,
+        "scalar": 1.407145673860422,
+        "restored": 1.3111126771559474
+      },
+      "previous_source_and_peer_walk": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-mlb-detail-restoration\\player-walks.json"
+    },
+    {
+      "row_id": 63309,
+      "player_id": 673548,
+      "player_name": "Seiya Suzuki",
+      "origin": 2021,
+      "fold": 1,
+      "information_date": "2022-03-18",
+      "source": {
+        "cutoff": 2021,
+        "events": {
+          "K": {
+            "annual": [
+              {
+                "season": 2021,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2020,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2019,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "prior_center": 0.23,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.0,
+            "unshrunk_rate": null,
+            "shrunk_rate": 0.23,
+            "model_coordinate": 0.0
+          },
+          "BB": {
+            "annual": [
+              {
+                "season": 2021,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2020,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2019,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "prior_center": 0.08,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.0,
+            "unshrunk_rate": null,
+            "shrunk_rate": 0.08,
+            "model_coordinate": 0.0
+          },
+          "HBP": {
+            "annual": [
+              {
+                "season": 2021,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2020,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2019,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "prior_center": 0.01,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.0,
+            "unshrunk_rate": null,
+            "shrunk_rate": 0.01,
+            "model_coordinate": 0.0
+          },
+          "HR": {
+            "annual": [
+              {
+                "season": 2021,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2020,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2019,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "prior_center": 0.03,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.0,
+            "unshrunk_rate": null,
+            "shrunk_rate": 0.03,
+            "model_coordinate": 0.0
+          },
+          "BABIP": {
+            "annual": [
+              {
+                "season": 2021,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2020,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2019,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "prior_center": 0.3,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.0,
+            "unshrunk_rate": null,
+            "shrunk_rate": 0.3,
+            "model_coordinate": 0.0
+          },
+          "2B": {
+            "annual": [
+              {
+                "season": 2021,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2020,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2019,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "prior_center": 0.05,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.0,
+            "unshrunk_rate": null,
+            "shrunk_rate": 0.05,
+            "model_coordinate": 0.0
+          },
+          "3B": {
+            "annual": [
+              {
+                "season": 2021,
+                "weight": 1.0,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2020,
+                "weight": 0.8,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              },
+              {
+                "season": 2019,
+                "weight": 0.6,
+                "numerator": 0.0,
+                "denominator": 0.0,
+                "covered_absence": true
+              }
+            ],
+            "numerator": 0.0,
+            "denominator": 0.0,
+            "prior_center": 0.005,
+            "prior_opportunities": 100.0,
+            "observed_share": 0.0,
+            "unshrunk_rate": null,
+            "shrunk_rate": 0.005,
+            "model_coordinate": 0.0
+          }
+        }
+      },
+      "features": {
+        "pooled_MLB_K": 0.23,
+        "pooled_MLB_BB": 0.08,
+        "pooled_MLB_HBP": 0.01,
+        "pooled_MLB_HR": 0.03,
+        "pooled_MLB_BABIP": 0.3,
+        "pooled_MLB_2B": 0.05,
+        "pooled_MLB_3B": 0.005
+      },
+      "future_mutation_unchanged": true,
+      "raw_annual_MLB_counts": [],
+      "previous_forecast_unchanged": {
+        "current": null,
+        "scalar": 3.591050971164413,
+        "restored": 3.3747514496872792
+      },
+      "previous_source_and_peer_walk": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-mlb-detail-restoration\\player-walks.json"
+    }
+  ],
+  "readable_result": "docs/hitter-mlb-events-source-audit-result.md"
+}

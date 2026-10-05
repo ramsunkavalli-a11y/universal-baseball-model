@@ -563,3 +563,11 @@ scripts/run_hitter_mlb_detail_restoration.py -text -eol
 scripts/review_hitter_mlb_detail_restoration.py -text -eol
 scripts/finalize_hitter_mlb_detail_restoration.py -text -eol
 reports/model-evidence/hitter-mlb-detail-restoration/** -text -eol
+# Preserve the source-only MLB event audit before a later fit contract.
+docs/hitter-mlb-events-source-audit-contract.md -text -eol
+docs/hitter-mlb-events-source-audit-result.md -text -eol
+src/universal_baseball/hitter_mlb_events.py -text -eol
+tests/test_hitter_mlb_events.py -text -eol
+scripts/audit_hitter_mlb_events.py -text -eol
+scripts/finalize_hitter_mlb_events_audit.py -text -eol
+reports/model-evidence/hitter-mlb-events-source-audit/** -text -eol
