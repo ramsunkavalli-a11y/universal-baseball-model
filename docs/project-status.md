@@ -2,6 +2,40 @@
 
 Updated 2026-10-05. This is the current start-here document.
 
+## Separate MLB components help but the incumbent still wins delivered error
+
+The [seven-input result](hitter-mlb-events-restoration-result.md),
+[pre-fit source and support gate](hitter-mlb-events-restoration-source-review.md)
+and [seventeen actual player walks](hitter-mlb-events-restoration-player-review.md)
+are complete. The same four-summary direct-rate learner adds exactly the seven
+verified pooled MLB event rates. All sources, units, priors, alpha, weights,
+routes, folds, 30,506 original forecasts, thirteen additions and PA remain fixed.
+All 105 heads replay; ten headline equations and four paired contrasts verify.
+The existing explorer and completed one-time 2026 evaluation remain unchanged.
+
+Hitting RMSE improves matched 1.801956 to 1.799172; delivered 0.436118 to
+0.435373. Both nominal paired development intervals favor the seven inputs.
+This is real positive evidence for retaining distinct MLB components in the
+controlled comparison, not another blanket failure of more information. The
+incumbent remains 1.804813 hitting and 0.435133 delivered. Its delivered error
+is narrowly lower; the declared replacement requirement fails. Mature MLB and
+non-arrival errors are still worse than incumbent. No promotion or subgroup blend.
+
+Misner's K component corrects the rate and improves both errors. Perdomo's contact
+profile helps only slightly. Judge rookie and established forecasts fall a little;
+Thames and Yoshida remain too optimistic. Lee's value gain hides worse hitting
+and low PA, while France's ordinary success still relies on cancellation. New
+component effects and changes to old coefficients are separately accounted for.
+Important profiles are sparse or absent; the old 100-opportunity prior is not
+newly validated. Neither correct totals nor in-range coordinates establish success.
+
+Next diagnose the saved remaining incumbent delivered-error difference by
+origin-known MLB exposure and foreign history, including hitting/workload
+interaction and non-arrivals. Do not assume the earlier count-loss explanation
+still applies after both repairs. No next fit before that diagnosis and player
+checks; no algorithm/prior sweep, closed opportunity rerun or 2026 tuning. The
+long hitter goal remains active.
+
 ## Removed MLB component sources are reconstructed before the next fit
 
 The [seven-component source audit](hitter-mlb-events-source-audit-result.md)
