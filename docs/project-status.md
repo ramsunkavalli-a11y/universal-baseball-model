@@ -2,6 +2,38 @@
 
 Updated 2026-10-05. This is the current start-here document.
 
+## Removing the fixed hitting baseline does not improve the full model
+
+The [absolute-rate comparison](hitter-absolute-rate-result.md),
+[prefit source and target gate](hitter-absolute-rate-source-review.md) and
+[twenty actual player walkthroughs](hitter-absolute-rate-player-review.md) are
+complete. Same inputs, units, alpha, active training rows, routes, weights,
+30,506 originals, thirteen separate additions and PA; only the imposed offset
+and corresponding training target change. All 105 preflights/replays and twelve
+independent headline equations pass. No forecast/explorer promotion or 2026 reuse.
+
+Absolute hitting RMSE is 1.806607 versus matched residual 1.799172 and incumbent
+1.804813; delivered is 0.435859 versus 0.435373 and 0.435133. Both required
+comparisons fail, though nominal development intervals include zero. Mature
+MLB hitting improves, but prospects/recent arrivals lose. Broad foreign gains
+hide sparse-cell/addition losses. No subgroup hybrid or guessed offset weight.
+
+Thames is more reasonable; established Judge improves modestly. Suzuki's debut
+and next-year rate estimates fall too far, and Kurtz/Alvarez remain major misses.
+New Cowser gain still overpredicts; Acuña is a major false high. Refsnyder's
+near-perfect delivered value cancels hitting and PA errors, while Misner's
+matched value gain masks worse hitting. All seventeen previous cases and three
+new source-to-model cases remain, including unfavorable peers and sparse support.
+
+Close this representation/offset testing sequence. Retain incumbent and separate
+MLB component gains as qualified research. Next reconcile the strongest justified
+current hitting and opportunity forecasts with the existing selected candidate
+in one readiness record, using already saved benchmark/cohort/player evidence.
+Review existing opportunity experiments before choosing any further fit; do not
+recycle closed team-record ideas or start another algorithm/prior/offset sweep.
+The frozen packages, explorer and completed one-time 2026 evaluation stay intact.
+The practical hitter goal remains active, not complete after this negative test.
+
 ## Remaining hitter gap is located without another fit
 
 The [saved-forecast diagnosis](hitter-restored-error-diagnosis-result.md) and
