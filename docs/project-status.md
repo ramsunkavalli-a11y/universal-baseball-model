@@ -2,6 +2,36 @@
 
 Updated 2026-10-05. This is the current start-here document.
 
+## Assignment/signing source defect corrected before another fit
+
+The [employment and role review](hitter-overseas-role-source-result.md) completes
+the source boundary below. The old `signed ` substring also matched `assigned `
+and `reassigned `. A versioned parser preserves assignments as separate context,
+not agreement evidence. All 83,300 historical source origins remain. Employment
+paths change in 23,172 origins; numeric flags change in 6,941 origins for 3,244
+people. There are 749,700 independent indicator checks, 40,888 retained-context
+checks and 266 role-origin checks. Ten regression tests and both freeze
+verifications pass. The source rebuild's metadata stop and separate recovery
+are preserved. No forecasts, clinical evidence or 2026 evaluation changed.
+
+All 59 retained player walks are reviewed, plus two ordinary affected source
+controls. Machado's March 2022 assignment no longer overwrites his actual minor
+agreement; the false signed-first-team-work input becomes zero. Olivo and
+Bourgeois confirm this is not just a foreign-player edge case. Suzuki/Yoshida
+inputs are unchanged; their existing workload misses remain. Ten official
+reports provide eligible evidence at eight origins and explicit roles at only
+four. This incomplete pilot is not a usable population-wide role training set.
+Contract form, intended role and certified current rights remain distinct.
+
+Next contract a bounded matched comparison of corrected versus old employment
+inputs in the existing opportunity branch, with the same talent features,
+identities, chronology and player folds. Audit actual training support, preserve
+non-arrivals and unknowns, retain original anchors, and inspect probability, PA,
+delivered batting contribution, totals and player paths. Do not repeat broad
+professional-work fits or train on the handpicked four role reports. The completed
+2026 evaluation is final, not another tuning/confirmation set. The long goal is
+active; this source repair is not a claimed accuracy improvement or deployment.
+
 ## Overseas public coverage reviewed without another fit
 
 The [public coverage audit](hitter-overseas-public-coverage-result.md) keeps all

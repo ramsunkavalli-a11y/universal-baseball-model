@@ -427,3 +427,18 @@ scripts/audit_overseas_public_coverage.py -text -eol
 scripts/finalize_overseas_public_coverage.py -text -eol
 tests/test_overseas_public_coverage.py -text -eol
 reports/model-evidence/overseas-public-coverage/** -text -eol
+# Preserve the employment repair and official-source diagnostic provenance.
+config/hitter_overseas_role_source_review.json -text -eol
+docs/hitter-overseas-role-source-contract.md -text -eol
+docs/hitter-overseas-role-assignment-amendment.md -text -eol
+docs/hitter-employment-v3-execution-recovery.md -text -eol
+docs/hitter-overseas-role-source-result.md -text -eol
+src/universal_baseball/overseas_role_sources.py -text -eol
+src/universal_baseball/hitter_employment_v3.py -text -eol
+tests/test_overseas_role_sources.py -text -eol
+tests/test_hitter_employment_v3.py -text -eol
+scripts/audit_overseas_role_sources.py -text -eol
+scripts/repair_hitter_employment_v3.py -text -eol
+scripts/recover_hitter_employment_v3.py -text -eol
+scripts/finalize_hitter_employment_v3.py -text -eol
+reports/model-evidence/hitter-employment-v3/** -text -eol

@@ -1,0 +1,60 @@
+{
+  "source_origins": 83300,
+  "employment_path_changed_origins": 23172,
+  "numeric_indicator_changed_origins": 6941,
+  "numeric_indicator_changed_people": 3244,
+  "independent_indicator_checks": 749700,
+  "assignment_context_checks": 40888,
+  "independent_role_origin_checks": 266,
+  "retained_walks": 59,
+  "ordinary_source_controls": 2,
+  "official_report_origins": 8,
+  "explicit_role_origins": 4,
+  "new_fits": 0,
+  "new_forecasts": 0,
+  "source_review_status": "complete",
+  "player_walkthrough_status": "complete",
+  "predictive_improvement": "not_tested",
+  "deployment_approved": false,
+  "completed_2026_evaluation_unchanged": true,
+  "tests_and_freezes": [
+    {
+      "command": [
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/test_hitter_employment_v3.py",
+        "tests/test_overseas_role_sources.py"
+      ],
+      "exit_code": 0,
+      "output": "..........                                                               [100%]\n10 passed in 1.38s\n"
+    },
+    {
+      "command": [
+        "scripts/verify_hitter_selected_2026_freeze.py"
+      ],
+      "exit_code": 0,
+      "output": "{\"status\": \"verified\", \"files\": 53, \"players\": 4030, \"heads_replayed\": 25, \"manifest_sha256\": \"a1d819ffcdd98a9ee62feecf5637b5ebe1f93b6e931d77d2b7d692ed928da67a\", \"protected_outcomes_read\": false, \"predictive_accuracy_not_yet_evaluated\": true}\n"
+    },
+    {
+      "command": [
+        "scripts/verify_hitter_full_2026_freeze.py"
+      ],
+      "exit_code": 0,
+      "output": "{\n  \"contact_available_rows\": 3511,\n  \"five_model_rows\": 3720,\n  \"forecast_sha256\": \"d1953a28d35d87d141ecc65ec4b107906edad877982e79c0d3a216245b9e4708\",\n  \"players\": 3907,\n  \"population_prior_rows\": 187,\n  \"protected_2026_opened\": false,\n  \"status\": \"verified\",\n  \"verified_files\": 31\n}\n"
+    }
+  ],
+  "hashes": {
+    "scripts\\finalize_hitter_employment_v3.py": "7448e2fb9042f3bf0531ea285a08a39605a86965c4578bc02fe302a7ff2c5e68",
+    "docs\\hitter-overseas-role-source-result.md": "3965c746136a0e1bf4aacf0390edeba796561f8e1ed67ccda0ba896b57a0c84b",
+    "reports\\generated\\hitter-employment-v3\\employment-indicators.parquet": "f4a6c36d148e93d275659656a6ae472dfc818b1387159a163d77d8478ca53e79",
+    "reports\\generated\\hitter-employment-v3\\employment-deltas.json": "5c685776c1ac02c970d70d0ff490e9c77f65dc665be1c0a16d8cf60acfedb37b",
+    "reports\\generated\\hitter-employment-v3\\player-walks.json": "8b8428170fd3d21b5e96630d5c3194f616f599a69f317f5c6338fdb29e27c7d2",
+    "reports\\generated\\hitter-employment-v3\\summary.json": "ef6216bbb76b939564f9234263cf11c32c7b30052e9604abcd4049151037b78a",
+    "reports\\generated\\overseas-role-sources\\ledger.json": "0e2566895101b7e94503fe3d28ea1d822e99e6efc4a0c17ad8b0008b69173624",
+    "reports\\generated\\overseas-role-sources\\player-walks.json": "d250ab5c070b8db5e6663e273c9ea6ea65b668130c6b07791c5be7c5cb32b393",
+    "reports\\generated\\hitter-employment-v3\\ordinary-source-walks.json": "6b6dc8f5d52e44ed93edaae036db9b47e4418ef7b2bc1a030a135d9fbbc47663"
+  }
+}
