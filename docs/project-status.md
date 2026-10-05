@@ -2,6 +2,27 @@
 
 Updated 2026-10-04. This is the current start-here document.
 
+## Forecast assembly boundary repaired before new freeze
+
+The [source only 2025 input repair](hitter-forecast-inputs-2025-result.md)
+reproduces 7,910,250 fields across all 63,282 historical rows and walks Judge,
+Kurtz, Yordan, Lee, Caminero and Hoskins through real 2023–25 production.
+Five focused tests pass. The separate builder accepts an explicit 2025 cutoff,
+keeps fractional precision and rejects future or duplicate source records.
+Sealed historical code and artifacts are unchanged. No new model or 2026
+forecast was fitted. Old 2024 helper filtering would omit all 489 of Kurtz's
+2025 MLB PA and all 617 of Lee's, a genuine assembly error now prevented.
+
+The [candidate freeze preparation plan](hitter-candidate-freeze-preparation.md)
+is the controlling next boundary. Source inventory shows that reviewed MLB
+tracking and December-31 roster tables still end in 2024. Coming-season scouting
+needs a verified preseason 2026 archive, not live updated 2026 ranks. Extend and
+review these sources, reconstruct origin-known membership, then assemble/replay
+the strongest existing routed candidate and build a separate team-filtered
+explorer. No freeze or protected-result access until those requirements are met.
+The goal remains active; final 2026 evaluation and complete candidate delivery
+are unfinished. No new team-record, college or algorithm tournament work.
+
 ## Direct event check complete and strongest existing hitter model retained
 
 The [bounded direct conversion test](hitter-direct-event-result.md) is complete,
