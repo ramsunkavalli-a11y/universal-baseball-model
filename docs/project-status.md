@@ -2,6 +2,35 @@
 
 Updated 2026-10-05. This is the current start-here document.
 
+## Nonmedical absence observations repaired before another fit
+
+The [separate observation repair](hitter-nonmedical-observation-result.md) and
+[eleven player walks](hitter-nonmedical-observation-player-review.md) are complete.
+All 83,300 origins remain; original legal history and forecasts are unchanged.
+Forty-five already archived MLB appearance captures reconstruct exactly. Strictly
+later positive windows contradict continuing absence in 155 origins for 38 people;
+122 are current model-source origins and 89 are evaluated forecasts for 28 people.
+All 83 preceding annual warnings are covered. There are no hard-status activity
+conflicts. Independent field checks, focused regressions and both freezes verify.
+
+Tatis's pre-2023 restriction stays unresolved; observed 2023 MLB use separates
+the later stale suspension and return timing from current absence. Grandal,
+Reyes and Ruiz preserve history without implying years of continuous absence.
+Ruiz's later exit is retained. Franco's newer parallel channels, Duran's already
+captured scoped returns and Marcano's permanent zero remain distinct. Source
+controls include an unscored pitcher-like origin and an unresolved minor leaguer;
+source coverage is not equivalent to a hitter-model gain or statistical support.
+
+Keep the source repair, not a promoted forecast. No fit or accuracy improvement
+is claimed. Next predeclare one coherent matched historical opportunity contrast
+using the corrected observation and dependent timing meanings, fixed hitting,
+identities, chronology, player folds, existing full-history/public anchors and
+rare-profile support checks. Inspect PA/probability/value, origin/stage totals
+and actual player misses before disposition. No employment variants, broad
+injury reruns, team-record tests, explorer replacement or 2026 re-evaluation.
+The practical hitter goal remains active; major prospect/foreign-role and cohort
+calibration gaps are not solved by this source repair.
+
 ## Employment correction closed and availability source gap identified
 
 The [complete employment comparison](hitter-employment-comparison-v2-result.md)

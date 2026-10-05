@@ -1,0 +1,64 @@
+{
+  "status": "source_repair_review_complete_not_prediction_validation",
+  "player_walkthrough_status": "complete",
+  "source_rows": 83300,
+  "active_origins": 485,
+  "changed_population_origins": 155,
+  "changed_population_people": 38,
+  "changed_model_source_origins": 122,
+  "changed_evaluated_origins": 89,
+  "changed_evaluated_people": 28,
+  "independent_source_field_checks": 1085325,
+  "raw_window_PA_checks": 49542,
+  "player_cases": 11,
+  "distinct_case_people": 9,
+  "saved_heads_previously_replayed": 18,
+  "new_fits": 0,
+  "forecasts_changed": false,
+  "legal_history_changed": false,
+  "legal_reinstatement_or_medical_recovery_certified": false,
+  "predictive_improvement_tested": false,
+  "deployment_approved": false,
+  "completed_2026_evaluation_unchanged": true,
+  "tests_and_freezes": [
+    {
+      "command": [
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/test_nonmedical_observation.py",
+        "tests/test_availability_inventory.py"
+      ],
+      "exit_code": 0,
+      "output": ".......................                                                  [100%]\n23 passed in 1.25s\n"
+    },
+    {
+      "command": [
+        "scripts/verify_hitter_selected_2026_freeze.py"
+      ],
+      "exit_code": 0,
+      "output": "{\"status\": \"verified\", \"files\": 53, \"players\": 4030, \"heads_replayed\": 25, \"manifest_sha256\": \"a1d819ffcdd98a9ee62feecf5637b5ebe1f93b6e931d77d2b7d692ed928da67a\", \"protected_outcomes_read\": false, \"predictive_accuracy_not_yet_evaluated\": true}\n"
+    },
+    {
+      "command": [
+        "scripts/verify_hitter_full_2026_freeze.py"
+      ],
+      "exit_code": 0,
+      "output": "{\n  \"contact_available_rows\": 3511,\n  \"five_model_rows\": 3720,\n  \"forecast_sha256\": \"d1953a28d35d87d141ecc65ec4b107906edad877982e79c0d3a216245b9e4708\",\n  \"players\": 3907,\n  \"population_prior_rows\": 187,\n  \"protected_2026_opened\": false,\n  \"status\": \"verified\",\n  \"verified_files\": 31\n}\n"
+    }
+  ],
+  "hashes": {
+    "scripts\\finalize_hitter_nonmedical_observation.py": "d04b8afef0b718f97251f3fe2fbc783b1714fe552b93db5992662f8343b0d1e2",
+    "docs\\hitter-nonmedical-observation-result.md": "d1b0873c0929545222e549037bd3cd062d18e8b0d34a51669a905f43b8617345",
+    "docs\\hitter-nonmedical-observation-player-review.md": "0392381fa4564ae29d6bba870ce5f36911dd13daa8fc960afbbd726f194e5675",
+    "reports\\generated\\hitter-nonmedical-observation\\preparation-receipt.json": "0afa390b3509908d76d9481020ff671bd82563d49f5d1a5381dc7459b325d0dd",
+    "reports\\generated\\hitter-nonmedical-observation\\source-seal.json": "3f182e0f7657589641afc6fb200fac07ad7cd575b6caf9e24b1a0f46b6ee84a5",
+    "reports\\generated\\hitter-nonmedical-observation\\observations.parquet": "bc60128429dc7f22410a53f896de2229f85413973d1375154c5cc36e408a261e",
+    "reports\\generated\\hitter-nonmedical-observation\\active-origin-evidence.json": "be96973b0277fae5c5f72cf30c790e0d029d238c031c93cef6e580623b3b6bb4",
+    "reports\\generated\\hitter-nonmedical-observation\\player-walks.json": "260158e9427d9ecf6a112459e14af9b0ef9cb48c7b75d9732d6d532e44e9200e",
+    "reports\\generated\\hitter-nonmedical-observation\\summary.json": "9b72ca34668d5a7b14b873c8b99280e87f2a56b004120e1ac5867113545efd55"
+  },
+  "next_action": "Predeclare one coherent matched historical opportunity comparison with fixed hitting and corrected observation/timing semantics"
+}
