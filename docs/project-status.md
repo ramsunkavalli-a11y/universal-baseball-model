@@ -2,6 +2,35 @@
 
 Updated 2026-10-04. This is the current start-here document.
 
+## Borrowed overseas stability reviewed and retained for integration
+
+The [completed comparison](hitter-foreign-borrowed-stability-result.md) borrows
+component persistence from 5,802 domestic season pairs instead of estimating
+every slope from twenty-seven overseas movers. All 3,205 profiles, 1,680 domestic
+optima and 3,360 foreign offsets reconstruct independently. Eighteen focused
+model/scoring tests pass and the protected 31-file forecast remains unchanged.
+
+Against repaired affine inputs, conditional log loss improves 1.475512 to
+1.465249 on the fixed 28 active seasons/20 people; PA-weighted and 100-PA
+diagnostics also improve. The remaining 225 source forecasts have no observed
+MLB batting rate and are retained, not scored as zero talent. An origin-weight
+bootstrap defect is documented and corrected without changing fits or point
+scores. Small samples, selection, park exposure and transfer assumptions remain.
+
+The [player review](hitter-foreign-borrowed-stability-player-review.md) retains
+all fourteen fixed cases and four additional score-selected origins. Lee and
+Ohtani improve in K, Suzuki/Hyeseong worsen, Adduci's largest gain has five PA,
+and Yoshida's better contact offsets worse walks/power. Older foreign-only
+profiles omit useful intervening MLB evidence; they must not replace it.
+
+Retain this component alongside raw production/exposure for the planned complete
+foreign/status/additions comparison; it is not approved for deployment and has
+not beaten current UBM or public systems. Complete the ordered employment and
+known finite-absence representation and qualified additions next, then compare
+whole-model PA, hitting and delivered value with fixed anchors and public
+benchmarks. No further translation tuning or closed team-record work. Protected
+2026, current explorers and the unfinished broad hitter goal are unchanged.
+
 ## Overseas calibration history repaired but point estimate remains withheld
 
 The [matched history repair](hitter-foreign-component-history-repair-result.md)

@@ -1,0 +1,308 @@
+{
+  "status": "review_complete_retain_for_whole_model_comparison",
+  "player_walkthrough_status": "complete_for_component_comparison",
+  "primary_comparison": "borrowed_stability_vs_repaired_affine_not_current_UBM_or_public_systems",
+  "scores": {
+    "all_supported_active": {
+      "rows": 28,
+      "people": 20,
+      "actual_pa": 7776,
+      "affine": {
+        "logloss": 1.475512376594833,
+        "brier": 0.7072059793509583,
+        "K_rmse": 0.10471579353411353,
+        "HR_rmse": 0.02104610386577005,
+        "pa_weighted_logloss": 1.5159117750715871
+      },
+      "borrowed": {
+        "logloss": 1.4652489300821538,
+        "brier": 0.7032697878194948,
+        "K_rmse": 0.09325561580535571,
+        "HR_rmse": 0.017797236804277007,
+        "pa_weighted_logloss": 1.5070458689394026
+      }
+    },
+    "origins": [
+      {
+        "origin": 2016,
+        "rows": 5,
+        "people": 5,
+        "actual_pa": 1462,
+        "affine": {
+          "logloss": 1.561210371554838,
+          "brier": 0.7324045988263291,
+          "K_rmse": 0.10245846538130622,
+          "HR_rmse": 0.022400326086538292,
+          "pa_weighted_logloss": 1.518952277308107
+        },
+        "borrowed": {
+          "logloss": 1.5446450247908976,
+          "brier": 0.7242991268434027,
+          "K_rmse": 0.0860837026158653,
+          "HR_rmse": 0.017843936016609833,
+          "pa_weighted_logloss": 1.504726462521214
+        }
+      },
+      {
+        "origin": 2017,
+        "rows": 2,
+        "people": 2,
+        "actual_pa": 463,
+        "affine": {
+          "logloss": 1.5082188077847594,
+          "brier": 0.7208396307039715,
+          "K_rmse": 0.08523609150510146,
+          "HR_rmse": 0.020795870125426094,
+          "pa_weighted_logloss": 1.5248152730101463
+        },
+        "borrowed": {
+          "logloss": 1.4972471144549817,
+          "brier": 0.7170731393180918,
+          "K_rmse": 0.08263371574007658,
+          "HR_rmse": 0.013032916800019336,
+          "pa_weighted_logloss": 1.5141568267512162
+        }
+      },
+      {
+        "origin": 2018,
+        "rows": 3,
+        "people": 3,
+        "actual_pa": 889,
+        "affine": {
+          "logloss": 1.4544693851684938,
+          "brier": 0.7101884452371103,
+          "K_rmse": 0.20249382895776463,
+          "HR_rmse": 0.022942729147458985,
+          "pa_weighted_logloss": 1.6056760533213543
+        },
+        "borrowed": {
+          "logloss": 1.426873026851237,
+          "brier": 0.6999900317791766,
+          "K_rmse": 0.1859964840241939,
+          "HR_rmse": 0.01598261702110299,
+          "pa_weighted_logloss": 1.5948080534582287
+        }
+      },
+      {
+        "origin": 2021,
+        "rows": 6,
+        "people": 6,
+        "actual_pa": 1493,
+        "affine": {
+          "logloss": 1.4301910153661144,
+          "brier": 0.6917089157173191,
+          "K_rmse": 0.05785458110355578,
+          "HR_rmse": 0.023221933347378484,
+          "pa_weighted_logloss": 1.4532243783508987
+        },
+        "borrowed": {
+          "logloss": 1.428937578443347,
+          "brier": 0.6918109003087339,
+          "K_rmse": 0.047292399861869575,
+          "HR_rmse": 0.022748297969683313,
+          "pa_weighted_logloss": 1.4501943700380509
+        }
+      },
+      {
+        "origin": 2022,
+        "rows": 4,
+        "people": 4,
+        "actual_pa": 1381,
+        "affine": {
+          "logloss": 1.530425839121815,
+          "brier": 0.7264971672859722,
+          "K_rmse": 0.062320157775158695,
+          "HR_rmse": 0.015757351270558766,
+          "pa_weighted_logloss": 1.5283362127384394
+        },
+        "borrowed": {
+          "logloss": 1.527871549650281,
+          "brier": 0.72371772867088,
+          "K_rmse": 0.0362237311730931,
+          "HR_rmse": 0.016203064480402735,
+          "pa_weighted_logloss": 1.5277802785024386
+        }
+      },
+      {
+        "origin": 2023,
+        "rows": 3,
+        "people": 3,
+        "actual_pa": 1039,
+        "affine": {
+          "logloss": 1.4473616381722412,
+          "brier": 0.6943875994799465,
+          "K_rmse": 0.05584520058928991,
+          "HR_rmse": 0.011023485703783783,
+          "pa_weighted_logloss": 1.5504441478149038
+        },
+        "borrowed": {
+          "logloss": 1.441859609158671,
+          "brier": 0.6933749889671409,
+          "K_rmse": 0.04395696648732774,
+          "HR_rmse": 0.008590013041859648,
+          "pa_weighted_logloss": 1.5481985976647425
+        }
+      },
+      {
+        "origin": 2024,
+        "rows": 5,
+        "people": 5,
+        "actual_pa": 1049,
+        "affine": {
+          "logloss": 1.3967095789955688,
+          "brier": 0.6744154982060581,
+          "K_rmse": 0.08741545441380631,
+          "HR_rmse": 0.027034944556916907,
+          "pa_weighted_logloss": 1.4299340829572622
+        },
+        "borrowed": {
+          "logloss": 1.389308607225661,
+          "brier": 0.6726225988490371,
+          "K_rmse": 0.0810055403331063,
+          "HR_rmse": 0.024893207150050722,
+          "pa_weighted_logloss": 1.4094564936399274
+        }
+      }
+    ],
+    "fixed_cohort_rows": 253,
+    "actual_active_rows": 28,
+    "nonarrival_rows": 225,
+    "unsupported_active_rows": 0,
+    "full_hitter_forecasts_changed": false
+  },
+  "corrected_intervals": {
+    "intervals": {
+      "logloss": {
+        "delta": -0.010263446512679165,
+        "nominal_player_cluster_interval": [
+          -0.01620017359614267,
+          -0.0034006151126634203
+        ],
+        "independently_checked_draws": 2000,
+        "shared_season_selection_and_repeated_development_uncertainty_not_covered": true
+      },
+      "brier": {
+        "delta": -0.003936191531463411,
+        "nominal_player_cluster_interval": [
+          -0.006332407701637251,
+          -0.0009594229167963512
+        ],
+        "independently_checked_draws": 2000,
+        "shared_season_selection_and_repeated_development_uncertainty_not_covered": true
+      },
+      "K_sq": {
+        "delta": -0.0022687875362429823,
+        "nominal_player_cluster_interval": [
+          -0.004204771647425528,
+          -0.0003571400303152092
+        ],
+        "independently_checked_draws": 2000,
+        "shared_season_selection_and_repeated_development_uncertainty_not_covered": true
+      },
+      "HR_sq": {
+        "delta": -0.00012619685006126882,
+        "nominal_player_cluster_interval": [
+          -0.00020938532295860826,
+          -3.339291909102513e-05
+        ],
+        "independently_checked_draws": 2000,
+        "shared_season_selection_and_repeated_development_uncertainty_not_covered": true
+      }
+    },
+    "people": 20,
+    "rows": 28,
+    "seed": 84,
+    "draws": 2000,
+    "original_origin_sizes": {
+      "2016": 5,
+      "2017": 2,
+      "2018": 3,
+      "2021": 6,
+      "2022": 4,
+      "2023": 3,
+      "2024": 5
+    },
+    "fixed_original_row_weights": true,
+    "row_level_and_player_aggregate_resamples_agree": true
+  },
+  "future_100_PA_diagnostic": {
+    "rows": 19,
+    "people": 14,
+    "actual_pa": 7387,
+    "affine": {
+      "logloss": 1.5067748121165274,
+      "brier": 0.7124575804629584,
+      "K_rmse": 0.061611112886798804,
+      "HR_rmse": 0.016581760210081092,
+      "pa_weighted_logloss": 1.5165490141417945
+    },
+    "borrowed": {
+      "logloss": 1.5000266140549734,
+      "brier": 0.7097802267619094,
+      "K_rmse": 0.05634784412916531,
+      "HR_rmse": 0.013372263099188266,
+      "pa_weighted_logloss": 1.5076704482443908
+    }
+  },
+  "domestic_optima_checked": 1680,
+  "foreign_offset_estimates_checked": 3360,
+  "profiles_reconstructed": 3205,
+  "tests": "...............                                                          [100%]\n15 passed in 1.54s\n",
+  "protected_freeze": {
+    "contact_available_rows": 3511,
+    "five_model_rows": 3720,
+    "forecast_sha256": "d1953a28d35d87d141ecc65ec4b107906edad877982e79c0d3a216245b9e4708",
+    "players": 3907,
+    "population_prior_rows": 187,
+    "protected_2026_opened": false,
+    "status": "verified",
+    "verified_files": 31
+  },
+  "source_role_hints": {
+    "hitter_hint": 251,
+    "two_way_or_conflicting_hints": 2
+  },
+  "full_hitter_forecasts_changed": false,
+  "deployment_approved": false,
+  "whole_model_gain_established": false,
+  "goal_achieved": false,
+  "source_hashes": {
+    "docs\\hitter-foreign-component-integration-contract.md": "eb42cea8efc12d60d349942e03699a716e773f8e0700f40c71c68e543e617059",
+    "scripts\\prepare_foreign_component_translation.py": "684b48d0c2a0e7979a2756418e94e1b0558b5a35ea2ea0a3e26556d389e32b9c",
+    "src\\universal_baseball\\foreign_component_translation.py": "fa303118fdd6c91f1b395a3432830f044ec431d21948db8bc181e9402c9ee2e1",
+    "tests\\test_foreign_component_translation.py": "1e5aa447f29408bf778eb20548ddc9174b6a76411061048b446faa5de6a3546f",
+    "src\\universal_baseball\\post_arrival_history.py": "2b5bd6aac7ad623b396f3142f9725bfc66f20bf924302e0745541b8944726c37",
+    "reports\\generated\\npb-hitting-history\\reviewed-batting.parquet": "a1d70f248fc0098e7ef7e3b4bae154755f74fc2c4bbb46002576822bc09a1f7c",
+    "reports\\generated\\kbo-identity-overlay\\reviewed-batting.parquet": "d20a7c3141118761e0ca80044674a667e19cb9b3c2c932534fc0b84fe11eab63",
+    "reports\\generated\\practical-hitter-v31\\dated-stints.parquet": "d079aea8ae18cdae378013f8d0f63cd236ee137f25f6d5ebb4dd0a4a12c4518a",
+    "reports\\generated\\foreign-origin-inputs\\independent-review.json": "6a76e0baea08342ae1ca2f5297f041234d98c8cf51f7619392277da87a0c1342",
+    "reports\\generated\\foreign-origin-inputs\\origin-inputs.json": "232e4b1fcb9d8ae5c03bf3976ab5abccad71058c5b6d5dc073097ef215648b1c",
+    "reports\\generated\\foreign-origin-inputs\\pair-role-evidence.json": "6cf16c679685843edd6c60f049bca5f79f9128e5ba0317dbbf1d2f7f8a16c1a5",
+    "reports\\generated\\foreign-origin-inputs\\reviewed-cases.json": "ac9b66dd38bdf46e5b1d2fc0b05ea0e465ca477080ece0ed19e6c3de67564c5c",
+    "docs\\hitter-foreign-component-history-amendment.md": "c3ce45bafda7270a7dfbbe8d07fa3ac9db7bd6815e1e71f1109a8d45d7972994",
+    "src\\universal_baseball\\foreign_component_translation_v2.py": "89eb39c2c43fa8a6248ac0d0d8aa66857f8d6592b4cbda07a54c45f66de61586",
+    "tests\\test_foreign_component_translation_v2.py": "5124f27af82ef53b4f10428d09ae4d501ef4be770f4bf3941d6885903d38a53d",
+    "scripts\\prepare_foreign_component_translation_v2.py": "9a343e2f4a58abb764a7430e3f568a4936e43deebe7157d58785bd5f860a2814",
+    "reports\\generated\\foreign-component-translation\\preflight.json": "2a64e159ca2ad0ad4e4df920ecf6b79e2396920fbd1c947ce7a75d70617e9dba",
+    "reports\\generated\\foreign-component-translation\\final-review.json": "f8e69c7aacdb604b2afcbca02fcd0150491ffaa4b25bd4d0706d92933ac971fb",
+    "reports\\generated\\foreign-component-translation\\profiles.json": "008bbae6414232ce2588df471e7b26b901888ec355100a34a4ca030fb070122d",
+    "reports\\generated\\foreign-component-translation\\fits.json": "3e8b46429243b614baed54333ccc0a3a5b09436b8737e0600aa7af8c3e30bb8b",
+    "docs\\hitter-foreign-borrowed-stability-contract.md": "cafcf15d7a364c37ce5c0099cadc908580d10c834ea2fafa93066679c349ffd2",
+    "scripts\\prepare_foreign_borrowed_stability.py": "04099ad67482ad25c3b338e0cf2e921564bfc8a2a1c501aea2375b3fc4ec07de",
+    "src\\universal_baseball\\foreign_borrowed_stability.py": "2cc975739ba416464c330344e6478b81450aad880066e73d3ecb7d60dceedf1f",
+    "tests\\test_foreign_borrowed_stability.py": "f7bfd2b65ae95ae545d192074113e97786b94c4ddf630acab651c7521dadbdfa",
+    "reports\\generated\\foreign-borrowed-stability\\domestic-calibration.json": "5909c406ab0200cb7b1d8a96d02f2489bfd8be43d69a7b3665b868d6ea890e80",
+    "reports\\generated\\foreign-component-translation-v2\\preflight.json": "85457d0277c94ec43eb33c3f1ff1c08a55ab52b8bd35bab57d2771123a6d34d7",
+    "reports\\generated\\foreign-component-translation-v2\\final-review.json": "2750213afcdcbaa5387633b14568486b49ec31c2afa286e7f889fffd8abaece2",
+    "reports\\generated\\foreign-component-translation-v2\\profiles.json": "111bf5bacd7efddda21e8a2e7e46ff01f06ee733fbb67da6dd2f6f66cc056a75",
+    "reports\\generated\\foreign-component-translation-v2\\reviewed-cases.json": "c65b451cbdf4aaa36d500a0f3f28ef07aa41aa20616a61b9bb89ffe5d1d6ff05"
+  },
+  "artifact_hashes": {
+    "docs\\hitter-foreign-borrowed-stability-result.md": "68a5acb4139a17fc4fd793c5527c46b6321c1a5a70bb4cebbae2a9a4e37666f3",
+    "docs\\hitter-foreign-borrowed-stability-player-review.md": "3ce068ee5bd9144f7f8cb058ad83ebe3b71ab406efdb8e197618b2701840a96d",
+    "reports\\generated\\foreign-borrowed-stability\\review-supplement.json": "6223047cd77124cf016642914d08f93303360f863d39ce52dc58508819dcad3a",
+    "reports\\generated\\foreign-borrowed-stability\\intervals-fixed-origin-weights.json": "17ead274069df598ec513d1679590a4466a50e1c9c880b553fc6e4f82c93e2bb",
+    "reports\\generated\\foreign-borrowed-stability\\independent-review.json": "6bd2758a16bd78ddddb939e60579a85fa08715da3178d1fc9f05cacd02401c16",
+    "scripts\\finalize_foreign_borrowed_stability.py": "2f2275a76857e819856349596366cbb4fab7fc7209d33fc8d1d469c94b7b080a"
+  }
+}
