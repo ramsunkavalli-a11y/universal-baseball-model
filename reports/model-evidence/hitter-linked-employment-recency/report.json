@@ -1,0 +1,5627 @@
+{
+  "disposition": "Reject this exact encoding; retain selected forecast and corrected employment facts",
+  "player_walkthrough_status": "complete",
+  "deployment_approved": false,
+  "protected_2026_outcomes_used": false,
+  "forecasts_changed": false,
+  "new_heads": 70,
+  "benchmark_and_candidate_replayed_heads": 140,
+  "gates": {
+    "primary_pa_improves": false,
+    "contribution_nonworsening_both": true,
+    "public_pa_mae_nonworsening": true,
+    "stage_regular_within_two_percent": false,
+    "nominal_primary_interval_favors_improvement": false
+  },
+  "guardrail_PA_MSE_changes": {
+    "current_regular": -0.0005594721027890603,
+    "stage_Current MLB": 0.00021293349065953926,
+    "stage_Inactive / unknown": 0.08800902535894273,
+    "stage_Lower minors": 0.004323165479290125,
+    "stage_Upper minors": -0.004145344654241434
+  },
+  "scopes": [
+    {
+      "scope": "original_all",
+      "rows": 30506,
+      "people": 11020,
+      "actual_PA": 1270493,
+      "actual_participants": 4538,
+      "actual_value": 4185.433589228993,
+      "scores": {
+        "recency": {
+          "pa_rmse": 60.27584462262025,
+          "pa_mae": 20.434161116476126,
+          "pa_bias": -1.167764000821751,
+          "value_rmse": 0.43507782452605465,
+          "value_mae": 0.12374121168082633,
+          "value_bias": 7.565100311950088e-05,
+          "brier": 0.032488206279264804,
+          "logloss": 0.11133909020335046,
+          "conditional_rate_rmse": 3.872306607358004,
+          "expected_pa": 1234212.851409779,
+          "expected_arrivals": 4379.906533448918,
+          "expected_value": 4180.667454051404
+        },
+        "observation": {
+          "pa_rmse": 60.26981293539492,
+          "pa_mae": 20.517968856565073,
+          "pa_bias": -1.097027875193974,
+          "value_rmse": 0.4354562028637576,
+          "value_mae": 0.12389857258866702,
+          "value_bias": 0.00016046474972631212,
+          "brier": 0.032486866054357015,
+          "logloss": 0.11143010442191832,
+          "conditional_rate_rmse": 3.872306607358004,
+          "expected_pa": 1236262.532427159,
+          "expected_arrivals": 4405.123590079192,
+          "expected_value": 4182.943479135984
+        },
+        "current": {
+          "pa_rmse": 60.49910182626439,
+          "pa_mae": 20.612358229964073,
+          "pa_bias": -1.3478241546151575,
+          "value_rmse": 0.43513335105098866,
+          "value_mae": 0.12387447809219285,
+          "value_bias": -0.0007478371616184461,
+          "brier": 0.033540495254232784,
+          "logloss": 0.11473611533039621,
+          "conditional_rate_rmse": 3.872306607358004,
+          "expected_pa": 1228732.5119559553,
+          "expected_arrivals": 4391.863787413928,
+          "expected_value": 4155.430076780389
+        }
+      },
+      "allocations": {
+        "recency": {
+          "PA_to_participants": 1121929.5782453157,
+          "PA_to_nonparticipants": 112283.27316446291
+        },
+        "observation": {
+          "PA_to_participants": 1121159.5555511233,
+          "PA_to_nonparticipants": 115102.97687603557
+        },
+        "current": {
+          "PA_to_participants": 1109984.4660719174,
+          "PA_to_nonparticipants": 118748.045884038
+        }
+      }
+    },
+    {
+      "scope": "public",
+      "rows": 2627,
+      "people": 1044,
+      "actual_PA": 660776,
+      "actual_participants": 2088,
+      "actual_value": 2159.109280389232,
+      "scores": {
+        "recency": {
+          "pa_rmse": 137.67553019252452,
+          "pa_mae": 105.00249324469705,
+          "pa_bias": -3.5825077012466373,
+          "value_rmse": 1.024566555351987,
+          "value_mae": 0.6849592858477174,
+          "value_bias": 0.02398086686742638,
+          "brier": 0.08508284852468223,
+          "logloss": 0.2787775638491782,
+          "conditional_rate_rmse": 3.3970787873669943,
+          "expected_pa": 651361.0931367176,
+          "expected_arrivals": 2037.0727978555474,
+          "expected_value": 2221.258245226027
+        },
+        "observation": {
+          "pa_rmse": 137.7704245894364,
+          "pa_mae": 105.28437464124063,
+          "pa_bias": -3.245770483841557,
+          "value_rmse": 1.0253077348318382,
+          "value_mae": 0.685407824913511,
+          "value_bias": 0.024500400052531207,
+          "brier": 0.08520749046241619,
+          "logloss": 0.2792006559904491,
+          "conditional_rate_rmse": 3.3970787873669943,
+          "expected_pa": 652264.2442752813,
+          "expected_arrivals": 2042.4640557533942,
+          "expected_value": 2222.690548470789
+        },
+        "current": {
+          "pa_rmse": 138.3298474682615,
+          "pa_mae": 106.41075374670466,
+          "pa_bias": -4.363012023141187,
+          "value_rmse": 1.0239813329483616,
+          "value_mae": 0.6852995445457328,
+          "value_bias": 0.019974003803383548,
+          "brier": 0.09167817805858981,
+          "logloss": 0.29731380413153374,
+          "conditional_rate_rmse": 3.3970787873669943,
+          "expected_pa": 649254.8423971363,
+          "expected_arrivals": 2041.5174668228374,
+          "expected_value": 2210.567858660615
+        }
+      },
+      "allocations": {
+        "recency": {
+          "PA_to_participants": 618251.1816952415,
+          "PA_to_nonparticipants": 33109.91144147619
+        },
+        "observation": {
+          "PA_to_participants": 618304.9194356151,
+          "PA_to_nonparticipants": 33959.32483966623
+        },
+        "current": {
+          "PA_to_participants": 611676.8665755399,
+          "PA_to_nonparticipants": 37577.97582159657
+        }
+      }
+    },
+    {
+      "scope": "additions",
+      "rows": 13,
+      "people": 13,
+      "actual_PA": 1625,
+      "actual_participants": 6,
+      "actual_value": 8.336613824082338,
+      "scores": {
+        "recency": {
+          "pa_rmse": 173.80360701233218,
+          "pa_mae": 106.02611807561784,
+          "pa_bias": -83.88120267406165,
+          "value_rmse": 1.5543615390004626,
+          "value_mae": 0.8915656831296395,
+          "value_bias": -0.7099182970405131,
+          "brier": 0.28819970231183967,
+          "logloss": 0.9861389368664017,
+          "conditional_rate_rmse": 3.000225495552626,
+          "expected_pa": 747.7350270524436,
+          "expected_arrivals": 2.6564085159401207,
+          "expected_value": 1.5642262257635382
+        },
+        "observation": {
+          "pa_rmse": 174.7084950873615,
+          "pa_mae": 108.03202026201556,
+          "pa_bias": -83.15616527863884,
+          "value_rmse": 1.5556387041006914,
+          "value_mae": 0.8956423090579617,
+          "value_bias": -0.7072454386754371,
+          "brier": 0.2816766916231392,
+          "logloss": 1.0047147236161844,
+          "conditional_rate_rmse": 3.000225495552626,
+          "expected_pa": 743.3902960245274,
+          "expected_arrivals": 2.626544804354188,
+          "expected_value": 1.5632344926061388
+        }
+      },
+      "allocations": {
+        "recency": {
+          "PA_to_participants": 671.0913534987922,
+          "PA_to_nonparticipants": 76.64367355365138
+        },
+        "observation": {
+          "PA_to_participants": 672.8005107749818,
+          "PA_to_nonparticipants": 70.58978524954546
+        }
+      }
+    },
+    {
+      "scope": "current_regular",
+      "rows": 1445,
+      "people": 559,
+      "actual_PA": 672511,
+      "actual_participants": 1409,
+      "actual_value": 2857.770958960409,
+      "scores": {
+        "recency": {
+          "pa_rmse": 153.49936274553414,
+          "pa_mae": 122.7275111205992,
+          "pa_bias": -8.660580621782477,
+          "value_rmse": 1.4497748095967966,
+          "value_mae": 1.130840300033284,
+          "value_bias": -0.012395516575592421,
+          "brier": 0.018764649271629037,
+          "logloss": 0.08075089434151349,
+          "conditional_rate_rmse": 1.8554732258640803,
+          "expected_pa": 660377.9956793566,
+          "expected_arrivals": 1386.5197443744103,
+          "expected_value": 2838.7705745011344
+        },
+        "observation": {
+          "pa_rmse": 153.54232007707222,
+          "pa_mae": 122.81717094059388,
+          "pa_bias": -9.410655714432357,
+          "value_rmse": 1.451065571988383,
+          "value_mae": 1.1309825443919388,
+          "value_bias": -0.0149183228531581,
+          "brier": 0.01900287702853028,
+          "logloss": 0.08112833182687056,
+          "conditional_rate_rmse": 1.8554732258640803,
+          "expected_pa": 659277.4805226852,
+          "expected_arrivals": 1385.5973394501316,
+          "expected_value": 2835.0449244653373
+        },
+        "current": {
+          "pa_rmse": 152.55393555916316,
+          "pa_mae": 122.31074550967126,
+          "pa_bias": -11.091570458686437,
+          "value_rmse": 1.448696347420243,
+          "value_mae": 1.1293489179620273,
+          "value_bias": -0.02195388249055271,
+          "brier": 0.020390269930258526,
+          "logloss": 0.08755516613583345,
+          "conditional_rate_rmse": 1.8554732258640803,
+          "expected_pa": 656903.2374983686,
+          "expected_arrivals": 1381.235150297427,
+          "expected_value": 2825.041229831655
+        }
+      },
+      "allocations": {
+        "recency": {
+          "PA_to_participants": 651355.9312947985,
+          "PA_to_nonparticipants": 9022.06438455813
+        },
+        "observation": {
+          "PA_to_participants": 650227.2435995702,
+          "PA_to_nonparticipants": 9050.236923114966
+        },
+        "current": {
+          "PA_to_participants": 647056.8975272506,
+          "PA_to_nonparticipants": 9846.339971117948
+        }
+      }
+    },
+    {
+      "scope": "absent_former_regular",
+      "rows": 54,
+      "people": 54,
+      "actual_PA": 3892,
+      "actual_participants": 15,
+      "actual_value": 12.420639791276423,
+      "scores": {
+        "recency": {
+          "pa_rmse": 133.4717967317009,
+          "pa_mae": 73.40388462118295,
+          "pa_bias": -11.24845793536084,
+          "value_rmse": 0.6192889602971708,
+          "value_mae": 0.2967338235733066,
+          "value_bias": -0.0896809734378412,
+          "brier": 0.13871670784684123,
+          "logloss": 0.407441634608486,
+          "conditional_rate_rmse": 4.2885380092399155,
+          "expected_pa": 3561.484581556043,
+          "expected_arrivals": 14.631146803120945,
+          "expected_value": 8.239742344882494
+        },
+        "observation": {
+          "pa_rmse": 133.23331263392419,
+          "pa_mae": 71.93836971854405,
+          "pa_bias": -13.644926914642737,
+          "value_rmse": 0.6371643042756046,
+          "value_mae": 0.29753362979671105,
+          "value_bias": -0.10163864016655247,
+          "brier": 0.14670961755623907,
+          "logloss": 0.436836124074784,
+          "conditional_rate_rmse": 4.2885380092399155,
+          "expected_pa": 3461.1550282734083,
+          "expected_arrivals": 14.730262398430137,
+          "expected_value": 7.725391831121184
+        },
+        "current": {
+          "pa_rmse": 163.52691025416138,
+          "pa_mae": 81.43159179019433,
+          "pa_bias": -41.49903814129175,
+          "value_rmse": 0.6939720980430809,
+          "value_mae": 0.3081958268027888,
+          "value_bias": -0.1785747341137627,
+          "brier": 0.200558457046579,
+          "logloss": 0.6042274870465695,
+          "conditional_rate_rmse": 4.2885380092399155,
+          "expected_pa": 1980.486021728135,
+          "expected_arrivals": 11.848151165223838,
+          "expected_value": 3.8618242820931137
+        }
+      },
+      "allocations": {
+        "recency": {
+          "PA_to_participants": 2293.662547055328,
+          "PA_to_nonparticipants": 1267.8220345007148
+        },
+        "observation": {
+          "PA_to_participants": 2200.8690204608283,
+          "PA_to_nonparticipants": 1260.28600781258
+        },
+        "current": {
+          "PA_to_participants": 947.1653070416485,
+          "PA_to_nonparticipants": 1033.3207146864868
+        }
+      }
+    },
+    {
+      "scope": "absent_linked",
+      "rows": 12,
+      "people": 12,
+      "actual_PA": 2899,
+      "actual_participants": 8,
+      "actual_value": 8.096150722170137,
+      "scores": {
+        "recency": {
+          "pa_rmse": 242.31067678123995,
+          "pa_mae": 217.5864048029831,
+          "pa_bias": 4.1546299467210765,
+          "value_rmse": 0.9769153201593642,
+          "value_mae": 0.78253078641544,
+          "value_bias": 0.062037711425648984,
+          "brier": 0.23741829703047637,
+          "logloss": 0.6482674635701344,
+          "conditional_rate_rmse": 2.847222397537478,
+          "expected_pa": 2799.3521993478253,
+          "expected_arrivals": 8.513685280392043,
+          "expected_value": 7.359359917834989
+        },
+        "observation": {
+          "pa_rmse": 239.76125323870224,
+          "pa_mae": 206.76186346927636,
+          "pa_bias": -6.915929178455926,
+          "value_rmse": 1.0150432272719045,
+          "value_mae": 0.7799757111176275,
+          "value_bias": 0.01800594230383999,
+          "brier": 0.24406852562229728,
+          "logloss": 0.6777189412280968,
+          "conditional_rate_rmse": 2.847222397537478,
+          "expected_pa": 2633.9063504973183,
+          "expected_arrivals": 8.089909234006804,
+          "expected_value": 6.724726956292383
+        },
+        "current": {
+          "pa_rmse": 289.5336648505036,
+          "pa_mae": 208.32830225551726,
+          "pa_bias": -136.09220097786368,
+          "value_rmse": 1.1117700233154888,
+          "value_mae": 0.7903472027885955,
+          "value_bias": -0.2992420911688009,
+          "brier": 0.40032885047681827,
+          "logloss": 1.1644777107819022,
+          "conditional_rate_rmse": 2.847222397537478,
+          "expected_pa": 1137.1685197464408,
+          "expected_arrivals": 5.2534411039697435,
+          "expected_value": 2.911365673946746
+        }
+      },
+      "allocations": {
+        "recency": {
+          "PA_to_participants": 2018.472759937336,
+          "PA_to_nonparticipants": 780.8794394104897
+        },
+        "observation": {
+          "PA_to_participants": 1938.3455260862065,
+          "PA_to_nonparticipants": 695.560824411112
+        },
+        "current": {
+          "PA_to_participants": 755.2397317992072,
+          "PA_to_nonparticipants": 381.92878794723345
+        }
+      }
+    },
+    {
+      "scope": "absent_unlinked",
+      "rows": 42,
+      "people": 42,
+      "actual_PA": 993,
+      "actual_participants": 7,
+      "actual_value": 4.3244890691062885,
+      "scores": {
+        "recency": {
+          "pa_rmse": 63.199232115432835,
+          "pa_mae": 27.48350339973211,
+          "pa_bias": -2.9386160346339087,
+          "value_rmse": 0.4414464530417241,
+          "value_mae": 0.13807379997776464,
+          "value_bias": -0.07879594244530291,
+          "brier": 0.09294775838547135,
+          "logloss": 0.298310110704513,
+          "conditional_rate_rmse": 6.560348419376646,
+          "expected_pa": 762.1323822082176,
+          "expected_arrivals": 6.117461522728904,
+          "expected_value": 0.8803824270475059
+        },
+        "observation": {
+          "pa_rmse": 64.3308787879132,
+          "pa_mae": 29.30166306512122,
+          "pa_bias": -1.7424880001872305,
+          "value_rmse": 0.44269404459280365,
+          "value_mae": 0.14077405848372815,
+          "value_bias": -0.07686874288752646,
+          "brier": 0.09715310647214057,
+          "logloss": 0.31633748482807567,
+          "conditional_rate_rmse": 6.560348419376646,
+          "expected_pa": 827.2486777760897,
+          "expected_arrivals": 6.64035316442333,
+          "expected_value": 1.0006648748288012
+        },
+        "current": {
+          "pa_rmse": 69.684936614855,
+          "pa_mae": 33.877641180886535,
+          "pa_bias": -0.864908851546331,
+          "value_rmse": 0.44673441613055537,
+          "value_mae": 0.14218167418632996,
+          "value_bias": -0.07815246837819423,
+          "brier": 0.1280191566270511,
+          "logloss": 0.41186012956948276,
+          "conditional_rate_rmse": 6.560348419376646,
+          "expected_pa": 843.3175019816947,
+          "expected_arrivals": 6.594710061254093,
+          "expected_value": 0.9504586081463674
+        }
+      },
+      "allocations": {
+        "recency": {
+          "PA_to_participants": 275.1897871179924,
+          "PA_to_nonparticipants": 486.9425950902253
+        },
+        "observation": {
+          "PA_to_participants": 262.52349437462175,
+          "PA_to_nonparticipants": 564.725183401468
+        },
+        "current": {
+          "PA_to_participants": 191.92557524244125,
+          "PA_to_nonparticipants": 651.3919267392533
+        }
+      }
+    },
+    {
+      "scope": "input_changed",
+      "rows": 3626,
+      "people": 1294,
+      "actual_PA": 1082291,
+      "actual_participants": 3265,
+      "actual_value": 3739.0945267990783,
+      "scores": {
+        "recency": {
+          "pa_rmse": 152.21214878150622,
+          "pa_mae": 119.4878965317924,
+          "pa_bias": -6.837829656054511,
+          "value_rmse": 1.1623409620871223,
+          "value_mae": 0.8343687962223301,
+          "value_bias": -0.003168819226542384,
+          "brier": 0.06812739699474436,
+          "logloss": 0.2337113922958104,
+          "conditional_rate_rmse": 3.2567486781107124,
+          "expected_pa": 1057927.9308195356,
+          "expected_arrivals": 3198.232327016219,
+          "expected_value": 3737.044449456468
+        },
+        "observation": {
+          "pa_rmse": 152.2837097325413,
+          "pa_mae": 119.50836711485512,
+          "pa_bias": -7.444561242578937,
+          "value_rmse": 1.1632988694318538,
+          "value_mae": 0.8342173579191227,
+          "value_bias": -0.0050831174440404735,
+          "brier": 0.06870616682099516,
+          "logloss": 0.23514902313209377,
+          "conditional_rate_rmse": 3.2567486781107124,
+          "expected_pa": 1055813.9078933978,
+          "expected_arrivals": 3187.7766721660087,
+          "expected_value": 3730.41350898505
+        },
+        "current": {
+          "pa_rmse": 152.50612631422842,
+          "pa_mae": 119.55550390340304,
+          "pa_bias": -13.01910201361747,
+          "value_rmse": 1.1616783352403586,
+          "value_mae": 0.8304414598192796,
+          "value_bias": -0.020392969213739492,
+          "brier": 0.07263162968887057,
+          "logloss": 0.24757631958995233,
+          "conditional_rate_rmse": 3.2567486781107124,
+          "expected_pa": 1035481.3963185069,
+          "expected_arrivals": 3143.1798580070217,
+          "expected_value": 3674.7942866331796
+        }
+      },
+      "allocations": {
+        "recency": {
+          "PA_to_participants": 1017256.366625785,
+          "PA_to_nonparticipants": 40671.56419375069
+        },
+        "observation": {
+          "PA_to_participants": 1015496.8287239758,
+          "PA_to_nonparticipants": 40317.07916942198
+        },
+        "current": {
+          "PA_to_participants": 996208.7428444461,
+          "PA_to_nonparticipants": 39272.653474060666
+        }
+      }
+    },
+    {
+      "scope": "nonparticipants",
+      "rows": 25968,
+      "people": 10802,
+      "actual_PA": 0,
+      "actual_participants": 0,
+      "actual_value": 0.0,
+      "scores": {
+        "recency": {
+          "pa_rmse": 21.82462110090693,
+          "pa_mae": 4.3407596276539335,
+          "pa_bias": 4.3407596276539335,
+          "value_rmse": 0.06731243024919546,
+          "value_mae": 0.008550034020927584,
+          "value_bias": 0.008340472741855296,
+          "brier": 0.01316386194122416,
+          "logloss": 0.05055013798243894,
+          "conditional_rate_rmse": null,
+          "expected_pa": 112283.27316446291,
+          "expected_arrivals": 906.1689827153996,
+          "expected_value": 216.24346856761954
+        },
+        "observation": {
+          "pa_rmse": 21.90948609771266,
+          "pa_mae": 4.450640456465327,
+          "pa_bias": 4.450640456465327,
+          "value_rmse": 0.06761994030469182,
+          "value_mae": 0.008744879106921026,
+          "value_bias": 0.008533275496449923,
+          "brier": 0.013312479169674553,
+          "logloss": 0.05157437977325505,
+          "conditional_rate_rmse": null,
+          "expected_pa": 115102.97687603557,
+          "expected_arrivals": 932.883633293973,
+          "expected_value": 221.23776628234816
+        },
+        "current": {
+          "pa_rmse": 22.78743068319891,
+          "pa_mae": 4.590397873289857,
+          "pa_bias": 4.590397873289857,
+          "value_rmse": 0.06938758045835762,
+          "value_mae": 0.008965811113551391,
+          "value_bias": 0.008712633583483197,
+          "brier": 0.013826414175520732,
+          "logloss": 0.052658020949029695,
+          "conditional_rate_rmse": null,
+          "expected_pa": 118748.045884038,
+          "expected_arrivals": 950.896376896967,
+          "expected_value": 225.92651204587756
+        }
+      },
+      "allocations": {
+        "recency": {
+          "PA_to_participants": 0.0,
+          "PA_to_nonparticipants": 112283.27316446291
+        },
+        "observation": {
+          "PA_to_participants": 0.0,
+          "PA_to_nonparticipants": 115102.97687603557
+        },
+        "current": {
+          "PA_to_participants": 0.0,
+          "PA_to_nonparticipants": 118748.045884038
+        }
+      }
+    },
+    {
+      "scope": "origin_2016",
+      "rows": 4663,
+      "people": 4663,
+      "actual_PA": 179968,
+      "actual_participants": 624,
+      "actual_value": 638.3050711187234,
+      "scores": {
+        "recency": {
+          "pa_rmse": 57.105871916734934,
+          "pa_mae": 18.350196836648767,
+          "pa_bias": -1.7844373332276176,
+          "value_rmse": 0.43842886676392595,
+          "value_mae": 0.1172812603175044,
+          "value_bias": -0.008343412707316523,
+          "brier": 0.03060780798169523,
+          "logloss": 0.10300990802904389,
+          "conditional_rate_rmse": 4.282609452141883,
+          "expected_pa": 171647.16871515958,
+          "expected_arrivals": 623.2730435142666,
+          "expected_value": 599.3997376645063
+        },
+        "observation": {
+          "pa_rmse": 57.24881292648227,
+          "pa_mae": 18.47532020846379,
+          "pa_bias": -1.8474471670026575,
+          "value_rmse": 0.43884999114613843,
+          "value_mae": 0.11751403382396693,
+          "value_bias": -0.008615446683997939,
+          "brier": 0.030678166797207196,
+          "logloss": 0.10374146194359504,
+          "conditional_rate_rmse": 4.282609452141883,
+          "expected_pa": 171353.35386026662,
+          "expected_arrivals": 626.016288512684,
+          "expected_value": 598.131243231241
+        },
+        "current": {
+          "pa_rmse": 57.648052854156674,
+          "pa_mae": 18.692640246908578,
+          "pa_bias": -1.7711269022873726,
+          "value_rmse": 0.4363772969113821,
+          "value_mae": 0.11702946432365403,
+          "value_bias": -0.008824186711915968,
+          "brier": 0.03121169191453413,
+          "logloss": 0.10589882032390599,
+          "conditional_rate_rmse": 4.282609452141883,
+          "expected_pa": 171709.23525463394,
+          "expected_arrivals": 623.4261676611463,
+          "expected_value": 597.1578884810591
+        }
+      },
+      "allocations": {
+        "recency": {
+          "PA_to_participants": 154123.8457974888,
+          "PA_to_nonparticipants": 17523.322917670856
+        },
+        "observation": {
+          "PA_to_participants": 153470.8558704187,
+          "PA_to_nonparticipants": 17882.49798984791
+        },
+        "current": {
+          "PA_to_participants": 153294.99895779585,
+          "PA_to_nonparticipants": 18414.2362968381
+        }
+      }
+    },
+    {
+      "scope": "origin_2017",
+      "rows": 4691,
+      "people": 4691,
+      "actual_PA": 179643,
+      "actual_participants": 628,
+      "actual_value": 631.2706607285976,
+      "scores": {
+        "recency": {
+          "pa_rmse": 56.57032183791618,
+          "pa_mae": 17.90770945676532,
+          "pa_bias": -0.902043812932208,
+          "value_rmse": 0.4230985543022614,
+          "value_mae": 0.11300297111910733,
+          "value_bias": -0.003997079071880514,
+          "brier": 0.029918066977091203,
+          "logloss": 0.10239233041155338,
+          "conditional_rate_rmse": 3.4353734364874104,
+          "expected_pa": 175411.51247353503,
+          "expected_arrivals": 611.776332826383,
+          "expected_value": 612.5203628024061
+        },
+        "observation": {
+          "pa_rmse": 56.52510204400961,
+          "pa_mae": 17.951317841721917,
+          "pa_bias": -0.9645694868362392,
+          "value_rmse": 0.42319306947078705,
+          "value_mae": 0.11301122665446826,
+          "value_bias": -0.004317033372521869,
+          "brier": 0.03015558508824502,
+          "logloss": 0.10290784118316243,
+          "conditional_rate_rmse": 3.4353734364874104,
+          "expected_pa": 175118.2045372512,
+          "expected_arrivals": 613.088926047184,
+          "expected_value": 611.0194571780975
+        },
+        "current": {
+          "pa_rmse": 56.64522304623439,
+          "pa_mae": 18.13396541064435,
+          "pa_bias": -1.135480311262139,
+          "value_rmse": 0.42341793911100223,
+          "value_mae": 0.11348656776049286,
+          "value_bias": -0.004977157048182324,
+          "brier": 0.030806837944625014,
+          "logloss": 0.10420183766133603,
+          "conditional_rate_rmse": 3.4353734364874104,
+          "expected_pa": 174316.4618598693,
+          "expected_arrivals": 616.2927241842596,
+          "expected_value": 607.9228170155743
+        }
+      },
+      "allocations": {
+        "recency": {
+          "PA_to_participants": 159182.41151240972,
+          "PA_to_nonparticipants": 16229.10096112531
+        },
+        "observation": {
+          "PA_to_participants": 158642.95042169222,
+          "PA_to_nonparticipants": 16475.25411555898
+        },
+        "current": {
+          "PA_to_participants": 157110.44290418006,
+          "PA_to_nonparticipants": 17206.018955689233
+        }
+      }
+    },
+    {
+      "scope": "origin_2018",
+      "rows": 4478,
+      "people": 4478,
+      "actual_PA": 181308,
+      "actual_participants": 638,
+      "actual_value": 639.6141484360919,
+      "scores": {
+        "recency": {
+          "pa_rmse": 62.90429393556461,
+          "pa_mae": 20.278509005093966,
+          "pa_bias": -1.9299153990341422,
+          "value_rmse": 0.47057844203401245,
+          "value_mae": 0.1318664160553801,
+          "value_bias": -0.008022564369238799,
+          "brier": 0.029182849006287846,
+          "logloss": 0.09932661868919884,
+          "conditional_rate_rmse": 3.9626404270596876,
+          "expected_pa": 172665.83884312512,
+          "expected_arrivals": 607.3987914785821,
+          "expected_value": 603.6891051906406
+        },
+        "observation": {
+          "pa_rmse": 62.722611091168645,
+          "pa_mae": 20.30748774968995,
+          "pa_bias": -1.8658044295643736,
+          "value_rmse": 0.4712800405739374,
+          "value_mae": 0.13195939100834828,
+          "value_bias": -0.007890653863341814,
+          "brier": 0.02910715902715149,
+          "logloss": 0.09941108180690411,
+          "conditional_rate_rmse": 3.9626404270596876,
+          "expected_pa": 172952.92776441074,
+          "expected_arrivals": 609.6032734418919,
+          "expected_value": 604.2798004360471
+        },
+        "current": {
+          "pa_rmse": 62.43970142429325,
+          "pa_mae": 20.152743092276616,
+          "pa_bias": -2.0551587779609486,
+          "value_rmse": 0.47234880736189044,
+          "value_mae": 0.1323648706291499,
+          "value_bias": -0.008950445073008835,
+          "brier": 0.029666736004287254,
+          "logloss": 0.10188111110207601,
+          "conditional_rate_rmse": 3.9626404270596876,
+          "expected_pa": 172104.99899229087,
+          "expected_arrivals": 615.0841701700679,
+          "expected_value": 599.5340553991583
+        }
+      },
+      "allocations": {
+        "recency": {
+          "PA_to_participants": 158819.67680402397,
+          "PA_to_nonparticipants": 13846.162039101124
+        },
+        "observation": {
+          "PA_to_participants": 158839.38849507112,
+          "PA_to_nonparticipants": 14113.539269339633
+        },
+        "current": {
+          "PA_to_participants": 157279.85093755135,
+          "PA_to_nonparticipants": 14825.148054739506
+        }
+      }
+    },
+    {
+      "scope": "origin_2021",
+      "rows": 4242,
+      "people": 4242,
+      "actual_PA": 181583,
+      "actual_participants": 686,
+      "actual_value": 568.3444608474305,
+      "scores": {
+        "recency": {
+          "pa_rmse": 59.103375533403764,
+          "pa_mae": 19.77878307277101,
+          "pa_bias": -3.5457898701136177,
+          "value_rmse": 0.4238210199745342,
+          "value_mae": 0.12486462562757793,
+          "value_bias": 0.010413733124931003,
+          "brier": 0.039135644320444196,
+          "logloss": 0.13499348950528223,
+          "conditional_rate_rmse": 4.267216069459313,
+          "expected_pa": 166541.75937097805,
+          "expected_arrivals": 579.7695336284715,
+          "expected_value": 612.5195167633876
+        },
+        "observation": {
+          "pa_rmse": 58.95106721140248,
+          "pa_mae": 19.8673677213681,
+          "pa_bias": -3.355306943772996,
+          "value_rmse": 0.4234241412784404,
+          "value_mae": 0.12486895168727326,
+          "value_bias": 0.010784595708749926,
+          "brier": 0.03867216558656879,
+          "logloss": 0.13323840654623784,
+          "conditional_rate_rmse": 4.267216069459313,
+          "expected_pa": 167349.78794451494,
+          "expected_arrivals": 586.1276314375361,
+          "expected_value": 614.0927158439475
+        },
+        "current": {
+          "pa_rmse": 59.3075589663477,
+          "pa_mae": 20.09996307320558,
+          "pa_bias": -3.956841957397311,
+          "value_rmse": 0.4238083093363311,
+          "value_mae": 0.12464780395672181,
+          "value_bias": 0.009195693952175421,
+          "brier": 0.04044357581618932,
+          "logloss": 0.1389794922469497,
+          "conditional_rate_rmse": 4.267216069459313,
+          "expected_pa": 164798.0764167206,
+          "expected_arrivals": 581.3609535170975,
+          "expected_value": 607.3525945925585
+        }
+      },
+      "allocations": {
+        "recency": {
+          "PA_to_participants": 155464.791391554,
+          "PA_to_nonparticipants": 11076.967979424038
+        },
+        "observation": {
+          "PA_to_participants": 155631.39031059446,
+          "PA_to_nonparticipants": 11718.397633920493
+        },
+        "current": {
+          "PA_to_participants": 152355.45211731712,
+          "PA_to_nonparticipants": 12442.62429940346
+        }
+      }
+    },
+    {
+      "scope": "origin_2022",
+      "rows": 4244,
+      "people": 4244,
+      "actual_PA": 182917,
+      "actual_participants": 649,
+      "actual_value": 571.7691585722233,
+      "scores": {
+        "recency": {
+          "pa_rmse": 60.93122850581128,
+          "pa_mae": 21.296026749400173,
+          "pa_bias": -0.7988077711459991,
+          "value_rmse": 0.4146294073822547,
+          "value_mae": 0.12310197299954652,
+          "value_bias": 0.002721977996135598,
+          "brier": 0.0329739960252753,
+          "logloss": 0.11537696269287975,
+          "conditional_rate_rmse": 3.8725065265695067,
+          "expected_pa": 179526.8598192564,
+          "expected_arrivals": 648.9750838618568,
+          "expected_value": 583.3212331878227
+        },
+        "observation": {
+          "pa_rmse": 61.19108224153044,
+          "pa_mae": 21.479192569228356,
+          "pa_bias": -0.5325226769821583,
+          "value_rmse": 0.415821629929806,
+          "value_mae": 0.12366939884115591,
+          "value_bias": 0.0033638584818474625,
+          "brier": 0.03300562068350731,
+          "logloss": 0.11546949458049104,
+          "conditional_rate_rmse": 3.8725065265695067,
+          "expected_pa": 180656.9737588877,
+          "expected_arrivals": 655.4540441745675,
+          "expected_value": 586.0453739691839
+        },
+        "current": {
+          "pa_rmse": 61.955860968798355,
+          "pa_mae": 21.510162043414013,
+          "pa_bias": -1.32473913914572,
+          "value_rmse": 0.4165803030072922,
+          "value_mae": 0.12367438675286666,
+          "value_bias": 0.0009882613683389137,
+          "brier": 0.03456037946358421,
+          "logloss": 0.11935014764629807,
+          "conditional_rate_rmse": 3.8725065265695067,
+          "expected_pa": 177294.80709346558,
+          "expected_arrivals": 641.2617474184858,
+          "expected_value": 575.9633398194536
+        }
+      },
+      "allocations": {
+        "recency": {
+          "PA_to_participants": 161181.43830780164,
+          "PA_to_nonparticipants": 18345.42151145474
+        },
+        "observation": {
+          "PA_to_participants": 161727.8022635314,
+          "PA_to_nonparticipants": 18929.17149535633
+        },
+        "current": {
+          "PA_to_participants": 158391.20469906685,
+          "PA_to_nonparticipants": 18903.602394398695
+        }
+      }
+    },
+    {
+      "scope": "origin_2023",
+      "rows": 4196,
+      "people": 4196,
+      "actual_PA": 182194,
+      "actual_participants": 647,
+      "actual_value": 564.69985016683,
+      "scores": {
+        "recency": {
+          "pa_rmse": 61.892284221096745,
+          "pa_mae": 22.449257355352536,
+          "pa_bias": 1.006963893945883,
+          "value_rmse": 0.43829155226344696,
+          "value_mae": 0.12781740638385028,
+          "value_bias": 0.010401254589634736,
+          "brier": 0.032260488792915626,
+          "logloss": 0.1132648471866008,
+          "conditional_rate_rmse": 3.6570040350085113,
+          "expected_pa": 186419.22049899693,
+          "expected_arrivals": 663.3205833506219,
+          "expected_value": 608.3435144249372
+        },
+        "observation": {
+          "pa_rmse": 61.985053800454764,
+          "pa_mae": 22.555626424045,
+          "pa_bias": 1.0713426237622603,
+          "value_rmse": 0.4385552081745996,
+          "value_mae": 0.1279412608163288,
+          "value_bias": 0.010369855421396497,
+          "brier": 0.03246524403732311,
+          "logloss": 0.11414018507473771,
+          "conditional_rate_rmse": 3.6570040350085113,
+          "expected_pa": 186689.35364930646,
+          "expected_arrivals": 667.472322318185,
+          "expected_value": 608.2117635150096
+        },
+        "current": {
+          "pa_rmse": 62.46586141978649,
+          "pa_mae": 22.694332851213304,
+          "pa_bias": 1.0151418628993183,
+          "value_rmse": 0.4390354861807622,
+          "value_mae": 0.1280794427513013,
+          "value_bias": 0.010274814748300607,
+          "brier": 0.033324898776976086,
+          "logloss": 0.11653231875590354,
+          "conditional_rate_rmse": 3.6570040350085113,
+          "expected_pa": 186453.53525672553,
+          "expected_arrivals": 667.3895516797581,
+          "expected_value": 607.8129728506993
+        }
+      },
+      "allocations": {
+        "recency": {
+          "PA_to_participants": 166653.77637734378,
+          "PA_to_nonparticipants": 19765.44412165318
+        },
+        "observation": {
+          "PA_to_participants": 166407.5314968948,
+          "PA_to_nonparticipants": 20281.82215241162
+        },
+        "current": {
+          "PA_to_participants": 165779.68562704395,
+          "PA_to_nonparticipants": 20673.849629681616
+        }
+      }
+    },
+    {
+      "scope": "origin_2024",
+      "rows": 3992,
+      "people": 3992,
+      "actual_PA": 182880,
+      "actual_participants": 666,
+      "actual_value": 571.4302393590965,
+      "scores": {
+        "recency": {
+          "pa_rmse": 63.06767433692954,
+          "pa_mae": 22.978645339300837,
+          "pa_bias": -0.22031771324456742,
+          "value_rmse": 0.4344322485320747,
+          "value_mae": 0.1282538292628177,
+          "value_bias": -0.0026443525404289906,
+          "brier": 0.033338590851144455,
+          "logloss": 0.11100947490889387,
+          "conditional_rate_rmse": 3.541064446463706,
+          "expected_pa": 182000.4916887277,
+          "expected_arrivals": 645.3931647887371,
+          "expected_value": 560.8739840177041
+        },
+        "observation": {
+          "pa_rmse": 62.91890819382642,
+          "pa_mae": 22.98946948143861,
+          "pa_bias": -0.18488704596161237,
+          "value_rmse": 0.43478944894658383,
+          "value_mae": 0.12832574528912583,
+          "value_bias": -0.002571922444048028,
+          "brier": 0.03332412116049615,
+          "logloss": 0.1111022598182987,
+          "conditional_rate_rmse": 3.541064446463706,
+          "expected_pa": 182141.93091252123,
+          "expected_arrivals": 647.3611041471429,
+          "expected_value": 561.1631249624568
+        },
+        "current": {
+          "pa_rmse": 62.70880755409798,
+          "pa_mae": 23.00270089208626,
+          "pa_bias": -0.2065638571519391,
+          "value_rmse": 0.43204299566015925,
+          "value_mae": 0.12783881047116327,
+          "value_bias": -0.002941841367036891,
+          "brier": 0.0347693468594341,
+          "logloss": 0.11630907957630442,
+          "conditional_rate_rmse": 3.541064446463706,
+          "expected_pa": 182055.39708224946,
+          "expected_arrivals": 647.0484727831125,
+          "expected_value": 559.6864086218852
+        }
+      },
+      "allocations": {
+        "recency": {
+          "PA_to_participants": 166503.63805469402,
+          "PA_to_nonparticipants": 15496.853634033658
+        },
+        "observation": {
+          "PA_to_participants": 166439.6366929206,
+          "PA_to_nonparticipants": 15702.294219600597
+        },
+        "current": {
+          "PA_to_participants": 165772.8308289621,
+          "PA_to_nonparticipants": 16282.566253287388
+        }
+      }
+    },
+    {
+      "scope": "stage_Current MLB",
+      "rows": 4541,
+      "people": 1521,
+      "actual_PA": 1156856,
+      "actual_participants": 3596,
+      "actual_value": 3954.8064877137617,
+      "scores": {
+        "recency": {
+          "pa_rmse": 140.5915547835652,
+          "pa_mae": 106.37237297835297,
+          "pa_bias": -5.289804821810578,
+          "value_rmse": 1.068700636589606,
+          "value_mae": 0.7143563479940225,
+          "value_bias": -0.0009353958349415533,
+          "brier": 0.08974312535615102,
+          "logloss": 0.29146300829284577,
+          "conditional_rate_rmse": 3.447065401835286,
+          "expected_pa": 1132909.7096234371,
+          "expected_arrivals": 3536.354459876037,
+          "expected_value": 3953.3610597597108
+        },
+        "observation": {
+          "pa_rmse": 140.57658884832574,
+          "pa_mae": 106.58745255992424,
+          "pa_bias": -5.315134598847722,
+          "value_rmse": 1.0694410016383842,
+          "value_mae": 0.7146393720649485,
+          "value_bias": -0.0014116137521424043,
+          "brier": 0.08991332773743954,
+          "logloss": 0.2919528817466378,
+          "conditional_rate_rmse": 3.447065401835286,
+          "expected_pa": 1132868.4658875926,
+          "expected_arrivals": 3540.4138232581495,
+          "expected_value": 3951.4138597906135
+        },
+        "current": {
+          "pa_rmse": 140.9512759808785,
+          "pa_mae": 107.69713732752822,
+          "pa_bias": -5.977975688254119,
+          "value_rmse": 1.0677587851599466,
+          "value_mae": 0.7151824398628562,
+          "value_bias": -0.005441443471029621,
+          "brier": 0.09495244796104088,
+          "logloss": 0.306401420384823,
+          "conditional_rate_rmse": 3.447065401835286,
+          "expected_pa": 1129696.8583684291,
+          "expected_arrivals": 3547.866175699684,
+          "expected_value": 3932.723474975929
+        }
+      },
+      "allocations": {
+        "recency": {
+          "PA_to_participants": 1071285.015190095,
+          "PA_to_nonparticipants": 61624.694433342076
+        },
+        "observation": {
+          "PA_to_participants": 1070248.0946845592,
+          "PA_to_nonparticipants": 62620.371203033355
+        },
+        "current": {
+          "PA_to_participants": 1060536.60246832,
+          "PA_to_nonparticipants": 69160.25590010904
+        }
+      }
+    },
+    {
+      "scope": "stage_Inactive / unknown",
+      "rows": 1586,
+      "people": 1168,
+      "actual_PA": 4614,
+      "actual_participants": 26,
+      "actual_value": 13.556522316223726,
+      "scores": {
+        "recency": {
+          "pa_rmse": 23.681593549510907,
+          "pa_mae": 3.928565620209486,
+          "pa_bias": 1.2441766775294092,
+          "value_rmse": 0.11764233187323306,
+          "value_mae": 0.012309811159913541,
+          "value_bias": -0.0003583340976828496,
+          "brier": 0.008841478208632824,
+          "logloss": 0.03696050828360996,
+          "conditional_rate_rmse": 2.954772614219323,
+          "expected_pa": 6499.646454057296,
+          "expected_arrivals": 39.01927830334944,
+          "expected_value": 12.74999202091332
+        },
+        "observation": {
+          "pa_rmse": 22.703597248599017,
+          "pa_mae": 3.962014260715009,
+          "pa_bias": 1.3195869142445673,
+          "value_rmse": 0.11630827180357617,
+          "value_mae": 0.012256010512976302,
+          "value_bias": -0.0003764503703613092,
+          "brier": 0.009159649146135757,
+          "logloss": 0.03938533297314373,
+          "conditional_rate_rmse": 2.954772614219323,
+          "expected_pa": 6628.335750930268,
+          "expected_arrivals": 41.30755810801979,
+          "expected_value": 12.748341409582755
+        },
+        "current": {
+          "pa_rmse": 27.539031875266733,
+          "pa_mae": 3.7993444149839544,
+          "pa_bias": -0.32204414343642934,
+          "value_rmse": 0.1282437768235004,
+          "value_mae": 0.011980256310897943,
+          "value_bias": -0.003844290990068353,
+          "brier": 0.011694207115579206,
+          "logloss": 0.049154317271065465,
+          "conditional_rate_rmse": 2.954772614219323,
+          "expected_pa": 3992.456901431654,
+          "expected_arrivals": 35.91084151051598,
+          "expected_value": 7.170857441341886
+        }
+      },
+      "allocations": {
+        "recency": {
+          "PA_to_participants": 3382.0979519012535,
+          "PA_to_nonparticipants": 3117.5485021560416
+        },
+        "observation": {
+          "PA_to_participants": 3325.860123294908,
+          "PA_to_nonparticipants": 3302.4756276353587
+        },
+        "current": {
+          "PA_to_participants": 1471.4666199196886,
+          "PA_to_nonparticipants": 2520.9902815119644
+        }
+      }
+    },
+    {
+      "scope": "stage_Lower minors",
+      "rows": 17962,
+      "people": 9055,
+      "actual_PA": 6072,
+      "actual_participants": 58,
+      "actual_value": 13.188883052935815,
+      "scores": {
+        "recency": {
+          "pa_rmse": 8.398459538963046,
+          "pa_mae": 0.694687980581616,
+          "pa_bias": 0.12308084566959196,
+          "value_rmse": 0.04771584435786545,
+          "value_mae": 0.0021365051577822225,
+          "value_bias": 0.0003388743433586147,
+          "brier": 0.0027031344543774925,
+          "logloss": 0.014205568455917042,
+          "conditional_rate_rmse": 4.641512983345521,
+          "expected_pa": 8437.134817317488,
+          "expected_arrivals": 90.99310976994882,
+          "expected_value": 18.969009331094615
+        },
+        "observation": {
+          "pa_rmse": 8.380364224471474,
+          "pa_mae": 0.7156082439131073,
+          "pa_bias": 0.14363475563832645,
+          "value_rmse": 0.047691501162140486,
+          "value_mae": 0.00218294663500619,
+          "value_bias": 0.00038541884204104816,
+          "brier": 0.002698602250215723,
+          "logloss": 0.014329417634914254,
+          "conditional_rate_rmse": 4.641512983345521,
+          "expected_pa": 8816.72873638901,
+          "expected_arrivals": 95.60369047098544,
+          "expected_value": 19.82972535096201
+        },
+        "current": {
+          "pa_rmse": 8.658367272245252,
+          "pa_mae": 0.6637174299512103,
+          "pa_bias": 0.07472542647406806,
+          "value_rmse": 0.04843539818737461,
+          "value_mae": 0.002072377549442618,
+          "value_bias": 0.00024057696096823692,
+          "brier": 0.002720772155127985,
+          "logloss": 0.014174856607062915,
+          "conditional_rate_rmse": 4.641512983345521,
+          "expected_pa": 7506.175073379913,
+          "expected_arrivals": 85.63508425772902,
+          "expected_value": 17.047755962691813
+        }
+      },
+      "allocations": {
+        "recency": {
+          "PA_to_participants": 1512.3419461285325,
+          "PA_to_nonparticipants": 6924.792871188954
+        },
+        "observation": {
+          "PA_to_participants": 1486.2576667755172,
+          "PA_to_nonparticipants": 7330.4710696134935
+        },
+        "current": {
+          "PA_to_participants": 1309.4501727056274,
+          "PA_to_nonparticipants": 6196.724900674284
+        }
+      }
+    },
+    {
+      "scope": "stage_Upper minors",
+      "rows": 6417,
+      "people": 3494,
+      "actual_PA": 102951,
+      "actual_participants": 858,
+      "actual_value": 203.88169614607165,
+      "scores": {
+        "recency": {
+          "pa_rmse": 53.928489875489824,
+          "pa_mae": 18.5411493315718,
+          "pa_bias": -2.61676821099836,
+          "value_rmse": 0.2920785321767578,
+          "value_mae": 0.07344679076233357,
+          "value_bias": -0.0016712919962357088,
+          "brier": 0.08074574656450571,
+          "logloss": 0.27236099147693466,
+          "conditional_rate_rmse": 5.2766826973447705,
+          "expected_pa": 86366.36051496697,
+          "expected_arrivals": 713.5396854995839,
+          "expected_value": 195.5873929396857
+        },
+        "observation": {
+          "pa_rmse": 54.04061468174428,
+          "pa_mae": 18.71683228062388,
+          "pa_bias": -2.373585880495439,
+          "value_rmse": 0.2929845425162789,
+          "value_mae": 0.07385549071623342,
+          "value_bias": -0.0011567823040171587,
+          "brier": 0.08059119232847985,
+          "logloss": 0.2716211483187572,
+          "conditional_rate_rmse": 5.2766826973447705,
+          "expected_pa": 87949.00205224701,
+          "expected_arrivals": 727.7985182420365,
+          "expected_value": 198.9515525848249
+        },
+        "current": {
+          "pa_rmse": 53.79192531280203,
+          "pa_mae": 18.57145985583117,
+          "pa_bias": -2.4242044821110067,
+          "value_rmse": 0.2933573597771868,
+          "value_mae": 0.07379467600661686,
+          "value_bias": -0.0012044782424671038,
+          "brier": 0.08115053317428844,
+          "logloss": 0.27460916356916887,
+          "conditional_rate_rmse": 5.2766826973447705,
+          "expected_pa": 87537.02161271479,
+          "expected_arrivals": 722.4516859459989,
+          "expected_value": 198.487988400426
+        }
+      },
+      "allocations": {
+        "recency": {
+          "PA_to_participants": 45750.123157191156,
+          "PA_to_nonparticipants": 40616.237357775826
+        },
+        "observation": {
+          "PA_to_participants": 46099.34307649364,
+          "PA_to_nonparticipants": 41849.65897575336
+        },
+        "current": {
+          "PA_to_participants": 46666.94681097208,
+          "PA_to_nonparticipants": 40870.07480174271
+        }
+      }
+    },
+    {
+      "scope": "never_Upper minors",
+      "rows": 5454,
+      "people": 3055,
+      "actual_PA": 92891,
+      "actual_participants": 730,
+      "actual_value": 196.73395271672234,
+      "scores": {
+        "recency": {
+          "pa_rmse": 55.20953027328364,
+          "pa_mae": 18.76224742486696,
+          "pa_bias": -3.7006726673902155,
+          "value_rmse": 0.30063027441214984,
+          "value_mae": 0.07598623890280536,
+          "value_bias": -0.004725653243196607,
+          "brier": 0.07821609026486089,
+          "logloss": 0.26416440206392783,
+          "conditional_rate_rmse": 5.0206809931990115,
+          "expected_pa": 72780.87374725829,
+          "expected_arrivals": 587.6891631096361,
+          "expected_value": 173.20763617950854
+        },
+        "observation": {
+          "pa_rmse": 55.27511841639596,
+          "pa_mae": 18.91785834832833,
+          "pa_bias": -3.446254437584752,
+          "value_rmse": 0.3013271062279115,
+          "value_mae": 0.07635359461905195,
+          "value_bias": -0.004133396132264278,
+          "brier": 0.07806580841888884,
+          "logloss": 0.2630574731782554,
+          "conditional_rate_rmse": 5.0206809931990115,
+          "expected_pa": 74212.72341597392,
+          "expected_arrivals": 598.8158257086931,
+          "expected_value": 176.55551739105334
+        },
+        "current": {
+          "pa_rmse": 55.126745205392474,
+          "pa_mae": 18.732137202600416,
+          "pa_bias": -3.4169789018468144,
+          "value_rmse": 0.3016947425069942,
+          "value_mae": 0.07630526694523009,
+          "value_bias": -0.003916551170919217,
+          "brier": 0.07801654659263803,
+          "logloss": 0.26374676035269945,
+          "conditional_rate_rmse": 5.0206809931990115,
+          "expected_pa": 74239.03857057952,
+          "expected_arrivals": 589.463002343003,
+          "expected_value": 177.4862992905293
+        }
+      },
+      "allocations": {
+        "recency": {
+          "PA_to_participants": 40629.30187871428,
+          "PA_to_nonparticipants": 32151.571868543997
+        },
+        "observation": {
+          "PA_to_participants": 41052.26476080328,
+          "PA_to_nonparticipants": 33160.45865517065
+        },
+        "current": {
+          "PA_to_participants": 42235.63480912226,
+          "PA_to_nonparticipants": 32003.403761457255
+        }
+      }
+    },
+    {
+      "scope": "never_Lower minors",
+      "rows": 17852,
+      "people": 8974,
+      "actual_PA": 5194,
+      "actual_participants": 54,
+      "actual_value": 9.48308912172428,
+      "scores": {
+        "recency": {
+          "pa_rmse": 7.967013117899076,
+          "pa_mae": 0.6583611918563405,
+          "pa_bias": 0.13262109453535612,
+          "value_rmse": 0.04579154619532024,
+          "value_mae": 0.0019824775031730855,
+          "value_bias": 0.00044752073420481996,
+          "brier": 0.002670221407442753,
+          "logloss": 0.014068930271143126,
+          "conditional_rate_rmse": 4.891204090045915,
+          "expected_pa": 7738.427963173684,
+          "expected_arrivals": 86.93161684669516,
+          "expected_value": 17.479214927955464
+        },
+        "observation": {
+          "pa_rmse": 7.951707879434338,
+          "pa_mae": 0.6786421165228733,
+          "pa_bias": 0.15277692405812163,
+          "value_rmse": 0.045751018918258654,
+          "value_mae": 0.0020278254546204012,
+          "value_bias": 0.0004942535870751691,
+          "brier": 0.0026664452982145927,
+          "logloss": 0.014189441028603044,
+          "conditional_rate_rmse": 4.891204090045915,
+          "expected_pa": 8107.540278953291,
+          "expected_arrivals": 91.39821311045989,
+          "expected_value": 18.33813187775167
+        },
+        "current": {
+          "pa_rmse": 7.966362703629022,
+          "pa_mae": 0.6216744545061641,
+          "pa_bias": 0.09588994521125092,
+          "value_rmse": 0.045813006346647756,
+          "value_mae": 0.0019031200193213784,
+          "value_bias": 0.0003785436596244934,
+          "brier": 0.0026636719540869083,
+          "logloss": 0.013965784493706912,
+          "conditional_rate_rmse": 4.891204090045915,
+          "expected_pa": 7054.645569311761,
+          "expected_arrivals": 81.9903019838619,
+          "expected_value": 16.178953968368184
+        }
+      },
+      "allocations": {
+        "recency": {
+          "PA_to_participants": 937.7301452654759,
+          "PA_to_nonparticipants": 6800.697817908209
+        },
+        "observation": {
+          "PA_to_participants": 915.5566570970016,
+          "PA_to_nonparticipants": 7191.983621856289
+        },
+        "current": {
+          "PA_to_participants": 990.5968697922685,
+          "PA_to_nonparticipants": 6064.048699519491
+        }
+      }
+    }
+  ],
+  "intervals": {
+    "original_all:observation": [
+      {
+        "metric": "pa_mse",
+        "change": 0.7270937027551659,
+        "lower": -12.074490629913365,
+        "upper": 12.374468835347516,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      {
+        "metric": "pa_mae",
+        "change": -0.08380774008901311,
+        "lower": -0.11998834130472812,
+        "upper": -0.048427307333447335,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      {
+        "metric": "pa_bias",
+        "change": -0.07073612562778357,
+        "lower": -0.10206992865445513,
+        "upper": -0.036201138320908946,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      {
+        "metric": "value_mse",
+        "change": -0.0003293912181967538,
+        "lower": -0.0006758258988101592,
+        "upper": -1.3274903703931565e-06,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      {
+        "metric": "value_mae",
+        "change": -0.00015736090784041235,
+        "lower": -0.00027097119769115897,
+        "upper": -3.959999461008458e-05,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      {
+        "metric": "value_bias",
+        "change": -8.481374660681656e-05,
+        "lower": -0.00019543874501176003,
+        "upper": 2.449855828833688e-05,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      {
+        "metric": "brier",
+        "change": 1.340224907830452e-06,
+        "lower": -0.00011762415035674763,
+        "upper": 0.00012337898967052082,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      {
+        "metric": "logloss",
+        "change": -9.101421856770366e-05,
+        "lower": -0.00043492811366868233,
+        "upper": 0.00025060876139219906,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      }
+    ],
+    "original_all:current": [
+      {
+        "metric": "pa_mse",
+        "change": -26.96387681444672,
+        "lower": -70.50460193602913,
+        "upper": 16.4953503339607,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      {
+        "metric": "pa_mae",
+        "change": -0.17819711348803413,
+        "lower": -0.2959781991094869,
+        "upper": -0.05182571127659656,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      {
+        "metric": "pa_bias",
+        "change": 0.18006015379340898,
+        "lower": 0.04494822360222457,
+        "upper": 0.31741590699198013,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      {
+        "metric": "value_mse",
+        "change": -4.8319802538564287e-05,
+        "lower": -0.0010979142330226096,
+        "upper": 0.001010604106520172,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      {
+        "metric": "value_mae",
+        "change": -0.00013326641136665037,
+        "lower": -0.0005156439696993445,
+        "upper": 0.0002353652175360816,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      {
+        "metric": "value_bias",
+        "change": 0.0008234881647379406,
+        "lower": 0.00040537982821450976,
+        "upper": 0.00124501895851552,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      {
+        "metric": "brier",
+        "change": -0.0010522889749680206,
+        "lower": -0.0014212128999191418,
+        "upper": -0.0007001248315295115,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      {
+        "metric": "logloss",
+        "change": -0.003397025127045808,
+        "lower": -0.00446287784955519,
+        "upper": -0.0023794262945007385,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      }
+    ],
+    "public:observation": [
+      {
+        "metric": "pa_mse",
+        "change": -26.13827776084994,
+        "lower": -128.13592281061625,
+        "upper": 70.03980663906097,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      {
+        "metric": "pa_mae",
+        "change": -0.2818813965435604,
+        "lower": -0.5637934921618554,
+        "upper": -0.021414587541537557,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      {
+        "metric": "pa_bias",
+        "change": -0.33673721740508383,
+        "lower": -0.5945618093319911,
+        "upper": -0.09240005429743159,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      {
+        "metric": "value_mse",
+        "change": -0.001519324760158678,
+        "lower": -0.003967686506084435,
+        "upper": 0.000962245491600982,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      {
+        "metric": "value_mae",
+        "change": -0.00044853906579415156,
+        "lower": -0.0012887200219903862,
+        "upper": 0.000436976712774751,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      {
+        "metric": "value_bias",
+        "change": -0.0005195331851048878,
+        "lower": -0.0013468576773042079,
+        "upper": 0.0002631527057181192,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      {
+        "metric": "brier",
+        "change": -0.0001246419377339223,
+        "lower": -0.0010895866794936747,
+        "upper": 0.0007363382084352919,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      {
+        "metric": "logloss",
+        "change": -0.00042309214127116476,
+        "lower": -0.002739054175187258,
+        "upper": 0.0017177110891945758,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      }
+    ],
+    "absent_former_regular:observation": [
+      {
+        "metric": "pa_mse",
+        "change": 63.6049273795021,
+        "lower": -3259.002850150249,
+        "upper": 2798.122244031956,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      {
+        "metric": "pa_mae",
+        "change": 1.4655149026389078,
+        "lower": -3.178407661757374,
+        "upper": 6.657247833041404,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      {
+        "metric": "pa_bias",
+        "change": 2.3964689792818996,
+        "lower": -2.2848550095347675,
+        "upper": 7.805092864418768,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      {
+        "metric": "value_mse",
+        "change": -0.022459534297064262,
+        "lower": -0.08974799326325024,
+        "upper": 0.020615316898251492,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      {
+        "metric": "value_mae",
+        "change": -0.0007998062234044439,
+        "lower": -0.02089956566457314,
+        "upper": 0.01851738157071472,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      {
+        "metric": "value_bias",
+        "change": 0.011957666728711262,
+        "lower": -0.0057411433036089286,
+        "upper": 0.03376507230261574,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      {
+        "metric": "brier",
+        "change": -0.007992909709397832,
+        "lower": -0.027088396196979964,
+        "upper": 0.007698515109553594,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      {
+        "metric": "logloss",
+        "change": -0.02939448946629796,
+        "lower": -0.07889757723486879,
+        "upper": 0.009382850447593325,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      }
+    ]
+  },
+  "public_steamer": {
+    "PA_RMSE": 135.37946341946525,
+    "PA_MAE": 92.08284699683804
+  },
+  "cases": [
+    {
+      "row_id": 47261,
+      "player_id": 665487,
+      "player_name": "Fernando Tatis Jr.",
+      "origin": 2022,
+      "target": 2023,
+      "fold": 0,
+      "cutoff": "2023-01-26",
+      "selection": [
+        "fixed before fitting",
+        "largest contribution gain"
+      ],
+      "judgment": "Tatis: useful directional repair but still implausibly near exit. Career talent is retained; appearance probability, not hitting, limits PA. One training peer cannot certify return behavior.",
+      "stats": [
+        {
+          "season": 2020,
+          "bucket": "MLB",
+          "plate_appearances": 257,
+          "home_runs": 17,
+          "strike_outs": 61,
+          "unintentional_walks": 26
+        },
+        {
+          "season": 2021,
+          "bucket": "MLB",
+          "plate_appearances": 546,
+          "home_runs": 42,
+          "strike_outs": 153,
+          "unintentional_walks": 56
+        },
+        {
+          "season": 2022,
+          "bucket": "AA",
+          "plate_appearances": 14,
+          "home_runs": 0,
+          "strike_outs": 2,
+          "unintentional_walks": 4
+        }
+      ],
+      "employment": {
+        "date": "2021-08-15",
+        "state": "major_activation",
+        "raw_age": 1.4493150684931506,
+        "transformed_age": 0.0,
+        "reported_major_link": 1.0,
+        "on_40man": 0
+      },
+      "fixed_rate": 1.313084704567678,
+      "actual_rate": 0.7268065858887996,
+      "actual_pa": 635,
+      "actual_value": 2.7573718524069553,
+      "predictions": {
+        "current": {
+          "p": 0.13397580320263866,
+          "conditional_pa": 296.1610469196878,
+          "pa": 39.678414138399525,
+          "value": 0.21106726373154214
+        },
+        "observation": {
+          "p": 0.1535420116742711,
+          "conditional_pa": 400.3792846841762,
+          "pa": 61.47504080311409,
+          "value": 0.32701328749782466
+        },
+        "recency": {
+          "p": 0.26962996302978093,
+          "conditional_pa": 416.9866171746608,
+          "pa": 112.4320861727172,
+          "value": 0.598076644427644
+        }
+      },
+      "support": {
+        "participation": {
+          "row_id": 47261,
+          "continuity_age_band": 4,
+          "prior_regular_evidence": true,
+          "current_MLB_present": false,
+          "status_major_link": 1.0,
+          "unresolved_observation": false,
+          "continuity_people": 1
+        },
+        "conditional_pa": {
+          "row_id": 47261,
+          "continuity_age_band": 4,
+          "prior_regular_evidence": true,
+          "current_MLB_present": false,
+          "status_major_link": 1.0,
+          "unresolved_observation": false,
+          "continuity_people": 1
+        }
+      },
+      "head_accounting": {
+        "observation_participation": {
+          "reference": -4.149970092942676,
+          "prediction": 0.1535420116742715,
+          "largest_path_effects": [
+            {
+              "feature": "last_first_team_work",
+              "input": 0.9103746397694525,
+              "path_effect": 0.7639790929019832
+            },
+            {
+              "feature": "employment_evidence_age_years",
+              "input": 1.4493150684931506,
+              "path_effect": -0.7246534391846818
+            },
+            {
+              "feature": "games_pool_MLB",
+              "input": 199.57999999999998,
+              "path_effect": 0.6228823908574361
+            },
+            {
+              "feature": "status_major_link",
+              "input": 1.0,
+              "path_effect": 0.5341951430304291
+            },
+            {
+              "feature": "last_MLB_quality",
+              "input": 1.347878741765764,
+              "path_effect": 0.49118822216043473
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "recency_participation": {
+          "reference": -4.161103657798702,
+          "prediction": 0.2696299630297808,
+          "largest_path_effects": [
+            {
+              "feature": "games_pool_MLB",
+              "input": 199.57999999999998,
+              "path_effect": 0.7624598887445765
+            },
+            {
+              "feature": "last_first_team_work",
+              "input": 0.9103746397694525,
+              "path_effect": 0.7108818501134598
+            },
+            {
+              "feature": "unlinked_employment_age_years",
+              "input": 0.0,
+              "path_effect": 0.5825452311343425
+            },
+            {
+              "feature": "last_MLB_quality",
+              "input": 1.347878741765764,
+              "path_effect": 0.5568763995665539
+            },
+            {
+              "feature": "on_40man",
+              "input": 0.0,
+              "path_effect": -0.5166427974075402
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "observation_conditional_pa": {
+          "reference": 278.10494782946,
+          "prediction": 400.3792846841763,
+          "largest_path_effects": [
+            {
+              "feature": "signed_first_team_work",
+              "input": 0.9103746397694525,
+              "path_effect": 77.68444202242208
+            },
+            {
+              "feature": "role_pool_MLB",
+              "input": 4.223560910307898,
+              "path_effect": 47.885324852135675
+            },
+            {
+              "feature": "work_0",
+              "input": 0.0,
+              "path_effect": -27.27411832570388
+            },
+            {
+              "feature": "professional_work_0",
+              "input": 0.0,
+              "path_effect": -26.942337967323585
+            },
+            {
+              "feature": "pooled_mlb_quality",
+              "input": 1.3673684989925885,
+              "path_effect": 23.876580900977366
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "recency_conditional_pa": {
+          "reference": 278.0897116728357,
+          "prediction": 416.98661717466086,
+          "largest_path_effects": [
+            {
+              "feature": "signed_first_team_work",
+              "input": 0.9103746397694525,
+              "path_effect": 79.58863119003136
+            },
+            {
+              "feature": "role_pool_MLB",
+              "input": 4.223560910307898,
+              "path_effect": 47.38984484202096
+            },
+            {
+              "feature": "work_0",
+              "input": 0.0,
+              "path_effect": -27.27411832570388
+            },
+            {
+              "feature": "professional_work_0",
+              "input": 0.0,
+              "path_effect": -26.993955509191355
+            },
+            {
+              "feature": "pooled_mlb_quality",
+              "input": 1.3673684989925885,
+              "path_effect": 23.192974287716517
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        }
+      },
+      "peers": [
+        {
+          "player_id": 657108,
+          "player_name": "Evan White",
+          "distance": 1.450445872235108,
+          "expected_pa": 112.64666778807572,
+          "actual_pa": 0,
+          "raw_history": [
+            {
+              "season": 2020,
+              "bucket": "MLB",
+              "plate_appearances": 202,
+              "home_runs": 8,
+              "strike_outs": 84,
+              "unintentional_walks": 18
+            },
+            {
+              "season": 2021,
+              "bucket": "MLB",
+              "plate_appearances": 104,
+              "home_runs": 2,
+              "strike_outs": 31,
+              "unintentional_walks": 6
+            },
+            {
+              "season": 2021,
+              "bucket": "AAA",
+              "plate_appearances": 13,
+              "home_runs": 2,
+              "strike_outs": 2,
+              "unintentional_walks": 1
+            },
+            {
+              "season": 2022,
+              "bucket": "AAA",
+              "plate_appearances": 107,
+              "home_runs": 7,
+              "strike_outs": 23,
+              "unintentional_walks": 13
+            }
+          ]
+        }
+      ],
+      "eligible_peer_count": 1
+    },
+    {
+      "row_id": 51083,
+      "player_id": 656555,
+      "player_name": "Rhys Hoskins",
+      "origin": 2023,
+      "target": 2024,
+      "fold": 4,
+      "cutoff": "2024-01-26",
+      "selection": [
+        "fixed before fitting"
+      ],
+      "judgment": "Hoskins: the stronger existing employment model already recognized his return. This change worsens PA and must not receive credit for the old 26-to-367 correction.",
+      "stats": [
+        {
+          "season": 2021,
+          "bucket": "MLB",
+          "plate_appearances": 443,
+          "home_runs": 27,
+          "strike_outs": 108,
+          "unintentional_walks": 47
+        },
+        {
+          "season": 2022,
+          "bucket": "MLB",
+          "plate_appearances": 672,
+          "home_runs": 30,
+          "strike_outs": 169,
+          "unintentional_walks": 72
+        }
+      ],
+      "employment": {
+        "date": "2024-01-26",
+        "state": "agreement_unspecified",
+        "raw_age": 0.0,
+        "transformed_age": 0.0,
+        "reported_major_link": 1.0,
+        "on_40man": 1
+      },
+      "fixed_rate": 0.03729619037339382,
+      "actual_rate": 0.13282500395837224,
+      "actual_pa": 517,
+      "actual_value": 1.715122238077073,
+      "predictions": {
+        "current": {
+          "p": 0.10065097024900589,
+          "conditional_pa": 260.90541426651015,
+          "pa": 26.26038308914307,
+          "value": 0.08293649901507903
+        },
+        "observation": {
+          "p": 0.9213572540175052,
+          "conditional_pa": 398.63814392710054,
+          "pa": 367.2881456353084,
+          "value": 1.1599828085267656
+        },
+        "recency": {
+          "p": 0.9046000699281007,
+          "conditional_pa": 391.6469539943791,
+          "pa": 354.28386197044296,
+          "value": 1.1189122058740257
+        }
+      },
+      "support": {
+        "participation": {
+          "row_id": 51083,
+          "continuity_age_band": 6,
+          "prior_regular_evidence": true,
+          "current_MLB_present": false,
+          "status_major_link": 1.0,
+          "unresolved_observation": false,
+          "continuity_people": 5
+        },
+        "conditional_pa": {
+          "row_id": 51083,
+          "continuity_age_band": 6,
+          "prior_regular_evidence": true,
+          "current_MLB_present": false,
+          "status_major_link": 1.0,
+          "unresolved_observation": false,
+          "continuity_people": 4
+        }
+      },
+      "head_accounting": {
+        "observation_participation": {
+          "reference": -4.133397306259211,
+          "prediction": 0.9213572540175055,
+          "largest_path_effects": [
+            {
+              "feature": "on_40man",
+              "input": 1.0,
+              "path_effect": 3.5036452749667406
+            },
+            {
+              "feature": "last_MLB_work",
+              "input": 1.12,
+              "path_effect": 0.7013115091216224
+            },
+            {
+              "feature": "status_major_link",
+              "input": 1.0,
+              "path_effect": 0.652748953928007
+            },
+            {
+              "feature": "professional_work_0",
+              "input": 0.0,
+              "path_effect": -0.4130239862502019
+            },
+            {
+              "feature": "signed_first_team_work",
+              "input": 1.12,
+              "path_effect": 0.27813362494241184
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "recency_participation": {
+          "reference": -4.149219822164968,
+          "prediction": 0.9046000699281007,
+          "largest_path_effects": [
+            {
+              "feature": "on_40man",
+              "input": 1.0,
+              "path_effect": 4.006638517072892
+            },
+            {
+              "feature": "last_MLB_work",
+              "input": 1.12,
+              "path_effect": 0.5878902221464815
+            },
+            {
+              "feature": "professional_work_0",
+              "input": 0.0,
+              "path_effect": -0.4494643731801279
+            },
+            {
+              "feature": "last_first_team_work",
+              "input": 1.12,
+              "path_effect": 0.2739692279979863
+            },
+            {
+              "feature": "unlinked_employment_age_years",
+              "input": 0.0,
+              "path_effect": 0.2595274889965815
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "observation_conditional_pa": {
+          "reference": 279.23944826727893,
+          "prediction": 398.63814392710003,
+          "largest_path_effects": [
+            {
+              "feature": "signed_first_team_work",
+              "input": 1.12,
+              "path_effect": 82.95284753500215
+            },
+            {
+              "feature": "pooled_mlb_quality",
+              "input": 0.8248996514393725,
+              "path_effect": 42.284361705304924
+            },
+            {
+              "feature": "role_pool_MLB",
+              "input": 4.23819095477387,
+              "path_effect": 41.727758738555
+            },
+            {
+              "feature": "work_0",
+              "input": 0.0,
+              "path_effect": -28.5130448811836
+            },
+            {
+              "feature": "professional_work_0",
+              "input": 0.0,
+              "path_effect": -27.815428935908404
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "recency_conditional_pa": {
+          "reference": 279.2245137869914,
+          "prediction": 391.64695399437954,
+          "largest_path_effects": [
+            {
+              "feature": "signed_first_team_work",
+              "input": 1.12,
+              "path_effect": 85.75580567565171
+            },
+            {
+              "feature": "role_pool_MLB",
+              "input": 4.23819095477387,
+              "path_effect": 41.9019126001906
+            },
+            {
+              "feature": "pooled_mlb_quality",
+              "input": 0.8248996514393725,
+              "path_effect": 39.29499156838354
+            },
+            {
+              "feature": "work_0",
+              "input": 0.0,
+              "path_effect": -28.5130448811836
+            },
+            {
+              "feature": "professional_work_0",
+              "input": 0.0,
+              "path_effect": -28.42301345684217
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        }
+      },
+      "peers": [
+        {
+          "player_id": 666158,
+          "player_name": "Gavin Lux",
+          "distance": 1.213688222296999,
+          "expected_pa": 328.77688685883226,
+          "actual_pa": 487,
+          "raw_history": [
+            {
+              "season": 2021,
+              "bucket": "MLB",
+              "plate_appearances": 381,
+              "home_runs": 7,
+              "strike_outs": 83,
+              "unintentional_walks": 38
+            },
+            {
+              "season": 2021,
+              "bucket": "AAA",
+              "plate_appearances": 74,
+              "home_runs": 1,
+              "strike_outs": 15,
+              "unintentional_walks": 6
+            },
+            {
+              "season": 2022,
+              "bucket": "MLB",
+              "plate_appearances": 471,
+              "home_runs": 6,
+              "strike_outs": 95,
+              "unintentional_walks": 47
+            }
+          ]
+        }
+      ],
+      "eligible_peer_count": 1
+    },
+    {
+      "row_id": 29177,
+      "player_id": 628356,
+      "player_name": "Jung Ho Kang",
+      "origin": 2017,
+      "target": 2018,
+      "fold": 1,
+      "cutoff": "2018-01-27",
+      "selection": [
+        "fixed before fitting"
+      ],
+      "judgment": "Kang: removing staleness raises a historical organizational link despite unresolved nonmedical evidence. No matching training person supports this intersection. This is the opposite-risk failure, not grounds for a named-player exemption.",
+      "stats": [
+        {
+          "season": 2015,
+          "bucket": "MLB",
+          "plate_appearances": 467,
+          "home_runs": 15,
+          "strike_outs": 99,
+          "unintentional_walks": 28
+        },
+        {
+          "season": 2016,
+          "bucket": "MLB",
+          "plate_appearances": 370,
+          "home_runs": 21,
+          "strike_outs": 79,
+          "unintentional_walks": 35
+        },
+        {
+          "season": 2016,
+          "bucket": "AAA",
+          "plate_appearances": 57,
+          "home_runs": 2,
+          "strike_outs": 11,
+          "unintentional_walks": 7
+        }
+      ],
+      "employment": {
+        "date": "2016-09-05",
+        "state": "major_activation",
+        "raw_age": 1.3945205479452054,
+        "transformed_age": 0.0,
+        "reported_major_link": 1.0,
+        "on_40man": 0
+      },
+      "fixed_rate": 0.2618420003091415,
+      "actual_rate": -0.8651657378002193,
+      "actual_pa": 6,
+      "actual_value": 0.00980539758840273,
+      "predictions": {
+        "current": {
+          "p": 0.1266284276155339,
+          "conditional_pa": 184.64487206014505,
+          "pa": 23.381289816247595,
+          "value": 0.08212863137947764
+        },
+        "observation": {
+          "p": 0.1902873024579488,
+          "conditional_pa": 335.61256487756697,
+          "pa": 63.86280964154555,
+          "value": 0.22432317434701712
+        },
+        "recency": {
+          "p": 0.426026789539476,
+          "conditional_pa": 335.78875069627276,
+          "pa": 143.05500342260456,
+          "value": 0.5024920239823859
+        }
+      },
+      "support": {
+        "participation": {
+          "row_id": 29177,
+          "continuity_age_band": 6,
+          "prior_regular_evidence": true,
+          "current_MLB_present": false,
+          "status_major_link": 1.0,
+          "unresolved_observation": true,
+          "continuity_people": 0
+        },
+        "conditional_pa": {
+          "row_id": 29177,
+          "continuity_age_band": 6,
+          "prior_regular_evidence": true,
+          "current_MLB_present": false,
+          "status_major_link": 1.0,
+          "unresolved_observation": true,
+          "continuity_people": 0
+        }
+      },
+      "head_accounting": {
+        "observation_participation": {
+          "reference": -4.055538674352491,
+          "prediction": 0.19028730245794873,
+          "largest_path_effects": [
+            {
+              "feature": "employment_evidence_age_years",
+              "input": 1.3945205479452054,
+              "path_effect": -0.82185688253918
+            },
+            {
+              "feature": "games_pool_MLB",
+              "input": 158.0,
+              "path_effect": 0.6432171176386785
+            },
+            {
+              "feature": "status_major_link",
+              "input": 1.0,
+              "path_effect": 0.53576045931276
+            },
+            {
+              "feature": "on_40man",
+              "input": 0.0,
+              "path_effect": -0.47772012950659987
+            },
+            {
+              "feature": "pooled_MLB_pa",
+              "input": 576.2,
+              "path_effect": 0.43440180468060485
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "recency_participation": {
+          "reference": -4.060370411505179,
+          "prediction": 0.42602678953947637,
+          "largest_path_effects": [
+            {
+              "feature": "games_pool_MLB",
+              "input": 158.0,
+              "path_effect": 0.6119474084690766
+            },
+            {
+              "feature": "on_40man",
+              "input": 0.0,
+              "path_effect": -0.5153148512670943
+            },
+            {
+              "feature": "unlinked_employment_age_years",
+              "input": 0.0,
+              "path_effect": 0.44738685350578317
+            },
+            {
+              "feature": "pooled_MLB_pa",
+              "input": 576.2,
+              "path_effect": 0.42758827397307053
+            },
+            {
+              "feature": "games_mlb_1",
+              "input": 103.0,
+              "path_effect": 0.41531437321967535
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "observation_conditional_pa": {
+          "reference": 285.9778076453969,
+          "prediction": 335.612564877567,
+          "largest_path_effects": [
+            {
+              "feature": "signed_first_team_work",
+              "input": 0.6171746293245469,
+              "path_effect": 100.05502222122233
+            },
+            {
+              "feature": "MLB_0_pa",
+              "input": 0.0,
+              "path_effect": -33.76469800922136
+            },
+            {
+              "feature": "last_MLB_quality",
+              "input": 0.6263166668701926,
+              "path_effect": 27.96850788630665
+            },
+            {
+              "feature": "professional_work_0",
+              "input": 0.0,
+              "path_effect": -25.55711774784034
+            },
+            {
+              "feature": "role_pool_AAA",
+              "input": 3.7543859649122804,
+              "path_effect": -14.391863927923183
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "recency_conditional_pa": {
+          "reference": 285.93803271924776,
+          "prediction": 335.78875069627253,
+          "largest_path_effects": [
+            {
+              "feature": "signed_first_team_work",
+              "input": 0.6171746293245469,
+              "path_effect": 100.05502222122233
+            },
+            {
+              "feature": "MLB_0_pa",
+              "input": 0.0,
+              "path_effect": -33.765138910652915
+            },
+            {
+              "feature": "last_MLB_quality",
+              "input": 0.6263166668701926,
+              "path_effect": 28.047425426981825
+            },
+            {
+              "feature": "professional_work_0",
+              "input": 0.0,
+              "path_effect": -25.979478705791696
+            },
+            {
+              "feature": "role_pool_AAA",
+              "input": 3.7543859649122804,
+              "path_effect": -14.530822830920979
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        }
+      },
+      "peers": [
+        {
+          "player_id": 622110,
+          "player_name": "Matt Duffy",
+          "distance": 0.7983264671771281,
+          "expected_pa": 345.7913579600006,
+          "actual_pa": 560,
+          "raw_history": [
+            {
+              "season": 2015,
+              "bucket": "MLB",
+              "plate_appearances": 612,
+              "home_runs": 12,
+              "strike_outs": 96,
+              "unintentional_walks": 30
+            },
+            {
+              "season": 2016,
+              "bucket": "MLB",
+              "plate_appearances": 366,
+              "home_runs": 5,
+              "strike_outs": 53,
+              "unintentional_walks": 23
+            },
+            {
+              "season": 2016,
+              "bucket": "AAA",
+              "plate_appearances": 19,
+              "home_runs": 0,
+              "strike_outs": 3,
+              "unintentional_walks": 2
+            },
+            {
+              "season": 2016,
+              "bucket": "Aplus",
+              "plate_appearances": 6,
+              "home_runs": 0,
+              "strike_outs": 0,
+              "unintentional_walks": 0
+            },
+            {
+              "season": 2017,
+              "bucket": "Aplus",
+              "plate_appearances": 8,
+              "home_runs": 0,
+              "strike_outs": 1,
+              "unintentional_walks": 0
+            }
+          ]
+        },
+        {
+          "player_id": 543238,
+          "player_name": "Anthony Gose",
+          "distance": 0.9800898135361261,
+          "expected_pa": 140.62031573065153,
+          "actual_pa": 0,
+          "raw_history": [
+            {
+              "season": 2015,
+              "bucket": "MLB",
+              "plate_appearances": 535,
+              "home_runs": 5,
+              "strike_outs": 145,
+              "unintentional_walks": 45
+            },
+            {
+              "season": 2016,
+              "bucket": "MLB",
+              "plate_appearances": 101,
+              "home_runs": 2,
+              "strike_outs": 38,
+              "unintentional_walks": 9
+            },
+            {
+              "season": 2016,
+              "bucket": "AAA",
+              "plate_appearances": 206,
+              "home_runs": 1,
+              "strike_outs": 75,
+              "unintentional_walks": 15
+            },
+            {
+              "season": 2016,
+              "bucket": "AA",
+              "plate_appearances": 173,
+              "home_runs": 6,
+              "strike_outs": 54,
+              "unintentional_walks": 17
+            }
+          ]
+        }
+      ],
+      "eligible_peer_count": 2
+    },
+    {
+      "row_id": 32183,
+      "player_id": 453056,
+      "player_name": "Jacoby Ellsbury",
+      "origin": 2018,
+      "target": 2019,
+      "fold": 4,
+      "cutoff": "2019-01-27",
+      "selection": [
+        "fixed before fitting"
+      ],
+      "judgment": "Ellsbury: a 40-man/activation record is not evidence of medical recovery. Both models allocate substantial PA despite a missed season; removing staleness does not repair the availability distinction.",
+      "stats": [
+        {
+          "season": 2016,
+          "bucket": "MLB",
+          "plate_appearances": 626,
+          "home_runs": 9,
+          "strike_outs": 84,
+          "unintentional_walks": 53
+        },
+        {
+          "season": 2017,
+          "bucket": "MLB",
+          "plate_appearances": 409,
+          "home_runs": 7,
+          "strike_outs": 63,
+          "unintentional_walks": 38
+        },
+        {
+          "season": 2017,
+          "bucket": "AAA",
+          "plate_appearances": 8,
+          "home_runs": 0,
+          "strike_outs": 0,
+          "unintentional_walks": 0
+        }
+      ],
+      "employment": {
+        "date": "2018-11-01",
+        "state": "major_activation",
+        "raw_age": 0.23835616438356164,
+        "transformed_age": 0.0,
+        "reported_major_link": 1.0,
+        "on_40man": 1
+      },
+      "fixed_rate": -0.9831231556438716,
+      "actual_rate": null,
+      "actual_pa": 0,
+      "actual_value": 0.0,
+      "predictions": {
+        "current": {
+          "p": 0.6929156102655454,
+          "conditional_pa": 194.45497530667217,
+          "pa": 134.7408878837943,
+          "value": 0.19422848253287797
+        },
+        "observation": {
+          "p": 0.7777294583887746,
+          "conditional_pa": 335.0990104780218,
+          "pa": 260.6163719256862,
+          "value": 0.3756775188093317
+        },
+        "recency": {
+          "p": 0.791299234830338,
+          "conditional_pa": 344.31766514272124,
+          "pa": 272.4583049660039,
+          "value": 0.39274762069748675
+        }
+      },
+      "support": {
+        "participation": {
+          "row_id": 32183,
+          "continuity_age_band": 6,
+          "prior_regular_evidence": true,
+          "current_MLB_present": false,
+          "status_major_link": 1.0,
+          "unresolved_observation": false,
+          "continuity_people": 3
+        },
+        "conditional_pa": {
+          "row_id": 32183,
+          "continuity_age_band": 6,
+          "prior_regular_evidence": true,
+          "current_MLB_present": false,
+          "status_major_link": 1.0,
+          "unresolved_observation": false,
+          "continuity_people": 3
+        }
+      },
+      "head_accounting": {
+        "observation_participation": {
+          "reference": -4.232608409445248,
+          "prediction": 0.777729458388774,
+          "largest_path_effects": [
+            {
+              "feature": "on_40man",
+              "input": 1.0,
+              "path_effect": 4.258994523734885
+            },
+            {
+              "feature": "last_MLB_work",
+              "input": 0.6816666666666666,
+              "path_effect": 0.388236586459562
+            },
+            {
+              "feature": "games_mlb_0",
+              "input": 0.0,
+              "path_effect": -0.3330600423582462
+            },
+            {
+              "feature": "age_squared",
+              "input": 1.9599999999999997,
+              "path_effect": -0.2353199626927162
+            },
+            {
+              "feature": "professional_work_0",
+              "input": 0.0,
+              "path_effect": -0.2268948383582375
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "recency_participation": {
+          "reference": -4.231745569866869,
+          "prediction": 0.7912992348303386,
+          "largest_path_effects": [
+            {
+              "feature": "on_40man",
+              "input": 1.0,
+              "path_effect": 4.355904352988827
+            },
+            {
+              "feature": "last_MLB_work",
+              "input": 0.6816666666666666,
+              "path_effect": 0.36689892953068665
+            },
+            {
+              "feature": "last_first_team_work",
+              "input": 0.6816666666666666,
+              "path_effect": 0.352734629166862
+            },
+            {
+              "feature": "games_mlb_0",
+              "input": 0.0,
+              "path_effect": -0.3312937161428602
+            },
+            {
+              "feature": "age_squared",
+              "input": 1.9599999999999997,
+              "path_effect": -0.24610440962249558
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "observation_conditional_pa": {
+          "reference": 282.9909624742221,
+          "prediction": 335.09901047802174,
+          "largest_path_effects": [
+            {
+              "feature": "signed_first_team_work",
+              "input": 0.6816666666666666,
+              "path_effect": 91.09413286209183
+            },
+            {
+              "feature": "work_0",
+              "input": 0.0,
+              "path_effect": -28.14045736818796
+            },
+            {
+              "feature": "role_pool_MLB",
+              "input": 3.9426751592356686,
+              "path_effect": 28.052058480255393
+            },
+            {
+              "feature": "professional_work_0",
+              "input": 0.0,
+              "path_effect": -20.5931472400976
+            },
+            {
+              "feature": "games_mlb_2",
+              "input": 148.0,
+              "path_effect": 18.919539739424913
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "recency_conditional_pa": {
+          "reference": 283.01729800975045,
+          "prediction": 344.3176651427215,
+          "largest_path_effects": [
+            {
+              "feature": "signed_first_team_work",
+              "input": 0.6816666666666666,
+              "path_effect": 91.09413286209183
+            },
+            {
+              "feature": "role_pool_MLB",
+              "input": 3.9426751592356686,
+              "path_effect": 28.549959628338573
+            },
+            {
+              "feature": "work_0",
+              "input": 0.0,
+              "path_effect": -28.14045736818796
+            },
+            {
+              "feature": "professional_work_0",
+              "input": 0.0,
+              "path_effect": -20.5931472400976
+            },
+            {
+              "feature": "games_mlb_2",
+              "input": 148.0,
+              "path_effect": 19.157258520473405
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        }
+      },
+      "peers": [
+        {
+          "player_id": 453064,
+          "player_name": "Troy Tulowitzki",
+          "distance": 0.14604395129283265,
+          "expected_pa": 176.7523672817229,
+          "actual_pa": 13,
+          "raw_history": [
+            {
+              "season": 2016,
+              "bucket": "MLB",
+              "plate_appearances": 544,
+              "home_runs": 24,
+              "strike_outs": 101,
+              "unintentional_walks": 42
+            },
+            {
+              "season": 2016,
+              "bucket": "Aplus",
+              "plate_appearances": 4,
+              "home_runs": 0,
+              "strike_outs": 2,
+              "unintentional_walks": 0
+            },
+            {
+              "season": 2017,
+              "bucket": "MLB",
+              "plate_appearances": 260,
+              "home_runs": 7,
+              "strike_outs": 40,
+              "unintentional_walks": 16
+            },
+            {
+              "season": 2017,
+              "bucket": "Aplus",
+              "plate_appearances": 17,
+              "home_runs": 1,
+              "strike_outs": 3,
+              "unintentional_walks": 3
+            }
+          ]
+        }
+      ],
+      "eligible_peer_count": 1
+    },
+    {
+      "row_id": 51341,
+      "player_id": 666158,
+      "player_name": "Gavin Lux",
+      "origin": 2023,
+      "target": 2024,
+      "fold": 3,
+      "cutoff": "2024-01-26",
+      "selection": [
+        "fixed before fitting"
+      ],
+      "judgment": "Lux: existing employment already gives high participation; conditional workload remains below the later 487 PA. The replacement changes little and does not establish a new recovery model.",
+      "stats": [
+        {
+          "season": 2021,
+          "bucket": "MLB",
+          "plate_appearances": 381,
+          "home_runs": 7,
+          "strike_outs": 83,
+          "unintentional_walks": 38
+        },
+        {
+          "season": 2021,
+          "bucket": "AAA",
+          "plate_appearances": 74,
+          "home_runs": 1,
+          "strike_outs": 15,
+          "unintentional_walks": 6
+        },
+        {
+          "season": 2022,
+          "bucket": "MLB",
+          "plate_appearances": 471,
+          "home_runs": 6,
+          "strike_outs": 95,
+          "unintentional_walks": 47
+        }
+      ],
+      "employment": {
+        "date": "2023-11-06",
+        "state": "major_activation",
+        "raw_age": 0.2219178082191781,
+        "transformed_age": 0.0,
+        "reported_major_link": 1.0,
+        "on_40man": 1
+      },
+      "fixed_rate": -0.18366731969299432,
+      "actual_rate": 0.08394083686825003,
+      "actual_pa": 487,
+      "actual_value": 1.5759210549978622,
+      "predictions": {
+        "current": {
+          "p": 0.7713065626654177,
+          "conditional_pa": 287.5291310863876,
+          "pa": 221.77310576441596,
+          "value": 0.6187389660359963
+        },
+        "observation": {
+          "p": 0.9483742066757457,
+          "conditional_pa": 343.53943534403817,
+          "pa": 325.8039394562358,
+          "value": 0.9089812397890443
+        },
+        "recency": {
+          "p": 0.9463530121118383,
+          "conditional_pa": 347.4146356074344,
+          "pa": 328.77688685883226,
+          "value": 0.9172756558122206
+        }
+      },
+      "support": {
+        "participation": {
+          "row_id": 51341,
+          "continuity_age_band": 5,
+          "prior_regular_evidence": true,
+          "current_MLB_present": false,
+          "status_major_link": 1.0,
+          "unresolved_observation": false,
+          "continuity_people": 8
+        },
+        "conditional_pa": {
+          "row_id": 51341,
+          "continuity_age_band": 5,
+          "prior_regular_evidence": true,
+          "current_MLB_present": false,
+          "status_major_link": 1.0,
+          "unresolved_observation": false,
+          "continuity_people": 6
+        }
+      },
+      "head_accounting": {
+        "observation_participation": {
+          "reference": -4.13194097739633,
+          "prediction": 0.9483742066757458,
+          "largest_path_effects": [
+            {
+              "feature": "on_40man",
+              "input": 1.0,
+              "path_effect": 3.144226349004809
+            },
+            {
+              "feature": "status_major_link",
+              "input": 1.0,
+              "path_effect": 0.8121077272435482
+            },
+            {
+              "feature": "last_first_team_work",
+              "input": 0.785,
+              "path_effect": 0.6152061074083882
+            },
+            {
+              "feature": "last_MLB_work",
+              "input": 0.785,
+              "path_effect": 0.5774735901730254
+            },
+            {
+              "feature": "signed_first_team_work",
+              "input": 0.785,
+              "path_effect": 0.412368769433942
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "recency_participation": {
+          "reference": -4.150653550047859,
+          "prediction": 0.9463530121118383,
+          "largest_path_effects": [
+            {
+              "feature": "on_40man",
+              "input": 1.0,
+              "path_effect": 3.4910215203830512
+            },
+            {
+              "feature": "last_first_team_work",
+              "input": 0.785,
+              "path_effect": 0.7374751721361144
+            },
+            {
+              "feature": "last_MLB_work",
+              "input": 0.785,
+              "path_effect": 0.5436996634687431
+            },
+            {
+              "feature": "status_major_link",
+              "input": 1.0,
+              "path_effect": 0.4425611402808275
+            },
+            {
+              "feature": "last_MLB_quality",
+              "input": 0.29476137759912147,
+              "path_effect": 0.3739035317527686
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "observation_conditional_pa": {
+          "reference": 277.66791132945104,
+          "prediction": 343.53943534403857,
+          "largest_path_effects": [
+            {
+              "feature": "signed_first_team_work",
+              "input": 0.785,
+              "path_effect": 95.3450588557821
+            },
+            {
+              "feature": "professional_work_0",
+              "input": 0.0,
+              "path_effect": -51.757200602583694
+            },
+            {
+              "feature": "regular_window_scaled",
+              "input": 0.3333333333333333,
+              "path_effect": 15.410583667911402
+            },
+            {
+              "feature": "age_centered",
+              "input": -0.4,
+              "path_effect": 13.677461968585735
+            },
+            {
+              "feature": "quality_0",
+              "input": 0.0,
+              "path_effect": -12.580918163385022
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "recency_conditional_pa": {
+          "reference": 277.70121337623,
+          "prediction": 347.41463560743495,
+          "largest_path_effects": [
+            {
+              "feature": "signed_first_team_work",
+              "input": 0.785,
+              "path_effect": 96.63900684236664
+            },
+            {
+              "feature": "professional_work_0",
+              "input": 0.0,
+              "path_effect": -51.70018829623525
+            },
+            {
+              "feature": "regular_window_scaled",
+              "input": 0.3333333333333333,
+              "path_effect": 15.410583667911402
+            },
+            {
+              "feature": "age_centered",
+              "input": -0.4,
+              "path_effect": 13.850973806144626
+            },
+            {
+              "feature": "quality_0",
+              "input": 0.0,
+              "path_effect": -11.964822627221514
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        }
+      },
+      "peers": [
+        {
+          "player_id": 656555,
+          "player_name": "Rhys Hoskins",
+          "distance": 1.213688222296999,
+          "expected_pa": 354.28386197044296,
+          "actual_pa": 517,
+          "raw_history": [
+            {
+              "season": 2021,
+              "bucket": "MLB",
+              "plate_appearances": 443,
+              "home_runs": 27,
+              "strike_outs": 108,
+              "unintentional_walks": 47
+            },
+            {
+              "season": 2022,
+              "bucket": "MLB",
+              "plate_appearances": 672,
+              "home_runs": 30,
+              "strike_outs": 169,
+              "unintentional_walks": 72
+            }
+          ]
+        }
+      ],
+      "eligible_peer_count": 1
+    },
+    {
+      "row_id": 50571,
+      "player_id": 474832,
+      "player_name": "Brandon Belt",
+      "origin": 2023,
+      "target": 2024,
+      "fold": 3,
+      "cutoff": "2024-01-26",
+      "selection": [
+        "fixed before fitting"
+      ],
+      "judgment": "Belt: known recent production supports some chance of returning despite a recorded release. His zero outcome is not a reason to force every unsigned productive veteran to zero. Raw input is unchanged; retraining nevertheless increases PA.",
+      "stats": [
+        {
+          "season": 2021,
+          "bucket": "MLB",
+          "plate_appearances": 381,
+          "home_runs": 29,
+          "strike_outs": 103,
+          "unintentional_walks": 45
+        },
+        {
+          "season": 2021,
+          "bucket": "AAA",
+          "plate_appearances": 15,
+          "home_runs": 0,
+          "strike_outs": 3,
+          "unintentional_walks": 2
+        },
+        {
+          "season": 2022,
+          "bucket": "MLB",
+          "plate_appearances": 298,
+          "home_runs": 8,
+          "strike_outs": 81,
+          "unintentional_walks": 35
+        },
+        {
+          "season": 2023,
+          "bucket": "MLB",
+          "plate_appearances": 404,
+          "home_runs": 19,
+          "strike_outs": 141,
+          "unintentional_walks": 60
+        }
+      ],
+      "employment": {
+        "date": "2023-11-02",
+        "state": "reported_release",
+        "raw_age": 0.2328767123287671,
+        "transformed_age": 0.2328767123287671,
+        "reported_major_link": 0.0,
+        "on_40man": 0
+      },
+      "fixed_rate": 0.5474060659428681,
+      "actual_rate": null,
+      "actual_pa": 0,
+      "actual_value": 0.0,
+      "predictions": {
+        "current": {
+          "p": 0.6463123100952929,
+          "conditional_pa": 377.7685197398733,
+          "pa": 244.15644467435675,
+          "value": 0.9786814719803991
+        },
+        "observation": {
+          "p": 0.6013021436131175,
+          "conditional_pa": 324.5083630480666,
+          "pa": 195.12757432118622,
+          "value": 0.7821531883597264
+        },
+        "recency": {
+          "p": 0.6432266330652925,
+          "conditional_pa": 322.97198456833115,
+          "pa": 207.74418220830324,
+          "value": 0.8327258463734513
+        }
+      },
+      "support": {
+        "participation": {
+          "row_id": 50571,
+          "continuity_age_band": 7,
+          "prior_regular_evidence": false,
+          "current_MLB_present": true,
+          "status_major_link": 0.0,
+          "unresolved_observation": false,
+          "continuity_people": 68
+        },
+        "conditional_pa": {
+          "row_id": 50571,
+          "continuity_age_band": 7,
+          "prior_regular_evidence": false,
+          "current_MLB_present": true,
+          "status_major_link": 0.0,
+          "unresolved_observation": false,
+          "continuity_people": 17
+        }
+      },
+      "head_accounting": {
+        "observation_participation": {
+          "reference": -4.13194097739633,
+          "prediction": 0.6013021436131184,
+          "largest_path_effects": [
+            {
+              "feature": "games_mlb_0",
+              "input": 103.0,
+              "path_effect": 1.9703391136080552
+            },
+            {
+              "feature": "games_pool_MLB",
+              "input": 223.6,
+              "path_effect": 0.7048501318863897
+            },
+            {
+              "feature": "on_40man",
+              "input": 0.0,
+              "path_effect": -0.4334101743378635
+            },
+            {
+              "feature": "last_MLB_work",
+              "input": 0.6733333333333333,
+              "path_effect": 0.41658491110153695
+            },
+            {
+              "feature": "age_squared",
+              "input": 2.5600000000000005,
+              "path_effect": -0.4060847979102274
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "recency_participation": {
+          "reference": -4.150653550047859,
+          "prediction": 0.6432266330652927,
+          "largest_path_effects": [
+            {
+              "feature": "games_mlb_0",
+              "input": 103.0,
+              "path_effect": 2.0102331970306446
+            },
+            {
+              "feature": "games_pool_MLB",
+              "input": 223.6,
+              "path_effect": 0.6338421745936064
+            },
+            {
+              "feature": "on_40man",
+              "input": 0.0,
+              "path_effect": -0.5888887582375254
+            },
+            {
+              "feature": "unlinked_employment_age_years",
+              "input": 0.2328767123287671,
+              "path_effect": 0.41226778912530315
+            },
+            {
+              "feature": "last_MLB_work",
+              "input": 0.6733333333333333,
+              "path_effect": 0.3796894470810773
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "observation_conditional_pa": {
+          "reference": 277.66791132945104,
+          "prediction": 324.50836304806694,
+          "largest_path_effects": [
+            {
+              "feature": "signed_first_team_work",
+              "input": 0.0,
+              "path_effect": -67.70575821890655
+            },
+            {
+              "feature": "professional_work_0",
+              "input": 0.6733333333333333,
+              "path_effect": 63.44771667669993
+            },
+            {
+              "feature": "quality_0",
+              "input": 0.6480449327160019,
+              "path_effect": 41.963143245943144
+            },
+            {
+              "feature": "pooled_mlb_quality",
+              "input": 0.9698088186152864,
+              "path_effect": 37.322243815796156
+            },
+            {
+              "feature": "age_centered",
+              "input": 1.6,
+              "path_effect": -31.407608563995694
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "recency_conditional_pa": {
+          "reference": 277.70121337623,
+          "prediction": 322.9719845683313,
+          "largest_path_effects": [
+            {
+              "feature": "signed_first_team_work",
+              "input": 0.0,
+              "path_effect": -68.0607644771765
+            },
+            {
+              "feature": "professional_work_0",
+              "input": 0.6733333333333333,
+              "path_effect": 63.25349325878578
+            },
+            {
+              "feature": "quality_0",
+              "input": 0.6480449327160019,
+              "path_effect": 42.54656941228719
+            },
+            {
+              "feature": "pooled_mlb_quality",
+              "input": 0.9698088186152864,
+              "path_effect": 37.32394633304597
+            },
+            {
+              "feature": "age_centered",
+              "input": 1.6,
+              "path_effect": -32.01137872303049
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        }
+      },
+      "peers": [
+        {
+          "player_id": 456781,
+          "player_name": "Donovan Solano",
+          "distance": 0.1362359508323322,
+          "expected_pa": 192.53989211827007,
+          "actual_pa": 309,
+          "raw_history": [
+            {
+              "season": 2021,
+              "bucket": "MLB",
+              "plate_appearances": 344,
+              "home_runs": 7,
+              "strike_outs": 58,
+              "unintentional_walks": 23
+            },
+            {
+              "season": 2021,
+              "bucket": "AAA",
+              "plate_appearances": 19,
+              "home_runs": 0,
+              "strike_outs": 5,
+              "unintentional_walks": 0
+            },
+            {
+              "season": 2022,
+              "bucket": "MLB",
+              "plate_appearances": 304,
+              "home_runs": 4,
+              "strike_outs": 61,
+              "unintentional_walks": 18
+            },
+            {
+              "season": 2022,
+              "bucket": "AAA",
+              "plate_appearances": 34,
+              "home_runs": 1,
+              "strike_outs": 4,
+              "unintentional_walks": 2
+            },
+            {
+              "season": 2023,
+              "bucket": "MLB",
+              "plate_appearances": 450,
+              "home_runs": 5,
+              "strike_outs": 100,
+              "unintentional_walks": 39
+            }
+          ]
+        },
+        {
+          "player_id": 518735,
+          "player_name": "Yasmani Grandal",
+          "distance": 0.19614769223770118,
+          "expected_pa": 137.298198854614,
+          "actual_pa": 243,
+          "raw_history": [
+            {
+              "season": 2021,
+              "bucket": "MLB",
+              "plate_appearances": 375,
+              "home_runs": 23,
+              "strike_outs": 82,
+              "unintentional_walks": 87
+            },
+            {
+              "season": 2021,
+              "bucket": "AAA",
+              "plate_appearances": 25,
+              "home_runs": 1,
+              "strike_outs": 8,
+              "unintentional_walks": 2
+            },
+            {
+              "season": 2021,
+              "bucket": "AA",
+              "plate_appearances": 13,
+              "home_runs": 0,
+              "strike_outs": 3,
+              "unintentional_walks": 1
+            },
+            {
+              "season": 2022,
+              "bucket": "MLB",
+              "plate_appearances": 376,
+              "home_runs": 5,
+              "strike_outs": 79,
+              "unintentional_walks": 44
+            },
+            {
+              "season": 2022,
+              "bucket": "AAA",
+              "plate_appearances": 38,
+              "home_runs": 2,
+              "strike_outs": 2,
+              "unintentional_walks": 9
+            },
+            {
+              "season": 2022,
+              "bucket": "AA",
+              "plate_appearances": 13,
+              "home_runs": 1,
+              "strike_outs": 2,
+              "unintentional_walks": 6
+            },
+            {
+              "season": 2023,
+              "bucket": "MLB",
+              "plate_appearances": 405,
+              "home_runs": 8,
+              "strike_outs": 86,
+              "unintentional_walks": 35
+            }
+          ]
+        },
+        {
+          "player_id": 446334,
+          "player_name": "Evan Longoria",
+          "distance": 0.38684105734524904,
+          "expected_pa": 31.030698657742516,
+          "actual_pa": 0,
+          "raw_history": [
+            {
+              "season": 2021,
+              "bucket": "MLB",
+              "plate_appearances": 291,
+              "home_runs": 13,
+              "strike_outs": 68,
+              "unintentional_walks": 31
+            },
+            {
+              "season": 2021,
+              "bucket": "AAA",
+              "plate_appearances": 14,
+              "home_runs": 1,
+              "strike_outs": 2,
+              "unintentional_walks": 1
+            },
+            {
+              "season": 2022,
+              "bucket": "MLB",
+              "plate_appearances": 298,
+              "home_runs": 14,
+              "strike_outs": 83,
+              "unintentional_walks": 25
+            },
+            {
+              "season": 2022,
+              "bucket": "AAA",
+              "plate_appearances": 25,
+              "home_runs": 0,
+              "strike_outs": 8,
+              "unintentional_walks": 1
+            },
+            {
+              "season": 2023,
+              "bucket": "MLB",
+              "plate_appearances": 237,
+              "home_runs": 11,
+              "strike_outs": 73,
+              "unintentional_walks": 23
+            },
+            {
+              "season": 2023,
+              "bucket": "AAA",
+              "plate_appearances": 12,
+              "home_runs": 0,
+              "strike_outs": 3,
+              "unintentional_walks": 4
+            }
+          ]
+        }
+      ],
+      "eligible_peer_count": 122
+    },
+    {
+      "row_id": 44435,
+      "player_id": 680757,
+      "player_name": "Steven Kwan",
+      "origin": 2021,
+      "target": 2022,
+      "fold": 1,
+      "cutoff": "2022-03-18",
+      "selection": [
+        "fixed before fitting"
+      ],
+      "judgment": "Kwan: 341 upper-minor PA and 31 strikeouts are known, but this employment change barely affects his forecast. Conditional PA and fixed hitting remain misses. Peers match MLB experience/link but not minor quality; they cannot certify a contact-profile comparison.",
+      "stats": [
+        {
+          "season": 2019,
+          "bucket": "Aplus",
+          "plate_appearances": 542,
+          "home_runs": 3,
+          "strike_outs": 51,
+          "unintentional_walks": 52
+        },
+        {
+          "season": 2021,
+          "bucket": "AAA",
+          "plate_appearances": 120,
+          "home_runs": 5,
+          "strike_outs": 8,
+          "unintentional_walks": 14
+        },
+        {
+          "season": 2021,
+          "bucket": "AA",
+          "plate_appearances": 221,
+          "home_runs": 7,
+          "strike_outs": 23,
+          "unintentional_walks": 22
+        }
+      ],
+      "employment": {
+        "date": "2021-11-19",
+        "state": "major_activation",
+        "raw_age": 0.32602739726027397,
+        "transformed_age": 0.0,
+        "reported_major_link": 1.0,
+        "on_40man": 1
+      },
+      "fixed_rate": -0.25312132030410317,
+      "actual_rate": 1.6179169473249746,
+      "actual_pa": 638,
+      "actual_value": 3.719693921199025,
+      "predictions": {
+        "current": {
+          "p": 0.6957194360445226,
+          "conditional_pa": 166.68844985886165,
+          "pa": 115.9683943309429,
+          "value": 0.31448821094907414
+        },
+        "observation": {
+          "p": 0.7209838038771578,
+          "conditional_pa": 157.52228663678736,
+          "pa": 113.57101741481893,
+          "value": 0.3079868984003216
+        },
+        "recency": {
+          "p": 0.7108085719946424,
+          "conditional_pa": 154.7397602959349,
+          "pa": 109.99034804674676,
+          "value": 0.2982766811461995
+        }
+      },
+      "support": {
+        "participation": {
+          "row_id": 44435,
+          "continuity_age_band": 4,
+          "prior_regular_evidence": false,
+          "current_MLB_present": false,
+          "status_major_link": 1.0,
+          "unresolved_observation": false,
+          "continuity_people": 357
+        },
+        "conditional_pa": {
+          "row_id": 44435,
+          "continuity_age_band": 4,
+          "prior_regular_evidence": false,
+          "current_MLB_present": false,
+          "status_major_link": 1.0,
+          "unresolved_observation": false,
+          "continuity_people": 263
+        }
+      },
+      "head_accounting": {
+        "observation_participation": {
+          "reference": -4.073587289427169,
+          "prediction": 0.7209838038771581,
+          "largest_path_effects": [
+            {
+              "feature": "on_40man",
+              "input": 1.0,
+              "path_effect": 3.359945858487995
+            },
+            {
+              "feature": "status_major_link",
+              "input": 1.0,
+              "path_effect": 0.5395534350479106
+            },
+            {
+              "feature": "games_mlb_0",
+              "input": 0.0,
+              "path_effect": -0.3842357768743666
+            },
+            {
+              "feature": "last_first_team_work",
+              "input": 0.0,
+              "path_effect": -0.309412438157352
+            },
+            {
+              "feature": "age_centered",
+              "input": -0.8,
+              "path_effect": 0.29341241326467715
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "recency_participation": {
+          "reference": -4.072127485704215,
+          "prediction": 0.7108085719946415,
+          "largest_path_effects": [
+            {
+              "feature": "on_40man",
+              "input": 1.0,
+              "path_effect": 3.700834057442144
+            },
+            {
+              "feature": "last_first_team_work",
+              "input": 0.0,
+              "path_effect": -0.3966149549654868
+            },
+            {
+              "feature": "games_mlb_0",
+              "input": 0.0,
+              "path_effect": -0.37237741549734127
+            },
+            {
+              "feature": "unlinked_employment_age_years",
+              "input": 0.0,
+              "path_effect": 0.3452900561231127
+            },
+            {
+              "feature": "draft_rank",
+              "input": 0.32984928724981477,
+              "path_effect": 0.29513423861272065
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "observation_conditional_pa": {
+          "reference": 285.1243941032832,
+          "prediction": 157.52228663678767,
+          "largest_path_effects": [
+            {
+              "feature": "signed_first_team_work",
+              "input": 0.0,
+              "path_effect": -67.24626391873106
+            },
+            {
+              "feature": "work_0",
+              "input": 0.0,
+              "path_effect": -43.80753165116611
+            },
+            {
+              "feature": "role_pool_AAA",
+              "input": 4.444444444444445,
+              "path_effect": 31.92753388548188
+            },
+            {
+              "feature": "professional_work_0",
+              "input": 0.0,
+              "path_effect": -14.608726124040656
+            },
+            {
+              "feature": "quality_0",
+              "input": 0.0,
+              "path_effect": -9.579311605981614
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "recency_conditional_pa": {
+          "reference": 285.1135618431995,
+          "prediction": 154.73976029593524,
+          "largest_path_effects": [
+            {
+              "feature": "signed_first_team_work",
+              "input": 0.0,
+              "path_effect": -67.24626271309049
+            },
+            {
+              "feature": "work_0",
+              "input": 0.0,
+              "path_effect": -43.80753165116611
+            },
+            {
+              "feature": "role_pool_AAA",
+              "input": 4.444444444444445,
+              "path_effect": 32.94160201474509
+            },
+            {
+              "feature": "professional_work_0",
+              "input": 0.0,
+              "path_effect": -14.6401842808251
+            },
+            {
+              "feature": "quality_0",
+              "input": 0.0,
+              "path_effect": -9.576731832522901
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        }
+      },
+      "peers": [
+        {
+          "player_id": 660613,
+          "player_name": "Ronaldo Hernández",
+          "distance": 0.0,
+          "expected_pa": 65.83094489884172,
+          "actual_pa": 0,
+          "raw_history": [
+            {
+              "season": 2019,
+              "bucket": "Aplus",
+              "plate_appearances": 427,
+              "home_runs": 9,
+              "strike_outs": 65,
+              "unintentional_walks": 17
+            },
+            {
+              "season": 2021,
+              "bucket": "AAA",
+              "plate_appearances": 30,
+              "home_runs": 0,
+              "strike_outs": 7,
+              "unintentional_walks": 1
+            },
+            {
+              "season": 2021,
+              "bucket": "AA",
+              "plate_appearances": 357,
+              "home_runs": 16,
+              "strike_outs": 70,
+              "unintentional_walks": 11
+            }
+          ]
+        },
+        {
+          "player_id": 660636,
+          "player_name": "Diego Castillo",
+          "distance": 0.0,
+          "expected_pa": 67.12370464013233,
+          "actual_pa": 283,
+          "raw_history": [
+            {
+              "season": 2019,
+              "bucket": "Aplus",
+              "plate_appearances": 456,
+              "home_runs": 4,
+              "strike_outs": 49,
+              "unintentional_walks": 33
+            },
+            {
+              "season": 2021,
+              "bucket": "AAA",
+              "plate_appearances": 70,
+              "home_runs": 3,
+              "strike_outs": 13,
+              "unintentional_walks": 13
+            },
+            {
+              "season": 2021,
+              "bucket": "AA",
+              "plate_appearances": 370,
+              "home_runs": 16,
+              "strike_outs": 43,
+              "unintentional_walks": 30
+            }
+          ]
+        },
+        {
+          "player_id": 660741,
+          "player_name": "Edwin Figuera",
+          "distance": 0.0,
+          "expected_pa": 0.5815229078178102,
+          "actual_pa": 0,
+          "raw_history": [
+            {
+              "season": 2019,
+              "bucket": "Aplus",
+              "plate_appearances": 4,
+              "home_runs": 0,
+              "strike_outs": 3,
+              "unintentional_walks": 0
+            },
+            {
+              "season": 2019,
+              "bucket": "A",
+              "plate_appearances": 246,
+              "home_runs": 0,
+              "strike_outs": 52,
+              "unintentional_walks": 9
+            },
+            {
+              "season": 2021,
+              "bucket": "AAA",
+              "plate_appearances": 61,
+              "home_runs": 1,
+              "strike_outs": 19,
+              "unintentional_walks": 2
+            },
+            {
+              "season": 2021,
+              "bucket": "AA",
+              "plate_appearances": 57,
+              "home_runs": 0,
+              "strike_outs": 10,
+              "unintentional_walks": 2
+            },
+            {
+              "season": 2019,
+              "bucket": "Aminus",
+              "plate_appearances": 29,
+              "home_runs": 0,
+              "strike_outs": 8,
+              "unintentional_walks": 1
+            }
+          ]
+        }
+      ],
+      "eligible_peer_count": 92
+    },
+    {
+      "row_id": 54849,
+      "player_id": 592450,
+      "player_name": "Aaron Judge",
+      "origin": 2024,
+      "target": 2025,
+      "fold": 3,
+      "cutoff": "2025-01-24",
+      "selection": [
+        "fixed before fitting"
+      ],
+      "judgment": "Judge before 2025: established hitting survives and participation is almost certain. Conditional PA increases eleven, improving this case; it is not evidence of a solved star/workload forecast.",
+      "stats": [
+        {
+          "season": 2022,
+          "bucket": "MLB",
+          "plate_appearances": 696,
+          "home_runs": 62,
+          "strike_outs": 175,
+          "unintentional_walks": 92
+        },
+        {
+          "season": 2023,
+          "bucket": "MLB",
+          "plate_appearances": 458,
+          "home_runs": 37,
+          "strike_outs": 130,
+          "unintentional_walks": 79
+        },
+        {
+          "season": 2024,
+          "bucket": "MLB",
+          "plate_appearances": 704,
+          "home_runs": 58,
+          "strike_outs": 171,
+          "unintentional_walks": 113
+        }
+      ],
+      "employment": {
+        "date": "2023-07-28",
+        "state": "major_activation",
+        "raw_age": 1.4958904109589042,
+        "transformed_age": 0.0,
+        "reported_major_link": 1.0,
+        "on_40man": 1
+      },
+      "fixed_rate": 4.935489282598811,
+      "actual_rate": 6.287431083532908,
+      "actual_pa": 679,
+      "actual_value": 9.235708342968305,
+      "predictions": {
+        "current": {
+          "p": 0.9907014071492666,
+          "conditional_pa": 535.7350659264908,
+          "pa": 530.7534836725796,
+          "value": 6.023357035254515
+        },
+        "observation": {
+          "p": 0.9945740257379396,
+          "conditional_pa": 535.6807038176448,
+          "pa": 532.7741141060479,
+          "value": 6.046288544724529
+        },
+        "recency": {
+          "p": 0.9947979029016487,
+          "conditional_pa": 546.9335412480094,
+          "pa": 544.0883398600921,
+          "value": 6.174690191422191
+        }
+      },
+      "support": {
+        "participation": {
+          "row_id": 54849,
+          "continuity_age_band": 6,
+          "prior_regular_evidence": true,
+          "current_MLB_present": true,
+          "status_major_link": 1.0,
+          "unresolved_observation": false,
+          "continuity_people": 255
+        },
+        "conditional_pa": {
+          "row_id": 54849,
+          "continuity_age_band": 6,
+          "prior_regular_evidence": true,
+          "current_MLB_present": true,
+          "status_major_link": 1.0,
+          "unresolved_observation": false,
+          "continuity_people": 251
+        }
+      },
+      "head_accounting": {
+        "observation_participation": {
+          "reference": -4.139909359142032,
+          "prediction": 0.9945740257379396,
+          "largest_path_effects": [
+            {
+              "feature": "on_40man",
+              "input": 1.0,
+              "path_effect": 3.1832434790997537
+            },
+            {
+              "feature": "games_mlb_0",
+              "input": 158.0,
+              "path_effect": 1.206874952535055
+            },
+            {
+              "feature": "last_MLB_work",
+              "input": 1.1738163853437629,
+              "path_effect": 1.155080646620248
+            },
+            {
+              "feature": "status_major_link",
+              "input": 1.0,
+              "path_effect": 0.6422386808972883
+            },
+            {
+              "feature": "signed_first_team_work",
+              "input": 1.1738163853437629,
+              "path_effect": 0.5370638018195233
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "recency_participation": {
+          "reference": -4.144528527086388,
+          "prediction": 0.9947979029016487,
+          "largest_path_effects": [
+            {
+              "feature": "on_40man",
+              "input": 1.0,
+              "path_effect": 3.6580506476739063
+            },
+            {
+              "feature": "last_MLB_work",
+              "input": 1.1738163853437629,
+              "path_effect": 1.1747510978895153
+            },
+            {
+              "feature": "games_mlb_0",
+              "input": 158.0,
+              "path_effect": 1.13747517359064
+            },
+            {
+              "feature": "signed_first_team_work",
+              "input": 1.1738163853437629,
+              "path_effect": 0.36601282726693324
+            },
+            {
+              "feature": "last_MLB_quality",
+              "input": 2.794424993741549,
+              "path_effect": 0.35688137144038884
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "observation_conditional_pa": {
+          "reference": 277.9760385065992,
+          "prediction": 535.6807038176437,
+          "largest_path_effects": [
+            {
+              "feature": "signed_first_team_work",
+              "input": 1.1738163853437629,
+              "path_effect": 71.33921017401417
+            },
+            {
+              "feature": "work_0",
+              "input": 704.2898312062578,
+              "path_effect": 34.3450318964888
+            },
+            {
+              "feature": "age_centered",
+              "input": 1.0,
+              "path_effect": -31.888250203371246
+            },
+            {
+              "feature": "role_pool_MLB",
+              "input": 4.403458213256484,
+              "path_effect": 30.50206775993624
+            },
+            {
+              "feature": "professional_work_0",
+              "input": 1.1738163853437629,
+              "path_effect": 24.40660030598739
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "recency_conditional_pa": {
+          "reference": 277.9675647853144,
+          "prediction": 546.9335412480095,
+          "largest_path_effects": [
+            {
+              "feature": "signed_first_team_work",
+              "input": 1.1738163853437629,
+              "path_effect": 71.33921017401417
+            },
+            {
+              "feature": "work_0",
+              "input": 704.2898312062578,
+              "path_effect": 35.176014618291866
+            },
+            {
+              "feature": "age_centered",
+              "input": 1.0,
+              "path_effect": -32.072370790160456
+            },
+            {
+              "feature": "role_pool_MLB",
+              "input": 4.403458213256484,
+              "path_effect": 30.501384732397767
+            },
+            {
+              "feature": "role_mlb_0",
+              "input": 4.428571428571429,
+              "path_effect": 25.477767512673115
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        }
+      },
+      "peers": [
+        {
+          "player_id": 660271,
+          "player_name": "Shohei Ohtani",
+          "distance": 0.7243317454622495,
+          "expected_pa": 589.6669524140765,
+          "actual_pa": 727,
+          "raw_history": [
+            {
+              "season": 2022,
+              "bucket": "MLB",
+              "plate_appearances": 666,
+              "home_runs": 34,
+              "strike_outs": 161,
+              "unintentional_walks": 58
+            },
+            {
+              "season": 2023,
+              "bucket": "MLB",
+              "plate_appearances": 599,
+              "home_runs": 44,
+              "strike_outs": 143,
+              "unintentional_walks": 70
+            },
+            {
+              "season": 2024,
+              "bucket": "MLB",
+              "plate_appearances": 731,
+              "home_runs": 54,
+              "strike_outs": 162,
+              "unintentional_walks": 71
+            }
+          ]
+        },
+        {
+          "player_id": 514888,
+          "player_name": "Jose Altuve",
+          "distance": 0.8278182441499622,
+          "expected_pa": 524.2747400672531,
+          "actual_pa": 654,
+          "raw_history": [
+            {
+              "season": 2022,
+              "bucket": "MLB",
+              "plate_appearances": 604,
+              "home_runs": 28,
+              "strike_outs": 87,
+              "unintentional_walks": 64
+            },
+            {
+              "season": 2022,
+              "bucket": "AAA",
+              "plate_appearances": 8,
+              "home_runs": 0,
+              "strike_outs": 2,
+              "unintentional_walks": 1
+            },
+            {
+              "season": 2023,
+              "bucket": "MLB",
+              "plate_appearances": 410,
+              "home_runs": 17,
+              "strike_outs": 71,
+              "unintentional_walks": 44
+            },
+            {
+              "season": 2023,
+              "bucket": "AAA",
+              "plate_appearances": 13,
+              "home_runs": 0,
+              "strike_outs": 2,
+              "unintentional_walks": 0
+            },
+            {
+              "season": 2023,
+              "bucket": "AA",
+              "plate_appearances": 9,
+              "home_runs": 0,
+              "strike_outs": 2,
+              "unintentional_walks": 0
+            },
+            {
+              "season": 2024,
+              "bucket": "MLB",
+              "plate_appearances": 682,
+              "home_runs": 20,
+              "strike_outs": 119,
+              "unintentional_walks": 45
+            }
+          ]
+        },
+        {
+          "player_id": 518692,
+          "player_name": "Freddie Freeman",
+          "distance": 0.8950127759961564,
+          "expected_pa": 569.2489688848457,
+          "actual_pa": 627,
+          "raw_history": [
+            {
+              "season": 2022,
+              "bucket": "MLB",
+              "plate_appearances": 708,
+              "home_runs": 21,
+              "strike_outs": 102,
+              "unintentional_walks": 72
+            },
+            {
+              "season": 2023,
+              "bucket": "MLB",
+              "plate_appearances": 730,
+              "home_runs": 29,
+              "strike_outs": 121,
+              "unintentional_walks": 60
+            },
+            {
+              "season": 2024,
+              "bucket": "MLB",
+              "plate_appearances": 638,
+              "home_runs": 22,
+              "strike_outs": 100,
+              "unintentional_walks": 69
+            }
+          ]
+        }
+      ],
+      "eligible_peer_count": 189
+    },
+    {
+      "row_id": 42839,
+      "player_id": 645277,
+      "player_name": "Ozzie Albies",
+      "origin": 2021,
+      "target": 2022,
+      "fold": 1,
+      "cutoff": "2022-03-18",
+      "selection": [
+        "largest contribution harm"
+      ],
+      "judgment": "Albies: largest contribution harm. A high-PA young regular reasonably has substantial expected work; the new probability rises from 90% to 96% and worsens his later low-workload outcome. Do not use later events to force a low preseason forecast.",
+      "stats": [
+        {
+          "season": 2019,
+          "bucket": "MLB",
+          "plate_appearances": 702,
+          "home_runs": 24,
+          "strike_outs": 112,
+          "unintentional_walks": 48
+        },
+        {
+          "season": 2020,
+          "bucket": "MLB",
+          "plate_appearances": 124,
+          "home_runs": 6,
+          "strike_outs": 30,
+          "unintentional_walks": 5
+        },
+        {
+          "season": 2021,
+          "bucket": "MLB",
+          "plate_appearances": 686,
+          "home_runs": 30,
+          "strike_outs": 128,
+          "unintentional_walks": 45
+        }
+      ],
+      "employment": {
+        "date": "2020-09-09",
+        "state": "major_activation",
+        "raw_age": 1.5205479452054795,
+        "transformed_age": 0.0,
+        "reported_major_link": 1.0,
+        "on_40man": 0
+      },
+      "fixed_rate": 1.4373266274529513,
+      "actual_rate": -0.20141527720171204,
+      "actual_pa": 269,
+      "actual_value": 0.7526676171468222,
+      "predictions": {
+        "current": {
+          "p": 0.9514887167268323,
+          "conditional_pa": 593.6586510998588,
+          "pa": 564.8595081087869,
+          "value": 3.1232536091519942
+        },
+        "observation": {
+          "p": 0.9029712547952228,
+          "conditional_pa": 618.327841257091,
+          "pa": 558.3322666947367,
+          "value": 3.0871628113313214
+        },
+        "recency": {
+          "p": 0.9560632433025379,
+          "conditional_pa": 614.4628889514815,
+          "pa": 587.4653825000006,
+          "value": 3.2482473071722047
+        }
+      },
+      "support": {
+        "participation": {
+          "row_id": 42839,
+          "continuity_age_band": 4,
+          "prior_regular_evidence": true,
+          "current_MLB_present": true,
+          "status_major_link": 1.0,
+          "unresolved_observation": false,
+          "continuity_people": 91
+        },
+        "conditional_pa": {
+          "row_id": 42839,
+          "continuity_age_band": 4,
+          "prior_regular_evidence": true,
+          "current_MLB_present": true,
+          "status_major_link": 1.0,
+          "unresolved_observation": false,
+          "continuity_people": 90
+        }
+      },
+      "head_accounting": {
+        "observation_participation": {
+          "reference": -4.073587289427169,
+          "prediction": 0.9029712547952226,
+          "largest_path_effects": [
+            {
+              "feature": "games_mlb_0",
+              "input": 156.0,
+              "path_effect": 1.9247863443174784
+            },
+            {
+              "feature": "employment_evidence_age_years",
+              "input": 1.5205479452054795,
+              "path_effect": -0.8956618429117862
+            },
+            {
+              "feature": "last_MLB_work",
+              "input": 1.1438040345821328,
+              "path_effect": 0.6976137651943993
+            },
+            {
+              "feature": "on_40man",
+              "input": 0.0,
+              "path_effect": -0.5448504110051579
+            },
+            {
+              "feature": "last_MLB_quality",
+              "input": 0.4160438401588834,
+              "path_effect": 0.5411468697032924
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "recency_participation": {
+          "reference": -4.072127485704215,
+          "prediction": 0.9560632433025377,
+          "largest_path_effects": [
+            {
+              "feature": "games_mlb_0",
+              "input": 156.0,
+              "path_effect": 1.7914685454693555
+            },
+            {
+              "feature": "last_MLB_work",
+              "input": 1.1438040345821328,
+              "path_effect": 0.714152669414989
+            },
+            {
+              "feature": "unlinked_employment_age_years",
+              "input": 0.0,
+              "path_effect": 0.6772606600050375
+            },
+            {
+              "feature": "on_40man",
+              "input": 0.0,
+              "path_effect": -0.6753694848399687
+            },
+            {
+              "feature": "last_MLB_quality",
+              "input": 0.4160438401588834,
+              "path_effect": 0.5369999450902653
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "observation_conditional_pa": {
+          "reference": 285.1243941032832,
+          "prediction": 618.327841257092,
+          "largest_path_effects": [
+            {
+              "feature": "work_0",
+              "input": 686.2824207492796,
+              "path_effect": 80.68287439876975
+            },
+            {
+              "feature": "signed_first_team_work",
+              "input": 1.1438040345821328,
+              "path_effect": 60.701955806279145
+            },
+            {
+              "feature": "role_pool_MLB",
+              "input": 4.370266479663394,
+              "path_effect": 35.944083271449884
+            },
+            {
+              "feature": "role_mlb_0",
+              "input": 4.373493975903615,
+              "path_effect": 28.952122053291436
+            },
+            {
+              "feature": "age_centered",
+              "input": -0.6,
+              "path_effect": 19.91909057611554
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "recency_conditional_pa": {
+          "reference": 285.1135618431995,
+          "prediction": 614.4628889514813,
+          "largest_path_effects": [
+            {
+              "feature": "work_0",
+              "input": 686.2824207492796,
+              "path_effect": 71.58766943829896
+            },
+            {
+              "feature": "signed_first_team_work",
+              "input": 1.1438040345821328,
+              "path_effect": 60.7011678976889
+            },
+            {
+              "feature": "role_pool_MLB",
+              "input": 4.370266479663394,
+              "path_effect": 35.87145576172195
+            },
+            {
+              "feature": "role_mlb_0",
+              "input": 4.373493975903615,
+              "path_effect": 29.554674084033238
+            },
+            {
+              "feature": "age_centered",
+              "input": -0.6,
+              "path_effect": 21.096298518180927
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        }
+      },
+      "peers": [
+        {
+          "player_id": 642708,
+          "player_name": "Amed Rosario",
+          "distance": 0.15348939260112768,
+          "expected_pa": 549.2192554077385,
+          "actual_pa": 670,
+          "raw_history": [
+            {
+              "season": 2019,
+              "bucket": "MLB",
+              "plate_appearances": 655,
+              "home_runs": 15,
+              "strike_outs": 124,
+              "unintentional_walks": 29
+            },
+            {
+              "season": 2020,
+              "bucket": "MLB",
+              "plate_appearances": 147,
+              "home_runs": 4,
+              "strike_outs": 34,
+              "unintentional_walks": 4
+            },
+            {
+              "season": 2021,
+              "bucket": "MLB",
+              "plate_appearances": 588,
+              "home_runs": 11,
+              "strike_outs": 120,
+              "unintentional_walks": 31
+            }
+          ]
+        },
+        {
+          "player_id": 650402,
+          "player_name": "Gleyber Torres",
+          "distance": 0.16313064677567227,
+          "expected_pa": 496.6238278634816,
+          "actual_pa": 572,
+          "raw_history": [
+            {
+              "season": 2019,
+              "bucket": "MLB",
+              "plate_appearances": 604,
+              "home_runs": 38,
+              "strike_outs": 129,
+              "unintentional_walks": 45
+            },
+            {
+              "season": 2020,
+              "bucket": "MLB",
+              "plate_appearances": 160,
+              "home_runs": 3,
+              "strike_outs": 28,
+              "unintentional_walks": 22
+            },
+            {
+              "season": 2021,
+              "bucket": "MLB",
+              "plate_appearances": 516,
+              "home_runs": 9,
+              "strike_outs": 104,
+              "unintentional_walks": 49
+            },
+            {
+              "season": 2021,
+              "bucket": "AAA",
+              "plate_appearances": 7,
+              "home_runs": 0,
+              "strike_outs": 1,
+              "unintentional_walks": 0
+            },
+            {
+              "season": 2021,
+              "bucket": "AA",
+              "plate_appearances": 4,
+              "home_runs": 1,
+              "strike_outs": 0,
+              "unintentional_walks": 2
+            }
+          ]
+        },
+        {
+          "player_id": 640457,
+          "player_name": "Austin Meadows",
+          "distance": 0.25827288493502853,
+          "expected_pa": 510.3150057114499,
+          "actual_pa": 147,
+          "raw_history": [
+            {
+              "season": 2019,
+              "bucket": "MLB",
+              "plate_appearances": 591,
+              "home_runs": 33,
+              "strike_outs": 131,
+              "unintentional_walks": 48
+            },
+            {
+              "season": 2020,
+              "bucket": "MLB",
+              "plate_appearances": 152,
+              "home_runs": 4,
+              "strike_outs": 50,
+              "unintentional_walks": 17
+            },
+            {
+              "season": 2021,
+              "bucket": "MLB",
+              "plate_appearances": 591,
+              "home_runs": 27,
+              "strike_outs": 122,
+              "unintentional_walks": 56
+            }
+          ]
+        }
+      ],
+      "eligible_peer_count": 201
+    },
+    {
+      "row_id": 23934,
+      "player_id": 592450,
+      "player_name": "Aaron Judge",
+      "origin": 2016,
+      "target": 2017,
+      "fold": 3,
+      "cutoff": "2017-01-28",
+      "selection": [
+        "largest false low"
+      ],
+      "judgment": "Judge before 2017: largest false low remains. The model knows 410 AAA PA/19 HR and a poor 95-PA debut; the new job-age input does not solve either conditional workload or fixed hitting. MLB-only peer distance is inadequate for prospect hitting comparisons.",
+      "stats": [
+        {
+          "season": 2014,
+          "bucket": "Aplus",
+          "plate_appearances": 285,
+          "home_runs": 8,
+          "strike_outs": 72,
+          "unintentional_walks": 49
+        },
+        {
+          "season": 2014,
+          "bucket": "A",
+          "plate_appearances": 278,
+          "home_runs": 9,
+          "strike_outs": 59,
+          "unintentional_walks": 38
+        },
+        {
+          "season": 2015,
+          "bucket": "AAA",
+          "plate_appearances": 260,
+          "home_runs": 8,
+          "strike_outs": 74,
+          "unintentional_walks": 29
+        },
+        {
+          "season": 2015,
+          "bucket": "AA",
+          "plate_appearances": 280,
+          "home_runs": 12,
+          "strike_outs": 70,
+          "unintentional_walks": 23
+        },
+        {
+          "season": 2016,
+          "bucket": "MLB",
+          "plate_appearances": 95,
+          "home_runs": 4,
+          "strike_outs": 42,
+          "unintentional_walks": 9
+        },
+        {
+          "season": 2016,
+          "bucket": "AAA",
+          "plate_appearances": 410,
+          "home_runs": 19,
+          "strike_outs": 98,
+          "unintentional_walks": 47
+        }
+      ],
+      "employment": {
+        "date": "2016-10-03",
+        "state": "major_activation",
+        "raw_age": 0.32054794520547947,
+        "transformed_age": 0.0,
+        "reported_major_link": 1.0,
+        "on_40man": 1
+      },
+      "fixed_rate": 0.2641513942762992,
+      "actual_rate": 5.329875619792154,
+      "actual_pa": 678,
+      "actual_value": 8.114762516384888,
+      "predictions": {
+        "current": {
+          "p": 0.9249969778824423,
+          "conditional_pa": 335.05238602686705,
+          "pa": 309.92244450715344,
+          "value": 1.0927253509289323
+        },
+        "observation": {
+          "p": 0.901993894670239,
+          "conditional_pa": 347.9293972610504,
+          "pa": 313.8301921057636,
+          "value": 1.10650329744979
+        },
+        "recency": {
+          "p": 0.912321784785389,
+          "conditional_pa": 354.1474678348701,
+          "pa": 323.0964499323348,
+          "value": 1.1391742930965871
+        }
+      },
+      "support": {
+        "participation": {
+          "row_id": 23934,
+          "continuity_age_band": 4,
+          "prior_regular_evidence": false,
+          "current_MLB_present": true,
+          "status_major_link": 1.0,
+          "unresolved_observation": false,
+          "continuity_people": 275
+        },
+        "conditional_pa": {
+          "row_id": 23934,
+          "continuity_age_band": 4,
+          "prior_regular_evidence": false,
+          "current_MLB_present": true,
+          "status_major_link": 1.0,
+          "unresolved_observation": false,
+          "continuity_people": 245
+        }
+      },
+      "head_accounting": {
+        "observation_participation": {
+          "reference": -4.089037104992512,
+          "prediction": 0.9019938946702388,
+          "largest_path_effects": [
+            {
+              "feature": "on_40man",
+              "input": 1.0,
+              "path_effect": 2.990728106290514
+            },
+            {
+              "feature": "games_mlb_0",
+              "input": 27.0,
+              "path_effect": 1.0342699709290462
+            },
+            {
+              "feature": "scout_rank_score_0",
+              "input": 0.56,
+              "path_effect": 0.5794672290620059
+            },
+            {
+              "feature": "status_major_link",
+              "input": 1.0,
+              "path_effect": 0.4485112353125098
+            },
+            {
+              "feature": "status_employment_unknown",
+              "input": 0.0,
+              "path_effect": 0.4442961848076877
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "recency_participation": {
+          "reference": -4.068786287330455,
+          "prediction": 0.9123217847853886,
+          "largest_path_effects": [
+            {
+              "feature": "on_40man",
+              "input": 1.0,
+              "path_effect": 3.2630745947132254
+            },
+            {
+              "feature": "games_mlb_0",
+              "input": 27.0,
+              "path_effect": 0.9515073940810668
+            },
+            {
+              "feature": "scout_rank_score_0",
+              "input": 0.56,
+              "path_effect": 0.7024869876087919
+            },
+            {
+              "feature": "status_employment_unknown",
+              "input": 0.0,
+              "path_effect": 0.4114886547700967
+            },
+            {
+              "feature": "pooled_MLB_pa",
+              "input": 95.0,
+              "path_effect": -0.3515191247264357
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "observation_conditional_pa": {
+          "reference": 276.98310329890694,
+          "prediction": 347.9293972610501,
+          "largest_path_effects": [
+            {
+              "feature": "scout_rank_score_0",
+              "input": 0.56,
+              "path_effect": 80.59043789404556
+            },
+            {
+              "feature": "scout_rank_score_1",
+              "input": 0.7,
+              "path_effect": 50.57641540555918
+            },
+            {
+              "feature": "pooled_MLB_K",
+              "input": 0.3333333333333333,
+              "path_effect": -38.675269584038915
+            },
+            {
+              "feature": "professional_work_0",
+              "input": 0.15846375617792421,
+              "path_effect": -32.294969330294556
+            },
+            {
+              "feature": "career_mlb_observed_pa",
+              "input": 95.0,
+              "path_effect": 17.38028799324029
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "recency_conditional_pa": {
+          "reference": 276.9538055749705,
+          "prediction": 354.1474678348702,
+          "largest_path_effects": [
+            {
+              "feature": "scout_rank_score_0",
+              "input": 0.56,
+              "path_effect": 83.02642475638287
+            },
+            {
+              "feature": "scout_rank_score_1",
+              "input": 0.7,
+              "path_effect": 53.56969099759598
+            },
+            {
+              "feature": "pooled_MLB_K",
+              "input": 0.3333333333333333,
+              "path_effect": -37.87256400741983
+            },
+            {
+              "feature": "professional_work_0",
+              "input": 0.15846375617792421,
+              "path_effect": -31.645831305806052
+            },
+            {
+              "feature": "career_mlb_observed_pa",
+              "input": 95.0,
+              "path_effect": 17.20727607646993
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        }
+      },
+      "peers": [
+        {
+          "player_id": 553882,
+          "player_name": "Omar Narváez",
+          "distance": 0.0029427597581990583,
+          "expected_pa": 176.3203271823722,
+          "actual_pa": 295,
+          "raw_history": [
+            {
+              "season": 2014,
+              "bucket": "Aplus",
+              "plate_appearances": 174,
+              "home_runs": 2,
+              "strike_outs": 21,
+              "unintentional_walks": 27
+            },
+            {
+              "season": 2014,
+              "bucket": "A",
+              "plate_appearances": 142,
+              "home_runs": 0,
+              "strike_outs": 11,
+              "unintentional_walks": 9
+            },
+            {
+              "season": 2015,
+              "bucket": "Aplus",
+              "plate_appearances": 385,
+              "home_runs": 1,
+              "strike_outs": 31,
+              "unintentional_walks": 39
+            },
+            {
+              "season": 2016,
+              "bucket": "MLB",
+              "plate_appearances": 117,
+              "home_runs": 1,
+              "strike_outs": 14,
+              "unintentional_walks": 13
+            },
+            {
+              "season": 2016,
+              "bucket": "AAA",
+              "plate_appearances": 156,
+              "home_runs": 2,
+              "strike_outs": 17,
+              "unintentional_walks": 9
+            },
+            {
+              "season": 2016,
+              "bucket": "AA",
+              "plate_appearances": 49,
+              "home_runs": 0,
+              "strike_outs": 8,
+              "unintentional_walks": 4
+            }
+          ]
+        },
+        {
+          "player_id": 592325,
+          "player_name": "Ben Gamel",
+          "distance": 0.004043872604319994,
+          "expected_pa": 143.5803448196818,
+          "actual_pa": 550,
+          "raw_history": [
+            {
+              "season": 2014,
+              "bucket": "AA",
+              "plate_appearances": 586,
+              "home_runs": 2,
+              "strike_outs": 88,
+              "unintentional_walks": 36
+            },
+            {
+              "season": 2015,
+              "bucket": "AAA",
+              "plate_appearances": 551,
+              "home_runs": 10,
+              "strike_outs": 108,
+              "unintentional_walks": 41
+            },
+            {
+              "season": 2016,
+              "bucket": "MLB",
+              "plate_appearances": 57,
+              "home_runs": 1,
+              "strike_outs": 16,
+              "unintentional_walks": 6
+            },
+            {
+              "season": 2016,
+              "bucket": "AAA",
+              "plate_appearances": 533,
+              "home_runs": 6,
+              "strike_outs": 94,
+              "unintentional_walks": 40
+            }
+          ]
+        },
+        {
+          "player_id": 643393,
+          "player_name": "Tony Kemp",
+          "distance": 0.0048044794181311655,
+          "expected_pa": 200.92410137388507,
+          "actual_pa": 39,
+          "raw_history": [
+            {
+              "season": 2014,
+              "bucket": "AA",
+              "plate_appearances": 275,
+              "home_runs": 4,
+              "strike_outs": 32,
+              "unintentional_walks": 28
+            },
+            {
+              "season": 2014,
+              "bucket": "Aplus",
+              "plate_appearances": 356,
+              "home_runs": 4,
+              "strike_outs": 35,
+              "unintentional_walks": 43
+            },
+            {
+              "season": 2015,
+              "bucket": "AAA",
+              "plate_appearances": 311,
+              "home_runs": 3,
+              "strike_outs": 37,
+              "unintentional_walks": 21
+            },
+            {
+              "season": 2015,
+              "bucket": "AA",
+              "plate_appearances": 230,
+              "home_runs": 0,
+              "strike_outs": 28,
+              "unintentional_walks": 35
+            },
+            {
+              "season": 2016,
+              "bucket": "MLB",
+              "plate_appearances": 136,
+              "home_runs": 1,
+              "strike_outs": 27,
+              "unintentional_walks": 14
+            },
+            {
+              "season": 2016,
+              "bucket": "AAA",
+              "plate_appearances": 301,
+              "home_runs": 2,
+              "strike_outs": 34,
+              "unintentional_walks": 34
+            }
+          ]
+        }
+      ],
+      "eligible_peer_count": 238
+    },
+    {
+      "row_id": 51153,
+      "player_id": 660670,
+      "player_name": "Ronald Acuña Jr.",
+      "origin": 2023,
+      "target": 2024,
+      "fold": 3,
+      "cutoff": "2024-01-26",
+      "selection": [
+        "largest false high"
+      ],
+      "judgment": "Acuna: largest false high. His 735-PA/41-HR season supports substantial preseason opportunity, not foreknowledge of a later interruption. The two forecasts are almost the same; this is not evidence that removing staleness caused the whole miss.",
+      "stats": [
+        {
+          "season": 2021,
+          "bucket": "MLB",
+          "plate_appearances": 360,
+          "home_runs": 24,
+          "strike_outs": 85,
+          "unintentional_walks": 47
+        },
+        {
+          "season": 2022,
+          "bucket": "MLB",
+          "plate_appearances": 533,
+          "home_runs": 15,
+          "strike_outs": 126,
+          "unintentional_walks": 49
+        },
+        {
+          "season": 2022,
+          "bucket": "AAA",
+          "plate_appearances": 25,
+          "home_runs": 0,
+          "strike_outs": 6,
+          "unintentional_walks": 5
+        },
+        {
+          "season": 2023,
+          "bucket": "MLB",
+          "plate_appearances": 735,
+          "home_runs": 41,
+          "strike_outs": 84,
+          "unintentional_walks": 77
+        }
+      ],
+      "employment": {
+        "date": "2022-04-28",
+        "state": "major_activation",
+        "raw_age": 1.747945205479452,
+        "transformed_age": 0.0,
+        "reported_major_link": 1.0,
+        "on_40man": 1
+      },
+      "fixed_rate": 3.8264984291306057,
+      "actual_rate": 0.7234736537463261,
+      "actual_pa": 222,
+      "actual_value": 0.9550141529420655,
+      "predictions": {
+        "current": {
+          "p": 0.9921199685880802,
+          "conditional_pa": 592.9501059286081,
+          "pa": 588.2776404681895,
+          "value": 5.5730914728924414
+        },
+        "observation": {
+          "p": 0.9928608282907736,
+          "conditional_pa": 593.4240602884255,
+          "pa": 589.1875040256401,
+          "value": 5.581711132190538
+        },
+        "recency": {
+          "p": 0.9938173656951917,
+          "conditional_pa": 596.163699846089,
+          "pa": 592.4778377041391,
+          "value": 5.61288235017533
+        }
+      },
+      "support": {
+        "participation": {
+          "row_id": 51153,
+          "continuity_age_band": 5,
+          "prior_regular_evidence": true,
+          "current_MLB_present": true,
+          "status_major_link": 1.0,
+          "unresolved_observation": false,
+          "continuity_people": 356
+        },
+        "conditional_pa": {
+          "row_id": 51153,
+          "continuity_age_band": 5,
+          "prior_regular_evidence": true,
+          "current_MLB_present": true,
+          "status_major_link": 1.0,
+          "unresolved_observation": false,
+          "continuity_people": 347
+        }
+      },
+      "head_accounting": {
+        "observation_participation": {
+          "reference": -4.13194097739633,
+          "prediction": 0.9928608282907736,
+          "largest_path_effects": [
+            {
+              "feature": "on_40man",
+              "input": 1.0,
+              "path_effect": 2.9518870830136645
+            },
+            {
+              "feature": "games_mlb_0",
+              "input": 159.0,
+              "path_effect": 1.4590131111572118
+            },
+            {
+              "feature": "last_MLB_work",
+              "input": 1.225,
+              "path_effect": 0.8207534182736079
+            },
+            {
+              "feature": "status_major_link",
+              "input": 1.0,
+              "path_effect": 0.8122218151683529
+            },
+            {
+              "feature": "last_first_team_work",
+              "input": 1.225,
+              "path_effect": 0.5334075803775721
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "recency_participation": {
+          "reference": -4.150653550047859,
+          "prediction": 0.9938173656951917,
+          "largest_path_effects": [
+            {
+              "feature": "on_40man",
+              "input": 1.0,
+              "path_effect": 3.3414406455195165
+            },
+            {
+              "feature": "games_mlb_0",
+              "input": 159.0,
+              "path_effect": 1.5225425317694183
+            },
+            {
+              "feature": "last_MLB_work",
+              "input": 1.225,
+              "path_effect": 0.7647426351803955
+            },
+            {
+              "feature": "last_first_team_work",
+              "input": 1.225,
+              "path_effect": 0.5280384016702295
+            },
+            {
+              "feature": "status_major_link",
+              "input": 1.0,
+              "path_effect": 0.39806611635399924
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "observation_conditional_pa": {
+          "reference": 277.66791132945104,
+          "prediction": 593.4240602884248,
+          "largest_path_effects": [
+            {
+              "feature": "signed_first_team_work",
+              "input": 1.225,
+              "path_effect": 81.2455530163222
+            },
+            {
+              "feature": "professional_work_0",
+              "input": 1.225,
+              "path_effect": 66.63775187373378
+            },
+            {
+              "feature": "role_pool_MLB",
+              "input": 4.522654754307594,
+              "path_effect": 32.60174513651568
+            },
+            {
+              "feature": "quality_0",
+              "input": 2.0728376331002094,
+              "path_effect": 29.876632168644075
+            },
+            {
+              "feature": "age_centered",
+              "input": -0.4,
+              "path_effect": 28.524728935182488
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "recency_conditional_pa": {
+          "reference": 277.70121337623,
+          "prediction": 596.163699846089,
+          "largest_path_effects": [
+            {
+              "feature": "signed_first_team_work",
+              "input": 1.225,
+              "path_effect": 81.2455530163222
+            },
+            {
+              "feature": "professional_work_0",
+              "input": 1.225,
+              "path_effect": 66.62318511864018
+            },
+            {
+              "feature": "role_pool_MLB",
+              "input": 4.522654754307594,
+              "path_effect": 32.580155268094565
+            },
+            {
+              "feature": "quality_0",
+              "input": 2.0728376331002094,
+              "path_effect": 29.134274978432185
+            },
+            {
+              "feature": "age_centered",
+              "input": -0.4,
+              "path_effect": 28.485203938559394
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        }
+      },
+      "peers": [
+        {
+          "player_id": 663656,
+          "player_name": "Kyle Tucker",
+          "distance": 0.36020543001794475,
+          "expected_pa": 577.8748340861367,
+          "actual_pa": 339,
+          "raw_history": [
+            {
+              "season": 2021,
+              "bucket": "MLB",
+              "plate_appearances": 567,
+              "home_runs": 30,
+              "strike_outs": 90,
+              "unintentional_walks": 48
+            },
+            {
+              "season": 2022,
+              "bucket": "MLB",
+              "plate_appearances": 609,
+              "home_runs": 30,
+              "strike_outs": 95,
+              "unintentional_walks": 55
+            },
+            {
+              "season": 2023,
+              "bucket": "MLB",
+              "plate_appearances": 674,
+              "home_runs": 29,
+              "strike_outs": 92,
+              "unintentional_walks": 71
+            }
+          ]
+        },
+        {
+          "player_id": 673357,
+          "player_name": "Luis Robert Jr.",
+          "distance": 0.3733059147203656,
+          "expected_pa": 530.1748070443776,
+          "actual_pa": 425,
+          "raw_history": [
+            {
+              "season": 2021,
+              "bucket": "MLB",
+              "plate_appearances": 296,
+              "home_runs": 13,
+              "strike_outs": 61,
+              "unintentional_walks": 13
+            },
+            {
+              "season": 2021,
+              "bucket": "AAA",
+              "plate_appearances": 36,
+              "home_runs": 1,
+              "strike_outs": 9,
+              "unintentional_walks": 5
+            },
+            {
+              "season": 2021,
+              "bucket": "Aplus",
+              "plate_appearances": 13,
+              "home_runs": 0,
+              "strike_outs": 3,
+              "unintentional_walks": 1
+            },
+            {
+              "season": 2022,
+              "bucket": "MLB",
+              "plate_appearances": 401,
+              "home_runs": 12,
+              "strike_outs": 77,
+              "unintentional_walks": 16
+            },
+            {
+              "season": 2022,
+              "bucket": "AAA",
+              "plate_appearances": 5,
+              "home_runs": 0,
+              "strike_outs": 2,
+              "unintentional_walks": 0
+            },
+            {
+              "season": 2023,
+              "bucket": "MLB",
+              "plate_appearances": 595,
+              "home_runs": 38,
+              "strike_outs": 172,
+              "unintentional_walks": 25
+            }
+          ]
+        },
+        {
+          "player_id": 650333,
+          "player_name": "Luis Arraez",
+          "distance": 0.4422668075618863,
+          "expected_pa": 555.0767816401193,
+          "actual_pa": 672,
+          "raw_history": [
+            {
+              "season": 2021,
+              "bucket": "MLB",
+              "plate_appearances": 479,
+              "home_runs": 2,
+              "strike_outs": 48,
+              "unintentional_walks": 41
+            },
+            {
+              "season": 2021,
+              "bucket": "AAA",
+              "plate_appearances": 9,
+              "home_runs": 0,
+              "strike_outs": 0,
+              "unintentional_walks": 1
+            },
+            {
+              "season": 2022,
+              "bucket": "MLB",
+              "plate_appearances": 603,
+              "home_runs": 8,
+              "strike_outs": 43,
+              "unintentional_walks": 48
+            },
+            {
+              "season": 2023,
+              "bucket": "MLB",
+              "plate_appearances": 617,
+              "home_runs": 10,
+              "strike_outs": 34,
+              "unintentional_walks": 25
+            }
+          ]
+        }
+      ],
+      "eligible_peer_count": 173
+    },
+    {
+      "row_id": 46577,
+      "player_id": 596103,
+      "player_name": "Austin Slater",
+      "origin": 2022,
+      "target": 2023,
+      "fold": 4,
+      "cutoff": "2023-01-26",
+      "selection": [
+        "ordinary positive PA"
+      ],
+      "judgment": "Slater: an ordinary contribution match conceals opposing errors. Candidate predicts 301 PA versus 207 actual, while fixed batting rate is too low. An almost exact contribution is not accurate opportunity and talent estimation.",
+      "stats": [
+        {
+          "season": 2020,
+          "bucket": "MLB",
+          "plate_appearances": 104,
+          "home_runs": 5,
+          "strike_outs": 22,
+          "unintentional_walks": 16
+        },
+        {
+          "season": 2021,
+          "bucket": "MLB",
+          "plate_appearances": 306,
+          "home_runs": 12,
+          "strike_outs": 84,
+          "unintentional_walks": 26
+        },
+        {
+          "season": 2022,
+          "bucket": "MLB",
+          "plate_appearances": 325,
+          "home_runs": 7,
+          "strike_outs": 89,
+          "unintentional_walks": 40
+        }
+      ],
+      "employment": {
+        "date": "2022-09-19",
+        "state": "major_activation",
+        "raw_age": 0.35342465753424657,
+        "transformed_age": 0.0,
+        "reported_major_link": 1.0,
+        "on_40man": 1
+      },
+      "fixed_rate": -0.1164389023793041,
+      "actual_rate": 0.6813899953872605,
+      "actual_pa": 207,
+      "actual_value": 0.8831910769828584,
+      "predictions": {
+        "current": {
+          "p": 0.9816296567018871,
+          "conditional_pa": 288.4473497780017,
+          "pa": 283.1484729391489,
+          "value": 0.8315812222572985
+        },
+        "observation": {
+          "p": 0.9782476941658844,
+          "conditional_pa": 305.1129755507788,
+          "pa": 298.47606479264124,
+          "value": 0.8765969605923148
+        },
+        "recency": {
+          "p": 0.9794596072326066,
+          "conditional_pa": 307.038102918678,
+          "pa": 300.731419690173,
+          "value": 0.8832207320816865
+        }
+      },
+      "support": {
+        "participation": {
+          "row_id": 46577,
+          "continuity_age_band": 5,
+          "prior_regular_evidence": false,
+          "current_MLB_present": true,
+          "status_major_link": 1.0,
+          "unresolved_observation": false,
+          "continuity_people": 579
+        },
+        "conditional_pa": {
+          "row_id": 46577,
+          "continuity_age_band": 5,
+          "prior_regular_evidence": false,
+          "current_MLB_present": true,
+          "status_major_link": 1.0,
+          "unresolved_observation": false,
+          "continuity_people": 535
+        }
+      },
+      "head_accounting": {
+        "observation_participation": {
+          "reference": -4.155201670303161,
+          "prediction": 0.9782476941658844,
+          "largest_path_effects": [
+            {
+              "feature": "on_40man",
+              "input": 1.0,
+              "path_effect": 3.6361423653236273
+            },
+            {
+              "feature": "games_mlb_0",
+              "input": 125.0,
+              "path_effect": 0.5769832488692211
+            },
+            {
+              "feature": "status_major_link",
+              "input": 1.0,
+              "path_effect": 0.45819526435778335
+            },
+            {
+              "feature": "last_MLB_work",
+              "input": 0.5416666666666666,
+              "path_effect": 0.42765336216063
+            },
+            {
+              "feature": "last_first_team_work",
+              "input": 0.5416666666666666,
+              "path_effect": 0.3910479316387678
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "recency_participation": {
+          "reference": -4.157375527090237,
+          "prediction": 0.9794596072326066,
+          "largest_path_effects": [
+            {
+              "feature": "on_40man",
+              "input": 1.0,
+              "path_effect": 3.9539561514809365
+            },
+            {
+              "feature": "games_mlb_0",
+              "input": 125.0,
+              "path_effect": 0.5284060273065303
+            },
+            {
+              "feature": "last_MLB_work",
+              "input": 0.5416666666666666,
+              "path_effect": 0.37830455146116804
+            },
+            {
+              "feature": "last_MLB_quality",
+              "input": 0.3903684086908003,
+              "path_effect": 0.3437895946454617
+            },
+            {
+              "feature": "MLB_0_pa",
+              "input": 325.0,
+              "path_effect": 0.330247064274449
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "observation_conditional_pa": {
+          "reference": 278.6305800321133,
+          "prediction": 305.11297555077886,
+          "largest_path_effects": [
+            {
+              "feature": "signed_first_team_work",
+              "input": 0.5416666666666666,
+              "path_effect": 75.83716562022435
+            },
+            {
+              "feature": "quality_0",
+              "input": 0.3903684086908003,
+              "path_effect": 33.13217716784124
+            },
+            {
+              "feature": "role_mlb_0",
+              "input": 2.7037037037037037,
+              "path_effect": -32.04315765397037
+            },
+            {
+              "feature": "role_pool_MLB",
+              "input": 2.6176012461059193,
+              "path_effect": -25.320063814895057
+            },
+            {
+              "feature": "pooled_mlb_quality",
+              "input": 0.49436318925547756,
+              "path_effect": 24.648207392873008
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        },
+        "recency_conditional_pa": {
+          "reference": 278.64677158358757,
+          "prediction": 307.0381029186783,
+          "largest_path_effects": [
+            {
+              "feature": "signed_first_team_work",
+              "input": 0.5416666666666666,
+              "path_effect": 75.83716562022435
+            },
+            {
+              "feature": "quality_0",
+              "input": 0.3903684086908003,
+              "path_effect": 33.42756236289513
+            },
+            {
+              "feature": "role_mlb_0",
+              "input": 2.7037037037037037,
+              "path_effect": -31.50181512449522
+            },
+            {
+              "feature": "pooled_mlb_quality",
+              "input": 0.49436318925547756,
+              "path_effect": 24.964591994394347
+            },
+            {
+              "feature": "role_pool_MLB",
+              "input": 2.6176012461059193,
+              "path_effect": -24.898188587816342
+            }
+          ],
+          "interpretation": "Exact count-weighted node-path decomposition. Correlated features/order affect attribution; not SHAP, causal effects, game-feature ablation, or an independent forecast."
+        }
+      },
+      "peers": [
+        {
+          "player_id": 596129,
+          "player_name": "Daniel Vogelbach",
+          "distance": 0.09197660806202639,
+          "expected_pa": 389.2327962706465,
+          "actual_pa": 319,
+          "raw_history": [
+            {
+              "season": 2020,
+              "bucket": "MLB",
+              "plate_appearances": 136,
+              "home_runs": 6,
+              "strike_outs": 33,
+              "unintentional_walks": 19
+            },
+            {
+              "season": 2021,
+              "bucket": "MLB",
+              "plate_appearances": 258,
+              "home_runs": 9,
+              "strike_outs": 57,
+              "unintentional_walks": 42
+            },
+            {
+              "season": 2021,
+              "bucket": "AAA",
+              "plate_appearances": 65,
+              "home_runs": 3,
+              "strike_outs": 13,
+              "unintentional_walks": 16
+            },
+            {
+              "season": 2022,
+              "bucket": "MLB",
+              "plate_appearances": 461,
+              "home_runs": 18,
+              "strike_outs": 114,
+              "unintentional_walks": 71
+            }
+          ]
+        },
+        {
+          "player_id": 624431,
+          "player_name": "Jose Trevino",
+          "distance": 0.10163222156882268,
+          "expected_pa": 270.7863622551517,
+          "actual_pa": 168,
+          "raw_history": [
+            {
+              "season": 2020,
+              "bucket": "MLB",
+              "plate_appearances": 83,
+              "home_runs": 2,
+              "strike_outs": 15,
+              "unintentional_walks": 3
+            },
+            {
+              "season": 2021,
+              "bucket": "MLB",
+              "plate_appearances": 302,
+              "home_runs": 5,
+              "strike_outs": 57,
+              "unintentional_walks": 11
+            },
+            {
+              "season": 2021,
+              "bucket": "AA",
+              "plate_appearances": 23,
+              "home_runs": 1,
+              "strike_outs": 4,
+              "unintentional_walks": 2
+            },
+            {
+              "season": 2022,
+              "bucket": "MLB",
+              "plate_appearances": 353,
+              "home_runs": 11,
+              "strike_outs": 62,
+              "unintentional_walks": 15
+            }
+          ]
+        },
+        {
+          "player_id": 605170,
+          "player_name": "Victor Caratini",
+          "distance": 0.15959266445553558,
+          "expected_pa": 223.21064647355743,
+          "actual_pa": 226,
+          "raw_history": [
+            {
+              "season": 2020,
+              "bucket": "MLB",
+              "plate_appearances": 132,
+              "home_runs": 1,
+              "strike_outs": 31,
+              "unintentional_walks": 11
+            },
+            {
+              "season": 2021,
+              "bucket": "MLB",
+              "plate_appearances": 356,
+              "home_runs": 7,
+              "strike_outs": 82,
+              "unintentional_walks": 27
+            },
+            {
+              "season": 2022,
+              "bucket": "MLB",
+              "plate_appearances": 314,
+              "home_runs": 9,
+              "strike_outs": 67,
+              "unintentional_walks": 30
+            }
+          ]
+        }
+      ],
+      "eligible_peer_count": 271
+    }
+  ],
+  "hitting": "Exactly unchanged. The raw conditional rate metric is equally weighted within origin, unlike the previous PA-weighted hitting competence check; do not compare those numbers.",
+  "support_warning": "Sparse comeback intersections remain: Tatis one full/active person, Kang zero, Ellsbury three. No universal comeback certification.",
+  "peer_warning": "Predeclared peers fit the employment/career question, not minor hitting quality. Kwan/Judge debut peers omit minor talent and cannot validate those skill profiles.",
+  "independent_equations": 715,
+  "raw_pending_receipts_preserved": true,
+  "hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-linked-employment-recency\\review-receipt.json": "456b3a3ff462a4e91568be743351c89aad6de884ca7887dcd70120d1800df4d8",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-linked-employment-recency\\preflight.json": "1c8a95842b4c12734dc6721a0066b11aaa859899a93bfae1eb1fb508c3b552b0",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-linked-employment-recency\\fit-report.json": "e203ce03eb2f731b28bd770086e8af679999bd15fe905485de67f9e86d43c72f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-linked-employment-recency\\scores.json": "0a1ca6cd81dad8589fac27cd3bfd603f3f08297cc61bbb325477fd4f50eec496",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-linked-employment-recency\\player-walks.json": "2dd209bdc9a9f2381b4dfb17705a2495d1851df89fbf578106a50f17f7451d90",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-linked-employment-recency\\predictions.parquet": "45cdd134a3a5da50dd3f033bb94075be45cea10ebe63641021a31f0e653f1878",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-linked-employment-recency\\support.parquet": "997a3733f63e11346fd9c7130f090cfcd029969d89c4ddf1623e6c8cf41170ff",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\hitter-linked-employment-recency-contract.md": "fd9b9ee86871a4c840e5a2e4b98bf24c20b58d7d8fd1997d9a14521233f924d4",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\hitter-linked-employment-recency-result.md": "798db7c39151b341e0da3dbd878b8e74dde630e67bb30098c3b95966f361d5ae",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\hitter-linked-employment-recency-player-review.md": "13d54529a3bb9ad25da81d059423893a3a30a3588bd5f50495e57834d71c6484",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\complete_hitter_linked_employment_recency.py": "758bcb4c22d292c6f6f330ec1bcee14b7bf6264590a712cef935141deb7e3adb",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\model_artifacts\\hitter-selected-2026-frozen-2026-10-05\\freeze-manifest.json": "a1d819ffcdd98a9ee62feecf5637b5ebe1f93b6e931d77d2b7d692ed928da67a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\model-evidence\\hitter-final-2026\\report.json": "8c2acfeb42ece7d109d3b35542a6b79ec372467d7027d5945a4ba800cde913bb"
+  }
+}

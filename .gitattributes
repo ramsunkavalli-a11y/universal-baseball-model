@@ -635,3 +635,13 @@ scripts/check_hitter_basics_floor.py -text -eol
 scripts/complete_hitter_basics_floor.py -text -eol
 tests/test_hitter_basics_floor.py -text -eol
 reports/model-evidence/hitter-basics-floor/** -text -eol
+# Preserve the single predeclared opportunity interaction and its negative review.
+docs/hitter-linked-employment-recency-contract.md -text -eol
+docs/hitter-linked-employment-recency-result.md -text -eol
+docs/hitter-linked-employment-recency-player-review.md -text -eol
+src/universal_baseball/linked_employment_recency.py -text -eol
+scripts/run_hitter_linked_employment_recency.py -text -eol
+scripts/review_hitter_linked_employment_recency.py -text -eol
+scripts/complete_hitter_linked_employment_recency.py -text -eol
+tests/test_linked_employment_recency.py -text -eol
+reports/model-evidence/hitter-linked-employment-recency/** -text -eol

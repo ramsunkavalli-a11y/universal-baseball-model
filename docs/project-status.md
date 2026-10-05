@@ -2,6 +2,51 @@
 
 Updated 2026-10-05. This is the current start-here document.
 
+## Completed opportunity mechanism test: do not deploy it
+
+The [employment-recency comparison](hitter-linked-employment-recency-result.md)
+and [twelve source-to-forecast player walks](hitter-linked-employment-recency-player-review.md)
+are complete. One ordered employment-age input was conditioned on the reported
+MLB link; sources, hitting, folds and settings stayed fixed. The main benchmark
+was the stronger corrected employment model, not the old selected opportunity
+model. Seventy new heads and 140 saved-head replays were completed.
+
+No replacement is justified. Primary all-row PA RMSE changes 60.2698 to 60.2758,
+with a paired interval spanning gain and harm; inactive/unknown PA squared error
+worsens 8.80%, failing the stage guardrail. Public absolute PA error improves
+only 105.284 to 105.002 against employment, still well above Steamer's 92.083.
+Contribution error is fractionally better, but its change against selected is
+uncertain. Tatis improves 61 to 112 PA before 635 actual; Kang worsens 64 to 143
+before six. Hoskins's large correction was already in employment, not this test.
+Slater's nearly exact contribution conceals too many PA and too little hitting.
+
+The exact encoding is CLOSED: no date/penalty variants, named-player exemptions,
+subgroup hybrid or repeat fit. A closer linked-return total also concealed worse
+individual allocation. Three origins improve primary PA error, four worsen.
+Upper-minor entrants remain underallocated; this is not a general comeback or
+prospect solution. Rare return intersections have one/zero/three matching people
+for Tatis/Kang/Ellsbury, so even perfect code cannot certify general behavior.
+
+The next opportunity checkpoint must address eligibility/availability/role
+directly, not remove another uncertainty field. A read-only scan of all seventy
+new heads also finds zero splits on all eight repaired restriction/return
+observation fields. Correct observations already exist but do not affect this
+learner. Before any next fit, write a mechanism that actually distinguishes
+finite restriction, unresolved absence and medical uncertainty without claiming
+that an old activation or current 40-man record guarantees play. Preserve
+career talent; no near-exit probability merely because current-season PA is zero.
+If that distinction cannot be supported with the existing dated facts, disclose
+the limit rather than collect another synonymous flag. No new source inventory
+or algorithm tournament; the remaining ordered reset queue stays intact.
+
+Verification: 23 focused tests and lint pass, 715 score/total equations reconstruct
+with a different group-first implementation, and all twelve raw-stat/input/path
+walks are reviewed. Both frozen packages verify unchanged (53 selected files /
+4,030 people, 31 legacy files / 3,907 people); the completed 2026 evaluation hash
+is unchanged and no protected outcome is rescored. Explorer unchanged. The
+broader goal remains unfinished. The reset section below is the preceding
+milestone; this section supplies its completed mechanism-test decision.
+
 ## Reset around baseball basics, not another model sweep
 
 The [new controlling goal](hitter-basics-reset-plan.md) and
