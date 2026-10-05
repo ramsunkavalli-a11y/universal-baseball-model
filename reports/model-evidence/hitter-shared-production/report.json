@@ -1,0 +1,98 @@
+{
+  "status": "completed_historical_comparison_not_adopted",
+  "player_walkthrough_status": "complete",
+  "source_integrity_pass": true,
+  "profile_support_qualified": true,
+  "predictive_improvement": false,
+  "reasonability_qualified": true,
+  "deployment_approved": false,
+  "broad_goal_achieved": false,
+  "protected_outcomes_used": false,
+  "frozen_forecasts_changed": false,
+  "heads_fitted": 105,
+  "heads_replayed": 105,
+  "original_rows": 30506,
+  "addition_rows": 13,
+  "matched_scores_verified": 264,
+  "player_cases": 10,
+  "primary": {
+    "scope": "all",
+    "rows": 30506,
+    "players": 11020,
+    "actual_PA": 1270493,
+    "actual_value": 4185.433589228993,
+    "scores": {
+      "current": {
+        "value_rmse": 0.4351333510509891,
+        "value_mae": 0.12387447809219296,
+        "value_bias": -0.0007478371616184461,
+        "expected_value": 4155.430076780389,
+        "expected_PA": 1228732.5119559553,
+        "rate_rmse": 1.8048133711486227
+      },
+      "shared": {
+        "value_rmse": 0.4366266473861397,
+        "value_mae": 0.12448056664440627,
+        "value_bias": -0.0009570150475541311,
+        "expected_value": 4149.421631127245,
+        "expected_PA": 1228732.5119559553,
+        "rate_rmse": 1.8135509744285863
+      },
+      "repaired_overseas": {
+        "value_rmse": 0.4360646167819037,
+        "value_mae": 0.12406556431699609,
+        "value_bias": -0.0016917862176893728,
+        "expected_value": 4128.4833763172755,
+        "expected_PA": 1235119.0171268883,
+        "rate_rmse": 1.808499510716202
+      }
+    }
+  },
+  "intervals": {
+    "rate": {
+      "metric": "PA_weighted_relative_rate_mse",
+      "change": 0.03161583217401808,
+      "lower": 0.014800535872873229,
+      "upper": 0.04878824385821405,
+      "fixed_original_origin_PA_weights": true,
+      "nominal_exposed_development_interval": true
+    },
+    "value": {
+      "metric": "delivered_value_mse",
+      "change": 0.0013017960107970963,
+      "lower": 0.0004112588178299814,
+      "upper": 0.002156754763305602,
+      "nominal_development_interval": true
+    }
+  },
+  "review_triggers": [
+    "Shared event direction warnings in 95 heads"
+  ],
+  "public_comparison": {
+    "rows": 2627,
+    "active_rows": 2088,
+    "common_rate_rmse": {
+      "current": 1.7284811660509019,
+      "shared": 1.7301921326457927,
+      "steamer": 1.774588665893598,
+      "zips": 1.7533614545512477
+    },
+    "qualification": "Archived public rate forecasts; vintage, park and future league environment differ. No certified ZiPS workload comparison."
+  },
+  "event_direction_interpretation": "Event coefficients are partial effects after retained MLB quality/tracking. They are not full transferable production slopes. An out-to-K exchange holds hits fixed and changes implied BABIP, so the 95 K warnings are not a demonstrated physical violation. All HR exchanges are positive.",
+  "next_question": "A shared production baseline with consistent quality representation, rather than applying MLB residual relationships as the full foreign/minor talent relationship. This remains a hypothesis, not a proven repair.",
+  "hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\finalize_hitter_shared_production.py": "a95a06d9acaea27e7ebddb3f3409294a092580177736f10a8aa166a3fdb869ed",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-shared-production\\preflight.json": "2b51609e571592d3ff3819463dd4a55a2552275f89d2cb82c4f3a8f54f4041a1",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-shared-production\\source-review.json": "9a0c34212af2b5c939f8a1d6639cef1cf3efc0ca569c34ecc5fc4bd96f882a77",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-shared-production\\fit-seal.json": "9ce25bc7b3d307920d524850a2c7ab459b2335ea856e957f37520005bf7b7d79",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-shared-production\\fit-report.json": "1c7248cd153afe58830c3499e267d9f547f81aaa34a51a2fcd202550bbe3cd04",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-shared-production\\review-receipt.json": "1e614e2f4ef49c4b0fe227c8686726321f3f1cb7afce54ea46619fd8e6661b49",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-shared-production\\review-qualification.json": "f033b721c4a4320b8ab180a163942846f47fd8c9cfb442adc0b77f009f31d055",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-shared-production\\predictions.parquet": "325701c01efb9bf69212cef940b78aaae916776f14ada4a5d84113c137d8e611",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-shared-production\\scores.json": "135f77fbbb1c94264ac8b8e7dcf68086ae4360eafba5186e3ac20f66299871fd",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-shared-production\\player-walks.json": "772c29adcddc858d9c6eedb692c4df7ea481e7304ffe56b4ef20a61e63ae01d3",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\hitter-shared-production-result.md": "f5a3ed36b1ec94b34955da1a33dd8efa9eaa4939d02d69d428f2aca8792f77bd",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\hitter-shared-production-player-review.md": "16a122e58a1880f06bd0caed7b24fb77b05a8dd50162d97f0a8478ac592510ca"
+  }
+}

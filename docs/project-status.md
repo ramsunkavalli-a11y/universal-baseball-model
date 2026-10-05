@@ -2,6 +2,36 @@
 
 Updated 2026-10-05. This is the current start-here document.
 
+## Shared production comparison completed without an accuracy gain
+
+The [shared production result](hitter-shared-production-result.md) and
+[ten player walks](hitter-shared-production-player-review.md) are complete.
+All 105 new talent heads replay across the same historical 35 cells. Original
+playing time is exactly fixed, all original 30,506 forecasts remain, and thirteen
+additions have no invented incumbent. Both frozen packages and the completed
+2026 evaluation stay unchanged.
+
+Hitting RMSE worsens 1.80481 to 1.81355 and delivered batting-plus-replacement
+RMSE 0.43513 to 0.43663; six of seven origin years worsen. A small foreign-source
+subgroup improves but does not warrant a post-result hybrid. Lee improves,
+Yoshida worsens, and Judge, Yordan and Kurtz remain low and become worse.
+Wilkerson's near-exact delivered value hides opposing component errors. Retain
+the incumbent; this does not reject minor or foreign production.
+
+The common eight-event representation fixes coherent pooling, actual weighted
+PA, reference alignment and both-player-fold source exclusions, but the fitted
+event terms remain small residuals alongside retained MLB quality and context.
+The K-versus-batted-out warnings are partial relationships with hits held fixed,
+not demonstrated physical violations. Read the explicit qualification before
+claiming a sign bug. Current source and score receipts are preserved.
+
+Next resolve one shared batting baseline with consistent MLB quality/tracking
+refinements. Inspect its actual translated player values and existing
+park/opponent evidence before a new contract or fit; translation and prior
+adequacy are not assumed. No alpha sweep, favorable-subgroup routing, school/job
+refit, team-record test, algorithm tournament or 2026 reopening is authorized by
+this result. The practical hitter goal remains active.
+
 ## Actual training routes reviewed without another playing time refit
 
 The [route diagnostic](hitter-route-support-diagnostic-result.md) and
