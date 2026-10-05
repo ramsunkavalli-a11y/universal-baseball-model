@@ -1,0 +1,1699 @@
+{
+  "player_walkthrough_status": "complete",
+  "cases": 18,
+  "origin_selected_peer_traces": 54,
+  "calibration_cells_verified": 35,
+  "independent_metric_checks": 572,
+  "tests": "..............                                                           [100%]\n14 passed in 1.24s\n",
+  "predictive_gain_established": false,
+  "baseball_reasonability_pass": false,
+  "disposition": "retain_as_research_do_not_deploy",
+  "deployment_approved": false,
+  "no_new_fits_or_scores_after_review": true,
+  "target_year_maximum": 2025,
+  "frozen_2026_forecasts_changed": false,
+  "freeze_checks": [
+    {
+      "script": "verify_hitter_selected_2026_freeze.py",
+      "returncode": 0,
+      "output": {
+        "status": "verified",
+        "files": 53,
+        "players": 4030,
+        "heads_replayed": 25,
+        "manifest_sha256": "a1d819ffcdd98a9ee62feecf5637b5ebe1f93b6e931d77d2b7d692ed928da67a",
+        "protected_outcomes_read": false,
+        "predictive_accuracy_not_yet_evaluated": true
+      },
+      "qualifier": "Verifier describes original pre-result package, not current completion status of the separate 2026 evaluation."
+    },
+    {
+      "script": "verify_hitter_full_2026_freeze.py",
+      "returncode": 0,
+      "output": {
+        "contact_available_rows": 3511,
+        "five_model_rows": 3720,
+        "forecast_sha256": "d1953a28d35d87d141ecc65ec4b107906edad877982e79c0d3a216245b9e4708",
+        "players": 3907,
+        "population_prior_rows": 187,
+        "protected_2026_opened": false,
+        "status": "verified",
+        "verified_files": 31
+      },
+      "qualifier": "Verifier describes original pre-result package, not current completion status of the separate 2026 evaluation."
+    }
+  ],
+  "sensitivity": [
+    {
+      "scope": "original_route_eligible",
+      "post_score_descriptive_only": true,
+      "pooled_actual_PA_RMSE": {
+        "baseline": 2.500792771022042,
+        "borrowed": 0.540840926707613,
+        "candidate": 0.5740837497159555
+      }
+    },
+    {
+      "scope": "additions",
+      "post_score_descriptive_only": true,
+      "pooled_actual_PA_RMSE": {
+        "baseline": 2.5418299907626656,
+        "borrowed": 2.1326208290778164,
+        "candidate": 2.206654349277383
+      }
+    }
+  ],
+  "one_person_bootstrap_not_population_evidence": true,
+  "next_boundary": "Inventory existing historical overseas opportunity/source candidates before any new fit.",
+  "hashes": {
+    "docs\\hitter-foreign-count-calibration-result.md": "080424e1975a2793e43f86ce2c7ad452d21f1dd1a4f0960b12474eb7bee981b5",
+    "docs\\hitter-foreign-count-calibration-player-review.md": "efdc1105d9c39ee365b3dd3181e88770163670c254e36fadf389a9188efd8f90",
+    "scripts\\finalize_foreign_count_calibration.py": "713da1a1407e14ba0dfb6863d7431bc511270ff0eb2ce8ce098f41fde6b6ffb4",
+    "tests\\test_foreign_count_review.py": "e2586d12f492487a47a4942a481a9968ec3a7c78d28901815081eea98f65810d",
+    "reports\\generated\\foreign-count-calibration\\calculation-review.json": "8e35b0115e710ace44855c18b0a2c076d1273afcb93930adb626e683f555ce69",
+    "reports\\generated\\foreign-count-calibration\\player-walks.json": "e24521e5ef12c6f6e6110cad88f6ce464ba014383b22a2e819121efd57e9aa31",
+    "reports\\generated\\foreign-count-calibration\\scores.json": "9ea95d178aa42178c02d969a80dcdd0cbae18bd866fad421f271dee32c7b88f5"
+  },
+  "scopes": [
+    {
+      "scope": "original_all",
+      "metrics": {
+        "baseline": {
+          "rows": 30506,
+          "people": 11020,
+          "active_rows": 4538,
+          "predicted_PA": 1228732.5119559553,
+          "actual_PA": 1270493.0,
+          "expected_contribution": 4155.430076780389,
+          "actual_contribution": 4185.433589228993,
+          "value_rmse": 0.435133351050989,
+          "value_mae": 0.1238744780921929,
+          "value_bias": -0.0007478371616184486,
+          "rate_rmse": 1.8048133711486232
+        },
+        "borrowed": {
+          "rows": 30506,
+          "people": 11020,
+          "active_rows": 4538,
+          "predicted_PA": 1228732.5119559553,
+          "actual_PA": 1270493.0,
+          "expected_contribution": 4155.3644253262355,
+          "actual_contribution": 4185.433589228993,
+          "value_rmse": 0.43510379748873146,
+          "value_mae": 0.12388083854868989,
+          "value_bias": -0.0007506550024179726,
+          "rate_rmse": 1.8036147516766874
+        },
+        "candidate": {
+          "rows": 30506,
+          "people": 11020,
+          "active_rows": 4538,
+          "predicted_PA": 1228732.5119559553,
+          "actual_PA": 1270493.0,
+          "expected_contribution": 4155.101031981875,
+          "actual_contribution": 4185.433589228993,
+          "value_rmse": 0.43510563143217734,
+          "value_mae": 0.1238809197095117,
+          "value_bias": -0.0007594145060475007,
+          "rate_rmse": 1.803622016205093
+        }
+      },
+      "candidate_vs_baseline_value_MSE_interval": {
+        "change": -2.412269286951761e-05,
+        "lower": -7.455840228519287e-05,
+        "upper": 1.6768202721221075e-06,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      "candidate_vs_baseline_rate_MSE_interval": {
+        "change": -0.004298927337132568,
+        "lower": -0.013340244631665077,
+        "upper": 8.046575769586328e-05,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      "categorical": {
+        "borrowed": {
+          "rows": 28,
+          "people": 20,
+          "actual_PA": 7776,
+          "logloss": 1.5070458689394024,
+          "one_hot_brier": 0.710559812329116,
+          "predicted_frequencies": [
+            0.4594157308934323,
+            0.20606114607609644,
+            0.09393425958621678,
+            0.014507055407983959,
+            0.13949583638291987,
+            0.046040778227815465,
+            0.0057799916504178385,
+            0.034765201775117285
+          ],
+          "actual_frequencies": [
+            0.44623678830816593,
+            0.22948207052995195,
+            0.0798988507332982,
+            0.010539424719953824,
+            0.14755875827246792,
+            0.04675905348599285,
+            0.007344913367588072,
+            0.032180140582581215
+          ],
+          "K_rmse": 0.056990666458466496,
+          "HR_rmse": 0.013817756594719847
+        },
+        "count": {
+          "rows": 28,
+          "people": 20,
+          "actual_PA": 7776,
+          "logloss": 1.5102431607849598,
+          "one_hot_brier": 0.710738146217636,
+          "predicted_frequencies": [
+            0.45793176102506195,
+            0.20690872983647124,
+            0.09363426258182497,
+            0.015926302667432706,
+            0.14283456928308133,
+            0.04431468513963782,
+            0.004551423228530928,
+            0.03389826623795906
+          ],
+          "actual_frequencies": [
+            0.44623678830816593,
+            0.22948207052995195,
+            0.0798988507332982,
+            0.010539424719953824,
+            0.14755875827246792,
+            0.04675905348599285,
+            0.007344913367588072,
+            0.032180140582581215
+          ],
+          "K_rmse": 0.05761340763879668,
+          "HR_rmse": 0.014742179637201874
+        }
+      }
+    },
+    {
+      "scope": "original_route_eligible",
+      "metrics": {
+        "baseline": {
+          "rows": 114,
+          "people": 70,
+          "active_rows": 5,
+          "predicted_PA": 513.8081935452897,
+          "actual_PA": 914.0,
+          "expected_contribution": 0.796024122896268,
+          "actual_contribution": 4.713476738414359,
+          "value_rmse": 0.3711688977590306,
+          "value_mae": 0.04995785894178267,
+          "value_bias": -0.03610900472536682,
+          "rate_rmse": 2.264043447148766
+        },
+        "borrowed": {
+          "rows": 114,
+          "people": 70,
+          "active_rows": 5,
+          "predicted_PA": 513.8081935452897,
+          "actual_PA": 914.0,
+          "expected_contribution": 0.7303726687427278,
+          "actual_contribution": 4.713476738414359,
+          "value_rmse": 0.3608697232120543,
+          "value_mae": 0.05127273545858632,
+          "value_bias": -0.036735826464704004,
+          "rate_rmse": 1.9770046433791206
+        },
+        "candidate": {
+          "rows": 114,
+          "people": 70,
+          "active_rows": 5,
+          "predicted_PA": 513.8081935452897,
+          "actual_PA": 914.0,
+          "expected_contribution": 0.46697932438300077,
+          "actual_contribution": 4.713476738414359,
+          "value_rmse": 0.36150252319562326,
+          "value_mae": 0.051360797294864216,
+          "value_bias": -0.039015140780157595,
+          "rate_rmse": 1.7420565457843888
+        }
+      },
+      "candidate_vs_baseline_value_MSE_interval": {
+        "change": -0.007082276386851552,
+        "lower": -0.02397932720640448,
+        "upper": 0.00034067750146017417,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      "candidate_vs_baseline_rate_MSE_interval": {
+        "change": -2.0911317218670304,
+        "lower": -6.811297326535756,
+        "upper": 0.15160677029297062,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      "categorical": {
+        "borrowed": {
+          "rows": 5,
+          "people": 5,
+          "actual_PA": 914,
+          "logloss": 1.5196672503827475,
+          "one_hot_brier": 0.7326172584145922,
+          "predicted_frequencies": [
+            0.44206184810677296,
+            0.24639252035382853,
+            0.08023260304253482,
+            0.01794202757425776,
+            0.13164175143588885,
+            0.04197799831411141,
+            0.008946719123529859,
+            0.03080453204907574
+          ],
+          "actual_frequencies": [
+            0.39414919152696465,
+            0.30056057812407067,
+            0.07332676245422334,
+            0.00709495628382799,
+            0.15350366638060686,
+            0.04782396274991291,
+            0.006706757526064014,
+            0.01683412495432956
+          ],
+          "K_rmse": 0.07465526434507354,
+          "HR_rmse": 0.024774389329721803
+        },
+        "count": {
+          "rows": 5,
+          "people": 5,
+          "actual_PA": 914,
+          "logloss": 1.5199100483048147,
+          "one_hot_brier": 0.7322397829636658,
+          "predicted_frequencies": [
+            0.4358607197423958,
+            0.2562112292722694,
+            0.07832437784273295,
+            0.020272994183661606,
+            0.13379797770804377,
+            0.040205707048760725,
+            0.007597581890367552,
+            0.027729412311768134
+          ],
+          "actual_frequencies": [
+            0.39414919152696465,
+            0.30056057812407067,
+            0.07332676245422334,
+            0.00709495628382799,
+            0.15350366638060686,
+            0.04782396274991291,
+            0.006706757526064014,
+            0.01683412495432956
+          ],
+          "K_rmse": 0.07181203488169083,
+          "HR_rmse": 0.02389872773869472
+        }
+      }
+    },
+    {
+      "scope": "original_foreign_sources",
+      "metrics": {
+        "baseline": {
+          "rows": 253,
+          "people": 138,
+          "active_rows": 28,
+          "predicted_PA": 7463.664247697228,
+          "actual_PA": 7776.0,
+          "expected_contribution": 20.275691681097562,
+          "actual_contribution": 33.407002404619796,
+          "value_rmse": 0.4930928427060247,
+          "value_mae": 0.13483131581049576,
+          "value_bias": -0.052621597513893496,
+          "rate_rmse": 1.8802413155092788
+        },
+        "borrowed": {
+          "rows": 253,
+          "people": 138,
+          "active_rows": 28,
+          "predicted_PA": 7463.664247697228,
+          "actual_PA": 7776.0,
+          "expected_contribution": 20.21004022694402,
+          "actual_contribution": 33.407002404619796,
+          "value_rmse": 0.48987741070219215,
+          "value_mae": 0.13557565497998025,
+          "value_bias": -0.05286991693346194,
+          "rate_rmse": 1.7322879155912896
+        },
+        "candidate": {
+          "rows": 253,
+          "people": 138,
+          "active_rows": 28,
+          "predicted_PA": 7463.664247697228,
+          "actual_PA": 7776.0,
+          "expected_contribution": 19.946646882584293,
+          "actual_contribution": 33.407002404619796,
+          "value_rmse": 0.4900750365133766,
+          "value_mae": 0.13557587388084877,
+          "value_bias": -0.053902271818337955,
+          "rate_rmse": 1.7344047569854937
+        }
+      },
+      "candidate_vs_baseline_value_MSE_interval": {
+        "change": -0.0029670101143210704,
+        "lower": -0.00933614823700512,
+        "upper": 0.00019095705264548864,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      "candidate_vs_baseline_rate_MSE_interval": {
+        "change": -0.5271475434941545,
+        "lower": -1.3132203369450255,
+        "upper": 0.020564246301755476,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      "categorical": {
+        "borrowed": {
+          "rows": 28,
+          "people": 20,
+          "actual_PA": 7776,
+          "logloss": 1.5070458689394024,
+          "one_hot_brier": 0.710559812329116,
+          "predicted_frequencies": [
+            0.4594157308934323,
+            0.20606114607609644,
+            0.09393425958621678,
+            0.014507055407983959,
+            0.13949583638291987,
+            0.046040778227815465,
+            0.0057799916504178385,
+            0.034765201775117285
+          ],
+          "actual_frequencies": [
+            0.44623678830816593,
+            0.22948207052995195,
+            0.0798988507332982,
+            0.010539424719953824,
+            0.14755875827246792,
+            0.04675905348599285,
+            0.007344913367588072,
+            0.032180140582581215
+          ],
+          "K_rmse": 0.056990666458466496,
+          "HR_rmse": 0.013817756594719847
+        },
+        "count": {
+          "rows": 28,
+          "people": 20,
+          "actual_PA": 7776,
+          "logloss": 1.5102431607849598,
+          "one_hot_brier": 0.710738146217636,
+          "predicted_frequencies": [
+            0.45793176102506195,
+            0.20690872983647124,
+            0.09363426258182497,
+            0.015926302667432706,
+            0.14283456928308133,
+            0.04431468513963782,
+            0.004551423228530928,
+            0.03389826623795906
+          ],
+          "actual_frequencies": [
+            0.44623678830816593,
+            0.22948207052995195,
+            0.0798988507332982,
+            0.010539424719953824,
+            0.14755875827246792,
+            0.04675905348599285,
+            0.007344913367588072,
+            0.032180140582581215
+          ],
+          "K_rmse": 0.05761340763879668,
+          "HR_rmse": 0.014742179637201874
+        }
+      }
+    },
+    {
+      "scope": "additions",
+      "metrics": {
+        "baseline": {
+          "rows": 13,
+          "people": 13,
+          "active_rows": 6,
+          "predicted_PA": 145.27613049381603,
+          "actual_PA": 1625.0,
+          "expected_contribution": 0.3759408476514925,
+          "actual_contribution": 8.336613824082338,
+          "value_rmse": 1.6163183637764296,
+          "value_mae": 0.8959994603687239,
+          "value_bias": -0.8184810689959722,
+          "rate_rmse": 3.7417409190004354
+        },
+        "borrowed": {
+          "rows": 13,
+          "people": 13,
+          "active_rows": 6,
+          "predicted_PA": 145.27613049381603,
+          "actual_PA": 1625.0,
+          "expected_contribution": 0.6622740146580076,
+          "actual_contribution": 8.336613824082338,
+          "value_rmse": 1.6007374728371155,
+          "value_mae": 0.8698728939739117,
+          "value_bias": -0.8018844288231778,
+          "rate_rmse": 3.1000087043426787
+        },
+        "candidate": {
+          "rows": 13,
+          "people": 13,
+          "active_rows": 6,
+          "predicted_PA": 145.27613049381603,
+          "actual_PA": 1625.0,
+          "expected_contribution": 0.6730016650171183,
+          "actual_contribution": 8.336613824082338,
+          "value_rmse": 1.5946271516273816,
+          "value_mae": 0.8644337925450767,
+          "value_bias": -0.8041131230798882,
+          "rate_rmse": 3.0133129947329262
+        }
+      },
+      "candidate_vs_baseline_value_MSE_interval": {
+        "change": -0.06964930037365757,
+        "lower": -0.26896678112901906,
+        "upper": 0.04846697553235287,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      "candidate_vs_baseline_rate_MSE_interval": {
+        "change": -4.92056990069591,
+        "lower": -16.822815173406948,
+        "upper": 4.212472542938795,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      "categorical": {
+        "borrowed": {
+          "rows": 6,
+          "people": 6,
+          "actual_PA": 1625,
+          "logloss": 1.438617978975888,
+          "one_hot_brier": 0.6828993288212746,
+          "predicted_frequencies": [
+            0.4753326946145741,
+            0.17975341301927023,
+            0.09527253774638428,
+            0.012162839355253587,
+            0.15485400268551952,
+            0.045784441998714356,
+            0.005833906768579646,
+            0.031006163811704356
+          ],
+          "actual_frequencies": [
+            0.4859908409980599,
+            0.20228016661325554,
+            0.07827841262113056,
+            0.006929361358212087,
+            0.15338468335628358,
+            0.040898754844086685,
+            0.0029883319002806377,
+            0.02924944830869106
+          ],
+          "K_rmse": 0.045652242451328505,
+          "HR_rmse": 0.014475020499566992
+        },
+        "count": {
+          "rows": 6,
+          "people": 6,
+          "actual_PA": 1625,
+          "logloss": 1.4410923256769024,
+          "one_hot_brier": 0.6831279758407859,
+          "predicted_frequencies": [
+            0.4776613908128803,
+            0.17412722049123613,
+            0.09592897300206477,
+            0.011625190855347911,
+            0.16002031582068454,
+            0.04385635834014875,
+            0.004389978030336233,
+            0.03239057264730141
+          ],
+          "actual_frequencies": [
+            0.4859908409980599,
+            0.20228016661325554,
+            0.07827841262113056,
+            0.006929361358212087,
+            0.15338468335628358,
+            0.040898754844086685,
+            0.0029883319002806377,
+            0.02924944830869106
+          ],
+          "K_rmse": 0.048397721837794956,
+          "HR_rmse": 0.012534227346357096
+        }
+      }
+    },
+    {
+      "scope": "original_fresh_newcomers",
+      "metrics": {
+        "baseline": {
+          "rows": 1,
+          "people": 1,
+          "active_rows": 1,
+          "predicted_PA": 0.3614786534494445,
+          "actual_PA": 170.0,
+          "expected_contribution": 0.000506238103796512,
+          "actual_contribution": 0.43403929529694224,
+          "value_rmse": 0.4335330571931457,
+          "value_mae": 0.4335330571931457,
+          "value_bias": -0.4335330571931457,
+          "rate_rmse": 0.6916245588376909
+        },
+        "borrowed": {
+          "rows": 1,
+          "people": 1,
+          "active_rows": 1,
+          "predicted_PA": 0.3614786534494445,
+          "actual_PA": 170.0,
+          "expected_contribution": 0.0006815376307519373,
+          "actual_contribution": 0.43403929529694224,
+          "value_rmse": 0.4333577576661903,
+          "value_mae": 0.4333577576661903,
+          "value_bias": -0.4333577576661903,
+          "rate_rmse": 0.40065380532412187
+        },
+        "candidate": {
+          "rows": 1,
+          "people": 1,
+          "active_rows": 1,
+          "predicted_PA": 0.3614786534494445,
+          "actual_PA": 170.0,
+          "expected_contribution": 0.00039182958543983144,
+          "actual_contribution": 0.43403929529694224,
+          "value_rmse": 0.4336474657115024,
+          "value_mae": 0.4336474657115024,
+          "value_bias": -0.4336474657115024,
+          "rate_rmse": 0.8815254294947984
+        }
+      },
+      "candidate_vs_baseline_value_MSE_interval": {
+        "change": 9.921283877331599e-05,
+        "lower": 9.921283877331599e-05,
+        "upper": 9.921283877331599e-05,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      "candidate_vs_baseline_rate_MSE_interval": {
+        "change": 0.29874255245855824,
+        "lower": 0.29874255245855824,
+        "upper": 0.29874255245855824,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      "categorical": {
+        "borrowed": {
+          "rows": 1,
+          "people": 1,
+          "actual_PA": 170,
+          "logloss": 1.4987509937698429,
+          "one_hot_brier": 0.7455745796935946,
+          "predicted_frequencies": [
+            0.5013143942890174,
+            0.18703352011189958,
+            0.07482631849919211,
+            0.00963495652314765,
+            0.1660534083970919,
+            0.0387287739235019,
+            0.008458142511584412,
+            0.013950485744565064
+          ],
+          "actual_frequencies": [
+            0.38235294117647056,
+            0.3058823529411765,
+            0.041176470588235294,
+            0.0058823529411764705,
+            0.20588235294117646,
+            0.03529411764705882,
+            0.0058823529411764705,
+            0.01764705882352941
+          ],
+          "K_rmse": 0.11884883282927691,
+          "HR_rmse": 0.003696573078964347
+        },
+        "count": {
+          "rows": 1,
+          "people": 1,
+          "actual_PA": 170,
+          "logloss": 1.4955570760477697,
+          "one_hot_brier": 0.7451692734613653,
+          "predicted_frequencies": [
+            0.5045986545929705,
+            0.19024200463634797,
+            0.0720389492954759,
+            0.008933330724177924,
+            0.1695209223229261,
+            0.03611239410211725,
+            0.006763048626120197,
+            0.01179069569986418
+          ],
+          "actual_frequencies": [
+            0.38235294117647056,
+            0.3058823529411765,
+            0.041176470588235294,
+            0.0058823529411764705,
+            0.20588235294117646,
+            0.03529411764705882,
+            0.0058823529411764705,
+            0.01764705882352941
+          ],
+          "K_rmse": 0.11564034830482853,
+          "HR_rmse": 0.005856363123665231
+        }
+      }
+    },
+    {
+      "scope": "original_fresh_returners",
+      "metrics": {
+        "baseline": {
+          "rows": 113,
+          "people": 69,
+          "active_rows": 4,
+          "predicted_PA": 513.4467148918402,
+          "actual_PA": 744.0,
+          "expected_contribution": 0.7955178847924715,
+          "actual_contribution": 4.279437443117417,
+          "value_rmse": 0.36837657945675367,
+          "value_mae": 0.04523292418738578,
+          "value_bias": -0.031305740420573686,
+          "rate_rmse": 2.5836167409222828
+        },
+        "borrowed": {
+          "rows": 113,
+          "people": 69,
+          "active_rows": 4,
+          "predicted_PA": 513.4467148918402,
+          "actual_PA": 744.0,
+          "expected_contribution": 0.7296911311119758,
+          "actual_contribution": 4.279437443117417,
+          "value_rmse": 0.3580006316779728,
+          "value_mae": 0.04658332806547603,
+          "value_bias": -0.03197925867076206,
+          "rate_rmse": 2.271098557090064
+        },
+        "candidate": {
+          "rows": 113,
+          "people": 69,
+          "active_rows": 4,
+          "predicted_PA": 513.4467148918402,
+          "actual_PA": 744.0,
+          "expected_contribution": 0.46658749479756095,
+          "actual_contribution": 4.279437443117417,
+          "value_rmse": 0.35863566163310096,
+          "value_mae": 0.04666492940878407,
+          "value_bias": -0.03428831612292018,
+          "rate_rmse": 1.9461035388689674
+        }
+      },
+      "candidate_vs_baseline_value_MSE_interval": {
+        "change": -0.0070817664972458606,
+        "lower": -0.023746490934093915,
+        "upper": 0.0003623998385730411,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      "candidate_vs_baseline_rate_MSE_interval": {
+        "change": -2.8877564799755597,
+        "lower": -8.483583133698632,
+        "upper": -0.043099902202225114,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      "categorical": {
+        "borrowed": {
+          "rows": 4,
+          "people": 4,
+          "actual_PA": 744,
+          "logloss": 1.5266393359203825,
+          "one_hot_brier": 0.7282981513215914,
+          "predicted_frequencies": [
+            0.4223109993793581,
+            0.2661788537678048,
+            0.08203469789031573,
+            0.02071105125796113,
+            0.12017119911548782,
+            0.04306107311098124,
+            0.00910957799417834,
+            0.03642254748391263
+          ],
+          "actual_frequencies": [
+            0.3980812749771293,
+            0.2987866531850354,
+            0.08404352640955269,
+            0.007499157398045163,
+            0.1360441041937503,
+            0.0520005777841976,
+            0.006981559054359862,
+            0.016563146997929604
+          ],
+          "K_rmse": 0.052181059503903726,
+          "HR_rmse": 0.028527278256167434
+        },
+        "count": {
+          "rows": 4,
+          "people": 4,
+          "actual_PA": 744,
+          "logloss": 1.5280277057238296,
+          "one_hot_brier": 0.7279299527977658,
+          "predicted_frequencies": [
+            0.4129480747922043,
+            0.27820097081757655,
+            0.08041952069181864,
+            0.024052882003489495,
+            0.12189032950308298,
+            0.04157014469764188,
+            0.00787575964511667,
+            0.03304231784906945
+          ],
+          "actual_frequencies": [
+            0.3980812749771293,
+            0.2987866531850354,
+            0.08404352640955269,
+            0.007499157398045163,
+            0.1360441041937503,
+            0.0520005777841976,
+            0.006981559054359862,
+            0.016563146997929604
+          ],
+          "K_rmse": 0.04917717376769653,
+          "HR_rmse": 0.027387952102319247
+        }
+      }
+    },
+    {
+      "scope": "original_route_nonarrivals",
+      "metrics": {
+        "baseline": {
+          "rows": 109,
+          "people": 66,
+          "active_rows": 0,
+          "predicted_PA": 472.6933426536376,
+          "actual_PA": 0.0,
+          "expected_contribution": 0.726903334809327,
+          "actual_contribution": 0.0,
+          "value_rmse": 0.010781470142605108,
+          "value_mae": 0.006432041090114594,
+          "value_bias": 0.006425866784780908,
+          "rate_rmse": null
+        },
+        "borrowed": {
+          "rows": 109,
+          "people": 66,
+          "active_rows": 0,
+          "predicted_PA": 472.6933426536376,
+          "actual_PA": 0.0,
+          "expected_contribution": 0.5300129888811941,
+          "actual_contribution": 0.0,
+          "value_rmse": 0.016561312224969878,
+          "value_mae": 0.008805416265632662,
+          "value_bias": 0.004527432243504275,
+          "rate_rmse": null
+        },
+        "candidate": {
+          "rows": 109,
+          "people": 66,
+          "active_rows": 0,
+          "predicted_PA": 472.6933426536376,
+          "actual_PA": 0.0,
+          "expected_contribution": 0.28866280370988434,
+          "actual_contribution": 0.0,
+          "value_rmse": 0.01755034015927387,
+          "value_mae": 0.008886305011518818,
+          "value_bias": 0.0023670392935824553,
+          "rate_rmse": null
+        }
+      },
+      "candidate_vs_baseline_value_MSE_interval": {
+        "change": 0.00019177434127033577,
+        "lower": 3.56093423052112e-05,
+        "upper": 0.0004512590930813479,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      "candidate_vs_baseline_rate_MSE_interval": null,
+      "categorical": {
+        "borrowed": {
+          "rows": 0
+        },
+        "count": {
+          "rows": 0
+        }
+      }
+    },
+    {
+      "scope": "original_upper_never",
+      "metrics": {
+        "baseline": {
+          "rows": 5454,
+          "people": 3055,
+          "active_rows": 730,
+          "predicted_PA": 74239.03857057952,
+          "actual_PA": 92891.0,
+          "expected_contribution": 177.4862992905293,
+          "actual_contribution": 196.73395271672234,
+          "value_rmse": 0.3016947425069943,
+          "value_mae": 0.07630526694523007,
+          "value_bias": -0.003916551170919222,
+          "rate_rmse": 2.563248404502482
+        },
+        "borrowed": {
+          "rows": 5454,
+          "people": 3055,
+          "active_rows": 730,
+          "predicted_PA": 74239.03857057952,
+          "actual_PA": 92891.0,
+          "expected_contribution": 177.4862992905293,
+          "actual_contribution": 196.73395271672234,
+          "value_rmse": 0.3016947425069943,
+          "value_mae": 0.07630526694523007,
+          "value_bias": -0.003916551170919221,
+          "rate_rmse": 2.563248404502482
+        },
+        "candidate": {
+          "rows": 5454,
+          "people": 3055,
+          "active_rows": 730,
+          "predicted_PA": 74239.03857057952,
+          "actual_PA": 92891.0,
+          "expected_contribution": 177.4862992905293,
+          "actual_contribution": 196.73395271672234,
+          "value_rmse": 0.3016947425069943,
+          "value_mae": 0.07630526694523007,
+          "value_bias": -0.003916551170919221,
+          "rate_rmse": 2.563248404502482
+        }
+      },
+      "candidate_vs_baseline_value_MSE_interval": {
+        "change": 2.1046144984666002e-19,
+        "lower": 5.318606872544891e-20,
+        "upper": 4.084114875951587e-19,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      "candidate_vs_baseline_rate_MSE_interval": {
+        "change": 0.0,
+        "lower": 0.0,
+        "upper": 0.0,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      "categorical": {
+        "borrowed": {
+          "rows": 1,
+          "people": 1,
+          "actual_PA": 240,
+          "logloss": 1.5657824136060454,
+          "one_hot_brier": 0.7388370400681017,
+          "predicted_frequencies": [
+            0.4738264872193341,
+            0.2389249068659165,
+            0.09517681846840745,
+            0.007333177192404331,
+            0.11597349824519128,
+            0.03779767081244333,
+            0.0037750187509226385,
+            0.027192422445380268
+          ],
+          "actual_frequencies": [
+            0.425,
+            0.21666666666666667,
+            0.05416666666666667,
+            0.004166666666666667,
+            0.1875,
+            0.058333333333333334,
+            0.0,
+            0.05416666666666667
+          ],
+          "K_rmse": 0.022258240199249824,
+          "HR_rmse": 0.0269742442212864
+        },
+        "count": {
+          "rows": 1,
+          "people": 1,
+          "actual_PA": 240,
+          "logloss": 1.561562298144368,
+          "one_hot_brier": 0.7387986084223939,
+          "predicted_frequencies": [
+            0.4711955800662103,
+            0.2445229478773174,
+            0.09378297864915121,
+            0.006059560984440397,
+            0.11453730753565712,
+            0.03681675758221093,
+            0.002122421583513933,
+            0.03096244572149881
+          ],
+          "actual_frequencies": [
+            0.425,
+            0.21666666666666667,
+            0.05416666666666667,
+            0.004166666666666667,
+            0.1875,
+            0.058333333333333334,
+            0.0,
+            0.05416666666666667
+          ],
+          "K_rmse": 0.02785628121065073,
+          "HR_rmse": 0.02320422094516786
+        }
+      }
+    },
+    {
+      "scope": "original_lower_never",
+      "metrics": {
+        "baseline": {
+          "rows": 17852,
+          "people": 8974,
+          "active_rows": 54,
+          "predicted_PA": 7054.645569311761,
+          "actual_PA": 5194.0,
+          "expected_contribution": 16.178953968368184,
+          "actual_contribution": 9.483089121724284,
+          "value_rmse": 0.045813006346647735,
+          "value_mae": 0.0019031200193213764,
+          "value_bias": 0.00037854365962449284,
+          "rate_rmse": 3.1790840666569378
+        },
+        "borrowed": {
+          "rows": 17852,
+          "people": 8974,
+          "active_rows": 54,
+          "predicted_PA": 7054.645569311761,
+          "actual_PA": 5194.0,
+          "expected_contribution": 16.178953968368184,
+          "actual_contribution": 9.483089121724284,
+          "value_rmse": 0.045813006346647735,
+          "value_mae": 0.0019031200193213764,
+          "value_bias": 0.00037854365962449284,
+          "rate_rmse": 3.1790840666569378
+        },
+        "candidate": {
+          "rows": 17852,
+          "people": 8974,
+          "active_rows": 54,
+          "predicted_PA": 7054.645569311761,
+          "actual_PA": 5194.0,
+          "expected_contribution": 16.178953968368184,
+          "actual_contribution": 9.483089121724284,
+          "value_rmse": 0.045813006346647735,
+          "value_mae": 0.0019031200193213764,
+          "value_bias": 0.00037854365962449284,
+          "rate_rmse": 3.1790840666569378
+        }
+      },
+      "candidate_vs_baseline_value_MSE_interval": {
+        "change": 3.985741293492814e-22,
+        "lower": 1.153504935667784e-22,
+        "upper": 8.4150460228299505e-22,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      "candidate_vs_baseline_rate_MSE_interval": {
+        "change": 0.0,
+        "lower": 0.0,
+        "upper": 0.0,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      "categorical": {
+        "borrowed": {
+          "rows": 0
+        },
+        "count": {
+          "rows": 0
+        }
+      }
+    },
+    {
+      "scope": "origin_2016_route",
+      "metrics": {
+        "baseline": {
+          "rows": 16,
+          "people": 16,
+          "active_rows": 2,
+          "predicted_PA": 59.42930073365806,
+          "actual_PA": 644.0,
+          "expected_contribution": 0.10534025991791704,
+          "actual_contribution": 4.170849873077679,
+          "value_rmse": 0.9732374643504897,
+          "value_mae": 0.2617940588581317,
+          "value_bias": -0.2540943508224851,
+          "rate_rmse": 2.9153218841302504
+        },
+        "borrowed": {
+          "rows": 16,
+          "people": 16,
+          "active_rows": 2,
+          "predicted_PA": 59.42930073365806,
+          "actual_PA": 644.0,
+          "expected_contribution": 0.22480733674521391,
+          "actual_contribution": 4.170849873077679,
+          "value_rmse": 0.9452253023550707,
+          "value_mae": 0.25699365653530815,
+          "value_bias": -0.24662765852077906,
+          "rate_rmse": 0.10115680576611406
+        },
+        "candidate": {
+          "rows": 16,
+          "people": 16,
+          "active_rows": 2,
+          "predicted_PA": 59.42930073365806,
+          "actual_PA": 644.0,
+          "expected_contribution": 0.19338632199622968,
+          "actual_contribution": 4.170849873077679,
+          "value_rmse": 0.9468058508527271,
+          "value_mae": 0.2582781403844242,
+          "value_bias": -0.2485914719425906,
+          "rate_rmse": 0.12457348991707899
+        }
+      },
+      "candidate_vs_baseline_value_MSE_interval": {
+        "change": -0.050749842806414557,
+        "lower": -0.1524649690063099,
+        "upper": 0.00021703624534161965,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      "candidate_vs_baseline_rate_MSE_interval": {
+        "change": -8.483583133698632,
+        "lower": -9.816623764870693,
+        "upper": -0.5856757382598703,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      "categorical": {
+        "borrowed": {
+          "rows": 2,
+          "people": 2,
+          "actual_PA": 644,
+          "logloss": 1.6368691350294466,
+          "one_hot_brier": 0.7648198445455342,
+          "predicted_frequencies": [
+            0.4290804134222119,
+            0.22660819928976084,
+            0.08879372729387153,
+            0.018145566109449736,
+            0.1323933492860827,
+            0.053772590650486306,
+            0.009187823781710597,
+            0.042018330166426233
+          ],
+          "actual_frequencies": [
+            0.358695652173913,
+            0.2950310559006211,
+            0.12422360248447205,
+            0.010869565217391304,
+            0.10248447204968944,
+            0.049689440993788817,
+            0.009316770186335404,
+            0.04968944099378882
+          ],
+          "K_rmse": 0.06876425022886358,
+          "HR_rmse": 0.012815064752951737
+        },
+        "count": {
+          "rows": 2,
+          "people": 2,
+          "actual_PA": 644,
+          "logloss": 1.6411733732839877,
+          "one_hot_brier": 0.7636926542197043,
+          "predicted_frequencies": [
+            0.41907581339380034,
+            0.23276160471250298,
+            0.08596125959912307,
+            0.024573952806340105,
+            0.1398405715432709,
+            0.05309769640774188,
+            0.007857851915055593,
+            0.036831249622165045
+          ],
+          "actual_frequencies": [
+            0.358695652173913,
+            0.2950310559006211,
+            0.12422360248447205,
+            0.010869565217391304,
+            0.10248447204968944,
+            0.049689440993788817,
+            0.009316770186335404,
+            0.04968944099378882
+          ],
+          "K_rmse": 0.06284037160372112,
+          "HR_rmse": 0.01667334103442646
+        }
+      }
+    },
+    {
+      "scope": "origin_2017_route",
+      "metrics": {
+        "baseline": {
+          "rows": 14,
+          "people": 14,
+          "active_rows": 0,
+          "predicted_PA": 51.26887930881506,
+          "actual_PA": 0.0,
+          "expected_contribution": 0.07135553241953756,
+          "actual_contribution": 0.0,
+          "value_rmse": 0.00764644407471878,
+          "value_mae": 0.005138073937865793,
+          "value_bias": 0.0050968237442526815,
+          "rate_rmse": null
+        },
+        "borrowed": {
+          "rows": 14,
+          "people": 14,
+          "active_rows": 0,
+          "predicted_PA": 51.26887930881506,
+          "actual_PA": 0.0,
+          "expected_contribution": 0.06176601039827905,
+          "actual_contribution": 0.0,
+          "value_rmse": 0.011630886536006838,
+          "value_mae": 0.007360597234711729,
+          "value_bias": 0.004411857885591361,
+          "rate_rmse": null
+        },
+        "candidate": {
+          "rows": 14,
+          "people": 14,
+          "active_rows": 0,
+          "predicted_PA": 51.26887930881506,
+          "actual_PA": 0.0,
+          "expected_contribution": 0.03590227538846113,
+          "actual_contribution": 0.0,
+          "value_rmse": 0.012850290277987451,
+          "value_mae": 0.00846265499744752,
+          "value_bias": 0.0025644482420329375,
+          "rate_rmse": null
+        }
+      },
+      "candidate_vs_baseline_value_MSE_interval": {
+        "change": 0.00010666185324073685,
+        "lower": -3.5352173988081236e-05,
+        "upper": 0.0002740157554183016,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      "candidate_vs_baseline_rate_MSE_interval": null,
+      "categorical": {
+        "borrowed": {
+          "rows": 0
+        },
+        "count": {
+          "rows": 0
+        }
+      }
+    },
+    {
+      "scope": "origin_2018_route",
+      "metrics": {
+        "baseline": {
+          "rows": 21,
+          "people": 21,
+          "active_rows": 0,
+          "predicted_PA": 69.74390669165042,
+          "actual_PA": 0.0,
+          "expected_contribution": 0.1041217337809433,
+          "actual_contribution": 0.0,
+          "value_rmse": 0.007320319310732314,
+          "value_mae": 0.004958177799092536,
+          "value_bias": 0.004958177799092536,
+          "rate_rmse": null
+        },
+        "borrowed": {
+          "rows": 21,
+          "people": 21,
+          "active_rows": 0,
+          "predicted_PA": 69.74390669165042,
+          "actual_PA": 0.0,
+          "expected_contribution": 0.1713559209600363,
+          "actual_contribution": 0.0,
+          "value_rmse": 0.013592687890934178,
+          "value_mae": 0.008824762588442971,
+          "value_bias": 0.008159805760001726,
+          "rate_rmse": null
+        },
+        "candidate": {
+          "rows": 21,
+          "people": 21,
+          "active_rows": 0,
+          "predicted_PA": 69.74390669165042,
+          "actual_PA": 0.0,
+          "expected_contribution": 0.14794211428192763,
+          "actual_contribution": 0.0,
+          "value_rmse": 0.013084112169327372,
+          "value_mae": 0.007949961380037597,
+          "value_bias": 0.007044862584853697,
+          "rate_rmse": null
+        }
+      },
+      "candidate_vs_baseline_value_MSE_interval": {
+        "change": 0.00011760691644846022,
+        "lower": -1.0069257649258204e-05,
+        "upper": 0.00030185746859178283,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      "candidate_vs_baseline_rate_MSE_interval": null,
+      "categorical": {
+        "borrowed": {
+          "rows": 0
+        },
+        "count": {
+          "rows": 0
+        }
+      }
+    },
+    {
+      "scope": "origin_2021_route",
+      "metrics": {
+        "baseline": {
+          "rows": 14,
+          "people": 14,
+          "active_rows": 1,
+          "predicted_PA": 44.58133098768868,
+          "actual_PA": 14.0,
+          "expected_contribution": 0.08395954136015761,
+          "actual_contribution": -0.06209875281899617,
+          "value_rmse": 0.02202690360787443,
+          "value_mae": 0.010432735298510985,
+          "value_bias": 0.010432735298510985,
+          "rate_rmse": 3.3949784073478995
+        },
+        "borrowed": {
+          "rows": 14,
+          "people": 14,
+          "active_rows": 1,
+          "predicted_PA": 44.58133098768868,
+          "actual_PA": 14.0,
+          "expected_contribution": 0.05216076501211574,
+          "actual_contribution": -0.06209875281899617,
+          "value_rmse": 0.023365569487464936,
+          "value_mae": 0.00968935675029942,
+          "value_bias": 0.008161394130793706,
+          "rate_rmse": 3.902244667015164
+        },
+        "candidate": {
+          "rows": 14,
+          "people": 14,
+          "active_rows": 1,
+          "predicted_PA": 44.58133098768868,
+          "actual_PA": 14.0,
+          "expected_contribution": 0.026408915778778037,
+          "actual_contribution": -0.06209875281899617,
+          "value_rmse": 0.021217826212462782,
+          "value_mae": 0.009286480428455606,
+          "value_bias": 0.006321976328412444,
+          "rate_rmse": 3.3678700585712713
+        }
+      },
+      "candidate_vs_baseline_value_MSE_interval": {
+        "change": -3.498833336831861e-05,
+        "lower": -0.0001664081729009282,
+        "upper": 7.496638443137553e-05,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      "candidate_vs_baseline_rate_MSE_interval": {
+        "change": -0.1833296549376211,
+        "lower": -0.1833296549376211,
+        "upper": -0.1833296549376211,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      "categorical": {
+        "borrowed": {
+          "rows": 1,
+          "people": 1,
+          "actual_PA": 14,
+          "logloss": 1.3843498204758031,
+          "one_hot_brier": 0.6815819453742364,
+          "predicted_frequencies": [
+            0.4011079991962829,
+            0.3036619798359196,
+            0.09790531747515058,
+            0.0201043233588531,
+            0.09431663372813312,
+            0.04002087214532508,
+            0.006433689124344682,
+            0.03644918513599077
+          ],
+          "actual_frequencies": [
+            0.42857142857142855,
+            0.35714285714285715,
+            0.0,
+            0.0,
+            0.14285714285714285,
+            0.07142857142857142,
+            0.0,
+            0.0
+          ],
+          "K_rmse": 0.05348087730693757,
+          "HR_rmse": 0.03644918513599077
+        },
+        "count": {
+          "rows": 1,
+          "people": 1,
+          "actual_PA": 14,
+          "logloss": 1.3813253096913414,
+          "one_hot_brier": 0.6808764595795267,
+          "predicted_frequencies": [
+            0.3961942677707412,
+            0.3167410976218021,
+            0.09814290656031503,
+            0.019154083022585974,
+            0.09217724848367405,
+            0.03812008586056063,
+            0.004327330680540686,
+            0.03514297999978047
+          ],
+          "actual_frequencies": [
+            0.42857142857142855,
+            0.35714285714285715,
+            0.0,
+            0.0,
+            0.14285714285714285,
+            0.07142857142857142,
+            0.0,
+            0.0
+          ],
+          "K_rmse": 0.04040175952105507,
+          "HR_rmse": 0.03514297999978047
+        }
+      }
+    },
+    {
+      "scope": "origin_2022_route",
+      "metrics": {
+        "baseline": {
+          "rows": 16,
+          "people": 16,
+          "active_rows": 1,
+          "predicted_PA": 87.94670617143767,
+          "actual_PA": 86.0,
+          "expected_contribution": 0.17373500259008634,
+          "actual_contribution": 0.17068632285873458,
+          "value_rmse": 0.04280380653928193,
+          "value_mae": 0.02002956492097321,
+          "value_bias": 0.00019054248320948472,
+          "rate_rmse": 0.015694504592453362
+        },
+        "borrowed": {
+          "rows": 16,
+          "people": 16,
+          "active_rows": 1,
+          "predicted_PA": 87.94670617143767,
+          "actual_PA": 86.0,
+          "expected_contribution": 0.1545332555921299,
+          "actual_contribution": 0.17068632285873458,
+          "value_rmse": 0.04163199849497493,
+          "value_mae": 0.018371595718187004,
+          "value_bias": -0.0010095667041627905,
+          "rate_rmse": 0.48571578875781257
+        },
+        "candidate": {
+          "rows": 16,
+          "people": 16,
+          "active_rows": 1,
+          "predicted_PA": 87.94670617143767,
+          "actual_PA": 86.0,
+          "expected_contribution": 0.12520339992574334,
+          "actual_contribution": 0.17068632285873458,
+          "value_rmse": 0.04228063534839184,
+          "value_mae": 0.018101672966660327,
+          "value_bias": -0.002842682683311954,
+          "rate_rmse": 0.06236718836035571
+        }
+      },
+      "candidate_vs_baseline_value_MSE_interval": {
+        "change": -4.45137287885933e-05,
+        "lower": -0.00025614770199299897,
+        "upper": 0.00018749147849826155,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      "candidate_vs_baseline_rate_MSE_interval": {
+        "change": 0.003643348709573549,
+        "lower": 0.003643348709573549,
+        "upper": 0.003643348709573549,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      "categorical": {
+        "borrowed": {
+          "rows": 1,
+          "people": 1,
+          "actual_PA": 86,
+          "logloss": 1.5586990522558977,
+          "one_hot_brier": 0.7384926640450034,
+          "predicted_frequencies": [
+            0.43674458551957956,
+            0.2682663821777342,
+            0.05940504890192507,
+            0.02388326430558055,
+            0.13380361433224763,
+            0.03538975653713236,
+            0.011707221076479741,
+            0.03080012714932089
+          ],
+          "actual_frequencies": [
+            0.4069767441860465,
+            0.2441860465116279,
+            0.12790697674418605,
+            0.011627906976744186,
+            0.16279069767441862,
+            0.03488372093023256,
+            0.011627906976744186,
+            0.0
+          ],
+          "K_rmse": 0.02408033566610629,
+          "HR_rmse": 0.03080012714932089
+        },
+        "count": {
+          "rows": 1,
+          "people": 1,
+          "actual_PA": 86,
+          "logloss": 1.56158443419616,
+          "one_hot_brier": 0.7392207445940667,
+          "predicted_frequencies": [
+            0.4235741432120713,
+            0.2851002101184247,
+            0.057154395916017835,
+            0.02843061018154241,
+            0.13365316848230407,
+            0.03349265182462314,
+            0.011442096339753733,
+            0.027152723925262835
+          ],
+          "actual_frequencies": [
+            0.4069767441860465,
+            0.2441860465116279,
+            0.12790697674418605,
+            0.011627906976744186,
+            0.16279069767441862,
+            0.03488372093023256,
+            0.011627906976744186,
+            0.0
+          ],
+          "K_rmse": 0.04091416360679678,
+          "HR_rmse": 0.027152723925262835
+        }
+      }
+    },
+    {
+      "scope": "origin_2023_route",
+      "metrics": {
+        "baseline": {
+          "rows": 20,
+          "people": 20,
+          "active_rows": 0,
+          "predicted_PA": 160.3113820096778,
+          "actual_PA": 0.0,
+          "expected_contribution": 0.21423788020746654,
+          "actual_contribution": 0.0,
+          "value_rmse": 0.01602718408248405,
+          "value_mae": 0.010713863954096013,
+          "value_bias": 0.010711894010373327,
+          "rate_rmse": null
+        },
+        "borrowed": {
+          "rows": 20,
+          "people": 20,
+          "active_rows": 0,
+          "predicted_PA": 160.3113820096778,
+          "actual_PA": 0.0,
+          "expected_contribution": 0.07118890341388248,
+          "actual_contribution": 0.0,
+          "value_rmse": 0.03146549057417823,
+          "value_mae": 0.018221642738229456,
+          "value_bias": 0.0035594451706941234,
+          "rate_rmse": null
+        },
+        "candidate": {
+          "rows": 20,
+          "people": 20,
+          "active_rows": 0,
+          "predicted_PA": 160.3113820096778,
+          "actual_PA": 0.0,
+          "expected_contribution": -0.020178469738812117,
+          "actual_contribution": 0.0,
+          "value_rmse": 0.03382260272190682,
+          "value_mae": 0.018252107626252907,
+          "value_bias": -0.0010089234869406045,
+          "rate_rmse": null
+        }
+      },
+      "candidate_vs_baseline_value_MSE_interval": {
+        "change": 0.0008870978252701085,
+        "lower": 6.457194137514449e-05,
+        "upper": 0.002437754290286463,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      "candidate_vs_baseline_rate_MSE_interval": null,
+      "categorical": {
+        "borrowed": {
+          "rows": 0
+        },
+        "count": {
+          "rows": 0
+        }
+      }
+    },
+    {
+      "scope": "origin_2024_route",
+      "metrics": {
+        "baseline": {
+          "rows": 13,
+          "people": 13,
+          "active_rows": 1,
+          "predicted_PA": 40.52668764236192,
+          "actual_PA": 170.0,
+          "expected_contribution": 0.043274172620159645,
+          "actual_contribution": 0.43403929529694224,
+          "value_rmse": 0.12036202259014027,
+          "value_mae": 0.03663853782380838,
+          "value_bias": -0.03005885559052174,
+          "rate_rmse": 0.6916245588376909
+        },
+        "borrowed": {
+          "rows": 13,
+          "people": 13,
+          "active_rows": 1,
+          "predicted_PA": 40.52668764236192,
+          "actual_PA": 170.0,
+          "expected_contribution": -0.00543952337892965,
+          "actual_contribution": 0.43403929529694224,
+          "value_rmse": 0.12061732374261737,
+          "value_mae": 0.03944753664492556,
+          "value_bias": -0.03380606297506707,
+          "rate_rmse": 0.40065380532412187
+        },
+        "candidate": {
+          "rows": 13,
+          "people": 13,
+          "active_rows": 1,
+          "predicted_PA": 40.52668764236192,
+          "actual_PA": 170.0,
+          "expected_contribution": -0.04168523324932689,
+          "actual_contribution": 0.43403929529694224,
+          "value_rmse": 0.12095065129068441,
+          "value_mae": 0.039194563280771345,
+          "value_bias": -0.03659419450355916,
+          "rate_rmse": 0.8815254294947984
+        }
+      },
+      "candidate_vs_baseline_value_MSE_interval": {
+        "change": 0.00014204356565130036,
+        "lower": -6.073409861893647e-06,
+        "upper": 0.000396253134563802,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      "candidate_vs_baseline_rate_MSE_interval": {
+        "change": 0.29874255245855824,
+        "lower": 0.29874255245855824,
+        "upper": 0.29874255245855824,
+        "fixed_original_origin_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      "categorical": {
+        "borrowed": {
+          "rows": 1,
+          "people": 1,
+          "actual_PA": 170,
+          "logloss": 1.4987509937698429,
+          "one_hot_brier": 0.7455745796935946,
+          "predicted_frequencies": [
+            0.5013143942890174,
+            0.18703352011189958,
+            0.07482631849919211,
+            0.00963495652314765,
+            0.1660534083970919,
+            0.0387287739235019,
+            0.008458142511584412,
+            0.013950485744565064
+          ],
+          "actual_frequencies": [
+            0.38235294117647056,
+            0.3058823529411765,
+            0.041176470588235294,
+            0.0058823529411764705,
+            0.20588235294117646,
+            0.03529411764705882,
+            0.0058823529411764705,
+            0.01764705882352941
+          ],
+          "K_rmse": 0.11884883282927691,
+          "HR_rmse": 0.003696573078964347
+        },
+        "count": {
+          "rows": 1,
+          "people": 1,
+          "actual_PA": 170,
+          "logloss": 1.4955570760477697,
+          "one_hot_brier": 0.7451692734613653,
+          "predicted_frequencies": [
+            0.5045986545929705,
+            0.19024200463634797,
+            0.0720389492954759,
+            0.008933330724177924,
+            0.1695209223229261,
+            0.03611239410211725,
+            0.006763048626120197,
+            0.01179069569986418
+          ],
+          "actual_frequencies": [
+            0.38235294117647056,
+            0.3058823529411765,
+            0.041176470588235294,
+            0.0058823529411764705,
+            0.20588235294117646,
+            0.03529411764705882,
+            0.0058823529411764705,
+            0.01764705882352941
+          ],
+          "K_rmse": 0.11564034830482853,
+          "HR_rmse": 0.005856363123665231
+        }
+      }
+    }
+  ],
+  "matched_public": {
+    "rows": 2627,
+    "routed_rows": 0,
+    "common_reference_rate_RMSE": {
+      "current": 1.7284811660509019,
+      "candidate": 1.7284811660509019,
+      "steamer": 1.774588665893598,
+      "zips": 1.7533614545512477
+    },
+    "qualifier": "Snapshot, park and environment differences remain; ZiPS PA not certified; not a new public-system superiority claim"
+  },
+  "original_forecasts": 30506,
+  "separate_additions": 13,
+  "route_eligible": 126,
+  "original_active_route_players": 5,
+  "added_active_route_players": 6
+}

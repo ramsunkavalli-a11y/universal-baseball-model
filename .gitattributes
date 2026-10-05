@@ -397,3 +397,16 @@ tests/test_international_hitter_source_2025.py -text -eol
 tests/test_npb_hitter_2025_layout.py -text -eol
 tests/test_kbo_english_annual_counts.py -text -eol
 tests/test_international_hitter_2025_completion.py -text -eol
+# Preserve the locked count-calibration provenance and reviewed completion bytes.
+docs/hitter-foreign-count-calibration-contract.md -text -eol
+docs/hitter-foreign-count-calibration-result.md -text -eol
+docs/hitter-foreign-count-calibration-player-review.md -text -eol
+src/universal_baseball/foreign_count_calibration.py -text -eol
+src/universal_baseball/foreign_count_review.py -text -eol
+scripts/run_foreign_count_calibration.py -text -eol
+scripts/score_foreign_count_calibration.py -text -eol
+scripts/review_foreign_count_calibration.py -text -eol
+scripts/finalize_foreign_count_calibration.py -text -eol
+tests/test_foreign_count_calibration.py -text -eol
+tests/test_foreign_count_review.py -text -eol
+reports/model-evidence/foreign-count-calibration/** -text -eol

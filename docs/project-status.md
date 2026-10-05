@@ -2,6 +2,41 @@
 
 Updated 2026-10-05. This is the current start-here document.
 
+## Overseas count calibration closes without promotion
+
+The [locked count-likelihood repair](hitter-foreign-count-calibration-result.md)
+and [eighteen player-origin reviews](hitter-foreign-count-calibration-player-review.md)
+are complete. Thirty-five held calibration cells pass independent saved-data
+gradient, weight, source-coordinate and stationarity checks; 572 score checks
+and fourteen focused tests pass. This establishes correct execution, not a win.
+All 30,506 original forecasts and thirteen additions remain; no new 2026 fit,
+outcome evaluation or explorer change occurred. Both frozen packages verify.
+
+Only five original participants use the latest-foreign route. Their hitting
+RMSE improves against the domestic anchor, but uncertainty includes no gain;
+the whole-cohort value change is negligible. New count calibration does not
+consistently beat the saved overseas translation. Equal-year and pooled-PA
+diagnostics disagree; a fourteen-PA season has large influence in the former.
+Original non-arrival value accuracy worsens and four origins worsen. The public
+matched cohort has no routed cases, so its unchanged scores cannot establish
+an improvement over Steamer/ZiPS.
+
+Thames/Suzuki retain useful overseas hitting signals but inadequate fixed
+opportunity; Ohtani/Hyeseong talent worsens; Yoshida/Lee improve delivered-value
+error through component cancellation. Schwindel's seventy NPB PA replace 566
+older MLB PA and produce a large, extrapolated walk penalty. The thirty-PA
+coverage floor is not a talent-reliability guarantee. Keep the current model;
+retain this calibration as research, not an approved replacement.
+
+Next inventory the existing historical overseas opportunity/source candidates
+and dated employment evidence before another fit. The weak addition PA anchor
+used for component isolation is not the best newer opportunity candidate. Trace
+actual fitted inputs, historical roster dates, missing-versus-ignored evidence,
+participants and non-arrivals. Do not repeat count calibration, the failed broad
+foreign refit, country bonuses, team-record testing or a blanket PA boost.
+This boundary supersedes the older next-work wording immediately below; the
+long goal remains active and the completed 2026 evaluation remains final.
+
 ## Last overseas season recovered and reviewed
 
 The [2025 Japan and Korea source extension](hitter-international-source-2025-result.md)
