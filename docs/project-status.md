@@ -2,6 +2,37 @@
 
 Updated 2026-10-05. This is the current start-here document.
 
+## Separate MLB history partly recovers accuracy but the incumbent remains
+
+The [four-summary result](hitter-mlb-detail-restoration-result.md),
+[source reconstruction](hitter-mlb-detail-restoration-source-review.md) and
+[seventeen player walks](hitter-mlb-detail-restoration-player-review.md) are
+complete. Exactly three annual MLB batting-quality inputs and their pooled
+summary were restored on the same direct-rate learner. Sources, prior, alpha,
+weights, routes, all 30,506 original forecasts, thirteen separate additions and
+PA stay fixed. All 105 extended preflights and fitted-head replays are complete.
+No frozen forecast, explorer or completed one-time 2026 evaluation changed.
+
+Hitting RMSE is incumbent 1.804813, compressed direct 1.804223 and restored
+1.801956. Delivered RMSE is 0.435133, 0.436950 and 0.436118. Restoration partly
+recovers the failed alternatives but still loses the declared incumbent delivered
+comparison; the small changes are uncertain. Mature MLB is still worse than the
+incumbent. Good totals do not establish correct player forecasts.
+
+Judge 2023 partly recovers but Judge 2016 worsens. Perdomo's latest improvement
+is visible yet older/pool terms still outweigh it. Thames and Yoshida remain
+too optimistic with weak foreign support. France's nearly exact value hides
+opposing hitting and PA errors. Added-summary effects and relearning other
+coefficients are separately accounted for; favorable names are not proof.
+Do not adopt or blend this fit. Retain the incumbent.
+
+Next do a source-only audit of the seven original pooled MLB event rates also
+removed by the compressed alternatives: K, walks, HBP, HR, BABIP, doubles and
+triples. If reconstruction and interpretation hold, write one prospective
+same-learner restoration contract before fitting, with everything else fixed.
+This follows the remaining mature-MLB representation gap, not another algorithm
+tournament, closed opportunity rerun or 2026 reopening. The long goal stays active.
+
 ## Matched direct-value comparison complete: useful recovery, incumbent stays
 
 The [same-input direct-rate result](hitter-past-direct-value-result.md) and
