@@ -2,6 +2,41 @@
 
 Updated 2026-10-05. This is the current start-here document.
 
+## Last overseas season recovered and reviewed
+
+The [2025 Japan and Korea source extension](hitter-international-source-2025-result.md)
+is complete with qualifications. All twelve Japanese and ten Korean first-team
+clubs are collected: 725 NPB player-club rows and 398 KBO player-season rows,
+64,178 and 55,996 PA. These include pitchers, unmapped identities and zero-PA
+rows, not a newly approved hitter population. Twenty-nine Korean static profiles
+were added. All 20,541 normalized count fields reconstruct, sixteen summable KBO
+fields reconcile to team totals, and 115 selected English count fields agree.
+
+The [eight required source walks](hitter-international-source-2025-player-review.md)
+include ordinary traded/unmapped cases and a zero-PA control. Murakami's 2025
+22 HR in 224 PA and Song's 26 HR in 646 PA are now available, but not translated
+MLB forecasts. Takahashi's two PA cannot establish hitter talent; Higashihama's
+zero batting PA does not mean no baseball activity. Missing MLB keys stay
+unknown rather than being pooled together or treated as zero talent.
+
+NPB's changed 2025 layout and a KBO traded player's two English stints required
+separate parser/review corrections. Original source code, selection and stopped
+receipts are preserved. Sixty focused source/completion tests pass, including
+exact-source-key subtotal checks and no-overwrite gates. Both forecast freezes
+verify unchanged. No new fit, eligibility change or predictive gain is claimed.
+
+Remaining gaps include dated foreign-player employment/role, complete identity
+mapping, park exposure, one unexplained KBO PA and a genuine preseason 2026
+public projection export. The source extension covers 2025 only; it does not
+provide the final overseas season needed for a 2027 forecast. The completed
+2026 evaluation stays final, not a tuning set. The broad goal remains active.
+
+Next inspect existing translation and eligibility machinery for a distinct,
+historical foreign-entry/returner route while preserving the domestic model.
+Do not repeat the failed pooled full-model foreign representation, propose a
+country bonus, assume an MLB key establishes employment, or tune to the five
+named coverage cases. Qualified source availability is not forecast approval.
+
 ## Prospect exposure audit closes another repeated explanation
 
 The [source-aligned prospect diagnosis](hitter-prospect-exposure-allocation-audit-result.md)

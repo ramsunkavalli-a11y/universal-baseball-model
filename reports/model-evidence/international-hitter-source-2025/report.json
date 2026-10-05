@@ -1,0 +1,1541 @@
+{
+  "all_source_MLBAM_crosswalk_qualified": false,
+  "bulk_provider_rows_published": false,
+  "claim": "Last overseas batting season available; no revised 2026 predictions or accuracy claim",
+  "cutoff": "2025-12-31",
+  "deployment_approved": false,
+  "english_count_fields_checked": 115,
+  "forecast_changes": 0,
+  "hashes": {
+    "docs/hitter-international-source-2025-player-review.md": "01244561c129ced63fe06c449c8d006e261e30823e02dc299db41e1b270fae55",
+    "docs/hitter-international-source-2025-result.md": "22391f08c8f117dd5540fb7fc9fb53a1e2f43a7637d2754358cbe72a6fae5a8e",
+    "reports/generated/international-hitter-source-2025/completed-walk-execution.json": "0c2d61fbbb85a391441c61a9936ee3623a6ab47d4ef8f8f20b4f0e17235830a5",
+    "reports/generated/international-hitter-source-2025/independent-review.json": "24e7c0c7007376cce6a20c2976b5a99b550d4a5ba54419b58e7f36150c7244f6",
+    "reports/generated/international-hitter-source-2025/kbo-collection.json": "9e6af047dbc2772b0df4470ef4e49768074953db5d529d051e80d0a609efe941",
+    "reports/generated/international-hitter-source-2025/kbo-identity-collection.json": "c8a8323ec708cab646f5d113eb8566a09b346bcce538c95530b128b3a0afcf48",
+    "reports/generated/international-hitter-source-2025/npb-collection.json": "456ac676f61b58ca9320dae11638a09964145725965e25f5d0c49293540fd63c",
+    "reports/generated/international-hitter-source-2025/player-walks.json": "2f83e38b138439c80fc9e2f7d186cf20714a8fa03a5210737b761baba7f22d87",
+    "reports/generated/international-hitter-source-2025/walk-selection.json": "60c9e90a6018706a40965a7f57d47d0d527d376045bf56d0c97a45faa5705173",
+    "reports/generated/kbo-hitting-history/review.json": "666a6b131b2d82c88df973712631095401c9afc76dcf6d9fb8cfe1cf603750c8",
+    "reports/generated/kbo-identity-overlay/review.json": "072594c882740f4393f3c9a959538d30a098440f118aea9d526283e7e4c12652",
+    "reports/generated/npb-hitting-history/review.json": "a5ccdb9912381ff595bbba647a5bcc4ce5cf7b8acc628a021226485aa83291b3",
+    "scripts/finalize_international_hitter_2025.py": "08ee3dce7dbca9f937303509ac611cc63cc0ac0fc67bada987eb37a5d3fe357c",
+    "tests/test_international_hitter_2025_completion.py": "80b20624f7038cd33604e0f88736fda72ee448237966608c102dce1cef23abc9",
+    "tests/test_international_hitter_source_2025.py": "dc4ac519beb04b5fcac14ffabbf07298e888b8d09326f396c3e048f73c29aeb1",
+    "tests/test_kbo_english_annual_counts.py": "d2aece8aab1ce52fbb9a68389c7c86e755e30d5dfb8ac796bc4662815a0f2c0f",
+    "tests/test_kbo_history.py": "0f2509d6188ff014505bb490216e4640fe8517b85b67a400f7f147ecb7f0e86a",
+    "tests/test_kbo_history_inputs.py": "f0632e8eee10164592502131a590b3cbc6858040b8c169219c192b3bea558519",
+    "tests/test_kbo_identity.py": "b9e2dee95bc1d6ddab0c185b260d830078e4b7c823ecb57eff7c70673ce3a9ba",
+    "tests/test_kbo_source_review.py": "4e783fdebbf12883115c6b89ea370a6b5ed159a1970c8bc9f96990a11b6ed9d3",
+    "tests/test_npb_history.py": "599aad547b7cb34186e2acda4c8f8a94f095cd8ddd37467a1294dad6b1020329",
+    "tests/test_npb_hitter_2025_layout.py": "e62df6f7ef18e41e391a61bc30b731a382e133164ff089bce3f8d6c8555c80bb",
+    "tests/test_npb_identity_overlay.py": "67b0102f33693d7c439f124881329e33a554317365d285682a6309a8c51b0b50"
+  },
+  "historical_park_exposure_qualified": false,
+  "historical_roles_qualified": false,
+  "kbo_residual_PA": 1,
+  "kbo_team_fields_reconciled": 16,
+  "legacy_freeze_verification": {
+    "contact_available_rows": 3511,
+    "five_model_rows": 3720,
+    "forecast_sha256": "d1953a28d35d87d141ecc65ec4b107906edad877982e79c0d3a216245b9e4708",
+    "players": 3907,
+    "population_prior_rows": 187,
+    "protected_2026_opened": false,
+    "status": "verified",
+    "verified_files": 31
+  },
+  "new_fits": 0,
+  "new_static_KBO_profiles": 29,
+  "npb_unresolved_source_keys": 1,
+  "predictive_improvement_established": false,
+  "raw_captures_and_request_bodies_verified": 102,
+  "raw_count_fields_reconstructed": 20541,
+  "selected_freeze_verification": {
+    "files": 53,
+    "heads_replayed": 25,
+    "manifest_sha256": "a1d819ffcdd98a9ee62feecf5637b5ebe1f93b6e931d77d2b7d692ed928da67a",
+    "players": 4030,
+    "predictive_accuracy_not_yet_evaluated": true,
+    "protected_outcomes_read": false,
+    "status": "verified"
+  },
+  "selected_source_cases": [
+    {
+      "age_at_origin": 25.911551914139235,
+      "annual_counts": [
+        {
+          "ab": 496,
+          "bb": 90,
+          "cs": 3,
+          "doubles": 28,
+          "games": 140,
+          "gdp": 6,
+          "hbp": 7,
+          "hits": 127,
+          "hr": 31,
+          "ibb": 4,
+          "pa": 597,
+          "rbi": 84,
+          "runs": 76,
+          "sb": 5,
+          "season": 2023,
+          "sf": 4,
+          "sh": 0,
+          "so": 168,
+          "tb": 248,
+          "triples": 0
+        },
+        {
+          "ab": 500,
+          "bb": 105,
+          "cs": 5,
+          "doubles": 13,
+          "games": 143,
+          "gdp": 6,
+          "hbp": 4,
+          "hits": 122,
+          "hr": 33,
+          "ibb": 9,
+          "pa": 610,
+          "rbi": 86,
+          "runs": 82,
+          "sb": 10,
+          "season": 2024,
+          "sf": 1,
+          "sh": 0,
+          "so": 180,
+          "tb": 236,
+          "triples": 1
+        },
+        {
+          "ab": 187,
+          "bb": 32,
+          "cs": 2,
+          "doubles": 7,
+          "games": 56,
+          "gdp": 1,
+          "hbp": 2,
+          "hits": 51,
+          "hr": 22,
+          "ibb": 3,
+          "pa": 224,
+          "rbi": 47,
+          "runs": 34,
+          "sb": 4,
+          "season": 2025,
+          "sf": 3,
+          "sh": 0,
+          "so": 64,
+          "tb": 124,
+          "triples": 0
+        }
+      ],
+      "before_last_season": {
+        "counts": {
+          "ab": 996,
+          "bb": 195,
+          "doubles": 41,
+          "hbp": 11,
+          "hits": 249,
+          "hr": 64,
+          "ibb": 13,
+          "pa": 1207,
+          "sf": 5,
+          "sh": 0,
+          "so": 348,
+          "triples": 1
+        },
+        "event_rates": {
+          "1B": 0.11847555923777962,
+          "2B": 0.03396851698425849,
+          "3B": 0.0008285004142502071,
+          "HBP": 0.009113504556752278,
+          "HR": 0.05302402651201325,
+          "K": 0.2883181441590721,
+          "UBB": 0.1507870753935377,
+          "other": 0.34548467274233635
+        },
+        "events": {
+          "1B": 143,
+          "2B": 41,
+          "3B": 1,
+          "HBP": 11,
+          "HR": 64,
+          "K": 348,
+          "UBB": 182,
+          "other": 417
+        },
+        "mlb_translation_fitted": false,
+        "observed_positive_seasons": [
+          2023,
+          2024
+        ],
+        "origin": 2024,
+        "player_id": 808959,
+        "selected_source_rows": 2
+      },
+      "future_mutation_invariance": true,
+      "league": "NPB",
+      "new_projection": null,
+      "peers": [
+        {
+          "bb": 11,
+          "distance": 0.11235514760741172,
+          "hr": 5,
+          "pa": 249,
+          "player_id": 816301,
+          "so": 45,
+          "source_id": "21125155"
+        },
+        {
+          "bb": 13,
+          "distance": 0.2220628075867408,
+          "hr": 11,
+          "pa": 253,
+          "player_id": 807604,
+          "so": 90,
+          "source_id": "11015136"
+        },
+        {
+          "bb": 18,
+          "distance": 0.2389474116511631,
+          "hr": 5,
+          "pa": 274,
+          "player_id": 685533,
+          "so": 44,
+          "source_id": "51055138"
+        }
+      ],
+      "player_id": 808959,
+      "rule": "fixed coverage case",
+      "scope": "Raw overseas evidence only; not park adjusted, MLB translated or employment qualified",
+      "source_id": "41845136",
+      "with_last_season": {
+        "counts": {
+          "ab": 1183,
+          "bb": 227,
+          "doubles": 48,
+          "hbp": 13,
+          "hits": 300,
+          "hr": 86,
+          "ibb": 16,
+          "pa": 1431,
+          "sf": 8,
+          "sh": 0,
+          "so": 412,
+          "triples": 1
+        },
+        "event_rates": {
+          "1B": 0.11530398322851153,
+          "2B": 0.033542976939203356,
+          "3B": 0.0006988120195667365,
+          "HBP": 0.009084556254367574,
+          "HR": 0.06009783368273934,
+          "K": 0.28791055206149546,
+          "UBB": 0.1474493361285814,
+          "other": 0.34591194968553457
+        },
+        "events": {
+          "1B": 165,
+          "2B": 48,
+          "3B": 1,
+          "HBP": 13,
+          "HR": 86,
+          "K": 412,
+          "UBB": 211,
+          "other": 495
+        },
+        "mlb_translation_fitted": false,
+        "observed_positive_seasons": [
+          2023,
+          2024,
+          2025
+        ],
+        "origin": 2025,
+        "player_id": 808959,
+        "selected_source_rows": 3
+      }
+    },
+    {
+      "age_at_origin": 29.503685907308157,
+      "annual_counts": [
+        {
+          "ab": 503,
+          "bb": 72,
+          "cs": 1,
+          "doubles": 31,
+          "games": 140,
+          "gdp": 10,
+          "hbp": 8,
+          "hits": 140,
+          "hr": 41,
+          "ibb": 10,
+          "pa": 589,
+          "rbi": 93,
+          "runs": 83,
+          "sb": 0,
+          "season": 2023,
+          "sf": 6,
+          "sh": 0,
+          "so": 111,
+          "tb": 294,
+          "triples": 0
+        },
+        {
+          "ab": 535,
+          "bb": 66,
+          "cs": 1,
+          "doubles": 37,
+          "games": 143,
+          "gdp": 5,
+          "hbp": 5,
+          "hits": 150,
+          "hr": 27,
+          "ibb": 10,
+          "pa": 611,
+          "rbi": 83,
+          "runs": 70,
+          "sb": 1,
+          "season": 2024,
+          "sf": 5,
+          "sh": 0,
+          "so": 97,
+          "tb": 268,
+          "triples": 0
+        },
+        {
+          "ab": 251,
+          "bb": 33,
+          "cs": 1,
+          "doubles": 21,
+          "games": 69,
+          "gdp": 5,
+          "hbp": 7,
+          "hits": 82,
+          "hr": 15,
+          "ibb": 2,
+          "pa": 293,
+          "rbi": 49,
+          "runs": 38,
+          "sb": 1,
+          "season": 2025,
+          "sf": 2,
+          "sh": 0,
+          "so": 33,
+          "tb": 150,
+          "triples": 1
+        }
+      ],
+      "before_last_season": {
+        "counts": {
+          "ab": 1038,
+          "bb": 138,
+          "doubles": 68,
+          "hbp": 13,
+          "hits": 290,
+          "hr": 68,
+          "ibb": 20,
+          "pa": 1200,
+          "sf": 11,
+          "sh": 0,
+          "so": 208,
+          "triples": 0
+        },
+        "event_rates": {
+          "1B": 0.12833333333333333,
+          "2B": 0.056666666666666664,
+          "3B": 0.0,
+          "HBP": 0.010833333333333334,
+          "HR": 0.056666666666666664,
+          "K": 0.17333333333333334,
+          "UBB": 0.09833333333333333,
+          "other": 0.47583333333333333
+        },
+        "events": {
+          "1B": 154,
+          "2B": 68,
+          "3B": 0,
+          "HBP": 13,
+          "HR": 68,
+          "K": 208,
+          "UBB": 118,
+          "other": 571
+        },
+        "mlb_translation_fitted": false,
+        "observed_positive_seasons": [
+          2023,
+          2024
+        ],
+        "origin": 2024,
+        "player_id": 672960,
+        "selected_source_rows": 2
+      },
+      "future_mutation_invariance": true,
+      "league": "NPB",
+      "new_projection": null,
+      "peers": [
+        {
+          "bb": 25,
+          "distance": 0.07585330294256537,
+          "hr": 8,
+          "pa": 299,
+          "player_id": 683805,
+          "so": 44,
+          "source_id": "91595136"
+        },
+        {
+          "bb": 40,
+          "distance": 0.1321903256055907,
+          "hr": 8,
+          "pa": 332,
+          "player_id": null,
+          "so": 67,
+          "source_id": "01705130"
+        },
+        {
+          "bb": 10,
+          "distance": 0.24808093253112645,
+          "hr": 0,
+          "pa": 281,
+          "player_id": null,
+          "so": 76,
+          "source_id": "81385151"
+        }
+      ],
+      "player_id": 672960,
+      "rule": "fixed coverage case",
+      "scope": "Raw overseas evidence only; not park adjusted, MLB translated or employment qualified",
+      "source_id": "11515130",
+      "with_last_season": {
+        "counts": {
+          "ab": 1289,
+          "bb": 171,
+          "doubles": 89,
+          "hbp": 20,
+          "hits": 372,
+          "hr": 83,
+          "ibb": 22,
+          "pa": 1493,
+          "sf": 13,
+          "sh": 0,
+          "so": 241,
+          "triples": 1
+        },
+        "event_rates": {
+          "1B": 0.1332886805090422,
+          "2B": 0.05961152042866711,
+          "3B": 0.0006697923643670462,
+          "HBP": 0.013395847287340924,
+          "HR": 0.055592766242464835,
+          "K": 0.16141995981245813,
+          "UBB": 0.09979906229068988,
+          "other": 0.47622237106496984
+        },
+        "events": {
+          "1B": 199,
+          "2B": 89,
+          "3B": 1,
+          "HBP": 20,
+          "HR": 83,
+          "K": 241,
+          "UBB": 149,
+          "other": 711
+        },
+        "mlb_translation_fitted": false,
+        "observed_positive_seasons": [
+          2023,
+          2024,
+          2025
+        ],
+        "origin": 2025,
+        "player_id": 672960,
+        "selected_source_rows": 3
+      }
+    },
+    {
+      "age_at_origin": 34.319664332600944,
+      "annual_counts": [
+        {
+          "ab": 47,
+          "bb": 6,
+          "cs": 0,
+          "doubles": 6,
+          "games": 22,
+          "gdp": 0,
+          "hbp": 0,
+          "hits": 13,
+          "hr": 0,
+          "ibb": 0,
+          "pa": 54,
+          "rbi": 6,
+          "runs": 5,
+          "sb": 0,
+          "season": 2023,
+          "sf": 1,
+          "sh": 0,
+          "so": 13,
+          "tb": 19,
+          "triples": 0
+        },
+        {
+          "ab": 396,
+          "bb": 45,
+          "cs": 1,
+          "doubles": 34,
+          "games": 106,
+          "gdp": 12,
+          "hbp": 0,
+          "hits": 125,
+          "hr": 25,
+          "ibb": 2,
+          "pa": 445,
+          "rbi": 69,
+          "runs": 66,
+          "sb": 0,
+          "season": 2024,
+          "sf": 4,
+          "sh": 0,
+          "so": 88,
+          "tb": 238,
+          "triples": 2
+        },
+        {
+          "ab": 219,
+          "bb": 26,
+          "cs": 0,
+          "doubles": 14,
+          "games": 65,
+          "gdp": 10,
+          "hbp": 1,
+          "hits": 59,
+          "hr": 11,
+          "ibb": 6,
+          "pa": 246,
+          "rbi": 28,
+          "runs": 35,
+          "sb": 0,
+          "season": 2025,
+          "sf": 0,
+          "sh": 0,
+          "so": 45,
+          "tb": 106,
+          "triples": 0
+        }
+      ],
+      "before_last_season": {
+        "counts": {
+          "ab": 443,
+          "bb": 51,
+          "doubles": 40,
+          "hbp": 0,
+          "hits": 138,
+          "hr": 25,
+          "ibb": 2,
+          "pa": 499,
+          "sf": 5,
+          "sh": 0,
+          "so": 101,
+          "triples": 2
+        },
+        "event_rates": {
+          "1B": 0.14228456913827656,
+          "2B": 0.08016032064128256,
+          "3B": 0.004008016032064128,
+          "HBP": 0.0,
+          "HR": 0.050100200400801605,
+          "K": 0.20240480961923848,
+          "UBB": 0.09819639278557114,
+          "other": 0.4228456913827655
+        },
+        "events": {
+          "1B": 71,
+          "2B": 40,
+          "3B": 2,
+          "HBP": 0,
+          "HR": 25,
+          "K": 101,
+          "UBB": 49,
+          "other": 211
+        },
+        "mlb_translation_fitted": false,
+        "observed_positive_seasons": [
+          2023,
+          2024
+        ],
+        "origin": 2024,
+        "player_id": 592122,
+        "selected_source_rows": 2
+      },
+      "future_mutation_invariance": true,
+      "league": "NPB",
+      "new_projection": null,
+      "peers": [
+        {
+          "bb": 33,
+          "distance": 0.08102076017988007,
+          "hr": 20,
+          "pa": 257,
+          "player_id": 660294,
+          "so": 59,
+          "source_id": "41945131"
+        },
+        {
+          "bb": 25,
+          "distance": 0.2028921880668332,
+          "hr": 3,
+          "pa": 240,
+          "player_id": 570267,
+          "so": 65,
+          "source_id": "53755153"
+        },
+        {
+          "bb": 27,
+          "distance": 0.2122541872865284,
+          "hr": 13,
+          "pa": 276,
+          "player_id": 572228,
+          "so": 59,
+          "source_id": "03005150"
+        }
+      ],
+      "player_id": 592122,
+      "rule": "fixed coverage case",
+      "scope": "Raw overseas evidence only; not park adjusted, MLB translated or employment qualified",
+      "source_id": "73375151",
+      "with_last_season": {
+        "counts": {
+          "ab": 662,
+          "bb": 77,
+          "doubles": 54,
+          "hbp": 1,
+          "hits": 197,
+          "hr": 36,
+          "ibb": 8,
+          "pa": 745,
+          "sf": 5,
+          "sh": 0,
+          "so": 146,
+          "triples": 2
+        },
+        "event_rates": {
+          "1B": 0.14093959731543623,
+          "2B": 0.07248322147651007,
+          "3B": 0.0026845637583892616,
+          "HBP": 0.0013422818791946308,
+          "HR": 0.04832214765100671,
+          "K": 0.1959731543624161,
+          "UBB": 0.09261744966442953,
+          "other": 0.44563758389261743
+        },
+        "events": {
+          "1B": 105,
+          "2B": 54,
+          "3B": 2,
+          "HBP": 1,
+          "HR": 36,
+          "K": 146,
+          "UBB": 69,
+          "other": 332
+        },
+        "mlb_translation_fitted": false,
+        "observed_positive_seasons": [
+          2023,
+          2024,
+          2025
+        ],
+        "origin": 2025,
+        "player_id": 592122,
+        "selected_source_rows": 3
+      }
+    },
+    {
+      "age_at_origin": 29.339411486888846,
+      "annual_counts": [
+        {
+          "ab": 388,
+          "bb": 39,
+          "doubles": 16,
+          "games": 104,
+          "gdp": 9,
+          "hbp": 0,
+          "hits": 102,
+          "hr": 5,
+          "ibb": 5,
+          "pa": 438,
+          "rbi": 60,
+          "runs": 43,
+          "season": 2023,
+          "sf": 7,
+          "sh": 4,
+          "so": 38,
+          "tb": 139,
+          "triples": 3
+        },
+        {
+          "ab": 527,
+          "bb": 64,
+          "doubles": 29,
+          "games": 142,
+          "gdp": 5,
+          "hbp": 3,
+          "hits": 179,
+          "hr": 19,
+          "ibb": 2,
+          "pa": 602,
+          "rbi": 104,
+          "runs": 88,
+          "season": 2024,
+          "sf": 8,
+          "sh": 0,
+          "so": 82,
+          "tb": 273,
+          "triples": 4
+        },
+        {
+          "ab": 574,
+          "bb": 68,
+          "doubles": 37,
+          "games": 144,
+          "gdp": 6,
+          "hbp": 1,
+          "hits": 181,
+          "hr": 26,
+          "ibb": 5,
+          "pa": 646,
+          "rbi": 90,
+          "runs": 103,
+          "season": 2025,
+          "sf": 3,
+          "sh": 0,
+          "so": 96,
+          "tb": 304,
+          "triples": 4
+        }
+      ],
+      "before_last_season": {
+        "counts": {
+          "ab": 915,
+          "bb": 103,
+          "doubles": 45,
+          "hbp": 3,
+          "hits": 281,
+          "hr": 24,
+          "ibb": 7,
+          "pa": 1040,
+          "sf": 15,
+          "sh": 4,
+          "so": 120,
+          "triples": 7
+        },
+        "event_rates": {
+          "1B": 0.1971153846153846,
+          "2B": 0.04326923076923077,
+          "3B": 0.006730769230769231,
+          "HBP": 0.0028846153846153848,
+          "HR": 0.023076923076923078,
+          "K": 0.11538461538461539,
+          "UBB": 0.09230769230769231,
+          "other": 0.5192307692307693
+        },
+        "events": {
+          "1B": 205,
+          "2B": 45,
+          "3B": 7,
+          "HBP": 3,
+          "HR": 24,
+          "K": 120,
+          "UBB": 96,
+          "other": 540
+        },
+        "mlb_translation_fitted": false,
+        "observed_positive_seasons": [
+          2023,
+          2024
+        ],
+        "origin": 2024,
+        "player_id": 823550,
+        "selected_source_rows": 2
+      },
+      "future_mutation_invariance": true,
+      "league": "KBO",
+      "new_projection": null,
+      "peers": [
+        {
+          "bb": 60,
+          "distance": 0.10490167491461108,
+          "hr": 50,
+          "pa": 628,
+          "player_id": 650331,
+          "so": 100,
+          "source_id": "54400"
+        },
+        {
+          "bb": 58,
+          "distance": 0.3900214925700054,
+          "hr": 13,
+          "pa": 643,
+          "player_id": 622682,
+          "so": 66,
+          "source_id": "54529"
+        },
+        {
+          "bb": 62,
+          "distance": 0.4169592120303638,
+          "hr": 5,
+          "pa": 595,
+          "player_id": null,
+          "so": 69,
+          "source_id": "64646"
+        }
+      ],
+      "player_id": 823550,
+      "rule": "fixed coverage case",
+      "scope": "Raw overseas evidence only; not park adjusted, MLB translated or employment qualified",
+      "source_id": "65357",
+      "with_last_season": {
+        "counts": {
+          "ab": 1489,
+          "bb": 171,
+          "doubles": 82,
+          "hbp": 4,
+          "hits": 462,
+          "hr": 50,
+          "ibb": 12,
+          "pa": 1686,
+          "sf": 18,
+          "sh": 4,
+          "so": 216,
+          "triples": 11
+        },
+        "event_rates": {
+          "1B": 0.18920521945432978,
+          "2B": 0.04863582443653618,
+          "3B": 0.006524317912218268,
+          "HBP": 0.002372479240806643,
+          "HR": 0.02965599051008304,
+          "K": 0.12811387900355872,
+          "UBB": 0.09430604982206406,
+          "other": 0.5011862396204033
+        },
+        "events": {
+          "1B": 319,
+          "2B": 82,
+          "3B": 11,
+          "HBP": 4,
+          "HR": 50,
+          "K": 216,
+          "UBB": 159,
+          "other": 845
+        },
+        "mlb_translation_fitted": false,
+        "observed_positive_seasons": [
+          2023,
+          2024,
+          2025
+        ],
+        "origin": 2025,
+        "player_id": 823550,
+        "selected_source_rows": 3
+      }
+    },
+    {
+      "age_at_origin": 34.34704340267083,
+      "annual_counts": [
+        {
+          "ab": 424,
+          "bb": 52,
+          "doubles": 20,
+          "games": 119,
+          "gdp": 9,
+          "hbp": 4,
+          "hits": 100,
+          "hr": 35,
+          "ibb": 2,
+          "pa": 486,
+          "rbi": 85,
+          "runs": 73,
+          "season": 2025,
+          "sf": 6,
+          "sh": 0,
+          "so": 142,
+          "tb": 227,
+          "triples": 1
+        }
+      ],
+      "before_last_season": {
+        "counts": {
+          "ab": 0,
+          "bb": 0,
+          "doubles": 0,
+          "hbp": 0,
+          "hits": 0,
+          "hr": 0,
+          "ibb": 0,
+          "pa": 0,
+          "sf": 0,
+          "sh": 0,
+          "so": 0,
+          "triples": 0
+        },
+        "event_rates": {
+          "1B": null,
+          "2B": null,
+          "3B": null,
+          "HBP": null,
+          "HR": null,
+          "K": null,
+          "UBB": null,
+          "other": null
+        },
+        "events": {
+          "1B": 0,
+          "2B": 0,
+          "3B": 0,
+          "HBP": 0,
+          "HR": 0,
+          "K": 0,
+          "UBB": 0,
+          "other": 0
+        },
+        "mlb_translation_fitted": false,
+        "observed_positive_seasons": [],
+        "origin": 2024,
+        "player_id": 621550,
+        "selected_source_rows": 0
+      },
+      "future_mutation_invariance": true,
+      "league": "KBO",
+      "new_projection": null,
+      "peers": [
+        {
+          "bb": 39,
+          "distance": 0.2170814595782256,
+          "hr": 4,
+          "pa": 481,
+          "player_id": null,
+          "so": 35,
+          "source_id": "79240"
+        },
+        {
+          "bb": 77,
+          "distance": 0.2314195363354486,
+          "hr": 6,
+          "pa": 456,
+          "player_id": null,
+          "so": 80,
+          "source_id": "63963"
+        },
+        {
+          "bb": 31,
+          "distance": 0.24099420248191206,
+          "hr": 36,
+          "pa": 439,
+          "player_id": null,
+          "so": 118,
+          "source_id": "54944"
+        }
+      ],
+      "player_id": 621550,
+      "rule": "fixed coverage case",
+      "scope": "Raw overseas evidence only; not park adjusted, MLB translated or employment qualified",
+      "source_id": "55645",
+      "with_last_season": {
+        "counts": {
+          "ab": 424,
+          "bb": 52,
+          "doubles": 20,
+          "hbp": 4,
+          "hits": 100,
+          "hr": 35,
+          "ibb": 2,
+          "pa": 486,
+          "sf": 6,
+          "sh": 0,
+          "so": 142,
+          "triples": 1
+        },
+        "event_rates": {
+          "1B": 0.09053497942386832,
+          "2B": 0.0411522633744856,
+          "3B": 0.00205761316872428,
+          "HBP": 0.00823045267489712,
+          "HR": 0.0720164609053498,
+          "K": 0.29218106995884774,
+          "UBB": 0.102880658436214,
+          "other": 0.39094650205761317
+        },
+        "events": {
+          "1B": 44,
+          "2B": 20,
+          "3B": 1,
+          "HBP": 4,
+          "HR": 35,
+          "K": 142,
+          "UBB": 50,
+          "other": 190
+        },
+        "mlb_translation_fitted": false,
+        "observed_positive_seasons": [
+          2025
+        ],
+        "origin": 2025,
+        "player_id": 621550,
+        "selected_source_rows": 1
+      }
+    },
+    {
+      "age_at_origin": 27.26134006858457,
+      "annual_counts": [
+        {
+          "ab": 0,
+          "bb": 0,
+          "cs": 0,
+          "doubles": 0,
+          "games": 1,
+          "gdp": 0,
+          "hbp": 0,
+          "hits": 0,
+          "hr": 0,
+          "ibb": 0,
+          "pa": 0,
+          "rbi": 0,
+          "runs": 0,
+          "sb": 0,
+          "season": 2024,
+          "sf": 0,
+          "sh": 0,
+          "so": 0,
+          "tb": 0,
+          "triples": 0
+        },
+        {
+          "ab": 2,
+          "bb": 0,
+          "cs": 0,
+          "doubles": 1,
+          "games": 24,
+          "gdp": 0,
+          "hbp": 0,
+          "hits": 1,
+          "hr": 0,
+          "ibb": 0,
+          "pa": 2,
+          "rbi": 2,
+          "runs": 0,
+          "sb": 0,
+          "season": 2025,
+          "sf": 0,
+          "sh": 0,
+          "so": 1,
+          "tb": 2,
+          "triples": 0
+        }
+      ],
+      "before_last_season": {
+        "counts": {
+          "ab": 0,
+          "bb": 0,
+          "doubles": 0,
+          "hbp": 0,
+          "hits": 0,
+          "hr": 0,
+          "ibb": 0,
+          "pa": 0,
+          "sf": 0,
+          "sh": 0,
+          "so": 0,
+          "triples": 0
+        },
+        "event_rates": {
+          "1B": null,
+          "2B": null,
+          "3B": null,
+          "HBP": null,
+          "HR": null,
+          "K": null,
+          "UBB": null,
+          "other": null
+        },
+        "events": {
+          "1B": 0,
+          "2B": 0,
+          "3B": 0,
+          "HBP": 0,
+          "HR": 0,
+          "K": 0,
+          "UBB": 0,
+          "other": 0
+        },
+        "mlb_translation_fitted": false,
+        "observed_positive_seasons": [],
+        "origin": 2024,
+        "player_id": null,
+        "selected_source_rows": 1
+      },
+      "future_mutation_invariance": true,
+      "league": "NPB",
+      "new_projection": null,
+      "peers": [
+        {
+          "bb": 0,
+          "distance": 0.006071240340321728,
+          "hr": 0,
+          "pa": 3,
+          "player_id": null,
+          "so": 2,
+          "source_id": "31135134"
+        },
+        {
+          "bb": 0,
+          "distance": 0.009404573673655062,
+          "hr": 0,
+          "pa": 0,
+          "player_id": null,
+          "so": 0,
+          "source_id": "11015153"
+        },
+        {
+          "bb": 0,
+          "distance": 0.009952155075052739,
+          "hr": 0,
+          "pa": 0,
+          "player_id": 838755,
+          "so": 0,
+          "source_id": "61665134"
+        }
+      ],
+      "player_id": null,
+      "rule": "lowest source ID positive PA without MLBAM",
+      "scope": "Raw overseas evidence only; not park adjusted, MLB translated or employment qualified",
+      "source_id": "01005134",
+      "with_last_season": {
+        "counts": {
+          "ab": 2,
+          "bb": 0,
+          "doubles": 1,
+          "hbp": 0,
+          "hits": 1,
+          "hr": 0,
+          "ibb": 0,
+          "pa": 2,
+          "sf": 0,
+          "sh": 0,
+          "so": 1,
+          "triples": 0
+        },
+        "event_rates": {
+          "1B": 0.0,
+          "2B": 0.5,
+          "3B": 0.0,
+          "HBP": 0.0,
+          "HR": 0.0,
+          "K": 0.5,
+          "UBB": 0.0,
+          "other": 0.0
+        },
+        "events": {
+          "1B": 0,
+          "2B": 1,
+          "3B": 0,
+          "HBP": 0,
+          "HR": 0,
+          "K": 1,
+          "UBB": 0,
+          "other": 0
+        },
+        "mlb_translation_fitted": false,
+        "observed_positive_seasons": [
+          2025
+        ],
+        "origin": 2025,
+        "player_id": null,
+        "selected_source_rows": 2
+      }
+    },
+    {
+      "age_at_origin": 28.170325194904756,
+      "annual_counts": [
+        {
+          "ab": 234,
+          "bb": 18,
+          "doubles": 8,
+          "games": 75,
+          "gdp": 5,
+          "hbp": 1,
+          "hits": 69,
+          "hr": 1,
+          "ibb": 0,
+          "pa": 255,
+          "rbi": 17,
+          "runs": 41,
+          "season": 2024,
+          "sf": 1,
+          "sh": 1,
+          "so": 43,
+          "tb": 86,
+          "triples": 3
+        },
+        {
+          "ab": 173,
+          "bb": 17,
+          "doubles": 9,
+          "games": 83,
+          "gdp": 2,
+          "hbp": 5,
+          "hits": 41,
+          "hr": 1,
+          "ibb": 0,
+          "pa": 199,
+          "rbi": 17,
+          "runs": 24,
+          "season": 2025,
+          "sf": 0,
+          "sh": 4,
+          "so": 29,
+          "tb": 57,
+          "triples": 2
+        }
+      ],
+      "before_last_season": {
+        "counts": {
+          "ab": 234,
+          "bb": 18,
+          "doubles": 8,
+          "hbp": 1,
+          "hits": 69,
+          "hr": 1,
+          "ibb": 0,
+          "pa": 255,
+          "sf": 1,
+          "sh": 1,
+          "so": 43,
+          "triples": 3
+        },
+        "event_rates": {
+          "1B": 0.2235294117647059,
+          "2B": 0.03137254901960784,
+          "3B": 0.011764705882352941,
+          "HBP": 0.00392156862745098,
+          "HR": 0.00392156862745098,
+          "K": 0.16862745098039217,
+          "UBB": 0.07058823529411765,
+          "other": 0.48627450980392156
+        },
+        "events": {
+          "1B": 57,
+          "2B": 8,
+          "3B": 3,
+          "HBP": 1,
+          "HR": 1,
+          "K": 43,
+          "UBB": 18,
+          "other": 124
+        },
+        "mlb_translation_fitted": false,
+        "observed_positive_seasons": [
+          2024
+        ],
+        "origin": 2024,
+        "player_id": null,
+        "selected_source_rows": 1
+      },
+      "future_mutation_invariance": true,
+      "league": "KBO",
+      "new_projection": null,
+      "peers": [
+        {
+          "bb": 19,
+          "distance": 0.182355147607411,
+          "hr": 2,
+          "pa": 245,
+          "player_id": 807664,
+          "so": 44,
+          "source_id": "66112"
+        },
+        {
+          "bb": 21,
+          "distance": 0.20589587739652382,
+          "hr": 3,
+          "pa": 222,
+          "player_id": 807670,
+          "so": 49,
+          "source_id": "66614"
+        },
+        {
+          "bb": 18,
+          "distance": 0.274045736736552,
+          "hr": 1,
+          "pa": 273,
+          "player_id": null,
+          "so": 46,
+          "source_id": "50500"
+        }
+      ],
+      "player_id": null,
+      "rule": "lowest source ID positive PA without MLBAM",
+      "scope": "Raw overseas evidence only; not park adjusted, MLB translated or employment qualified",
+      "source_id": "50054",
+      "with_last_season": {
+        "counts": {
+          "ab": 407,
+          "bb": 35,
+          "doubles": 17,
+          "hbp": 6,
+          "hits": 110,
+          "hr": 2,
+          "ibb": 0,
+          "pa": 454,
+          "sf": 1,
+          "sh": 5,
+          "so": 72,
+          "triples": 5
+        },
+        "event_rates": {
+          "1B": 0.1894273127753304,
+          "2B": 0.037444933920704845,
+          "3B": 0.011013215859030838,
+          "HBP": 0.013215859030837005,
+          "HR": 0.004405286343612335,
+          "K": 0.15859030837004406,
+          "UBB": 0.07709251101321586,
+          "other": 0.5088105726872246
+        },
+        "events": {
+          "1B": 86,
+          "2B": 17,
+          "3B": 5,
+          "HBP": 6,
+          "HR": 2,
+          "K": 72,
+          "UBB": 35,
+          "other": 231
+        },
+        "mlb_translation_fitted": false,
+        "observed_positive_seasons": [
+          2024,
+          2025
+        ],
+        "origin": 2025,
+        "player_id": null,
+        "selected_source_rows": 2
+      }
+    },
+    {
+      "age_at_origin": 35.53255713669685,
+      "annual_counts": [
+        {
+          "ab": 2,
+          "bb": 0,
+          "cs": 0,
+          "doubles": 0,
+          "games": 17,
+          "gdp": 0,
+          "hbp": 0,
+          "hits": 0,
+          "hr": 0,
+          "ibb": 0,
+          "pa": 2,
+          "rbi": 0,
+          "runs": 0,
+          "sb": 0,
+          "season": 2023,
+          "sf": 0,
+          "sh": 0,
+          "so": 2,
+          "tb": 0,
+          "triples": 0
+        },
+        {
+          "ab": 2,
+          "bb": 1,
+          "cs": 0,
+          "doubles": 0,
+          "games": 11,
+          "gdp": 0,
+          "hbp": 0,
+          "hits": 0,
+          "hr": 0,
+          "ibb": 0,
+          "pa": 3,
+          "rbi": 0,
+          "runs": 1,
+          "sb": 0,
+          "season": 2024,
+          "sf": 0,
+          "sh": 0,
+          "so": 1,
+          "tb": 0,
+          "triples": 0
+        },
+        {
+          "ab": 0,
+          "bb": 0,
+          "cs": 0,
+          "doubles": 0,
+          "games": 7,
+          "gdp": 0,
+          "hbp": 0,
+          "hits": 0,
+          "hr": 0,
+          "ibb": 0,
+          "pa": 0,
+          "rbi": 0,
+          "runs": 0,
+          "sb": 0,
+          "season": 2025,
+          "sf": 0,
+          "sh": 0,
+          "so": 0,
+          "tb": 0,
+          "triples": 0
+        }
+      ],
+      "before_last_season": {
+        "counts": {
+          "ab": 4,
+          "bb": 1,
+          "doubles": 0,
+          "hbp": 0,
+          "hits": 0,
+          "hr": 0,
+          "ibb": 0,
+          "pa": 5,
+          "sf": 0,
+          "sh": 0,
+          "so": 3,
+          "triples": 0
+        },
+        "event_rates": {
+          "1B": 0.0,
+          "2B": 0.0,
+          "3B": 0.0,
+          "HBP": 0.0,
+          "HR": 0.0,
+          "K": 0.6,
+          "UBB": 0.2,
+          "other": 0.2
+        },
+        "events": {
+          "1B": 0,
+          "2B": 0,
+          "3B": 0,
+          "HBP": 0,
+          "HR": 0,
+          "K": 3,
+          "UBB": 1,
+          "other": 1
+        },
+        "mlb_translation_fitted": false,
+        "observed_positive_seasons": [
+          2023,
+          2024
+        ],
+        "origin": 2024,
+        "player_id": 608342,
+        "selected_source_rows": 2
+      },
+      "future_mutation_invariance": true,
+      "league": "NPB",
+      "new_projection": null,
+      "peers": [
+        {
+          "bb": 0,
+          "distance": 0.024093581661499285,
+          "hr": 0,
+          "pa": 0,
+          "player_id": null,
+          "so": 0,
+          "source_id": "41245137"
+        },
+        {
+          "bb": 0,
+          "distance": 0.06466245028987619,
+          "hr": 0,
+          "pa": 1,
+          "player_id": 660273,
+          "so": 1,
+          "source_id": "71275118"
+        },
+        {
+          "bb": 0,
+          "distance": 0.0657097681677243,
+          "hr": 0,
+          "pa": 0,
+          "player_id": null,
+          "so": 0,
+          "source_id": "01505118"
+        }
+      ],
+      "player_id": 608342,
+      "rule": "lowest source ID zero PA control",
+      "scope": "Raw overseas evidence only; not park adjusted, MLB translated or employment qualified",
+      "source_id": "01005137",
+      "with_last_season": {
+        "counts": {
+          "ab": 4,
+          "bb": 1,
+          "doubles": 0,
+          "hbp": 0,
+          "hits": 0,
+          "hr": 0,
+          "ibb": 0,
+          "pa": 5,
+          "sf": 0,
+          "sh": 0,
+          "so": 3,
+          "triples": 0
+        },
+        "event_rates": {
+          "1B": 0.0,
+          "2B": 0.0,
+          "3B": 0.0,
+          "HBP": 0.0,
+          "HR": 0.0,
+          "K": 0.6,
+          "UBB": 0.2,
+          "other": 0.2
+        },
+        "events": {
+          "1B": 0,
+          "2B": 0,
+          "3B": 0,
+          "HBP": 0,
+          "HR": 0,
+          "K": 3,
+          "UBB": 1,
+          "other": 1
+        },
+        "mlb_translation_fitted": false,
+        "observed_positive_seasons": [
+          2023,
+          2024
+        ],
+        "origin": 2025,
+        "player_id": 608342,
+        "selected_source_rows": 3
+      }
+    }
+  ],
+  "source_aggregates": {
+    "KBO": {
+      "no_MLBAM_rows": 329,
+      "pa": 55996,
+      "positive_pa_no_MLBAM_rows": 231,
+      "source_rows": 398,
+      "zero_pa_rows": 99
+    },
+    "NPB": {
+      "no_MLBAM_rows": 421,
+      "pa": 64178,
+      "positive_pa_no_MLBAM_rows": 273,
+      "source_rows": 725,
+      "zero_pa_rows": 240
+    }
+  },
+  "source_player_walkthrough_status": "complete",
+  "source_season": 2025,
+  "status": "qualified_2025_batting_source_complete",
+  "tests": "............................................................             [100%]\n60 passed in 2.72s\n",
+  "verifier_phase_flags_are_not_new_final_evaluation_claims": true
+}

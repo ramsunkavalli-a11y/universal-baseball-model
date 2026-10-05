@@ -378,3 +378,22 @@ scripts/test_hitter_final_2026_explorer.mjs -text -eol
 scripts/publish_hitter_final_2026_explorer_review.py -text -eol
 tests/test_hitter_final_schedule.py -text -eol
 tests/test_hitter_frozen_scoring.py -text -eol
+# Preserve the completed 2025 international-source provenance bytes.
+reports/model-evidence/international-hitter-source-2025/** -text -eol
+docs/hitter-international-source-2025-contract.md -text -eol
+docs/hitter-international-source-2025-result.md -text -eol
+docs/hitter-international-source-2025-player-review.md -text -eol
+docs/hitter-npb-2025-layout-amendment.md -text -eol
+docs/hitter-kbo-2025-traded-player-review-amendment.md -text -eol
+src/universal_baseball/international_hitter_source_2025.py -text -eol
+src/universal_baseball/npb_hitter_2025_layout.py -text -eol
+src/universal_baseball/kbo_english_annual_counts.py -text -eol
+scripts/capture_international_hitter_2025.py -text -eol
+scripts/capture_npb_hitter_2025_layout.py -text -eol
+scripts/review_international_hitter_2025.py -text -eol
+scripts/complete_international_hitter_2025_walks.py -text -eol
+scripts/finalize_international_hitter_2025.py -text -eol
+tests/test_international_hitter_source_2025.py -text -eol
+tests/test_npb_hitter_2025_layout.py -text -eol
+tests/test_kbo_english_annual_counts.py -text -eol
+tests/test_international_hitter_2025_completion.py -text -eol
