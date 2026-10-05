@@ -671,3 +671,12 @@ scripts/run_hitter_role_health_separation.py -text -eol
 scripts/audit_travis_medical_span.py -text -eol
 tests/test_role_health_separation.py -text -eol
 reports/model-evidence/hitter-role-health-separation/** -text -eol
+# Preserve the medical timeline reconstruction and appended source-control review.
+docs/hitter-medical-timeline-repair-contract.md -text -eol
+docs/hitter-medical-timeline-review-amendment.md -text -eol
+docs/hitter-medical-timeline-repair-result.md -text -eol
+src/universal_baseball/medical_observation_timeline.py -text -eol
+scripts/rebuild_hitter_medical_timelines.py -text -eol
+scripts/complete_hitter_medical_source_review.py -text -eol
+tests/test_medical_observation_timeline.py -text -eol
+reports/model-evidence/hitter-medical-timeline-repair/** -text -eol

@@ -2,6 +2,39 @@
 
 Updated 2026-10-05. This is the current start-here document.
 
+## Medical observation timelines repaired; forecasts unchanged
+
+The [medical timeline repair](hitter-medical-timeline-repair-result.md) implements
+the stale-span correction already called for in V59. Actual dated MLB play now
+stops a continuing observation span, and later injuries remain separate. All
+83,300 source origins and the exact 63,314 model-row join are retained. Among
+model rows with both recent source years, 297 histories (133 people) have shorter
+spans and 22 (16 people) gain separate episodes. These are source changes, not
+improved forecast counts. Travis's March 2016 entry ends by May 25 observed play,
+independently confirmed by his official game log; Franco and Alvarez no longer
+carry old entries through documented subsequent play.
+
+Fourteen player-origins were reviewed, including unchanged Garlick/Parker/Canha
+controls and Ellsbury's administrative activation. Tatis's suspension and
+Hoskins's free agency mean medical follow-up became unknown, not recovery.
+Two incorrect case-list IDs were caught in review; preserve the initial evidence
+and verify the appended identity-review receipt for the intended players.
+Thirty-seven focused tests pass; all seventy actual source-support subsets were
+independently recounted. Neither test count nor source correction is accuracy gain.
+
+This source repair is complete. The next medical comparison needs its own
+contract: observed MLB eligibility, a defensible observation/risk target, no
+double counting with known suspensions, baseline fallback for missing/unsupported
+histories, fixed evaluation membership, and player-level review. All origin-2016
+training subsets lack fully covered two-year medical histories; Tatis/Hoskins/
+Ellsbury profiles remain sparse and their nearest age/workload peers do not match
+their past regular/star roles. Do not fit arbitrary clinical probabilities or
+use calendar bounds as true missed games. Annual-source coverage does not certify
+minor-league health; silent DSL histories are not zero injury risk. Tatis's
+unconditional health repair remains open. No new models, forecast promotion,
+explorer edits or 2026 outcome access occurred. Verify the original reconstruction
+seals plus the identity-review supplement before reusing the new source table.
+
 ## Role estimate no longer receives unsafe injury boosts; clinical risk remains open
 
 The [role/health separation repair](hitter-role-health-separation-result.md)

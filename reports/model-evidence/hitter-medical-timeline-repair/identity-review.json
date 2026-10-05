@@ -1,0 +1,2346 @@
+{
+  "amended_identity_pairs_verified": true,
+  "additional_cases": [
+    {
+      "name": "Kyle Garlick",
+      "player_id": 664247,
+      "origin": 2022,
+      "row_id": 47221,
+      "information_date": "2023-01-26",
+      "old_clinical_spells": [
+        {
+          "start": "2020-09-16",
+          "end": "2020-09-28",
+          "open": false,
+          "categories": [
+            "trunk"
+          ],
+          "surgery": false,
+          "transaction_ids": [
+            451541
+          ],
+          "entry_is_transfer": false,
+          "closure_kind": "IL_activation"
+        },
+        {
+          "start": "2021-04-20",
+          "end": "2021-04-29",
+          "open": false,
+          "categories": [
+            "unspecified"
+          ],
+          "surgery": false,
+          "transaction_ids": [
+            480593
+          ],
+          "entry_is_transfer": false,
+          "closure_kind": "IL_activation"
+        },
+        {
+          "start": "2021-06-09",
+          "end": "2021-11-05",
+          "open": false,
+          "categories": [
+            "unspecified",
+            "trunk"
+          ],
+          "surgery": false,
+          "transaction_ids": [
+            493747,
+            507079
+          ],
+          "entry_is_transfer": false,
+          "closure_kind": "IL_activation"
+        },
+        {
+          "start": "2022-05-02",
+          "end": "2022-05-16",
+          "open": false,
+          "categories": [
+            "lower"
+          ],
+          "surgery": false,
+          "transaction_ids": [
+            618883
+          ],
+          "entry_is_transfer": false,
+          "closure_kind": "unqualified_return"
+        },
+        {
+          "start": "2022-06-04",
+          "end": "2022-06-19",
+          "open": false,
+          "categories": [
+            "lower"
+          ],
+          "surgery": false,
+          "transaction_ids": [
+            629383
+          ],
+          "entry_is_transfer": false,
+          "closure_kind": "unqualified_return"
+        },
+        {
+          "start": "2022-08-02",
+          "end": "2022-08-26",
+          "open": false,
+          "categories": [
+            "other"
+          ],
+          "surgery": false,
+          "transaction_ids": [
+            643107
+          ],
+          "entry_is_transfer": false,
+          "closure_kind": "IL_activation"
+        },
+        {
+          "start": "2022-09-16",
+          "end": "2023-01-11",
+          "open": false,
+          "categories": [
+            "upper",
+            "unspecified"
+          ],
+          "surgery": false,
+          "transaction_ids": [
+            652770,
+            654513
+          ],
+          "entry_is_transfer": false,
+          "closure_kind": "observation_scope_exit"
+        }
+      ],
+      "supplied_source_summary": {
+        "row_id": 47221,
+        "player_id": 664247,
+        "origin_year": 2022,
+        "age": 30.0,
+        "stage": "Current MLB",
+        "pa_0": 162,
+        "ctx_information_date": "2023-01-26",
+        "candidate_key": "2022:664247",
+        "information_date": "2023-01-26",
+        "observation_state": "medical_followup_censored",
+        "recent_history_coverage_complete": true,
+        "recent_episode_count": 6,
+        "recent_placement_reports": 7,
+        "recent_surgery_report_count": 0,
+        "recent_followup_calendar_upper_days": 318,
+        "recent_censored_followup_upper_days": 107,
+        "pending_observation": false,
+        "true_injury_days": null,
+        "medical_recovery_certified": false,
+        "old_medical_open": false,
+        "old_medical_scope_interrupted": true,
+        "old_followup_union_days": 318,
+        "old_overlapping_episode_count": 6,
+        "followup_days_removed": 0,
+        "episode_count_added": 0
+      },
+      "rebuilt_medical_observation": {
+        "player_id": 664247,
+        "origin_year": 2022,
+        "information_date": "2023-01-26",
+        "observation_state": "medical_followup_censored",
+        "recent_history_coverage_complete": true,
+        "missing_recent_source_years": [],
+        "recent_episode_count": 6,
+        "recent_placement_reports": 7,
+        "recent_surgery_report_count": 0,
+        "recent_followup_calendar_upper_days": 318,
+        "recent_censored_followup_upper_days": 107,
+        "pending_observation": false,
+        "same_day_timing_ambiguous": [],
+        "spells": [
+          {
+            "start": "2020-09-16",
+            "observation_end_upper": "2020-09-28",
+            "closure_kind": "reported_IL_activation",
+            "categories": [
+              "trunk"
+            ],
+            "surgery": false,
+            "transaction_ids": [
+              451541
+            ],
+            "placement_reports": 1,
+            "placement_report_dates": [
+              "2020-09-16"
+            ],
+            "surgery_report_dates": [],
+            "entry_is_transfer": false,
+            "return_evidence": {
+              "transaction_ids": [
+                452155
+              ]
+            }
+          },
+          {
+            "start": "2021-04-20",
+            "observation_end_upper": "2021-04-29",
+            "closure_kind": "reported_IL_activation",
+            "categories": [
+              "unspecified"
+            ],
+            "surgery": false,
+            "transaction_ids": [
+              480593
+            ],
+            "placement_reports": 1,
+            "placement_report_dates": [
+              "2021-04-20"
+            ],
+            "surgery_report_dates": [],
+            "entry_is_transfer": false,
+            "return_evidence": {
+              "transaction_ids": [
+                481087
+              ]
+            }
+          },
+          {
+            "start": "2021-06-09",
+            "observation_end_upper": "2021-11-05",
+            "closure_kind": "reported_IL_activation",
+            "categories": [
+              "unspecified",
+              "trunk"
+            ],
+            "surgery": false,
+            "transaction_ids": [
+              493747,
+              507079
+            ],
+            "placement_reports": 2,
+            "placement_report_dates": [
+              "2021-06-09",
+              "2021-07-24"
+            ],
+            "surgery_report_dates": [],
+            "entry_is_transfer": false,
+            "return_evidence": {
+              "transaction_ids": [
+                523433
+              ]
+            }
+          },
+          {
+            "start": "2022-05-02",
+            "observation_end_upper": "2022-05-16",
+            "closure_kind": "unqualified_roster_return",
+            "categories": [
+              "lower"
+            ],
+            "surgery": false,
+            "transaction_ids": [
+              618883
+            ],
+            "placement_reports": 1,
+            "placement_report_dates": [
+              "2022-05-02"
+            ],
+            "surgery_report_dates": [],
+            "entry_is_transfer": false,
+            "return_evidence": {
+              "transaction_ids": [
+                621379
+              ]
+            }
+          },
+          {
+            "start": "2022-06-04",
+            "observation_end_upper": "2022-06-19",
+            "closure_kind": "unqualified_roster_return",
+            "categories": [
+              "lower"
+            ],
+            "surgery": false,
+            "transaction_ids": [
+              629383
+            ],
+            "placement_reports": 1,
+            "placement_report_dates": [
+              "2022-06-04"
+            ],
+            "surgery_report_dates": [],
+            "entry_is_transfer": false,
+            "return_evidence": {
+              "transaction_ids": [
+                632024
+              ]
+            }
+          },
+          {
+            "start": "2022-08-02",
+            "observation_end_upper": "2022-08-26",
+            "closure_kind": "reported_IL_activation",
+            "categories": [
+              "other"
+            ],
+            "surgery": false,
+            "transaction_ids": [
+              643107
+            ],
+            "placement_reports": 1,
+            "placement_report_dates": [
+              "2022-08-02"
+            ],
+            "surgery_report_dates": [],
+            "entry_is_transfer": false,
+            "return_evidence": {
+              "transaction_ids": [
+                648964
+              ]
+            }
+          },
+          {
+            "start": "2022-09-16",
+            "observation_end_upper": "2023-01-11",
+            "closure_kind": "medical_followup_censored",
+            "categories": [
+              "upper",
+              "unspecified"
+            ],
+            "surgery": false,
+            "transaction_ids": [
+              652770,
+              654513
+            ],
+            "placement_reports": 1,
+            "placement_report_dates": [
+              "2022-09-16"
+            ],
+            "surgery_report_dates": [],
+            "entry_is_transfer": false,
+            "return_evidence": {
+              "transaction_ids": [
+                665056
+              ]
+            }
+          }
+        ],
+        "observed_returns": [
+          {
+            "kind": "dated_MLB_contact",
+            "start": "2021-04-01",
+            "end": "2021-04-01",
+            "game_pk": 634638
+          },
+          {
+            "kind": "dated_MLB_contact",
+            "start": "2021-05-01",
+            "end": "2021-05-01",
+            "game_pk": 634329
+          },
+          {
+            "kind": "dated_MLB_contact",
+            "start": "2022-04-18",
+            "end": "2022-04-18",
+            "game_pk": 663236
+          },
+          {
+            "kind": "dated_MLB_contact",
+            "start": "2022-05-16",
+            "end": "2022-05-16",
+            "game_pk": 662378
+          },
+          {
+            "kind": "dated_MLB_contact",
+            "start": "2022-06-21",
+            "end": "2022-06-21",
+            "game_pk": 661677
+          },
+          {
+            "kind": "dated_MLB_contact",
+            "start": "2022-08-26",
+            "end": "2022-08-26",
+            "game_pk": 661669
+          }
+        ],
+        "true_injury_days": null,
+        "medical_recovery_certified": false,
+        "legal_or_employment_status_changed": false
+      },
+      "dated_relevant_transactions": [
+        {
+          "transaction_id": 438100,
+          "player_id": 664247,
+          "available_date": "2020-02-10",
+          "event_date": "2020-02-10",
+          "kind": "scope_exit",
+          "mlb_team_scope": true,
+          "description": "Los Angeles Dodgers designated RF Kyle Garlick for assignment.",
+          "il_kind": null,
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2020,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 438449,
+          "player_id": 664247,
+          "available_date": "2020-03-26",
+          "event_date": "2020-03-26",
+          "kind": "org_acquisition",
+          "mlb_team_scope": true,
+          "description": "Los Angeles Dodgers traded RF Kyle Garlick to Philadelphia Phillies for LHP Tyler Gilbert.",
+          "il_kind": null,
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2020,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 448052,
+          "player_id": 664247,
+          "available_date": "2020-08-06",
+          "event_date": "2020-08-06",
+          "kind": "mlb_return",
+          "mlb_team_scope": true,
+          "description": "Philadelphia Phillies recalled Kyle Garlick from Lehigh Valley IronPigs.",
+          "il_kind": null,
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2020,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 449138,
+          "player_id": 664247,
+          "available_date": "2020-08-10",
+          "event_date": "2020-08-10",
+          "kind": "mlb_return",
+          "mlb_team_scope": true,
+          "description": "Philadelphia Phillies recalled Kyle Garlick from Phillies Alternate Training Site.",
+          "il_kind": null,
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2020,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 449487,
+          "player_id": 664247,
+          "available_date": "2020-08-20",
+          "event_date": "2020-08-20",
+          "kind": "mlb_return",
+          "mlb_team_scope": true,
+          "description": "Philadelphia Phillies recalled Kyle Garlick from Phillies Alternate Training Site.",
+          "il_kind": null,
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2020,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 450936,
+          "player_id": 664247,
+          "available_date": "2020-09-06",
+          "event_date": "2020-09-06",
+          "kind": "mlb_return",
+          "mlb_team_scope": true,
+          "description": "Philadelphia Phillies recalled RF Kyle Garlick from Phillies Alternate Training Site.",
+          "il_kind": null,
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2020,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 451541,
+          "player_id": 664247,
+          "available_date": "2020-09-16",
+          "event_date": "2020-09-16",
+          "kind": "other",
+          "mlb_team_scope": true,
+          "description": "Philadelphia Phillies placed RF Kyle Garlick on the 10-day injured list. Right oblique strain.",
+          "il_kind": "placement",
+          "category": "trunk",
+          "surgery": false,
+          "detail": "right oblique strain",
+          "capture_year": 2020,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 452155,
+          "player_id": 664247,
+          "available_date": "2020-09-28",
+          "event_date": "2020-09-28",
+          "kind": "mlb_activation",
+          "mlb_team_scope": true,
+          "description": "Philadelphia Phillies activated RF Kyle Garlick from the 10-day injured list.",
+          "il_kind": "activation",
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2020,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 460018,
+          "player_id": 664247,
+          "available_date": "2021-01-18",
+          "event_date": "2021-01-18",
+          "kind": "scope_exit",
+          "mlb_team_scope": true,
+          "description": "Philadelphia Phillies designated RF Kyle Garlick for assignment.",
+          "il_kind": null,
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2021,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 460338,
+          "player_id": 664247,
+          "available_date": "2021-01-22",
+          "event_date": "2021-01-22",
+          "kind": "org_acquisition",
+          "mlb_team_scope": true,
+          "description": "Atlanta Braves claimed RF Kyle Garlick off waivers from Philadelphia Phillies.",
+          "il_kind": null,
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2021,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 461721,
+          "player_id": 664247,
+          "available_date": "2021-02-05",
+          "event_date": "2021-02-05",
+          "kind": "scope_exit",
+          "mlb_team_scope": true,
+          "description": "Atlanta Braves designated RF Kyle Garlick for assignment.",
+          "il_kind": null,
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2021,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 462296,
+          "player_id": 664247,
+          "available_date": "2021-02-11",
+          "event_date": "2021-02-11",
+          "kind": "org_acquisition",
+          "mlb_team_scope": true,
+          "description": "Minnesota Twins claimed RF Kyle Garlick off waivers from Atlanta Braves.",
+          "il_kind": null,
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2021,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 469883,
+          "player_id": 664247,
+          "available_date": "2021-02-11",
+          "event_date": "2021-02-11",
+          "kind": "org_acquisition",
+          "mlb_team_scope": true,
+          "description": "Minnesota Twins claimed RF Kyle Garlick off waivers from .",
+          "il_kind": null,
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2021,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 477270,
+          "player_id": 664247,
+          "available_date": "2021-02-11",
+          "event_date": "2021-02-11",
+          "kind": "org_acquisition",
+          "mlb_team_scope": true,
+          "description": "Minnesota Twins claimed RF Kyle Garlick off waivers.",
+          "il_kind": null,
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2021,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 478504,
+          "player_id": 664247,
+          "available_date": "2021-02-11",
+          "event_date": "2021-02-11",
+          "kind": "org_acquisition",
+          "mlb_team_scope": true,
+          "description": "Minnesota Twins claimed RF Kyle Garlick off waivers.",
+          "il_kind": null,
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2021,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 480593,
+          "player_id": 664247,
+          "available_date": "2021-04-20",
+          "event_date": "2021-04-20",
+          "kind": "other",
+          "mlb_team_scope": true,
+          "description": "Minnesota Twins placed RF Kyle Garlick on the 10-day injured list.",
+          "il_kind": "placement",
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2021,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 481087,
+          "player_id": 664247,
+          "available_date": "2021-04-29",
+          "event_date": "2021-04-29",
+          "kind": "mlb_activation",
+          "mlb_team_scope": true,
+          "description": "Minnesota Twins activated RF Kyle Garlick from the 10-day injured list.",
+          "il_kind": "activation",
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2021,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 493747,
+          "player_id": 664247,
+          "available_date": "2021-06-09",
+          "event_date": "2021-06-09",
+          "kind": "other",
+          "mlb_team_scope": true,
+          "description": "Minnesota Twins placed RF Kyle Garlick on the 10-day injured list.",
+          "il_kind": "placement",
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2021,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 507079,
+          "player_id": 664247,
+          "available_date": "2021-07-24",
+          "event_date": "2021-07-24",
+          "kind": "other",
+          "mlb_team_scope": true,
+          "description": "Minnesota Twins placed RF Kyle Garlick on the 60-day injured list. Sports hernia.",
+          "il_kind": "placement",
+          "category": "trunk",
+          "surgery": false,
+          "detail": "sports hernia",
+          "capture_year": 2021,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 523433,
+          "player_id": 664247,
+          "available_date": "2021-11-05",
+          "event_date": "2021-11-05",
+          "kind": "mlb_activation",
+          "mlb_team_scope": true,
+          "description": "Minnesota Twins activated RF Kyle Garlick from the 60-day injured list.",
+          "il_kind": "activation",
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2022,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 615055,
+          "player_id": 664247,
+          "available_date": "2022-04-15",
+          "event_date": "2022-04-15",
+          "kind": "mlb_return",
+          "mlb_team_scope": true,
+          "description": "Minnesota Twins selected the contract of RF Kyle Garlick from St. Paul Saints.",
+          "il_kind": null,
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2022,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 618883,
+          "player_id": 664247,
+          "available_date": "2022-05-02",
+          "event_date": "2022-05-02",
+          "kind": "other",
+          "mlb_team_scope": true,
+          "description": "Minnesota Twins placed RF Kyle Garlick on the 10-day injured list. Right calf strain.",
+          "il_kind": "placement",
+          "category": "lower",
+          "surgery": false,
+          "detail": "right calf strain",
+          "capture_year": 2022,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 621379,
+          "player_id": 664247,
+          "available_date": "2022-05-16",
+          "event_date": "2022-05-16",
+          "kind": "mlb_activation",
+          "mlb_team_scope": true,
+          "description": "Minnesota Twins activated RF Kyle Garlick.",
+          "il_kind": "unqualified_activation",
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2022,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 629383,
+          "player_id": 664247,
+          "available_date": "2022-06-07",
+          "event_date": "2022-06-04",
+          "kind": "other",
+          "mlb_team_scope": true,
+          "description": "Minnesota Twins placed RF Kyle Garlick on the 10-day injured list retroactive to June 4, 2022. Left hamstring strain.",
+          "il_kind": "placement",
+          "category": "lower",
+          "surgery": false,
+          "detail": "left hamstring strain",
+          "capture_year": 2022,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 632024,
+          "player_id": 664247,
+          "available_date": "2022-06-19",
+          "event_date": "2022-06-19",
+          "kind": "mlb_activation",
+          "mlb_team_scope": true,
+          "description": "Minnesota Twins activated RF Kyle Garlick.",
+          "il_kind": "unqualified_activation",
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2022,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 643107,
+          "player_id": 664247,
+          "available_date": "2022-08-04",
+          "event_date": "2022-08-02",
+          "kind": "other",
+          "mlb_team_scope": true,
+          "description": "Minnesota Twins placed RF Kyle Garlick on the 10-day injured list retroactive to August 2, 2022. Right ribcage contusion.",
+          "il_kind": "placement",
+          "category": "other",
+          "surgery": false,
+          "detail": "right ribcage contusion",
+          "capture_year": 2022,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 648964,
+          "player_id": 664247,
+          "available_date": "2022-08-26",
+          "event_date": "2022-08-26",
+          "kind": "mlb_activation",
+          "mlb_team_scope": true,
+          "description": "Minnesota Twins activated RF Kyle Garlick from the 10-day injured list.",
+          "il_kind": "activation",
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2022,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 652770,
+          "player_id": 664247,
+          "available_date": "2022-09-16",
+          "event_date": "2022-09-16",
+          "kind": "other",
+          "mlb_team_scope": true,
+          "description": "Minnesota Twins placed RF Kyle Garlick on the 10-day injured list. Left wrist sprain.",
+          "il_kind": "placement",
+          "category": "upper",
+          "surgery": false,
+          "detail": "left wrist sprain",
+          "capture_year": 2022,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 654513,
+          "player_id": 664247,
+          "available_date": "2022-10-03",
+          "event_date": "2022-10-03",
+          "kind": "other",
+          "mlb_team_scope": true,
+          "description": "Minnesota Twins transferred RF Kyle Garlick from the 10-day injured list to the 60-day injured list.",
+          "il_kind": "transfer",
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2023,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 665056,
+          "player_id": 664247,
+          "available_date": "2023-01-11",
+          "event_date": "2023-01-11",
+          "kind": "scope_exit",
+          "mlb_team_scope": true,
+          "description": "Minnesota Twins designated RF Kyle Garlick for assignment.",
+          "il_kind": null,
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2023,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 441741,
+          "player_id": 664247,
+          "available_date": "2020-03-26",
+          "event_date": "2020-03-26",
+          "kind": "scope_exit",
+          "mlb_team_scope": true,
+          "description": "Philadelphia Phillies optioned RF Kyle Garlick to Lehigh Valley IronPigs.",
+          "il_kind": null,
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2020,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 448883,
+          "player_id": 664247,
+          "available_date": "2020-08-06",
+          "event_date": "2020-08-06",
+          "kind": "scope_exit",
+          "mlb_team_scope": true,
+          "description": "Philadelphia Phillies optioned RF Kyle Garlick to Phillies Alternate Training Site.",
+          "il_kind": null,
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2020,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 449718,
+          "player_id": 664247,
+          "available_date": "2020-08-20",
+          "event_date": "2020-08-20",
+          "kind": "scope_exit",
+          "mlb_team_scope": true,
+          "description": "Philadelphia Phillies optioned RF Kyle Garlick to Phillies Alternate Training Site.",
+          "il_kind": null,
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2020,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 601103,
+          "player_id": 664247,
+          "available_date": "2021-11-19",
+          "event_date": "2021-11-19",
+          "kind": "scope_exit",
+          "mlb_team_scope": true,
+          "description": "Minnesota Twins sent RF Kyle Garlick outright to St. Paul Saints.",
+          "il_kind": null,
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2021,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 665995,
+          "player_id": 664247,
+          "available_date": "2023-01-17",
+          "event_date": "2023-01-17",
+          "kind": "scope_exit",
+          "mlb_team_scope": true,
+          "description": "Minnesota Twins sent RF Kyle Garlick outright to St. Paul Saints.",
+          "il_kind": null,
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2023,
+          "source_url": null,
+          "duration_years": null
+        }
+      ],
+      "appearance_evidence": [
+        {
+          "player_id": 664247,
+          "game_date": "2021-04-01",
+          "game_pk": 634638
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2021-04-04",
+          "game_pk": 634597
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2021-04-05",
+          "game_pk": 634588
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2021-04-07",
+          "game_pk": 634598
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2021-04-08",
+          "game_pk": 634550
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2021-04-10",
+          "game_pk": 632205
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2021-04-13",
+          "game_pk": 632190
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2021-04-14",
+          "game_pk": 632223
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2021-04-14",
+          "game_pk": 634574
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2021-04-15",
+          "game_pk": 634554
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2021-04-16",
+          "game_pk": 634526
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2021-05-01",
+          "game_pk": 634329
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2021-05-05",
+          "game_pk": 634279
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2021-05-06",
+          "game_pk": 634261
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2021-05-07",
+          "game_pk": 634204
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2021-05-08",
+          "game_pk": 634214
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2021-05-11",
+          "game_pk": 634147
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2021-05-12",
+          "game_pk": 634160
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2021-05-13",
+          "game_pk": 634125
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2021-05-15",
+          "game_pk": 634080
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2021-05-17",
+          "game_pk": 634077
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2021-05-18",
+          "game_pk": 634073
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2021-05-23",
+          "game_pk": 634007
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2021-05-24",
+          "game_pk": 633982
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2021-05-28",
+          "game_pk": 633932
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2021-05-31",
+          "game_pk": 633919
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2021-06-01",
+          "game_pk": 633856
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2021-06-03",
+          "game_pk": 633833
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2021-06-04",
+          "game_pk": 633838
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2021-06-05",
+          "game_pk": 633799
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2021-06-06",
+          "game_pk": 633893
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2021-06-08",
+          "game_pk": 633804
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-04-18",
+          "game_pk": 663236
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-04-19",
+          "game_pk": 662753
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-04-20",
+          "game_pk": 662703
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-04-21",
+          "game_pk": 662742
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-04-22",
+          "game_pk": 661755
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-04-24",
+          "game_pk": 661781
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-04-26",
+          "game_pk": 661733
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-04-28",
+          "game_pk": 661729
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-04-30",
+          "game_pk": 661906
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-05-01",
+          "game_pk": 661905
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-05-16",
+          "game_pk": 662378
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-05-17",
+          "game_pk": 662370
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-05-18",
+          "game_pk": 662377
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-05-20",
+          "game_pk": 662714
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-05-22",
+          "game_pk": 662712
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-05-23",
+          "game_pk": 661730
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-05-26",
+          "game_pk": 661771
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-05-28",
+          "game_pk": 661774
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-05-29",
+          "game_pk": 661731
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-05-30",
+          "game_pk": 662854
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-05-31",
+          "game_pk": 662836
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-06-01",
+          "game_pk": 662833
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-06-02",
+          "game_pk": 662832
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-06-03",
+          "game_pk": 661761
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-06-21",
+          "game_pk": 661677
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-06-25",
+          "game_pk": 661686
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-06-28",
+          "game_pk": 663033
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-06-28",
+          "game_pk": 663045
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-07-03",
+          "game_pk": 661689
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-07-05",
+          "game_pk": 661426
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-07-08",
+          "game_pk": 661843
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-07-09",
+          "game_pk": 661842
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-07-13",
+          "game_pk": 661687
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-07-14",
+          "game_pk": 661675
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-07-17",
+          "game_pk": 661672
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-07-23",
+          "game_pk": 662902
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-07-26",
+          "game_pk": 661281
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-07-27",
+          "game_pk": 661249
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-07-29",
+          "game_pk": 662268
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-07-30",
+          "game_pk": 662196
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-07-31",
+          "game_pk": 662267
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-08-01",
+          "game_pk": 661671
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-08-26",
+          "game_pk": 661669
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-08-31",
+          "game_pk": 661649
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-09-04",
+          "game_pk": 661437
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-09-05",
+          "game_pk": 661236
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-09-07",
+          "game_pk": 661235
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-09-07",
+          "game_pk": 661251
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-09-08",
+          "game_pk": 661252
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-09-09",
+          "game_pk": 661650
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-09-10",
+          "game_pk": 661665
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-09-11",
+          "game_pk": 661647
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-09-13",
+          "game_pk": 661645
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-09-14",
+          "game_pk": 661646
+        },
+        {
+          "player_id": 664247,
+          "game_date": "2022-09-15",
+          "game_pk": 661644
+        }
+      ],
+      "origin_known_stats": [
+        {
+          "season": 2020,
+          "bucket": "MLB",
+          "plate_appearances": 23,
+          "home_runs": 0,
+          "strike_outs": 7,
+          "base_on_balls": 0
+        },
+        {
+          "season": 2021,
+          "bucket": "MLB",
+          "plate_appearances": 107,
+          "home_runs": 5,
+          "strike_outs": 32,
+          "base_on_balls": 6
+        },
+        {
+          "season": 2021,
+          "bucket": "AAA",
+          "plate_appearances": 8,
+          "home_runs": 0,
+          "strike_outs": 1,
+          "base_on_balls": 1
+        },
+        {
+          "season": 2022,
+          "bucket": "MLB",
+          "plate_appearances": 162,
+          "home_runs": 9,
+          "strike_outs": 48,
+          "base_on_balls": 8
+        },
+        {
+          "season": 2022,
+          "bucket": "AAA",
+          "plate_appearances": 46,
+          "home_runs": 3,
+          "strike_outs": 16,
+          "base_on_balls": 6
+        }
+      ],
+      "unchanged_forecast": [
+        {
+          "player_name": "Kyle Garlick",
+          "observation_p": 0.5522703227528903,
+          "observation_conditional_pa": 111.86094172995494,
+          "observation_pa": 61.777478392644475,
+          "observation_rate": -0.7998818892461492,
+          "observation_value": 0.11106584172858702,
+          "next_pa": 30,
+          "actual_relative_value": 0.002727377679039673
+        }
+      ],
+      "source_support": [
+        {
+          "row_id": 47221,
+          "observation_state": "medical_followup_censored",
+          "recent_history_coverage_complete": true,
+          "age_band": 6.0,
+          "workload": "brief_or_part_time",
+          "source_profile_people": 9,
+          "origin": 2022,
+          "fold": 0,
+          "head": "participation"
+        },
+        {
+          "row_id": 47221,
+          "observation_state": "medical_followup_censored",
+          "recent_history_coverage_complete": true,
+          "age_band": 6.0,
+          "workload": "brief_or_part_time",
+          "source_profile_people": 3,
+          "origin": 2022,
+          "fold": 0,
+          "head": "conditional_pa"
+        }
+      ],
+      "peers": [
+        {
+          "row_id": 46920,
+          "player_id": 645801,
+          "origin_year": 2022,
+          "age": 29.0,
+          "stage": "Current MLB",
+          "pa_0": 149,
+          "ctx_information_date": "2023-01-26",
+          "candidate_key": "2022:645801",
+          "information_date": "2023-01-26",
+          "observation_state": "observed_MLB_use",
+          "recent_history_coverage_complete": true,
+          "recent_episode_count": 1,
+          "recent_placement_reports": 1,
+          "recent_surgery_report_count": 0,
+          "recent_followup_calendar_upper_days": 8,
+          "recent_censored_followup_upper_days": 8,
+          "pending_observation": false,
+          "true_injury_days": null,
+          "medical_recovery_certified": false,
+          "old_medical_open": false,
+          "old_medical_scope_interrupted": true,
+          "old_followup_union_days": 8,
+          "old_overlapping_episode_count": 1,
+          "followup_days_removed": 0,
+          "episode_count_added": 0,
+          "distance": 0.04187777777777778,
+          "player_name": "Mike Ford",
+          "observation_pa": 48.02316782035006,
+          "next_pa": 251
+        },
+        {
+          "row_id": 46890,
+          "player_id": 642851,
+          "origin_year": 2022,
+          "age": 31.0,
+          "stage": "Current MLB",
+          "pa_0": 177,
+          "ctx_information_date": "2023-01-26",
+          "candidate_key": "2022:642851",
+          "information_date": "2023-01-26",
+          "observation_state": "observed_MLB_use",
+          "recent_history_coverage_complete": true,
+          "recent_episode_count": 0,
+          "recent_placement_reports": 0,
+          "recent_surgery_report_count": 0,
+          "recent_followup_calendar_upper_days": 0,
+          "recent_censored_followup_upper_days": 0,
+          "pending_observation": false,
+          "true_injury_days": null,
+          "medical_recovery_certified": false,
+          "old_medical_open": false,
+          "old_medical_scope_interrupted": true,
+          "old_followup_union_days": 0,
+          "old_overlapping_episode_count": 0,
+          "followup_days_removed": 0,
+          "episode_count_added": 0,
+          "distance": 0.0425,
+          "player_name": "Austin Wynns",
+          "observation_pa": 63.551081348879734,
+          "next_pa": 145
+        },
+        {
+          "row_id": 46478,
+          "player_id": 572039,
+          "origin_year": 2022,
+          "age": 31.0,
+          "stage": "Current MLB",
+          "pa_0": 139,
+          "ctx_information_date": "2023-01-26",
+          "candidate_key": "2022:572039",
+          "information_date": "2023-01-26",
+          "observation_state": "observed_MLB_use",
+          "recent_history_coverage_complete": true,
+          "recent_episode_count": 4,
+          "recent_placement_reports": 4,
+          "recent_surgery_report_count": 0,
+          "recent_followup_calendar_upper_days": 123,
+          "recent_censored_followup_upper_days": 0,
+          "pending_observation": false,
+          "true_injury_days": null,
+          "medical_recovery_certified": false,
+          "old_medical_open": false,
+          "old_medical_scope_interrupted": true,
+          "old_followup_union_days": 123,
+          "old_overlapping_episode_count": 4,
+          "followup_days_removed": 0,
+          "episode_count_added": 0,
+          "distance": 0.04587777777777778,
+          "player_name": "Stephen Piscotty",
+          "observation_pa": 57.810229194002254,
+          "next_pa": 0
+        }
+      ],
+      "peer_rule": "Same origin and old open/censored flags; nearest age/5 and MLB PA/300; no future outcomes",
+      "future_mutation_invariant": true,
+      "new_forecast": null
+    },
+    {
+      "name": "Jarrett Parker",
+      "player_id": 592620,
+      "origin": 2016,
+      "row_id": 23949,
+      "information_date": "2017-01-28",
+      "old_clinical_spells": [
+        {
+          "start": "2016-10-12",
+          "end": "2017-01-28",
+          "open": true,
+          "categories": [
+            "unspecified"
+          ],
+          "surgery": false,
+          "transaction_ids": [
+            289945
+          ],
+          "entry_is_transfer": false,
+          "closure_kind": null
+        }
+      ],
+      "supplied_source_summary": {
+        "row_id": 23949,
+        "player_id": 592620,
+        "origin_year": 2016,
+        "age": 27.0,
+        "stage": "Current MLB",
+        "pa_0": 151,
+        "ctx_information_date": "2017-01-28",
+        "candidate_key": "2016:592620",
+        "information_date": "2017-01-28",
+        "observation_state": "captured_IL_unresolved",
+        "recent_history_coverage_complete": true,
+        "recent_episode_count": 1,
+        "recent_placement_reports": 1,
+        "recent_surgery_report_count": 0,
+        "recent_followup_calendar_upper_days": 81,
+        "recent_censored_followup_upper_days": 0,
+        "pending_observation": true,
+        "true_injury_days": null,
+        "medical_recovery_certified": false,
+        "old_medical_open": true,
+        "old_medical_scope_interrupted": false,
+        "old_followup_union_days": 81,
+        "old_overlapping_episode_count": 1,
+        "followup_days_removed": 0,
+        "episode_count_added": 0
+      },
+      "rebuilt_medical_observation": {
+        "player_id": 592620,
+        "origin_year": 2016,
+        "information_date": "2017-01-28",
+        "observation_state": "captured_IL_unresolved",
+        "recent_history_coverage_complete": true,
+        "missing_recent_source_years": [],
+        "recent_episode_count": 1,
+        "recent_placement_reports": 1,
+        "recent_surgery_report_count": 0,
+        "recent_followup_calendar_upper_days": 81,
+        "recent_censored_followup_upper_days": 0,
+        "pending_observation": true,
+        "same_day_timing_ambiguous": [],
+        "spells": [
+          {
+            "start": "2016-10-12",
+            "observation_end_upper": "2017-01-28",
+            "closure_kind": "pending_at_cutoff",
+            "categories": [
+              "unspecified"
+            ],
+            "surgery": false,
+            "transaction_ids": [
+              289945
+            ],
+            "placement_reports": 1,
+            "placement_report_dates": [
+              "2016-10-12"
+            ],
+            "surgery_report_dates": [],
+            "entry_is_transfer": false,
+            "return_evidence": null
+          }
+        ],
+        "observed_returns": [],
+        "true_injury_days": null,
+        "medical_recovery_certified": false,
+        "legal_or_employment_status_changed": false
+      },
+      "dated_relevant_transactions": [
+        {
+          "transaction_id": 229657,
+          "player_id": 592620,
+          "available_date": "2015-06-19",
+          "event_date": "2015-06-19",
+          "kind": "mlb_return",
+          "mlb_team_scope": true,
+          "description": "San Francisco Giants recalled Jarrett Parker from Sacramento River Cats.",
+          "il_kind": null,
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2015,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 245278,
+          "player_id": 592620,
+          "available_date": "2015-09-11",
+          "event_date": "2015-09-11",
+          "kind": "mlb_return",
+          "mlb_team_scope": true,
+          "description": "San Francisco Giants recalled RF Jarrett Parker from Sacramento River Cats.",
+          "il_kind": null,
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2015,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 264986,
+          "player_id": 592620,
+          "available_date": "2016-05-12",
+          "event_date": "2016-05-12",
+          "kind": "mlb_return",
+          "mlb_team_scope": true,
+          "description": "San Francisco Giants recalled Jarrett Parker from Sacramento River Cats.",
+          "il_kind": null,
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2016,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 266727,
+          "player_id": 592620,
+          "available_date": "2016-07-29",
+          "event_date": "2016-07-29",
+          "kind": "mlb_return",
+          "mlb_team_scope": true,
+          "description": "San Francisco Giants recalled Jarrett Parker from Sacramento River Cats.",
+          "il_kind": null,
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2016,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 285584,
+          "player_id": 592620,
+          "available_date": "2016-08-28",
+          "event_date": "2016-08-28",
+          "kind": "mlb_return",
+          "mlb_team_scope": true,
+          "description": "San Francisco Giants recalled RF Jarrett Parker from Sacramento River Cats.",
+          "il_kind": null,
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2016,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 289945,
+          "player_id": 592620,
+          "available_date": "2016-10-12",
+          "event_date": "2016-10-12",
+          "kind": "other",
+          "mlb_team_scope": true,
+          "description": "San Francisco Giants placed LF Jarrett Parker on the 10-day disabled list.",
+          "il_kind": "placement",
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2017,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 217628,
+          "player_id": 592620,
+          "available_date": "2015-03-20",
+          "event_date": "2015-03-20",
+          "kind": "scope_exit",
+          "mlb_team_scope": true,
+          "description": "San Francisco Giants optioned RF Jarrett Parker to Sacramento River Cats.",
+          "il_kind": null,
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2015,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 232396,
+          "player_id": 592620,
+          "available_date": "2015-06-19",
+          "event_date": "2015-06-19",
+          "kind": "scope_exit",
+          "mlb_team_scope": true,
+          "description": "San Francisco Giants optioned RF Jarrett Parker to Sacramento River Cats.",
+          "il_kind": null,
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2015,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 258244,
+          "player_id": 592620,
+          "available_date": "2016-03-27",
+          "event_date": "2016-03-27",
+          "kind": "scope_exit",
+          "mlb_team_scope": true,
+          "description": "San Francisco Giants optioned RF Jarrett Parker to Sacramento River Cats.",
+          "il_kind": null,
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2016,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 265347,
+          "player_id": 592620,
+          "available_date": "2016-05-12",
+          "event_date": "2016-05-12",
+          "kind": "scope_exit",
+          "mlb_team_scope": true,
+          "description": "San Francisco Giants optioned RF Jarrett Parker to Sacramento River Cats.",
+          "il_kind": null,
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2016,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 281212,
+          "player_id": 592620,
+          "available_date": "2016-07-29",
+          "event_date": "2016-07-29",
+          "kind": "scope_exit",
+          "mlb_team_scope": true,
+          "description": "San Francisco Giants optioned RF Jarrett Parker to Sacramento River Cats.",
+          "il_kind": null,
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2016,
+          "source_url": null,
+          "duration_years": null
+        },
+        {
+          "transaction_id": 289550,
+          "player_id": 592620,
+          "available_date": "2016-10-07",
+          "event_date": "2016-10-07",
+          "kind": "scope_exit",
+          "mlb_team_scope": true,
+          "description": "San Francisco Giants reassigned RF Jarrett Parker to the minor leagues.",
+          "il_kind": null,
+          "category": "unspecified",
+          "surgery": false,
+          "detail": "",
+          "capture_year": 2016,
+          "source_url": null,
+          "duration_years": null
+        }
+      ],
+      "appearance_evidence": [
+        {
+          "player_id": 592620,
+          "game_date": "2015-06-13",
+          "game_pk": 414568
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2015-06-14",
+          "game_pk": 414583
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2015-06-15",
+          "game_pk": 414610
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2015-09-11",
+          "game_pk": 415759
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2015-09-15",
+          "game_pk": 415808
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2015-09-18",
+          "game_pk": 415845
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2015-09-19",
+          "game_pk": 415860
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2015-09-20",
+          "game_pk": 415875
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2015-09-23",
+          "game_pk": 415926
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2015-09-25",
+          "game_pk": 415952
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2015-09-26",
+          "game_pk": 415967
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2015-09-27",
+          "game_pk": 415982
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2015-09-28",
+          "game_pk": 415988
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2015-09-30",
+          "game_pk": 416014
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2015-10-01",
+          "game_pk": 416028
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2015-10-02",
+          "game_pk": 416039
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2015-10-04",
+          "game_pk": 416069
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-05-09",
+          "game_pk": 447352
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-05-10",
+          "game_pk": 447367
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-05-24",
+          "game_pk": 447552
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-05-25",
+          "game_pk": 447568
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-05-27",
+          "game_pk": 447592
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-05-28",
+          "game_pk": 447607
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-05-29",
+          "game_pk": 447622
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-05-30",
+          "game_pk": 447634
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-06-01",
+          "game_pk": 447663
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-06-02",
+          "game_pk": 447676
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-06-04",
+          "game_pk": 447704
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-06-05",
+          "game_pk": 447719
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-06-07",
+          "game_pk": 447735
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-06-08",
+          "game_pk": 447750
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-06-11",
+          "game_pk": 447794
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-06-15",
+          "game_pk": 447850
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-06-17",
+          "game_pk": 447877
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-06-20",
+          "game_pk": 447916
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-06-21",
+          "game_pk": 447931
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-06-22",
+          "game_pk": 447946
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-06-23",
+          "game_pk": 447958
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-06-25",
+          "game_pk": 447984
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-06-26",
+          "game_pk": 447999
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-06-27",
+          "game_pk": 448011
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-06-28",
+          "game_pk": 448025
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-06-29",
+          "game_pk": 448043
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-06-30",
+          "game_pk": 448055
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-07-01",
+          "game_pk": 448070
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-07-02",
+          "game_pk": 448085
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-07-03",
+          "game_pk": 448100
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-07-04",
+          "game_pk": 448105
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-07-05",
+          "game_pk": 448120
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-07-06",
+          "game_pk": 448135
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-07-09",
+          "game_pk": 448172
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-07-16",
+          "game_pk": 448230
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-07-19",
+          "game_pk": 448270
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-07-22",
+          "game_pk": 448310
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-07-23",
+          "game_pk": 448325
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-07-25",
+          "game_pk": 448346
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-07-26",
+          "game_pk": 448358
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-08-28",
+          "game_pk": 448802
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-09-03",
+          "game_pk": 448890
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-09-04",
+          "game_pk": 448905
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-09-05",
+          "game_pk": 448920
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-09-20",
+          "game_pk": 449127
+        },
+        {
+          "player_id": 592620,
+          "game_date": "2016-09-21",
+          "game_pk": 449142
+        }
+      ],
+      "origin_known_stats": [
+        {
+          "season": 2014,
+          "bucket": "AAA",
+          "plate_appearances": 89,
+          "home_runs": 3,
+          "strike_outs": 23,
+          "base_on_balls": 9
+        },
+        {
+          "season": 2014,
+          "bucket": "AA",
+          "plate_appearances": 419,
+          "home_runs": 12,
+          "strike_outs": 103,
+          "base_on_balls": 45
+        },
+        {
+          "season": 2015,
+          "bucket": "MLB",
+          "plate_appearances": 54,
+          "home_runs": 6,
+          "strike_outs": 21,
+          "base_on_balls": 5
+        },
+        {
+          "season": 2015,
+          "bucket": "AAA",
+          "plate_appearances": 504,
+          "home_runs": 23,
+          "strike_outs": 164,
+          "base_on_balls": 62
+        },
+        {
+          "season": 2016,
+          "bucket": "MLB",
+          "plate_appearances": 151,
+          "home_runs": 5,
+          "strike_outs": 44,
+          "base_on_balls": 19
+        },
+        {
+          "season": 2016,
+          "bucket": "AAA",
+          "plate_appearances": 222,
+          "home_runs": 16,
+          "strike_outs": 66,
+          "base_on_balls": 26
+        }
+      ],
+      "unchanged_forecast": [
+        {
+          "player_name": "Jarrett Parker",
+          "observation_p": 0.8802528373467753,
+          "observation_conditional_pa": 146.94377637830388,
+          "observation_pa": 129.34767608745204,
+          "observation_rate": 0.18121945648966575,
+          "observation_value": 0.43817594622255013,
+          "next_pa": 177,
+          "actual_relative_value": 0.21408455385316558
+        }
+      ],
+      "source_support": [
+        {
+          "row_id": 23949,
+          "observation_state": "captured_IL_unresolved",
+          "recent_history_coverage_complete": true,
+          "age_band": 5.0,
+          "workload": "brief_or_part_time",
+          "source_profile_people": 0,
+          "origin": 2016,
+          "fold": 3,
+          "head": "participation"
+        },
+        {
+          "row_id": 23949,
+          "observation_state": "captured_IL_unresolved",
+          "recent_history_coverage_complete": true,
+          "age_band": 5.0,
+          "workload": "brief_or_part_time",
+          "source_profile_people": 0,
+          "origin": 2016,
+          "fold": 3,
+          "head": "conditional_pa"
+        }
+      ],
+      "peers": [
+        {
+          "row_id": 23901,
+          "player_id": 592192,
+          "origin_year": 2016,
+          "age": 27.0,
+          "stage": "Current MLB",
+          "pa_0": 44,
+          "ctx_information_date": "2017-01-28",
+          "candidate_key": "2016:592192",
+          "information_date": "2017-01-28",
+          "observation_state": "captured_IL_unresolved",
+          "recent_history_coverage_complete": true,
+          "recent_episode_count": 1,
+          "recent_placement_reports": 1,
+          "recent_surgery_report_count": 0,
+          "recent_followup_calendar_upper_days": 237,
+          "recent_censored_followup_upper_days": 0,
+          "pending_observation": true,
+          "true_injury_days": null,
+          "medical_recovery_certified": false,
+          "old_medical_open": true,
+          "old_medical_scope_interrupted": false,
+          "old_followup_union_days": 237,
+          "old_overlapping_episode_count": 1,
+          "followup_days_removed": 0,
+          "episode_count_added": 0,
+          "distance": 0.12721111111111114,
+          "player_name": "Mark Canha",
+          "observation_pa": 139.45574448193588,
+          "next_pa": 187
+        },
+        {
+          "row_id": 24299,
+          "player_id": 605512,
+          "origin_year": 2016,
+          "age": 25.0,
+          "stage": "Current MLB",
+          "pa_0": 144,
+          "ctx_information_date": "2017-01-28",
+          "candidate_key": "2016:605512",
+          "information_date": "2017-01-28",
+          "observation_state": "captured_IL_unresolved",
+          "recent_history_coverage_complete": true,
+          "recent_episode_count": 1,
+          "recent_placement_reports": 1,
+          "recent_surgery_report_count": 0,
+          "recent_followup_calendar_upper_days": 142,
+          "recent_censored_followup_upper_days": 0,
+          "pending_observation": true,
+          "true_injury_days": null,
+          "medical_recovery_certified": false,
+          "old_medical_open": true,
+          "old_medical_scope_interrupted": false,
+          "old_followup_union_days": 142,
+          "old_overlapping_episode_count": 1,
+          "followup_days_removed": 0,
+          "episode_count_added": 0,
+          "distance": 0.16054444444444443,
+          "player_name": "Preston Tucker",
+          "observation_pa": 147.99642337407067,
+          "next_pa": 0
+        },
+        {
+          "row_id": 23147,
+          "player_id": 475100,
+          "origin_year": 2016,
+          "age": 29.0,
+          "stage": "Current MLB",
+          "pa_0": 113,
+          "ctx_information_date": "2017-01-28",
+          "candidate_key": "2016:475100",
+          "information_date": "2017-01-28",
+          "observation_state": "captured_IL_unresolved",
+          "recent_history_coverage_complete": true,
+          "recent_episode_count": 3,
+          "recent_placement_reports": 3,
+          "recent_surgery_report_count": 0,
+          "recent_followup_calendar_upper_days": 217,
+          "recent_censored_followup_upper_days": 0,
+          "pending_observation": true,
+          "true_injury_days": null,
+          "medical_recovery_certified": false,
+          "old_medical_open": true,
+          "old_medical_scope_interrupted": false,
+          "old_followup_union_days": 217,
+          "old_overlapping_episode_count": 3,
+          "followup_days_removed": 0,
+          "episode_count_added": 0,
+          "distance": 0.17604444444444445,
+          "player_name": "Scott Van Slyke",
+          "observation_pa": 143.72086590541224,
+          "next_pa": 48
+        }
+      ],
+      "peer_rule": "Same origin and old open/censored flags; nearest age/5 and MLB PA/300; no future outcomes",
+      "future_mutation_invariant": true,
+      "new_forecast": null
+    }
+  ],
+  "original_case_count": 12,
+  "total_reviewed_player_origins": 14,
+  "unique_reviewed_people": 13,
+  "all_actual_source_support_subsets_recounted": 70,
+  "fixed_contract_names_complete": true,
+  "new_fits": 0,
+  "forecasts_changed": false,
+  "hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-nonmedical-opportunity\\features-0.parquet": "6f6eb235eb172c7a93c8ad25c8002d73e682edf5e77984d9a4fbdd885ac6a924",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-nonmedical-opportunity\\features-1.parquet": "2e8e939796f4ecc9146b334187dd6b13a434008c5fc1fcb395c562bdf198de41",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-nonmedical-opportunity\\features-2.parquet": "46c42c56e0a1dc035433b64947686f56465c6881e029c93cd6e7bdf531d41d6f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-nonmedical-opportunity\\features-3.parquet": "39581e607cfc4f8c6e95fe10d08bf94543559d95434a92560a64ba647491ed1d",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-nonmedical-opportunity\\features-4.parquet": "d953440cd61ed77044ef666833bbddcbc25ad3589d1b2ae9bcdc9ed6461cfe33",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-v31\\dated-stints.parquet": "d079aea8ae18cdae378013f8d0f63cd236ee137f25f6d5ebb4dd0a4a12c4518a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\hitter-medical-timeline-review-amendment.md": "59fc64ee9402785ea6f60cbea0fee6e4683281a94a25e1b800059ae4d401e427",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\complete_hitter_medical_source_review.py": "0c9487be5be5d963c2386c34b7af21ad3427d4d2c14a4361632f0e58432fd2e0",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\model-evidence\\hitter-medical-timeline-repair\\report.json": "02862ba13669fa2ebdd08dfeab8e38bcd8d3f5a6b7f4f9f3120068290bb47a2a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\model-evidence\\hitter-medical-timeline-repair\\player-walks.json": "2abf9bc5183aa0ca63b4cd02bcb332e965c0c021672e5e94746846bb71a1bff4"
+  }
+}

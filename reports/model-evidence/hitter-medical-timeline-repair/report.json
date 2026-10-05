@@ -1,0 +1,743 @@
+{
+  "population_rows": 83300,
+  "model_rows": 63314,
+  "source_counts": [
+    {
+      "year": 2015,
+      "positive_player_games": 47500,
+      "source_people": 896,
+      "excluded_contact_rows": 0
+    },
+    {
+      "year": 2016,
+      "positive_player_games": 47140,
+      "source_people": 892,
+      "excluded_contact_rows": 0
+    },
+    {
+      "year": 2017,
+      "positive_player_games": 47288,
+      "source_people": 894,
+      "excluded_contact_rows": 0
+    },
+    {
+      "year": 2018,
+      "positive_player_games": 47070,
+      "source_people": 898,
+      "excluded_contact_rows": 0
+    },
+    {
+      "year": 2019,
+      "positive_player_games": 46968,
+      "source_people": 895,
+      "excluded_contact_rows": 52
+    },
+    {
+      "year": 2020,
+      "positive_player_games": 16817,
+      "source_people": 575,
+      "excluded_contact_rows": 46
+    },
+    {
+      "year": 2021,
+      "positive_player_games": 46662,
+      "source_people": 923,
+      "excluded_contact_rows": 39
+    },
+    {
+      "year": 2022,
+      "positive_player_games": 45694,
+      "source_people": 685,
+      "excluded_contact_rows": 0
+    },
+    {
+      "year": 2023,
+      "positive_player_games": 46094,
+      "source_people": 650,
+      "excluded_contact_rows": 0
+    },
+    {
+      "year": 2024,
+      "positive_player_games": 46073,
+      "source_people": 647,
+      "excluded_contact_rows": 0
+    }
+  ],
+  "verified_positive_window_cells": 49542,
+  "support": [
+    {
+      "origin": 2016,
+      "fold": 0,
+      "head": "participation",
+      "training_rows": 18456,
+      "training_people": 6659,
+      "complete_history_training_people": 0,
+      "missing_profile_rows": 893
+    },
+    {
+      "origin": 2016,
+      "fold": 0,
+      "head": "conditional_pa",
+      "training_rows": 2492,
+      "training_people": 848,
+      "complete_history_training_people": 0,
+      "missing_profile_rows": 893
+    },
+    {
+      "origin": 2016,
+      "fold": 1,
+      "head": "participation",
+      "training_rows": 18326,
+      "training_people": 6668,
+      "complete_history_training_people": 0,
+      "missing_profile_rows": 933
+    },
+    {
+      "origin": 2016,
+      "fold": 1,
+      "head": "conditional_pa",
+      "training_rows": 2567,
+      "training_people": 872,
+      "complete_history_training_people": 0,
+      "missing_profile_rows": 933
+    },
+    {
+      "origin": 2016,
+      "fold": 2,
+      "head": "participation",
+      "training_rows": 17922,
+      "training_people": 6502,
+      "complete_history_training_people": 0,
+      "missing_profile_rows": 990
+    },
+    {
+      "origin": 2016,
+      "fold": 2,
+      "head": "conditional_pa",
+      "training_rows": 2584,
+      "training_people": 868,
+      "complete_history_training_people": 0,
+      "missing_profile_rows": 990
+    },
+    {
+      "origin": 2016,
+      "fold": 3,
+      "head": "participation",
+      "training_rows": 18149,
+      "training_people": 6605,
+      "complete_history_training_people": 0,
+      "missing_profile_rows": 937
+    },
+    {
+      "origin": 2016,
+      "fold": 3,
+      "head": "conditional_pa",
+      "training_rows": 2518,
+      "training_people": 858,
+      "complete_history_training_people": 0,
+      "missing_profile_rows": 937
+    },
+    {
+      "origin": 2016,
+      "fold": 4,
+      "head": "participation",
+      "training_rows": 18239,
+      "training_people": 6618,
+      "complete_history_training_people": 0,
+      "missing_profile_rows": 912
+    },
+    {
+      "origin": 2016,
+      "fold": 4,
+      "head": "conditional_pa",
+      "training_rows": 2503,
+      "training_people": 850,
+      "complete_history_training_people": 0,
+      "missing_profile_rows": 912
+    },
+    {
+      "origin": 2017,
+      "fold": 0,
+      "head": "participation",
+      "training_rows": 22228,
+      "training_people": 7465,
+      "complete_history_training_people": 3772,
+      "missing_profile_rows": 1
+    },
+    {
+      "origin": 2017,
+      "fold": 0,
+      "head": "conditional_pa",
+      "training_rows": 2999,
+      "training_people": 943,
+      "complete_history_training_people": 507,
+      "missing_profile_rows": 18
+    },
+    {
+      "origin": 2017,
+      "fold": 1,
+      "head": "participation",
+      "training_rows": 22058,
+      "training_people": 7440,
+      "complete_history_training_people": 3732,
+      "missing_profile_rows": 4
+    },
+    {
+      "origin": 2017,
+      "fold": 1,
+      "head": "conditional_pa",
+      "training_rows": 3064,
+      "training_people": 958,
+      "complete_history_training_people": 497,
+      "missing_profile_rows": 26
+    },
+    {
+      "origin": 2017,
+      "fold": 2,
+      "head": "participation",
+      "training_rows": 21597,
+      "training_people": 7271,
+      "complete_history_training_people": 3675,
+      "missing_profile_rows": 5
+    },
+    {
+      "origin": 2017,
+      "fold": 2,
+      "head": "conditional_pa",
+      "training_rows": 3070,
+      "training_people": 959,
+      "complete_history_training_people": 486,
+      "missing_profile_rows": 24
+    },
+    {
+      "origin": 2017,
+      "fold": 3,
+      "head": "participation",
+      "training_rows": 21877,
+      "training_people": 7368,
+      "complete_history_training_people": 3728,
+      "missing_profile_rows": 4
+    },
+    {
+      "origin": 2017,
+      "fold": 3,
+      "head": "conditional_pa",
+      "training_rows": 3023,
+      "training_people": 949,
+      "complete_history_training_people": 505,
+      "missing_profile_rows": 25
+    },
+    {
+      "origin": 2017,
+      "fold": 4,
+      "head": "participation",
+      "training_rows": 21992,
+      "training_people": 7400,
+      "complete_history_training_people": 3753,
+      "missing_profile_rows": 5
+    },
+    {
+      "origin": 2017,
+      "fold": 4,
+      "head": "conditional_pa",
+      "training_rows": 3008,
+      "training_people": 943,
+      "complete_history_training_people": 505,
+      "missing_profile_rows": 16
+    },
+    {
+      "origin": 2018,
+      "fold": 0,
+      "head": "participation",
+      "training_rows": 26016,
+      "training_people": 8223,
+      "complete_history_training_people": 4579,
+      "missing_profile_rows": 2
+    },
+    {
+      "origin": 2018,
+      "fold": 0,
+      "head": "conditional_pa",
+      "training_rows": 3505,
+      "training_people": 1024,
+      "complete_history_training_people": 612,
+      "missing_profile_rows": 4
+    },
+    {
+      "origin": 2018,
+      "fold": 1,
+      "head": "participation",
+      "training_rows": 25812,
+      "training_people": 8200,
+      "complete_history_training_people": 4538,
+      "missing_profile_rows": 0
+    },
+    {
+      "origin": 2018,
+      "fold": 1,
+      "head": "conditional_pa",
+      "training_rows": 3579,
+      "training_people": 1040,
+      "complete_history_training_people": 606,
+      "missing_profile_rows": 4
+    },
+    {
+      "origin": 2018,
+      "fold": 2,
+      "head": "participation",
+      "training_rows": 25299,
+      "training_people": 8061,
+      "complete_history_training_people": 4508,
+      "missing_profile_rows": 1
+    },
+    {
+      "origin": 2018,
+      "fold": 2,
+      "head": "conditional_pa",
+      "training_rows": 3555,
+      "training_people": 1034,
+      "complete_history_training_people": 587,
+      "missing_profile_rows": 6
+    },
+    {
+      "origin": 2018,
+      "fold": 3,
+      "head": "participation",
+      "training_rows": 25619,
+      "training_people": 8124,
+      "complete_history_training_people": 4530,
+      "missing_profile_rows": 0
+    },
+    {
+      "origin": 2018,
+      "fold": 3,
+      "head": "conditional_pa",
+      "training_rows": 3523,
+      "training_people": 1023,
+      "complete_history_training_people": 604,
+      "missing_profile_rows": 3
+    },
+    {
+      "origin": 2018,
+      "fold": 4,
+      "head": "participation",
+      "training_rows": 25774,
+      "training_people": 8164,
+      "complete_history_training_people": 4569,
+      "missing_profile_rows": 0
+    },
+    {
+      "origin": 2018,
+      "fold": 4,
+      "head": "conditional_pa",
+      "training_rows": 3518,
+      "training_people": 1019,
+      "complete_history_training_people": 607,
+      "missing_profile_rows": 2
+    },
+    {
+      "origin": 2021,
+      "fold": 0,
+      "head": "participation",
+      "training_rows": 33768,
+      "training_people": 10076,
+      "complete_history_training_people": 6454,
+      "missing_profile_rows": 1
+    },
+    {
+      "origin": 2021,
+      "fold": 0,
+      "head": "conditional_pa",
+      "training_rows": 4552,
+      "training_people": 1264,
+      "complete_history_training_people": 858,
+      "missing_profile_rows": 3
+    },
+    {
+      "origin": 2021,
+      "fold": 1,
+      "head": "participation",
+      "training_rows": 33532,
+      "training_people": 10055,
+      "complete_history_training_people": 6419,
+      "missing_profile_rows": 1
+    },
+    {
+      "origin": 2021,
+      "fold": 1,
+      "head": "conditional_pa",
+      "training_rows": 4648,
+      "training_people": 1267,
+      "complete_history_training_people": 840,
+      "missing_profile_rows": 3
+    },
+    {
+      "origin": 2021,
+      "fold": 2,
+      "head": "participation",
+      "training_rows": 32897,
+      "training_people": 9902,
+      "complete_history_training_people": 6369,
+      "missing_profile_rows": 1
+    },
+    {
+      "origin": 2021,
+      "fold": 2,
+      "head": "conditional_pa",
+      "training_rows": 4533,
+      "training_people": 1247,
+      "complete_history_training_people": 806,
+      "missing_profile_rows": 3
+    },
+    {
+      "origin": 2021,
+      "fold": 3,
+      "head": "participation",
+      "training_rows": 33295,
+      "training_people": 9957,
+      "complete_history_training_people": 6386,
+      "missing_profile_rows": 2
+    },
+    {
+      "origin": 2021,
+      "fold": 3,
+      "head": "conditional_pa",
+      "training_rows": 4570,
+      "training_people": 1256,
+      "complete_history_training_people": 843,
+      "missing_profile_rows": 2
+    },
+    {
+      "origin": 2021,
+      "fold": 4,
+      "head": "participation",
+      "training_rows": 33472,
+      "training_people": 9994,
+      "complete_history_training_people": 6420,
+      "missing_profile_rows": 2
+    },
+    {
+      "origin": 2021,
+      "fold": 4,
+      "head": "conditional_pa",
+      "training_rows": 4577,
+      "training_people": 1254,
+      "complete_history_training_people": 849,
+      "missing_profile_rows": 3
+    },
+    {
+      "origin": 2022,
+      "fold": 0,
+      "head": "participation",
+      "training_rows": 37167,
+      "training_people": 10868,
+      "complete_history_training_people": 7246,
+      "missing_profile_rows": 0
+    },
+    {
+      "origin": 2022,
+      "fold": 0,
+      "head": "conditional_pa",
+      "training_rows": 5112,
+      "training_people": 1397,
+      "complete_history_training_people": 991,
+      "missing_profile_rows": 2
+    },
+    {
+      "origin": 2022,
+      "fold": 1,
+      "head": "participation",
+      "training_rows": 36954,
+      "training_people": 10877,
+      "complete_history_training_people": 7241,
+      "missing_profile_rows": 1
+    },
+    {
+      "origin": 2022,
+      "fold": 1,
+      "head": "conditional_pa",
+      "training_rows": 5204,
+      "training_people": 1393,
+      "complete_history_training_people": 966,
+      "missing_profile_rows": 1
+    },
+    {
+      "origin": 2022,
+      "fold": 2,
+      "head": "participation",
+      "training_rows": 36261,
+      "training_people": 10714,
+      "complete_history_training_people": 7181,
+      "missing_profile_rows": 0
+    },
+    {
+      "origin": 2022,
+      "fold": 2,
+      "head": "conditional_pa",
+      "training_rows": 5062,
+      "training_people": 1373,
+      "complete_history_training_people": 932,
+      "missing_profile_rows": 1
+    },
+    {
+      "origin": 2022,
+      "fold": 3,
+      "head": "participation",
+      "training_rows": 36696,
+      "training_people": 10780,
+      "complete_history_training_people": 7209,
+      "missing_profile_rows": 1
+    },
+    {
+      "origin": 2022,
+      "fold": 3,
+      "head": "conditional_pa",
+      "training_rows": 5114,
+      "training_people": 1382,
+      "complete_history_training_people": 969,
+      "missing_profile_rows": 1
+    },
+    {
+      "origin": 2022,
+      "fold": 4,
+      "head": "participation",
+      "training_rows": 36878,
+      "training_people": 10805,
+      "complete_history_training_people": 7231,
+      "missing_profile_rows": 1
+    },
+    {
+      "origin": 2022,
+      "fold": 4,
+      "head": "conditional_pa",
+      "training_rows": 5140,
+      "training_people": 1391,
+      "complete_history_training_people": 986,
+      "missing_profile_rows": 1
+    },
+    {
+      "origin": 2023,
+      "fold": 0,
+      "head": "participation",
+      "training_rows": 40538,
+      "training_people": 11490,
+      "complete_history_training_people": 7870,
+      "missing_profile_rows": 1
+    },
+    {
+      "origin": 2023,
+      "fold": 0,
+      "head": "conditional_pa",
+      "training_rows": 5637,
+      "training_people": 1486,
+      "complete_history_training_people": 1082,
+      "missing_profile_rows": 1
+    },
+    {
+      "origin": 2023,
+      "fold": 1,
+      "head": "participation",
+      "training_rows": 40399,
+      "training_people": 11544,
+      "complete_history_training_people": 7910,
+      "missing_profile_rows": 0
+    },
+    {
+      "origin": 2023,
+      "fold": 1,
+      "head": "conditional_pa",
+      "training_rows": 5722,
+      "training_people": 1475,
+      "complete_history_training_people": 1049,
+      "missing_profile_rows": 1
+    },
+    {
+      "origin": 2023,
+      "fold": 2,
+      "head": "participation",
+      "training_rows": 39633,
+      "training_people": 11349,
+      "complete_history_training_people": 7817,
+      "missing_profile_rows": 0
+    },
+    {
+      "origin": 2023,
+      "fold": 2,
+      "head": "conditional_pa",
+      "training_rows": 5563,
+      "training_people": 1458,
+      "complete_history_training_people": 1018,
+      "missing_profile_rows": 0
+    },
+    {
+      "origin": 2023,
+      "fold": 3,
+      "head": "participation",
+      "training_rows": 40090,
+      "training_people": 11424,
+      "complete_history_training_people": 7854,
+      "missing_profile_rows": 0
+    },
+    {
+      "origin": 2023,
+      "fold": 3,
+      "head": "conditional_pa",
+      "training_rows": 5636,
+      "training_people": 1471,
+      "complete_history_training_people": 1060,
+      "missing_profile_rows": 0
+    },
+    {
+      "origin": 2023,
+      "fold": 4,
+      "head": "participation",
+      "training_rows": 40280,
+      "training_people": 11445,
+      "complete_history_training_people": 7873,
+      "missing_profile_rows": 1
+    },
+    {
+      "origin": 2023,
+      "fold": 4,
+      "head": "conditional_pa",
+      "training_rows": 5674,
+      "training_people": 1474,
+      "complete_history_training_people": 1071,
+      "missing_profile_rows": 1
+    },
+    {
+      "origin": 2024,
+      "fold": 0,
+      "head": "participation",
+      "training_rows": 43863,
+      "training_people": 12125,
+      "complete_history_training_people": 8505,
+      "missing_profile_rows": 2
+    },
+    {
+      "origin": 2024,
+      "fold": 0,
+      "head": "conditional_pa",
+      "training_rows": 6162,
+      "training_people": 1574,
+      "complete_history_training_people": 1170,
+      "missing_profile_rows": 2
+    },
+    {
+      "origin": 2024,
+      "fold": 1,
+      "head": "participation",
+      "training_rows": 43822,
+      "training_people": 12182,
+      "complete_history_training_people": 8548,
+      "missing_profile_rows": 0
+    },
+    {
+      "origin": 2024,
+      "fold": 1,
+      "head": "conditional_pa",
+      "training_rows": 6232,
+      "training_people": 1562,
+      "complete_history_training_people": 1136,
+      "missing_profile_rows": 0
+    },
+    {
+      "origin": 2024,
+      "fold": 2,
+      "head": "participation",
+      "training_rows": 42956,
+      "training_people": 11979,
+      "complete_history_training_people": 8447,
+      "missing_profile_rows": 0
+    },
+    {
+      "origin": 2024,
+      "fold": 2,
+      "head": "conditional_pa",
+      "training_rows": 6072,
+      "training_people": 1547,
+      "complete_history_training_people": 1107,
+      "missing_profile_rows": 2
+    },
+    {
+      "origin": 2024,
+      "fold": 3,
+      "head": "participation",
+      "training_rows": 43453,
+      "training_people": 12051,
+      "complete_history_training_people": 8481,
+      "missing_profile_rows": 0
+    },
+    {
+      "origin": 2024,
+      "fold": 3,
+      "head": "conditional_pa",
+      "training_rows": 6154,
+      "training_people": 1558,
+      "complete_history_training_people": 1147,
+      "missing_profile_rows": 0
+    },
+    {
+      "origin": 2024,
+      "fold": 4,
+      "head": "participation",
+      "training_rows": 43634,
+      "training_people": 12071,
+      "complete_history_training_people": 8499,
+      "missing_profile_rows": 1
+    },
+    {
+      "origin": 2024,
+      "fold": 4,
+      "head": "conditional_pa",
+      "training_rows": 6204,
+      "training_people": 1559,
+      "complete_history_training_people": 1156,
+      "missing_profile_rows": 2
+    }
+  ],
+  "states": [
+    {
+      "observation_state": "captured_IL_unresolved",
+      "len": 183
+    },
+    {
+      "observation_state": "medical_followup_censored",
+      "len": 1041
+    },
+    {
+      "observation_state": "no_captured_medical_entry",
+      "len": 73834
+    },
+    {
+      "observation_state": "observed_MLB_use",
+      "len": 4603
+    },
+    {
+      "observation_state": "reported_IL_activation",
+      "len": 3337
+    },
+    {
+      "observation_state": "unqualified_roster_return",
+      "len": 302
+    }
+  ],
+  "changed_open_rows": 80,
+  "observed_use_after_old_open_rows": 80,
+  "removed_span_rows": 297,
+  "added_episode_rows": 22,
+  "new_fits": 0,
+  "forecasts_changed": false,
+  "protected_2026_outcomes_used": false,
+  "fixed_cases_reconstructed_independently": 12,
+  "travis_official_log_return_upper": "2016-05-25",
+  "true_injury_days_certified": false,
+  "predictive_improvement_established": false,
+  "source_correction_implemented": true,
+  "player_walkthrough_status": "pending_judgment",
+  "hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-medical-timeline-repair\\build-receipt.json": "f4f8f7ff8fac5813afc37134baf8b8cc9952dd8a4dc4eeed234b1dcf57ace299",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\model-evidence\\hitter-medical-timeline-repair\\player-walks.json": "2abf9bc5183aa0ca63b4cd02bcb332e965c0c021672e5e94746846bb71a1bff4",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\model-evidence\\hitter-role-health-separation\\travis-2016-official-gamelog.json": "6e7eb5b8758de9dc8e0fd11f94f9d4e7ff15ede2f9a1399098da2831e49cb2c1"
+  }
+}
