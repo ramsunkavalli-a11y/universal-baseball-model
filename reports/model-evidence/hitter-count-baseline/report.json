@@ -1,0 +1,3198 @@
+{
+  "player_walkthrough_status": "complete",
+  "cases": 13,
+  "new_heads": 105,
+  "disposition": "Not adopted; retain incumbent",
+  "protected_outcomes_used": false,
+  "completed_2026_evaluation_unchanged": true,
+  "deployment_approved": false,
+  "reasonability_status": "Reviewed; foreign adaptation/power and important player errors remain, not an unqualified pass",
+  "research_goal_remains_active": true,
+  "hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\finalize_hitter_count_baseline.py": "9f530dc011d6a51ad5d719b560c78bb229db0ff12b568c6644a6c4bf3a168c58",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\hitter-count-baseline-result.md": "74abefed50f286c2b0c55a6a08c4d0105d8d18f1dac910aaabe389601022b186",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\hitter-count-baseline-player-review.md": "c334faa12075ac23621525c6ae86a8f338694803e8569085bbbc701a3f0cb748",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-count-baseline\\preflight.json": "6d2cbfc04c9bf0663d7708841e583d15dc853fff44dbbfbf1f00fbb597dae5bf",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-count-baseline\\source-review.json": "a232ef9e83344a1d83af200e091484a9f6c6c9adc5199a3fed2f8df1a5626330",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-count-baseline\\reference-review.json": "eb1e7cc2acf8ba337019198acd11ee93f515385ad12853454a50e480a96343a2",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-count-baseline\\fit-seal.json": "181761188ae294b5374c4ab1115ccedfde539c48bfa30f724e9710033c1c08a8",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-count-baseline\\fit-report.json": "337b4672914b5f7e6468d408a658e4319d30ec450673923bc9da8fc925eef1e9",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-count-baseline\\predictions.parquet": "970175efeeef9a2700ad5372172b9846d3b877cf6bf5c4cee2e05192046c6ad5",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-count-baseline\\review-receipt.json": "14d3a28d45f6075406fd0f549ff50622eeccc64bf5484af181c57274bc6313e7",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-count-baseline\\review-qualification.json": "e714ae7c9136313fb20a9dc55d0582044d3d3c059f851ae9b9c90dcc6b12ad7a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-count-baseline\\scores.json": "374421bf4113f99d1edfce088c067631a813500e29dc6a311ba02bdc657d9345",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-count-baseline\\player-walks.json": "f65c15376979c12baf6ed9b787eb43596a1bcfd5104ee6a92738f64499ba677c"
+  },
+  "scores": {
+    "scopes": [
+      {
+        "scope": "all",
+        "rows": 30506,
+        "players": 11020,
+        "actual_PA": 1270493,
+        "actual_value": 4185.433589228993,
+        "scores": {
+          "current": {
+            "value_rmse": 0.4351333510509891,
+            "value_mae": 0.12387447809219296,
+            "value_bias": -0.0007478371616184461,
+            "expected_value": 4155.430076780389,
+            "expected_PA": 1228732.5119559553,
+            "rate_rmse": 1.8048133711486227
+          },
+          "count": {
+            "value_rmse": 0.43811085622845736,
+            "value_mae": 0.1237075294313326,
+            "value_bias": -0.0018098335116052996,
+            "expected_value": 4117.779499795511,
+            "expected_PA": 1228732.5119559553,
+            "rate_rmse": 1.8134720939169484
+          },
+          "shared": {
+            "value_rmse": 0.4366266473861397,
+            "value_mae": 0.12448056664440627,
+            "value_bias": -0.0009570150475541311,
+            "expected_value": 4149.421631127245,
+            "expected_PA": 1228732.5119559553,
+            "rate_rmse": 1.8135509744285863
+          },
+          "repaired_overseas": {
+            "value_rmse": 0.4360646167819037,
+            "value_mae": 0.12406556431699609,
+            "value_bias": -0.0016917862176893728,
+            "expected_value": 4128.4833763172755,
+            "expected_PA": 1235119.0171268883,
+            "rate_rmse": 1.808499510716202
+          },
+          "direct_foreign": {
+            "value_rmse": 0.43759561671340547,
+            "value_mae": 0.12358664364551662,
+            "value_bias": -0.008964515497633491,
+            "expected_value": 3904.254099012546,
+            "expected_PA": 1228732.5119559548,
+            "rate_rmse": 1.8493351590309657
+          }
+        },
+        "count_events": {
+          "log_loss": 1.4760639207739965,
+          "brier": 0.7006150051860521,
+          "frequencies": {
+            "other": {
+              "predicted": 0.4623585570206932,
+              "actual": 0.46327348926802303
+            },
+            "K": {
+              "predicted": 0.22212977488502825,
+              "actual": 0.2216671445667068
+            },
+            "UBB": {
+              "predicted": 0.08204921998185287,
+              "actual": 0.08110525348565614
+            },
+            "HBP": {
+              "predicted": 0.010752399353208274,
+              "actual": 0.010788909917616128
+            },
+            "1B": {
+              "predicted": 0.14201192488683914,
+              "actual": 0.142768966396565
+            },
+            "2B": {
+              "predicted": 0.0444891017685698,
+              "actual": 0.0445094063841147
+            },
+            "3B": {
+              "predicted": 0.004146442780554994,
+              "actual": 0.004003980781501478
+            },
+            "HR": {
+              "predicted": 0.03206257932325332,
+              "actual": 0.031882849199816606
+            }
+          },
+          "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+        },
+        "matched_supported_events": {
+          "rows": 4538,
+          "count": {
+            "log_loss": 1.4760639207739965,
+            "brier": 0.7006150051860521,
+            "frequencies": {
+              "other": {
+                "predicted": 0.4623585570206932,
+                "actual": 0.46327348926802303
+              },
+              "K": {
+                "predicted": 0.22212977488502825,
+                "actual": 0.2216671445667068
+              },
+              "UBB": {
+                "predicted": 0.08204921998185287,
+                "actual": 0.08110525348565614
+              },
+              "HBP": {
+                "predicted": 0.010752399353208274,
+                "actual": 0.010788909917616128
+              },
+              "1B": {
+                "predicted": 0.14201192488683914,
+                "actual": 0.142768966396565
+              },
+              "2B": {
+                "predicted": 0.0444891017685698,
+                "actual": 0.0445094063841147
+              },
+              "3B": {
+                "predicted": 0.004146442780554994,
+                "actual": 0.004003980781501478
+              },
+              "HR": {
+                "predicted": 0.03206257932325332,
+                "actual": 0.031882849199816606
+              }
+            },
+            "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+          },
+          "old_future_direct": {
+            "log_loss": 1.4776343144016577,
+            "brier": 0.7010206117768976,
+            "frequencies": {
+              "other": {
+                "predicted": 0.47200690411445,
+                "actual": 0.46327348926802303
+              },
+              "K": {
+                "predicted": 0.2240248378783215,
+                "actual": 0.2216671445667068
+              },
+              "UBB": {
+                "predicted": 0.07775047687680903,
+                "actual": 0.08110525348565614
+              },
+              "HBP": {
+                "predicted": 0.010669002496810912,
+                "actual": 0.010788909917616128
+              },
+              "1B": {
+                "predicted": 0.1401683884479892,
+                "actual": 0.142768966396565
+              },
+              "2B": {
+                "predicted": 0.04320006654656395,
+                "actual": 0.0445094063841147
+              },
+              "3B": {
+                "predicted": 0.004845928281788674,
+                "actual": 0.004003980781501478
+              },
+              "HR": {
+                "predicted": 0.027334395357266505,
+                "actual": 0.031882849199816606
+              }
+            },
+            "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+          },
+          "qualification": "Old future profile evaluated for all supported rows; old value branch kept established MLB Ridge. Profile and value comparisons have different routing."
+        }
+      },
+      {
+        "scope": "public",
+        "rows": 2627,
+        "players": 1044,
+        "actual_PA": 660776,
+        "actual_value": 2159.109280389232,
+        "scores": {
+          "current": {
+            "value_rmse": 1.0239813329483616,
+            "value_mae": 0.6852995445457324,
+            "value_bias": 0.019974003803383537,
+            "expected_value": 2210.567858660615,
+            "expected_PA": 649254.8423971365,
+            "rate_rmse": 1.6647505688498578
+          },
+          "count": {
+            "value_rmse": 1.027184000620879,
+            "value_mae": 0.6868798663628587,
+            "value_bias": 0.017453017181465615,
+            "expected_value": 2204.0801319240727,
+            "expected_PA": 649254.8423971365,
+            "rate_rmse": 1.6742104102915367
+          },
+          "shared": {
+            "value_rmse": 1.0263572661550107,
+            "value_mae": 0.6861902505610896,
+            "value_bias": 0.01636451357433735,
+            "expected_value": 2201.3046755650025,
+            "expected_PA": 649254.8423971365,
+            "rate_rmse": 1.6719492483375598
+          },
+          "repaired_overseas": {
+            "value_rmse": 1.0261983335467624,
+            "value_mae": 0.6820771007674301,
+            "value_bias": -0.0003924417155311735,
+            "expected_value": 2156.341459058865,
+            "expected_PA": 652404.6172658494,
+            "rate_rmse": 1.662716037861217
+          },
+          "direct_foreign": {
+            "value_rmse": 1.0239813329483616,
+            "value_mae": 0.6852995445457325,
+            "value_bias": 0.019974003803383534,
+            "expected_value": 2210.567858660615,
+            "expected_PA": 649254.8423971365,
+            "rate_rmse": 1.6647505688498578
+          }
+        },
+        "count_events": {
+          "log_loss": 1.4709516561829332,
+          "brier": 0.6989865209871843,
+          "frequencies": {
+            "other": {
+              "predicted": 0.45981083603856865,
+              "actual": 0.4656756624735914
+            },
+            "K": {
+              "predicted": 0.22572611986034322,
+              "actual": 0.22194294226072514
+            },
+            "UBB": {
+              "predicted": 0.08440108863520038,
+              "actual": 0.08100731591605109
+            },
+            "HBP": {
+              "predicted": 0.011592594489334869,
+              "actual": 0.011108327554552282
+            },
+            "1B": {
+              "predicted": 0.13849154649816242,
+              "actual": 0.14220227036272454
+            },
+            "2B": {
+              "predicted": 0.04379609517003314,
+              "actual": 0.043598134223625816
+            },
+            "3B": {
+              "predicted": 0.0035995840688431034,
+              "actual": 0.0036287913621121065
+            },
+            "HR": {
+              "predicted": 0.03258213523951429,
+              "actual": 0.03083655584661765
+            }
+          },
+          "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+        },
+        "matched_supported_events": {
+          "rows": 2088,
+          "count": {
+            "log_loss": 1.4709516561829332,
+            "brier": 0.6989865209871843,
+            "frequencies": {
+              "other": {
+                "predicted": 0.45981083603856865,
+                "actual": 0.4656756624735914
+              },
+              "K": {
+                "predicted": 0.22572611986034322,
+                "actual": 0.22194294226072514
+              },
+              "UBB": {
+                "predicted": 0.08440108863520038,
+                "actual": 0.08100731591605109
+              },
+              "HBP": {
+                "predicted": 0.011592594489334869,
+                "actual": 0.011108327554552282
+              },
+              "1B": {
+                "predicted": 0.13849154649816242,
+                "actual": 0.14220227036272454
+              },
+              "2B": {
+                "predicted": 0.04379609517003314,
+                "actual": 0.043598134223625816
+              },
+              "3B": {
+                "predicted": 0.0035995840688431034,
+                "actual": 0.0036287913621121065
+              },
+              "HR": {
+                "predicted": 0.03258213523951429,
+                "actual": 0.03083655584661765
+              }
+            },
+            "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+          },
+          "old_future_direct": {
+            "log_loss": 1.47171776598538,
+            "brier": 0.6991457844825814,
+            "frequencies": {
+              "other": {
+                "predicted": 0.4654342243998484,
+                "actual": 0.4656756624735914
+              },
+              "K": {
+                "predicted": 0.22849471188734682,
+                "actual": 0.22194294226072514
+              },
+              "UBB": {
+                "predicted": 0.0808338966989274,
+                "actual": 0.08100731591605109
+              },
+              "HBP": {
+                "predicted": 0.011411551766287355,
+                "actual": 0.011108327554552282
+              },
+              "1B": {
+                "predicted": 0.13743495519367877,
+                "actual": 0.14220227036272454
+              },
+              "2B": {
+                "predicted": 0.043030365507230134,
+                "actual": 0.043598134223625816
+              },
+              "3B": {
+                "predicted": 0.00445370736774179,
+                "actual": 0.0036287913621121065
+              },
+              "HR": {
+                "predicted": 0.028906587178939357,
+                "actual": 0.03083655584661765
+              }
+            },
+            "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+          },
+          "qualification": "Old future profile evaluated for all supported rows; old value branch kept established MLB Ridge. Profile and value comparisons have different routing."
+        }
+      },
+      {
+        "scope": "foreign",
+        "rows": 253,
+        "players": 138,
+        "actual_PA": 7776,
+        "actual_value": 33.407002404619796,
+        "scores": {
+          "current": {
+            "value_rmse": 0.4930928427060247,
+            "value_mae": 0.13483131581049576,
+            "value_bias": -0.052621597513893496,
+            "expected_value": 20.27569168109756,
+            "expected_PA": 7463.664247697227,
+            "rate_rmse": 1.880241315509279
+          },
+          "count": {
+            "value_rmse": 0.4982871089223158,
+            "value_mae": 0.14667375973735747,
+            "value_bias": 0.0067809424934063755,
+            "expected_value": 35.41933349434819,
+            "expected_PA": 7463.664247697227,
+            "rate_rmse": 1.8721842332226617
+          },
+          "shared": {
+            "value_rmse": 0.4881474745180817,
+            "value_mae": 0.1335897903759062,
+            "value_bias": -0.046539200384517504,
+            "expected_value": 21.8122764874878,
+            "expected_PA": 7463.664247697227,
+            "rate_rmse": 1.7978239665917088
+          },
+          "repaired_overseas": {
+            "value_rmse": 0.46748385201107095,
+            "value_mae": 0.13547866973964348,
+            "value_bias": -0.027119371073309233,
+            "expected_value": 26.667222572944635,
+            "expected_PA": 8562.698736059061,
+            "rate_rmse": 1.7523781017758373
+          },
+          "direct_foreign": {
+            "value_rmse": 0.4932129902038237,
+            "value_mae": 0.13484548736140198,
+            "value_bias": -0.05267660678655073,
+            "expected_value": 20.261841882982825,
+            "expected_PA": 7463.664247697227,
+            "rate_rmse": 1.9099950345846661
+          }
+        },
+        "count_events": {
+          "log_loss": 1.5057754355568995,
+          "brier": 0.7103083069107091,
+          "frequencies": {
+            "other": {
+              "predicted": 0.4569747476635359,
+              "actual": 0.44623678830816604
+            },
+            "K": {
+              "predicted": 0.21018509890657355,
+              "actual": 0.22948207052995198
+            },
+            "UBB": {
+              "predicted": 0.09070631339584928,
+              "actual": 0.07989885073329821
+            },
+            "HBP": {
+              "predicted": 0.010726319764059961,
+              "actual": 0.010539424719953826
+            },
+            "1B": {
+              "predicted": 0.1386057567644552,
+              "actual": 0.1475587582724679
+            },
+            "2B": {
+              "predicted": 0.04819828853922136,
+              "actual": 0.04675905348599285
+            },
+            "3B": {
+              "predicted": 0.004092540723889537,
+              "actual": 0.007344913367588073
+            },
+            "HR": {
+              "predicted": 0.04051093424241513,
+              "actual": 0.032180140582581215
+            }
+          },
+          "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+        },
+        "matched_supported_events": {
+          "rows": 28,
+          "count": {
+            "log_loss": 1.5057754355568995,
+            "brier": 0.7103083069107091,
+            "frequencies": {
+              "other": {
+                "predicted": 0.4569747476635359,
+                "actual": 0.44623678830816604
+              },
+              "K": {
+                "predicted": 0.21018509890657355,
+                "actual": 0.22948207052995198
+              },
+              "UBB": {
+                "predicted": 0.09070631339584928,
+                "actual": 0.07989885073329821
+              },
+              "HBP": {
+                "predicted": 0.010726319764059961,
+                "actual": 0.010539424719953826
+              },
+              "1B": {
+                "predicted": 0.1386057567644552,
+                "actual": 0.1475587582724679
+              },
+              "2B": {
+                "predicted": 0.04819828853922136,
+                "actual": 0.04675905348599285
+              },
+              "3B": {
+                "predicted": 0.004092540723889537,
+                "actual": 0.007344913367588073
+              },
+              "HR": {
+                "predicted": 0.04051093424241513,
+                "actual": 0.032180140582581215
+              }
+            },
+            "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+          },
+          "old_future_direct": {
+            "log_loss": 1.5018835379639912,
+            "brier": 0.7090762708359499,
+            "frequencies": {
+              "other": {
+                "predicted": 0.4623626977999595,
+                "actual": 0.44623678830816604
+              },
+              "K": {
+                "predicted": 0.21334354394503258,
+                "actual": 0.22948207052995198
+              },
+              "UBB": {
+                "predicted": 0.08755585092719878,
+                "actual": 0.07989885073329821
+              },
+              "HBP": {
+                "predicted": 0.012543016862229975,
+                "actual": 0.010539424719953826
+              },
+              "1B": {
+                "predicted": 0.13965318847933939,
+                "actual": 0.1475587582724679
+              },
+              "2B": {
+                "predicted": 0.04623270164040132,
+                "actual": 0.04675905348599285
+              },
+              "3B": {
+                "predicted": 0.005955335014704504,
+                "actual": 0.007344913367588073
+              },
+              "HR": {
+                "predicted": 0.03235366533113401,
+                "actual": 0.032180140582581215
+              }
+            },
+            "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+          },
+          "qualification": "Old future profile evaluated for all supported rows; old value branch kept established MLB Ridge. Profile and value comparisons have different routing."
+        }
+      },
+      {
+        "scope": "current_MLB",
+        "rows": 4541,
+        "players": 1521,
+        "actual_PA": 1156856,
+        "actual_value": 3954.8064877137617,
+        "scores": {
+          "current": {
+            "value_rmse": 1.067758785159947,
+            "value_mae": 0.7151824398628561,
+            "value_bias": -0.005441443471029618,
+            "expected_value": 3932.7234749759286,
+            "expected_PA": 1129696.8583684287,
+            "rate_rmse": 1.7054630915243987
+          },
+          "count": {
+            "value_rmse": 1.07761728347459,
+            "value_mae": 0.7192248743011502,
+            "value_bias": -0.006676624667196586,
+            "expected_value": 3927.177833711079,
+            "expected_PA": 1129696.8583684287,
+            "rate_rmse": 1.7198249613000984
+          },
+          "shared": {
+            "value_rmse": 1.0718130547476379,
+            "value_mae": 0.7172862912508243,
+            "value_bias": -0.008023532705853435,
+            "expected_value": 3921.258807556641,
+            "expected_PA": 1129696.8583684287,
+            "rate_rmse": 1.713129453468812
+          },
+          "repaired_overseas": {
+            "value_rmse": 1.0711589430081354,
+            "value_mae": 0.7131434064040406,
+            "value_bias": -0.014583467577895429,
+            "expected_value": 3888.2231621921646,
+            "expected_PA": 1132698.233702572,
+            "rate_rmse": 1.706643552116357
+          },
+          "direct_foreign": {
+            "value_rmse": 1.067758785159947,
+            "value_mae": 0.7151824398628561,
+            "value_bias": -0.005441443471029618,
+            "expected_value": 3932.7234749759286,
+            "expected_PA": 1129696.8583684287,
+            "rate_rmse": 1.7054630915243987
+          }
+        },
+        "count_events": {
+          "log_loss": 1.4761478552932386,
+          "brier": 0.7001273792153919,
+          "frequencies": {
+            "other": {
+              "predicted": 0.46471645961800373,
+              "actual": 0.4651249904091269
+            },
+            "K": {
+              "predicted": 0.21858764166338354,
+              "actual": 0.21858028983161257
+            },
+            "UBB": {
+              "predicted": 0.08252340591212028,
+              "actual": 0.08152670214435413
+            },
+            "HBP": {
+              "predicted": 0.010784449375153262,
+              "actual": 0.010808343639343646
+            },
+            "1B": {
+              "predicted": 0.14223443958522072,
+              "actual": 0.1430027009891829
+            },
+            "2B": {
+              "predicted": 0.044688682600803435,
+              "actual": 0.0447560953961458
+            },
+            "3B": {
+              "predicted": 0.004046464237265307,
+              "actual": 0.00394298245158418
+            },
+            "HR": {
+              "predicted": 0.03241845700804968,
+              "actual": 0.0322578951386497
+            }
+          },
+          "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+        },
+        "matched_supported_events": {
+          "rows": 3596,
+          "count": {
+            "log_loss": 1.4761478552932386,
+            "brier": 0.7001273792153919,
+            "frequencies": {
+              "other": {
+                "predicted": 0.46471645961800373,
+                "actual": 0.4651249904091269
+              },
+              "K": {
+                "predicted": 0.21858764166338354,
+                "actual": 0.21858028983161257
+              },
+              "UBB": {
+                "predicted": 0.08252340591212028,
+                "actual": 0.08152670214435413
+              },
+              "HBP": {
+                "predicted": 0.010784449375153262,
+                "actual": 0.010808343639343646
+              },
+              "1B": {
+                "predicted": 0.14223443958522072,
+                "actual": 0.1430027009891829
+              },
+              "2B": {
+                "predicted": 0.044688682600803435,
+                "actual": 0.0447560953961458
+              },
+              "3B": {
+                "predicted": 0.004046464237265307,
+                "actual": 0.00394298245158418
+              },
+              "HR": {
+                "predicted": 0.03241845700804968,
+                "actual": 0.0322578951386497
+              }
+            },
+            "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+          },
+          "old_future_direct": {
+            "log_loss": 1.4776783052090252,
+            "brier": 0.7005267001162379,
+            "frequencies": {
+              "other": {
+                "predicted": 0.4726162998370988,
+                "actual": 0.4651249904091269
+              },
+              "K": {
+                "predicted": 0.22110091071279214,
+                "actual": 0.21858028983161257
+              },
+              "UBB": {
+                "predicted": 0.07850494369347683,
+                "actual": 0.08152670214435413
+              },
+              "HBP": {
+                "predicted": 0.010645081423811162,
+                "actual": 0.010808343639343646
+              },
+              "1B": {
+                "predicted": 0.1410100301594836,
+                "actual": 0.1430027009891829
+              },
+              "2B": {
+                "predicted": 0.043470228244637074,
+                "actual": 0.0447560953961458
+              },
+              "3B": {
+                "predicted": 0.004782379590275155,
+                "actual": 0.00394298245158418
+              },
+              "HR": {
+                "predicted": 0.02787012633842531,
+                "actual": 0.0322578951386497
+              }
+            },
+            "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+          },
+          "qualification": "Old future profile evaluated for all supported rows; old value branch kept established MLB Ridge. Profile and value comparisons have different routing."
+        }
+      },
+      {
+        "scope": "upper_never_debut",
+        "rows": 5454,
+        "players": 3055,
+        "actual_PA": 92891,
+        "actual_value": 196.73395271672237,
+        "scores": {
+          "current": {
+            "value_rmse": 0.3016947425069943,
+            "value_mae": 0.07630526694523007,
+            "value_bias": -0.003916551170919222,
+            "expected_value": 177.48629929052927,
+            "expected_PA": 74239.03857057952,
+            "rate_rmse": 2.5632484045024824
+          },
+          "count": {
+            "value_rmse": 0.2987399007612582,
+            "value_mae": 0.07296249701667039,
+            "value_bias": -0.008162670332503862,
+            "expected_value": 154.96289405125165,
+            "expected_PA": 74239.03857057952,
+            "rate_rmse": 2.54320125467973
+          },
+          "shared": {
+            "value_rmse": 0.30234297775704805,
+            "value_mae": 0.07728010614724286,
+            "value_bias": -0.003650026944147817,
+            "expected_value": 178.39395081831213,
+            "expected_PA": 74239.03857057952,
+            "rate_rmse": 2.578255409987503
+          },
+          "repaired_overseas": {
+            "value_rmse": 0.30184049460058643,
+            "value_mae": 0.07767363292558907,
+            "value_bias": -0.0037413794785581436,
+            "expected_value": 178.127390840288,
+            "expected_PA": 72749.49652979914,
+            "rate_rmse": 2.5862697415496627
+          },
+          "direct_foreign": {
+            "value_rmse": 0.32115116179946057,
+            "value_mae": 0.07324357989361288,
+            "value_bias": -0.04263241725152706,
+            "expected_value": -32.26551261181424,
+            "expected_PA": 74239.03857057952,
+            "rate_rmse": 2.925302390566924
+          }
+        },
+        "count_events": {
+          "log_loss": 1.4788137832667039,
+          "brier": 0.7068357500138797,
+          "frequencies": {
+            "other": {
+              "predicted": 0.4352922959475379,
+              "actual": 0.44139884835763615
+            },
+            "K": {
+              "predicted": 0.261204095136942,
+              "actual": 0.2561083433014881
+            },
+            "UBB": {
+              "predicted": 0.07741619669568216,
+              "actual": 0.07688704877417303
+            },
+            "HBP": {
+              "predicted": 0.010547386065618053,
+              "actual": 0.010802952559199183
+            },
+            "1B": {
+              "predicted": 0.13959371353409777,
+              "actual": 0.13979030108583723
+            },
+            "2B": {
+              "predicted": 0.04227414913210984,
+              "actual": 0.04200602985540883
+            },
+            "3B": {
+              "predicted": 0.005324493011392632,
+              "actual": 0.004935956639518201
+            },
+            "HR": {
+              "predicted": 0.028347670476619784,
+              "actual": 0.02807051942673945
+            }
+          },
+          "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+        },
+        "matched_supported_events": {
+          "rows": 730,
+          "count": {
+            "log_loss": 1.4788137832667039,
+            "brier": 0.7068357500138797,
+            "frequencies": {
+              "other": {
+                "predicted": 0.4352922959475379,
+                "actual": 0.44139884835763615
+              },
+              "K": {
+                "predicted": 0.261204095136942,
+                "actual": 0.2561083433014881
+              },
+              "UBB": {
+                "predicted": 0.07741619669568216,
+                "actual": 0.07688704877417303
+              },
+              "HBP": {
+                "predicted": 0.010547386065618053,
+                "actual": 0.010802952559199183
+              },
+              "1B": {
+                "predicted": 0.13959371353409777,
+                "actual": 0.13979030108583723
+              },
+              "2B": {
+                "predicted": 0.04227414913210984,
+                "actual": 0.04200602985540883
+              },
+              "3B": {
+                "predicted": 0.005324493011392632,
+                "actual": 0.004935956639518201
+              },
+              "HR": {
+                "predicted": 0.028347670476619784,
+                "actual": 0.02807051942673945
+              }
+            },
+            "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+          },
+          "old_future_direct": {
+            "log_loss": 1.4809216872490496,
+            "brier": 0.7075167431058123,
+            "frequencies": {
+              "other": {
+                "predicted": 0.46480447544539466,
+                "actual": 0.44139884835763615
+              },
+              "K": {
+                "predicted": 0.2563216903986137,
+                "actual": 0.2561083433014881
+              },
+              "UBB": {
+                "predicted": 0.06987306022823825,
+                "actual": 0.07688704877417303
+              },
+              "HBP": {
+                "predicted": 0.01098819630878807,
+                "actual": 0.010802952559199183
+              },
+              "1B": {
+                "predicted": 0.13073072820712392,
+                "actual": 0.13979030108583723
+              },
+              "2B": {
+                "predicted": 0.040194171226915806,
+                "actual": 0.04200602985540883
+              },
+              "3B": {
+                "predicted": 0.005498864686562929,
+                "actual": 0.004935956639518201
+              },
+              "HR": {
+                "predicted": 0.021588813498362447,
+                "actual": 0.02807051942673945
+              }
+            },
+            "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+          },
+          "qualification": "Old future profile evaluated for all supported rows; old value branch kept established MLB Ridge. Profile and value comparisons have different routing."
+        }
+      },
+      {
+        "scope": "lower_never_debut",
+        "rows": 17852,
+        "players": 8974,
+        "actual_PA": 5194,
+        "actual_value": 9.483089121724282,
+        "scores": {
+          "current": {
+            "value_rmse": 0.04581300634664774,
+            "value_mae": 0.0019031200193213762,
+            "value_bias": 0.00037854365962449273,
+            "expected_value": 16.178953968368184,
+            "expected_PA": 7054.64556931176,
+            "rate_rmse": 3.179084066656938
+          },
+          "count": {
+            "value_rmse": 0.04556836945832788,
+            "value_mae": 0.0016848358185728575,
+            "value_bias": 5.9470489661037274e-05,
+            "expected_value": 10.180684786309667,
+            "expected_PA": 7054.64556931176,
+            "rate_rmse": 3.0383459273158997
+          },
+          "shared": {
+            "value_rmse": 0.045882188613386284,
+            "value_mae": 0.0020831641433417983,
+            "value_bias": 0.0005678548861025445,
+            "expected_value": 19.588976927044186,
+            "expected_PA": 7054.64556931176,
+            "rate_rmse": 3.285628801293576
+          },
+          "repaired_overseas": {
+            "value_rmse": 0.04588030858925359,
+            "value_mae": 0.002288111504190454,
+            "value_bias": 0.0007645320147188643,
+            "expected_value": 23.289331464866887,
+            "expected_PA": 8114.21658487082,
+            "rate_rmse": 3.3033957360279866
+          },
+          "direct_foreign": {
+            "value_rmse": 0.046157635474664394,
+            "value_mae": 0.0023888635153654666,
+            "value_bias": -0.0017869216366993052,
+            "expected_value": -23.207417974597213,
+            "expected_PA": 7054.64556931176,
+            "rate_rmse": 3.442881142472338
+          }
+        },
+        "count_events": {
+          "log_loss": 1.4388401120125713,
+          "brier": 0.6894579308956056,
+          "frequencies": {
+            "other": {
+              "predicted": 0.44517516153641284,
+              "actual": 0.47398389323767515
+            },
+            "K": {
+              "predicted": 0.2513727835743499,
+              "actual": 0.23397819606156248
+            },
+            "UBB": {
+              "predicted": 0.07539002149302024,
+              "actual": 0.06710282526180446
+            },
+            "HBP": {
+              "predicted": 0.009515670937110126,
+              "actual": 0.009128789375966924
+            },
+            "1B": {
+              "predicted": 0.1415119472525978,
+              "actual": 0.14768818348172172
+            },
+            "2B": {
+              "predicted": 0.04282917517284772,
+              "actual": 0.03739889286758947
+            },
+            "3B": {
+              "predicted": 0.0050747514281265,
+              "actual": 0.00544693059964351
+            },
+            "HR": {
+              "predicted": 0.029130488605535004,
+              "actual": 0.02527228911403621
+            }
+          },
+          "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+        },
+        "matched_supported_events": {
+          "rows": 54,
+          "count": {
+            "log_loss": 1.4388401120125713,
+            "brier": 0.6894579308956056,
+            "frequencies": {
+              "other": {
+                "predicted": 0.44517516153641284,
+                "actual": 0.47398389323767515
+              },
+              "K": {
+                "predicted": 0.2513727835743499,
+                "actual": 0.23397819606156248
+              },
+              "UBB": {
+                "predicted": 0.07539002149302024,
+                "actual": 0.06710282526180446
+              },
+              "HBP": {
+                "predicted": 0.009515670937110126,
+                "actual": 0.009128789375966924
+              },
+              "1B": {
+                "predicted": 0.1415119472525978,
+                "actual": 0.14768818348172172
+              },
+              "2B": {
+                "predicted": 0.04282917517284772,
+                "actual": 0.03739889286758947
+              },
+              "3B": {
+                "predicted": 0.0050747514281265,
+                "actual": 0.00544693059964351
+              },
+              "HR": {
+                "predicted": 0.029130488605535004,
+                "actual": 0.02527228911403621
+              }
+            },
+            "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+          },
+          "old_future_direct": {
+            "log_loss": 1.4408562785852947,
+            "brier": 0.6880967112389723,
+            "frequencies": {
+              "other": {
+                "predicted": 0.4878444578173799,
+                "actual": 0.47398389323767515
+              },
+              "K": {
+                "predicted": 0.24677121701265836,
+                "actual": 0.23397819606156248
+              },
+              "UBB": {
+                "predicted": 0.06091198779382398,
+                "actual": 0.06710282526180446
+              },
+              "HBP": {
+                "predicted": 0.011397541829952139,
+                "actual": 0.009128789375966924
+              },
+              "1B": {
+                "predicted": 0.13089968375905553,
+                "actual": 0.14768818348172172
+              },
+              "2B": {
+                "predicted": 0.038242349786835744,
+                "actual": 0.03739889286758947
+              },
+              "3B": {
+                "predicted": 0.006206442523765569,
+                "actual": 0.00544693059964351
+              },
+              "HR": {
+                "predicted": 0.017726319476528786,
+                "actual": 0.02527228911403621
+              }
+            },
+            "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+          },
+          "qualification": "Old future profile evaluated for all supported rows; old value branch kept established MLB Ridge. Profile and value comparisons have different routing."
+        }
+      },
+      {
+        "scope": "no_arrival",
+        "rows": 25968,
+        "players": 10802,
+        "actual_PA": 0,
+        "actual_value": 0.0,
+        "scores": {
+          "current": {
+            "value_rmse": 0.06938758045835765,
+            "value_mae": 0.0089658111135514,
+            "value_bias": 0.008712633583483209,
+            "expected_value": 225.92651204587753,
+            "expected_PA": 118748.04588403799,
+            "rate_rmse": null
+          },
+          "count": {
+            "value_rmse": 0.07197864171959946,
+            "value_mae": 0.008447966076529775,
+            "value_bias": 0.008014221237585025,
+            "expected_value": 207.17798190783677,
+            "expected_PA": 118748.04588403799,
+            "rate_rmse": null
+          },
+          "shared": {
+            "value_rmse": 0.06991444872153381,
+            "value_mae": 0.009363901052703866,
+            "value_bias": 0.009152609227231786,
+            "expected_value": 237.4772768757415,
+            "expected_PA": 118748.04588403799,
+            "rate_rmse": null
+          },
+          "repaired_overseas": {
+            "value_rmse": 0.06633915760531582,
+            "value_mae": 0.00911835271557129,
+            "value_bias": 0.00891038822810217,
+            "expected_value": 231.43064049479156,
+            "expected_PA": 114413.61990650851,
+            "rate_rmse": null
+          },
+          "direct_foreign": {
+            "value_rmse": 0.06667814762939753,
+            "value_mae": 0.00841819012410051,
+            "value_bias": 0.0036264389465922252,
+            "expected_value": 93.54254997007057,
+            "expected_PA": 118748.04588403799,
+            "rate_rmse": null
+          }
+        },
+        "count_events": null,
+        "matched_supported_events": {
+          "rows": 0,
+          "count": null,
+          "old_future_direct": null,
+          "qualification": "Old future profile evaluated for all supported rows; old value branch kept established MLB Ridge. Profile and value comparisons have different routing."
+        }
+      },
+      {
+        "scope": "additions",
+        "rows": 13,
+        "players": 13,
+        "actual_PA": 1625,
+        "actual_value": 8.336613824082338,
+        "scores": {
+          "count": {
+            "value_rmse": 1.4356423234222855,
+            "value_mae": 0.8718423293202933,
+            "value_bias": -0.43880358510186074,
+            "expected_value": 4.912556464034279,
+            "expected_PA": 743.3902960245274,
+            "rate_rmse": 3.208121774794145
+          },
+          "repaired_overseas": {
+            "value_rmse": 1.5549109787169855,
+            "value_mae": 0.8978094616765355,
+            "value_bias": -0.7046327764051241,
+            "expected_value": 1.5694759769988398,
+            "expected_PA": 741.7649911737769,
+            "rate_rmse": 2.9681298177664175
+          },
+          "shared": {
+            "value_rmse": 1.56901936966471,
+            "value_mae": 0.8934195246624405,
+            "value_bias": -0.7284003977067827,
+            "expected_value": 1.3739244520240161,
+            "expected_PA": 743.3902960245274,
+            "rate_rmse": 2.982053775476317
+          },
+          "direct_foreign": {
+            "value_rmse": 1.4388989369834588,
+            "value_mae": 0.8530071324219209,
+            "value_bias": -0.47503208974964606,
+            "expected_value": 4.29290208270718,
+            "expected_PA": 741.7649911737769,
+            "rate_rmse": 3.1005789132202284
+          }
+        },
+        "count_events": {
+          "log_loss": 1.431801972398634,
+          "brier": 0.6810816746944262,
+          "frequencies": {
+            "other": {
+              "predicted": 0.460595695285247,
+              "actual": 0.4859908409980599
+            },
+            "K": {
+              "predicted": 0.19068736041768053,
+              "actual": 0.20228016661325557
+            },
+            "UBB": {
+              "predicted": 0.09538716411158554,
+              "actual": 0.07827841262113054
+            },
+            "HBP": {
+              "predicted": 0.010166486710895012,
+              "actual": 0.006929361358212087
+            },
+            "1B": {
+              "predicted": 0.14842029197287793,
+              "actual": 0.15338468335628355
+            },
+            "2B": {
+              "predicted": 0.05030692629305036,
+              "actual": 0.040898754844086685
+            },
+            "3B": {
+              "predicted": 0.004169734092835058,
+              "actual": 0.0029883319002806377
+            },
+            "HR": {
+              "predicted": 0.040266341115828545,
+              "actual": 0.02924944830869106
+            }
+          },
+          "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+        },
+        "matched_supported_events": {
+          "rows": 6,
+          "count": {
+            "log_loss": 1.431801972398634,
+            "brier": 0.6810816746944262,
+            "frequencies": {
+              "other": {
+                "predicted": 0.460595695285247,
+                "actual": 0.4859908409980599
+              },
+              "K": {
+                "predicted": 0.19068736041768053,
+                "actual": 0.20228016661325557
+              },
+              "UBB": {
+                "predicted": 0.09538716411158554,
+                "actual": 0.07827841262113054
+              },
+              "HBP": {
+                "predicted": 0.010166486710895012,
+                "actual": 0.006929361358212087
+              },
+              "1B": {
+                "predicted": 0.14842029197287793,
+                "actual": 0.15338468335628355
+              },
+              "2B": {
+                "predicted": 0.05030692629305036,
+                "actual": 0.040898754844086685
+              },
+              "3B": {
+                "predicted": 0.004169734092835058,
+                "actual": 0.0029883319002806377
+              },
+              "HR": {
+                "predicted": 0.040266341115828545,
+                "actual": 0.02924944830869106
+              }
+            },
+            "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+          },
+          "old_future_direct": {
+            "log_loss": 1.4386239630451,
+            "brier": 0.6828813280703249,
+            "frequencies": {
+              "other": {
+                "predicted": 0.4752690214843288,
+                "actual": 0.4859908409980599
+              },
+              "K": {
+                "predicted": 0.17981004728221592,
+                "actual": 0.20228016661325557
+              },
+              "UBB": {
+                "predicted": 0.09528605360256989,
+                "actual": 0.07827841262113054
+              },
+              "HBP": {
+                "predicted": 0.012156897272155007,
+                "actual": 0.006929361358212087
+              },
+              "1B": {
+                "predicted": 0.15484097136890534,
+                "actual": 0.15338468335628355
+              },
+              "2B": {
+                "predicted": 0.04578217717647917,
+                "actual": 0.040898754844086685
+              },
+              "3B": {
+                "predicted": 0.005831625171266987,
+                "actual": 0.0029883319002806377
+              },
+              "HR": {
+                "predicted": 0.031023206642078936,
+                "actual": 0.02924944830869106
+              }
+            },
+            "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+          },
+          "qualification": "Old future profile evaluated for all supported rows; old value branch kept established MLB Ridge. Profile and value comparisons have different routing."
+        }
+      },
+      {
+        "scope": "origin_2016",
+        "rows": 4663,
+        "players": 4663,
+        "actual_PA": 179968,
+        "actual_value": 638.3050711187233,
+        "scores": {
+          "current": {
+            "value_rmse": 0.4363772969113824,
+            "value_mae": 0.11702946432365419,
+            "value_bias": -0.008824186711915991,
+            "expected_value": 597.1578884810591,
+            "expected_PA": 171709.23525463397,
+            "rate_rmse": 1.865875568516953
+          },
+          "count": {
+            "value_rmse": 0.4433623899396665,
+            "value_mae": 0.11579130360414498,
+            "value_bias": -0.020741676654630378,
+            "expected_value": 541.586632878182,
+            "expected_PA": 171709.23525463397,
+            "rate_rmse": 1.867704814696764
+          },
+          "shared": {
+            "value_rmse": 0.4387450484576661,
+            "value_mae": 0.11804332250003725,
+            "value_bias": -0.008816484259324945,
+            "expected_value": 597.1938050174911,
+            "expected_PA": 171709.23525463397,
+            "rate_rmse": 1.8825915119297154
+          },
+          "repaired_overseas": {
+            "value_rmse": 0.439491179662064,
+            "value_mae": 0.11810521652255813,
+            "value_bias": -0.007387591029250858,
+            "expected_value": 603.8567341493267,
+            "expected_PA": 171329.91167825487,
+            "rate_rmse": 1.8790042261782673
+          },
+          "direct_foreign": {
+            "value_rmse": 0.43736000186540874,
+            "value_mae": 0.11685298767844936,
+            "value_bias": -0.018349468400363448,
+            "expected_value": 552.7414999678285,
+            "expected_PA": 171709.23525463397,
+            "rate_rmse": 1.9055834251774977
+          }
+        },
+        "count_events": {
+          "log_loss": 1.4793615713400323,
+          "brier": 0.7005074866228349,
+          "frequencies": {
+            "other": {
+              "predicted": 0.4775547946753158,
+              "actual": 0.4658272581792319
+            },
+            "K": {
+              "predicted": 0.20677753137047672,
+              "actual": 0.21150426742532008
+            },
+            "UBB": {
+              "predicted": 0.07494551194833475,
+              "actual": 0.08163673541963015
+            },
+            "HBP": {
+              "predicted": 0.00908384764101586,
+              "actual": 0.00970728129445235
+            },
+            "1B": {
+              "predicted": 0.1515551617840294,
+              "actual": 0.14696501600284495
+            },
+            "2B": {
+              "predicted": 0.045146651509953485,
+              "actual": 0.0462137713371266
+            },
+            "3B": {
+              "predicted": 0.005088162405168226,
+              "actual": 0.004378556187766714
+            },
+            "HR": {
+              "predicted": 0.02984833866570579,
+              "actual": 0.033767114153627306
+            }
+          },
+          "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+        },
+        "matched_supported_events": {
+          "rows": 624,
+          "count": {
+            "log_loss": 1.4793615713400323,
+            "brier": 0.7005074866228349,
+            "frequencies": {
+              "other": {
+                "predicted": 0.4775547946753158,
+                "actual": 0.4658272581792319
+              },
+              "K": {
+                "predicted": 0.20677753137047672,
+                "actual": 0.21150426742532008
+              },
+              "UBB": {
+                "predicted": 0.07494551194833475,
+                "actual": 0.08163673541963015
+              },
+              "HBP": {
+                "predicted": 0.00908384764101586,
+                "actual": 0.00970728129445235
+              },
+              "1B": {
+                "predicted": 0.1515551617840294,
+                "actual": 0.14696501600284495
+              },
+              "2B": {
+                "predicted": 0.045146651509953485,
+                "actual": 0.0462137713371266
+              },
+              "3B": {
+                "predicted": 0.005088162405168226,
+                "actual": 0.004378556187766714
+              },
+              "HR": {
+                "predicted": 0.02984833866570579,
+                "actual": 0.033767114153627306
+              }
+            },
+            "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+          },
+          "old_future_direct": {
+            "log_loss": 1.482455322578141,
+            "brier": 0.7014701798207045,
+            "frequencies": {
+              "other": {
+                "predicted": 0.488247862570189,
+                "actual": 0.4658272581792319
+              },
+              "K": {
+                "predicted": 0.20830392324422475,
+                "actual": 0.21150426742532008
+              },
+              "UBB": {
+                "predicted": 0.07243930677469965,
+                "actual": 0.08163673541963015
+              },
+              "HBP": {
+                "predicted": 0.009162365385349033,
+                "actual": 0.00970728129445235
+              },
+              "1B": {
+                "predicted": 0.14815554424900412,
+                "actual": 0.14696501600284495
+              },
+              "2B": {
+                "predicted": 0.04360471631667629,
+                "actual": 0.0462137713371266
+              },
+              "3B": {
+                "predicted": 0.005405946698665374,
+                "actual": 0.004378556187766714
+              },
+              "HR": {
+                "predicted": 0.024680334761191757,
+                "actual": 0.033767114153627306
+              }
+            },
+            "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+          },
+          "qualification": "Old future profile evaluated for all supported rows; old value branch kept established MLB Ridge. Profile and value comparisons have different routing."
+        }
+      },
+      {
+        "scope": "origin_2017",
+        "rows": 4691,
+        "players": 4691,
+        "actual_PA": 179643,
+        "actual_value": 631.2706607285975,
+        "scores": {
+          "current": {
+            "value_rmse": 0.42341793911100245,
+            "value_mae": 0.11348656776049287,
+            "value_bias": -0.004977157048182329,
+            "expected_value": 607.9228170155743,
+            "expected_PA": 174316.46185986933,
+            "rate_rmse": 1.7331736184194841
+          },
+          "count": {
+            "value_rmse": 0.43024447741496036,
+            "value_mae": 0.11275043685832173,
+            "value_bias": -0.010772004885872086,
+            "expected_value": 580.7391858089715,
+            "expected_PA": 174316.46185986933,
+            "rate_rmse": 1.7553237553932208
+          },
+          "shared": {
+            "value_rmse": 0.42544563737802993,
+            "value_mae": 0.11418271818009708,
+            "value_bias": -0.005013408361394552,
+            "expected_value": 607.7527621052957,
+            "expected_PA": 174316.46185986933,
+            "rate_rmse": 1.7382794792622822
+          },
+          "repaired_overseas": {
+            "value_rmse": 0.4244890013296761,
+            "value_mae": 0.11360237315977124,
+            "value_bias": -0.0035712021732763988,
+            "expected_value": 614.5181513337579,
+            "expected_PA": 175001.30302733366,
+            "rate_rmse": 1.7397350719322047
+          },
+          "direct_foreign": {
+            "value_rmse": 0.42764710209133816,
+            "value_mae": 0.11485897565062687,
+            "value_bias": -0.013207131918960361,
+            "expected_value": 569.3160048967545,
+            "expected_PA": 174316.46185986933,
+            "rate_rmse": 1.8396475892129063
+          }
+        },
+        "count_events": {
+          "log_loss": 1.475218587051769,
+          "brier": 0.6990696001523378,
+          "frequencies": {
+            "other": {
+              "predicted": 0.46856365096812996,
+              "actual": 0.46656424130080215
+            },
+            "K": {
+              "predicted": 0.2112271327933143,
+              "actual": 0.21677438029870355
+            },
+            "UBB": {
+              "predicted": 0.0800387191456358,
+              "actual": 0.08112200308389417
+            },
+            "HBP": {
+              "predicted": 0.009553216667969154,
+              "actual": 0.010632198304414869
+            },
+            "1B": {
+              "predicted": 0.14707629575971798,
+              "actual": 0.1439187722315927
+            },
+            "2B": {
+              "predicted": 0.04603416462437896,
+              "actual": 0.04546238929432263
+            },
+            "3B": {
+              "predicted": 0.004693998859998125,
+              "actual": 0.004687073807495978
+            },
+            "HR": {
+              "predicted": 0.03281282118085579,
+              "actual": 0.030838941678774018
+            }
+          },
+          "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+        },
+        "matched_supported_events": {
+          "rows": 628,
+          "count": {
+            "log_loss": 1.475218587051769,
+            "brier": 0.6990696001523378,
+            "frequencies": {
+              "other": {
+                "predicted": 0.46856365096812996,
+                "actual": 0.46656424130080215
+              },
+              "K": {
+                "predicted": 0.2112271327933143,
+                "actual": 0.21677438029870355
+              },
+              "UBB": {
+                "predicted": 0.0800387191456358,
+                "actual": 0.08112200308389417
+              },
+              "HBP": {
+                "predicted": 0.009553216667969154,
+                "actual": 0.010632198304414869
+              },
+              "1B": {
+                "predicted": 0.14707629575971798,
+                "actual": 0.1439187722315927
+              },
+              "2B": {
+                "predicted": 0.04603416462437896,
+                "actual": 0.04546238929432263
+              },
+              "3B": {
+                "predicted": 0.004693998859998125,
+                "actual": 0.004687073807495978
+              },
+              "HR": {
+                "predicted": 0.03281282118085579,
+                "actual": 0.030838941678774018
+              }
+            },
+            "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+          },
+          "old_future_direct": {
+            "log_loss": 1.4769794792099291,
+            "brier": 0.6997082449917911,
+            "frequencies": {
+              "other": {
+                "predicted": 0.48183482359316054,
+                "actual": 0.46656424130080215
+              },
+              "K": {
+                "predicted": 0.21333462760299826,
+                "actual": 0.21677438029870355
+              },
+              "UBB": {
+                "predicted": 0.07456158834133411,
+                "actual": 0.08112200308389417
+              },
+              "HBP": {
+                "predicted": 0.009483299521133585,
+                "actual": 0.010632198304414869
+              },
+              "1B": {
+                "predicted": 0.14520875158737112,
+                "actual": 0.1439187722315927
+              },
+              "2B": {
+                "predicted": 0.043880854909027045,
+                "actual": 0.04546238929432263
+              },
+              "3B": {
+                "predicted": 0.005141796511188751,
+                "actual": 0.004687073807495978
+              },
+              "HR": {
+                "predicted": 0.026554257933786383,
+                "actual": 0.030838941678774018
+              }
+            },
+            "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+          },
+          "qualification": "Old future profile evaluated for all supported rows; old value branch kept established MLB Ridge. Profile and value comparisons have different routing."
+        }
+      },
+      {
+        "scope": "origin_2018",
+        "rows": 4478,
+        "players": 4478,
+        "actual_PA": 181308,
+        "actual_value": 639.6141484360919,
+        "scores": {
+          "current": {
+            "value_rmse": 0.4723488073618902,
+            "value_mae": 0.13236487062914995,
+            "value_bias": -0.008950445073008833,
+            "expected_value": 599.5340553991584,
+            "expected_PA": 172104.99899229087,
+            "rate_rmse": 1.970487621885993
+          },
+          "count": {
+            "value_rmse": 0.4758061219104524,
+            "value_mae": 0.1345228551360429,
+            "value_bias": 0.005123846600046114,
+            "expected_value": 662.5587335110984,
+            "expected_PA": 172104.99899229087,
+            "rate_rmse": 1.9774277702626635
+          },
+          "shared": {
+            "value_rmse": 0.4751495023401243,
+            "value_mae": 0.1335874883348812,
+            "value_bias": -0.008009593090413507,
+            "expected_value": 603.7471905772202,
+            "expected_PA": 172104.99899229087,
+            "rate_rmse": 1.9813295266616122
+          },
+          "repaired_overseas": {
+            "value_rmse": 0.47265939954043373,
+            "value_mae": 0.133241583107896,
+            "value_bias": -0.007019068157266083,
+            "expected_value": 608.1827612278545,
+            "expected_PA": 173139.736156432,
+            "rate_rmse": 1.9779774138496427
+          },
+          "direct_foreign": {
+            "value_rmse": 0.47734568001812616,
+            "value_mae": 0.1334652078023139,
+            "value_bias": -0.016341594032029713,
+            "expected_value": 566.4364903606629,
+            "expected_PA": 172104.99899229087,
+            "rate_rmse": 2.0510689196242518
+          }
+        },
+        "count_events": {
+          "log_loss": 1.4965702313021614,
+          "brier": 0.7074767316697388,
+          "frequencies": {
+            "other": {
+              "predicted": 0.4632875747740888,
+              "actual": 0.454221545657114
+            },
+            "K": {
+              "predicted": 0.2178383862675795,
+              "actual": 0.22369669292033445
+            },
+            "UBB": {
+              "predicted": 0.08300175695124895,
+              "actual": 0.08259425949213495
+            },
+            "HBP": {
+              "predicted": 0.010309645807126497,
+              "actual": 0.0108765195137556
+            },
+            "1B": {
+              "predicted": 0.14286919193211045,
+              "actual": 0.14047366911553824
+            },
+            "2B": {
+              "predicted": 0.045605939760188306,
+              "actual": 0.04662232223619477
+            },
+            "3B": {
+              "predicted": 0.004428588503664103,
+              "actual": 0.004296556136519072
+            },
+            "HR": {
+              "predicted": 0.03265891600399348,
+              "actual": 0.03721843492840913
+            }
+          },
+          "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+        },
+        "matched_supported_events": {
+          "rows": 638,
+          "count": {
+            "log_loss": 1.4965702313021614,
+            "brier": 0.7074767316697388,
+            "frequencies": {
+              "other": {
+                "predicted": 0.4632875747740888,
+                "actual": 0.454221545657114
+              },
+              "K": {
+                "predicted": 0.2178383862675795,
+                "actual": 0.22369669292033445
+              },
+              "UBB": {
+                "predicted": 0.08300175695124895,
+                "actual": 0.08259425949213495
+              },
+              "HBP": {
+                "predicted": 0.010309645807126497,
+                "actual": 0.0108765195137556
+              },
+              "1B": {
+                "predicted": 0.14286919193211045,
+                "actual": 0.14047366911553824
+              },
+              "2B": {
+                "predicted": 0.045605939760188306,
+                "actual": 0.04662232223619477
+              },
+              "3B": {
+                "predicted": 0.004428588503664103,
+                "actual": 0.004296556136519072
+              },
+              "HR": {
+                "predicted": 0.03265891600399348,
+                "actual": 0.03721843492840913
+              }
+            },
+            "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+          },
+          "old_future_direct": {
+            "log_loss": 1.5003445311511716,
+            "brier": 0.7084943922208505,
+            "frequencies": {
+              "other": {
+                "predicted": 0.47751268414136705,
+                "actual": 0.454221545657114
+              },
+              "K": {
+                "predicted": 0.21853438022308574,
+                "actual": 0.22369669292033445
+              },
+              "UBB": {
+                "predicted": 0.07644719914425599,
+                "actual": 0.08259425949213495
+              },
+              "HBP": {
+                "predicted": 0.01018437308821261,
+                "actual": 0.0108765195137556
+              },
+              "1B": {
+                "predicted": 0.14184796502283686,
+                "actual": 0.14047366911553824
+              },
+              "2B": {
+                "predicted": 0.043741243352710485,
+                "actual": 0.04662232223619477
+              },
+              "3B": {
+                "predicted": 0.0052538773301581,
+                "actual": 0.004296556136519072
+              },
+              "HR": {
+                "predicted": 0.026478277697373098,
+                "actual": 0.03721843492840913
+              }
+            },
+            "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+          },
+          "qualification": "Old future profile evaluated for all supported rows; old value branch kept established MLB Ridge. Profile and value comparisons have different routing."
+        }
+      },
+      {
+        "scope": "origin_2021",
+        "rows": 4242,
+        "players": 4242,
+        "actual_PA": 181583,
+        "actual_value": 568.3444608474305,
+        "scores": {
+          "current": {
+            "value_rmse": 0.4238083093363311,
+            "value_mae": 0.1246478039567219,
+            "value_bias": 0.009195693952175437,
+            "expected_value": 607.3525945925586,
+            "expected_PA": 164798.07641672058,
+            "rate_rmse": 1.8238582949123354
+          },
+          "count": {
+            "value_rmse": 0.4284645020347097,
+            "value_mae": 0.12496282271694244,
+            "value_bias": 0.007510891012997179,
+            "expected_value": 600.2056605245645,
+            "expected_PA": 164798.07641672058,
+            "rate_rmse": 1.8312068267947272
+          },
+          "shared": {
+            "value_rmse": 0.4277132716771305,
+            "value_mae": 0.12567162119355976,
+            "value_bias": 0.009341015671271583,
+            "expected_value": 607.9690493249644,
+            "expected_PA": 164798.07641672058,
+            "rate_rmse": 1.8340519782227611
+          },
+          "repaired_overseas": {
+            "value_rmse": 0.4240708273326733,
+            "value_mae": 0.1238484625708647,
+            "value_bias": -0.0009708456687103196,
+            "expected_value": 564.2261335207613,
+            "expected_PA": 167593.56255009654,
+            "rate_rmse": 1.8118169910933064
+          },
+          "direct_foreign": {
+            "value_rmse": 0.42810714727675897,
+            "value_mae": 0.12504881976957094,
+            "value_bias": 0.0015665337364168428,
+            "expected_value": 574.9896969573108,
+            "expected_PA": 164798.07641672058,
+            "rate_rmse": 1.893561810959128
+          }
+        },
+        "count_events": {
+          "log_loss": 1.4640697917677759,
+          "brier": 0.6968045795316806,
+          "frequencies": {
+            "other": {
+              "predicted": 0.44935405274202556,
+              "actual": 0.46780260266654916
+            },
+            "K": {
+              "predicted": 0.2346766480950604,
+              "actual": 0.22410137512872896
+            },
+            "UBB": {
+              "predicted": 0.08653581849714756,
+              "actual": 0.07895562910624891
+            },
+            "HBP": {
+              "predicted": 0.011908064443293813,
+              "actual": 0.011240038990434126
+            },
+            "1B": {
+              "predicted": 0.13537279183843587,
+              "actual": 0.14212233524063375
+            },
+            "2B": {
+              "predicted": 0.04313419845869155,
+              "actual": 0.04360540358954308
+            },
+            "3B": {
+              "predicted": 0.003623553749621245,
+              "actual": 0.003530066140552804
+            },
+            "HR": {
+              "predicted": 0.03539487217572402,
+              "actual": 0.028642549137309112
+            }
+          },
+          "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+        },
+        "matched_supported_events": {
+          "rows": 686,
+          "count": {
+            "log_loss": 1.4640697917677759,
+            "brier": 0.6968045795316806,
+            "frequencies": {
+              "other": {
+                "predicted": 0.44935405274202556,
+                "actual": 0.46780260266654916
+              },
+              "K": {
+                "predicted": 0.2346766480950604,
+                "actual": 0.22410137512872896
+              },
+              "UBB": {
+                "predicted": 0.08653581849714756,
+                "actual": 0.07895562910624891
+              },
+              "HBP": {
+                "predicted": 0.011908064443293813,
+                "actual": 0.011240038990434126
+              },
+              "1B": {
+                "predicted": 0.13537279183843587,
+                "actual": 0.14212233524063375
+              },
+              "2B": {
+                "predicted": 0.04313419845869155,
+                "actual": 0.04360540358954308
+              },
+              "3B": {
+                "predicted": 0.003623553749621245,
+                "actual": 0.003530066140552804
+              },
+              "HR": {
+                "predicted": 0.03539487217572402,
+                "actual": 0.028642549137309112
+              }
+            },
+            "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+          },
+          "old_future_direct": {
+            "log_loss": 1.4634130447049163,
+            "brier": 0.6964874094540521,
+            "frequencies": {
+              "other": {
+                "predicted": 0.46182343371312035,
+                "actual": 0.46780260266654916
+              },
+              "K": {
+                "predicted": 0.2321245434472669,
+                "actual": 0.22410137512872896
+              },
+              "UBB": {
+                "predicted": 0.08126283422797478,
+                "actual": 0.07895562910624891
+              },
+              "HBP": {
+                "predicted": 0.011711667054169752,
+                "actual": 0.011240038990434126
+              },
+              "1B": {
+                "predicted": 0.1353868107100965,
+                "actual": 0.14212233524063375
+              },
+              "2B": {
+                "predicted": 0.04290447353722787,
+                "actual": 0.04360540358954308
+              },
+              "3B": {
+                "predicted": 0.004530726246013004,
+                "actual": 0.003530066140552804
+              },
+              "HR": {
+                "predicted": 0.030255511064131047,
+                "actual": 0.028642549137309112
+              }
+            },
+            "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+          },
+          "qualification": "Old future profile evaluated for all supported rows; old value branch kept established MLB Ridge. Profile and value comparisons have different routing."
+        }
+      },
+      {
+        "scope": "origin_2022",
+        "rows": 4244,
+        "players": 4244,
+        "actual_PA": 182917,
+        "actual_value": 571.7691585722233,
+        "scores": {
+          "current": {
+            "value_rmse": 0.4165803030072925,
+            "value_mae": 0.12367438675286703,
+            "value_bias": 0.0009882613683389215,
+            "expected_value": 575.9633398194537,
+            "expected_PA": 177294.80709346558,
+            "rate_rmse": 1.7503748349529011
+          },
+          "count": {
+            "value_rmse": 0.4202285552626211,
+            "value_mae": 0.12380381967332699,
+            "value_bias": 0.0024855867961606185,
+            "expected_value": 582.3179889351289,
+            "expected_PA": 177294.80709346558,
+            "rate_rmse": 1.7736881693495627
+          },
+          "shared": {
+            "value_rmse": 0.4174038986169733,
+            "value_mae": 0.12406713772753972,
+            "value_bias": 0.001778900558122969,
+            "expected_value": 579.3188125408972,
+            "expected_PA": 177294.80709346558,
+            "rate_rmse": 1.7568564435838836
+          },
+          "repaired_overseas": {
+            "value_rmse": 0.4154469335265259,
+            "value_mae": 0.12166574149155727,
+            "value_bias": -0.006921332329044081,
+            "expected_value": 542.3950241677602,
+            "expected_PA": 179588.51703667783,
+            "rate_rmse": 1.7467481652930814
+          },
+          "direct_foreign": {
+            "value_rmse": 0.41530552330937465,
+            "value_mae": 0.12157303730665518,
+            "value_bias": -0.006098343059288086,
+            "expected_value": 545.8877906286046,
+            "expected_PA": 177294.80709346558,
+            "rate_rmse": 1.7363879256790333
+          }
+        },
+        "count_events": {
+          "log_loss": 1.48537597943021,
+          "brier": 0.7049598851923197,
+          "frequencies": {
+            "other": {
+              "predicted": 0.4605836523233155,
+              "actual": 0.4558788958926727
+            },
+            "K": {
+              "predicted": 0.22877631450460587,
+              "actual": 0.22761143032085587
+            },
+            "UBB": {
+              "predicted": 0.08366599846427224,
+              "actual": 0.08333287775329795
+            },
+            "HBP": {
+              "predicted": 0.01153461678182462,
+              "actual": 0.011453282089690951
+            },
+            "1B": {
+              "predicted": 0.13754497035031196,
+              "actual": 0.1412279886505902
+            },
+            "2B": {
+              "predicted": 0.04366877363594107,
+              "actual": 0.04470880235297977
+            },
+            "3B": {
+              "predicted": 0.003518324733657225,
+              "actual": 0.0038760749410935015
+            },
+            "HR": {
+              "predicted": 0.030707349206071557,
+              "actual": 0.031910647998819125
+            }
+          },
+          "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+        },
+        "matched_supported_events": {
+          "rows": 649,
+          "count": {
+            "log_loss": 1.48537597943021,
+            "brier": 0.7049598851923197,
+            "frequencies": {
+              "other": {
+                "predicted": 0.4605836523233155,
+                "actual": 0.4558788958926727
+              },
+              "K": {
+                "predicted": 0.22877631450460587,
+                "actual": 0.22761143032085587
+              },
+              "UBB": {
+                "predicted": 0.08366599846427224,
+                "actual": 0.08333287775329795
+              },
+              "HBP": {
+                "predicted": 0.01153461678182462,
+                "actual": 0.011453282089690951
+              },
+              "1B": {
+                "predicted": 0.13754497035031196,
+                "actual": 0.1412279886505902
+              },
+              "2B": {
+                "predicted": 0.04366877363594107,
+                "actual": 0.04470880235297977
+              },
+              "3B": {
+                "predicted": 0.003518324733657225,
+                "actual": 0.0038760749410935015
+              },
+              "HR": {
+                "predicted": 0.030707349206071557,
+                "actual": 0.031910647998819125
+              }
+            },
+            "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+          },
+          "old_future_direct": {
+            "log_loss": 1.4863812687346487,
+            "brier": 0.7051972934630573,
+            "frequencies": {
+              "other": {
+                "predicted": 0.46526919417773516,
+                "actual": 0.4558788958926727
+              },
+              "K": {
+                "predicted": 0.23133899139249967,
+                "actual": 0.22761143032085587
+              },
+              "UBB": {
+                "predicted": 0.07962464878075634,
+                "actual": 0.08333287775329795
+              },
+              "HBP": {
+                "predicted": 0.011521025538937931,
+                "actual": 0.011453282089690951
+              },
+              "1B": {
+                "predicted": 0.13676361487962777,
+                "actual": 0.1412279886505902
+              },
+              "2B": {
+                "predicted": 0.04307543062289308,
+                "actual": 0.04470880235297977
+              },
+              "3B": {
+                "predicted": 0.004391810173835244,
+                "actual": 0.0038760749410935015
+              },
+              "HR": {
+                "predicted": 0.028015284433714822,
+                "actual": 0.031910647998819125
+              }
+            },
+            "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+          },
+          "qualification": "Old future profile evaluated for all supported rows; old value branch kept established MLB Ridge. Profile and value comparisons have different routing."
+        }
+      },
+      {
+        "scope": "origin_2023",
+        "rows": 4196,
+        "players": 4196,
+        "actual_PA": 182194,
+        "actual_value": 564.69985016683,
+        "scores": {
+          "current": {
+            "value_rmse": 0.4390354861807623,
+            "value_mae": 0.12807944275130145,
+            "value_bias": 0.010274814748300614,
+            "expected_value": 607.8129728506993,
+            "expected_PA": 186453.53525672553,
+            "rate_rmse": 1.7479642994943867
+          },
+          "count": {
+            "value_rmse": 0.4388187257159101,
+            "value_mae": 0.12585822164785554,
+            "value_bias": -0.003073948079445137,
+            "expected_value": 551.8015640254782,
+            "expected_PA": 186453.53525672553,
+            "rate_rmse": 1.7495799244232626
+          },
+          "shared": {
+            "value_rmse": 0.4367590027109223,
+            "value_mae": 0.12722139769760887,
+            "value_bias": 0.0061775938882478966,
+            "expected_value": 590.6210341219181,
+            "expected_PA": 186453.53525672553,
+            "rate_rmse": 1.744398854453954
+          },
+          "repaired_overseas": {
+            "value_rmse": 0.43699886956514666,
+            "value_mae": 0.12867978573018726,
+            "value_bias": 0.015571369331717646,
+            "expected_value": 630.0373158827172,
+            "expected_PA": 186366.44507103143,
+            "rate_rmse": 1.7466856854245136
+          },
+          "direct_foreign": {
+            "value_rmse": 0.4410243702435606,
+            "value_mae": 0.12665489937924698,
+            "value_bias": -0.00021385748125877556,
+            "expected_value": 563.8025041754681,
+            "expected_PA": 186453.53525672553,
+            "rate_rmse": 1.7598042634435036
+          }
+        },
+        "count_events": {
+          "log_loss": 1.4663947445166887,
+          "brier": 0.6977824926000058,
+          "frequencies": {
+            "other": {
+              "predicted": 0.4540645022102692,
+              "actual": 0.46577823638539145
+            },
+            "K": {
+              "predicted": 0.23035085816386996,
+              "actual": 0.22583619658166573
+            },
+            "UBB": {
+              "predicted": 0.0847386250741401,
+              "actual": 0.07904211993808798
+            },
+            "HBP": {
+              "predicted": 0.011703317152619328,
+              "actual": 0.011070617034589504
+            },
+            "1B": {
+              "predicted": 0.13830787490348703,
+              "actual": 0.14192563970273445
+            },
+            "2B": {
+              "predicted": 0.04454401955394722,
+              "actual": 0.042613917033491766
+            },
+            "3B": {
+              "predicted": 0.003854182596062919,
+              "actual": 0.0038255925003018764
+            },
+            "HR": {
+              "predicted": 0.03243662034560421,
+              "actual": 0.02990768082373733
+            }
+          },
+          "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+        },
+        "matched_supported_events": {
+          "rows": 647,
+          "count": {
+            "log_loss": 1.4663947445166887,
+            "brier": 0.6977824926000058,
+            "frequencies": {
+              "other": {
+                "predicted": 0.4540645022102692,
+                "actual": 0.46577823638539145
+              },
+              "K": {
+                "predicted": 0.23035085816386996,
+                "actual": 0.22583619658166573
+              },
+              "UBB": {
+                "predicted": 0.0847386250741401,
+                "actual": 0.07904211993808798
+              },
+              "HBP": {
+                "predicted": 0.011703317152619328,
+                "actual": 0.011070617034589504
+              },
+              "1B": {
+                "predicted": 0.13830787490348703,
+                "actual": 0.14192563970273445
+              },
+              "2B": {
+                "predicted": 0.04454401955394722,
+                "actual": 0.042613917033491766
+              },
+              "3B": {
+                "predicted": 0.003854182596062919,
+                "actual": 0.0038255925003018764
+              },
+              "HR": {
+                "predicted": 0.03243662034560421,
+                "actual": 0.02990768082373733
+              }
+            },
+            "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+          },
+          "old_future_direct": {
+            "log_loss": 1.466929110604768,
+            "brier": 0.6978563420350901,
+            "frequencies": {
+              "other": {
+                "predicted": 0.4616470118417831,
+                "actual": 0.46577823638539145
+              },
+              "K": {
+                "predicted": 0.23338158246301371,
+                "actual": 0.22583619658166573
+              },
+              "UBB": {
+                "predicted": 0.08107749391438307,
+                "actual": 0.07904211993808798
+              },
+              "HBP": {
+                "predicted": 0.011489919225204856,
+                "actual": 0.011070617034589504
+              },
+              "1B": {
+                "predicted": 0.1361884489562566,
+                "actual": 0.14192563970273445
+              },
+              "2B": {
+                "predicted": 0.04325831630564256,
+                "actual": 0.042613917033491766
+              },
+              "3B": {
+                "predicted": 0.0045851827628276285,
+                "actual": 0.0038255925003018764
+              },
+              "HR": {
+                "predicted": 0.028372044530888665,
+                "actual": 0.02990768082373733
+              }
+            },
+            "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+          },
+          "qualification": "Old future profile evaluated for all supported rows; old value branch kept established MLB Ridge. Profile and value comparisons have different routing."
+        }
+      },
+      {
+        "scope": "origin_2024",
+        "rows": 3992,
+        "players": 3992,
+        "actual_PA": 182880,
+        "actual_value": 571.4302393590965,
+        "scores": {
+          "current": {
+            "value_rmse": 0.4320429956601593,
+            "value_mae": 0.1278388104711632,
+            "value_bias": -0.0029418413670369006,
+            "expected_value": 559.6864086218852,
+            "expected_PA": 182055.39708224943,
+            "rate_rmse": 1.7284689470437418
+          },
+          "count": {
+            "value_rmse": 0.42752792822127766,
+            "value_mae": 0.12826324638269365,
+            "value_bias": 0.0067984706295066135,
+            "expected_value": 598.569734112087,
+            "expected_PA": 182055.39708224943,
+            "rate_rmse": 1.7264836586768837
+          },
+          "shared": {
+            "value_rmse": 0.4327914777014379,
+            "value_mae": 0.12859028087711982,
+            "value_bias": -0.0021571297393883507,
+            "expected_value": 562.8189774394582,
+            "expected_PA": 182055.39708224943,
+            "rate_rmse": 1.7430198881009733
+          },
+          "repaired_overseas": {
+            "value_rmse": 0.43693924024636493,
+            "value_mae": 0.12931578763613802,
+            "value_bias": -0.0015438334979955125,
+            "expected_value": 565.2672560350983,
+            "expected_PA": 182099.54160706187,
+            "rate_rmse": 1.7436292219916152
+          },
+          "direct_foreign": {
+            "value_rmse": 0.4337601302416526,
+            "value_mae": 0.1266525779317532,
+            "value_bias": -0.010107747327950903,
+            "expected_value": 531.0801120259166,
+            "expected_PA": 182055.39708224943,
+            "rate_rmse": 1.7379062549916988
+          }
+        },
+        "count_events": {
+          "log_loss": 1.4654565400093367,
+          "brier": 0.6977042605334492,
+          "frequencies": {
+            "other": {
+              "predicted": 0.46310167145170844,
+              "actual": 0.4668416447944006
+            },
+            "K": {
+              "predicted": 0.22526155300029096,
+              "actual": 0.22214566929133858
+            },
+            "UBB": {
+              "predicted": 0.08141810979219055,
+              "actual": 0.08105314960629921
+            },
+            "HBP": {
+              "predicted": 0.011174086978608657,
+              "actual": 0.010542432195975504
+            },
+            "1B": {
+              "predicted": 0.14135718763978186,
+              "actual": 0.14274934383202098
+            },
+            "2B": {
+              "predicted": 0.04328996483688801,
+              "actual": 0.04233923884514436
+            },
+            "3B": {
+              "predicted": 0.003818288615713121,
+              "actual": 0.0034339457567804025
+            },
+            "HR": {
+              "predicted": 0.030579137684818423,
+              "actual": 0.030894575678040243
+            }
+          },
+          "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+        },
+        "matched_supported_events": {
+          "rows": 666,
+          "count": {
+            "log_loss": 1.4654565400093367,
+            "brier": 0.6977042605334492,
+            "frequencies": {
+              "other": {
+                "predicted": 0.46310167145170844,
+                "actual": 0.4668416447944006
+              },
+              "K": {
+                "predicted": 0.22526155300029096,
+                "actual": 0.22214566929133858
+              },
+              "UBB": {
+                "predicted": 0.08141810979219055,
+                "actual": 0.08105314960629921
+              },
+              "HBP": {
+                "predicted": 0.011174086978608657,
+                "actual": 0.010542432195975504
+              },
+              "1B": {
+                "predicted": 0.14135718763978186,
+                "actual": 0.14274934383202098
+              },
+              "2B": {
+                "predicted": 0.04328996483688801,
+                "actual": 0.04233923884514436
+              },
+              "3B": {
+                "predicted": 0.003818288615713121,
+                "actual": 0.0034339457567804025
+              },
+              "HR": {
+                "predicted": 0.030579137684818423,
+                "actual": 0.030894575678040243
+              }
+            },
+            "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+          },
+          "old_future_direct": {
+            "log_loss": 1.4669374438280316,
+            "brier": 0.69793042045274,
+            "frequencies": {
+              "other": {
+                "predicted": 0.4677133187637954,
+                "actual": 0.4668416447944006
+              },
+              "K": {
+                "predicted": 0.2311558167751622,
+                "actual": 0.22214566929133858
+              },
+              "UBB": {
+                "predicted": 0.07884026695425927,
+                "actual": 0.08105314960629921
+              },
+              "HBP": {
+                "predicted": 0.011130367664668586,
+                "actual": 0.010542432195975504
+              },
+              "1B": {
+                "predicted": 0.1376275837307314,
+                "actual": 0.14274934383202098
+              },
+              "2B": {
+                "predicted": 0.04193543078177073,
+                "actual": 0.04233923884514436
+              },
+              "3B": {
+                "predicted": 0.00461215824983262,
+                "actual": 0.0034339457567804025
+              },
+              "HR": {
+                "predicted": 0.026985057079779735,
+                "actual": 0.030894575678040243
+              }
+            },
+            "interpretation": "Conditional event calibration using actual target PA weights; not forecast playing time"
+          },
+          "qualification": "Old future profile evaluated for all supported rows; old value branch kept established MLB Ridge. Profile and value comparisons have different routing."
+        }
+      }
+    ],
+    "intervals": {
+      "rate": {
+        "metric": "PA_weighted_relative_rate_mse",
+        "change": 0.03132973073866435,
+        "lower": -0.010199557202263388,
+        "upper": 0.07460745641524366,
+        "fixed_original_origin_PA_weights": true,
+        "nominal_exposed_development_interval": true
+      },
+      "value": {
+        "metric": "delivered_value_mse",
+        "change": 0.002600089148368741,
+        "lower": 0.0003192815966462461,
+        "upper": 0.005073311500388088,
+        "nominal_development_interval": true
+      }
+    },
+    "public": {
+      "rows": 2627,
+      "active_rows": 2088,
+      "common_rate_rmse": {
+        "current": 1.7284811660509019,
+        "count": 1.7185834388739887,
+        "shared": 1.7301921326457927,
+        "steamer": 1.774588665893598,
+        "zips": 1.7533614545512477
+      },
+      "qualification": "Archived public rate forecasts; release, park and future league environment differ. No certified ZiPS workload comparison."
+    },
+    "review_triggers": [],
+    "player_walkthrough_status": "pending"
+  },
+  "player_cases": [
+    {
+      "row_id": 35088,
+      "player_id": 670541,
+      "player_name": "Yordan Alvarez",
+      "origin": 2018,
+      "why": [
+        "fixed before fitting"
+      ],
+      "branch": "prospect",
+      "past_baseline_rate": -0.4677425123092963,
+      "incumbent_rate": 0.45465027367510036,
+      "count_rate": 0.4813343893350144,
+      "actual_rate": 5.647886806977912,
+      "expected_PA": 72.17437375116249,
+      "actual_PA": 369,
+      "incumbent_value": 0.2769897494264361,
+      "count_value": 0.28019959832119923,
+      "actual_value": 4.609983237584529,
+      "predicted_probability": [
+        0.4082338312269975,
+        0.280665890577063,
+        0.08388499054118442,
+        0.00712828814674358,
+        0.13256198115883688,
+        0.04329778349614634,
+        0.004446468044079706,
+        0.03978076680894865
+      ],
+      "actual_counts": [
+        127.0,
+        94.0,
+        48.0,
+        2.0,
+        45.0,
+        26.0,
+        0.0,
+        27.0
+      ],
+      "fixed_fit_source_removal_rate_changes": {
+        "minor": 0.29315079265569477,
+        "foreign": 0.0
+      },
+      "support": [
+        {
+          "subset": "full",
+          "people": 1398
+        },
+        {
+          "subset": "active",
+          "people": 318
+        }
+      ],
+      "interpretation": "Next-year conditional MLB hitting and batting-plus-replacement, not full WAR or trade value"
+    },
+    {
+      "row_id": 23934,
+      "player_id": 592450,
+      "player_name": "Aaron Judge",
+      "origin": 2016,
+      "why": [
+        "fixed before fitting",
+        "false low"
+      ],
+      "branch": "tracking",
+      "past_baseline_rate": -0.7260567953715007,
+      "incumbent_rate": 0.2641513942762992,
+      "count_rate": -0.1713333598849402,
+      "actual_rate": 5.329875619792154,
+      "expected_PA": 309.92244450715344,
+      "actual_PA": 678,
+      "incumbent_value": 1.0927253509289323,
+      "count_value": 0.8677811850035189,
+      "actual_value": 8.114762516384888,
+      "predicted_probability": [
+        0.3793599344218306,
+        0.3135070707306746,
+        0.0867076746692975,
+        0.009177961816059068,
+        0.13063482456629466,
+        0.03993336190795618,
+        0.004195280227331443,
+        0.036483891660556066
+      ],
+      "actual_counts": [
+        195.0,
+        208.0,
+        116.0,
+        5.0,
+        75.0,
+        24.0,
+        3.0,
+        52.0
+      ],
+      "fixed_fit_source_removal_rate_changes": {
+        "minor": 0.6875366296049765,
+        "foreign": -8.881784197001252e-16
+      },
+      "support": [
+        {
+          "subset": "full",
+          "people": 219
+        },
+        {
+          "subset": "active",
+          "people": 181
+        }
+      ],
+      "interpretation": "Next-year conditional MLB hitting and batting-plus-replacement, not full WAR or trade value"
+    },
+    {
+      "row_id": 57052,
+      "player_id": 701762,
+      "player_name": "Nick Kurtz",
+      "origin": 2024,
+      "why": [
+        "fixed before fitting"
+      ],
+      "branch": "prospect",
+      "past_baseline_rate": 0.23819182687891569,
+      "incumbent_rate": 1.0242540793494719,
+      "count_rate": 0.5757015753215025,
+      "actual_rate": 5.150009420178844,
+      "expected_PA": 10.18398717782357,
+      "actual_PA": 489,
+      "incumbent_value": 0.049188303602651105,
+      "count_value": 0.04157488201998194,
+      "actual_value": 5.724343582527705,
+      "predicted_probability": [
+        0.44685319528687056,
+        0.23839194531270688,
+        0.08450084195416961,
+        0.009843352336981076,
+        0.13807445964691556,
+        0.04412050587296956,
+        0.0034127738355473206,
+        0.03480292575383933
+      ],
+      "actual_counts": [
+        154.0,
+        151.0,
+        60.0,
+        2.0,
+        58.0,
+        26.0,
+        2.0,
+        36.0
+      ],
+      "fixed_fit_source_removal_rate_changes": {
+        "minor": -0.34033308873237234,
+        "foreign": 0.0
+      },
+      "support": [
+        {
+          "subset": "full",
+          "people": 2538
+        },
+        {
+          "subset": "active",
+          "people": 561
+        }
+      ],
+      "interpretation": "Next-year conditional MLB hitting and batting-plus-replacement, not full WAR or trade value"
+    },
+    {
+      "row_id": 63309,
+      "player_id": 673548,
+      "player_name": "Seiya Suzuki",
+      "origin": 2021,
+      "why": [
+        "fixed before fitting"
+      ],
+      "branch": "prospect",
+      "past_baseline_rate": 3.920523867897569,
+      "incumbent_rate": null,
+      "count_rate": 3.505371768457342,
+      "actual_rate": 1.1745890599212874,
+      "expected_PA": 191.48137919298472,
+      "actual_PA": 446,
+      "incumbent_value": null,
+      "count_value": 1.7187367238794669,
+      "actual_value": 2.270747203782431,
+      "predicted_probability": [
+        0.4180747125510281,
+        0.21093313378323159,
+        0.1241285339692904,
+        0.014153944067769127,
+        0.12702056573620044,
+        0.04772274969769757,
+        0.002079267089845172,
+        0.05588709310493753
+      ],
+      "actual_counts": [
+        189.0,
+        110.0,
+        39.0,
+        4.0,
+        66.0,
+        22.0,
+        2.0,
+        14.0
+      ],
+      "fixed_fit_source_removal_rate_changes": {
+        "minor": 0.0,
+        "foreign": -4.478290681344038
+      },
+      "support": [
+        {
+          "subset": "full",
+          "people": 2
+        },
+        {
+          "subset": "active",
+          "people": 0
+        }
+      ],
+      "interpretation": "Next-year conditional MLB hitting and batting-plus-replacement, not full WAR or trade value"
+    },
+    {
+      "row_id": 58061,
+      "player_id": 808982,
+      "player_name": "Jung Hoo Lee",
+      "origin": 2024,
+      "why": [
+        "fixed before fitting"
+      ],
+      "branch": "tracking",
+      "past_baseline_rate": 1.839975763235368,
+      "incumbent_rate": -0.6456662409815414,
+      "count_rate": 1.082548205401388,
+      "actual_rate": 0.4631003549313502,
+      "expected_PA": 153.64680423205337,
+      "actual_PA": 617,
+      "incumbent_value": 0.31447884900587864,
+      "count_value": 0.7570365601965527,
+      "actual_value": 2.403035444610564,
+      "predicted_probability": [
+        0.5380383059193,
+        0.13094877462354665,
+        0.07343435536177419,
+        0.007969335533445506,
+        0.16911408973928427,
+        0.04684527974556874,
+        0.005867129175256444,
+        0.027782729901824232
+      ],
+      "actual_counts": [
+        344.0,
+        71.0,
+        47.0,
+        6.0,
+        98.0,
+        31.0,
+        12.0,
+        8.0
+      ],
+      "fixed_fit_source_removal_rate_changes": {
+        "minor": 0.0,
+        "foreign": -1.7128306716124895
+      },
+      "support": [
+        {
+          "subset": "full",
+          "people": 3
+        },
+        {
+          "subset": "active",
+          "people": 0
+        }
+      ],
+      "interpretation": "Next-year conditional MLB hitting and batting-plus-replacement, not full WAR or trade value"
+    },
+    {
+      "row_id": 57778,
+      "player_id": 807799,
+      "player_name": "Masataka Yoshida",
+      "origin": 2024,
+      "why": [
+        "fixed before fitting"
+      ],
+      "branch": "tracking",
+      "past_baseline_rate": 1.596821011855405,
+      "incumbent_rate": 0.3266834087403425,
+      "count_rate": 1.0612659381632834,
+      "actual_rate": -0.44379814023360176,
+      "expected_PA": 476.21907982332925,
+      "actual_PA": 205,
+      "incumbent_value": 1.7464608087054372,
+      "count_value": 2.329497835732248,
+      "actual_value": 0.48855835636456085,
+      "predicted_probability": [
+        0.5303571262127396,
+        0.13485217284654483,
+        0.07256539421128033,
+        0.01674293669360135,
+        0.1689339284080801,
+        0.047586283649824444,
+        0.0026884491576531847,
+        0.02627370882027618
+      ],
+      "actual_counts": [
+        118.0,
+        24.0,
+        10.0,
+        3.0,
+        35.0,
+        11.0,
+        0.0,
+        4.0
+      ],
+      "fixed_fit_source_removal_rate_changes": {
+        "minor": -0.005312236882074606,
+        "foreign": -0.7773629296802138
+      },
+      "support": [
+        {
+          "subset": "full",
+          "people": 4
+        },
+        {
+          "subset": "active",
+          "people": 3
+        }
+      ],
+      "interpretation": "Next-year conditional MLB hitting and batting-plus-replacement, not full WAR or trade value"
+    },
+    {
+      "row_id": 31364,
+      "player_id": 670867,
+      "player_name": "Kevin Maitan",
+      "origin": 2017,
+      "why": [
+        "fixed before fitting"
+      ],
+      "branch": "prospect",
+      "past_baseline_rate": -1.1322805829584253,
+      "incumbent_rate": -0.37964678801911067,
+      "count_rate": -0.7532731381169702,
+      "actual_rate": null,
+      "expected_PA": 1.985172279135291,
+      "actual_PA": 0,
+      "incumbent_value": 0.004850631846566749,
+      "count_value": 0.0036144440582854694,
+      "actual_value": 0.0,
+      "predicted_probability": [
+        0.44004639830938846,
+        0.25889785321494496,
+        0.07902865807271642,
+        0.006738569557221691,
+        0.1371638909330923,
+        0.04242526855577164,
+        0.003902502391594542,
+        0.031796858965269896
+      ],
+      "actual_counts": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "fixed_fit_source_removal_rate_changes": {
+        "minor": 1.2605347807408127,
+        "foreign": 2.220446049250313e-16
+      },
+      "support": [
+        {
+          "subset": "full",
+          "people": 2682
+        },
+        {
+          "subset": "active",
+          "people": 3
+        }
+      ],
+      "interpretation": "Next-year conditional MLB hitting and batting-plus-replacement, not full WAR or trade value"
+    },
+    {
+      "row_id": 55587,
+      "player_id": 672695,
+      "player_name": "Geraldo Perdomo",
+      "origin": 2024,
+      "why": [
+        "fixed before fitting"
+      ],
+      "branch": "tracking",
+      "past_baseline_rate": -0.2649947103131905,
+      "incumbent_rate": -0.9331365756328288,
+      "count_rate": -0.611198270681226,
+      "actual_rate": 2.727891390157092,
+      "expected_PA": 472.6028562807011,
+      "actual_PA": 720,
+      "incumbent_value": 0.7408746556407222,
+      "count_value": 0.9944562597512137,
+      "actual_value": 5.521939712480949,
+      "predicted_probability": [
+        0.5198028533456354,
+        0.16741282921003983,
+        0.08910499526776604,
+        0.009744852393158391,
+        0.1501834219755852,
+        0.042187841806999644,
+        0.004492221582041293,
+        0.017070984418774242
+      ],
+      "actual_counts": [
+        361.0,
+        83.0,
+        93.0,
+        10.0,
+        115.0,
+        33.0,
+        5.0,
+        20.0
+      ],
+      "fixed_fit_source_removal_rate_changes": {
+        "minor": 0.03414845819301693,
+        "foreign": 0.0
+      },
+      "support": [
+        {
+          "subset": "full",
+          "people": 302
+        },
+        {
+          "subset": "active",
+          "people": 290
+        }
+      ],
+      "interpretation": "Next-year conditional MLB hitting and batting-plus-replacement, not full WAR or trade value"
+    },
+    {
+      "row_id": 43296,
+      "player_id": 665487,
+      "player_name": "Fernando Tatis Jr.",
+      "origin": 2021,
+      "why": [
+        "fixed before fitting",
+        "false high"
+      ],
+      "branch": "tracking",
+      "past_baseline_rate": 2.0856764391301232,
+      "incumbent_rate": 2.9193332375275407,
+      "count_rate": 3.3961150459954395,
+      "actual_rate": null,
+      "expected_PA": 552.9744971779307,
+      "actual_PA": 0,
+      "incumbent_value": 4.42339142467406,
+      "count_value": 4.862805059342595,
+      "actual_value": 0.0,
+      "predicted_probability": [
+        0.39076626889338556,
+        0.26392542834526245,
+        0.09394515225877018,
+        0.00843566246800663,
+        0.12483856575981624,
+        0.04887461513147618,
+        0.0033925419902814313,
+        0.06582176515300137
+      ],
+      "actual_counts": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "fixed_fit_source_removal_rate_changes": {
+        "minor": -0.014845455508826877,
+        "foreign": 3.1086244689504383e-15
+      },
+      "support": [
+        {
+          "subset": "full",
+          "people": 197
+        },
+        {
+          "subset": "active",
+          "people": 191
+        }
+      ],
+      "interpretation": "Next-year conditional MLB hitting and batting-plus-replacement, not full WAR or trade value"
+    },
+    {
+      "row_id": 32754,
+      "player_id": 592859,
+      "player_name": "Stevie Wilkerson",
+      "origin": 2018,
+      "why": [
+        "fixed before fitting"
+      ],
+      "branch": "tracking",
+      "past_baseline_rate": -1.1129168934277034,
+      "incumbent_rate": -1.2888433310966019,
+      "count_rate": -1.3504771297929667,
+      "actual_rate": -1.6503062517626916,
+      "expected_PA": 109.5357282041853,
+      "actual_PA": 361,
+      "incumbent_value": 0.10208320302036315,
+      "count_value": 0.09083136465003572,
+      "actual_value": 0.11895831119707237,
+      "predicted_probability": [
+        0.4544790962009365,
+        0.25325969564354633,
+        0.06786542346286789,
+        0.01330458302687132,
+        0.1436434225192831,
+        0.04252872225224627,
+        0.004547200248479111,
+        0.020371856645769272
+      ],
+      "actual_counts": [
+        150.0,
+        108.0,
+        22.0,
+        7.0,
+        44.0,
+        18.0,
+        2.0,
+        10.0
+      ],
+      "fixed_fit_source_removal_rate_changes": {
+        "minor": 0.9256779810426521,
+        "foreign": -8.881784197001252e-16
+      },
+      "support": [
+        {
+          "subset": "full",
+          "people": 473
+        },
+        {
+          "subset": "active",
+          "people": 314
+        }
+      ],
+      "interpretation": "Next-year conditional MLB hitting and batting-plus-replacement, not full WAR or trade value"
+    },
+    {
+      "row_id": 50698,
+      "player_id": 592450,
+      "player_name": "Aaron Judge",
+      "origin": 2023,
+      "why": [
+        "largest gain"
+      ],
+      "branch": "tracking",
+      "past_baseline_rate": 2.7569530694625994,
+      "incumbent_rate": 3.898806733708158,
+      "count_rate": 4.4546174016808,
+      "actual_rate": 7.557649414891912,
+      "expected_PA": 536.0010718010594,
+      "actual_PA": 704,
+      "incumbent_value": 5.142441104551988,
+      "count_value": 5.638966294138319,
+      "actual_value": 11.047279576281156,
+      "predicted_probability": [
+        0.35498091017714134,
+        0.2704479707168013,
+        0.14191741283830725,
+        0.006676327351965508,
+        0.1083572208896587,
+        0.038763695664707776,
+        0.0012195988051041365,
+        0.07763686355631394
+      ],
+      "actual_counts": [
+        231.0,
+        171.0,
+        113.0,
+        9.0,
+        85.0,
+        36.0,
+        1.0,
+        58.0
+      ],
+      "fixed_fit_source_removal_rate_changes": {
+        "minor": 0.0,
+        "foreign": 0.0
+      },
+      "support": [
+        {
+          "subset": "full",
+          "people": 348
+        },
+        {
+          "subset": "active",
+          "people": 319
+        }
+      ],
+      "interpretation": "Next-year conditional MLB hitting and batting-plus-replacement, not full WAR or trade value"
+    },
+    {
+      "row_id": 32325,
+      "player_id": 501981,
+      "player_name": "Khris Davis",
+      "origin": 2018,
+      "why": [
+        "largest harm"
+      ],
+      "branch": "tracking",
+      "past_baseline_rate": 1.4282791200609835,
+      "incumbent_rate": 2.287558823171266,
+      "count_rate": 3.394985203239565,
+      "actual_rate": -1.5184802696788609,
+      "expected_PA": 572.7777765601047,
+      "actual_PA": 533,
+      "incumbent_value": 3.9479469276161927,
+      "count_value": 5.005128960415402,
+      "actual_value": 0.2927419234142192,
+      "predicted_probability": [
+        0.3854879154300589,
+        0.2773706394001253,
+        0.09839530002975715,
+        0.012536100528974319,
+        0.10482142272657734,
+        0.043130043384107954,
+        0.00222959575661591,
+        0.07602898274378318
+      ],
+      "actual_counts": [
+        234.0,
+        146.0,
+        44.0,
+        3.0,
+        72.0,
+        11.0,
+        0.0,
+        23.0
+      ],
+      "fixed_fit_source_removal_rate_changes": {
+        "minor": 4.440892098500626e-16,
+        "foreign": 4.440892098500626e-16
+      },
+      "support": [
+        {
+          "subset": "full",
+          "people": 232
+        },
+        {
+          "subset": "active",
+          "people": 211
+        }
+      ],
+      "interpretation": "Next-year conditional MLB hitting and batting-plus-replacement, not full WAR or trade value"
+    },
+    {
+      "row_id": 55509,
+      "player_id": 670224,
+      "player_name": "Kameron Misner",
+      "origin": 2024,
+      "why": [
+        "ordinary"
+      ],
+      "branch": "tracking",
+      "past_baseline_rate": -0.733207088616974,
+      "incumbent_rate": -1.8400519350863322,
+      "count_rate": -2.2497207774412002,
+      "actual_rate": -2.0256349404735814,
+      "expected_PA": 84.52689941342628,
+      "actual_PA": 217,
+      "incumbent_value": 0.004743804818030153,
+      "count_value": -0.05296959023287769,
+      "actual_value": -0.054940748455363175,
+      "predicted_probability": [
+        0.35136052795028927,
+        0.37514801385814905,
+        0.1003801009375675,
+        0.008069565621046755,
+        0.10173787705315822,
+        0.037355282832874884,
+        0.005540508599444736,
+        0.020408123147469596
+      ],
+      "actual_counts": [
+        89.0,
+        69.0,
+        16.0,
+        1.0,
+        27.0,
+        9.0,
+        1.0,
+        5.0
+      ],
+      "fixed_fit_source_removal_rate_changes": {
+        "minor": 0.7091942475111925,
+        "foreign": 4.440892098500626e-16
+      },
+      "support": [
+        {
+          "subset": "full",
+          "people": 860
+        },
+        {
+          "subset": "active",
+          "people": 594
+        }
+      ],
+      "interpretation": "Next-year conditional MLB hitting and batting-plus-replacement, not full WAR or trade value"
+    }
+  ],
+  "source_horizon_qualification": "docs/hitter-shared-production-horizon-qualification.md",
+  "readable_result": "docs/hitter-count-baseline-result.md",
+  "readable_player_review": "docs/hitter-count-baseline-player-review.md"
+}

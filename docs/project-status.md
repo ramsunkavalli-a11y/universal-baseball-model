@@ -2,6 +2,36 @@
 
 Updated 2026-10-05. This is the current start-here document.
 
+## Past-only count comparison complete: retain the incumbent
+
+The [count result](hitter-count-baseline-result.md),
+[pre-fit sources](hitter-count-baseline-source-review.md) and
+[thirteen post-fit walks](hitter-count-baseline-player-review.md) are complete.
+All 105 fixed historical count heads converge and replay. No playing-time model
+or frozen forecast changed, and the authorized one-time 2026 evaluation remains
+final. Fifteen focused tests pass; all original 30,506 forecasts and thirteen
+separate additions remain.
+
+The new [horizon qualification](hitter-shared-production-horizon-qualification.md)
+corrects the interpretation of the preceding comparison: domestic inputs were
+past equivalencies, foreign inputs already future predictions. Its arithmetic
+and rejection remain; the older claim that it fixed coherent pooling is too
+broad. The new comparison reconstructs foreign past production directly from
+counts and references, never pooling the old future probability with past data.
+
+The replacement gets overall homers close to reality and improves some minor
+cohorts, but full hitting RMSE worsens 1.80481 to 1.81347 and delivered value
+0.43513 to 0.43811. Six of seven origin hitting scores worsen. Foreign adaptation
+is too optimistic in important cases; Suzuki's better delivered value partly
+hides overestimated hitting and underestimated PA. Judge's rookie forecast is
+worse while his established forecast improves. Keep the incumbent; no subgroup
+hybrid, closed opportunity rerun or 2026 reopening follows.
+
+Next diagnose the saved forecast errors by origin-known production/exposure/level
+before another fit. The live goal remains active. Distinguish selected-mover
+translation/prior precision, foreign adaptation support and probability versus
+player-value objectives rather than launch another algorithm tournament.
+
 ## Shared production comparison completed without an accuracy gain
 
 The [shared production result](hitter-shared-production-result.md) and

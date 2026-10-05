@@ -518,3 +518,17 @@ scripts/certify_hitter_shared_production.py -text -eol
 scripts/qualify_hitter_shared_production.py -text -eol
 scripts/finalize_hitter_shared_production.py -text -eol
 reports/model-evidence/hitter-shared-production/** -text -eol
+# Preserve the past-only count experiment and appended horizon qualification.
+docs/hitter-shared-production-horizon-qualification.md -text -eol
+docs/hitter-count-baseline-contract.md -text -eol
+docs/hitter-count-baseline-source-review.md -text -eol
+docs/hitter-count-baseline-result.md -text -eol
+docs/hitter-count-baseline-player-review.md -text -eol
+src/universal_baseball/hitter_count_baseline.py -text -eol
+tests/test_hitter_count_baseline.py -text -eol
+scripts/run_hitter_count_baseline.py -text -eol
+scripts/certify_hitter_count_references.py -text -eol
+scripts/review_hitter_count_baseline.py -text -eol
+scripts/qualify_hitter_count_baseline.py -text -eol
+scripts/finalize_hitter_count_baseline.py -text -eol
+reports/model-evidence/hitter-count-baseline/** -text -eol
