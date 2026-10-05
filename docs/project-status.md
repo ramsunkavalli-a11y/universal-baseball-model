@@ -2,6 +2,31 @@
 
 Updated 2026-10-05. This is the current start-here document.
 
+## Existing overseas opportunity work inventoried, not repeated
+
+The [read-only inventory](hitter-overseas-opportunity-inventory-result.md) retains
+266 foreign-source forecasts, all eighteen earlier focal origins and their
+outcome-blind peers. Fifty-nine unique inputs and 118 saved job-head paths replay;
+162 allocation checks and ten focused tests pass. A documented Path-handling
+stop/recovery preserves the original executable and seal. No new fit or forecast.
+
+Professional activity and dated job evidence were already implemented in the
+rejected repaired-evidence candidate. Suzuki's PA rise 25 to 183; Yoshida's 35
+to 265; Thames's 21 to 292. Rebuilding the same feature block would repeat work.
+But fresh-original non-arrival allocation rises 473 to 763 PA, and several
+participant forecasts remain low. Ohtani's legal minor agreement does not feed
+signed-first-team work; his held young-foreign-minor-deal profile has zero people.
+Soto's older captured agreement does not certify current MLB employment. These
+are source/semantics/support gaps, not proof of a preferred replacement model.
+
+Next audit saved public export coverage for international entrants and cutoff-known
+contract/role intent. The prior public cohort requires prior-year MLB PA and has
+zero fresh-route overlap; it is not a smell test for first-year overseas players.
+Keep missing predictions and snapshot mismatches explicit. Do not promote a
+subgroup blend, invent employment expiry, relabel minor agreements as major,
+or tune to Ohtani alone. Both freezes and the completed 2026 result/explorer
+remain unchanged. This narrows the next-work boundary below; the long goal is active.
+
 ## Overseas count calibration closes without promotion
 
 The [locked count-likelihood repair](hitter-foreign-count-calibration-result.md)

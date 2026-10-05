@@ -1,0 +1,336 @@
+{
+  "status": "diagnosis_complete",
+  "player_walkthrough_status": "complete",
+  "focal_origins": 18,
+  "unique_traces": 59,
+  "saved_head_replays": 118,
+  "independent_allocation_checks": 162,
+  "tests": "..........                                                               [100%]\n10 passed in 2.74s\n",
+  "new_fits": 0,
+  "new_forecasts": 0,
+  "predictive_gain_claimed": false,
+  "deployment_approved": false,
+  "frozen_2026_forecasts_changed": false,
+  "freeze_checks": [
+    {
+      "script": "verify_hitter_selected_2026_freeze.py",
+      "output": {
+        "status": "verified",
+        "files": 53,
+        "players": 4030,
+        "heads_replayed": 25,
+        "manifest_sha256": "a1d819ffcdd98a9ee62feecf5637b5ebe1f93b6e931d77d2b7d692ed928da67a",
+        "protected_outcomes_read": false,
+        "predictive_accuracy_not_yet_evaluated": true
+      },
+      "qualifier": "Package verifier describes original pre-result state; completed 2026 evaluation is unchanged."
+    },
+    {
+      "script": "verify_hitter_full_2026_freeze.py",
+      "output": {
+        "contact_available_rows": 3511,
+        "five_model_rows": 3720,
+        "forecast_sha256": "d1953a28d35d87d141ecc65ec4b107906edad877982e79c0d3a216245b9e4708",
+        "players": 3907,
+        "population_prior_rows": 187,
+        "protected_2026_opened": false,
+        "status": "verified",
+        "verified_files": 31
+      },
+      "qualifier": "Package verifier describes original pre-result state; completed 2026 evaluation is unchanged."
+    }
+  ],
+  "next_boundary": "Audit saved public entrant coverage and dated overseas contract/role intent before another fit.",
+  "hashes": {
+    "docs\\hitter-overseas-opportunity-inventory-result.md": "3e34e5de16440e8615fa61f7904f142cf3f5d0f150c9a484b7c4561b6309ec51",
+    "scripts\\finalize_overseas_opportunity_inventory.py": "89188aa77347cce86c5f3920082c4d1051ca0d6dcceaf02056020d513e3c79be",
+    "tests\\test_overseas_opportunity_inventory.py": "fe26a7aacf7a2a545998fc5881820fd4ad535101c58b535f6301e6b896c555e7",
+    "reports\\generated\\overseas-opportunity-inventory\\inventory.json": "ac8a7ad769ff27932bb957ea46f8b142323bd9a0bf82fa26d7bd306279eeb022",
+    "reports\\generated\\overseas-opportunity-inventory\\source-seal.json": "50483004bde46abc365a11ae2399de4bd78d88f3b998ae2b666dbec204cd1f69",
+    "reports\\generated\\overseas-opportunity-inventory\\execution-recovery.json": "0f24711770d6f5456cdc2c3f0eade473fa4c1bf6d30b5a2f7b1977ee45c1c6d0"
+  },
+  "groups": [
+    {
+      "scope": "original_foreign",
+      "rows": 253,
+      "people": 138,
+      "actual_PA": 7776,
+      "actual_participants": 28,
+      "arms": {
+        "current": {
+          "expected_PA": 7463.664247697227,
+          "expected_participants": 33.894109882306836,
+          "PA_RMSE": 81.31108219097655,
+          "Brier": 0.05797056574294097,
+          "PA_allocated_to_eventual_participants": 5318.082349381166,
+          "PA_allocated_to_nonarrivals": 2145.581898316061
+        },
+        "domestic": {
+          "expected_PA": 7494.339114956841,
+          "expected_participants": 32.89778474397974,
+          "PA_RMSE": 79.14725599181725,
+          "Brier": 0.04881783346816896,
+          "PA_allocated_to_eventual_participants": 5538.56058616123,
+          "PA_allocated_to_nonarrivals": 1955.7785287956085
+        },
+        "overseas": {
+          "expected_PA": 7854.979717188695,
+          "expected_participants": 32.85902737728473,
+          "PA_RMSE": 79.47347900251877,
+          "Brier": 0.048837034253295865,
+          "PA_allocated_to_eventual_participants": 5754.723366775694,
+          "PA_allocated_to_nonarrivals": 2100.256350412999
+        },
+        "repaired_domestic": {
+          "expected_PA": 8562.698736059057,
+          "expected_participants": 36.25674848173894,
+          "PA_RMSE": 74.47259553937604,
+          "Brier": 0.046827485717837694,
+          "PA_allocated_to_eventual_participants": 6046.868474988545,
+          "PA_allocated_to_nonarrivals": 2515.830261070515
+        }
+      }
+    },
+    {
+      "scope": "fresh_original",
+      "rows": 114,
+      "people": 70,
+      "actual_PA": 914,
+      "actual_participants": 5,
+      "arms": {
+        "current": {
+          "expected_PA": 513.8081935452894,
+          "expected_participants": 5.073108576120273,
+          "PA_RMSE": 54.69821647762524,
+          "Brier": 0.0433345500218935,
+          "PA_allocated_to_eventual_participants": 41.114850891651926,
+          "PA_allocated_to_nonarrivals": 472.6933426536377
+        },
+        "domestic": {
+          "expected_PA": 522.9321032569468,
+          "expected_participants": 5.18379593121354,
+          "PA_RMSE": 50.89752693524936,
+          "Brier": 0.031774627790280466,
+          "PA_allocated_to_eventual_participants": 118.78413842115134,
+          "PA_allocated_to_nonarrivals": 404.1479648357956
+        },
+        "overseas": {
+          "expected_PA": 581.8797412336503,
+          "expected_participants": 5.171275022357757,
+          "PA_RMSE": 50.5491535656268,
+          "Brier": 0.03192217967682976,
+          "PA_allocated_to_eventual_participants": 135.26276345319854,
+          "PA_allocated_to_nonarrivals": 446.61697778045163
+        },
+        "repaired_domestic": {
+          "expected_PA": 1322.305882798173,
+          "expected_participants": 7.438469344872227,
+          "PA_RMSE": 29.170849645257018,
+          "Brier": 0.026633935352151465,
+          "PA_allocated_to_eventual_participants": 559.5680824569952,
+          "PA_allocated_to_nonarrivals": 762.7378003411778
+        }
+      }
+    },
+    {
+      "scope": "additions",
+      "rows": 13,
+      "people": 13,
+      "actual_PA": 1625,
+      "actual_participants": 6,
+      "arms": {
+        "current": {
+          "missing_current_forecasts": true
+        },
+        "domestic": {
+          "expected_PA": 145.27613049381603,
+          "expected_participants": 1.4004667640473203,
+          "PA_RMSE": 231.46026881338065,
+          "Brier": 0.3913771707267282,
+          "PA_allocated_to_eventual_participants": 106.88269126542114,
+          "PA_allocated_to_nonarrivals": 38.393439228394875
+        },
+        "overseas": {
+          "expected_PA": 176.53437444136216,
+          "expected_participants": 1.3996938529899534,
+          "PA_RMSE": 228.00166498572597,
+          "Brier": 0.3913976440341083,
+          "PA_allocated_to_eventual_participants": 130.32940177118422,
+          "PA_allocated_to_nonarrivals": 46.20497267017794
+        },
+        "repaired_domestic": {
+          "expected_PA": 741.7649911737769,
+          "expected_participants": 2.5942917067227604,
+          "PA_RMSE": 175.08893895794094,
+          "Brier": 0.2783727910799681,
+          "PA_allocated_to_eventual_participants": 672.2424428007278,
+          "PA_allocated_to_nonarrivals": 69.52254837304908
+        }
+      }
+    },
+    {
+      "scope": "fresh_original_major_link",
+      "rows": 4,
+      "people": 3,
+      "actual_PA": 721,
+      "actual_participants": 2,
+      "arms": {
+        "current": {
+          "expected_PA": 24.427275882728456,
+          "expected_participants": 0.2560253920631032,
+          "PA_RMSE": 313.86354566112067,
+          "Brier": 0.37510803544045096,
+          "PA_allocated_to_eventual_participants": 21.137224875568233,
+          "PA_allocated_to_nonarrivals": 3.2900510071602227
+        },
+        "domestic": {
+          "expected_PA": 91.67089259617765,
+          "expected_participants": 0.783601594690586,
+          "PA_RMSE": 294.9836418402752,
+          "Brier": 0.20092774206814304,
+          "PA_allocated_to_eventual_participants": 84.89164676001687,
+          "PA_allocated_to_nonarrivals": 6.779245836160782
+        },
+        "overseas": {
+          "expected_PA": 106.24986934406087,
+          "expected_participants": 0.7822089990367962,
+          "PA_RMSE": 294.0584741958332,
+          "Brier": 0.20088736719443487,
+          "PA_allocated_to_eventual_participants": 97.74744135568352,
+          "PA_allocated_to_nonarrivals": 8.502427988377356
+        },
+        "repaired_domestic": {
+          "expected_PA": 551.4852768144247,
+          "expected_participants": 1.638313228988404,
+          "PA_RMSE": 152.16925070146806,
+          "Brier": 0.0263201069700299,
+          "PA_allocated_to_eventual_participants": 522.6251371999604,
+          "PA_allocated_to_nonarrivals": 28.860139614464266
+        }
+      }
+    },
+    {
+      "scope": "fresh_original_minor_agreement",
+      "rows": 32,
+      "people": 25,
+      "actual_PA": 193,
+      "actual_participants": 3,
+      "arms": {
+        "current": {
+          "expected_PA": 135.2353842938353,
+          "expected_participants": 1.4296828313564978,
+          "PA_RMSE": 18.80917001605472,
+          "Brier": 0.1004649769529427,
+          "PA_allocated_to_eventual_participants": 19.977626016083697,
+          "PA_allocated_to_nonarrivals": 115.2577582777516
+        },
+        "domestic": {
+          "expected_PA": 178.65154737198395,
+          "expected_participants": 1.9032779374520359,
+          "PA_RMSE": 18.50935525914843,
+          "Brier": 0.08747478821285841,
+          "PA_allocated_to_eventual_participants": 33.892491661134486,
+          "PA_allocated_to_nonarrivals": 144.75905571084945
+        },
+        "overseas": {
+          "expected_PA": 188.7125008292053,
+          "expected_participants": 1.880345378041115,
+          "PA_RMSE": 18.238158858356925,
+          "Brier": 0.08796307894152901,
+          "PA_allocated_to_eventual_participants": 37.51532209751502,
+          "PA_allocated_to_nonarrivals": 151.1971787316903
+        },
+        "repaired_domestic": {
+          "expected_PA": 270.0985825704298,
+          "expected_participants": 2.1788429986424425,
+          "PA_RMSE": 20.08911756763025,
+          "Brier": 0.09162416500020917,
+          "PA_allocated_to_eventual_participants": 36.942945257034694,
+          "PA_allocated_to_nonarrivals": 233.15563731339503
+        }
+      }
+    },
+    {
+      "scope": "fresh_original_other",
+      "rows": 77,
+      "people": 44,
+      "actual_PA": 0,
+      "actual_participants": 0,
+      "arms": {
+        "current": {
+          "expected_PA": 353.8426381455136,
+          "expected_participants": 3.382702389946748,
+          "PA_RMSE": 6.552887368853762,
+          "Brier": 0.0032908634033796615,
+          "PA_allocated_to_eventual_participants": 0.0,
+          "PA_allocated_to_nonarrivals": 353.8426381455136
+        },
+        "domestic": {
+          "expected_PA": 252.29258482499813,
+          "expected_participants": 2.492546523386766,
+          "PA_RMSE": 4.267263490256798,
+          "Brier": 0.0015837085519957513,
+          "PA_allocated_to_eventual_participants": 0.0,
+          "PA_allocated_to_nonarrivals": 252.29258482499813
+        },
+        "overseas": {
+          "expected_PA": 286.6002925965967,
+          "expected_participants": 2.5043507695956944,
+          "PA_RMSE": 4.913304927712851,
+          "Brier": 0.0015923844104082983,
+          "PA_allocated_to_eventual_participants": 0.0,
+          "PA_allocated_to_nonarrivals": 286.6002925965968
+        },
+        "repaired_domestic": {
+          "expected_PA": 500.3406021880388,
+          "expected_participants": 3.616329133636872,
+          "PA_RMSE": 9.455324984671533,
+          "Brier": 0.003831273530581082,
+          "PA_allocated_to_eventual_participants": 0.0,
+          "PA_allocated_to_nonarrivals": 500.34060218803876
+        }
+      }
+    },
+    {
+      "scope": "fresh_original_unknown",
+      "rows": 1,
+      "people": 1,
+      "actual_PA": 0,
+      "actual_participants": 0,
+      "arms": {
+        "current": {
+          "expected_PA": 0.3028952232122757,
+          "expected_participants": 0.004697962753921267,
+          "PA_RMSE": 0.3028952232122757,
+          "Brier": 2.20708540372315e-05,
+          "PA_allocated_to_eventual_participants": 0.0,
+          "PA_allocated_to_nonarrivals": 0.3028952232122757
+        },
+        "domestic": {
+          "expected_PA": 0.3170784637872072,
+          "expected_participants": 0.004369875684151591,
+          "PA_RMSE": 0.3170784637872072,
+          "Brier": 1.9095813494939335e-05,
+          "PA_allocated_to_eventual_participants": 0.0,
+          "PA_allocated_to_nonarrivals": 0.3170784637872072
+        },
+        "overseas": {
+          "expected_PA": 0.3170784637872072,
+          "expected_participants": 0.004369875684151591,
+          "PA_RMSE": 0.3170784637872072,
+          "Brier": 1.9095813494939335e-05,
+          "PA_allocated_to_eventual_participants": 0.0,
+          "PA_allocated_to_nonarrivals": 0.3170784637872072
+        },
+        "repaired_domestic": {
+          "expected_PA": 0.38142122527965955,
+          "expected_participants": 0.004983983604506752,
+          "PA_RMSE": 0.38142122527965955,
+          "Brier": 2.4840092569992117e-05,
+          "PA_allocated_to_eventual_participants": 0.0,
+          "PA_allocated_to_nonarrivals": 0.38142122527965955
+        }
+      }
+    }
+  ]
+}
