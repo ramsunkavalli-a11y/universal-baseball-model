@@ -1,0 +1,2380 @@
+{
+  "new_fits": 0,
+  "player_walkthrough_status": "complete",
+  "cases": 13,
+  "original_rows": 30506,
+  "additions_separate": 13,
+  "disposition": "No forecast change; retain incumbent; one matched direct-value learning contrast next",
+  "diagnostic_not_accuracy_improvement": true,
+  "protected_outcomes_used": false,
+  "completed_2026_evaluation_unchanged": true,
+  "deployment_approved": false,
+  "reasonability_status": "Error mechanisms reviewed, replacement remains rejected; root cause not causally isolated",
+  "research_goal_remains_active": true,
+  "hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\finalize_hitter_count_error_diagnosis.py": "e930ea4fb8902e5417b0ff399e63196509ac8312a82ebbe56fa82814e698406c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\hitter-count-error-diagnosis-result.md": "99f56cc3fbd9c282174da5f8323aa589fc4d7bade1850182298e23dd57f158bb",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\hitter-count-error-diagnosis-player-review.md": "7319ee721c58ab512b4ae78c12d98e8fae145ee0597c88e3b01c3865fadad53b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-count-error-diagnosis\\receipt.json": "4edb3b9a2dc744ea394414f7752a593206bbea3e92e8d7588b5c3167e7594998",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-count-error-diagnosis\\qualification.json": "1131d9094a51a9240948dc47a4b2aab52a9b0a179922f854c2f6363b6bdbcd65",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-count-error-diagnosis\\global-attribution.json": "602370c6959f21716a30e97cf0c0ac9c2b34f9879ca0bcb9aff6509fe852c881",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-count-error-diagnosis\\addition-decomposition.json": "4b01820e072f23f731fd0f5e96948cbd77d442216675f82d389ecb101a4733c0"
+  },
+  "qualification": {
+    "new_fits": 0,
+    "independent_formula_identity_pass": true,
+    "independently_replayed_overall_scores": {
+      "current": {
+        "value_rmse": 0.4351333510509891,
+        "rate_rmse": 1.8048133711486227
+      },
+      "count": {
+        "value_rmse": 0.43811085622845736,
+        "rate_rmse": 1.8134720939169484
+      }
+    },
+    "original_rows": 30506,
+    "active_original_rows": 4538,
+    "addition_rows": 13,
+    "complete_partition_families": 12,
+    "metadata_differences": [
+      {
+        "fold": 0,
+        "origin": 2016,
+        "rows": 893,
+        "max_absolute_replacement_difference": 2.5416394109282862e-06
+      },
+      {
+        "fold": 0,
+        "origin": 2017,
+        "rows": 904,
+        "max_absolute_replacement_difference": 0.0
+      },
+      {
+        "fold": 0,
+        "origin": 2018,
+        "rows": 862,
+        "max_absolute_replacement_difference": 1.2669826521404144e-06
+      },
+      {
+        "fold": 0,
+        "origin": 2021,
+        "rows": 848,
+        "max_absolute_replacement_difference": 1.2901247469147663e-06
+      },
+      {
+        "fold": 0,
+        "origin": 2022,
+        "rows": 875,
+        "max_absolute_replacement_difference": 0.0
+      },
+      {
+        "fold": 0,
+        "origin": 2023,
+        "rows": 872,
+        "max_absolute_replacement_difference": 0.0
+      },
+      {
+        "fold": 0,
+        "origin": 2024,
+        "rows": 807,
+        "max_absolute_replacement_difference": 1.285662849533683e-06
+      },
+      {
+        "fold": 1,
+        "origin": 2016,
+        "rows": 933,
+        "max_absolute_replacement_difference": 2.5416394109282862e-06
+      },
+      {
+        "fold": 1,
+        "origin": 2017,
+        "rows": 937,
+        "max_absolute_replacement_difference": 0.0
+      },
+      {
+        "fold": 1,
+        "origin": 2018,
+        "rows": 883,
+        "max_absolute_replacement_difference": 1.2669826521404144e-06
+      },
+      {
+        "fold": 1,
+        "origin": 2021,
+        "rows": 824,
+        "max_absolute_replacement_difference": 1.2901247469147663e-06
+      },
+      {
+        "fold": 1,
+        "origin": 2022,
+        "rows": 801,
+        "max_absolute_replacement_difference": 0.0
+      },
+      {
+        "fold": 1,
+        "origin": 2023,
+        "rows": 773,
+        "max_absolute_replacement_difference": 0.0
+      },
+      {
+        "fold": 1,
+        "origin": 2024,
+        "rows": 734,
+        "max_absolute_replacement_difference": 1.285662849533683e-06
+      },
+      {
+        "fold": 2,
+        "origin": 2016,
+        "rows": 989,
+        "max_absolute_replacement_difference": 2.5416394109282862e-06
+      },
+      {
+        "fold": 2,
+        "origin": 2017,
+        "rows": 990,
+        "max_absolute_replacement_difference": 0.0
+      },
+      {
+        "fold": 2,
+        "origin": 2018,
+        "rows": 936,
+        "max_absolute_replacement_difference": 1.2669826521404144e-06
+      },
+      {
+        "fold": 2,
+        "origin": 2021,
+        "rows": 883,
+        "max_absolute_replacement_difference": 1.2901247469147663e-06
+      },
+      {
+        "fold": 2,
+        "origin": 2022,
+        "rows": 873,
+        "max_absolute_replacement_difference": 0.0
+      },
+      {
+        "fold": 2,
+        "origin": 2023,
+        "rows": 874,
+        "max_absolute_replacement_difference": 0.0
+      },
+      {
+        "fold": 2,
+        "origin": 2024,
+        "rows": 841,
+        "max_absolute_replacement_difference": 1.285662849533683e-06
+      },
+      {
+        "fold": 3,
+        "origin": 2016,
+        "rows": 937,
+        "max_absolute_replacement_difference": 2.5416394109282862e-06
+      },
+      {
+        "fold": 3,
+        "origin": 2017,
+        "rows": 950,
+        "max_absolute_replacement_difference": 0.0
+      },
+      {
+        "fold": 3,
+        "origin": 2018,
+        "rows": 898,
+        "max_absolute_replacement_difference": 1.2669826521404144e-06
+      },
+      {
+        "fold": 3,
+        "origin": 2021,
+        "rows": 846,
+        "max_absolute_replacement_difference": 1.2901247469147663e-06
+      },
+      {
+        "fold": 3,
+        "origin": 2022,
+        "rows": 851,
+        "max_absolute_replacement_difference": 0.0
+      },
+      {
+        "fold": 3,
+        "origin": 2023,
+        "rows": 834,
+        "max_absolute_replacement_difference": 0.0
+      },
+      {
+        "fold": 3,
+        "origin": 2024,
+        "rows": 812,
+        "max_absolute_replacement_difference": 1.285662849533683e-06
+      },
+      {
+        "fold": 4,
+        "origin": 2016,
+        "rows": 911,
+        "max_absolute_replacement_difference": 2.5416394109282862e-06
+      },
+      {
+        "fold": 4,
+        "origin": 2017,
+        "rows": 910,
+        "max_absolute_replacement_difference": 0.0
+      },
+      {
+        "fold": 4,
+        "origin": 2018,
+        "rows": 899,
+        "max_absolute_replacement_difference": 1.2669826521404144e-06
+      },
+      {
+        "fold": 4,
+        "origin": 2021,
+        "rows": 841,
+        "max_absolute_replacement_difference": 1.2901247469147663e-06
+      },
+      {
+        "fold": 4,
+        "origin": 2022,
+        "rows": 844,
+        "max_absolute_replacement_difference": 0.0
+      },
+      {
+        "fold": 4,
+        "origin": 2023,
+        "rows": 843,
+        "max_absolute_replacement_difference": 0.0
+      },
+      {
+        "fold": 4,
+        "origin": 2024,
+        "rows": 798,
+        "max_absolute_replacement_difference": 1.285662849533683e-06
+      }
+    ],
+    "metadata_qualification": "Forecast replacement references are authoritative; feature-matrix replacement metadata were excluded at join. No talent feature or forecast was changed.",
+    "protected_outcomes_used": false,
+    "hashes": {
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\qualify_hitter_count_error_diagnosis.py": "6aa25a003684852a12c470fb753b4bec51f27390fca0244adf55313dd99b4788",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-count-error-diagnosis\\receipt.json": "4edb3b9a2dc744ea394414f7752a593206bbea3e92e8d7588b5c3167e7594998",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-count-error-diagnosis\\global-attribution.json": "602370c6959f21716a30e97cf0c0ac9c2b34f9879ca0bcb9aff6509fe852c881",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-count-error-diagnosis\\addition-decomposition.json": "4b01820e072f23f731fd0f5e96948cbd77d442216675f82d389ecb101a4733c0"
+    }
+  },
+  "global_attribution": {
+    "weighting": "Original equal-origin row weights, unchanged across all groups; each family partitions the same global delta. Different families overlap and must not be added to each other.",
+    "global_terms": {
+      "delivered_delta": 0.0026000891483687594,
+      "active_hitting_squared": 0.004633283507520877,
+      "active_interaction": -0.002344685317094938,
+      "nonarrival": 0.00031149095794280536
+    },
+    "groups": [
+      {
+        "family": "MLB_fraction_group",
+        "group": "25to74pct",
+        "rows": 1410,
+        "active_rows": 959,
+        "global_weight": 0.04645191670700721,
+        "global_MSE_contribution": {
+          "delivered_delta": 8.076552205980049e-05,
+          "active_hitting_squared": 0.0010860226333258359,
+          "active_interaction": -0.00103833473993859,
+          "nonarrival": 3.307762867255443e-05
+        }
+      },
+      {
+        "family": "MLB_fraction_group",
+        "group": "75pctplus",
+        "rows": 2108,
+        "active_rows": 1833,
+        "global_weight": 0.06939471345941889,
+        "global_MSE_contribution": {
+          "delivered_delta": 0.003086400954649555,
+          "active_hitting_squared": 0.0035412064901689288,
+          "active_interaction": -0.0006867949407552976,
+          "nonarrival": 0.00023198940523591431
+        }
+      },
+      {
+        "family": "MLB_fraction_group",
+        "group": "no_production",
+        "rows": 555,
+        "active_rows": 0,
+        "global_weight": 0.018357985622909495,
+        "global_MSE_contribution": {
+          "delivered_delta": 1.8689207275396314e-09,
+          "active_hitting_squared": 0.0,
+          "active_interaction": 0.0,
+          "nonarrival": 1.8689207275396314e-09
+        }
+      },
+      {
+        "family": "MLB_fraction_group",
+        "group": "under25pct",
+        "rows": 26433,
+        "active_rows": 1746,
+        "global_weight": 0.8657953842106643,
+        "global_MSE_contribution": {
+          "delivered_delta": -0.0005670791972613374,
+          "active_hitting_squared": 6.0543840261052475e-06,
+          "active_interaction": -0.0006195556364010505,
+          "nonarrival": 4.642205511360954e-05
+        }
+      },
+      {
+        "family": "age_group",
+        "group": "22to27",
+        "rows": 12789,
+        "active_rows": 2612,
+        "global_weight": 0.4186515835394552,
+        "global_MSE_contribution": {
+          "delivered_delta": 0.00033250829670209575,
+          "active_hitting_squared": 0.0022004977108258526,
+          "active_interaction": -0.0018950843749074532,
+          "nonarrival": 2.7094960783702606e-05
+        }
+      },
+      {
+        "family": "age_group",
+        "group": "28to32",
+        "rows": 3191,
+        "active_rows": 1332,
+        "global_weight": 0.10458026509490766,
+        "global_MSE_contribution": {
+          "delivered_delta": 0.002680745539710923,
+          "active_hitting_squared": 0.0023651541015376736,
+          "active_interaction": 9.542044054176475e-05,
+          "nonarrival": 0.00022017099763148112
+        }
+      },
+      {
+        "family": "age_group",
+        "group": "33plus",
+        "rows": 936,
+        "active_rows": 357,
+        "global_weight": 0.03028585627479853,
+        "global_MSE_contribution": {
+          "delivered_delta": -5.3521412989550386e-05,
+          "active_hitting_squared": 0.00015048329804930125,
+          "active_interaction": -0.0002925356780670433,
+          "nonarrival": 8.853096702819162e-05
+        }
+      },
+      {
+        "family": "age_group",
+        "group": "under22",
+        "rows": 13590,
+        "active_rows": 237,
+        "global_weight": 0.4464822950908385,
+        "global_MSE_contribution": {
+          "delivered_delta": -0.00035964327505472914,
+          "active_hitting_squared": -8.285160289195528e-05,
+          "active_interaction": -0.0002524857046622039,
+          "nonarrival": -2.43059675005701e-05
+        }
+      },
+      {
+        "family": "count_branch",
+        "group": "base",
+        "rows": 751,
+        "active_rows": 27,
+        "global_weight": 0.02438437383162889,
+        "global_MSE_contribution": {
+          "delivered_delta": -4.671240547613082e-05,
+          "active_hitting_squared": -7.273810678294867e-06,
+          "active_interaction": -3.567902968187594e-05,
+          "nonarrival": -3.7595651159600853e-06
+        }
+      },
+      {
+        "family": "count_branch",
+        "group": "prospect",
+        "rows": 24199,
+        "active_rows": 787,
+        "global_weight": 0.7926593212072697,
+        "global_MSE_contribution": {
+          "delivered_delta": -0.00033297724246182615,
+          "active_hitting_squared": -0.00010213708591400622,
+          "active_interaction": -0.00016757993598400745,
+          "nonarrival": -6.3260220563811e-05
+        }
+      },
+      {
+        "family": "count_branch",
+        "group": "tracking",
+        "rows": 5556,
+        "active_rows": 3724,
+        "global_weight": 0.18295630496110132,
+        "global_MSE_contribution": {
+          "delivered_delta": 0.002979778796306701,
+          "active_hitting_squared": 0.004742694404113172,
+          "active_interaction": -0.002141426351429053,
+          "nonarrival": 0.00037851074362257663
+        }
+      },
+      {
+        "family": "dominant_current_observed_league",
+        "group": "A",
+        "rows": 4081,
+        "active_rows": 21,
+        "global_weight": 0.13495139863479727,
+        "global_MSE_contribution": {
+          "delivered_delta": -8.445838504793161e-06,
+          "active_hitting_squared": -2.7743699376304355e-05,
+          "active_interaction": 2.3464266340760892e-05,
+          "nonarrival": -4.1664054692498365e-06
+        }
+      },
+      {
+        "family": "dominant_current_observed_league",
+        "group": "AA",
+        "rows": 3160,
+        "active_rows": 503,
+        "global_weight": 0.10403067578558323,
+        "global_MSE_contribution": {
+          "delivered_delta": -0.0004022134023276978,
+          "active_hitting_squared": -0.00011641036010161502,
+          "active_interaction": -0.0002458035725374142,
+          "nonarrival": -3.999946968866826e-05
+        }
+      },
+      {
+        "family": "dominant_current_observed_league",
+        "group": "AAA",
+        "rows": 3348,
+        "active_rows": 1327,
+        "global_weight": 0.11036063562942314,
+        "global_MSE_contribution": {
+          "delivered_delta": -0.00029471871611965876,
+          "active_hitting_squared": 0.00038001691894138306,
+          "active_interaction": -0.0006750936135583678,
+          "nonarrival": 3.579784973274389e-07
+        }
+      },
+      {
+        "family": "dominant_current_observed_league",
+        "group": "Aminus",
+        "rows": 1088,
+        "active_rows": 2,
+        "global_weight": 0.033726794275842464,
+        "global_MSE_contribution": {
+          "delivered_delta": 6.601338418732087e-10,
+          "active_hitting_squared": 1.0093773234968305e-10,
+          "active_interaction": -6.328643144778175e-09,
+          "nonarrival": 6.88783925430202e-09
+        }
+      },
+      {
+        "family": "dominant_current_observed_league",
+        "group": "Aplus",
+        "rows": 3310,
+        "active_rows": 111,
+        "global_weight": 0.10892812880933353,
+        "global_MSE_contribution": {
+          "delivered_delta": -2.3130148629661428e-06,
+          "active_hitting_squared": -2.9602691412406738e-05,
+          "active_interaction": 4.4835107130633724e-05,
+          "nonarrival": -1.7545430581193092e-05
+        }
+      },
+      {
+        "family": "dominant_current_observed_league",
+        "group": "DSL",
+        "rows": 5216,
+        "active_rows": 0,
+        "global_weight": 0.1721787932030972,
+        "global_MSE_contribution": {
+          "delivered_delta": -1.2411574280580078e-09,
+          "active_hitting_squared": 0.0,
+          "active_interaction": 0.0,
+          "nonarrival": -1.2411574280580078e-09
+        }
+      },
+      {
+        "family": "dominant_current_observed_league",
+        "group": "KBO",
+        "rows": 50,
+        "active_rows": 4,
+        "global_weight": 0.0016363009271273318,
+        "global_MSE_contribution": {
+          "delivered_delta": -3.692116357982697e-05,
+          "active_hitting_squared": -2.786642429502268e-07,
+          "active_interaction": -3.722192135053794e-05,
+          "nonarrival": 5.794220136611808e-07
+        }
+      },
+      {
+        "family": "dominant_current_observed_league",
+        "group": "MEX",
+        "rows": 660,
+        "active_rows": 0,
+        "global_weight": 0.02015980636646425,
+        "global_MSE_contribution": {
+          "delivered_delta": -5.74784575159393e-09,
+          "active_hitting_squared": 0.0,
+          "active_interaction": 0.0,
+          "nonarrival": -5.74784575159393e-09
+        }
+      },
+      {
+        "family": "dominant_current_observed_league",
+        "group": "MLB",
+        "rows": 2894,
+        "active_rows": 2546,
+        "global_weight": 0.09522673982457369,
+        "global_MSE_contribution": {
+          "delivered_delta": 0.0033439442252023704,
+          "active_hitting_squared": 0.004418933063347653,
+          "active_interaction": -0.0014473929925870985,
+          "nonarrival": 0.000372404154441821
+        }
+      },
+      {
+        "family": "dominant_current_observed_league",
+        "group": "NONE_OBSERVED",
+        "rows": 1493,
+        "active_rows": 21,
+        "global_weight": 0.04924491403827748,
+        "global_MSE_contribution": {
+          "delivered_delta": 7.506088533595e-07,
+          "active_hitting_squared": 8.418967147900635e-06,
+          "active_interaction": -6.93199833446149e-06,
+          "nonarrival": -7.363599600796336e-07
+        }
+      },
+      {
+        "family": "dominant_current_observed_league",
+        "group": "NPB",
+        "rows": 61,
+        "active_rows": 1,
+        "global_weight": 0.001987977931864074,
+        "global_MSE_contribution": {
+          "delivered_delta": 4.3912231534134195e-07,
+          "active_hitting_squared": -1.1675246698007628e-08,
+          "active_interaction": -3.070882987265291e-09,
+          "nonarrival": 4.538684450266148e-07
+        }
+      },
+      {
+        "family": "dominant_current_observed_league",
+        "group": "RK120",
+        "rows": 493,
+        "active_rows": 1,
+        "global_weight": 0.015284365772523787,
+        "global_MSE_contribution": {
+          "delivered_delta": -5.72392621882805e-07,
+          "active_hitting_squared": -3.8448494295750136e-08,
+          "active_interaction": -5.311296384483211e-07,
+          "nonarrival": -2.814489138734723e-09
+        }
+      },
+      {
+        "family": "dominant_current_observed_league",
+        "group": "RK121",
+        "rows": 2060,
+        "active_rows": 0,
+        "global_weight": 0.06793690209559813,
+        "global_MSE_contribution": {
+          "delivered_delta": 9.829838282599185e-09,
+          "active_hitting_squared": 0.0,
+          "active_interaction": 0.0,
+          "nonarrival": 9.829838282599185e-09
+        }
+      },
+      {
+        "family": "dominant_current_observed_league",
+        "group": "RK124",
+        "rows": 2162,
+        "active_rows": 1,
+        "global_weight": 0.07100961392136038,
+        "global_MSE_contribution": {
+          "delivered_delta": 1.166716679652009e-07,
+          "active_hitting_squared": -3.979524687162181e-12,
+          "active_interaction": -6.303387014455506e-11,
+          "nonarrival": 1.1673868136003262e-07
+        }
+      },
+      {
+        "family": "dominant_current_observed_league",
+        "group": "RK128",
+        "rows": 430,
+        "active_rows": 0,
+        "global_weight": 0.013336952784133951,
+        "global_MSE_contribution": {
+          "delivered_delta": 1.9547377581495828e-08,
+          "active_hitting_squared": 0.0,
+          "active_interaction": 0.0,
+          "nonarrival": 1.9547377581495828e-08
+        }
+      },
+      {
+        "family": "overseas_source",
+        "group": "KBO",
+        "rows": 102,
+        "active_rows": 15,
+        "global_weight": 0.0033489446746398617,
+        "global_MSE_contribution": {
+          "delivered_delta": 0.00016314235511649005,
+          "active_hitting_squared": 0.00013899058942761516,
+          "active_interaction": -0.0001281532114875497,
+          "nonarrival": 0.00015230497717642463
+        }
+      },
+      {
+        "family": "overseas_source",
+        "group": "NPB",
+        "rows": 144,
+        "active_rows": 13,
+        "global_weight": 0.004723420425400186,
+        "global_MSE_contribution": {
+          "delivered_delta": -0.0001336526652525008,
+          "active_hitting_squared": -8.863193619472837e-06,
+          "active_interaction": -0.0001314096711761975,
+          "nonarrival": 6.620199543169489e-06
+        }
+      },
+      {
+        "family": "overseas_source",
+        "group": "both",
+        "rows": 7,
+        "active_rows": 0,
+        "global_weight": 0.00022997859233900764,
+        "global_MSE_contribution": {
+          "delivered_delta": 1.6137361686140488e-08,
+          "active_hitting_squared": 0.0,
+          "active_interaction": 0.0,
+          "nonarrival": 1.6137361686140488e-08
+        }
+      },
+      {
+        "family": "overseas_source",
+        "group": "none",
+        "rows": 30253,
+        "active_rows": 4510,
+        "global_weight": 0.9916976563076207,
+        "global_MSE_contribution": {
+          "delivered_delta": 0.002570583321143063,
+          "active_hitting_squared": 0.00450315611171273,
+          "active_interaction": -0.0020851224344311933,
+          "nonarrival": 0.00015254964386152644
+        }
+      },
+      {
+        "family": "raw_MLB_HR_group",
+        "group": "2to4pct",
+        "rows": 2141,
+        "active_rows": 1606,
+        "global_weight": 0.07073355696471244,
+        "global_MSE_contribution": {
+          "delivered_delta": 0.0014062542015473428,
+          "active_hitting_squared": 0.002250081219696037,
+          "active_interaction": -0.0007145486069467146,
+          "nonarrival": -0.00012927841120197672
+        }
+      },
+      {
+        "family": "raw_MLB_HR_group",
+        "group": "4to6pct",
+        "rows": 920,
+        "active_rows": 743,
+        "global_weight": 0.03022742439261349,
+        "global_MSE_contribution": {
+          "delivered_delta": 0.0011145514395240524,
+          "active_hitting_squared": 0.0012035185396133657,
+          "active_interaction": -0.00033068988240613086,
+          "nonarrival": 0.00024172278231681833
+        }
+      },
+      {
+        "family": "raw_MLB_HR_group",
+        "group": "6pctplus",
+        "rows": 178,
+        "active_rows": 134,
+        "global_weight": 0.005862963687076936,
+        "global_MSE_contribution": {
+          "delivered_delta": -4.034720109936023e-05,
+          "active_hitting_squared": -2.9271624363006596e-05,
+          "active_interaction": -0.00014602812054651196,
+          "nonarrival": 0.0001349525438101565
+        }
+      },
+      {
+        "family": "raw_MLB_HR_group",
+        "group": "under2pct",
+        "rows": 2415,
+        "active_rows": 1252,
+        "global_weight": 0.07921897586774752,
+        "global_MSE_contribution": {
+          "delivered_delta": 0.0004943352041383769,
+          "active_hitting_squared": 0.0013159559885053353,
+          "active_interaction": -0.0009495842749568861,
+          "nonarrival": 0.00012796349058992568
+        }
+      },
+      {
+        "family": "raw_MLB_HR_group",
+        "group": "unobserved",
+        "rows": 24852,
+        "active_rows": 803,
+        "global_weight": 0.8139570790878494,
+        "global_MSE_contribution": {
+          "delivered_delta": -0.000374704495741672,
+          "active_hitting_squared": -0.00010700061593086026,
+          "active_interaction": -0.00020383443223869258,
+          "nonarrival": -6.386944757211862e-05
+        }
+      },
+      {
+        "family": "raw_MLB_power_K_profile",
+        "group": "HR4plus_K25plus",
+        "rows": 388,
+        "active_rows": 327,
+        "global_weight": 0.012823829407277578,
+        "global_MSE_contribution": {
+          "delivered_delta": 0.000219079514138085,
+          "active_hitting_squared": 0.00024985058612713476,
+          "active_interaction": -0.00026538551907063867,
+          "nonarrival": 0.0002346144470815882
+        }
+      },
+      {
+        "family": "raw_MLB_power_K_profile",
+        "group": "HR4plus_Kunder25",
+        "rows": 430,
+        "active_rows": 407,
+        "global_weight": 0.014056704102494511,
+        "global_MSE_contribution": {
+          "delivered_delta": 0.0007129950660516786,
+          "active_hitting_squared": 0.001082093946515307,
+          "active_interaction": -0.0005149126280471338,
+          "nonarrival": 0.00014581374758350607
+        }
+      },
+      {
+        "family": "raw_MLB_power_K_profile",
+        "group": "HRunder4",
+        "rows": 2610,
+        "active_rows": 2081,
+        "global_weight": 0.08592632764114738,
+        "global_MSE_contribution": {
+          "delivered_delta": 0.0022759804224056455,
+          "active_hitting_squared": 0.003379900812780695,
+          "active_interaction": -0.001074254788009766,
+          "nonarrival": -2.9665602365290597e-05
+        }
+      },
+      {
+        "family": "raw_MLB_power_K_profile",
+        "group": "thin_or_no_MLB",
+        "rows": 27078,
+        "active_rows": 1723,
+        "global_weight": 0.8871931388490804,
+        "global_MSE_contribution": {
+          "delivered_delta": -0.0006079658542266662,
+          "active_hitting_squared": -7.856183790226929e-05,
+          "active_interaction": -0.0004901323819673972,
+          "nonarrival": -3.9271634356997816e-05
+        }
+      },
+      {
+        "family": "recent_MLB_mass_group",
+        "group": "1200plus",
+        "rows": 609,
+        "active_rows": 595,
+        "global_weight": 0.01981435766700068,
+        "global_MSE_contribution": {
+          "delivered_delta": 0.001506135081178615,
+          "active_hitting_squared": 0.0020230981001557726,
+          "active_interaction": -0.000609933849020367,
+          "nonarrival": 9.297083004320881e-05
+        }
+      },
+      {
+        "family": "recent_MLB_mass_group",
+        "group": "200to599",
+        "rows": 1433,
+        "active_rows": 994,
+        "global_weight": 0.047241052271917675,
+        "global_MSE_contribution": {
+          "delivered_delta": -2.6803061175031516e-05,
+          "active_hitting_squared": 0.0010009074882122158,
+          "active_interaction": -0.0010869790071105076,
+          "nonarrival": 5.926845772326124e-05
+        }
+      },
+      {
+        "family": "recent_MLB_mass_group",
+        "group": "600to1199",
+        "rows": 1386,
+        "active_rows": 1226,
+        "global_weight": 0.045751451212001124,
+        "global_MSE_contribution": {
+          "delivered_delta": 0.0017287229825918235,
+          "active_hitting_squared": 0.0016878397570551532,
+          "active_interaction": -0.00015764007899666496,
+          "nonarrival": 0.00019852330453333348
+        }
+      },
+      {
+        "family": "recent_MLB_mass_group",
+        "group": "none",
+        "rows": 24852,
+        "active_rows": 803,
+        "global_weight": 0.8139570790878494,
+        "global_MSE_contribution": {
+          "delivered_delta": -0.000374704495741672,
+          "active_hitting_squared": -0.00010700061593086026,
+          "active_interaction": -0.00020383443223869258,
+          "nonarrival": -6.386944757211862e-05
+        }
+      },
+      {
+        "family": "recent_MLB_mass_group",
+        "group": "under200",
+        "rows": 2226,
+        "active_rows": 920,
+        "global_weight": 0.07323605976123092,
+        "global_MSE_contribution": {
+          "delivered_delta": -0.0002332613584849941,
+          "active_hitting_squared": 2.843877802859059e-05,
+          "active_interaction": -0.000286297949728705,
+          "nonarrival": 2.4597813215120537e-05
+        }
+      },
+      {
+        "family": "scouting_group",
+        "group": "listed_other",
+        "rows": 343,
+        "active_rows": 151,
+        "global_weight": 0.011361041754706473,
+        "global_MSE_contribution": {
+          "delivered_delta": -0.0001940667799351587,
+          "active_hitting_squared": -4.277274318778123e-05,
+          "active_interaction": -0.00015085772643858237,
+          "nonarrival": -4.363103087945229e-07
+        }
+      },
+      {
+        "family": "scouting_group",
+        "group": "not_listed_in_available_list",
+        "rows": 30052,
+        "active_rows": 4322,
+        "global_weight": 0.9849753392961866,
+        "global_MSE_contribution": {
+          "delivered_delta": 0.0028823247729251964,
+          "active_hitting_squared": 0.004681646506395612,
+          "active_interaction": -0.0021303966948580826,
+          "nonarrival": 0.00033107496138767297
+        }
+      },
+      {
+        "family": "scouting_group",
+        "group": "top20",
+        "rows": 111,
+        "active_rows": 65,
+        "global_weight": 0.0036636189491066756,
+        "global_MSE_contribution": {
+          "delivered_delta": -8.816884462129997e-05,
+          "active_hitting_squared": -5.590255686957196e-06,
+          "active_interaction": -6.343089579827046e-05,
+          "nonarrival": -1.9147693136072035e-05
+        }
+      },
+      {
+        "family": "source_position",
+        "group": "1",
+        "rows": 52,
+        "active_rows": 4,
+        "global_weight": 0.0017166959447441053,
+        "global_MSE_contribution": {
+          "delivered_delta": 2.3685714310913693e-06,
+          "active_hitting_squared": 5.091611933620145e-06,
+          "active_interaction": -2.7129793483574015e-06,
+          "nonarrival": -1.0061154171369219e-08
+        }
+      },
+      {
+        "family": "source_position",
+        "group": "10",
+        "rows": 1216,
+        "active_rows": 129,
+        "global_weight": 0.03967164379359589,
+        "global_MSE_contribution": {
+          "delivered_delta": 0.00042758840495790305,
+          "active_hitting_squared": 0.0002929808563277571,
+          "active_interaction": 3.167359293805508e-05,
+          "nonarrival": 0.00010293395569208944
+        }
+      },
+      {
+        "family": "source_position",
+        "group": "2",
+        "rows": 5350,
+        "active_rows": 750,
+        "global_weight": 0.1753713092688109,
+        "global_MSE_contribution": {
+          "delivered_delta": -0.0002184270697832784,
+          "active_hitting_squared": 3.812169708670188e-05,
+          "active_interaction": -0.0002908773268402,
+          "nonarrival": 3.432855997021959e-05
+        }
+      },
+      {
+        "family": "source_position",
+        "group": "3",
+        "rows": 3455,
+        "active_rows": 436,
+        "global_weight": 0.1134199967224222,
+        "global_MSE_contribution": {
+          "delivered_delta": 0.0007139430300857188,
+          "active_hitting_squared": 0.000555119831230356,
+          "active_interaction": 0.00016025618767509465,
+          "nonarrival": -1.4329888197321747e-06
+        }
+      },
+      {
+        "family": "source_position",
+        "group": "4",
+        "rows": 3516,
+        "active_rows": 522,
+        "global_weight": 0.11533752111551829,
+        "global_MSE_contribution": {
+          "delivered_delta": 0.0006988818824762354,
+          "active_hitting_squared": 0.0011653992212459468,
+          "active_interaction": -0.0004983330116196964,
+          "nonarrival": 3.181567284998422e-05
+        }
+      },
+      {
+        "family": "source_position",
+        "group": "5",
+        "rows": 3267,
+        "active_rows": 527,
+        "global_weight": 0.10701919368042051,
+        "global_MSE_contribution": {
+          "delivered_delta": 0.0008271538762325011,
+          "active_hitting_squared": 0.0009283726744638316,
+          "active_interaction": -0.0002530779163722732,
+          "nonarrival": 0.00015185911814094466
+        }
+      },
+      {
+        "family": "source_position",
+        "group": "6",
+        "rows": 3045,
+        "active_rows": 581,
+        "global_weight": 0.09990716515435377,
+        "global_MSE_contribution": {
+          "delivered_delta": 0.00026534075490752536,
+          "active_hitting_squared": 0.0006557659418620602,
+          "active_interaction": -0.00039261408572179154,
+          "nonarrival": 2.1888987672563297e-06
+        }
+      },
+      {
+        "family": "source_position",
+        "group": "7",
+        "rows": 3545,
+        "active_rows": 466,
+        "global_weight": 0.11612898040381778,
+        "global_MSE_contribution": {
+          "delivered_delta": -0.0003654583470987051,
+          "active_hitting_squared": 0.00017119272857103355,
+          "active_interaction": -0.0005250574513701867,
+          "nonarrival": -1.1593624299550899e-05
+        }
+      },
+      {
+        "family": "source_position",
+        "group": "8",
+        "rows": 3249,
+        "active_rows": 642,
+        "global_weight": 0.1066027076315303,
+        "global_MSE_contribution": {
+          "delivered_delta": 6.705870659724023e-05,
+          "active_hitting_squared": 5.917033704191579e-05,
+          "active_interaction": 1.97380481911612e-05,
+          "nonarrival": -1.1849678635836785e-05
+        }
+      },
+      {
+        "family": "source_position",
+        "group": "9",
+        "rows": 3208,
+        "active_rows": 456,
+        "global_weight": 0.10511241611357151,
+        "global_MSE_contribution": {
+          "delivered_delta": 0.00017352918612126387,
+          "active_hitting_squared": 0.0007607444834903381,
+          "active_interaction": -0.000594610569795147,
+          "nonarrival": 7.395272426072084e-06
+        }
+      },
+      {
+        "family": "source_position",
+        "group": "UNKNOWN",
+        "rows": 314,
+        "active_rows": 0,
+        "global_weight": 0.010451392437414319,
+        "global_MSE_contribution": {
+          "delivered_delta": -9.358300711188346e-09,
+          "active_hitting_squared": 0.0,
+          "active_interaction": 0.0,
+          "nonarrival": -9.358300711188346e-09
+        }
+      },
+      {
+        "family": "source_position",
+        "group": "X",
+        "rows": 289,
+        "active_rows": 25,
+        "global_weight": 0.009260977733800267,
+        "global_MSE_contribution": {
+          "delivered_delta": 8.119510741955738e-06,
+          "active_hitting_squared": 1.3241242673086256e-06,
+          "active_interaction": 9.301951684049991e-07,
+          "nonarrival": 5.86519130624214e-06
+        }
+      },
+      {
+        "family": "stage",
+        "group": "Current MLB",
+        "rows": 4541,
+        "active_rows": 3596,
+        "global_weight": 0.14946283655600973,
+        "global_MSE_contribution": {
+          "delivered_delta": 0.0029502179135057725,
+          "active_hitting_squared": 0.0046958387013708094,
+          "active_interaction": -0.0021246684668182574,
+          "nonarrival": 0.00037904767895320885
+        }
+      },
+      {
+        "family": "stage",
+        "group": "Inactive / unknown",
+        "rows": 1586,
+        "active_rows": 26,
+        "global_weight": 0.05228117752597687,
+        "global_MSE_contribution": {
+          "delivered_delta": -3.629525610039297e-05,
+          "active_hitting_squared": 8.1286276582524e-06,
+          "active_interaction": -4.4156990567986695e-05,
+          "nonarrival": -2.668931906586168e-07
+        }
+      },
+      {
+        "family": "stage",
+        "group": "Lower minors",
+        "rows": 17962,
+        "active_rows": 58,
+        "global_weight": 0.5868659219662337,
+        "global_MSE_contribution": {
+          "delivered_delta": -1.3292570313328851e-05,
+          "active_hitting_squared": -3.75018669824557e-05,
+          "active_interaction": 3.0299420860836834e-05,
+          "nonarrival": -6.090124191709926e-06
+        }
+      },
+      {
+        "family": "stage",
+        "group": "Upper minors",
+        "rows": 6417,
+        "active_rows": 858,
+        "global_weight": 0.2113900639517796,
+        "global_MSE_contribution": {
+          "delivered_delta": -0.0003005409387233025,
+          "active_hitting_squared": -3.318195452573547e-05,
+          "active_interaction": -0.0002061592805695316,
+          "nonarrival": -6.119970362803471e-05
+        }
+      },
+      {
+        "family": "supported_mass_group",
+        "group": "100to399",
+        "rows": 12028,
+        "active_rows": 111,
+        "global_weight": 0.3945168595519112,
+        "global_MSE_contribution": {
+          "delivered_delta": -3.863980419409523e-05,
+          "active_hitting_squared": 1.2571523651847123e-05,
+          "active_interaction": -5.8345915012680104e-05,
+          "nonarrival": 7.134587166737695e-06
+        }
+      },
+      {
+        "family": "supported_mass_group",
+        "group": "1200plus",
+        "rows": 1339,
+        "active_rows": 1080,
+        "global_weight": 0.043339799877508155,
+        "global_MSE_contribution": {
+          "delivered_delta": 0.0022012818726598036,
+          "active_hitting_squared": 0.0028049341294618304,
+          "active_interaction": -0.0007058384264419659,
+          "nonarrival": 0.00010218616963993753
+        }
+      },
+      {
+        "family": "supported_mass_group",
+        "group": "400to1199",
+        "rows": 13447,
+        "active_rows": 3341,
+        "global_weight": 0.4399694103480831,
+        "global_MSE_contribution": {
+          "delivered_delta": 0.00043187124853128996,
+          "active_hitting_squared": 0.001810645916826614,
+          "active_interaction": -0.0015808347787537856,
+          "nonarrival": 0.00020206011045846456
+        }
+      },
+      {
+        "family": "supported_mass_group",
+        "group": "none",
+        "rows": 565,
+        "active_rows": 0,
+        "global_weight": 0.018664348785802788,
+        "global_MSE_contribution": {
+          "delivered_delta": 1.9178056389265603e-09,
+          "active_hitting_squared": 0.0,
+          "active_interaction": 0.0,
+          "nonarrival": 1.9178056389265603e-09
+        }
+      },
+      {
+        "family": "supported_mass_group",
+        "group": "under100",
+        "rows": 3127,
+        "active_rows": 6,
+        "global_weight": 0.10350958143669457,
+        "global_MSE_contribution": {
+          "delivered_delta": 5.573913566103497e-06,
+          "active_hitting_squared": 5.1319375805817764e-06,
+          "active_interaction": 3.3380311349463447e-07,
+          "nonarrival": 1.0817287202691193e-07
+        }
+      }
+    ]
+  },
+  "player_decomposition": [
+    {
+      "row_id": 35088,
+      "player_name": "Yordan Alvarez",
+      "origin_year": 2018,
+      "source_walk_sha256": "f65c15376979c12baf6ed9b787eb43596a1bcfd5104ee6a92738f64499ba677c",
+      "selection": [
+        "fixed before fitting"
+      ],
+      "branch": "prospect",
+      "profile": {
+        "count_branch": "prospect",
+        "stage": "Upper minors",
+        "dominant_current_observed_league": "AA",
+        "recent_MLB_mass_group": "none",
+        "supported_mass_group": "400to1199",
+        "age_group": "under22",
+        "MLB_fraction_group": "under25pct",
+        "raw_MLB_HR_group": "unobserved",
+        "raw_MLB_power_K_profile": "thin_or_no_MLB",
+        "scouting_group": "listed_other",
+        "overseas_source": "none",
+        "source_position": "7"
+      },
+      "baseline": -0.4677425123092963,
+      "hitting_error_at_expected_PA": [
+        -0.6246976575546476,
+        -0.6214878086598844
+      ],
+      "opportunity_error_at_observed_hitting": -3.708295830603445,
+      "delta_terms": {
+        "delivered_delta": -0.027806205588035482,
+        "active_hitting_squared": -0.004000067041398658,
+        "active_interaction": -0.02380613854663466,
+        "nonarrival": 0.0
+      },
+      "count_rate_error_event_terms": {
+        "other": 0.0,
+        "K": 0.0,
+        "UBB": -1.5435650247803383,
+        "HBP": 0.07273467683937625,
+        "1B": 0.34468206469740986,
+        "2B": -1.6261126968548638,
+        "3B": 0.3278874391978731,
+        "HR": -2.742178876742356
+      },
+      "forecast": {
+        "current_rate": 0.45465027367510036,
+        "count_rate": 0.4813343893350144,
+        "current_value": 0.2769897494264361,
+        "count_value": 0.28019959832119923,
+        "count_pa": 72.17437375116249,
+        "next_pa": 369,
+        "actual_relative_value": 4.609983237584529
+      },
+      "actual_hitting_rate": 5.647886806977912
+    },
+    {
+      "row_id": 23934,
+      "player_name": "Aaron Judge",
+      "origin_year": 2016,
+      "source_walk_sha256": "f65c15376979c12baf6ed9b787eb43596a1bcfd5104ee6a92738f64499ba677c",
+      "selection": [
+        "fixed before fitting",
+        "false low"
+      ],
+      "branch": "tracking",
+      "profile": {
+        "count_branch": "tracking",
+        "stage": "Current MLB",
+        "dominant_current_observed_league": "AAA",
+        "recent_MLB_mass_group": "under200",
+        "supported_mass_group": "1200plus",
+        "age_group": "22to27",
+        "MLB_fraction_group": "under25pct",
+        "raw_MLB_HR_group": "4to6pct",
+        "raw_MLB_power_K_profile": "thin_or_no_MLB",
+        "scouting_group": "listed_other",
+        "overseas_source": "none",
+        "source_position": "9"
+      },
+      "baseline": -0.7260567953715007,
+      "hitting_error_at_expected_PA": [
+        -2.6166360586183006,
+        -2.8415802245437143
+      ],
+      "opportunity_error_at_observed_hitting": -4.405401106837654,
+      "delta_terms": {
+        "delivered_delta": 3.2097324643453646,
+        "active_hitting_squared": 1.227793909256392,
+        "active_interaction": 1.9819385550889803,
+        "nonarrival": 0.0
+      },
+      "count_rate_error_event_terms": {
+        "other": 0.0,
+        "K": 0.0,
+        "UBB": -2.8230460589904602,
+        "HBP": 0.08626081042972616,
+        "1B": 0.647544572673484,
+        "2B": 0.32467897687999536,
+        "3B": -0.0546192450989098,
+        "HR": -3.682028035570925
+      },
+      "forecast": {
+        "current_rate": 0.2641513942762992,
+        "count_rate": -0.1713333598849402,
+        "current_value": 1.0927253509289323,
+        "count_value": 0.8677811850035189,
+        "count_pa": 309.92244450715344,
+        "next_pa": 678,
+        "actual_relative_value": 8.114762516384888
+      },
+      "actual_hitting_rate": 5.329875619792154
+    },
+    {
+      "row_id": 57052,
+      "player_name": "Nick Kurtz",
+      "origin_year": 2024,
+      "source_walk_sha256": "f65c15376979c12baf6ed9b787eb43596a1bcfd5104ee6a92738f64499ba677c",
+      "selection": [
+        "fixed before fitting"
+      ],
+      "branch": "prospect",
+      "profile": {
+        "count_branch": "prospect",
+        "stage": "Upper minors",
+        "dominant_current_observed_league": "A",
+        "recent_MLB_mass_group": "none",
+        "supported_mass_group": "under100",
+        "age_group": "under22",
+        "MLB_fraction_group": "under25pct",
+        "raw_MLB_HR_group": "unobserved",
+        "raw_MLB_power_K_profile": "thin_or_no_MLB",
+        "scouting_group": "listed_other",
+        "overseas_source": "none",
+        "source_position": "3"
+      },
+      "baseline": 0.23819182687891569,
+      "hitting_error_at_expected_PA": [
+        -0.0700277324830724,
+        -0.07764115406574157
+      ],
+      "opportunity_error_at_observed_hitting": -5.605127546441982,
+      "delta_terms": {
+        "delivered_delta": 0.08647266355933425,
+        "active_hitting_squared": 0.001124265487939465,
+        "active_interaction": 0.08534839807138977,
+        "nonarrival": 0.0
+      },
+      "count_rate_error_event_terms": {
+        "other": 0.0,
+        "K": -0.0,
+        "UBB": -1.246229386396024,
+        "HBP": 0.1768180324837523,
+        "1B": 0.9365689400029579,
+        "2B": -0.5827366446696663,
+        "3B": -0.08394231192078429,
+        "HR": -3.774786474357578
+      },
+      "forecast": {
+        "current_rate": 1.0242540793494719,
+        "count_rate": 0.5757015753215025,
+        "current_value": 0.049188303602651105,
+        "count_value": 0.04157488201998194,
+        "count_pa": 10.18398717782357,
+        "next_pa": 489,
+        "actual_relative_value": 5.724343582527705
+      },
+      "actual_hitting_rate": 5.150009420178844
+    },
+    {
+      "row_id": 63309,
+      "player_name": "Seiya Suzuki",
+      "origin_year": 2021,
+      "source_walk_sha256": "f65c15376979c12baf6ed9b787eb43596a1bcfd5104ee6a92738f64499ba677c",
+      "selection": [
+        "fixed before fitting"
+      ],
+      "branch": "prospect",
+      "profile": {
+        "count_branch": "prospect",
+        "stage": "Inactive / unknown",
+        "dominant_current_observed_league": "NPB",
+        "recent_MLB_mass_group": "none",
+        "supported_mass_group": "1200plus",
+        "age_group": "22to27",
+        "MLB_fraction_group": "under25pct",
+        "raw_MLB_HR_group": "unobserved",
+        "raw_MLB_power_K_profile": "thin_or_no_MLB",
+        "scouting_group": "not_listed_in_available_list",
+        "overseas_source": "NPB",
+        "source_position": "UNKNOWN"
+      },
+      "baseline": 3.920523867897569,
+      "hitting_error_at_expected_PA": [
+        null,
+        null
+      ],
+      "opportunity_error_at_observed_hitting": null,
+      "delta_terms": {
+        "delivered_delta": null,
+        "active_hitting_squared": null,
+        "active_interaction": null,
+        "nonarrival": null
+      },
+      "count_rate_error_event_terms": {
+        "other": 0.0,
+        "K": -0.0,
+        "UBB": 1.1396028769974431,
+        "HBP": 0.18138046989330614,
+        "1B": -0.774120520721348,
+        "2B": -0.0831040507242878,
+        "3B": -0.19748188945130624,
+        "HR": 2.0645058225422495
+      },
+      "forecast": {
+        "current_rate": null,
+        "count_rate": 3.505371768457342,
+        "current_value": null,
+        "count_value": 1.7187367238794669,
+        "count_pa": 191.48137919298472,
+        "next_pa": 446,
+        "actual_relative_value": 2.270747203782431
+      },
+      "actual_hitting_rate": 1.1745890599212874
+    },
+    {
+      "row_id": 58061,
+      "player_name": "Jung Hoo Lee",
+      "origin_year": 2024,
+      "source_walk_sha256": "f65c15376979c12baf6ed9b787eb43596a1bcfd5104ee6a92738f64499ba677c",
+      "selection": [
+        "fixed before fitting"
+      ],
+      "branch": "tracking",
+      "profile": {
+        "count_branch": "tracking",
+        "stage": "Current MLB",
+        "dominant_current_observed_league": "MLB",
+        "recent_MLB_mass_group": "under200",
+        "supported_mass_group": "400to1199",
+        "age_group": "22to27",
+        "MLB_fraction_group": "under25pct",
+        "raw_MLB_HR_group": "under2pct",
+        "raw_MLB_power_K_profile": "thin_or_no_MLB",
+        "scouting_group": "not_listed_in_available_list",
+        "overseas_source": "KBO",
+        "source_position": "8"
+      },
+      "baseline": 1.839975763235368,
+      "hitting_error_at_expected_PA": [
+        -0.28393074016878045,
+        0.1586269710218936
+      ],
+      "opportunity_error_at_observed_hitting": -1.804625855435905,
+      "delta_terms": {
+        "delivered_delta": -1.6527563255516626,
+        "active_hitting_squared": -0.05545414927721084,
+        "active_interaction": -1.5973021762744526,
+        "nonarrival": 0.0
+      },
+      "count_rate_error_event_terms": {
+        "other": -0.0,
+        "K": 0.0,
+        "UBB": -0.04112733182713235,
+        "HBP": -0.07953054744569088,
+        "1B": 0.5079648970773597,
+        "2B": -0.22647944493637281,
+        "3B": -1.0913773120817762,
+        "HR": 1.5499975896836526
+      },
+      "forecast": {
+        "current_rate": -0.6456662409815414,
+        "count_rate": 1.082548205401388,
+        "current_value": 0.31447884900587864,
+        "count_value": 0.7570365601965527,
+        "count_pa": 153.64680423205337,
+        "next_pa": 617,
+        "actual_relative_value": 2.403035444610564
+      },
+      "actual_hitting_rate": 0.4631003549313502
+    },
+    {
+      "row_id": 57778,
+      "player_name": "Masataka Yoshida",
+      "origin_year": 2024,
+      "source_walk_sha256": "f65c15376979c12baf6ed9b787eb43596a1bcfd5104ee6a92738f64499ba677c",
+      "selection": [
+        "fixed before fitting"
+      ],
+      "branch": "tracking",
+      "profile": {
+        "count_branch": "tracking",
+        "stage": "Current MLB",
+        "dominant_current_observed_league": "MLB",
+        "recent_MLB_mass_group": "600to1199",
+        "supported_mass_group": "400to1199",
+        "age_group": "28to32",
+        "MLB_fraction_group": "25to74pct",
+        "raw_MLB_HR_group": "2to4pct",
+        "raw_MLB_power_K_profile": "HRunder4",
+        "scouting_group": "not_listed_in_available_list",
+        "overseas_source": "NPB",
+        "source_position": "10"
+      },
+      "baseline": 1.596821011855405,
+      "hitting_error_at_expected_PA": [
+        0.6115300237887086,
+        1.1945670508155197
+      ],
+      "opportunity_error_at_observed_hitting": 0.6463724285521676,
+      "delta_terms": {
+        "delivered_delta": 1.8067395870893797,
+        "active_hitting_squared": 1.05302146889907,
+        "active_interaction": 0.7537181181903114,
+        "nonarrival": 0.0
+      },
+      "count_rate_error_event_terms": {
+        "other": -0.0,
+        "K": 0.0,
+        "UBB": 0.9202977984123115,
+        "HBP": 0.07747913934972464,
+        "1B": -0.10344373603493219,
+        "2B": -0.3836262090887859,
+        "3B": 0.17391788361835145,
+        "HR": 0.820439202140216
+      },
+      "forecast": {
+        "current_rate": 0.3266834087403425,
+        "count_rate": 1.0612659381632834,
+        "current_value": 1.7464608087054372,
+        "count_value": 2.329497835732248,
+        "count_pa": 476.21907982332925,
+        "next_pa": 205,
+        "actual_relative_value": 0.48855835636456085
+      },
+      "actual_hitting_rate": -0.44379814023360176
+    },
+    {
+      "row_id": 31364,
+      "player_name": "Kevin Maitan",
+      "origin_year": 2017,
+      "source_walk_sha256": "f65c15376979c12baf6ed9b787eb43596a1bcfd5104ee6a92738f64499ba677c",
+      "selection": [
+        "fixed before fitting"
+      ],
+      "branch": "prospect",
+      "profile": {
+        "count_branch": "prospect",
+        "stage": "Lower minors",
+        "dominant_current_observed_league": "RK120",
+        "recent_MLB_mass_group": "none",
+        "supported_mass_group": "100to399",
+        "age_group": "under22",
+        "MLB_fraction_group": "under25pct",
+        "raw_MLB_HR_group": "unobserved",
+        "raw_MLB_power_K_profile": "thin_or_no_MLB",
+        "scouting_group": "listed_other",
+        "overseas_source": "none",
+        "source_position": "6"
+      },
+      "baseline": -1.1322805829584253,
+      "hitting_error_at_expected_PA": [
+        null,
+        null
+      ],
+      "opportunity_error_at_observed_hitting": null,
+      "delta_terms": {
+        "delivered_delta": -1.046442346045242e-05,
+        "active_hitting_squared": 0.0,
+        "active_interaction": 0.0,
+        "nonarrival": -1.046442346045242e-05
+      },
+      "count_rate_error_event_terms": null,
+      "forecast": {
+        "current_rate": -0.37964678801911067,
+        "count_rate": -0.7532731381169702,
+        "current_value": 0.004850631846566749,
+        "count_value": 0.0036144440582854694,
+        "count_pa": 1.985172279135291,
+        "next_pa": 0,
+        "actual_relative_value": 0.0
+      },
+      "actual_hitting_rate": null
+    },
+    {
+      "row_id": 55587,
+      "player_name": "Geraldo Perdomo",
+      "origin_year": 2024,
+      "source_walk_sha256": "f65c15376979c12baf6ed9b787eb43596a1bcfd5104ee6a92738f64499ba677c",
+      "selection": [
+        "fixed before fitting"
+      ],
+      "branch": "tracking",
+      "profile": {
+        "count_branch": "tracking",
+        "stage": "Current MLB",
+        "dominant_current_observed_league": "MLB",
+        "recent_MLB_mass_group": "600to1199",
+        "supported_mass_group": "400to1199",
+        "age_group": "22to27",
+        "MLB_fraction_group": "75pctplus",
+        "raw_MLB_HR_group": "under2pct",
+        "raw_MLB_power_K_profile": "HRunder4",
+        "scouting_group": "not_listed_in_available_list",
+        "overseas_source": "none",
+        "source_position": "6"
+      },
+      "baseline": -0.2649947103131905,
+      "hitting_error_at_expected_PA": [
+        -2.883687122593069,
+        -2.6301055184825772
+      ],
+      "opportunity_error_at_observed_hitting": -1.8973779342471577,
+      "delta_terms": {
+        "delivered_delta": -2.3604766629970797,
+        "active_hitting_squared": -1.3981963826565886,
+        "active_interaction": -0.9622802803404914,
+        "nonarrival": 0.0
+      },
+      "count_rate_error_event_terms": {
+        "other": 0.0,
+        "K": 0.0,
+        "UBB": -1.3411364720400902,
+        "HBP": -0.16629983626854195,
+        "1B": -0.36683208428186553,
+        "2B": -0.24186463894422602,
+        "3B": -0.2197425499325986,
+        "HR": -1.0032140793709943
+      },
+      "forecast": {
+        "current_rate": -0.9331365756328288,
+        "count_rate": -0.611198270681226,
+        "current_value": 0.7408746556407222,
+        "count_value": 0.9944562597512137,
+        "count_pa": 472.6028562807011,
+        "next_pa": 720,
+        "actual_relative_value": 5.521939712480949
+      },
+      "actual_hitting_rate": 2.727891390157092
+    },
+    {
+      "row_id": 43296,
+      "player_name": "Fernando Tatis Jr.",
+      "origin_year": 2021,
+      "source_walk_sha256": "f65c15376979c12baf6ed9b787eb43596a1bcfd5104ee6a92738f64499ba677c",
+      "selection": [
+        "fixed before fitting",
+        "false high"
+      ],
+      "branch": "tracking",
+      "profile": {
+        "count_branch": "tracking",
+        "stage": "Current MLB",
+        "dominant_current_observed_league": "MLB",
+        "recent_MLB_mass_group": "600to1199",
+        "supported_mass_group": "400to1199",
+        "age_group": "22to27",
+        "MLB_fraction_group": "75pctplus",
+        "raw_MLB_HR_group": "6pctplus",
+        "raw_MLB_power_K_profile": "HR4plus_K25plus",
+        "scouting_group": "not_listed_in_available_list",
+        "overseas_source": "none",
+        "source_position": "6"
+      },
+      "baseline": 2.0856764391301232,
+      "hitting_error_at_expected_PA": [
+        null,
+        null
+      ],
+      "opportunity_error_at_observed_hitting": null,
+      "delta_terms": {
+        "delivered_delta": 4.0804813492879255,
+        "active_hitting_squared": 0.0,
+        "active_interaction": 0.0,
+        "nonarrival": 4.0804813492879255
+      },
+      "count_rate_error_event_terms": null,
+      "forecast": {
+        "current_rate": 2.9193332375275407,
+        "count_rate": 3.3961150459954395,
+        "current_value": 4.42339142467406,
+        "count_value": 4.862805059342595,
+        "count_pa": 552.9744971779307,
+        "next_pa": 0,
+        "actual_relative_value": 0.0
+      },
+      "actual_hitting_rate": null
+    },
+    {
+      "row_id": 32754,
+      "player_name": "Stevie Wilkerson",
+      "origin_year": 2018,
+      "source_walk_sha256": "f65c15376979c12baf6ed9b787eb43596a1bcfd5104ee6a92738f64499ba677c",
+      "selection": [
+        "fixed before fitting"
+      ],
+      "branch": "tracking",
+      "profile": {
+        "count_branch": "tracking",
+        "stage": "Current MLB",
+        "dominant_current_observed_league": "AAA",
+        "recent_MLB_mass_group": "under200",
+        "supported_mass_group": "400to1199",
+        "age_group": "22to27",
+        "MLB_fraction_group": "under25pct",
+        "raw_MLB_HR_group": "under2pct",
+        "raw_MLB_power_K_profile": "thin_or_no_MLB",
+        "scouting_group": "not_listed_in_available_list",
+        "overseas_source": "none",
+        "source_position": "4"
+      },
+      "baseline": -1.1129168934277034,
+      "hitting_error_at_expected_PA": [
+        0.06598850705661967,
+        0.054736668686292185
+      ],
+      "opportunity_error_at_observed_hitting": -0.08286361523332884,
+      "delta_terms": {
+        "delivered_delta": 0.0005063558460842203,
+        "active_hitting_squared": -0.001358380164688625,
+        "active_interaction": 0.001864736010772845,
+        "nonarrival": 0.0
+      },
+      "count_rate_error_event_terms": {
+        "other": 0.0,
+        "K": -0.0,
+        "UBB": 0.26788199079278163,
+        "HBP": -0.20933049636054474,
+        "1B": 0.8193810387588515,
+        "2B": -0.3638800980868854,
+        "3B": -0.10862135623016862,
+        "HR": -0.10560195690431123
+      },
+      "forecast": {
+        "current_rate": -1.2888433310966019,
+        "count_rate": -1.3504771297929667,
+        "current_value": 0.10208320302036315,
+        "count_value": 0.09083136465003572,
+        "count_pa": 109.5357282041853,
+        "next_pa": 361,
+        "actual_relative_value": 0.11895831119707237
+      },
+      "actual_hitting_rate": -1.6503062517626916
+    },
+    {
+      "row_id": 50698,
+      "player_name": "Aaron Judge",
+      "origin_year": 2023,
+      "source_walk_sha256": "f65c15376979c12baf6ed9b787eb43596a1bcfd5104ee6a92738f64499ba677c",
+      "selection": [
+        "largest gain"
+      ],
+      "branch": "tracking",
+      "profile": {
+        "count_branch": "tracking",
+        "stage": "Current MLB",
+        "dominant_current_observed_league": "MLB",
+        "recent_MLB_mass_group": "1200plus",
+        "supported_mass_group": "1200plus",
+        "age_group": "28to32",
+        "MLB_fraction_group": "75pctplus",
+        "raw_MLB_HR_group": "6pctplus",
+        "raw_MLB_power_K_profile": "HR4plus_K25plus",
+        "scouting_group": "not_listed_in_available_list",
+        "overseas_source": "none",
+        "source_position": "9"
+      },
+      "baseline": 2.7569530694625994,
+      "hitting_error_at_expected_PA": [
+        -3.2685726644432576,
+        -2.772047474856926
+      ],
+      "opportunity_error_at_observed_hitting": -2.63626580728591,
+      "delta_terms": {
+        "delivered_delta": -5.617264819410227,
+        "active_hitting_squared": -2.9993200598850365,
+        "active_interaction": -2.6179447595252,
+        "nonarrival": 0.0
+      },
+      "count_rate_error_event_terms": {
+        "other": 0.0,
+        "K": 0.0,
+        "UBB": -0.8105610065170916,
+        "HBP": -0.22956419554451846,
+        "1B": -0.5123739163283159,
+        "2B": -0.8964536346337683,
+        "3B": -0.019634453407424344,
+        "HR": -0.6344448067799962
+      },
+      "forecast": {
+        "current_rate": 3.898806733708158,
+        "count_rate": 4.4546174016808,
+        "current_value": 5.142441104551988,
+        "count_value": 5.638966294138319,
+        "count_pa": 536.0010718010594,
+        "next_pa": 704,
+        "actual_relative_value": 11.047279576281156
+      },
+      "actual_hitting_rate": 7.557649414891912
+    },
+    {
+      "row_id": 32325,
+      "player_name": "Khris Davis",
+      "origin_year": 2018,
+      "source_walk_sha256": "f65c15376979c12baf6ed9b787eb43596a1bcfd5104ee6a92738f64499ba677c",
+      "selection": [
+        "largest harm"
+      ],
+      "branch": "tracking",
+      "profile": {
+        "count_branch": "tracking",
+        "stage": "Current MLB",
+        "dominant_current_observed_league": "MLB",
+        "recent_MLB_mass_group": "1200plus",
+        "supported_mass_group": "1200plus",
+        "age_group": "28to32",
+        "MLB_fraction_group": "75pctplus",
+        "raw_MLB_HR_group": "6pctplus",
+        "raw_MLB_power_K_profile": "HR4plus_K25plus",
+        "scouting_group": "not_listed_in_available_list",
+        "overseas_source": "none",
+        "source_position": "10"
+      },
+      "baseline": 1.4282791200609835,
+      "hitting_error_at_expected_PA": [
+        3.6333576818392226,
+        4.690539714638432
+      ],
+      "opportunity_error_at_observed_hitting": 0.021847322362750648,
+      "delta_terms": {
+        "delivered_delta": 8.84606796375364,
+        "active_hitting_squared": 8.799874770420296,
+        "active_interaction": 0.04619319333334472,
+        "nonarrival": 0.0
+      },
+      "count_rate_error_event_terms": {
+        "other": -0.0,
+        "K": 0.0,
+        "UBB": 0.5785979122324629,
+        "HBP": 0.26262077694019104,
+        "1B": -1.4767723832260813,
+        "2B": 1.4889148258969942,
+        "3B": 0.14375952053471266,
+        "HR": 3.916344820540147
+      },
+      "forecast": {
+        "current_rate": 2.287558823171266,
+        "count_rate": 3.394985203239565,
+        "current_value": 3.9479469276161927,
+        "count_value": 5.005128960415402,
+        "count_pa": 572.7777765601047,
+        "next_pa": 533,
+        "actual_relative_value": 0.2927419234142192
+      },
+      "actual_hitting_rate": -1.5184802696788609
+    },
+    {
+      "row_id": 55509,
+      "player_name": "Kameron Misner",
+      "origin_year": 2024,
+      "source_walk_sha256": "f65c15376979c12baf6ed9b787eb43596a1bcfd5104ee6a92738f64499ba677c",
+      "selection": [
+        "ordinary"
+      ],
+      "branch": "tracking",
+      "profile": {
+        "count_branch": "tracking",
+        "stage": "Current MLB",
+        "dominant_current_observed_league": "AAA",
+        "recent_MLB_mass_group": "under200",
+        "supported_mass_group": "1200plus",
+        "age_group": "22to27",
+        "MLB_fraction_group": "under25pct",
+        "raw_MLB_HR_group": "under2pct",
+        "raw_MLB_power_K_profile": "thin_or_no_MLB",
+        "scouting_group": "not_listed_in_available_list",
+        "overseas_source": "none",
+        "source_position": "8"
+      },
+      "baseline": -0.733207088616974,
+      "hitting_error_at_expected_PA": [
+        0.026144593382015593,
+        -0.03156880166889226
+      ],
+      "opportunity_error_at_observed_hitting": 0.033539959891377744,
+      "delta_terms": {
+        "delivered_delta": -0.0035583604347064544,
+        "active_hitting_squared": 0.00031304947569892137,
+        "active_interaction": -0.0038714099104053767,
+        "nonarrival": 0.0
+      },
+      "count_rate_error_event_terms": {
+        "other": -0.0,
+        "K": 0.0,
+        "UBB": 1.0200069665411085,
+        "HBP": 0.12660376467047615,
+        "1B": -1.025400737226834,
+        "2B": -0.26230856817058645,
+        "3B": 0.036375055272920495,
+        "HR": -0.11936231805470077
+      },
+      "forecast": {
+        "current_rate": -1.8400519350863322,
+        "count_rate": -2.2497207774412002,
+        "current_value": 0.004743804818030153,
+        "count_value": -0.05296959023287769,
+        "count_pa": 84.52689941342628,
+        "next_pa": 217,
+        "actual_relative_value": -0.054940748455363175
+      },
+      "actual_hitting_rate": -2.0256349404735814
+    }
+  ],
+  "addition_decomposition": [
+    {
+      "row_id": 63296,
+      "player_name": "Brian Bogusevic",
+      "origin_year": 2016,
+      "actual_PA": 0,
+      "expected_PA": 9.32590906664988,
+      "hitting_error_at_expected_PA": null,
+      "opportunity_error_at_observed_hitting": null,
+      "count_value_error": 0.005828273976350332,
+      "incumbent_available": false
+    },
+    {
+      "row_id": 63297,
+      "player_name": "Jae-Gyun Hwang",
+      "origin_year": 2016,
+      "actual_PA": 57,
+      "expected_PA": 2.153756911903962,
+      "hitting_error_at_expected_PA": 0.020733241594807297,
+      "opportunity_error_at_observed_hitting": 0.32908581682287186,
+      "count_value_error": 0.3498190584176792,
+      "incumbent_available": false
+    },
+    {
+      "row_id": 63298,
+      "player_name": "Shohei Ohtani",
+      "origin_year": 2017,
+      "actual_PA": 367,
+      "expected_PA": 20.02982718421417,
+      "hitting_error_at_expected_PA": -0.047415341159703084,
+      "opportunity_error_at_observed_hitting": -3.2029660989331634,
+      "count_value_error": -3.2503814400928666,
+      "incumbent_available": false
+    },
+    {
+      "row_id": 63304,
+      "player_name": "Eric Thames",
+      "origin_year": 2021,
+      "actual_PA": 0,
+      "expected_PA": 10.04618486057165,
+      "hitting_error_at_expected_PA": null,
+      "opportunity_error_at_observed_hitting": null,
+      "count_value_error": 0.02009433115101595,
+      "incumbent_available": false
+    },
+    {
+      "row_id": 63305,
+      "player_name": "Stefen Romero",
+      "origin_year": 2021,
+      "actual_PA": 0,
+      "expected_PA": 0.9556771382871387,
+      "hitting_error_at_expected_PA": null,
+      "opportunity_error_at_observed_hitting": null,
+      "count_value_error": 0.0027640192531903102,
+      "incumbent_available": false
+    },
+    {
+      "row_id": 63306,
+      "player_name": "Dixon Machado",
+      "origin_year": 2021,
+      "actual_PA": 17,
+      "expected_PA": 6.936149107790077,
+      "hitting_error_at_expected_PA": 0.027818893238475417,
+      "opportunity_error_at_observed_hitting": 0.023976843000934566,
+      "count_value_error": 0.05179573623940998,
+      "incumbent_available": false
+    },
+    {
+      "row_id": 63307,
+      "player_name": "Rusney Castillo",
+      "origin_year": 2021,
+      "actual_PA": 0,
+      "expected_PA": 0.8745011786057423,
+      "hitting_error_at_expected_PA": null,
+      "opportunity_error_at_observed_hitting": null,
+      "count_value_error": 0.00048240728049983724,
+      "incumbent_available": false
+    },
+    {
+      "row_id": 63308,
+      "player_name": "Roberto Ramos",
+      "origin_year": 2021,
+      "actual_PA": 0,
+      "expected_PA": 4.498629923747337,
+      "hitting_error_at_expected_PA": null,
+      "opportunity_error_at_observed_hitting": null,
+      "count_value_error": 0.019964365153182652,
+      "incumbent_available": false
+    },
+    {
+      "row_id": 63309,
+      "player_name": "Seiya Suzuki",
+      "origin_year": 2021,
+      "actual_PA": 446,
+      "expected_PA": 191.48137919298472,
+      "hitting_error_at_expected_PA": 0.7438358127160738,
+      "opportunity_error_at_observed_hitting": -1.2958462926190377,
+      "count_value_error": -0.5520104799029641,
+      "incumbent_available": false
+    },
+    {
+      "row_id": 63310,
+      "player_name": "Jantzen Witte",
+      "origin_year": 2022,
+      "actual_PA": 0,
+      "expected_PA": 4.002407702039497,
+      "hitting_error_at_expected_PA": null,
+      "opportunity_error_at_observed_hitting": null,
+      "count_value_error": 0.0025061164878280367,
+      "incumbent_available": false
+    },
+    {
+      "row_id": 63311,
+      "player_name": "Masataka Yoshida",
+      "origin_year": 2022,
+      "actual_PA": 580,
+      "expected_PA": 269.8516327088163,
+      "hitting_error_at_expected_PA": 0.3569095839583463,
+      "opportunity_error_at_observed_hitting": -1.5360186970045495,
+      "count_value_error": -1.179109113046203,
+      "incumbent_available": false
+    },
+    {
+      "row_id": 63312,
+      "player_name": "Jung Hoo Lee",
+      "origin_year": 2023,
+      "actual_PA": 158,
+      "expected_PA": 182.3477656692727,
+      "hitting_error_at_expected_PA": 0.961347984995363,
+      "opportunity_error_at_observed_hitting": 0.028977595701452478,
+      "count_value_error": 0.9903255806968154,
+      "incumbent_available": false
+    },
+    {
+      "row_id": 63313,
+      "player_name": "Yonathan Perlaza",
+      "origin_year": 2024,
+      "actual_PA": 0,
+      "expected_PA": 40.88647537964422,
+      "hitting_error_at_expected_PA": null,
+      "opportunity_error_at_observed_hitting": null,
+      "count_value_error": 0.11386378433800412,
+      "incumbent_available": false
+    }
+  ],
+  "foreign_penalty_diagnostic": [
+    {
+      "player_name": "Seiya Suzuki",
+      "origin": 2021,
+      "fold": 1,
+      "arm": "prospect",
+      "league": "NPB",
+      "active_training_people": 15,
+      "active_training_future_PA": 3225,
+      "coefficients": [
+        0.013411874840208806,
+        -0.011506258286519582,
+        -0.002672168165289018,
+        9.532055707630803e-06,
+        0.009065605397045543,
+        0.0001653311306780457,
+        -0.0004883054434273782,
+        -0.007985611528404279
+      ],
+      "data_gradient": [
+        -1.3255413590652933e-05,
+        1.1394703622541582e-05,
+        2.6030047693600124e-06,
+        -6.304883154251558e-09,
+        -8.883590046376787e-06,
+        -1.568883712298246e-07,
+        4.774612546565239e-07,
+        7.827027244855723e-06
+      ],
+      "penalty_gradient": [
+        1.3411874840208806e-05,
+        -1.1506258286519583e-05,
+        -2.6721681652890183e-06,
+        9.532055707630803e-09,
+        9.065605397045544e-06,
+        1.653311306780457e-07,
+        -4.883054434273782e-07,
+        -7.98561152840428e-06
+      ],
+      "data_diagonal_curvature": [
+        2.690149849147683e-05,
+        1.7707439021188132e-05,
+        9.081771324236849e-06,
+        9.123977837627785e-07,
+        1.3364823314467427e-05,
+        4.684702984165873e-06,
+        3.3325390593791707e-07,
+        3.512812624765717e-06
+      ],
+      "penalty_to_data_curvature": [
+        37.172650449818946,
+        56.473440275775246,
+        110.1106782254321,
+        1096.0131839381997,
+        74.82328620966501,
+        213.46070463377592,
+        3000.715016934545,
+        284.67217207940143
+      ],
+      "interpretation": "Coordinate diagonal, not an effective posterior precision; correlated controls and source folds remain. No alternative fit is performed."
+    },
+    {
+      "player_name": "Seiya Suzuki",
+      "origin": 2021,
+      "fold": 1,
+      "arm": "prospect",
+      "league": "KBO",
+      "active_training_people": 8,
+      "active_training_future_PA": 2779,
+      "coefficients": [
+        -0.007323438897260598,
+        0.031318312394073095,
+        -0.004700758557638519,
+        0.0017756864123881506,
+        -0.005602764366683446,
+        -0.004021169225312941,
+        0.002303769783814264,
+        -0.013749637543379696
+      ],
+      "data_gradient": [
+        7.2452441715671935e-06,
+        -3.093699763047024e-05,
+        4.564995309354322e-06,
+        -1.7404068723990764e-06,
+        5.532298039869718e-06,
+        3.963997858535868e-06,
+        -2.2506793251451228e-06,
+        1.3621548448687284e-05
+      ],
+      "penalty_gradient": [
+        -7.323438897260598e-06,
+        3.1318312394073094e-05,
+        -4.700758557638519e-06,
+        1.7756864123881506e-06,
+        -5.602764366683447e-06,
+        -4.021169225312941e-06,
+        2.3037697838142643e-06,
+        -1.3749637543379695e-05
+      ],
+      "data_diagonal_curvature": [
+        9.585096680601968e-05,
+        6.698643836756917e-05,
+        3.651357815009894e-05,
+        3.858455413069045e-06,
+        4.4869200661777654e-05,
+        1.7801338317936716e-05,
+        1.4616161888333082e-06,
+        1.9914900261047522e-05
+      ],
+      "penalty_to_data_curvature": [
+        10.432862946742834,
+        14.92839482691679,
+        27.387072170501327,
+        259.17106534725826,
+        22.287002782553724,
+        56.17555164335005,
+        684.1741406806806,
+        50.21365846134547
+      ],
+      "interpretation": "Coordinate diagonal, not an effective posterior precision; correlated controls and source folds remain. No alternative fit is performed."
+    },
+    {
+      "player_name": "Jung Hoo Lee",
+      "origin": 2024,
+      "fold": 1,
+      "arm": "tracking",
+      "league": "NPB",
+      "active_training_people": 18,
+      "active_training_future_PA": 4890,
+      "coefficients": [
+        0.013673788020665502,
+        -0.006728277327615147,
+        -0.009651655075255242,
+        0.0009552134222197959,
+        0.008451007799915713,
+        0.0009782461884319342,
+        -9.915340463327009e-05,
+        -0.007579169623729528
+      ],
+      "data_gradient": [
+        -1.385671535918181e-05,
+        6.756020960322319e-06,
+        9.916881157456252e-06,
+        -9.848146377660624e-07,
+        -8.648413706619427e-06,
+        -1.0248022214888249e-06,
+        1.0287873585922255e-07,
+        7.738965071418343e-06
+      ],
+      "penalty_gradient": [
+        1.3673788020665502e-05,
+        -6.7282773276151476e-06,
+        -9.651655075255242e-06,
+        9.55213422219796e-07,
+        8.451007799915713e-06,
+        9.782461884319343e-07,
+        -9.91534046332701e-08,
+        -7.579169623729528e-06
+      ],
+      "data_diagonal_curvature": [
+        4.586453030733051e-05,
+        2.5196664581577708e-05,
+        1.5684085175954503e-05,
+        2.0890680835087614e-06,
+        2.4381915829614334e-05,
+        8.296993479076256e-06,
+        5.228655278071737e-07,
+        5.861317062284441e-06
+      ],
+      "penalty_to_data_curvature": [
+        21.803341128736477,
+        39.68779267439787,
+        63.758898831607624,
+        478.6823406542203,
+        41.01400427219085,
+        120.5255858669585,
+        1912.5376350471274,
+        170.61011874526565
+      ],
+      "interpretation": "Coordinate diagonal, not an effective posterior precision; correlated controls and source folds remain. No alternative fit is performed."
+    },
+    {
+      "player_name": "Jung Hoo Lee",
+      "origin": 2024,
+      "fold": 1,
+      "arm": "tracking",
+      "league": "KBO",
+      "active_training_people": 12,
+      "active_training_future_PA": 4456,
+      "coefficients": [
+        -0.006115135150909869,
+        0.020566234915047752,
+        -0.0004663388020614361,
+        0.0014560904796528126,
+        -0.0027471692935104983,
+        -0.003380162433982036,
+        0.0016463851696352837,
+        -0.010959904883872044
+      ],
+      "data_gradient": [
+        6.243567829213744e-06,
+        -2.0954557535229315e-05,
+        4.83261178960223e-07,
+        -1.5060109086532691e-06,
+        2.7756470725302276e-06,
+        3.470164239851717e-06,
+        -1.7073504997659838e-06,
+        1.1195278623092644e-05
+      ],
+      "penalty_gradient": [
+        -6.115135150909869e-06,
+        2.056623491504775e-05,
+        -4.663388020614361e-07,
+        1.4560904796528127e-06,
+        -2.7471692935104983e-06,
+        -3.380162433982036e-06,
+        1.6463851696352837e-06,
+        -1.0959904883872044e-05
+      ],
+      "data_diagonal_curvature": [
+        8.519007646626739e-05,
+        5.8982247534377875e-05,
+        3.1116343699506604e-05,
+        3.3492781940854963e-06,
+        4.050660862779339e-05,
+        1.5824462579802746e-05,
+        1.2596020915418898e-06,
+        1.6208057312160214e-05
+      ],
+      "penalty_to_data_curvature": [
+        11.73845641981515,
+        16.954253895074935,
+        32.1374519338484,
+        298.57179429463457,
+        24.68732964511513,
+        63.193299295758145,
+        793.9015080356777,
+        61.69770878399737
+      ],
+      "interpretation": "Coordinate diagonal, not an effective posterior precision; correlated controls and source folds remain. No alternative fit is performed."
+    },
+    {
+      "player_name": "Masataka Yoshida",
+      "origin": 2024,
+      "fold": 3,
+      "arm": "tracking",
+      "league": "NPB",
+      "active_training_people": 16,
+      "active_training_future_PA": 7520,
+      "coefficients": [
+        0.013436805519832729,
+        -0.01138994844975839,
+        -0.006736287140325164,
+        -0.0002120605098846698,
+        0.011836766994795264,
+        0.0013439510657881602,
+        0.0023807801885067353,
+        -0.010660007668954636
+      ],
+      "data_gradient": [
+        -1.3361193884919607e-05,
+        1.1306860347828958e-05,
+        6.697825098132162e-06,
+        2.1299102254883686e-07,
+        -1.176147770786157e-05,
+        -1.3405556562207169e-06,
+        -2.3732226839204553e-06,
+        1.06187734644124e-05
+      ],
+      "penalty_gradient": [
+        1.3436805519832729e-05,
+        -1.1389948449758392e-05,
+        -6.736287140325165e-06,
+        -2.120605098846698e-07,
+        1.1836766994795263e-05,
+        1.3439510657881601e-06,
+        2.380780188506735e-06,
+        -1.0660007668954636e-05
+      ],
+      "data_diagonal_curvature": [
+        9.662220307943666e-05,
+        5.559503516458446e-05,
+        3.201031577987416e-05,
+        4.647581666429688e-06,
+        5.184848947336203e-05,
+        1.752386935921595e-05,
+        1.3768448979623988e-06,
+        1.1768593314680672e-05
+      ],
+      "penalty_to_data_curvature": [
+        10.34958806701875,
+        17.987217690205313,
+        31.23992924270775,
+        215.16566502169903,
+        19.286964965754027,
+        57.06502254161644,
+        726.2982210123349,
+        84.9719225791034
+      ],
+      "interpretation": "Coordinate diagonal, not an effective posterior precision; correlated controls and source folds remain. No alternative fit is performed."
+    },
+    {
+      "player_name": "Masataka Yoshida",
+      "origin": 2024,
+      "fold": 3,
+      "arm": "tracking",
+      "league": "KBO",
+      "active_training_people": 12,
+      "active_training_future_PA": 4849,
+      "coefficients": [
+        0.0037559879623572604,
+        0.011711107034691056,
+        -0.004630800322864785,
+        0.005474776347416274,
+        -0.0022632422443827393,
+        -0.0037232751827189882,
+        0.0011314295591141588,
+        -0.01145598315361192
+      ],
+      "data_gradient": [
+        -3.714578523235042e-06,
+        -1.1670067900221214e-05,
+        4.605123060707576e-06,
+        -5.445754784234312e-06,
+        2.2612390435029706e-06,
+        3.7027649144110455e-06,
+        -1.1286978649297669e-06,
+        1.138997205399877e-05
+      ],
+      "penalty_gradient": [
+        3.7559879623572606e-06,
+        1.1711107034691056e-05,
+        -4.630800322864785e-06,
+        5.474776347416275e-06,
+        -2.263242244382739e-06,
+        -3.7232751827189882e-06,
+        1.131429559114159e-06,
+        -1.1455983153611919e-05
+      ],
+      "data_diagonal_curvature": [
+        9.612670320431298e-05,
+        6.970659074586756e-05,
+        3.404310826176087e-05,
+        4.259079318441726e-06,
+        4.50164201909578e-05,
+        1.8297115569254095e-05,
+        1.604638788756331e-06,
+        1.92072767456797e-05
+      ],
+      "penalty_to_data_curvature": [
+        10.40293661038749,
+        14.345845770104361,
+        29.374521042875987,
+        234.79252796960614,
+        22.214116443689687,
+        54.65342317017273,
+        623.193211461033,
+        52.063601375709354
+      ],
+      "interpretation": "Coordinate diagonal, not an effective posterior precision; correlated controls and source folds remain. No alternative fit is performed."
+    }
+  ],
+  "readable_result": "docs/hitter-count-error-diagnosis-result.md",
+  "readable_player_review": "docs/hitter-count-error-diagnosis-player-review.md",
+  "original_source_model_walks": "reports/model-evidence/hitter-count-baseline/report.json"
+}

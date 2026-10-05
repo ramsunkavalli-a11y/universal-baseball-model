@@ -2,6 +2,36 @@
 
 Updated 2026-10-05. This is the current start-here document.
 
+## Count-error diagnosis complete: isolate learning before changing more inputs
+
+The [no-fit diagnosis](hitter-count-error-diagnosis-result.md) and
+[thirteen error walkthroughs](hitter-count-error-diagnosis-player-review.md)
+are complete. No forecasts, fits, playing time or completed 2026 evaluation
+changed. Exact hitting/workload identities and original scores independently
+replay; twelve group families partition the same global delivered-score change.
+Thirteen source additions have separate count-only explanations, no fake anchor.
+
+Hitting-squared error worsens +0.00463328; interaction with unchanged workload
+error hides −0.00234469; non-arrivals add +0.00031149. Total delivered MSE worsens
++0.00260009. At least 600 weighted recent MLB PA contributes +0.00323486, offset
+partly by less-established groups. Losses occur before 2021 and across raw
+power/strikeout profiles. Original players without overseas history account for
+98.9% of the net overall loss. An overseas-only or COVID-only fix is insufficient.
+
+Foreign-share controls are heavily penalized relative to their sparse data;
+their tiny saved corrections are not an established league translation. Suzuki's
+count-only hitting error +0.744 offsets workload error −1.296. Khris Davis's
+deterioration is almost entirely hitting, while Judge 2023 genuinely improves;
+Misner's delivered gain hides worse squared hitting error. Retain the incumbent.
+
+Next: one prospective matched direct-MLB-batting-value learning comparison using
+the identical saved past-only source matrix, folds, population and PA, retaining
+the saved count model and incumbent anchors. Explicitly declare objective,
+output/penalty and weighting differences; do not claim this alone isolates every
+removed feature or common prior assumption. Separate foreign adaptation remains
+qualified, not a tuning shortcut. No new feature sweep, favorable subgroup hybrid,
+closed opportunity rerun or 2026 reopening. The long hitter goal remains active.
+
 ## Past-only count comparison complete: retain the incumbent
 
 The [count result](hitter-count-baseline-result.md),
