@@ -2,6 +2,49 @@
 
 Updated 2026-10-05. This is the current start-here document.
 
+## A working Tatis reconstruction is provisional not a new approved forecast
+
+The [finite-return baseline result](hitter-finite-return-baseline-result.md) and
+[fifteen player reviews](hitter-finite-return-baseline-player-review.md) are complete.
+The actual career-role reconstruction now produces 605 expected PA for Tatis
+before 2023 under the reported spring-ready assumption, versus 61 in the stronger
+benchmark and 635 actual. Retaining the missed-year penalty gives a 520-PA
+sensitivity. These are conditional constructions, not a confidence interval or
+learned recovery distribution. Hitting stays fixed; original and remaining
+suspension games are separate, and eligibility reduces conditional PA once.
+
+**Do not deploy the reference or call Tatis's full unconditional repair complete.**
+The broad reference loses on 1,988 unrestricted regular forecasts: PA RMSE
+159.04 versus 154.06, with worse MAE and participation scores. It gives Travis
+800 PA after 432, before 197 actual; correlated medical inputs add implausible
+workload. It gives Moustakas 119 after 598 PA/38 HR, before 635 actual, because
+unsigned-player participation is too low. These walks prevent a favorable Tatis
+number from becoming a blanket model claim.
+
+The actual interrupted Tatis training profile has one person; the transported
+ordinary role has 90, but its surgery/high-medical-absence intersection has zero.
+Positive fitted medical associations do not establish beneficial injury effects
+or a calibrated recovery probability. Known spring readiness was an expectation,
+not clearance. Ellsbury also had a spring-return expectation at his January
+cutoff; his February setback is later information. Do not retroactively force
+that January forecast to zero.
+
+The next action remains WITHIN Tatis: separate supported role estimation from
+poorly supported clinical associations, retaining the failed reference and cases.
+Do not rerun this same reference, tune its penalties, reopen employment-recency,
+or advance to another component merely because the calendar adjustment works.
+Unknown medical coverage must remain unknown. No arbitrary probability/PA override.
+The source-to-forecast mechanism is implemented, but a usable unconditional
+availability estimate remains outstanding.
+
+Only one research forecast changes; all other 30,518 are exactly preserved from
+the stronger employment benchmark. Both frozen packages, completed 2026 evaluation
+and explorer are untouched. The matched public cohort excludes this zero-origin
+MLB-PA case and is unchanged. Original-cohort PA RMSE improves only through the
+already-exposed Tatis repair, not independent general confirmation; contribution
+still does not beat the selected anchor. Seventy saved-head replays and 498 score
+equations independently reconstruct. The broad goal is unfinished.
+
 ## Resolve the Tatis failure before another forecast comparison
 
 The [one-case-at-a-time repair queue](hitter-case-repair-queue.md) supersedes

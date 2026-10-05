@@ -1,0 +1,676 @@
+{
+  "scores": {
+    "all_original": {
+      "observation": {
+        "pa_mse": 3632.4503512675024,
+        "pa_mae": 20.5179688565651,
+        "brier": 0.032486866054357015,
+        "logloss": 0.11143010442191816,
+        "value_mse": 0.18962210461252146,
+        "expected_pa": 1236262.532427159,
+        "actual_pa": 1270493.0,
+        "rows": 30506,
+        "pa_rmse": 60.26981293539497,
+        "value_rmse": 0.43545620286375697
+      },
+      "current": {
+        "pa_mse": 3660.141321784705,
+        "pa_mae": 20.61235822996412,
+        "brier": 0.03354049525423287,
+        "logloss": 0.11473611533039627,
+        "value_mse": 0.1893410331968633,
+        "expected_pa": 1228732.511955955,
+        "actual_pa": 1270493.0,
+        "rows": 30506,
+        "pa_rmse": 60.49910182626437,
+        "value_rmse": 0.43513335105098905
+      },
+      "finite_return": {
+        "pa_mse": 3621.4082770501386,
+        "pa_mae": 20.49966931127569,
+        "brier": 0.03246274827406902,
+        "logloss": 0.1113670422655392,
+        "value_mse": 0.18943045116575913,
+        "expected_pa": 1236806.1753186167,
+        "actual_pa": 1270493.0,
+        "rows": 30506,
+        "pa_rmse": 60.1781378662562,
+        "value_rmse": 0.4352360866998038
+      }
+    },
+    "finite_return": {
+      "observation": {
+        "pa_mse": 328930.87882178964,
+        "pa_mae": 573.5249591968859,
+        "brier": 0.7164911260004398,
+        "logloss": 1.8737810577125606,
+        "value_mse": 5.906642754027168,
+        "expected_pa": 61.47504080311409,
+        "actual_pa": 635.0,
+        "rows": 1,
+        "pa_rmse": 573.5249591968859,
+        "value_rmse": 2.4303585649091306
+      },
+      "current": {
+        "pa_mse": 354407.79059277097,
+        "pa_mae": 595.3215858616005,
+        "brier": 0.7499979094385147,
+        "logloss": 2.0100960684511504,
+        "value_mse": 6.483667058309464,
+        "expected_pa": 39.678414138399525,
+        "actual_pa": 635.0,
+        "rows": 1,
+        "pa_rmse": 595.3215858616005,
+        "value_rmse": 2.546304588675413
+      },
+      "finite_return": {
+        "pa_mse": 892.9379723609588,
+        "pa_mae": 29.88206773904642,
+        "brier": 1.0920473178359395e-07,
+        "logloss": 0.00033051600667207407,
+        "value_mse": 0.21300215761127173,
+        "expected_pa": 605.1179322609536,
+        "actual_pa": 635.0,
+        "rows": 1,
+        "pa_rmse": 29.88206773904642,
+        "value_rmse": 0.46152156787226284
+      }
+    },
+    "nonarrivals": {
+      "observation": {
+        "pa_mse": 480.02558106586497,
+        "pa_mae": 4.45064045646533,
+        "brier": 0.013312479169674539,
+        "logloss": 0.051574379773255005,
+        "value_mse": 0.004572456326810087,
+        "expected_pa": 115102.97687603557,
+        "actual_pa": 0.0,
+        "rows": 25968,
+        "pa_rmse": 21.909486097712676,
+        "value_rmse": 0.06761994030469183
+      },
+      "current": {
+        "pa_mse": 519.2669971415954,
+        "pa_mae": 4.590397873289837,
+        "brier": 0.013826414175520694,
+        "logloss": 0.05265802094902976,
+        "value_mse": 0.004814636321865057,
+        "expected_pa": 118748.045884038,
+        "actual_pa": 0.0,
+        "rows": 25968,
+        "pa_rmse": 22.787430683198917,
+        "value_rmse": 0.06938758045835765
+      },
+      "finite_return": {
+        "pa_mse": 480.02558106586497,
+        "pa_mae": 4.45064045646533,
+        "brier": 0.013312479169674539,
+        "logloss": 0.051574379773255005,
+        "value_mse": 0.004572456326810087,
+        "expected_pa": 115102.97687603557,
+        "actual_pa": 0.0,
+        "rows": 25968,
+        "pa_rmse": 21.909486097712676,
+        "value_rmse": 0.06761994030469183
+      }
+    },
+    "origin_2016": {
+      "observation": {
+        "pa_mse": 3277.426581491365,
+        "pa_mae": 18.47532020846377,
+        "brier": 0.03067816679720716,
+        "logloss": 0.10374146194359503,
+        "value_mse": 0.19258931472896626,
+        "expected_pa": 171353.3538602666,
+        "actual_pa": 179968.0,
+        "rows": 4663,
+        "pa_rmse": 57.24881292648229,
+        "value_rmse": 0.438849991146139
+      },
+      "current": {
+        "pa_mse": 3323.2979978756425,
+        "pa_mae": 18.69264024690857,
+        "brier": 0.031211691914534132,
+        "logloss": 0.10589882032390605,
+        "value_mse": 0.1904251452596848,
+        "expected_pa": 171709.23525463397,
+        "actual_pa": 179968.0,
+        "rows": 4663,
+        "pa_rmse": 57.64805285415668,
+        "value_rmse": 0.4363772969113824
+      },
+      "finite_return": {
+        "pa_mse": 3277.426581491365,
+        "pa_mae": 18.47532020846377,
+        "brier": 0.03067816679720716,
+        "logloss": 0.10374146194359503,
+        "value_mse": 0.19258931472896626,
+        "expected_pa": 171353.3538602666,
+        "actual_pa": 179968.0,
+        "rows": 4663,
+        "pa_rmse": 57.24881292648229,
+        "value_rmse": 0.438849991146139
+      }
+    },
+    "origin_2017": {
+      "observation": {
+        "pa_mse": 3195.0871610856943,
+        "pa_mae": 17.951317841721885,
+        "brier": 0.030155585088245028,
+        "logloss": 0.10290784118316258,
+        "value_mse": 0.1790923740481059,
+        "expected_pa": 175118.2045372512,
+        "actual_pa": 179643.0,
+        "rows": 4691,
+        "pa_rmse": 56.525102044009564,
+        "value_rmse": 0.4231930694707865
+      },
+      "current": {
+        "pa_mse": 3208.681293957646,
+        "pa_mae": 18.133965410644336,
+        "brier": 0.030806837944625062,
+        "logloss": 0.10420183766133627,
+        "value_mse": 0.17928275116100853,
+        "expected_pa": 174316.4618598693,
+        "actual_pa": 179643.0,
+        "rows": 4691,
+        "pa_rmse": 56.64522304623441,
+        "value_rmse": 0.4234179391110024
+      },
+      "finite_return": {
+        "pa_mse": 3195.0871610856943,
+        "pa_mae": 17.951317841721885,
+        "brier": 0.030155585088245028,
+        "logloss": 0.10290784118316258,
+        "value_mse": 0.1790923740481059,
+        "expected_pa": 175118.2045372512,
+        "actual_pa": 179643.0,
+        "rows": 4691,
+        "pa_rmse": 56.525102044009564,
+        "value_rmse": 0.4231930694707865
+      }
+    },
+    "origin_2018": {
+      "observation": {
+        "pa_mse": 3934.125942093991,
+        "pa_mae": 20.307487749689994,
+        "brier": 0.029107159027151493,
+        "logloss": 0.09941108180690414,
+        "value_mse": 0.2221048766433723,
+        "expected_pa": 172952.92776441076,
+        "actual_pa": 181308.0,
+        "rows": 4478,
+        "pa_rmse": 62.72261109116864,
+        "value_rmse": 0.47128004057393763
+      },
+      "current": {
+        "pa_mse": 3898.716313954889,
+        "pa_mae": 20.15274309227662,
+        "brier": 0.02966673600428729,
+        "logloss": 0.1018811111020761,
+        "value_mse": 0.2231133958162001,
+        "expected_pa": 172104.99899229087,
+        "actual_pa": 181308.0,
+        "rows": 4478,
+        "pa_rmse": 62.439701424293254,
+        "value_rmse": 0.4723488073618902
+      },
+      "finite_return": {
+        "pa_mse": 3934.125942093991,
+        "pa_mae": 20.307487749689994,
+        "brier": 0.029107159027151493,
+        "logloss": 0.09941108180690414,
+        "value_mse": 0.2221048766433723,
+        "expected_pa": 172952.92776441076,
+        "actual_pa": 181308.0,
+        "rows": 4478,
+        "pa_rmse": 62.72261109116864,
+        "value_rmse": 0.47128004057393763
+      }
+    },
+    "origin_2021": {
+      "observation": {
+        "pa_mse": 3475.2283253632986,
+        "pa_mae": 19.86736772136809,
+        "brier": 0.03867216558656879,
+        "logloss": 0.13323840654623764,
+        "value_mse": 0.17928800341738466,
+        "expected_pa": 167349.78794451497,
+        "actual_pa": 181583.0,
+        "rows": 4242,
+        "pa_rmse": 58.95106721140253,
+        "value_rmse": 0.4234241412784404
+      },
+      "current": {
+        "pa_mse": 3517.3865505468093,
+        "pa_mae": 20.099963073205597,
+        "brier": 0.040443575816189285,
+        "logloss": 0.1389794922469493,
+        "value_mse": 0.1796134830625193,
+        "expected_pa": 164798.07641672058,
+        "actual_pa": 181583.0,
+        "rows": 4242,
+        "pa_rmse": 59.3075589663477,
+        "value_rmse": 0.4238083093363311
+      },
+      "finite_return": {
+        "pa_mse": 3475.2283253632986,
+        "pa_mae": 19.86736772136809,
+        "brier": 0.03867216558656879,
+        "logloss": 0.13323840654623764,
+        "value_mse": 0.17928800341738466,
+        "expected_pa": 167349.78794451497,
+        "actual_pa": 181583.0,
+        "rows": 4242,
+        "pa_rmse": 58.95106721140253,
+        "value_rmse": 0.4234241412784404
+      }
+    },
+    "origin_2022": {
+      "observation": {
+        "pa_mse": 3744.348545889743,
+        "pa_mae": 21.479192569228367,
+        "brier": 0.03300562068350735,
+        "logloss": 0.11546949458049119,
+        "value_mse": 0.17290762791748066,
+        "expected_pa": 180656.9737588877,
+        "actual_pa": 182917.0,
+        "rows": 4244,
+        "pa_rmse": 61.191082241530445,
+        "value_rmse": 0.41582162992980615
+      },
+      "current": {
+        "pa_mse": 3838.5287083850803,
+        "pa_mae": 21.510162043414077,
+        "brier": 0.03456037946358418,
+        "logloss": 0.11935014764629825,
+        "value_mse": 0.1735391488536476,
+        "expected_pa": 177294.80709346556,
+        "actual_pa": 182917.0,
+        "rows": 4244,
+        "pa_rmse": 61.955860968798426,
+        "value_rmse": 0.4165803030072925
+      },
+      "finite_return": {
+        "pa_mse": 3667.0540263681996,
+        "pa_mae": 21.351095752202486,
+        "brier": 0.03283679622149139,
+        "logloss": 0.11502805948583854,
+        "value_mse": 0.1715660537901442,
+        "expected_pa": 181200.61665034553,
+        "actual_pa": 182917.0,
+        "rows": 4244,
+        "pa_rmse": 60.556205514944544,
+        "value_rmse": 0.4142053280561999
+      }
+    },
+    "origin_2023": {
+      "observation": {
+        "pa_mse": 3842.146894645275,
+        "pa_mae": 22.55562642404497,
+        "brier": 0.0324652440373231,
+        "logloss": 0.11414018507473778,
+        "value_mse": 0.19233067061706652,
+        "expected_pa": 186689.35364930646,
+        "actual_pa": 182194.0,
+        "rows": 4196,
+        "pa_rmse": 61.98505380045479,
+        "value_rmse": 0.43855520817459975
+      },
+      "current": {
+        "pa_mse": 3901.98384291597,
+        "pa_mae": 22.694332851213332,
+        "brier": 0.03332489877697606,
+        "logloss": 0.11653231875590335,
+        "value_mse": 0.19275215812597835,
+        "expected_pa": 186453.53525672556,
+        "actual_pa": 182194.0,
+        "rows": 4196,
+        "pa_rmse": 62.465861419786485,
+        "value_rmse": 0.4390354861807623
+      },
+      "finite_return": {
+        "pa_mse": 3842.146894645275,
+        "pa_mae": 22.55562642404497,
+        "brier": 0.0324652440373231,
+        "logloss": 0.11414018507473778,
+        "value_mse": 0.19233067061706652,
+        "expected_pa": 186689.35364930646,
+        "actual_pa": 182194.0,
+        "rows": 4196,
+        "pa_rmse": 61.98505380045479,
+        "value_rmse": 0.43855520817459975
+      }
+    },
+    "origin_2024": {
+      "observation": {
+        "pa_mse": 3958.7890083031507,
+        "pa_mae": 22.98946948143862,
+        "brier": 0.03332412116049617,
+        "logloss": 0.11110225981829883,
+        "value_mse": 0.18904186491527408,
+        "expected_pa": 182141.93091252123,
+        "actual_pa": 182880.0,
+        "rows": 3992,
+        "pa_rmse": 62.91890819382637,
+        "value_rmse": 0.4347894489465839
+      },
+      "current": {
+        "pa_mse": 3932.394544856895,
+        "pa_mae": 23.00270089208631,
+        "brier": 0.034769346859434065,
+        "logloss": 0.11630907957630454,
+        "value_mse": 0.18666115009900436,
+        "expected_pa": 182055.39708224946,
+        "actual_pa": 182880.0,
+        "rows": 3992,
+        "pa_rmse": 62.70880755409797,
+        "value_rmse": 0.43204299566015925
+      },
+      "finite_return": {
+        "pa_mse": 3958.7890083031507,
+        "pa_mae": 22.98946948143862,
+        "brier": 0.03332412116049617,
+        "logloss": 0.11110225981829883,
+        "value_mse": 0.18904186491527408,
+        "expected_pa": 182141.93091252123,
+        "actual_pa": 182880.0,
+        "rows": 3992,
+        "pa_rmse": 62.91890819382637,
+        "value_rmse": 0.4347894489465839
+      }
+    },
+    "stage_Upper minors": {
+      "observation": {
+        "pa_mse": 2920.388035180754,
+        "pa_mae": 18.71683228062391,
+        "brier": 0.0805911923284798,
+        "logloss": 0.27162114831875683,
+        "value_mse": 0.08583994215347314,
+        "expected_pa": 87949.002052247,
+        "actual_pa": 102951.0,
+        "rows": 6417,
+        "pa_rmse": 54.040614681744266,
+        "value_rmse": 0.29298454251627876
+      },
+      "current": {
+        "pa_mse": 2893.57122885807,
+        "pa_mae": 18.57145985583116,
+        "brier": 0.08115053317428837,
+        "logloss": 0.2746091635691686,
+        "value_mse": 0.08605854053544193,
+        "expected_pa": 87537.02161271479,
+        "actual_pa": 102951.0,
+        "rows": 6417,
+        "pa_rmse": 53.791925312802015,
+        "value_rmse": 0.293357359777187
+      },
+      "finite_return": {
+        "pa_mse": 2870.9027522045244,
+        "pa_mae": 18.634822491597227,
+        "brier": 0.08048310799950173,
+        "logloss": 0.27133853396641017,
+        "value_mse": 0.08498104328540619,
+        "expected_pa": 88492.64494370486,
+        "actual_pa": 102951.0,
+        "rows": 6417,
+        "pa_rmse": 53.58080581891732,
+        "value_rmse": 0.2915150824321208
+      }
+    },
+    "stage_Inactive / unknown": {
+      "observation": {
+        "pa_mse": 515.4533280265923,
+        "pa_mae": 3.9620142607150086,
+        "brier": 0.009159649146135759,
+        "logloss": 0.03938533297314373,
+        "value_mse": 0.013527614089934548,
+        "expected_pa": 6628.335750930268,
+        "actual_pa": 4614.0,
+        "rows": 1586,
+        "pa_rmse": 22.703597248599007,
+        "value_rmse": 0.11630827180357615
+      },
+      "current": {
+        "pa_mse": 758.3982766269567,
+        "pa_mae": 3.7993444149839575,
+        "brier": 0.0116942071155792,
+        "logloss": 0.04915431727106549,
+        "value_mse": 0.016446466293955783,
+        "expected_pa": 3992.456901431653,
+        "actual_pa": 4614.0,
+        "rows": 1586,
+        "pa_rmse": 27.539031875266723,
+        "value_rmse": 0.1282437768235004
+      },
+      "finite_return": {
+        "pa_mse": 515.4533280265923,
+        "pa_mae": 3.9620142607150086,
+        "brier": 0.009159649146135759,
+        "logloss": 0.03938533297314373,
+        "value_mse": 0.013527614089934548,
+        "expected_pa": 6628.335750930268,
+        "actual_pa": 4614.0,
+        "rows": 1586,
+        "pa_rmse": 22.703597248599007,
+        "value_rmse": 0.11630827180357615
+      }
+    },
+    "stage_Lower minors": {
+      "observation": {
+        "pa_mse": 70.2305045348012,
+        "pa_mae": 0.7156082439131064,
+        "brier": 0.002698602250215717,
+        "logloss": 0.01432941763491428,
+        "value_mse": 0.002274479283098457,
+        "expected_pa": 8816.72873638901,
+        "actual_pa": 6072.0,
+        "rows": 17962,
+        "pa_rmse": 8.380364224471464,
+        "value_rmse": 0.04769150116214058
+      },
+      "current": {
+        "pa_mse": 74.96732382108769,
+        "pa_mae": 0.6637174299512123,
+        "brier": 0.00272077215512798,
+        "logloss": 0.014174856607062877,
+        "value_mse": 0.002345987797569531,
+        "expected_pa": 7506.175073379912,
+        "actual_pa": 6072.0,
+        "rows": 17962,
+        "pa_rmse": 8.658367272245252,
+        "value_rmse": 0.048435398187374606
+      },
+      "finite_return": {
+        "pa_mse": 70.2305045348012,
+        "pa_mae": 0.7156082439131064,
+        "brier": 0.002698602250215717,
+        "logloss": 0.01432941763491428,
+        "value_mse": 0.002274479283098457,
+        "expected_pa": 8816.72873638901,
+        "actual_pa": 6072.0,
+        "rows": 17962,
+        "pa_rmse": 8.380364224471464,
+        "value_rmse": 0.04769150116214058
+      }
+    },
+    "stage_Current MLB": {
+      "observation": {
+        "pa_mse": 19761.777332231224,
+        "pa_mae": 106.58745255992433,
+        "brier": 0.08991332773743947,
+        "logloss": 0.2919528817466377,
+        "value_mse": 1.1437040559853084,
+        "expected_pa": 1132868.4658875926,
+        "actual_pa": 1156856.0,
+        "rows": 4541,
+        "pa_rmse": 140.57658884832574,
+        "value_rmse": 1.0694410016383833
+      },
+      "current": {
+        "pa_mse": 19867.262200637786,
+        "pa_mae": 107.69713732752815,
+        "brier": 0.09495244796104105,
+        "logloss": 0.3064014203848228,
+        "value_mse": 1.140108823286246,
+        "expected_pa": 1129696.858368429,
+        "actual_pa": 1156856.0,
+        "rows": 4541,
+        "pa_rmse": 140.95127598087853,
+        "value_rmse": 1.067758785159947
+      },
+      "finite_return": {
+        "pa_mse": 19761.777332231224,
+        "pa_mae": 106.58745255992433,
+        "brier": 0.08991332773743947,
+        "logloss": 0.2919528817466377,
+        "value_mse": 1.1437040559853084,
+        "expected_pa": 1132868.4658875926,
+        "actual_pa": 1156856.0,
+        "rows": 4541,
+        "pa_rmse": 140.57658884832574,
+        "value_rmse": 1.0694410016383833
+      }
+    },
+    "current_regular": {
+      "observation": {
+        "pa_mse": 23575.24405465009,
+        "pa_mae": 122.81717094059381,
+        "brier": 0.019002877028530284,
+        "logloss": 0.0811283318268706,
+        "value_mse": 2.1055912942099733,
+        "expected_pa": 659277.4805226852,
+        "actual_pa": 672511.0,
+        "rows": 1445,
+        "pa_rmse": 153.54232007707222,
+        "value_rmse": 1.4510655719883832
+      },
+      "current": {
+        "pa_mse": 23272.703254589294,
+        "pa_mae": 122.31074550967128,
+        "brier": 0.020390269930258515,
+        "logloss": 0.08755516613583339,
+        "value_mse": 2.0987211070287546,
+        "expected_pa": 656903.2374983686,
+        "actual_pa": 672511.0,
+        "rows": 1445,
+        "pa_rmse": 152.5539355591631,
+        "value_rmse": 1.4486963474202434
+      },
+      "finite_return": {
+        "pa_mse": 23575.24405465009,
+        "pa_mae": 122.81717094059381,
+        "brier": 0.019002877028530284,
+        "logloss": 0.0811283318268706,
+        "value_mse": 2.1055912942099733,
+        "expected_pa": 659277.4805226852,
+        "actual_pa": 672511.0,
+        "rows": 1445,
+        "pa_rmse": 153.54232007707222,
+        "value_rmse": 1.4510655719883832
+      }
+    },
+    "absent_former_regular": {
+      "observation": {
+        "pa_mse": 25635.400006898763,
+        "pa_mae": 90.14702443996846,
+        "brier": 0.17259431427953262,
+        "logloss": 0.4966212946692168,
+        "value_mse": 0.5203046171620115,
+        "expected_pa": 3283.307375169182,
+        "actual_pa": 4053.0,
+        "rows": 47,
+        "pa_rmse": 160.11058680455443,
+        "value_rmse": 0.7213214381688732
+      },
+      "current": {
+        "pa_mse": 31209.81416439753,
+        "pa_mae": 89.84194509549778,
+        "brier": 0.21014640251316893,
+        "logloss": 0.6158054111597304,
+        "value_mse": 0.5730239936286462,
+        "expected_pa": 1713.7917781936521,
+        "actual_pa": 4053.0,
+        "rows": 47,
+        "pa_rmse": 176.66299602462743,
+        "value_rmse": 0.7569834830619795
+      },
+      "finite_return": {
+        "pa_mse": 13919.759262276306,
+        "pa_mae": 70.73120688790276,
+        "brier": 0.1470053493939716,
+        "logloss": 0.42971234675114933,
+        "value_mse": 0.3169603101471581,
+        "expected_pa": 3826.950266627021,
+        "actual_pa": 4053.0,
+        "rows": 47,
+        "pa_rmse": 117.98202940395755,
+        "value_rmse": 0.5629922824934265
+      }
+    }
+  },
+  "reference_diagnostic": {
+    "observation": {
+      "pa_mse": 23733.26965692513,
+      "pa_mae": 123.3089730415343,
+      "brier": 0.032151542079480504,
+      "logloss": 0.12276304523631461,
+      "value_mse": 1.8438576020166266,
+      "expected_pa": 809086.0526992441,
+      "actual_pa": 821446.0,
+      "rows": 1988,
+      "pa_rmse": 154.05606011100352,
+      "value_rmse": 1.3578871830960872
+    },
+    "reference": {
+      "pa_mse": 25294.36394532967,
+      "pa_mae": 125.34865981973334,
+      "brier": 0.03767098980274859,
+      "logloss": 0.15116958870367175,
+      "expected_pa": 841996.7095189409,
+      "actual_pa": 821446.0,
+      "rows": 1988,
+      "pa_rmse": 159.0420194330092
+    }
+  },
+  "public_comparison": {
+    "rows": 2627,
+    "vintage_unknown": true,
+    "steamer_mae": 92.01666224084519,
+    "observation_mae": 105.25801536768437,
+    "finite_return_mae": 105.25801536768437
+  },
+  "changed_rows": [
+    {
+      "player_name": "Fernando Tatis Jr.",
+      "origin_year": 2022,
+      "observation_pa": 61.47504080311409,
+      "reference_p": 0.9974487892778959,
+      "reference_conditional_pa": 595.1243775386953,
+      "ready_reference_p": 0.9996695386077261,
+      "ready_reference_conditional_pa": 690.5740180956745,
+      "finite_return_p": 0.9996695386077261,
+      "finite_return_conditional_pa": 605.3179664789246,
+      "finite_return_pa": 605.1179322609536,
+      "next_pa": 635
+    }
+  ],
+  "model_count": 70,
+  "walk_count": 15,
+  "walk_heads_replayed": 28,
+  "player_walkthrough_status": "pending_judgment",
+  "deployment_approved": false,
+  "forecasts_or_explorer_promoted": false,
+  "protected_2026_outcomes_used": false,
+  "general_predictive_improvement_established": false,
+  "hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-finite-return-baseline\\preflight.json": "0b6d8aa3ef85b900b3c5e499e445bc4dace712aa28ff69c784f0e60f0607497d",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-finite-return-baseline\\fit-seal.json": "903c768e6bc9768b7116dd81eec8910350220a6a70b67aa0a34134c0329c4268",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-finite-return-baseline\\fit-report.json": "0aaf9be8e4eeabd1d7b91fd3ecf5f3640295cfd7ef5cce952fe262d0e3dce301",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-finite-return-baseline\\predictions.parquet": "ee1376640cc18abf69922e24545de4398116891630f1cfe60a27ecfbffb86d3a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\model-evidence\\hitter-finite-return-baseline\\player-walks.json": "6a3db6b1efe5b6558de96a3002951f7f0dba64e4dead639a7baada831b36c84b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\practical-hitter-v31\\dated-stints.parquet": "d079aea8ae18cdae378013f8d0f63cd236ee137f25f6d5ebb4dd0a4a12c4518a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-status-evidence-v2\\status-ledger.json": "851fe103df90fe1218152a134829df57deed3876f94b971c451e7ef4ceab9448",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-minor-statcast-precision\\scored-predictions.parquet": "85eb1001f944491c77ec2169ccd179d2a527a1419132ff0de661c4ad7eef7e05"
+  }
+}

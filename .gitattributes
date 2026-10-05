@@ -653,3 +653,13 @@ src/universal_baseball/known_suspension_budget.py -text -eol
 scripts/check_known_suspension_budget.py -text -eol
 tests/test_known_suspension_budget.py -text -eol
 reports/model-evidence/known-suspension-budget/** -text -eol
+# Preserve the finite-return role reference and its qualified player review.
+config/hitter_anticipated_medical_readiness.json -text -eol
+docs/hitter-finite-return-baseline-contract.md -text -eol
+docs/hitter-finite-return-baseline-result.md -text -eol
+docs/hitter-finite-return-baseline-player-review.md -text -eol
+src/universal_baseball/finite_return_baseline.py -text -eol
+scripts/run_hitter_finite_return_baseline.py -text -eol
+scripts/complete_hitter_finite_return_baseline.py -text -eol
+tests/test_finite_return_baseline.py -text -eol
+reports/model-evidence/hitter-finite-return-baseline/** -text -eol
