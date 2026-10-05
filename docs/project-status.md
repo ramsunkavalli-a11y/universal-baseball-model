@@ -2,6 +2,50 @@
 
 Updated 2026-10-05. This is the current start-here document.
 
+## Completed 2026 evaluation and separate results explorer
+
+The selected candidate was frozen and pushed in `e661958` BEFORE the authorized
+outcome opening. The [single completed evaluation](hitter-final-2026-result.md)
+and [required player review](hitter-final-2026-player-review.md) are now complete.
+No post-result fit, blend, eligibility change or tuning occurred. Both frozen
+packages remain unchanged. Statements below that 2026 is closed describe earlier
+milestones, not the current state. Read-only replay-verifier flags describing
+the package's pre-result state also do not supersede this current receipt.
+
+All eight player/team event totals reconcile: 183,849 league PA, 2,429 completed
+games, one canceled game. The source has 751 rows but only 662 positive-PA
+participants. The fixed cohort contains 655 participants and 182,453 actual PA
+against 181,374 predicted. Contribution RMSE is 0.4594 wins; conditional hitting
+RMSE is 1.732 wins per 600 PA. These are custom batting units, not full WAR.
+
+Close totals hide an imbalance: never-debut players get 13,098 forecast PA
+versus 15,976 actual and 27.33 forecast contribution versus 46.24 actual.
+Prior MLB players' contribution is too high. Scouting and Rumfield's AAA seasons
+were present, so another proposal to merely add that information is not the
+explanation. Judge is mainly a workload miss, Duran mainly a hitting miss;
+Kurtz's rate is close. Accurate contribution can also mask offsetting errors.
+Twenty named players are narrated and 129 cases/peers mechanically replayed.
+
+Seven missing forecasts account for 1,396 actual PA, mostly foreign entrants
+and a foreign-league returner. They are coverage gaps, not predicted zeroes.
+No verified genuine preseason 2026 public export was available, so predictive
+superiority over named public systems remains unestablished. Origin-defined
+prospect errors warrant a historical audit; actual high-PA winners do not justify
+raising every player's forecast.
+
+The [new team-filtered explorer](hitter-final-2026-explorer.md) is separate at
+<http://127.0.0.1:8810/>. It shows hitting alone, expected/actual PA and batting
+contribution, source stats, fit walks and missing entrants. Desktop/mobile
+browser-independent checks pass. Thirty-four focused Python tests pass. The
+in-app connector itself failed; panel opening is queued, not directly verified.
+
+The broad goal remains active. Retain this as an evaluated research reference,
+not universal/full-value deployment. Next close entrant coverage and the matched
+public benchmark, then one bounded **historical** audit of prospect conditional
+workload, substantial level exposure versus promotion cameos and scouting
+contrasts. Do not retune to this 2026 season, rerun the closed team-record idea,
+or begin another algorithm tournament to avoid these issues.
+
 ## Selected candidate frozen; final 2026 outcomes still closed
 
 The [new selected hitter candidate](hitter-selected-2026-freeze-result.md) is

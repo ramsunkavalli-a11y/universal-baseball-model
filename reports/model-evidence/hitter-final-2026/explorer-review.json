@@ -1,0 +1,75 @@
+{
+  "build": {
+    "status": "same-origin_team_filter_complete_forecasts_unchanged",
+    "players": 4030,
+    "affiliation_changes": 3289,
+    "initial_unknown_organizations": 3425,
+    "unknown_organizations": 136,
+    "correction": "Initial display builder loaded only MLB team listing and left minor teams unknown; preserved that build, added existing 2025 all-level listings before browser opening. No forecast or score change.",
+    "team_filter": "Captured 2025 source affiliation, not 2026 destinations or MLB roster projection.",
+    "UI_validation": "pending",
+    "input_hashes": {
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\complete_hitter_final_2026_explorer.py": "c57b20964fc7ec7ddb1b040623b44b096fea0c9368a08c8211e01561dab2aa72",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-final-2026-explorer\\data.json": "fb27fd56f3370f68480c666c7cab646caf9731f5f9c90588c0f151d85bdfc5d5",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-final-2026-explorer\\build-review.json": "759bf78c4c31ae003c60e814d6686782e42f3bf02b11098ac3fff6815f054a3a",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\affiliated-team-context\\captures\\teams-2025-sport-1.json": "33aef8945f24a8294d8900e6dd44eb6e5df8db0740b74a8802e21370a194ffda",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\affiliated-team-context\\captures\\teams-2025-sport-11.json": "153b5ee785f7d3ba8dc4c56031480e8c8eb01ead7c79461a3cb561daaa2e8f34",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\affiliated-team-context\\captures\\teams-2025-sport-12.json": "43bc9cd0b0a9fe70545fd521fc7b0fe8267000d44534695203a494c6981398c5",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\affiliated-team-context\\captures\\teams-2025-sport-13.json": "175309b89122ed5d71f2d582982e8bc353a8d2eec5985121540dc630cf2fb1d4",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\affiliated-team-context\\captures\\teams-2025-sport-14.json": "fcfb2b6340fd0e1c839ee989ddbdad60fcedb010a09fb60f0290e2aa431bda47",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\affiliated-team-context\\captures\\teams-2025-sport-16.json": "716254e643edaf6cf0a34500e1ed393b29bc3f6373c16660469b930db3c0779c"
+    },
+    "output_hashes": {
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-final-2026-reviewed-explorer\\data.json": "3b988303a0c435e9f173ecceb1643d1ca0697bda55b280173b993af386e30997",
+      "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-final-2026-reviewed-explorer\\index.html": "98f002ec0a393eb9f2753664bb6a7b111c805b3c71687af700e524156a4744f2"
+    }
+  },
+  "name_correction": {
+    "correction": "136 source names are null; initial name search failed. UI now supports missing names, labels them by unchanged player ID and keeps all forecast inputs and membership unchanged.",
+    "prior_template_preserved": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-final-2026-explorer\\index.html",
+    "prior_sha256": "98f002ec0a393eb9f2753664bb6a7b111c805b3c71687af700e524156a4744f2",
+    "new_sha256": "b1e263e9a98b97044ec751c32be8b6fed5cfd7d48a8b1ad0a24a60df5d987d62",
+    "data_sha256": "3b988303a0c435e9f173ecceb1643d1ca0697bda55b280173b993af386e30997",
+    "template_sha256": "e19e9543c6257506f90124023f25e4ac2fb30ff20e4d32b6d0ef76dc6c30c766",
+    "forecasts_or_outcomes_changed": false
+  },
+  "mobile_correction": {
+    "correction": "A rendered 430-pixel viewport exposed a table minimum-width overflow; mobile grid now permits internal table scrolling instead of widening the whole page.",
+    "previous_sha256": "b1e263e9a98b97044ec751c32be8b6fed5cfd7d48a8b1ad0a24a60df5d987d62",
+    "previous_file": "index-before-mobile-fix.html",
+    "new_sha256": "f1bdfbbdc7374556aa9fe61b3a93146e0a804c558053f30caad30bdba10f7609",
+    "data_sha256": "3b988303a0c435e9f173ecceb1643d1ca0697bda55b280173b993af386e30997",
+    "forecasts_changed": false
+  },
+  "browser": {
+    "status": "passed",
+    "browser": "Independent headless Edge, not user browser session",
+    "tests": [
+      "4,030 fixed players; 75-row pagination",
+      "2025 Giants plus upper-minors filter",
+      "Hitting-only descending sort matches saved rates",
+      "Judge exact PA, probability and hitting display",
+      "Made sparse warning and unobserved actual rate",
+      "Non-arrival and empty search",
+      "Four cohort totals and seven missing forecasts",
+      "Desktop and mobile render without whole-page overflow; no JavaScript errors",
+      "Missing source-name ID search, fallback label and name sorting"
+    ],
+    "in_app_connector": "Failed kernel asset initialization twice; Codex open queued separately.",
+    "forecast_changes": false,
+    "errors": []
+  },
+  "url": "http://127.0.0.1:8810/",
+  "visual_review": "Desktop Judge details and final 430-pixel mobile render inspected; internal table scrolling, no whole-page overflow.",
+  "current_template_sha256": "f1bdfbbdc7374556aa9fe61b3a93146e0a804c558053f30caad30bdba10f7609",
+  "forecasts_scores_and_membership_unchanged": true,
+  "source_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\build_hitter_final_2026_explorer.py": "a42a5df10c7d44c9b280206616d61c1693c25f9d38ef0dd938cf9e24a46d8f52",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\complete_hitter_final_2026_explorer.py": "c57b20964fc7ec7ddb1b040623b44b096fea0c9368a08c8211e01561dab2aa72",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\repair_hitter_final_2026_explorer_names.py": "e2439e09ef9907b3ef2277cc8d0524dd1393cdbae30f48662fa0bf1a9e66b6ab",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\repair_hitter_final_2026_explorer_mobile.py": "e915e69dc7f71e77421069881b4953595ad68da1cd091cfbd88560b1c0443dba",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\test_hitter_final_2026_explorer.mjs": "a83d1166a3241c3a986c7724421c82ce6f79c170c4c0bf8b1fdac2207b4fa150",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\hitter-final-2026-explorer.md": "8d94f9c1e75f0425ff4695e1ff6b12a2828262cb4211ebd7e2538ad492702b51",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\publish_hitter_final_2026_explorer_review.py": "0ba0f7496866a7cbc1fb8dcf8e45cdafab1e82b8253c501f2f5a888010641c26"
+  }
+}
