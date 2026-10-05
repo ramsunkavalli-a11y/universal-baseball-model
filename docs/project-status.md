@@ -2,6 +2,46 @@
 
 Updated 2026-10-04. This is the current start-here document.
 
+## Complete overseas comparison exposes evidence weighting failures
+
+The [completed integration](hitter-overseas-integration-result.md) keeps all
+30,506 original forecasts and separately scores thirteen admitted additions.
+All 210 fitted heads replay, 264 score fields reconstruct independently, seven
+focused tests pass and the protected 31-file forecast check passes. The [38 player
+walks](hitter-overseas-integration-player-review.md) are complete. Original pending
+receipts are preserved; the separate final review records the disposition.
+
+Playing-time RMSE improves slightly, 60.499 current to 60.311 domestic and 60.298
+overseas. The paired PA absolute-error gains remain uncertain. Delivered batting
+value worsens, 0.43513 to 0.44491 and 0.44978; PA-weighted hitting worsens too.
+The overseas arm loses value accuracy in every origin, not just COVID-affected
+2021. Public MAE narrowly meets the practical tolerance but the improvement is
+less than one PA and does not establish a useful player-value gain.
+
+The failure has specific mechanics. Lee's raw KBO contact feature contributes
++14.17 batting wins per 600 PA; Ohtani after a 367-PA MLB debut is forecast at
+−6.53 batting wins per 600. Yoshida's older NPB terms overpower 1,001 newer MLB
+PA. Yordan's largest apparent gain is dominated by 57 older DSL PA; Benintendi's
+older short-season terms overwhelm a full MLB season. Merely retaining newer
+MLB columns does not give them appropriate priority. Current translated-prospect
+and MLB-Statcast talent branches beat these new raw-history integrations.
+
+Hoskins's known signing improves expected PA from 26 to 225 versus 517 actual.
+But professional newcomers and Tatis's finite suspension still receive very low
+forecasts; Suzuki's broad OF becomes UNKNOWN. These are not solved by gathering
+another league, adding more unrelated status flags, or a new algorithm tournament.
+Belt's surprising non-signing and McLain's later injury remain uncertainty, not
+permission for retrospective named rules.
+
+Do not promote either fitted integration. Follow the [coherent evidence repair
+plan](hitter-evidence-representation-repair-plan.md) next, preserving the strongest
+current branches and repairing sample precision, cross-level transport and
+professional/finite-absence representation together. The completed comparison,
+not older next-step wording below, controls this milestone. The public workload
+gap, incomplete population coverage, joint-value calibration and requested final
+research explorer remain open. Protected 2026 and existing explorers are unchanged;
+the broad goal is active and not achieved.
+
 ## Foreign batting additions qualified with actual domestic histories
 
 The [source admission review](hitter-foreign-additions-player-review.md) retains

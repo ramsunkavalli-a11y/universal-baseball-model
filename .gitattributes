@@ -244,3 +244,18 @@ tests/test_foreign_hitter_admission.py -text -eol
 scripts/prepare_foreign_hitter_additions.py -text -eol
 scripts/finalize_foreign_hitter_additions.py -text -eol
 reports/model-evidence/foreign-hitter-additions/** -text -eol
+# Preserve complete overseas integration source and experiment seals.
+docs/hitter-overseas-integration-contract.md -text -eol
+docs/hitter-overseas-reference-check.md -text -eol
+docs/hitter-overseas-integration-result.md -text -eol
+docs/hitter-overseas-integration-player-review.md -text -eol
+src/universal_baseball/hitter_overseas_inputs.py -text -eol
+scripts/prepare_hitter_overseas_integration.py -text -eol
+scripts/fit_hitter_overseas_integration.py -text -eol
+scripts/review_hitter_overseas_integration.py -text -eol
+scripts/audit_hitter_overseas_source.py -text -eol
+scripts/supplement_hitter_overseas_scores.py -text -eol
+scripts/finalize_hitter_overseas_integration.py -text -eol
+tests/test_hitter_overseas_inputs.py -text -eol
+tests/test_hitter_overseas_scoring.py -text -eol
+reports/model-evidence/hitter-overseas-integration/** -text -eol
