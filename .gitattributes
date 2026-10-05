@@ -259,3 +259,22 @@ scripts/finalize_hitter_overseas_integration.py -text -eol
 tests/test_hitter_overseas_inputs.py -text -eol
 tests/test_hitter_overseas_scoring.py -text -eol
 reports/model-evidence/hitter-overseas-integration/** -text -eol
+# Preserve reviewed hitter evidence preparation and recovery seals.
+docs/hitter-incumbent-representation-review.md -text -eol
+docs/hitter-evidence-representation-contract.md -text -eol
+docs/hitter-evidence-representation-prefit-correction.md -text -eol
+docs/hitter-evidence-representation-source-review.md -text -eol
+docs/hitter-evidence-representation-fit-recovery.md -text -eol
+docs/hitter-2026-final-evaluation-authorization.md -text -eol
+scripts/audit_hitter_incumbent_representation.py -text -eol
+scripts/finalize_hitter_incumbent_representation.py -text -eol
+scripts/prepare_hitter_evidence_representation.py -text -eol
+scripts/fit_hitter_evidence_representation.py -text -eol
+scripts/seal_hitter_evidence_source_review.py -text -eol
+scripts/resume_hitter_evidence_representation.py -text -eol
+scripts/review_hitter_evidence_representation.py -text -eol
+src/universal_baseball/hitter_evidence_representation.py -text -eol
+tests/test_hitter_evidence_representation.py -text -eol
+tests/test_hitter_representation_fit_recovery.py -text -eol
+reports/model-evidence/hitter-incumbent-representation/** -text -eol
+reports/model-evidence/hitter-evidence-representation/** -text -eol

@@ -2,6 +2,24 @@
 
 Updated 2026-10-04. This is the current start-here document.
 
+## Complete the evidence comparison then evaluate a frozen candidate
+
+The active long-range goal is a usable hitter model: hitting ability, playing
+time and delivered contribution, with public comparisons, actual player checks
+and a team-filtered research explorer. Finish the fixed
+[representation comparison](hitter-evidence-representation-contract.md), including
+its [prefit corrections](hitter-evidence-representation-prefit-correction.md),
+before choosing another experiment. Preparation is not predictive validation;
+no repaired-model scores or promotion exist yet.
+
+The user has now authorized a completed-2026 final evaluation **after** candidate
+freeze. The [freeze and evaluation sequence](hitter-2026-final-evaluation-authorization.md)
+controls that later phase. Do not open 2026 results before the immutable freeze,
+tune to those results, or alter the original protected forecast or explorers.
+The earlier no-access statements below describe the prior authorization state.
+The goal remains active; neither the practical candidate nor final evaluation
+is complete.
+
 ## Complete overseas comparison exposes evidence weighting failures
 
 The [completed integration](hitter-overseas-integration-result.md) keeps all
