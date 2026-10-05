@@ -1,0 +1,223 @@
+{
+  "status": "source_diagnosis_complete",
+  "player_walkthrough_status": "complete",
+  "rows": 266,
+  "people": 140,
+  "focal_origins": 18,
+  "unique_source_walks": 59,
+  "independent_checks": 4594,
+  "tests": "...........                                                              [100%]\n11 passed in 0.34s\n",
+  "new_fits": 0,
+  "new_forecasts": 0,
+  "new_2026_outcomes_read": false,
+  "accuracy_leaderboard_computed": false,
+  "predictive_gain_claimed": false,
+  "deployment_approved": false,
+  "exact_snapshot_day_known": false,
+  "freeze_checks": [
+    {
+      "script": "verify_hitter_selected_2026_freeze.py",
+      "result": {
+        "status": "verified",
+        "files": 53,
+        "players": 4030,
+        "heads_replayed": 25,
+        "manifest_sha256": "a1d819ffcdd98a9ee62feecf5637b5ebe1f93b6e931d77d2b7d692ed928da67a",
+        "protected_outcomes_read": false,
+        "predictive_accuracy_not_yet_evaluated": true
+      },
+      "qualification": "Verifies original package; does not reopen the completed 2026 evaluation."
+    },
+    {
+      "script": "verify_hitter_full_2026_freeze.py",
+      "result": {
+        "contact_available_rows": 3511,
+        "five_model_rows": 3720,
+        "forecast_sha256": "d1953a28d35d87d141ecc65ec4b107906edad877982e79c0d3a216245b9e4708",
+        "players": 3907,
+        "population_prior_rows": 187,
+        "protected_2026_opened": false,
+        "status": "verified",
+        "verified_files": 31
+      },
+      "qualification": "Verifies original package; does not reopen the completed 2026 evaluation."
+    }
+  ],
+  "next_boundary": "Audit original-cutoff overseas employment and intended role sources, not another broad fit.",
+  "hashes": {
+    "docs\\hitter-overseas-public-coverage-result.md": "8c9fbf904ba424419561ed063073328ea4b72dd59b5de242aef81871e3543809",
+    "scripts\\finalize_overseas_public_coverage.py": "67248bda795c88bff329be1fb818cfccf6496e44930ca639a3d8cef545b43401",
+    "reports\\generated\\overseas-public-coverage\\source-seal.json": "e15543992ffb4e7a8ffc73c8ae2cdd602542afc34690fd480b5225445e94664c",
+    "reports\\generated\\overseas-public-coverage\\coverage.json": "a9694121a888dd8fb6acb71716928c094b2fc54e7249738a52faaa9434044597",
+    "reports\\generated\\overseas-public-coverage\\player-walks.json": "dc3378a1c2f263e13b19a4f6960f5f185741c98421f0f859cb71efa873941093"
+  },
+  "coverage": [
+    {
+      "scope": "all_foreign",
+      "rows": 266,
+      "people": 140,
+      "systems": {
+        "steamer": {
+          "archive_year_unavailable": 114,
+          "positive_projected_PA": 127,
+          "identity_absent": 25
+        },
+        "zips": {
+          "archive_year_unavailable": 114,
+          "positive_projected_PA": 71,
+          "identity_absent": 81
+        }
+      }
+    },
+    {
+      "scope": "original_foreign",
+      "rows": 253,
+      "people": 138,
+      "systems": {
+        "steamer": {
+          "archive_year_unavailable": 111,
+          "positive_projected_PA": 118,
+          "identity_absent": 24
+        },
+        "zips": {
+          "archive_year_unavailable": 111,
+          "positive_projected_PA": 68,
+          "identity_absent": 74
+        }
+      }
+    },
+    {
+      "scope": "fresh_original",
+      "rows": 114,
+      "people": 70,
+      "systems": {
+        "steamer": {
+          "archive_year_unavailable": 51,
+          "positive_projected_PA": 45,
+          "identity_absent": 18
+        },
+        "zips": {
+          "archive_year_unavailable": 51,
+          "identity_absent": 59,
+          "positive_projected_PA": 4
+        }
+      }
+    },
+    {
+      "scope": "additions",
+      "rows": 13,
+      "people": 13,
+      "systems": {
+        "steamer": {
+          "archive_year_unavailable": 3,
+          "positive_projected_PA": 9,
+          "identity_absent": 1
+        },
+        "zips": {
+          "archive_year_unavailable": 3,
+          "identity_absent": 7,
+          "positive_projected_PA": 3
+        }
+      }
+    },
+    {
+      "scope": "target_2017",
+      "rows": 40,
+      "people": 40,
+      "systems": {
+        "steamer": {
+          "archive_year_unavailable": 40
+        },
+        "zips": {
+          "archive_year_unavailable": 40
+        }
+      }
+    },
+    {
+      "scope": "target_2018",
+      "rows": 41,
+      "people": 41,
+      "systems": {
+        "steamer": {
+          "archive_year_unavailable": 41
+        },
+        "zips": {
+          "archive_year_unavailable": 41
+        }
+      }
+    },
+    {
+      "scope": "target_2019",
+      "rows": 33,
+      "people": 33,
+      "systems": {
+        "steamer": {
+          "archive_year_unavailable": 33
+        },
+        "zips": {
+          "archive_year_unavailable": 33
+        }
+      }
+    },
+    {
+      "scope": "target_2022",
+      "rows": 39,
+      "people": 39,
+      "systems": {
+        "steamer": {
+          "positive_projected_PA": 32,
+          "identity_absent": 7
+        },
+        "zips": {
+          "positive_projected_PA": 17,
+          "identity_absent": 22
+        }
+      }
+    },
+    {
+      "scope": "target_2023",
+      "rows": 39,
+      "people": 39,
+      "systems": {
+        "steamer": {
+          "positive_projected_PA": 35,
+          "identity_absent": 4
+        },
+        "zips": {
+          "positive_projected_PA": 23,
+          "identity_absent": 16
+        }
+      }
+    },
+    {
+      "scope": "target_2024",
+      "rows": 39,
+      "people": 39,
+      "systems": {
+        "steamer": {
+          "identity_absent": 6,
+          "positive_projected_PA": 33
+        },
+        "zips": {
+          "identity_absent": 24,
+          "positive_projected_PA": 15
+        }
+      }
+    },
+    {
+      "scope": "target_2025",
+      "rows": 35,
+      "people": 35,
+      "systems": {
+        "steamer": {
+          "identity_absent": 8,
+          "positive_projected_PA": 27
+        },
+        "zips": {
+          "positive_projected_PA": 16,
+          "identity_absent": 19
+        }
+      }
+    }
+  ]
+}

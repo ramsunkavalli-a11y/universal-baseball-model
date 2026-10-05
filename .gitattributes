@@ -419,3 +419,11 @@ scripts/audit_overseas_opportunity_inventory_v2.py -text -eol
 scripts/finalize_overseas_opportunity_inventory.py -text -eol
 tests/test_overseas_opportunity_inventory.py -text -eol
 reports/model-evidence/overseas-opportunity-inventory/** -text -eol
+# Preserve public-coverage audit source seals and completion evidence.
+docs/hitter-overseas-public-coverage-contract.md -text -eol
+docs/hitter-overseas-public-coverage-result.md -text -eol
+src/universal_baseball/overseas_public_coverage.py -text -eol
+scripts/audit_overseas_public_coverage.py -text -eol
+scripts/finalize_overseas_public_coverage.py -text -eol
+tests/test_overseas_public_coverage.py -text -eol
+reports/model-evidence/overseas-public-coverage/** -text -eol

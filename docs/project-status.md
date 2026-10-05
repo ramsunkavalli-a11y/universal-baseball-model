@@ -2,6 +2,33 @@
 
 Updated 2026-10-05. This is the current start-here document.
 
+## Overseas public coverage reviewed without another fit
+
+The [public coverage audit](hitter-overseas-public-coverage-result.md) keeps all
+266 foreign-source forecasts and eighteen focal origins with 59 unique walks.
+There are 152 forecasts in the available 2022–2025 archive years. Steamer covers
+127 and ZiPS 71. Fresh originals have 45 Steamer matches out of 63, but only
+four ZiPS matches. The earlier prior-MLB-PA public cohort missed this population.
+There are 4,594 independent membership/count/coverage checks and eleven tests;
+both frozen packages verify unchanged. A stopped independent subtotal check
+and its correction are documented without rewriting the source ledger.
+
+Steamer's first-year Suzuki/Yoshida PA are 530/531 versus existing repaired
+183/265 and actual 446/580. Lee's low 2024 forecast looks closer in hindsight,
+but his 2025 current 154 PA versus Steamer 503 and actual 617 exposes continued
+role/workload weakness. Schwindel, Young and unsuccessful minor-deal peers show
+why no blanket overseas increase is justified. Public missing rows remain unknown,
+ordinary ZiPS PA remain conditional, and 89 Steamer matches have a repeated
+one-PA floor. Exact public snapshot days are unknown, so no equal-cutoff accuracy
+claim, new leaderboard or promotion follows. The completed 2026 result is final.
+
+Next verify original-cutoff foreign employment and intended MLB role using
+already captured transaction descriptions and dated official signing reports.
+Separate legal contract form, actual signing evidence, role intent and missing
+current rights. Do not repeat broad professional-work fits, relabel minor deals,
+invent agreement expiry or optimize a blend on these cases. This advances the
+existing source/semantics boundary below. The long goal remains active.
+
 ## Existing overseas opportunity work inventoried, not repeated
 
 The [read-only inventory](hitter-overseas-opportunity-inventory-result.md) retains
