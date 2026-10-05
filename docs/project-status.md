@@ -2,6 +2,48 @@
 
 Updated 2026-10-05. This is the current start-here document.
 
+## Overseas source snapshot is complete without a forecast change
+
+The [dated source result](hitter-international-2026-snapshot-result.md) and
+[six player checks](hitter-international-2026-snapshot-player-review.md) are
+complete. NPB has 742 player-club rows and 63,607 PA; KBO has 362 rows and
+55,095 PA. All 20,252 count cells independently reconstruct, and sixteen
+summable Korean fields reconcile to club totals. The 79 focused tests pass.
+Neither overseas season is certified complete; this is a separately dated
+source snapshot, not 1,104 eligible hitter forecasts or an accuracy gain.
+
+Unknown source/MLB keys, three birth-date conflicts, three residual NPB PA,
+pitcher batting and absent histories remain explicit. A discovered unequal
+peer window was corrected in an additive review without changing the six focal
+cases. Static current roster identities do not supply historical positions or
+roles. Raw provider tables stay private. Both frozen packages and the existing
+one-time 2026 MLB evaluation receipt verify unchanged.
+
+Do not repeat this capture, the completed prospect exposure audit, the 2025
+international extension or overseas public/role inventories. Do not rerun or
+tune on 2026 MLB. The next source boundary is a complete, dated later-forecast
+input release with qualified eligibility, rather than another algorithm fit
+or a claim that foreign raw counts are MLB talent. The full hitter goal remains
+unfinished; source consistency does not resolve the retained prediction and
+player-value gaps. The earlier sections below are milestone history; this
+section and the next-action correction govern the current handoff.
+
+## Do not repeat the completed prospect exposure audit
+
+The [next-action correction](hitter-next-action-correction.md) supersedes the
+readiness review's proposed exposure audit: that audit and fourteen player walks
+were already complete. All 42 annual level-PA inputs reconcile. About 83% of
+the historical prospect PA shortage comes from substantial highest-level
+experience, not promotion cameos. Its completed evidence rules out a claimed
+missing exposure input, not every readiness-model mechanism.
+
+The international collection through 2025, overseas public-coverage and intended
+role inventories are also complete; do not execute their stale next-fit notes.
+The concrete new source boundary is a separately dated 2026 NPB/KBO first-team
+snapshot under its [contract](hitter-international-2026-snapshot-contract.md).
+NPB still reports an October snapshot and remaining games; overseas completion
+is not inferred from MLB completion. No forecast or model change follows.
+
 ## One current hitter recipe and a clear remaining gap
 
 The [candidate readiness review](hitter-candidate-readiness-review.md) reconciles

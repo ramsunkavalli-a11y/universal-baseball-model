@@ -604,3 +604,26 @@ docs/hitter-candidate-readiness-review.md -text -eol
 scripts/audit_hitter_candidate_readiness.py -text -eol
 tests/test_hitter_candidate_readiness.py -text -eol
 reports/model-evidence/hitter-candidate-readiness/** -text -eol
+# Preserve the dated overseas snapshot, additive source repairs and six walks.
+docs/hitter-next-action-correction.md -text -eol
+docs/hitter-international-2026-snapshot-contract.md -text -eol
+docs/hitter-international-2026-snapshot-result.md -text -eol
+docs/hitter-international-2026-snapshot-player-review.md -text -eol
+docs/hitter-international-2026-finalization-amendment.md -text -eol
+docs/hitter-international-2026-peer-window-amendment.md -text -eol
+docs/hitter-npb-2026-identity-amendment.md -text -eol
+docs/hitter-npb-2026-staff-row-clarification.md -text -eol
+src/universal_baseball/international_hitter_snapshot_2026.py -text -eol
+src/universal_baseball/international_snapshot_completion.py -text -eol
+src/universal_baseball/npb_hitter_2026_identity.py -text -eol
+src/universal_baseball/npb_hitter_2026_identity_v2.py -text -eol
+scripts/capture_international_hitter_snapshot_2026.py -text -eol
+scripts/capture_npb_hitter_snapshot_2026.py -text -eol
+scripts/capture_npb_hitter_snapshot_2026_v2.py -text -eol
+scripts/review_international_hitter_snapshot_2026.py -text -eol
+scripts/finalize_international_hitter_snapshot_2026.py -text -eol
+scripts/finalize_international_hitter_snapshot_2026_v2.py -text -eol
+tests/test_international_hitter_snapshot_2026.py -text -eol
+tests/test_npb_hitter_2026_identity.py -text -eol
+tests/test_international_snapshot_completion.py -text -eol
+reports/model-evidence/international-hitter-snapshot-2026-10-05/** -text -eol
