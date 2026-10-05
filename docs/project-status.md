@@ -2,6 +2,38 @@
 
 Updated 2026-10-04. This is the current start-here document.
 
+## Direct event check complete and strongest existing hitter model retained
+
+The [bounded direct conversion test](hitter-direct-event-result.md) is complete,
+with 2,752 independently reconstructed score/frequency fields and all
+[47 source to outcome player walks](hitter-direct-event-player-review.md).
+No new heads were fitted. Proper event scores improve over the past translated
+profile, but next-year HR probability is low: 2.13% versus 2.79% actual among
+US-supported never-debut participants. Direct conversion worsens original
+contribution RMSE 0.435133 to 0.437596 and hitting 1.804813 to 1.849335.
+Never-debut contribution totals become −56.51 versus 207.44 actual. This fails
+the baseball reasonability check, despite useful Engel, Holliday and Kurtz changes.
+Torres, Yordan, Alonso and Kwan worsen; foreign professionals are mixed.
+
+One scope-only numerical correction preserves every forecast and original
+receipt: tiny inverse-log residues initially labeled 9,713 rows as foreign;
+the actual supported scope has fourteen. Corrected evidence is explicit.
+Fourteen focused conversion/scope/existing source tests pass. MLB talent and
+original playing time stay unchanged; no public benchmark gap was closed.
+
+The incumbent routed numeric, translated/scouting prospect and MLB tracking
+model remains the strongest existing development candidate. Do not repeat the
+same shared-regression/direct-conversion tests without a specific calibration
+repair. The completed check exposes log-coordinate versus mean-event calibration
+and minor-development transport limits; it does not reject all event information.
+
+Next assemble and audit that model's 2025-origin forecast inputs, provenance,
+membership and separate team-filtered research explorer. Selection of the best
+existing candidate is qualified, not certification: prospect workload, foreign
+coverage, availability and public PA gaps remain. Freeze before any 2026 outcome
+access, then evaluate once under user authorization. The old protected package
+must remain unchanged. The goal remains active and no 2026 outcomes were opened.
+
 ## Shared event learning reviewed and current hitter model retained
 
 The [fixed shared-event comparison](hitter-shared-event-result.md) is complete:
