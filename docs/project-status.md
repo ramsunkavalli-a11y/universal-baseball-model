@@ -2,6 +2,21 @@
 
 Updated 2026-10-06. This is the current start-here document.
 
+## MLB position source pilot verified
+
+[The 2022/2025 source pilot](defensive-position-source-pilot-result.md) recovers
+actual range runs and exposure by position. Present rows match native and official
+position outs exactly; split runs recompose within 1.3e-14. The source omits tiny
+positive-exposure positions and pitching appearances; the review accounts for
+every exposure discrepancy and preserves missing/null quality, not fabricated zero.
+Edwards's 2025 +6.57 at second versus −5.20 at SS and Rafaela's CF-dominated
+range now have separate measurements. No fit or accuracy gain is established.
+
+Next: extend this exact dated-source design through 2016–2025, repair origin
+context on unchanged identities, and recount later-MLB quality support. The
+five/seven-year historical-input gap remains even with better labels. Keep the
+selected forecast, its evaluation and the 8810 explorer unchanged.
+
 ## Defensive talent support audit completed
 
 [The historical support audit](defensive-talent-support-result.md) and

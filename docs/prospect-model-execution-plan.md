@@ -1,5 +1,16 @@
 # Prospect model: controlling execution plan
 
+## Current checkpoint 2026-10-06 Position split route verified
+
+[The position-source pilot](defensive-position-source-pilot-result.md) and its
+fixed-player walkthrough are complete. It verifies position-specific quality
+and exposure in 2022/2025, explaining pitcher and omitted-position exposure gaps
+without invented quality. The next source step is the same design for 2016–2025,
+not another parameter search. Repair dated origin metadata, preserve eligibility
+and age/level/exposure distinctions, then recount training support before fitting.
+The labels do not solve missing older minor inputs or authorize long-window
+chronological claims. No forecast change or accuracy gain is established.
+
 ## Current checkpoint 2026-10-06 Repair defensive measurements before fitting
 
 [The completed support audit](defensive-talent-support-result.md) preserves the

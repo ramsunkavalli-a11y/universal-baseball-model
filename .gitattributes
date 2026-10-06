@@ -746,3 +746,9 @@ scripts/audit_defensive_talent_support.py -text -eol
 scripts/review_defensive_talent_support.py -text -eol
 tests/test_defensive_talent_support.py -text -eol
 reports/model-evidence/defensive-talent-support/** -text -eol
+# Preserve the official position-source pilot and its reviewed limits.
+docs/defensive-position-source-pilot-contract.md -text -eol
+docs/defensive-position-source-pilot-result.md -text -eol
+scripts/pilot_defensive_position_source.py -text -eol
+scripts/review_defensive_position_source.py -text -eol
+reports/model-evidence/defensive-position-source-pilot/** -text -eol
