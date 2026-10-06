@@ -2,6 +2,40 @@
 
 Updated 2026-10-05. This is the current start-here document.
 
+## Medical comparison completed: retain the stronger forecast, close this refit
+
+The [matched medical comparison](hitter-medical-opportunity-comparison-result.md)
+is complete, including fourteen player-origin traces and an appended DSL fallback
+check. Repaired injury inputs in a source-covered MLB-history refit do not improve
+the model: eligible PA RMSE 148.79 → 150.99, batting-plus-replacement RMSE
+1.2400 → 1.2456; participation predictions also worsen. Refitting the old injury
+inputs on the same restricted training population already worsens PA RMSE to
+150.86. The tiny old-versus-repaired difference is uncertain. Do not call this
+evidence that injury data is useless or that source cleanup caused the main loss.
+All 120 fitted heads were independently replayed; no unsupported rows were
+dropped, and all 24,207 no-debut forecasts retain exact anchor outputs.
+
+Franco's 2022 PA improves 184 → 320 against 388, but fixed positive batting value
+moves farther from his actual negative contribution. Drury worsens 78 → 40 PA
+against 568. Martínez worsens 67 → 232 against zero: his retirement was public
+before the cutoff, but captured inputs say released and not retired. McLain's
+January 2024 forecast cannot use his March shoulder injury. These are different
+failure types, not one generic absence problem. Origin 2021 improves; the
+candidate fails in several other years, so COVID is not a sufficient explanation.
+
+No promotion, explorer edit or new 2026 outcome access. Retain the corrected
+medical source and the stronger historical anchor; do not repeat this restricted
+refit, its threshold variants or the already rejected feature-removal reference.
+Next source-only work: reconcile dated, affirmative retirement reports against
+captured transaction states, starting with Martínez and similar peers; release
+or no future MLB PA is not retirement. Before another medical fit, write a
+design preserving the stronger performance-training backbone with explicit
+unknown medical coverage instead of discarding older histories. This proposed
+design has no demonstrated gain yet. Tatis's unconditional health repair remains
+open; calendar injury bounds and arbitrary recovery probabilities are forbidden.
+Earlier entries below describe their historical milestones, not a request to
+repeat completed work.
+
 ## Medical observation timelines repaired; forecasts unchanged
 
 The [medical timeline repair](hitter-medical-timeline-repair-result.md) implements

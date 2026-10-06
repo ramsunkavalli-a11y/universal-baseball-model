@@ -680,3 +680,12 @@ scripts/rebuild_hitter_medical_timelines.py -text -eol
 scripts/complete_hitter_medical_source_review.py -text -eol
 tests/test_medical_observation_timeline.py -text -eol
 reports/model-evidence/hitter-medical-timeline-repair/** -text -eol
+# Preserve the fixed medical comparison and appended fallback review byte-for-byte.
+docs/hitter-medical-opportunity-comparison-contract.md -text -eol
+docs/hitter-medical-opportunity-comparison-result.md -text -eol
+src/universal_baseball/medical_opportunity_comparison.py -text -eol
+scripts/test_repaired_medical_opportunity.py -text -eol
+scripts/review_repaired_medical_opportunity.py -text -eol
+scripts/audit_medical_minor_fallback.py -text -eol
+tests/test_medical_opportunity_comparison.py -text -eol
+reports/model-evidence/hitter-medical-opportunity-comparison/** -text -eol
