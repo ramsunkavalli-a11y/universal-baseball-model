@@ -2,6 +2,23 @@
 
 Updated 2026-10-06. This is the current start-here document.
 
+## Defensive talent support audit completed
+
+[The historical support audit](defensive-talent-support-result.md) and
+[player walkthrough](defensive-talent-support-player-walkthrough.md) replace the
+pending audit below. All 31,563 origin pools and 94,689 window labels replay.
+No model was fitted. Three-year isolated MLB quality has only 28 distinct people
+without prior MLB fielding; five/seven-year historical test origins have no
+mature earlier training windows. Position-switchers are lost by the current
+aggregate target, and 5,308 origin rows have unmatched panel metadata. Tovar's
+2019 matched panel is INACTIVE despite dated short-season fielding exposure.
+
+Next is a bounded source repair: actual MLB position-split measurements and
+dated origin metadata, then a fresh support count on unchanged identities.
+Do not relax purity, allocate aggregate runs by innings, fit sparse lower-level
+profiles, or rerun next-year totals as an eventual-talent substitute. Old results,
+the production forecast and explorer remain unchanged; no accuracy gain is claimed.
+
 ## Primary nonbatting question is talent, not next-year contribution
 
 User correction, 2026-10-06: follow

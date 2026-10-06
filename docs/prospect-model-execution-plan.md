@@ -1,5 +1,21 @@
 # Prospect model: controlling execution plan
 
+## Current checkpoint 2026-10-06 Repair defensive measurements before fitting
+
+[The completed support audit](defensive-talent-support-result.md) preserves the
+full minor-source cohort and shows sparse clean same-position MLB quality,
+missing chronological training for five/seven-year windows, and incorrect or
+missing origin context. [Sixteen fixed/input-selected player-origin checks](defensive-talent-support-player-walkthrough.md)
+show why these are measurement/support limits, not a rejection of defensive talent.
+
+The next bounded task is official MLB range splits by actual position, with
+year/exposure/recomposition checks, followed by dated origin metadata repair.
+Recount support before any talent fit. Do not solve Mateo's mixed positions by
+apportioning aggregate runs, or Tovar's missing short-season context by assigning
+inactivity. More target detail does not create pre-2016 minor evidence; keep that
+separate historical-input gap open. No new algorithm comparison, 2026 data use
+or production/explorer change is authorized by this audit.
+
 ## User correction 2026-10-06 Identify nonbatting talent first
 
 [The corrected target](nonbatting-talent-target-correction.md) supersedes the

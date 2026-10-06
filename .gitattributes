@@ -737,3 +737,12 @@ scripts/complete_minor_infield_play_share.py -text -eol
 tests/test_minor_infield_play_share.py -text -eol
 tests/test_minor_infield_play_share_support.py -text -eol
 reports/model-evidence/minor-infield-play-share/** -text -eol
+# Preserve the defensive talent support contract, replay and player audit.
+docs/nonbatting-talent-support-contract.md -text -eol
+docs/defensive-talent-support-result.md -text -eol
+docs/defensive-talent-support-player-walkthrough.md -text -eol
+src/universal_baseball/defensive_talent_support.py -text -eol
+scripts/audit_defensive_talent_support.py -text -eol
+scripts/review_defensive_talent_support.py -text -eol
+tests/test_defensive_talent_support.py -text -eol
+reports/model-evidence/defensive-talent-support/** -text -eol
