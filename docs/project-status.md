@@ -2,6 +2,38 @@
 
 Updated 2026-10-05. This is the current start-here document.
 
+## User priority: nonbatting hitter components; repaired range test not promoted
+
+The [nonbatting milestone](nonbatting-hitter-milestone-plan.md) supersedes the
+prior arrival/readiness next step. [Component/literature review](nonbatting-hitter-component-review.md)
+reconciles old versus repaired catcher decisions, running, position and native
+MLB fielding. Retain useful baselines; the 8810 explorer is still batting plus
+replacement, not an integrated full-WAR forecast.
+
+[Outcome-complete infield play share](minor-infield-play-share-result.md) keeps
+through hits in exposure and scores future MLB range on fixed cohorts. Recent
+delivered RMSE changes 1.33183 → 1.33164; the paired interval crosses zero and
+conditional weighted error worsens 1.24%. All 150 models/input pools replay;
+13 player-origins and origin-known peers are walked. Do not adopt/tune it.
+Peña/Mayer remain missed; Edwards worsens; Rafaela's tiny gain primarily concerns
+future outfield value. A/rookie cohorts have zero substantial next-year MLB
+infield labels, so neither this nor old denominator-flawed negatives settle
+their eventual defensive talent. Conditional-profile gaps remain visible.
+
+The older position-history study improved both squared-error scores but was
+withheld for a roughly 0.25-WAR total-bias deterioration across 3,291 prospects.
+Do not summarize that as useless position history; preserve the original result
+and use meaningful calibration tolerances in future integration.
+
+Next: population-scale the already certified catcher event/exposure extractor
+with failed-game accounting BEFORE a new skill fit, then compare repaired
+throwing/blocking with native future MLB outcomes and existing baselines. Keep
+pickoff and nonpitch-risk distinctions. Common defensive exposure/native-unit
+integration and mature longer-path minor/tracking support follow; no algorithm
+tournament or another play-share sweep. No new 2026 access or explorer change.
+The app's older broader goal is still paused/unfinished; the repo milestone is
+complete only as review plus bounded comparison, not as a full hitter model.
+
 ## Recent-promotion comparison complete; retain the current forecasts
 
 The [recent-training comparison](hitter-recent-promotion-result.md) keeps the

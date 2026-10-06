@@ -724,3 +724,16 @@ scripts/review_hitter_recent_promotion.py -text -eol
 scripts/complete_hitter_recent_promotion.py -text -eol
 tests/test_hitter_recent_promotion.py -text -eol
 reports/model-evidence/hitter-recent-promotion/** -text -eol
+# Preserve the sealed nonbatting measurement experiment and reviewed evidence.
+docs/nonbatting-hitter-milestone-plan.md -text -eol
+docs/nonbatting-hitter-component-review.md -text -eol
+docs/minor-infield-play-share-contract.md -text -eol
+docs/minor-infield-play-share-result.md -text -eol
+docs/minor-infield-play-share-player-walkthrough.md -text -eol
+src/universal_baseball/minor_infield_play_share.py -text -eol
+scripts/run_minor_infield_play_share.py -text -eol
+scripts/review_minor_infield_play_share.py -text -eol
+scripts/complete_minor_infield_play_share.py -text -eol
+tests/test_minor_infield_play_share.py -text -eol
+tests/test_minor_infield_play_share_support.py -text -eol
+reports/model-evidence/minor-infield-play-share/** -text -eol

@@ -1,5 +1,23 @@
 # Prospect model: controlling execution plan
 
+## User-directed checkpoint — 2026-10-05: nonbatting components first
+
+This priority supersedes the arrival/readiness next-step suggestions below.
+Follow [the nonbatting milestone](nonbatting-hitter-milestone-plan.md) and
+[component review](nonbatting-hitter-component-review.md). The repaired infield
+play-share comparison and mandatory 13 player-origin walkthrough are complete;
+no upgrade is established and no weight/algorithm sweep follows. Preserve the
+old positive running/native/catcher research benchmarks with their scope limits.
+
+Next gate is scaling the frozen catcher exposure extraction to a predeclared
+population, auditing failed games and event/exposure coverage before any skill
+fit. After that, one repaired throwing/blocking test and common native-unit
+exposure integration. Later minor/tracked talent tests require genuinely mature
+MLB outcomes and actual chronological profile support; immediate A/DSL nonarrival
+does not assess eventual fielding ability. Batting, PA, the selected 2026 forecast,
+its completed evaluation and explorer remain unchanged. Full nonbatting and
+long-horizon/control value remain unfinished.
+
 ## Current checkpoint — 2026-10-05: fast-track readiness, not another era sweep
 
 This addendum supersedes old next-test suggestions below; prior contracts and
