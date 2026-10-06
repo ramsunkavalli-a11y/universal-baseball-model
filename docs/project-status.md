@@ -2,6 +2,32 @@
 
 Updated 2026-10-05. This is the current start-here document.
 
+## Recent-promotion comparison complete; retain the current forecasts
+
+The [recent-training comparison](hitter-recent-promotion-result.md) keeps the
+same 293 inputs, folds, training membership, hitting rates and settings. Giving
+recent seasons more training weight lowers recent prospect PA RMSE about 1%,
+but lower-minors PA MSE worsens 4.46%, batting value does not improve, and the
+paired primary interval is inconclusive. All 12 player walks and 140 old/new
+head replays are complete. Do not adopt or sweep half-lives/route only upper
+minors; no 2026 rescore or explorer change.
+
+Chourio improves from 314 to 391 expected PA before 573 actual. Kurtz falls
+from 10 to seven before 489, Cam Smith from 12 to six before 493, and Quero
+from 100 to 64 before 403. The narrow recent advanced top-pick cohort expects
+2.55 arrivals versus eight actual. Draft/college/rank inputs are already present:
+this is not solved by attaching pedigree again or a blanket recent-era boost.
+The historical first-team-work fields mean MLB/NPB/KBO, not affiliated minors;
+their zeros for entrants are intentional, while minor PA are separate inputs.
+
+Next gate: reconcile existing pedigree, school-source, entrant-workload and
+pooling tests against the actual sparse elite-entry support before specifying
+a genuinely different shared readiness/prior mechanism. Retain unsuccessful
+top-pick peers and lower-level non-arrivals; do not tune to Langford/Kurtz.
+Keep 2021 as a separately scored stress case, not the reason to choose a model.
+The broader hitter goal remains unfinished; this is a closed experiment, not
+a validated player-value upgrade.
+
 ## Prospect arrival diagnosis complete; no blanket boost or repeat COVID test
 
 The [cohort diagnosis](hitter-arrival-cohort-diagnosis-result.md) checks all 35

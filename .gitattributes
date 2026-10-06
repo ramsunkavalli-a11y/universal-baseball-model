@@ -715,3 +715,12 @@ scripts/audit_hitter_arrival_cohorts.py -text -eol
 scripts/complete_hitter_arrival_cohort_diagnosis.py -text -eol
 tests/test_hitter_arrival_cohort_review.py -text -eol
 reports/model-evidence/hitter-arrival-cohort-diagnosis/** -text -eol
+# Preserve fixed recent-training experiment seals and reviewed disposition.
+docs/hitter-recent-promotion-contract.md -text -eol
+docs/hitter-recent-promotion-result.md -text -eol
+src/universal_baseball/hitter_recent_promotion.py -text -eol
+scripts/test_hitter_recent_promotion.py -text -eol
+scripts/review_hitter_recent_promotion.py -text -eol
+scripts/complete_hitter_recent_promotion.py -text -eol
+tests/test_hitter_recent_promotion.py -text -eol
+reports/model-evidence/hitter-recent-promotion/** -text -eol
