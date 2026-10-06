@@ -2,6 +2,46 @@
 
 Updated 2026-10-05. This is the current start-here document.
 
+## Big-miss groups reviewed; seven affirmative career departures repaired
+
+The [current goal checkpoint](hitter-big-miss-group-repair-plan.md) has a completed
+[group diagnosis](hitter-big-miss-group-audit-result.md) and
+[source/status repair](hitter-reported-departure-result.md). All 30,519 historical
+forecasts remain in evaluation. Fourteen initial player-origin walks replay 28
+actual heads; the correction walks all seven changed forecasts, nine earlier
+source-player controls and eight fixed controls, replaying 48 heads.
+
+Fielder's 2017 expected PA changes 419 → 0, Martínez's 2019 changes 67 → 0,
+and Teixeira, Beltrán, Beltré, Utley and Mauer receive the same cutoff-known
+departure policy. Their conditional workload and hitting ability are untouched.
+Release alone is not departure: Belt, Donaldson and Votto's January 2024
+forecasts remain unchanged despite zero actual MLB PA. The other 30,512 outputs
+are bit-exact. Pooled PA RMSE improves 60.236 → 60.165, about 0.12%; this is
+an obvious factual repair, not a large competitive breakthrough. The source
+supplement is manual/partial; deployment and full-model validation remain open.
+
+Two reporting/design traps are now explicitly addressed in appended artifacts.
+Conditional PA averages across everyone cannot be compared with actual workload
+among arrivals; the correct group estimate weights by predicted arrival chances.
+The coarser `sparse_profile` flag cannot certify adjacent finer profile counts:
+explicit zero and under-20 exact-profile warnings are now stored for both heads.
+Tatis/Franco have no exact legal-role training peers. All old evidence remains
+unchanged; no broad claim that zero exact interactions prevent all learning.
+
+The [origin follow-up](hitter-big-miss-group-origin-follow-up.md) changes the next
+decision: upper-minor predicted arrivals are 599 versus 730, but their group
+conditional workload is 124 versus 127 PA. Much of the arrival deficit is 2021;
+2022/2023 already overpredict arrivals. Do not blanket-boost prospects or repeat
+the closed medical/team-record tests. Before another fit, locate the cohort-
+specific arrival/known-availability mechanism using actual probability and
+source inputs, preserving the full-history backbone and recent-cohort controls.
+Tatis's unconditional medical/role repair and Franco's unresolved availability
+remain open. Chris Davis's large miss is almost entirely hitting rate; retirement
+or workload changes cannot fix it. The larger hitter/value goal remains open.
+
+No new fits, protected 2026 outcome access, frozen-forecast edit or explorer
+promotion. Entries below are historical milestones, not instructions to rerun.
+
 ## Medical comparison completed: retain the stronger forecast, close this refit
 
 The [matched medical comparison](hitter-medical-opportunity-comparison-result.md)

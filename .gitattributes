@@ -689,3 +689,21 @@ scripts/review_repaired_medical_opportunity.py -text -eol
 scripts/audit_medical_minor_fallback.py -text -eol
 tests/test_medical_opportunity_comparison.py -text -eol
 reports/model-evidence/hitter-medical-opportunity-comparison/** -text -eol
+# Preserve the completed group audit, source-status correction and player walks.
+docs/hitter-big-miss-group-repair-plan.md -text -eol
+docs/hitter-big-miss-group-audit-result.md -text -eol
+docs/hitter-big-miss-group-origin-follow-up.md -text -eol
+docs/hitter-reported-departure-contract.md -text -eol
+docs/hitter-reported-departure-result.md -text -eol
+config/hitter_reported_career_departures.json -text -eol
+src/universal_baseball/hitter_miss_groups.py -text -eol
+src/universal_baseball/reported_career_departure.py -text -eol
+scripts/audit_hitter_big_miss_groups.py -text -eol
+scripts/review_hitter_big_miss_groups.py -text -eol
+scripts/complete_hitter_big_miss_audit.py -text -eol
+scripts/evaluate_hitter_reported_departures.py -text -eol
+scripts/complete_hitter_reported_departures.py -text -eol
+tests/test_hitter_miss_groups.py -text -eol
+tests/test_reported_career_departure.py -text -eol
+reports/model-evidence/hitter-big-miss-group-repair/** -text -eol
+reports/model-evidence/hitter-reported-departure/** -text -eol
