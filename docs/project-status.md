@@ -1,6 +1,23 @@
 # Project status and handoff
 
-Updated 2026-10-05. This is the current start-here document.
+Updated 2026-10-06. This is the current start-here document.
+
+## Primary nonbatting question is talent, not next-year contribution
+
+User correction, 2026-10-06: follow
+[the talent-target correction](nonbatting-talent-target-correction.md).
+The last infield test's primary next-year delivered-runs target and secondary
+next-year conditional-quality target do not adequately assess eventual minor
+talent. Its scores are preserved, but it cannot reject a talent indicator merely
+because lower-level players did not field in MLB the following year.
+
+Next gate is joint source/target support for later MLB quality by position and
+age over a predeclared measurement window. Audit mature chronological training
+and right-censoring BEFORE population-scale catcher collection or another fit.
+Separate ability/development, opportunity and delivered value; unknown MLB
+quality on non-arrival is not zero. Do not use best-career-season labels or
+pretend a longer outcome window repairs missing training support. No new fit,
+production/explorer change or additional 2026 outcome access follows this correction.
 
 ## User priority: nonbatting hitter components; repaired range test not promoted
 

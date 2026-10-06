@@ -25,6 +25,12 @@ controlling execution plan linked there, not an old conversational next step.
   limits BEFORE fitting. Separate future MLB performance from same-level proxy
   prediction, conditional talent from unconditional contribution, calendar years
   from service years, and component value from full WAR or trade value.
+- User correction, 2026-10-06: nonbatting component testing primarily identifies
+  talent that carries to MLB, not next-year delivered runs. Separate quality/
+  development from arrival, position exposure and value. A future-MLB quality
+  support/window audit must precede the next fit; non-arrival is unknown quality,
+  not zero talent. Follow `docs/nonbatting-talent-target-correction.md`. Do not
+  relabel the old near-term contribution test as eventual-talent validation.
 - Chronology, player separation and total training counts are necessary but NOT
   sufficient. Audit forecast-time profile support in actual training folds and
   nested subsets. Missing historical coverage is unknown, not zero. Preserve

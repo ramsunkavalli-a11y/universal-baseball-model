@@ -1,5 +1,21 @@
 # Prospect model: controlling execution plan
 
+## User correction 2026-10-06 Identify nonbatting talent first
+
+[The corrected target](nonbatting-talent-target-correction.md) supersedes the
+next-test ordering below. Ability/development is the primary component question;
+arrival, position exposure and annual delivered runs/value are separate layers.
+The October 5 infield comparison remains a near-term contribution test, not a
+verdict on eventual A/DSL defensive talent. Preserve its sealed artifacts.
+
+Before more extraction or fitting, audit minor-origin and later MLB quality
+sources jointly, including position granularity, fixed follow-up windows,
+censoring and distinct-player support at actual chronological cutoffs. Then
+predeclare one supported talent comparison. No next-year-total fallback disguised
+as talent, best-season selection, zero quality for non-arrivals or unsupported
+five-year extrapolation. Keep compulsory player/unsuccessful-peer walkthroughs
+and unchanged production forecasts. The full goal remains unfinished.
+
 ## User-directed checkpoint — 2026-10-05: nonbatting components first
 
 This priority supersedes the arrival/readiness next-step suggestions below.
