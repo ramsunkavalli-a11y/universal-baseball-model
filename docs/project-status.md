@@ -2,6 +2,33 @@
 
 Updated 2026-10-05. This is the current start-here document.
 
+## Prospect arrival diagnosis complete; no blanket boost or repeat COVID test
+
+The [cohort diagnosis](hitter-arrival-cohort-diagnosis-result.md) checks all 35
+actual training cells, both heads, and 12 player-origins with 24 saved-head
+replays. Origin 2021 predicts the 2022 season. Its upper-minor group expects
+69 arrivals versus 142 actual; among those with 200+ AA/AAA PA, 54 versus 121.
+But likely arrivals also have low workload: Kwan is already at 72% arrival,
+yet 158 PA if active versus 638 actual. The earlier group-level conditional
+average hid this distinction. Sands (72 expected PA, four actual) is a required
+counterexample to giving every promising contact prospect regular workload.
+
+The model does not train target 2020 as zero arrivals. Repaired origin-2020
+training is retained. Its 2021 cancellation/reorganization context is new to
+training; constant flags cannot teach that interaction. Explicit distinct-person
+calendar-context warnings supplement generic profile counts, without deleting
+forecasts or claiming zero narrow support prevents all useful learning.
+
+This known history mechanism was already tested. The available-season approach
+improved arrivals modestly, not delivered batting value convincingly; preserve
+that qualified result and do not rerun it. Later upper cohorts already overshoot,
+and correct 2022 PA totals conceal opposing arrival/workload errors. No multiplier,
+regular-PA floor, refit or explorer promotion follows. Before another opportunity
+experiment, inventory prior entrant-role/pedigree/flexibility studies and require
+a genuinely new mechanism or source defect. Tatis availability and hitting-rate
+misses remain separate. No accuracy gain is claimed for this diagnosis; all
+forecasts and the previously evaluated 2026 freeze remain unchanged.
+
 ## Big-miss groups reviewed; seven affirmative career departures repaired
 
 The [current goal checkpoint](hitter-big-miss-group-repair-plan.md) has a completed

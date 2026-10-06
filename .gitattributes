@@ -707,3 +707,11 @@ tests/test_hitter_miss_groups.py -text -eol
 tests/test_reported_career_departure.py -text -eol
 reports/model-evidence/hitter-big-miss-group-repair/** -text -eol
 reports/model-evidence/hitter-reported-departure/** -text -eol
+# Preserve the no-fit arrival diagnosis, source seals and player review.
+docs/hitter-arrival-cohort-diagnosis-contract.md -text -eol
+docs/hitter-arrival-cohort-diagnosis-result.md -text -eol
+src/universal_baseball/hitter_arrival_cohort_review.py -text -eol
+scripts/audit_hitter_arrival_cohorts.py -text -eol
+scripts/complete_hitter_arrival_cohort_diagnosis.py -text -eol
+tests/test_hitter_arrival_cohort_review.py -text -eol
+reports/model-evidence/hitter-arrival-cohort-diagnosis/** -text -eol
