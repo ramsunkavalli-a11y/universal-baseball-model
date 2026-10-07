@@ -1,5 +1,35 @@
 # Prospect model: controlling execution plan
 
+## Current checkpoint 2026 10 07 Keep double plays neutral and address longer path support
+
+[The fixed DP comparison](defense-double-play-talent-v23-result.md) is reviewed
+and fails primary quality. Save the failed rule and its source/player evidence;
+do not rescue it with another shrinkage sweep. Neutral DP is a practical fallback,
+not a finding of no skill. No value test for this candidate follows.
+
+The next important gap is older compatible MLB defensive quality for prospect
+development and longer follow-up. Inventory existing sources and publicly
+accessible older components, their opportunity fields, identities, vintages and
+overlapping definitions before collecting or fitting. Native range, UZR range,
+total UZR and Total Zone are not interchangeable. A source bridge must preserve
+measurement uncertainty, positions and target maturity; new counts alone do not
+solve the gap. Contextual minor evidence and reviewed component/value assembly
+remain in scope after that source decision. Do not rerun closed component recipes.
+The broad goal remains active; frozen forecasts, explorer and 2026 selection stay
+unchanged. Lovich's separate batting issue is not repaired by defense work.
+
+## Current checkpoint 2026 10 07 Test one practical double play baseline
+
+[Double-play source and player review](defense-double-play-source-v22-result.md)
+is complete, with a separate prose row-count correction. Use native adjusted
+credit, not raw minor successes, and accept remaining chance-frequency/context
+limits explicitly. Follow [the fixed MLB-history comparison](defense-double-play-talent-v23-contract.md):
+no fitted model or recency/prior sweep, every origin kept, person-weighted later
+same-position quality, full player arithmetic and annual-path review. Only then
+choose neutral versus qualified history and its separate delivered-value test.
+Older compatible quality, lower-minors talent, development and value integration
+remain required. No frozen forecast, explorer or 2026 selection changes.
+
 ## Current checkpoint 2026 10 07 Move beyond the reviewed minor count correction
 
 [The count correction and player review](defense-minor-correction-v21-result.md)

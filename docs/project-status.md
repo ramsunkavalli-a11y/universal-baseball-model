@@ -2,6 +2,46 @@
 
 Updated 2026-10-07. This is the current start-here document.
 
+## Double play history does not justify an added skill forecast
+
+[The fixed comparison and player review](defense-double-play-talent-v23-result.md)
+are complete. Primary quality error worsens 0.51525 to 0.55856 runs per 500
+innings across 145 measured people; the paired change interval is wholly positive.
+All four position groups worsen. Rivera improves, but Crawford, Semien and
+Merrifield expose genuine measurement reversals. Bruján's tiny rookie sample
+also shows why the inherited prior is not proven DP reliability.
+
+Keep neutral DP in the research assembly, not this failed history rule. Do not
+run a prior/recency sweep or a delivered-value test for it. All 1,743 forecasts,
+support, scores and resampling replay; 55 MLB player origins/123 positions plus
+four unknown-quality prospect cases are walked. This closes one candidate, not
+double-play talent generally and not the defense goal.
+
+The source coverage and correction below remain valid. Next inspect older
+compatible quality measurements for the longer-path minor talent gap, then
+contextual minor evidence with a supported later-MLB target and matched value
+assembly. Do not restart reviewed catcher/arm/receiving or count recipes.
+Frozen forecasts, explorer, 2026 selection and Lovich batting repair unchanged.
+
+## Double play source review is complete and one talent comparison is next
+
+[The source and player review](defense-double-play-source-v22-result.md) supplies
+separate adjusted DP credit, independently replayed for all 13,304 native rows
+and 49,871 origin positions. Thirty player origins and 73 positions are walked,
+including Frick's explicitly required 3B case. Use the
+[corrected prose totals](defense-double-play-source-v22-count-correction.md):
+4,900 known and 4,895 certified infield credit rows. No forecast was fitted.
+
+MLB history supplies 145 measurable people at the primary origin; minor quality
+has only 34, with no demonstrated modern DSL/complex coverage. Actual eligible
+DP chances are absent. Do not convert raw successes per inning into mechanical
+skill or impute missing credit as average talent. Next follow
+[one fixed quality comparison](defense-double-play-talent-v23-contract.md), using
+heavily regressed same-position MLB history versus neutral credit with the
+traffic limitation explicit. No weight sweep or minor transfer fit. Quality and
+value remain separate gates. Defense goal active; frozen forecasts, explorer,
+2026 selection and Lovich batting repair unchanged.
+
 ## Minor count correction reviewed but most defensive talent remains unresolved
 
 [The protected-baseline comparison](defense-minor-correction-v21-result.md)
