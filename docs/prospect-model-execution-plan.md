@@ -1,5 +1,23 @@
 # Prospect model: controlling execution plan
 
+## Current checkpoint 2026-10-07 Matched defense source reviewed
+
+[The source and player review](defense-value-v11-source-player-review.md) is
+complete: fixed forecasts, separate quality/opportunity, twelve defined native
+channels, explicit partial measurement, and consistent batting-plus-replacement
+units. The reviewed OF-only aggregate correction recovers measured totals without
+inventing isolated mixed-position opportunities. Nine focal/27 peer walks and
+149,184 channel arithmetic checks complete; no model improvement is claimed.
+
+Proceed to one contracted delivered-defense and expanded-value contrast.
+Keep batting/PA and the ratio/repertoire/transition opportunity forecasts fixed;
+compare neutral quality, fixed shrunk histories and the separately saved qualified
+range calibration. Do not launch another opportunity algorithm or prior sweep.
+Use actual-exposure diagnostics only to separate skill failures from time/position
+failures. Incomplete native outcomes remain visible, not silently zero-filled.
+Keep non-arrival, minors, role changes, young development and ABS limits in the
+player review. Frozen forecasts/explorer and 2026 selection are unchanged.
+
 ## Current checkpoint 2026-10-07 Integrate reviewed quality with opportunity
 
 [Position uncertainty](defense-transition-v10-result.md) is fully walked and

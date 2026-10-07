@@ -875,3 +875,10 @@ scripts/review_defense_transition_return_v10.py -text -eol
 tests/test_defense_transition.py -text -eol
 tests/test_defense_transition_scores.py -text -eol
 reports/model-evidence/defense-transition-v10/** -text -eol
+
+docs/defense-value-v11-*.md -text -eol
+scripts/prepare_defense_value_v11.py -text -eol
+scripts/verify_defense_value_v11.py -text -eol
+scripts/finalize_defense_value_v11_source.py -text -eol
+tests/test_defense_value_source.py -text -eol
+reports/model-evidence/defense-value-v11/** -text -eol

@@ -2,6 +2,30 @@
 
 Updated 2026-10-07. This is the current start-here document.
 
+## Matched defensive measurements ready for value integration
+
+[The completed source review](defense-value-v11-source-player-review.md) pairs
+the existing 12,432 historical forecasts with twelve explicitly defined native
+defense channels and the reviewed season-relative batting ledger. Among actual
+defenders, 539/644, 525/638 and 561/661 have complete defined measurements in
+2023–2025; partial outcomes remain unknown. Non-arrival is zero opportunity,
+not measured average skill. All 149,184 original channel calculations replay.
+
+The separate reviewed view recovers 65 OF-only arm totals from reconciled
+measured aggregate evidence when a tiny secondary-position arm entry is absent.
+It does not zero-fill genuine mixed-position gaps. A mistaken Kiermaier case
+ID was Trout; Trout is retained and the correct Kiermaier and peers are added.
+Nine focal and 27 peer source walks finish. Castellanos/Olson have useful
+different-channel evidence; Witt development, young unknown skill and Varsho's
+position change remain explicit failures/gaps.
+
+Next lock one neutral-versus-fixed-skill delivered-defense and expanded-value
+comparison with the reviewed opportunity anchors and unchanged batting. Do not
+add replacement twice or award full-season positional credit from a roster
+label. DP/non-OF arms and other missing value channels preclude a full-WAR claim.
+No new fit or accuracy gain follows from the source audit. Frozen forecasts,
+explorer, 2026 selection and the separate Lovich batting defect remain unchanged.
+
 ## Position transitions reviewed Next measure delivered defensive value
 
 [The completed transition comparison](defense-transition-v10-result.md) keeps
