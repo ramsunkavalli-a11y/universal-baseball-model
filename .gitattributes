@@ -841,3 +841,10 @@ scripts/verify_arm_receiving_baselines_v6.py -text -eol
 tests/test_arm_receiving_source.py -text -eol
 tests/test_arm_receiving_baseline.py -text -eol
 reports/model-evidence/arm-receiving-v6/** -text -eol
+docs/defense-position-opportunity-v7-*.md -text -eol
+src/universal_baseball/defense_position_history.py -text -eol
+scripts/prepare_defense_position_opportunity_v7.py -text -eol
+scripts/verify_defense_position_opportunity_v7.py -text -eol
+scripts/review_defense_position_cohort_v7.py -text -eol
+tests/test_defense_position_history.py -text -eol
+reports/model-evidence/defense-position-opportunity-v7/** -text -eol

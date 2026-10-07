@@ -1,5 +1,22 @@
 # Prospect model: controlling execution plan
 
+## Current checkpoint 2026-10-06 Position opportunity sources ready
+
+[Full position history preparation](defense-position-opportunity-v7-source-result.md)
+and seven stage-matched player reviews are complete. Use actual player/scope outs
+and separate DH starts; do not use the attached team labels as exact team usage.
+Keep older rookie subtypes ambiguous, explicit current DSL separate, and 2020
+minor cancellation visible. The cached forecast population is matched, not the
+entire current production population. No new opportunity learner has been fitted.
+
+Next contract one defensive-position/native-opportunity bridge using unchanged
+playing time, with actual held-player support and a practical sparse-role fallback.
+Keep upcoming role evidence distinct from historical usage, defense-only/zero-PA
+players in overall scoring, and the full MLB remainder beside cohort totals.
+After its player walkthrough, test the reviewed skill components against matched
+delivered defensive runs and expanded player value. Do not repeat the old exposure
+algorithm tournament or alter frozen forecasts/explorer/2026 evaluation.
+
 ## Current checkpoint 2026-10-06 Arms and receiving reviewed
 
 [The reviewed milestone](arm-receiving-v6-result.md) adds qualified research

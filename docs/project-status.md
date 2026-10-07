@@ -2,6 +2,27 @@
 
 Updated 2026-10-06. This is the current start-here document.
 
+## Defensive position history prepared for opportunity integration
+
+[The source milestone](defense-position-opportunity-v7-source-result.md) prepares
+full position vectors from 400,020 existing records, including short-season and
+the disjoint 2019 rookie repair. All 30,506 cached historical forecasts retain
+their histories; seven focal/21 stage-matched peer traces and independent sums
+complete. Current explicit DSL labels are corrected without rewriting old files.
+The later-acquisition artifact receipts and raw captures replay exactly.
+
+Use player/scope history, not returned team labels: 2,600 team groups do not
+conserve positions. Four small historical requested-scope discrepancies remain.
+Immediate-MLB role training is sparse for many minor profiles. Keep unknown skill,
+coarser role fallbacks and planned-role evidence separate. The cached population
+also omits a few actual defenders, including known missed-year returns; full
+MLB totals and matched totals are reconciled but not interchangeable.
+
+Next predeclare one position/native-opportunity bridge with fixed playing time,
+then integrate the reviewed defensive skills on a matched expanded value target.
+No opportunity fit or full-WAR gain is claimed yet. Frozen forecasts, explorer,
+2026 evaluation and the open Lovich batting defect are unchanged.
+
 ## Arm and first base receiving baselines reviewed
 
 [The completed comparison](arm-receiving-v6-result.md) uses real advancement
