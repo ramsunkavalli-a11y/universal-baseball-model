@@ -1,5 +1,28 @@
 # Prospect model: controlling execution plan
 
+## Current checkpoint 2026-10-07 Use corrected DH measurements in the job budget
+
+[The completed source review](defense-budget-v13-result.md) separates overlapping
+P/DH starts from later position appearances and preserves the original source.
+The corrected 2022–2025 DH inventory is conserved. Saved priors and player walks
+also expose mixed DH-rule training, tiny old OF fallback for current DH-only
+players, real role changes, workload errors and overly coarse minor-stage peers.
+No allocation candidate has been fitted or scored in this checkpoint.
+
+Next predeclare one coherent job-budget comparison with the corrected DH target
+and input definitions matched across anchors/candidate. Keep batting/PA and
+defensive quality unchanged. A physical league inventory supplies constraints,
+not the identities of future position switches; preserve individual role evidence
+and a missing-player remainder. Do not force unknown quality into a WAR quota,
+double old DH rates, or choose an algorithm merely to balance totals. Witt,
+Schwarber, Alvarez, Ohtani, Eldridge, exits and their fixed peers must be reviewed
+alongside individual position, delivered defense and expanded-value errors.
+
+After that review, continue practical sparse/minor talent and the current research
+export/longer-horizon limits. Pure DH is not an unknown position; a tiny AA stint
+is not equivalent to sustained AA evidence. Frozen forecast/explorer and 2026
+selection remain unchanged. The Lovich batting repair is separate and still open.
+
 ## Current checkpoint 2026-10-07 Retain useful defense and repair the position budget
 
 [Matched value integration](defense-value-v12-result.md) is fully walked and

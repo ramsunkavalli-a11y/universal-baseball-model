@@ -1,0 +1,6528 @@
+{
+  "player_walkthrough_status": "complete",
+  "focal_cases": 7,
+  "peer_walks": 21,
+  "cases": [
+    {
+      "selection": "Fixed source/role cases named in the source contract",
+      "primary": {
+        "player_id": 660271,
+        "player_name": "Shohei Ohtani",
+        "origin": 2022,
+        "target_year": 2023,
+        "fold": 1,
+        "stage": "Current MLB",
+        "age": 27.0,
+        "primary_role": 10,
+        "source_history": [
+          {
+            "season": 2020,
+            "level": "MLB",
+            "source_rows": 2,
+            "positions": [
+              {
+                "position_code": "1",
+                "fielding_outs": 5,
+                "games_started": 2
+              },
+              {
+                "position_code": "10",
+                "fielding_outs": 0,
+                "games_started": 40
+              }
+            ]
+          },
+          {
+            "season": 2021,
+            "level": "MLB",
+            "source_rows": 4,
+            "positions": [
+              {
+                "position_code": "1",
+                "fielding_outs": 391,
+                "games_started": 23
+              },
+              {
+                "position_code": "10",
+                "fielding_outs": 0,
+                "games_started": 126
+              },
+              {
+                "position_code": "7",
+                "fielding_outs": 3,
+                "games_started": 0
+              },
+              {
+                "position_code": "9",
+                "fielding_outs": 22,
+                "games_started": 0
+              }
+            ]
+          },
+          {
+            "season": 2022,
+            "level": "MLB",
+            "source_rows": 2,
+            "positions": [
+              {
+                "position_code": "1",
+                "fielding_outs": 498,
+                "games_started": 28
+              },
+              {
+                "position_code": "10",
+                "fielding_outs": 0,
+                "games_started": 125
+              }
+            ]
+          }
+        ],
+        "current_MLB_PA": 666,
+        "origin_raw_DH_starts": 125,
+        "origin_certified_dual_starts": 28,
+        "origin_reviewed_DH_starts": 153,
+        "current_defensive_outs": {
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0,
+          "9": 0
+        },
+        "repertoire_fallback": "older_MLB_season",
+        "repertoire_shares": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.12,
+          0.0,
+          0.88
+        ],
+        "current_sample_weight": 0.8694516971279374,
+        "prior": {
+          "key": [
+            "role_stage",
+            "10",
+            "Current MLB"
+          ],
+          "regimes": [
+            {
+              "scope": "one_league",
+              "rows": 27,
+              "people": 18,
+              "target_years": [
+                2017,
+                2018,
+                2019
+              ],
+              "PA": 9523,
+              "DH_starts": 1521
+            },
+            {
+              "scope": "both_leagues",
+              "rows": 8,
+              "people": 8,
+              "target_years": [
+                2022
+              ],
+              "PA": 3598,
+              "DH_starts": 635
+            }
+          ],
+          "people": 23,
+          "DH_starts_per_PA": 0.16431674415059827
+        },
+        "expected_PA": 553.7183371597416,
+        "actual_PA": 599,
+        "saved_own_DH": 90.35873648168106,
+        "saved_prior_DH": 11.877962707385374,
+        "saved_forecast_DH": 102.23669918906644,
+        "source_only_own_DH_delta": 20.24035697189656,
+        "source_only_forecast_position_run_delta": -2.186458314865369,
+        "actual_raw_DH": 112,
+        "actual_reviewed_DH": 135,
+        "actual_position_source_delta": -2.484567901234568,
+        "saved_forecast_fielding_outs": {
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0,
+          "5": 0.0,
+          "6": 0.0,
+          "7": 15.61478299735075,
+          "8": 0.0,
+          "9": 114.50840864723884
+        },
+        "actual_fielding_outs": {
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0,
+          "9": 0
+        },
+        "saved_forecast_position_runs": -11.267207202599065,
+        "original_actual_position_runs": -12.098765432098766,
+        "reviewed_actual_position_runs": -14.583333333333334,
+        "unknown_repertoire": false,
+        "unknown_role_outs": 0.0,
+        "unchanged_inputs": [
+          "batting",
+          "expected_PA",
+          "defensive_quality",
+          "fielding_outs",
+          "native_opportunities"
+        ],
+        "qualification": "No fitted correction or accuracy verdict. The source-only change holds the saved pooled prior fixed."
+      },
+      "eligible_origin_role_stage_peers": 33,
+      "peer_rule": "Same origin, stage and primary role; age difference plus absolute log1p current-MLB-PA distance; ID tie break. No target information.",
+      "peers": [
+        {
+          "player_id": 623912,
+          "player_name": "Harold Ram\u00edrez",
+          "origin": 2022,
+          "target_year": 2023,
+          "fold": 0,
+          "stage": "Current MLB",
+          "age": 27.0,
+          "primary_role": 10,
+          "source_history": [
+            {
+              "season": 2020,
+              "level": "MLB",
+              "source_rows": 2,
+              "positions": [
+                {
+                  "position_code": "7",
+                  "fielding_outs": 12,
+                  "games_started": 1
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 51,
+                  "games_started": 2
+                }
+              ]
+            },
+            {
+              "season": 2021,
+              "level": "Aplus",
+              "source_rows": 2,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 1
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 51,
+                  "games_started": 3
+                }
+              ]
+            },
+            {
+              "season": 2021,
+              "level": "MLB",
+              "source_rows": 5,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 2
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 15,
+                  "games_started": 0
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 1082,
+                  "games_started": 43
+                },
+                {
+                  "position_code": "8",
+                  "fielding_outs": 451,
+                  "games_started": 19
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 723,
+                  "games_started": 28
+                }
+              ]
+            },
+            {
+              "season": 2022,
+              "level": "AAA",
+              "source_rows": 1,
+              "positions": [
+                {
+                  "position_code": "3",
+                  "fielding_outs": 21,
+                  "games_started": 1
+                }
+              ]
+            },
+            {
+              "season": 2022,
+              "level": "MLB",
+              "source_rows": 4,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 52
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 744,
+                  "games_started": 29
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 63,
+                  "games_started": 2
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 397,
+                  "games_started": 15
+                }
+              ]
+            }
+          ],
+          "current_MLB_PA": 435,
+          "origin_raw_DH_starts": 52,
+          "origin_certified_dual_starts": 0,
+          "origin_reviewed_DH_starts": 52,
+          "current_defensive_outs": {
+            "2": 0,
+            "3": 744,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 63,
+            "8": 0,
+            "9": 397
+          },
+          "repertoire_fallback": "latest_minor_season",
+          "repertoire_shares": [
+            0.0,
+            0.6893532461887167,
+            0.0,
+            0.0,
+            0.0,
+            0.04254509889154532,
+            0.0,
+            0.268101654919738
+          ],
+          "current_sample_weight": 0.8130841121495327,
+          "prior": {
+            "key": [
+              "role_stage",
+              "10",
+              "Current MLB"
+            ],
+            "regimes": [
+              {
+                "scope": "one_league",
+                "rows": 24,
+                "people": 18,
+                "target_years": [
+                  2017,
+                  2018,
+                  2019
+                ],
+                "PA": 9053,
+                "DH_starts": 1296
+              },
+              {
+                "scope": "both_leagues",
+                "rows": 8,
+                "people": 8,
+                "target_years": [
+                  2022
+                ],
+                "PA": 3674,
+                "DH_starts": 642
+              }
+            ],
+            "people": 23,
+            "DH_starts_per_PA": 0.1522746916005343
+          },
+          "expected_PA": 417.6746074818998,
+          "actual_PA": 434,
+          "saved_own_DH": 40.59641044683886,
+          "saved_prior_DH": 11.888088232463648,
+          "saved_forecast_DH": 52.484498679302504,
+          "source_only_own_DH_delta": 0.0,
+          "source_only_forecast_position_run_delta": -0.0,
+          "actual_raw_DH": 86,
+          "actual_reviewed_DH": 86,
+          "actual_position_source_delta": -0.0,
+          "saved_forecast_fielding_outs": {
+            "2": 0.0,
+            "3": 756.5832608095045,
+            "4": 0.0,
+            "5": 0.0,
+            "6": 0.0,
+            "7": 46.69436145951823,
+            "8": 0.0,
+            "9": 294.24859522902756
+          },
+          "actual_fielding_outs": {
+            "2": 0,
+            "3": 77,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 153,
+            "8": 0,
+            "9": 123
+          },
+          "saved_forecast_position_runs": -8.416389703075751,
+          "original_actual_position_runs": -9.983424782807498,
+          "reviewed_actual_position_runs": -9.983424782807498,
+          "unknown_repertoire": false,
+          "unknown_role_outs": 0.0,
+          "unchanged_inputs": [
+            "batting",
+            "expected_PA",
+            "defensive_quality",
+            "fielding_outs",
+            "native_opportunities"
+          ],
+          "qualification": "No fitted correction or accuracy verdict. The source-only change holds the saved pooled prior fixed."
+        },
+        {
+          "player_id": 614177,
+          "player_name": "Franmil Reyes",
+          "origin": 2022,
+          "target_year": 2023,
+          "fold": 2,
+          "stage": "Current MLB",
+          "age": 26.0,
+          "primary_role": 10,
+          "source_history": [
+            {
+              "season": 2020,
+              "level": "MLB",
+              "source_rows": 2,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 57
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 15,
+                  "games_started": 1
+                }
+              ]
+            },
+            {
+              "season": 2021,
+              "level": "AA",
+              "source_rows": 1,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 3
+                }
+              ]
+            },
+            {
+              "season": 2021,
+              "level": "AAA",
+              "source_rows": 1,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 4
+                }
+              ]
+            },
+            {
+              "season": 2021,
+              "level": "MLB",
+              "source_rows": 2,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 103
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 228,
+                  "games_started": 11
+                }
+              ]
+            },
+            {
+              "season": 2022,
+              "level": "AAA",
+              "source_rows": 2,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 5
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 69,
+                  "games_started": 3
+                }
+              ]
+            },
+            {
+              "season": 2022,
+              "level": "MLB",
+              "source_rows": 6,
+              "positions": [
+                {
+                  "position_code": "1",
+                  "fielding_outs": 3,
+                  "games_started": 0
+                },
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 100
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 27,
+                  "games_started": 1
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 258,
+                  "games_started": 11
+                }
+              ]
+            }
+          ],
+          "current_MLB_PA": 473,
+          "origin_raw_DH_starts": 100,
+          "origin_certified_dual_starts": 0,
+          "origin_reviewed_DH_starts": 100,
+          "current_defensive_outs": {
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 27,
+            "8": 0,
+            "9": 258
+          },
+          "repertoire_fallback": "latest_minor_season",
+          "repertoire_shares": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.07820336180766052,
+            0.0,
+            0.9217966381923395
+          ],
+          "current_sample_weight": 0.8254799301919721,
+          "prior": {
+            "key": [
+              "role_stage",
+              "10",
+              "Current MLB"
+            ],
+            "regimes": [
+              {
+                "scope": "one_league",
+                "rows": 33,
+                "people": 22,
+                "target_years": [
+                  2017,
+                  2018,
+                  2019
+                ],
+                "PA": 12557,
+                "DH_starts": 1918
+              },
+              {
+                "scope": "both_leagues",
+                "rows": 6,
+                "people": 6,
+                "target_years": [
+                  2022
+                ],
+                "PA": 2307,
+                "DH_starts": 441
+              }
+            ],
+            "people": 25,
+            "DH_starts_per_PA": 0.15870559741657697
+          },
+          "expected_PA": 281.9595168293055,
+          "actual_PA": 65,
+          "saved_own_DH": 49.20759456008823,
+          "saved_prior_DH": 7.809520692091505,
+          "saved_forecast_DH": 57.017115252179735,
+          "source_only_own_DH_delta": 0.0,
+          "source_only_forecast_position_run_delta": -0.0,
+          "actual_raw_DH": 12,
+          "actual_reviewed_DH": 12,
+          "actual_position_source_delta": -0.0,
+          "saved_forecast_fielding_outs": {
+            "2": 0.0,
+            "3": 0.0,
+            "4": 0.0,
+            "5": 0.0,
+            "6": 0.0,
+            "7": 18.104038038436414,
+            "8": 0.0,
+            "9": 213.39544766094957
+          },
+          "actual_fielding_outs": {
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 93,
+            "8": 0,
+            "9": 3
+          },
+          "saved_forecast_position_runs": -6.556203269181599,
+          "original_actual_position_runs": -1.4609053497942386,
+          "reviewed_actual_position_runs": -1.4609053497942386,
+          "unknown_repertoire": false,
+          "unknown_role_outs": 0.0,
+          "unchanged_inputs": [
+            "batting",
+            "expected_PA",
+            "defensive_quality",
+            "fielding_outs",
+            "native_opportunities"
+          ],
+          "qualification": "No fitted correction or accuracy verdict. The source-only change holds the saved pooled prior fixed."
+        },
+        {
+          "player_id": 641470,
+          "player_name": "Zack Collins",
+          "origin": 2022,
+          "target_year": 2023,
+          "fold": 1,
+          "stage": "Current MLB",
+          "age": 27.0,
+          "primary_role": 10,
+          "source_history": [
+            {
+              "season": 2020,
+              "level": "MLB",
+              "source_rows": 3,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 3
+                },
+                {
+                  "position_code": "2",
+                  "fielding_outs": 30,
+                  "games_started": 1
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 3,
+                  "games_started": 0
+                }
+              ]
+            },
+            {
+              "season": 2021,
+              "level": "AAA",
+              "source_rows": 1,
+              "positions": [
+                {
+                  "position_code": "2",
+                  "fielding_outs": 225,
+                  "games_started": 9
+                }
+              ]
+            },
+            {
+              "season": 2021,
+              "level": "MLB",
+              "source_rows": 3,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 3
+                },
+                {
+                  "position_code": "2",
+                  "fielding_outs": 1519,
+                  "games_started": 55
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 3,
+                  "games_started": 0
+                }
+              ]
+            },
+            {
+              "season": 2022,
+              "level": "AAA",
+              "source_rows": 3,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 10
+                },
+                {
+                  "position_code": "2",
+                  "fielding_outs": 285,
+                  "games_started": 11
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 415,
+                  "games_started": 16
+                }
+              ]
+            },
+            {
+              "season": 2022,
+              "level": "MLB",
+              "source_rows": 5,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 12
+                },
+                {
+                  "position_code": "2",
+                  "fielding_outs": 227,
+                  "games_started": 8
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 186,
+                  "games_started": 7
+                }
+              ]
+            }
+          ],
+          "current_MLB_PA": 108,
+          "origin_raw_DH_starts": 12,
+          "origin_certified_dual_starts": 0,
+          "origin_reviewed_DH_starts": 12,
+          "current_defensive_outs": {
+            "2": 227,
+            "3": 186,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0
+          },
+          "repertoire_fallback": "latest_minor_season",
+          "repertoire_shares": [
+            0.48113009871484447,
+            0.5188699012851555,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "current_sample_weight": 0.5192307692307693,
+          "prior": {
+            "key": [
+              "role_stage",
+              "10",
+              "Current MLB"
+            ],
+            "regimes": [
+              {
+                "scope": "one_league",
+                "rows": 27,
+                "people": 18,
+                "target_years": [
+                  2017,
+                  2018,
+                  2019
+                ],
+                "PA": 9523,
+                "DH_starts": 1521
+              },
+              {
+                "scope": "both_leagues",
+                "rows": 8,
+                "people": 8,
+                "target_years": [
+                  2022
+                ],
+                "PA": 3598,
+                "DH_starts": 635
+              }
+            ],
+            "people": 23,
+            "DH_starts_per_PA": 0.16431674415059827
+          },
+          "expected_PA": 36.340116739320266,
+          "actual_PA": 6,
+          "saved_own_DH": 2.096545196499246,
+          "saved_prior_DH": 2.8708123387777698,
+          "saved_forecast_DH": 4.967357535277015,
+          "source_only_own_DH_delta": 0.0,
+          "source_only_forecast_position_run_delta": -0.0,
+          "actual_raw_DH": 0,
+          "actual_reviewed_DH": 0,
+          "actual_position_source_delta": -0.0,
+          "saved_forecast_fielding_outs": {
+            "2": 49.84790389514145,
+            "3": 53.75796908659698,
+            "4": 0.0,
+            "5": 0.0,
+            "6": 0.0,
+            "7": 0.0,
+            "8": 0.0,
+            "9": 0.0
+          },
+          "actual_fielding_outs": {
+            "2": 48,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0
+          },
+          "saved_forecast_position_runs": -0.5477714335417432,
+          "original_actual_position_runs": 0.13717421124828533,
+          "reviewed_actual_position_runs": 0.13717421124828533,
+          "unknown_repertoire": false,
+          "unknown_role_outs": 0.0,
+          "unchanged_inputs": [
+            "batting",
+            "expected_PA",
+            "defensive_quality",
+            "fielding_outs",
+            "native_opportunities"
+          ],
+          "qualification": "No fitted correction or accuracy verdict. The source-only change holds the saved pooled prior fixed."
+        }
+      ]
+    },
+    {
+      "selection": "Fixed source/role cases named in the source contract",
+      "primary": {
+        "player_id": 660271,
+        "player_name": "Shohei Ohtani",
+        "origin": 2023,
+        "target_year": 2024,
+        "fold": 1,
+        "stage": "Current MLB",
+        "age": 28.0,
+        "primary_role": 10,
+        "source_history": [
+          {
+            "season": 2021,
+            "level": "MLB",
+            "source_rows": 4,
+            "positions": [
+              {
+                "position_code": "1",
+                "fielding_outs": 391,
+                "games_started": 23
+              },
+              {
+                "position_code": "10",
+                "fielding_outs": 0,
+                "games_started": 126
+              },
+              {
+                "position_code": "7",
+                "fielding_outs": 3,
+                "games_started": 0
+              },
+              {
+                "position_code": "9",
+                "fielding_outs": 22,
+                "games_started": 0
+              }
+            ]
+          },
+          {
+            "season": 2022,
+            "level": "MLB",
+            "source_rows": 2,
+            "positions": [
+              {
+                "position_code": "1",
+                "fielding_outs": 498,
+                "games_started": 28
+              },
+              {
+                "position_code": "10",
+                "fielding_outs": 0,
+                "games_started": 125
+              }
+            ]
+          },
+          {
+            "season": 2023,
+            "level": "MLB",
+            "source_rows": 2,
+            "positions": [
+              {
+                "position_code": "1",
+                "fielding_outs": 396,
+                "games_started": 23
+              },
+              {
+                "position_code": "10",
+                "fielding_outs": 0,
+                "games_started": 112
+              }
+            ]
+          }
+        ],
+        "current_MLB_PA": 599,
+        "origin_raw_DH_starts": 112,
+        "origin_certified_dual_starts": 23,
+        "origin_reviewed_DH_starts": 135,
+        "current_defensive_outs": {
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0,
+          "9": 0
+        },
+        "repertoire_fallback": "older_MLB_season",
+        "repertoire_shares": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.12,
+          0.0,
+          0.88
+        ],
+        "current_sample_weight": 0.8569384835479256,
+        "prior": {
+          "key": [
+            "role_stage",
+            "10",
+            "Current MLB"
+          ],
+          "regimes": [
+            {
+              "scope": "one_league",
+              "rows": 27,
+              "people": 18,
+              "target_years": [
+                2017,
+                2018,
+                2019
+              ],
+              "PA": 9523,
+              "DH_starts": 1521
+            },
+            {
+              "scope": "both_leagues",
+              "rows": 30,
+              "people": 24,
+              "target_years": [
+                2022,
+                2023
+              ],
+              "PA": 9373,
+              "DH_starts": 1622
+            }
+          ],
+          "people": 39,
+          "DH_starts_per_PA": 0.16633149872988992
+        },
+        "expected_PA": 569.8844688221379,
+        "actual_PA": 731,
+        "saved_own_DH": 91.31196066964155,
+        "saved_prior_DH": 13.560763634059148,
+        "saved_forecast_DH": 104.87272430370069,
+        "source_only_own_DH_delta": 18.75156335180139,
+        "source_only_forecast_position_run_delta": -2.025631843558792,
+        "actual_raw_DH": 159,
+        "actual_reviewed_DH": 159,
+        "actual_position_source_delta": -0.0,
+        "saved_forecast_fielding_outs": {
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0,
+          "5": 0.0,
+          "6": 0.0,
+          "7": 17.04125895964707,
+          "8": 0.0,
+          "9": 124.96923237074519
+        },
+        "actual_fielding_outs": {
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0,
+          "9": 0
+        },
+        "saved_forecast_position_runs": -11.572345888997834,
+        "original_actual_position_runs": -17.175925925925927,
+        "reviewed_actual_position_runs": -17.175925925925927,
+        "unknown_repertoire": false,
+        "unknown_role_outs": 0.0,
+        "unchanged_inputs": [
+          "batting",
+          "expected_PA",
+          "defensive_quality",
+          "fielding_outs",
+          "native_opportunities"
+        ],
+        "qualification": "No fitted correction or accuracy verdict. The source-only change holds the saved pooled prior fixed."
+      },
+      "eligible_origin_role_stage_peers": 39,
+      "peer_rule": "Same origin, stage and primary role; age difference plus absolute log1p current-MLB-PA distance; ID tie break. No target information.",
+      "peers": [
+        {
+          "player_id": 667670,
+          "player_name": "Brent Rooker",
+          "origin": 2023,
+          "target_year": 2024,
+          "fold": 0,
+          "stage": "Current MLB",
+          "age": 28.0,
+          "primary_role": 10,
+          "source_history": [
+            {
+              "season": 2021,
+              "level": "AAA",
+              "source_rows": 4,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 11
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 3,
+                  "games_started": 1
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 770,
+                  "games_started": 29
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 548,
+                  "games_started": 21
+                }
+              ]
+            },
+            {
+              "season": 2021,
+              "level": "MLB",
+              "source_rows": 3,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 10
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 792,
+                  "games_started": 35
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 161,
+                  "games_started": 7
+                }
+              ]
+            },
+            {
+              "season": 2022,
+              "level": "AAA",
+              "source_rows": 6,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 17
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 1026,
+                  "games_started": 41
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 609,
+                  "games_started": 22
+                }
+              ]
+            },
+            {
+              "season": 2022,
+              "level": "MLB",
+              "source_rows": 4,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 4
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 126,
+                  "games_started": 5
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 6,
+                  "games_started": 0
+                }
+              ]
+            },
+            {
+              "season": 2023,
+              "level": "MLB",
+              "source_rows": 3,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 71
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 672,
+                  "games_started": 27
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 648,
+                  "games_started": 25
+                }
+              ]
+            }
+          ],
+          "current_MLB_PA": 526,
+          "origin_raw_DH_starts": 71,
+          "origin_certified_dual_starts": 0,
+          "origin_reviewed_DH_starts": 71,
+          "current_defensive_outs": {
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 672,
+            "8": 0,
+            "9": 648
+          },
+          "repertoire_fallback": "latest_minor_season",
+          "repertoire_shares": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5280097631945684,
+            0.0,
+            0.47199023680543156
+          ],
+          "current_sample_weight": 0.8402555910543131,
+          "prior": {
+            "key": [
+              "role_stage",
+              "10",
+              "Current MLB"
+            ],
+            "regimes": [
+              {
+                "scope": "one_league",
+                "rows": 24,
+                "people": 18,
+                "target_years": [
+                  2017,
+                  2018,
+                  2019
+                ],
+                "PA": 9053,
+                "DH_starts": 1296
+              },
+              {
+                "scope": "both_leagues",
+                "rows": 31,
+                "people": 25,
+                "target_years": [
+                  2022,
+                  2023
+                ],
+                "PA": 9805,
+                "DH_starts": 1634
+              }
+            ],
+            "people": 40,
+            "DH_starts_per_PA": 0.15537172552762754
+          },
+          "expected_PA": 412.5191288412524,
+          "actual_PA": 614,
+          "saved_own_DH": 46.78731333503022,
+          "saved_prior_DH": 10.23862761361327,
+          "saved_forecast_DH": 57.02594094864349,
+          "source_only_own_DH_delta": 0.0,
+          "source_only_forecast_position_run_delta": -0.0,
+          "actual_raw_DH": 131,
+          "actual_reviewed_DH": 131,
+          "actual_position_source_delta": -0.0,
+          "saved_forecast_fielding_outs": {
+            "2": 0.0,
+            "3": 0.0,
+            "4": 0.0,
+            "5": 0.0,
+            "6": 0.0,
+            "7": 527.1249242058685,
+            "8": 0.0,
+            "9": 471.19927536319545
+          },
+          "actual_fielding_outs": {
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 217,
+            "8": 0,
+            "9": 90
+          },
+          "saved_forecast_position_runs": -7.872013853452682,
+          "original_actual_position_runs": -14.677640603566529,
+          "reviewed_actual_position_runs": -14.677640603566529,
+          "unknown_repertoire": false,
+          "unknown_role_outs": 1.1368683772161603e-13,
+          "unchanged_inputs": [
+            "batting",
+            "expected_PA",
+            "defensive_quality",
+            "fielding_outs",
+            "native_opportunities"
+          ],
+          "qualification": "No fitted correction or accuracy verdict. The source-only change holds the saved pooled prior fixed."
+        },
+        {
+          "player_id": 623912,
+          "player_name": "Harold Ram\u00edrez",
+          "origin": 2023,
+          "target_year": 2024,
+          "fold": 0,
+          "stage": "Current MLB",
+          "age": 28.0,
+          "primary_role": 10,
+          "source_history": [
+            {
+              "season": 2021,
+              "level": "Aplus",
+              "source_rows": 2,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 1
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 51,
+                  "games_started": 3
+                }
+              ]
+            },
+            {
+              "season": 2021,
+              "level": "MLB",
+              "source_rows": 5,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 2
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 15,
+                  "games_started": 0
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 1082,
+                  "games_started": 43
+                },
+                {
+                  "position_code": "8",
+                  "fielding_outs": 451,
+                  "games_started": 19
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 723,
+                  "games_started": 28
+                }
+              ]
+            },
+            {
+              "season": 2022,
+              "level": "AAA",
+              "source_rows": 1,
+              "positions": [
+                {
+                  "position_code": "3",
+                  "fielding_outs": 21,
+                  "games_started": 1
+                }
+              ]
+            },
+            {
+              "season": 2022,
+              "level": "MLB",
+              "source_rows": 4,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 52
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 744,
+                  "games_started": 29
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 63,
+                  "games_started": 2
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 397,
+                  "games_started": 15
+                }
+              ]
+            },
+            {
+              "season": 2023,
+              "level": "MLB",
+              "source_rows": 4,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 86
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 77,
+                  "games_started": 2
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 153,
+                  "games_started": 5
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 123,
+                  "games_started": 6
+                }
+              ]
+            }
+          ],
+          "current_MLB_PA": 434,
+          "origin_raw_DH_starts": 86,
+          "origin_certified_dual_starts": 0,
+          "origin_reviewed_DH_starts": 86,
+          "current_defensive_outs": {
+            "2": 0,
+            "3": 77,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 153,
+            "8": 0,
+            "9": 123
+          },
+          "repertoire_fallback": "latest_minor_season",
+          "repertoire_shares": [
+            0.0,
+            0.36454785625616704,
+            0.0,
+            0.0,
+            0.0,
+            0.35226151446669,
+            0.0,
+            0.28319062927714295
+          ],
+          "current_sample_weight": 0.8127340823970037,
+          "prior": {
+            "key": [
+              "role_stage",
+              "10",
+              "Current MLB"
+            ],
+            "regimes": [
+              {
+                "scope": "one_league",
+                "rows": 24,
+                "people": 18,
+                "target_years": [
+                  2017,
+                  2018,
+                  2019
+                ],
+                "PA": 9053,
+                "DH_starts": 1296
+              },
+              {
+                "scope": "both_leagues",
+                "rows": 31,
+                "people": 25,
+                "target_years": [
+                  2022,
+                  2023
+                ],
+                "PA": 9805,
+                "DH_starts": 1634
+              }
+            ],
+            "people": 40,
+            "DH_starts_per_PA": 0.15537172552762754
+          },
+          "expected_PA": 409.5214966802118,
+          "actual_PA": 246,
+          "saved_own_DH": 65.95290021441613,
+          "saved_prior_DH": 11.915367337052642,
+          "saved_forecast_DH": 77.86826755146878,
+          "source_only_own_DH_delta": 0.0,
+          "source_only_forecast_position_run_delta": -0.0,
+          "actual_raw_DH": 54,
+          "actual_reviewed_DH": 54,
+          "actual_position_source_delta": -0.0,
+          "saved_forecast_fielding_outs": {
+            "2": 0.0,
+            "3": 153.1936328174851,
+            "4": 0.0,
+            "5": 0.0,
+            "6": 0.0,
+            "7": 148.03055395015346,
+            "8": 0.0,
+            "9": 119.00495513639788
+          },
+          "actual_fielding_outs": {
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 57,
+            "8": 0,
+            "9": 72
+          },
+          "saved_forecast_position_runs": -9.307371546967694,
+          "original_actual_position_runs": -6.054526748971193,
+          "reviewed_actual_position_runs": -6.054526748971193,
+          "unknown_repertoire": false,
+          "unknown_role_outs": 5.684341886080802e-14,
+          "unchanged_inputs": [
+            "batting",
+            "expected_PA",
+            "defensive_quality",
+            "fielding_outs",
+            "native_opportunities"
+          ],
+          "qualification": "No fitted correction or accuracy verdict. The source-only change holds the saved pooled prior fixed."
+        },
+        {
+          "player_id": 641584,
+          "player_name": "Jake Fraley",
+          "origin": 2023,
+          "target_year": 2024,
+          "fold": 2,
+          "stage": "Current MLB",
+          "age": 28.0,
+          "primary_role": 10,
+          "source_history": [
+            {
+              "season": 2021,
+              "level": "AAA",
+              "source_rows": 4,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 5
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 99,
+                  "games_started": 5
+                },
+                {
+                  "position_code": "8",
+                  "fielding_outs": 15,
+                  "games_started": 1
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 36,
+                  "games_started": 2
+                }
+              ]
+            },
+            {
+              "season": 2021,
+              "level": "MLB",
+              "source_rows": 4,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 5
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 999,
+                  "games_started": 36
+                },
+                {
+                  "position_code": "8",
+                  "fielding_outs": 396,
+                  "games_started": 14
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 159,
+                  "games_started": 6
+                }
+              ]
+            },
+            {
+              "season": 2022,
+              "level": "AAA",
+              "source_rows": 3,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 4
+                },
+                {
+                  "position_code": "8",
+                  "fielding_outs": 78,
+                  "games_started": 4
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 99,
+                  "games_started": 4
+                }
+              ]
+            },
+            {
+              "season": 2022,
+              "level": "Aplus",
+              "source_rows": 1,
+              "positions": [
+                {
+                  "position_code": "8",
+                  "fielding_outs": 15,
+                  "games_started": 1
+                }
+              ]
+            },
+            {
+              "season": 2022,
+              "level": "MLB",
+              "source_rows": 4,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 14
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 573,
+                  "games_started": 21
+                },
+                {
+                  "position_code": "8",
+                  "fielding_outs": 168,
+                  "games_started": 7
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 381,
+                  "games_started": 14
+                }
+              ]
+            },
+            {
+              "season": 2023,
+              "level": "AAA",
+              "source_rows": 1,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 2
+                }
+              ]
+            },
+            {
+              "season": 2023,
+              "level": "MLB",
+              "source_rows": 3,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 22
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 583,
+                  "games_started": 20
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 1176,
+                  "games_started": 43
+                }
+              ]
+            }
+          ],
+          "current_MLB_PA": 380,
+          "origin_raw_DH_starts": 22,
+          "origin_certified_dual_starts": 0,
+          "origin_reviewed_DH_starts": 22,
+          "current_defensive_outs": {
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 583,
+            "8": 0,
+            "9": 1176
+          },
+          "repertoire_fallback": "latest_minor_season",
+          "repertoire_shares": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.33143831722569644,
+            0.0,
+            0.6685616827743036
+          ],
+          "current_sample_weight": 0.7916666666666666,
+          "prior": {
+            "key": [
+              "role_stage",
+              "10",
+              "Current MLB"
+            ],
+            "regimes": [
+              {
+                "scope": "one_league",
+                "rows": 33,
+                "people": 22,
+                "target_years": [
+                  2017,
+                  2018,
+                  2019
+                ],
+                "PA": 12557,
+                "DH_starts": 1918
+              },
+              {
+                "scope": "both_leagues",
+                "rows": 24,
+                "people": 20,
+                "target_years": [
+                  2022,
+                  2023
+                ],
+                "PA": 7190,
+                "DH_starts": 1267
+              }
+            ],
+            "people": 39,
+            "DH_starts_per_PA": 0.16129032258064516
+          },
+          "expected_PA": 335.0067106598973,
+          "actual_PA": 382,
+          "saved_own_DH": 15.354474238578623,
+          "saved_prior_DH": 11.256945922711605,
+          "saved_forecast_DH": 26.611420161290226,
+          "source_only_own_DH_delta": 0.0,
+          "source_only_forecast_position_run_delta": -0.0,
+          "actual_raw_DH": 7,
+          "actual_reviewed_DH": 7,
+          "actual_position_source_delta": -0.0,
+          "saved_forecast_fielding_outs": {
+            "2": 0.0,
+            "3": 0.0,
+            "4": 0.0,
+            "5": 0.0,
+            "6": 0.0,
+            "7": 447.92501128689173,
+            "8": 0.0,
+            "9": 903.5331273986016
+          },
+          "actual_fielding_outs": {
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 93,
+            "8": 9,
+            "9": 2228
+          },
+          "saved_forecast_position_runs": -5.192005502137822,
+          "original_actual_position_runs": -4.73079561042524,
+          "reviewed_actual_position_runs": -4.73079561042524,
+          "unknown_repertoire": false,
+          "unknown_role_outs": 0.0,
+          "unchanged_inputs": [
+            "batting",
+            "expected_PA",
+            "defensive_quality",
+            "fielding_outs",
+            "native_opportunities"
+          ],
+          "qualification": "No fitted correction or accuracy verdict. The source-only change holds the saved pooled prior fixed."
+        }
+      ]
+    },
+    {
+      "selection": "Fixed source/role cases named in the source contract",
+      "primary": {
+        "player_id": 660271,
+        "player_name": "Shohei Ohtani",
+        "origin": 2024,
+        "target_year": 2025,
+        "fold": 1,
+        "stage": "Current MLB",
+        "age": 29.0,
+        "primary_role": 10,
+        "source_history": [
+          {
+            "season": 2022,
+            "level": "MLB",
+            "source_rows": 2,
+            "positions": [
+              {
+                "position_code": "1",
+                "fielding_outs": 498,
+                "games_started": 28
+              },
+              {
+                "position_code": "10",
+                "fielding_outs": 0,
+                "games_started": 125
+              }
+            ]
+          },
+          {
+            "season": 2023,
+            "level": "MLB",
+            "source_rows": 2,
+            "positions": [
+              {
+                "position_code": "1",
+                "fielding_outs": 396,
+                "games_started": 23
+              },
+              {
+                "position_code": "10",
+                "fielding_outs": 0,
+                "games_started": 112
+              }
+            ]
+          },
+          {
+            "season": 2024,
+            "level": "MLB",
+            "source_rows": 1,
+            "positions": [
+              {
+                "position_code": "10",
+                "fielding_outs": 0,
+                "games_started": 159
+              }
+            ]
+          }
+        ],
+        "current_MLB_PA": 731,
+        "origin_raw_DH_starts": 159,
+        "origin_certified_dual_starts": 0,
+        "origin_reviewed_DH_starts": 159,
+        "current_defensive_outs": {
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0,
+          "9": 0
+        },
+        "repertoire_fallback": "roster_or_unknown",
+        "repertoire_shares": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "current_sample_weight": 0.8796630565583634,
+        "prior": {
+          "key": [
+            "role_stage",
+            "10",
+            "Current MLB"
+          ],
+          "regimes": [
+            {
+              "scope": "one_league",
+              "rows": 27,
+              "people": 18,
+              "target_years": [
+                2017,
+                2018,
+                2019
+              ],
+              "PA": 9523,
+              "DH_starts": 1521
+            },
+            {
+              "scope": "both_leagues",
+              "rows": 54,
+              "people": 38,
+              "target_years": [
+                2022,
+                2023,
+                2024
+              ],
+              "PA": 20228,
+              "DH_starts": 3197
+            }
+          ],
+          "people": 53,
+          "DH_starts_per_PA": 0.15858290477631004
+        },
+        "expected_PA": 590.1400563925004,
+        "actual_PA": 727,
+        "saved_own_DH": 112.91488443611017,
+        "saved_prior_DH": 11.261868154943215,
+        "saved_forecast_DH": 124.17675259105339,
+        "source_only_own_DH_delta": 0.0,
+        "source_only_forecast_position_run_delta": -0.0,
+        "actual_raw_DH": 144,
+        "actual_reviewed_DH": 158,
+        "actual_position_source_delta": -1.5123456790123457,
+        "saved_forecast_fielding_outs": {
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0,
+          "5": 0.0,
+          "6": 0.0,
+          "7": 0.0,
+          "8": 0.0,
+          "9": 0.0
+        },
+        "actual_fielding_outs": {
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0,
+          "9": 0
+        },
+        "saved_forecast_position_runs": -13.414155372490336,
+        "original_actual_position_runs": -15.555555555555555,
+        "reviewed_actual_position_runs": -17.067901234567902,
+        "unknown_repertoire": true,
+        "unknown_role_outs": 137.0353092215208,
+        "unchanged_inputs": [
+          "batting",
+          "expected_PA",
+          "defensive_quality",
+          "fielding_outs",
+          "native_opportunities"
+        ],
+        "qualification": "No fitted correction or accuracy verdict. The source-only change holds the saved pooled prior fixed."
+      },
+      "eligible_origin_role_stage_peers": 40,
+      "peer_rule": "Same origin, stage and primary role; age difference plus absolute log1p current-MLB-PA distance; ID tie break. No target information.",
+      "peers": [
+        {
+          "player_id": 667670,
+          "player_name": "Brent Rooker",
+          "origin": 2024,
+          "target_year": 2025,
+          "fold": 0,
+          "stage": "Current MLB",
+          "age": 29.0,
+          "primary_role": 10,
+          "source_history": [
+            {
+              "season": 2022,
+              "level": "AAA",
+              "source_rows": 6,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 17
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 1026,
+                  "games_started": 41
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 609,
+                  "games_started": 22
+                }
+              ]
+            },
+            {
+              "season": 2022,
+              "level": "MLB",
+              "source_rows": 4,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 4
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 126,
+                  "games_started": 5
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 6,
+                  "games_started": 0
+                }
+              ]
+            },
+            {
+              "season": 2023,
+              "level": "MLB",
+              "source_rows": 3,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 71
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 672,
+                  "games_started": 27
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 648,
+                  "games_started": 25
+                }
+              ]
+            },
+            {
+              "season": 2024,
+              "level": "MLB",
+              "source_rows": 3,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 131
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 217,
+                  "games_started": 9
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 90,
+                  "games_started": 4
+                }
+              ]
+            }
+          ],
+          "current_MLB_PA": 614,
+          "origin_raw_DH_starts": 131,
+          "origin_certified_dual_starts": 0,
+          "origin_reviewed_DH_starts": 131,
+          "current_defensive_outs": {
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 217,
+            "8": 0,
+            "9": 90
+          },
+          "repertoire_fallback": "latest_minor_season",
+          "repertoire_shares": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.6957315036106186,
+            0.0,
+            0.30426849638938147
+          ],
+          "current_sample_weight": 0.8599439775910365,
+          "prior": {
+            "key": [
+              "role_stage",
+              "10",
+              "Current MLB"
+            ],
+            "regimes": [
+              {
+                "scope": "one_league",
+                "rows": 24,
+                "people": 18,
+                "target_years": [
+                  2017,
+                  2018,
+                  2019
+                ],
+                "PA": 9053,
+                "DH_starts": 1296
+              },
+              {
+                "scope": "both_leagues",
+                "rows": 52,
+                "people": 36,
+                "target_years": [
+                  2022,
+                  2023,
+                  2024
+                ],
+                "PA": 19136,
+                "DH_starts": 2929
+              }
+            ],
+            "people": 51,
+            "DH_starts_per_PA": 0.14988115931746426
+          },
+          "expected_PA": 493.6252376364745,
+          "actual_PA": 699,
+          "saved_own_DH": 90.56709542069771,
+          "saved_prior_DH": 10.3620620287554,
+          "saved_forecast_DH": 100.92915744945311,
+          "source_only_own_DH_delta": 0.0,
+          "source_only_forecast_position_run_delta": -0.0,
+          "actual_raw_DH": 134,
+          "actual_reviewed_DH": 134,
+          "actual_position_source_delta": -0.0,
+          "saved_forecast_fielding_outs": {
+            "2": 0.0,
+            "3": 0.0,
+            "4": 0.0,
+            "5": 0.0,
+            "6": 0.0,
+            "7": 248.67984854979224,
+            "8": 0.0,
+            "9": 108.75667295200164
+          },
+          "actual_fielding_outs": {
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 162,
+            "8": 0,
+            "9": 486
+          },
+          "saved_forecast_position_runs": -11.51572949385689,
+          "original_actual_position_runs": -15.58641975308642,
+          "reviewed_actual_position_runs": -15.58641975308642,
+          "unknown_repertoire": false,
+          "unknown_role_outs": 0.0,
+          "unchanged_inputs": [
+            "batting",
+            "expected_PA",
+            "defensive_quality",
+            "fielding_outs",
+            "native_opportunities"
+          ],
+          "qualification": "No fitted correction or accuracy verdict. The source-only change holds the saved pooled prior fixed."
+        },
+        {
+          "player_id": 641432,
+          "player_name": "Willie Calhoun",
+          "origin": 2024,
+          "target_year": 2025,
+          "fold": 0,
+          "stage": "Current MLB",
+          "age": 29.0,
+          "primary_role": 10,
+          "source_history": [
+            {
+              "season": 2022,
+              "level": "AAA",
+              "source_rows": 4,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 28
+                },
+                {
+                  "position_code": "4",
+                  "fielding_outs": 42,
+                  "games_started": 2
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 636,
+                  "games_started": 25
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 120,
+                  "games_started": 5
+                }
+              ]
+            },
+            {
+              "season": 2022,
+              "level": "MLB",
+              "source_rows": 3,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 14
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 78,
+                  "games_started": 3
+                }
+              ]
+            },
+            {
+              "season": 2023,
+              "level": "AA",
+              "source_rows": 2,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 3
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 60,
+                  "games_started": 3
+                }
+              ]
+            },
+            {
+              "season": 2023,
+              "level": "AAA",
+              "source_rows": 2,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 1
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 102,
+                  "games_started": 4
+                }
+              ]
+            },
+            {
+              "season": 2023,
+              "level": "MLB",
+              "source_rows": 3,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 26
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 66,
+                  "games_started": 3
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 159,
+                  "games_started": 7
+                }
+              ]
+            },
+            {
+              "season": 2024,
+              "level": "AAA",
+              "source_rows": 4,
+              "positions": [
+                {
+                  "position_code": "1",
+                  "fielding_outs": 6,
+                  "games_started": 0
+                },
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 27
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 462,
+                  "games_started": 17
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 51,
+                  "games_started": 2
+                }
+              ]
+            },
+            {
+              "season": 2024,
+              "level": "MLB",
+              "source_rows": 3,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 58
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 93,
+                  "games_started": 4
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 6,
+                  "games_started": 0
+                }
+              ]
+            }
+          ],
+          "current_MLB_PA": 254,
+          "origin_raw_DH_starts": 58,
+          "origin_certified_dual_starts": 0,
+          "origin_reviewed_DH_starts": 58,
+          "current_defensive_outs": {
+            "2": 0,
+            "3": 93,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 6,
+            "8": 0,
+            "9": 0
+          },
+          "repertoire_fallback": "latest_minor_season",
+          "repertoire_shares": [
+            0.0,
+            0.9284309043452665,
+            0.0,
+            0.0,
+            0.0,
+            0.07156909565473348,
+            0.0,
+            0.0
+          ],
+          "current_sample_weight": 0.7175141242937854,
+          "prior": {
+            "key": [
+              "role_stage",
+              "10",
+              "Current MLB"
+            ],
+            "regimes": [
+              {
+                "scope": "one_league",
+                "rows": 24,
+                "people": 18,
+                "target_years": [
+                  2017,
+                  2018,
+                  2019
+                ],
+                "PA": 9053,
+                "DH_starts": 1296
+              },
+              {
+                "scope": "both_leagues",
+                "rows": 52,
+                "people": 36,
+                "target_years": [
+                  2022,
+                  2023,
+                  2024
+                ],
+                "PA": 19136,
+                "DH_starts": 2929
+              }
+            ],
+            "people": 51,
+            "DH_starts_per_PA": 0.14988115931746426
+          },
+          "expected_PA": 99.62041154514104,
+          "actual_PA": 0,
+          "saved_own_DH": 16.32198833225475,
+          "saved_prior_DH": 4.217859540697355,
+          "saved_forecast_DH": 20.539847872952105,
+          "source_only_own_DH_delta": 0.0,
+          "source_only_forecast_position_run_delta": -0.0,
+          "actual_raw_DH": 0,
+          "actual_reviewed_DH": 0,
+          "actual_position_source_delta": -0.0,
+          "saved_forecast_fielding_outs": {
+            "2": 0.0,
+            "3": 80.7362536492097,
+            "4": 0.0,
+            "5": 0.0,
+            "6": 0.0,
+            "7": 6.22364101968357,
+            "8": 0.0,
+            "9": 0.0
+          },
+          "actual_fielding_outs": {
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0
+          },
+          "saved_forecast_position_runs": -2.460210013313356,
+          "original_actual_position_runs": 0.0,
+          "reviewed_actual_position_runs": 0.0,
+          "unknown_repertoire": false,
+          "unknown_role_outs": 0.0,
+          "unchanged_inputs": [
+            "batting",
+            "expected_PA",
+            "defensive_quality",
+            "fielding_outs",
+            "native_opportunities"
+          ],
+          "qualification": "No fitted correction or accuracy verdict. The source-only change holds the saved pooled prior fixed."
+        },
+        {
+          "player_id": 623912,
+          "player_name": "Harold Ram\u00edrez",
+          "origin": 2024,
+          "target_year": 2025,
+          "fold": 0,
+          "stage": "Current MLB",
+          "age": 29.0,
+          "primary_role": 10,
+          "source_history": [
+            {
+              "season": 2022,
+              "level": "AAA",
+              "source_rows": 1,
+              "positions": [
+                {
+                  "position_code": "3",
+                  "fielding_outs": 21,
+                  "games_started": 1
+                }
+              ]
+            },
+            {
+              "season": 2022,
+              "level": "MLB",
+              "source_rows": 4,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 52
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 744,
+                  "games_started": 29
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 63,
+                  "games_started": 2
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 397,
+                  "games_started": 15
+                }
+              ]
+            },
+            {
+              "season": 2023,
+              "level": "MLB",
+              "source_rows": 4,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 86
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 77,
+                  "games_started": 2
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 153,
+                  "games_started": 5
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 123,
+                  "games_started": 6
+                }
+              ]
+            },
+            {
+              "season": 2024,
+              "level": "AAA",
+              "source_rows": 4,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 7
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 24,
+                  "games_started": 1
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 24,
+                  "games_started": 1
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 492,
+                  "games_started": 20
+                }
+              ]
+            },
+            {
+              "season": 2024,
+              "level": "MLB",
+              "source_rows": 4,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 54
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 57,
+                  "games_started": 2
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 72,
+                  "games_started": 3
+                }
+              ]
+            }
+          ],
+          "current_MLB_PA": 246,
+          "origin_raw_DH_starts": 54,
+          "origin_certified_dual_starts": 0,
+          "origin_reviewed_DH_starts": 54,
+          "current_defensive_outs": {
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 57,
+            "8": 0,
+            "9": 72
+          },
+          "repertoire_fallback": "latest_minor_season",
+          "repertoire_shares": [
+            0.0,
+            0.012845215157353885,
+            0.0,
+            0.0,
+            0.0,
+            0.327000343534824,
+            0.0,
+            0.6601544413078222
+          ],
+          "current_sample_weight": 0.7109826589595376,
+          "prior": {
+            "key": [
+              "role_stage",
+              "10",
+              "Current MLB"
+            ],
+            "regimes": [
+              {
+                "scope": "one_league",
+                "rows": 24,
+                "people": 18,
+                "target_years": [
+                  2017,
+                  2018,
+                  2019
+                ],
+                "PA": 9053,
+                "DH_starts": 1296
+              },
+              {
+                "scope": "both_leagues",
+                "rows": 52,
+                "people": 36,
+                "target_years": [
+                  2022,
+                  2023,
+                  2024
+                ],
+                "PA": 19136,
+                "DH_starts": 2929
+              }
+            ],
+            "people": 51,
+            "DH_starts_per_PA": 0.14988115931746426
+          },
+          "expected_PA": 117.1883839993777,
+          "actual_PA": 0,
+          "saved_own_DH": 18.28951657793756,
+          "saved_prior_DH": 5.076396200106042,
+          "saved_forecast_DH": 23.365912778043604,
+          "source_only_own_DH_delta": 0.0,
+          "source_only_forecast_position_run_delta": -0.0,
+          "actual_raw_DH": 0,
+          "actual_reviewed_DH": 0,
+          "actual_position_source_delta": -0.0,
+          "saved_forecast_fielding_outs": {
+            "2": 0.0,
+            "3": 1.4749036022138031,
+            "4": 0.0,
+            "5": 0.0,
+            "6": 0.0,
+            "7": 37.54658670147302,
+            "8": 0.0,
+            "9": 75.79975512865776
+          },
+          "actual_fielding_outs": {
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0
+          },
+          "saved_forecast_position_runs": -2.722662927841622,
+          "original_actual_position_runs": 0.0,
+          "reviewed_actual_position_runs": 0.0,
+          "unknown_repertoire": false,
+          "unknown_role_outs": 0.0,
+          "unchanged_inputs": [
+            "batting",
+            "expected_PA",
+            "defensive_quality",
+            "fielding_outs",
+            "native_opportunities"
+          ],
+          "qualification": "No fitted correction or accuracy verdict. The source-only change holds the saved pooled prior fixed."
+        }
+      ]
+    },
+    {
+      "selection": "Fixed source/role cases named in the source contract",
+      "primary": {
+        "player_id": 656941,
+        "player_name": "Kyle Schwarber",
+        "origin": 2023,
+        "target_year": 2024,
+        "fold": 0,
+        "stage": "Current MLB",
+        "age": 30.0,
+        "primary_role": 7,
+        "source_history": [
+          {
+            "season": 2021,
+            "level": "MLB",
+            "source_rows": 4,
+            "positions": [
+              {
+                "position_code": "10",
+                "fielding_outs": 0,
+                "games_started": 14
+              },
+              {
+                "position_code": "3",
+                "fielding_outs": 225,
+                "games_started": 9
+              },
+              {
+                "position_code": "7",
+                "fielding_outs": 2172,
+                "games_started": 86
+              }
+            ]
+          },
+          {
+            "season": 2022,
+            "level": "MLB",
+            "source_rows": 2,
+            "positions": [
+              {
+                "position_code": "10",
+                "fielding_outs": 0,
+                "games_started": 15
+              },
+              {
+                "position_code": "7",
+                "fielding_outs": 3501,
+                "games_started": 138
+              }
+            ]
+          },
+          {
+            "season": 2023,
+            "level": "MLB",
+            "source_rows": 2,
+            "positions": [
+              {
+                "position_code": "10",
+                "fielding_outs": 0,
+                "games_started": 57
+              },
+              {
+                "position_code": "7",
+                "fielding_outs": 2617,
+                "games_started": 103
+              }
+            ]
+          }
+        ],
+        "current_MLB_PA": 720,
+        "origin_raw_DH_starts": 57,
+        "origin_certified_dual_starts": 0,
+        "origin_reviewed_DH_starts": 57,
+        "current_defensive_outs": {
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 2617,
+          "8": 0,
+          "9": 0
+        },
+        "repertoire_fallback": "older_MLB_season",
+        "repertoire_shares": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "current_sample_weight": 0.8780487804878049,
+        "prior": {
+          "key": [
+            "role_stage",
+            "7",
+            "Current MLB"
+          ],
+          "regimes": [
+            {
+              "scope": "one_league",
+              "rows": 132,
+              "people": 90,
+              "target_years": [
+                2017,
+                2018,
+                2019
+              ],
+              "PA": 45187,
+              "DH_starts": 666
+            },
+            {
+              "scope": "both_leagues",
+              "rows": 94,
+              "people": 69,
+              "target_years": [
+                2022,
+                2023
+              ],
+              "PA": 30190,
+              "DH_starts": 1119
+            }
+          ],
+          "people": 143,
+          "DH_starts_per_PA": 0.02368096368918901
+        },
+        "expected_PA": 521.8630716449916,
+        "actual_PA": 692,
+        "saved_own_DH": 36.275847663127465,
+        "saved_prior_DH": 1.5071000549211815,
+        "saved_forecast_DH": 37.782947718048646,
+        "source_only_own_DH_delta": 0.0,
+        "source_only_forecast_position_run_delta": -0.0,
+        "actual_raw_DH": 144,
+        "actual_reviewed_DH": 144,
+        "actual_position_source_delta": -0.0,
+        "saved_forecast_fielding_outs": {
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0,
+          "5": 0.0,
+          "6": 0.0,
+          "7": 2010.4056927801062,
+          "8": 0.0,
+          "9": 0.0
+        },
+        "actual_fielding_outs": {
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 123,
+          "8": 0,
+          "9": 0
+        },
+        "saved_forecast_position_runs": -7.528688955790758,
+        "original_actual_position_runs": -15.766460905349794,
+        "reviewed_actual_position_runs": -15.766460905349794,
+        "unknown_repertoire": false,
+        "unknown_role_outs": 0.0,
+        "unchanged_inputs": [
+          "batting",
+          "expected_PA",
+          "defensive_quality",
+          "fielding_outs",
+          "native_opportunities"
+        ],
+        "qualification": "No fitted correction or accuracy verdict. The source-only change holds the saved pooled prior fixed."
+      },
+      "eligible_origin_role_stage_peers": 59,
+      "peer_rule": "Same origin, stage and primary role; age difference plus absolute log1p current-MLB-PA distance; ID tie break. No target information.",
+      "peers": [
+        {
+          "player_id": 595777,
+          "player_name": "Jurickson Profar",
+          "origin": 2023,
+          "target_year": 2024,
+          "fold": 1,
+          "stage": "Current MLB",
+          "age": 30.0,
+          "primary_role": 7,
+          "source_history": [
+            {
+              "season": 2021,
+              "level": "AAA",
+              "source_rows": 3,
+              "positions": [
+                {
+                  "position_code": "3",
+                  "fielding_outs": 18,
+                  "games_started": 1
+                },
+                {
+                  "position_code": "4",
+                  "fielding_outs": 6,
+                  "games_started": 0
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 48,
+                  "games_started": 2
+                }
+              ]
+            },
+            {
+              "season": 2021,
+              "level": "MLB",
+              "source_rows": 5,
+              "positions": [
+                {
+                  "position_code": "3",
+                  "fielding_outs": 382,
+                  "games_started": 12
+                },
+                {
+                  "position_code": "4",
+                  "fielding_outs": 179,
+                  "games_started": 6
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 772,
+                  "games_started": 28
+                },
+                {
+                  "position_code": "8",
+                  "fielding_outs": 443,
+                  "games_started": 19
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 586,
+                  "games_started": 24
+                }
+              ]
+            },
+            {
+              "season": 2022,
+              "level": "A",
+              "source_rows": 1,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 1
+                }
+              ]
+            },
+            {
+              "season": 2022,
+              "level": "MLB",
+              "source_rows": 2,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 6
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 3713,
+                  "games_started": 141
+                }
+              ]
+            },
+            {
+              "season": 2023,
+              "level": "AAA",
+              "source_rows": 2,
+              "positions": [
+                {
+                  "position_code": "3",
+                  "fielding_outs": 51,
+                  "games_started": 2
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 54,
+                  "games_started": 2
+                }
+              ]
+            },
+            {
+              "season": 2023,
+              "level": "MLB",
+              "source_rows": 5,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 18
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 93,
+                  "games_started": 4
+                },
+                {
+                  "position_code": "4",
+                  "fielding_outs": 3,
+                  "games_started": 0
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 2336,
+                  "games_started": 90
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 30,
+                  "games_started": 1
+                }
+              ]
+            }
+          ],
+          "current_MLB_PA": 521,
+          "origin_raw_DH_starts": 18,
+          "origin_certified_dual_starts": 0,
+          "origin_reviewed_DH_starts": 18,
+          "current_defensive_outs": {
+            "2": 0,
+            "3": 93,
+            "4": 3,
+            "5": 0,
+            "6": 0,
+            "7": 2336,
+            "8": 0,
+            "9": 30
+          },
+          "repertoire_fallback": "latest_minor_season",
+          "repertoire_shares": [
+            0.0,
+            0.10990623149348826,
+            0.0010223022796752182,
+            0.0,
+            0.0,
+            0.8788484434300844,
+            0.0,
+            0.01022302279675218
+          ],
+          "current_sample_weight": 0.8389694041867954,
+          "prior": {
+            "key": [
+              "role_stage",
+              "7",
+              "Current MLB"
+            ],
+            "regimes": [
+              {
+                "scope": "one_league",
+                "rows": 133,
+                "people": 96,
+                "target_years": [
+                  2017,
+                  2018,
+                  2019
+                ],
+                "PA": 42842,
+                "DH_starts": 682
+              },
+              {
+                "scope": "both_leagues",
+                "rows": 92,
+                "people": 67,
+                "target_years": [
+                  2022,
+                  2023
+                ],
+                "PA": 29619,
+                "DH_starts": 1362
+              }
+            ],
+            "people": 143,
+            "DH_starts_per_PA": 0.028208277556202647
+          },
+          "expected_PA": 319.1806506838357,
+          "actual_PA": 668,
+          "saved_own_DH": 9.251613063299587,
+          "saved_prior_DH": 1.4498448285119168,
+          "saved_forecast_DH": 10.701457891811504,
+          "source_only_own_DH_delta": 0.0,
+          "source_only_forecast_position_run_delta": -0.0,
+          "actual_raw_DH": 8,
+          "actual_reviewed_DH": 8,
+          "actual_position_source_delta": -0.0,
+          "saved_forecast_fielding_outs": {
+            "2": 0.0,
+            "3": 169.09816062751884,
+            "4": 1.572881107370522,
+            "5": 0.0,
+            "6": 0.0,
+            "7": 1352.167690902861,
+            "8": 0.0,
+            "9": 15.728811073705216
+          },
+          "actual_fielding_outs": {
+            "2": 0,
+            "3": 54,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 3611,
+            "8": 0,
+            "9": 0
+          },
+          "saved_forecast_position_runs": -3.983872296246169,
+          "original_actual_position_runs": -7.210219478737998,
+          "reviewed_actual_position_runs": -7.210219478737998,
+          "unknown_repertoire": false,
+          "unknown_role_outs": 0.0,
+          "unchanged_inputs": [
+            "batting",
+            "expected_PA",
+            "defensive_quality",
+            "fielding_outs",
+            "native_opportunities"
+          ],
+          "qualification": "No fitted correction or accuracy verdict. The source-only change holds the saved pooled prior fixed."
+        },
+        {
+          "player_id": 592885,
+          "player_name": "Christian Yelich",
+          "origin": 2023,
+          "target_year": 2024,
+          "fold": 2,
+          "stage": "Current MLB",
+          "age": 31.0,
+          "primary_role": 7,
+          "source_history": [
+            {
+              "season": 2021,
+              "level": "AAA",
+              "source_rows": 1,
+              "positions": [
+                {
+                  "position_code": "7",
+                  "fielding_outs": 39,
+                  "games_started": 3
+                }
+              ]
+            },
+            {
+              "season": 2021,
+              "level": "MLB",
+              "source_rows": 3,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 4
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 2681,
+                  "games_started": 103
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 10,
+                  "games_started": 0
+                }
+              ]
+            },
+            {
+              "season": 2022,
+              "level": "MLB",
+              "source_rows": 2,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 35
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 3026,
+                  "games_started": 114
+                }
+              ]
+            },
+            {
+              "season": 2023,
+              "level": "MLB",
+              "source_rows": 2,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 20
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 3153,
+                  "games_started": 121
+                }
+              ]
+            }
+          ],
+          "current_MLB_PA": 632,
+          "origin_raw_DH_starts": 20,
+          "origin_certified_dual_starts": 0,
+          "origin_reviewed_DH_starts": 20,
+          "current_defensive_outs": {
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 3153,
+            "8": 0,
+            "9": 0
+          },
+          "repertoire_fallback": "latest_minor_season",
+          "repertoire_shares": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "current_sample_weight": 0.8633879781420765,
+          "prior": {
+            "key": [
+              "role_stage",
+              "7",
+              "Current MLB"
+            ],
+            "regimes": [
+              {
+                "scope": "one_league",
+                "rows": 118,
+                "people": 85,
+                "target_years": [
+                  2017,
+                  2018,
+                  2019
+                ],
+                "PA": 36915,
+                "DH_starts": 536
+              },
+              {
+                "scope": "both_leagues",
+                "rows": 89,
+                "people": 66,
+                "target_years": [
+                  2022,
+                  2023
+                ],
+                "PA": 27973,
+                "DH_starts": 1060
+              }
+            ],
+            "people": 133,
+            "DH_starts_per_PA": 0.024596227345580077
+          },
+          "expected_PA": 489.59983354576406,
+          "actual_PA": 315,
+          "saved_own_DH": 13.377044632397926,
+          "saved_prior_DH": 1.6451241549521556,
+          "saved_forecast_DH": 15.02216878735008,
+          "source_only_own_DH_delta": 0.0,
+          "source_only_forecast_position_run_delta": -0.0,
+          "actual_raw_DH": 26,
+          "actual_reviewed_DH": 26,
+          "actual_position_source_delta": -0.0,
+          "saved_forecast_fielding_outs": {
+            "2": 0.0,
+            "3": 0.0,
+            "4": 0.0,
+            "5": 0.0,
+            "6": 0.0,
+            "7": 2471.0936185257115,
+            "8": 0.0,
+            "9": 0.0
+          },
+          "actual_fielding_outs": {
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 1207,
+            "8": 0,
+            "9": 0
+          },
+          "saved_forecast_position_runs": -5.859894122305841,
+          "original_actual_position_runs": -4.878257887517147,
+          "reviewed_actual_position_runs": -4.878257887517147,
+          "unknown_repertoire": false,
+          "unknown_role_outs": 0.0,
+          "unchanged_inputs": [
+            "batting",
+            "expected_PA",
+            "defensive_quality",
+            "fielding_outs",
+            "native_opportunities"
+          ],
+          "qualification": "No fitted correction or accuracy verdict. The source-only change holds the saved pooled prior fixed."
+        },
+        {
+          "player_id": 666971,
+          "player_name": "Lourdes Gurriel Jr.",
+          "origin": 2023,
+          "target_year": 2024,
+          "fold": 0,
+          "stage": "Current MLB",
+          "age": 29.0,
+          "primary_role": 7,
+          "source_history": [
+            {
+              "season": 2021,
+              "level": "MLB",
+              "source_rows": 3,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 14
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 205,
+                  "games_started": 7
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 2831,
+                  "games_started": 115
+                }
+              ]
+            },
+            {
+              "season": 2022,
+              "level": "MLB",
+              "source_rows": 3,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 13
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 81,
+                  "games_started": 2
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 2690,
+                  "games_started": 104
+                }
+              ]
+            },
+            {
+              "season": 2023,
+              "level": "MLB",
+              "source_rows": 3,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 50
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 3,
+                  "games_started": 0
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 2334,
+                  "games_started": 89
+                }
+              ]
+            }
+          ],
+          "current_MLB_PA": 592,
+          "origin_raw_DH_starts": 50,
+          "origin_certified_dual_starts": 0,
+          "origin_reviewed_DH_starts": 50,
+          "current_defensive_outs": {
+            "2": 0,
+            "3": 3,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 2334,
+            "8": 0,
+            "9": 0
+          },
+          "repertoire_fallback": "older_MLB_season",
+          "repertoire_shares": [
+            0.0,
+            0.005322371524970251,
+            0.0,
+            0.0,
+            0.0,
+            0.9946776284750298,
+            0.0,
+            0.0
+          ],
+          "current_sample_weight": 0.8554913294797688,
+          "prior": {
+            "key": [
+              "role_stage",
+              "7",
+              "Current MLB"
+            ],
+            "regimes": [
+              {
+                "scope": "one_league",
+                "rows": 132,
+                "people": 90,
+                "target_years": [
+                  2017,
+                  2018,
+                  2019
+                ],
+                "PA": 45187,
+                "DH_starts": 666
+              },
+              {
+                "scope": "both_leagues",
+                "rows": 94,
+                "people": 69,
+                "target_years": [
+                  2022,
+                  2023
+                ],
+                "PA": 30190,
+                "DH_starts": 1119
+              }
+            ],
+            "people": 143,
+            "DH_starts_per_PA": 0.02368096368918901
+          },
+          "expected_PA": 517.7269070972865,
+          "actual_PA": 553,
+          "saved_own_DH": 37.40801351859006,
+          "saved_prior_DH": 1.7717156196368458,
+          "saved_forecast_DH": 39.179729138226904,
+          "source_only_own_DH_delta": 0.0,
+          "source_only_forecast_position_run_delta": -0.0,
+          "actual_raw_DH": 3,
+          "actual_reviewed_DH": 3,
+          "actual_position_source_delta": -0.0,
+          "saved_forecast_fielding_outs": {
+            "2": 0.0,
+            "3": 11.463890254290904,
+            "4": 0.0,
+            "5": 0.0,
+            "6": 0.0,
+            "7": 2142.442540461288,
+            "8": 0.0,
+            "9": 0.0
+          },
+          "actual_fielding_outs": {
+            "2": 0,
+            "3": 3,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 3177,
+            "8": 0,
+            "9": 0
+          },
+          "saved_forecast_position_runs": -7.938737928543784,
+          "original_actual_position_runs": -5.780178326474623,
+          "reviewed_actual_position_runs": -5.780178326474623,
+          "unknown_repertoire": false,
+          "unknown_role_outs": 0.0,
+          "unchanged_inputs": [
+            "batting",
+            "expected_PA",
+            "defensive_quality",
+            "fielding_outs",
+            "native_opportunities"
+          ],
+          "qualification": "No fitted correction or accuracy verdict. The source-only change holds the saved pooled prior fixed."
+        }
+      ]
+    },
+    {
+      "selection": "Fixed source/role cases named in the source contract",
+      "primary": {
+        "player_id": 670541,
+        "player_name": "Yordan Alvarez",
+        "origin": 2024,
+        "target_year": 2025,
+        "fold": 2,
+        "stage": "Current MLB",
+        "age": 27.0,
+        "primary_role": 10,
+        "source_history": [
+          {
+            "season": 2022,
+            "level": "MLB",
+            "source_rows": 2,
+            "positions": [
+              {
+                "position_code": "10",
+                "fielding_outs": 0,
+                "games_started": 77
+              },
+              {
+                "position_code": "7",
+                "fielding_outs": 1403,
+                "games_started": 56
+              }
+            ]
+          },
+          {
+            "season": 2023,
+            "level": "AAA",
+            "source_rows": 2,
+            "positions": [
+              {
+                "position_code": "10",
+                "fielding_outs": 0,
+                "games_started": 2
+              },
+              {
+                "position_code": "7",
+                "fielding_outs": 21,
+                "games_started": 1
+              }
+            ]
+          },
+          {
+            "season": 2023,
+            "level": "MLB",
+            "source_rows": 2,
+            "positions": [
+              {
+                "position_code": "10",
+                "fielding_outs": 0,
+                "games_started": 73
+              },
+              {
+                "position_code": "7",
+                "fielding_outs": 1030,
+                "games_started": 40
+              }
+            ]
+          },
+          {
+            "season": 2024,
+            "level": "MLB",
+            "source_rows": 2,
+            "positions": [
+              {
+                "position_code": "10",
+                "fielding_outs": 0,
+                "games_started": 94
+              },
+              {
+                "position_code": "7",
+                "fielding_outs": 1263,
+                "games_started": 53
+              }
+            ]
+          }
+        ],
+        "current_MLB_PA": 635,
+        "origin_raw_DH_starts": 94,
+        "origin_certified_dual_starts": 0,
+        "origin_reviewed_DH_starts": 94,
+        "current_defensive_outs": {
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 1263,
+          "8": 0,
+          "9": 0
+        },
+        "repertoire_fallback": "latest_minor_season",
+        "repertoire_shares": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "current_sample_weight": 0.8639455782312925,
+        "prior": {
+          "key": [
+            "role_stage",
+            "10",
+            "Current MLB"
+          ],
+          "regimes": [
+            {
+              "scope": "one_league",
+              "rows": 33,
+              "people": 22,
+              "target_years": [
+                2017,
+                2018,
+                2019
+              ],
+              "PA": 12557,
+              "DH_starts": 1918
+            },
+            {
+              "scope": "both_leagues",
+              "rows": 41,
+              "people": 28,
+              "target_years": [
+                2022,
+                2023,
+                2024
+              ],
+              "PA": 13820,
+              "DH_starts": 2425
+            }
+          ],
+          "people": 47,
+          "DH_starts_per_PA": 0.1646510217234712
+        },
+        "expected_PA": 546.543508347907,
+        "actual_PA": 199,
+        "saved_own_DH": 69.89808133973233,
+        "saved_prior_DH": 12.243394158614072,
+        "saved_forecast_DH": 82.1414754983464,
+        "source_only_own_DH_delta": 0.0,
+        "source_only_forecast_position_run_delta": -0.0,
+        "actual_raw_DH": 32,
+        "actual_reviewed_DH": 32,
+        "actual_position_source_delta": -0.0,
+        "saved_forecast_fielding_outs": {
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0,
+          "5": 0.0,
+          "6": 0.0,
+          "7": 1065.086518029667,
+          "8": 0.0,
+          "9": 0.0
+        },
+        "actual_fielding_outs": {
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 348,
+          "8": 0,
+          "9": 0
+        },
+        "saved_forecast_position_runs": -10.699587576175396,
+        "original_actual_position_runs": -4.053497942386831,
+        "reviewed_actual_position_runs": -4.053497942386831,
+        "unknown_repertoire": false,
+        "unknown_role_outs": 0.0,
+        "unchanged_inputs": [
+          "batting",
+          "expected_PA",
+          "defensive_quality",
+          "fielding_outs",
+          "native_opportunities"
+        ],
+        "qualification": "No fitted correction or accuracy verdict. The source-only change holds the saved pooled prior fixed."
+      },
+      "eligible_origin_role_stage_peers": 40,
+      "peer_rule": "Same origin, stage and primary role; age difference plus absolute log1p current-MLB-PA distance; ID tie break. No target information.",
+      "peers": [
+        {
+          "player_id": 663616,
+          "player_name": "Trevor Larnach",
+          "origin": 2024,
+          "target_year": 2025,
+          "fold": 3,
+          "stage": "Current MLB",
+          "age": 27.0,
+          "primary_role": 10,
+          "source_history": [
+            {
+              "season": 2022,
+              "level": "AA",
+              "source_rows": 2,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 1
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 27,
+                  "games_started": 1
+                }
+              ]
+            },
+            {
+              "season": 2022,
+              "level": "AAA",
+              "source_rows": 3,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 3
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 87,
+                  "games_started": 4
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 75,
+                  "games_started": 3
+                }
+              ]
+            },
+            {
+              "season": 2022,
+              "level": "MLB",
+              "source_rows": 3,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 6
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 741,
+                  "games_started": 27
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 252,
+                  "games_started": 10
+                }
+              ]
+            },
+            {
+              "season": 2023,
+              "level": "AAA",
+              "source_rows": 3,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 20
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 543,
+                  "games_started": 21
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 782,
+                  "games_started": 29
+                }
+              ]
+            },
+            {
+              "season": 2023,
+              "level": "MLB",
+              "source_rows": 3,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 2
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 901,
+                  "games_started": 34
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 348,
+                  "games_started": 11
+                }
+              ]
+            },
+            {
+              "season": 2024,
+              "level": "A",
+              "source_rows": 3,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 1
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 21,
+                  "games_started": 1
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 27,
+                  "games_started": 1
+                }
+              ]
+            },
+            {
+              "season": 2024,
+              "level": "MLB",
+              "source_rows": 3,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 49
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 1113,
+                  "games_started": 47
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 174,
+                  "games_started": 5
+                }
+              ]
+            }
+          ],
+          "current_MLB_PA": 400,
+          "origin_raw_DH_starts": 49,
+          "origin_certified_dual_starts": 0,
+          "origin_reviewed_DH_starts": 49,
+          "current_defensive_outs": {
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 1113,
+            "8": 0,
+            "9": 174
+          },
+          "repertoire_fallback": "latest_minor_season",
+          "repertoire_shares": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.7793414918414919,
+            0.0,
+            0.22065850815850813
+          ],
+          "current_sample_weight": 0.8,
+          "prior": {
+            "key": [
+              "role_stage",
+              "10",
+              "Current MLB"
+            ],
+            "regimes": [
+              {
+                "scope": "one_league",
+                "rows": 31,
+                "people": 22,
+                "target_years": [
+                  2017,
+                  2018,
+                  2019
+                ],
+                "PA": 12196,
+                "DH_starts": 1646
+              },
+              {
+                "scope": "both_leagues",
+                "rows": 56,
+                "people": 37,
+                "target_years": [
+                  2022,
+                  2023,
+                  2024
+                ],
+                "PA": 20847,
+                "DH_starts": 3274
+              }
+            ],
+            "people": 55,
+            "DH_starts_per_PA": 0.14889689192869895
+          },
+          "expected_PA": 379.88796577803316,
+          "actual_PA": 567,
+          "saved_own_DH": 37.22902064624726,
+          "saved_prior_DH": 11.312827477093014,
+          "saved_forecast_DH": 48.54184812334027,
+          "source_only_own_DH_delta": 0.0,
+          "source_only_forecast_position_run_delta": -0.0,
+          "actual_raw_DH": 78,
+          "actual_reviewed_DH": 78,
+          "actual_position_source_delta": -0.0,
+          "saved_forecast_fielding_outs": {
+            "2": 0.0,
+            "3": 0.0,
+            "4": 0.0,
+            "5": 0.0,
+            "6": 0.0,
+            "7": 887.5555266973306,
+            "8": 0.0,
+            "9": 251.29764099446228
+          },
+          "actual_fielding_outs": {
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 393,
+            "8": 0,
+            "9": 930
+          },
+          "saved_forecast_position_runs": -7.196484224043603,
+          "original_actual_position_runs": -10.694444444444443,
+          "reviewed_actual_position_runs": -10.694444444444443,
+          "unknown_repertoire": false,
+          "unknown_role_outs": 0.0,
+          "unchanged_inputs": [
+            "batting",
+            "expected_PA",
+            "defensive_quality",
+            "fielding_outs",
+            "native_opportunities"
+          ],
+          "qualification": "No fitted correction or accuracy verdict. The source-only change holds the saved pooled prior fixed."
+        },
+        {
+          "player_id": 650391,
+          "player_name": "Eloy Jim\u00e9nez",
+          "origin": 2024,
+          "target_year": 2025,
+          "fold": 4,
+          "stage": "Current MLB",
+          "age": 27.0,
+          "primary_role": 10,
+          "source_history": [
+            {
+              "season": 2022,
+              "level": "AAA",
+              "source_rows": 2,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 12
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 84,
+                  "games_started": 5
+                }
+              ]
+            },
+            {
+              "season": 2022,
+              "level": "MLB",
+              "source_rows": 2,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 50
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 695,
+                  "games_started": 30
+                }
+              ]
+            },
+            {
+              "season": 2023,
+              "level": "AA",
+              "source_rows": 2,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 1
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 47,
+                  "games_started": 2
+                }
+              ]
+            },
+            {
+              "season": 2023,
+              "level": "MLB",
+              "source_rows": 2,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 104
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 329,
+                  "games_started": 14
+                }
+              ]
+            },
+            {
+              "season": 2024,
+              "level": "COMPLEX",
+              "source_rows": 1,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 6
+                }
+              ]
+            },
+            {
+              "season": 2024,
+              "level": "MLB",
+              "source_rows": 2,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 81
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 24,
+                  "games_started": 1
+                }
+              ]
+            }
+          ],
+          "current_MLB_PA": 349,
+          "origin_raw_DH_starts": 81,
+          "origin_certified_dual_starts": 0,
+          "origin_reviewed_DH_starts": 81,
+          "current_defensive_outs": {
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 24
+          },
+          "repertoire_fallback": "latest_minor_season",
+          "repertoire_shares": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "current_sample_weight": 0.77728285077951,
+          "prior": {
+            "key": [
+              "role_stage",
+              "10",
+              "Current MLB"
+            ],
+            "regimes": [
+              {
+                "scope": "one_league",
+                "rows": 33,
+                "people": 24,
+                "target_years": [
+                  2017,
+                  2018,
+                  2019
+                ],
+                "PA": 12035,
+                "DH_starts": 1723
+              },
+              {
+                "scope": "both_leagues",
+                "rows": 53,
+                "people": 37,
+                "target_years": [
+                  2022,
+                  2023,
+                  2024
+                ],
+                "PA": 19173,
+                "DH_starts": 3071
+              }
+            ],
+            "people": 58,
+            "DH_starts_per_PA": 0.1536144578313253
+          },
+          "expected_PA": 108.03774902750497,
+          "actual_PA": 0,
+          "saved_own_DH": 19.490106171999784,
+          "saved_prior_DH": 3.696249497144091,
+          "saved_forecast_DH": 23.186355669143875,
+          "source_only_own_DH_delta": 0.0,
+          "source_only_forecast_position_run_delta": -0.0,
+          "actual_raw_DH": 0,
+          "actual_reviewed_DH": 0,
+          "actual_position_source_delta": -0.0,
+          "saved_forecast_fielding_outs": {
+            "2": 0.0,
+            "3": 0.0,
+            "4": 0.0,
+            "5": 0.0,
+            "6": 0.0,
+            "7": 0.0,
+            "8": 0.0,
+            "9": 53.431329672950724
+          },
+          "actual_fielding_outs": {
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0
+          },
+          "saved_forecast_position_runs": -2.5963164211745795,
+          "original_actual_position_runs": 0.0,
+          "reviewed_actual_position_runs": 0.0,
+          "unknown_repertoire": false,
+          "unknown_role_outs": 0.0,
+          "unchanged_inputs": [
+            "batting",
+            "expected_PA",
+            "defensive_quality",
+            "fielding_outs",
+            "native_opportunities"
+          ],
+          "qualification": "No fitted correction or accuracy verdict. The source-only change holds the saved pooled prior fixed."
+        },
+        {
+          "player_id": 681807,
+          "player_name": "David Fry",
+          "origin": 2024,
+          "target_year": 2025,
+          "fold": 2,
+          "stage": "Current MLB",
+          "age": 28.0,
+          "primary_role": 10,
+          "source_history": [
+            {
+              "season": 2022,
+              "level": "AAA",
+              "source_rows": 4,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 9
+                },
+                {
+                  "position_code": "2",
+                  "fielding_outs": 294,
+                  "games_started": 11
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 864,
+                  "games_started": 33
+                },
+                {
+                  "position_code": "5",
+                  "fielding_outs": 1620,
+                  "games_started": 60
+                }
+              ]
+            },
+            {
+              "season": 2023,
+              "level": "AAA",
+              "source_rows": 4,
+              "positions": [
+                {
+                  "position_code": "2",
+                  "fielding_outs": 33,
+                  "games_started": 2
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 91,
+                  "games_started": 4
+                },
+                {
+                  "position_code": "4",
+                  "fielding_outs": 27,
+                  "games_started": 1
+                },
+                {
+                  "position_code": "5",
+                  "fielding_outs": 532,
+                  "games_started": 21
+                }
+              ]
+            },
+            {
+              "season": 2023,
+              "level": "MLB",
+              "source_rows": 7,
+              "positions": [
+                {
+                  "position_code": "1",
+                  "fielding_outs": 15,
+                  "games_started": 0
+                },
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 0
+                },
+                {
+                  "position_code": "2",
+                  "fielding_outs": 344,
+                  "games_started": 8
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 213,
+                  "games_started": 7
+                },
+                {
+                  "position_code": "5",
+                  "fielding_outs": 21,
+                  "games_started": 1
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 48,
+                  "games_started": 2
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 147,
+                  "games_started": 7
+                }
+              ]
+            },
+            {
+              "season": 2024,
+              "level": "MLB",
+              "source_rows": 6,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 40
+                },
+                {
+                  "position_code": "2",
+                  "fielding_outs": 396,
+                  "games_started": 14
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 435,
+                  "games_started": 17
+                },
+                {
+                  "position_code": "5",
+                  "fielding_outs": 18,
+                  "games_started": 0
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 339,
+                  "games_started": 13
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 54,
+                  "games_started": 2
+                }
+              ]
+            }
+          ],
+          "current_MLB_PA": 392,
+          "origin_raw_DH_starts": 40,
+          "origin_certified_dual_starts": 0,
+          "origin_reviewed_DH_starts": 40,
+          "current_defensive_outs": {
+            "2": 396,
+            "3": 435,
+            "4": 0,
+            "5": 18,
+            "6": 0,
+            "7": 339,
+            "8": 0,
+            "9": 54
+          },
+          "repertoire_fallback": "latest_minor_season",
+          "repertoire_shares": [
+            0.2638559602223433,
+            0.30613467167625186,
+            0.008034853408563369,
+            0.16986344285748542,
+            0.0,
+            0.21746985585797887,
+            0.0,
+            0.03464121597737716
+          ],
+          "current_sample_weight": 0.7967479674796748,
+          "prior": {
+            "key": [
+              "role_stage",
+              "10",
+              "Current MLB"
+            ],
+            "regimes": [
+              {
+                "scope": "one_league",
+                "rows": 33,
+                "people": 22,
+                "target_years": [
+                  2017,
+                  2018,
+                  2019
+                ],
+                "PA": 12557,
+                "DH_starts": 1918
+              },
+              {
+                "scope": "both_leagues",
+                "rows": 41,
+                "people": 28,
+                "target_years": [
+                  2022,
+                  2023,
+                  2024
+                ],
+                "PA": 13820,
+                "DH_starts": 2425
+              }
+            ],
+            "people": 47,
+            "DH_starts_per_PA": 0.1646510217234712
+          },
+          "expected_PA": 358.93221209185714,
+          "actual_PA": 157,
+          "saved_own_DH": 29.181480657874562,
+          "saved_prior_DH": 12.0119015143069,
+          "saved_forecast_DH": 41.19338217218146,
+          "source_only_own_DH_delta": 0.0,
+          "source_only_forecast_position_run_delta": -0.0,
+          "actual_raw_DH": 37,
+          "actual_reviewed_DH": 37,
+          "actual_position_source_delta": -0.0,
+          "saved_forecast_fielding_outs": {
+            "2": 271.67350021215293,
+            "3": 315.20484782872404,
+            "4": 8.27291052040868,
+            "5": 174.8961669855519,
+            "6": 0.0,
+            "7": 223.9130656051276,
+            "8": 0.0,
+            "9": 35.6675679724982
+          },
+          "actual_fielding_outs": {
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0
+          },
+          "saved_forecast_position_runs": -4.914711243628298,
+          "original_actual_position_runs": -3.996913580246914,
+          "reviewed_actual_position_runs": -3.996913580246914,
+          "unknown_repertoire": false,
+          "unknown_role_outs": 0.0,
+          "unchanged_inputs": [
+            "batting",
+            "expected_PA",
+            "defensive_quality",
+            "fielding_outs",
+            "native_opportunities"
+          ],
+          "qualification": "No fitted correction or accuracy verdict. The source-only change holds the saved pooled prior fixed."
+        }
+      ]
+    },
+    {
+      "selection": "Fixed source/role cases named in the source contract",
+      "primary": {
+        "player_id": 677951,
+        "player_name": "Bobby Witt Jr.",
+        "origin": 2024,
+        "target_year": 2025,
+        "fold": 1,
+        "stage": "Current MLB",
+        "age": 24.0,
+        "primary_role": 6,
+        "source_history": [
+          {
+            "season": 2022,
+            "level": "MLB",
+            "source_rows": 3,
+            "positions": [
+              {
+                "position_code": "10",
+                "fielding_outs": 0,
+                "games_started": 2
+              },
+              {
+                "position_code": "5",
+                "fielding_outs": 1332,
+                "games_started": 50
+              },
+              {
+                "position_code": "6",
+                "fielding_outs": 2477,
+                "games_started": 96
+              }
+            ]
+          },
+          {
+            "season": 2023,
+            "level": "MLB",
+            "source_rows": 2,
+            "positions": [
+              {
+                "position_code": "10",
+                "fielding_outs": 0,
+                "games_started": 10
+              },
+              {
+                "position_code": "6",
+                "fielding_outs": 3840,
+                "games_started": 147
+              }
+            ]
+          },
+          {
+            "season": 2024,
+            "level": "MLB",
+            "source_rows": 2,
+            "positions": [
+              {
+                "position_code": "10",
+                "fielding_outs": 0,
+                "games_started": 1
+              },
+              {
+                "position_code": "6",
+                "fielding_outs": 4181,
+                "games_started": 160
+              }
+            ]
+          }
+        ],
+        "current_MLB_PA": 709,
+        "origin_raw_DH_starts": 1,
+        "origin_certified_dual_starts": 0,
+        "origin_reviewed_DH_starts": 1,
+        "current_defensive_outs": {
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 4181,
+          "7": 0,
+          "8": 0,
+          "9": 0
+        },
+        "repertoire_fallback": "older_MLB_season",
+        "repertoire_shares": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "current_sample_weight": 0.8763906056860321,
+        "prior": {
+          "key": [
+            "role_stage",
+            "6",
+            "Current MLB"
+          ],
+          "regimes": [
+            {
+              "scope": "one_league",
+              "rows": 142,
+              "people": 82,
+              "target_years": [
+                2017,
+                2018,
+                2019
+              ],
+              "PA": 53053,
+              "DH_starts": 139
+            },
+            {
+              "scope": "both_leagues",
+              "rows": 154,
+              "people": 94,
+              "target_years": [
+                2022,
+                2023,
+                2024
+              ],
+              "PA": 53501,
+              "DH_starts": 226
+            }
+          ],
+          "people": 148,
+          "DH_starts_per_PA": 0.003425493177168384
+        },
+        "expected_PA": 657.1178827054188,
+        "actual_PA": 687,
+        "saved_own_DH": 0.8122594347409379,
+        "saved_prior_DH": 0.27823891517957317,
+        "saved_forecast_DH": 1.090498349920511,
+        "source_only_own_DH_delta": 0.0,
+        "source_only_forecast_position_run_delta": -0.0,
+        "actual_raw_DH": 4,
+        "actual_reviewed_DH": 4,
+        "actual_position_source_delta": -0.0,
+        "saved_forecast_fielding_outs": {
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0,
+          "5": 0.0,
+          "6": 3898.4334474241327,
+          "7": 0.0,
+          "8": 0.0,
+          "9": 0.0
+        },
+        "actual_fielding_outs": {
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 4020,
+          "7": 0,
+          "8": 0,
+          "9": 0
+        },
+        "saved_forecast_position_runs": 6.566755918002641,
+        "original_actual_position_runs": 6.460905349794238,
+        "reviewed_actual_position_runs": 6.460905349794238,
+        "unknown_repertoire": false,
+        "unknown_role_outs": 0.0,
+        "unchanged_inputs": [
+          "batting",
+          "expected_PA",
+          "defensive_quality",
+          "fielding_outs",
+          "native_opportunities"
+        ],
+        "qualification": "No fitted correction or accuracy verdict. The source-only change holds the saved pooled prior fixed."
+      },
+      "eligible_origin_role_stage_peers": 77,
+      "peer_rule": "Same origin, stage and primary role; age difference plus absolute log1p current-MLB-PA distance; ID tie break. No target information.",
+      "peers": [
+        {
+          "player_id": 672695,
+          "player_name": "Geraldo Perdomo",
+          "origin": 2024,
+          "target_year": 2025,
+          "fold": 1,
+          "stage": "Current MLB",
+          "age": 24.0,
+          "primary_role": 6,
+          "source_history": [
+            {
+              "season": 2022,
+              "level": "MLB",
+              "source_rows": 3,
+              "positions": [
+                {
+                  "position_code": "4",
+                  "fielding_outs": 54,
+                  "games_started": 2
+                },
+                {
+                  "position_code": "5",
+                  "fielding_outs": 129,
+                  "games_started": 5
+                },
+                {
+                  "position_code": "6",
+                  "fielding_outs": 3480,
+                  "games_started": 131
+                }
+              ]
+            },
+            {
+              "season": 2023,
+              "level": "MLB",
+              "source_rows": 3,
+              "positions": [
+                {
+                  "position_code": "4",
+                  "fielding_outs": 492,
+                  "games_started": 16
+                },
+                {
+                  "position_code": "5",
+                  "fielding_outs": 126,
+                  "games_started": 3
+                },
+                {
+                  "position_code": "6",
+                  "fielding_outs": 2604,
+                  "games_started": 97
+                }
+              ]
+            },
+            {
+              "season": 2024,
+              "level": "AAA",
+              "source_rows": 2,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 1
+                },
+                {
+                  "position_code": "6",
+                  "fielding_outs": 72,
+                  "games_started": 3
+                }
+              ]
+            },
+            {
+              "season": 2024,
+              "level": "COMPLEX",
+              "source_rows": 2,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 1
+                },
+                {
+                  "position_code": "6",
+                  "fielding_outs": 36,
+                  "games_started": 2
+                }
+              ]
+            },
+            {
+              "season": 2024,
+              "level": "MLB",
+              "source_rows": 1,
+              "positions": [
+                {
+                  "position_code": "6",
+                  "fielding_outs": 2548,
+                  "games_started": 95
+                }
+              ]
+            }
+          ],
+          "current_MLB_PA": 388,
+          "origin_raw_DH_starts": 0,
+          "origin_certified_dual_starts": 0,
+          "origin_reviewed_DH_starts": 0,
+          "current_defensive_outs": {
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 2548,
+            "7": 0,
+            "8": 0,
+            "9": 0
+          },
+          "repertoire_fallback": "latest_minor_season",
+          "repertoire_shares": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "current_sample_weight": 0.7950819672131147,
+          "prior": {
+            "key": [
+              "role_stage",
+              "6",
+              "Current MLB"
+            ],
+            "regimes": [
+              {
+                "scope": "one_league",
+                "rows": 142,
+                "people": 82,
+                "target_years": [
+                  2017,
+                  2018,
+                  2019
+                ],
+                "PA": 53053,
+                "DH_starts": 139
+              },
+              {
+                "scope": "both_leagues",
+                "rows": 154,
+                "people": 94,
+                "target_years": [
+                  2022,
+                  2023,
+                  2024
+                ],
+                "PA": 53501,
+                "DH_starts": 226
+              }
+            ],
+            "people": 148,
+            "DH_starts_per_PA": 0.003425493177168384
+          },
+          "expected_PA": 472.6028562807011,
+          "actual_PA": 720,
+          "saved_own_DH": 0.0,
+          "saved_prior_DH": 0.3317413646925885,
+          "saved_forecast_DH": 0.3317413646925885,
+          "source_only_own_DH_delta": 0.0,
+          "source_only_forecast_position_run_delta": -0.0,
+          "actual_raw_DH": 0,
+          "actual_reviewed_DH": 0,
+          "actual_position_source_delta": -0.0,
+          "saved_forecast_fielding_outs": {
+            "2": 0.0,
+            "3": 0.0,
+            "4": 0.0,
+            "5": 0.0,
+            "6": 3066.58529169206,
+            "7": 0.0,
+            "8": 0.0,
+            "9": 0.0
+          },
+          "actual_fielding_outs": {
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 4275,
+            "7": 0,
+            "8": 0,
+            "9": 0
+          },
+          "saved_forecast_position_runs": 5.2223689741365344,
+          "original_actual_position_runs": 7.330246913580247,
+          "reviewed_actual_position_runs": 7.330246913580247,
+          "unknown_repertoire": false,
+          "unknown_role_outs": 0.0,
+          "unchanged_inputs": [
+            "batting",
+            "expected_PA",
+            "defensive_quality",
+            "fielding_outs",
+            "native_opportunities"
+          ],
+          "qualification": "No fitted correction or accuracy verdict. The source-only change holds the saved pooled prior fixed."
+        },
+        {
+          "player_id": 669364,
+          "player_name": "Xavier Edwards",
+          "origin": 2024,
+          "target_year": 2025,
+          "fold": 2,
+          "stage": "Current MLB",
+          "age": 24.0,
+          "primary_role": 6,
+          "source_history": [
+            {
+              "season": 2022,
+              "level": "AAA",
+              "source_rows": 4,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 3
+                },
+                {
+                  "position_code": "4",
+                  "fielding_outs": 1286,
+                  "games_started": 49
+                },
+                {
+                  "position_code": "5",
+                  "fielding_outs": 498,
+                  "games_started": 19
+                },
+                {
+                  "position_code": "6",
+                  "fielding_outs": 535,
+                  "games_started": 20
+                }
+              ]
+            },
+            {
+              "season": 2023,
+              "level": "AAA",
+              "source_rows": 5,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 3
+                },
+                {
+                  "position_code": "4",
+                  "fielding_outs": 1160,
+                  "games_started": 45
+                },
+                {
+                  "position_code": "5",
+                  "fielding_outs": 312,
+                  "games_started": 12
+                },
+                {
+                  "position_code": "6",
+                  "fielding_outs": 102,
+                  "games_started": 4
+                },
+                {
+                  "position_code": "8",
+                  "fielding_outs": 747,
+                  "games_started": 29
+                }
+              ]
+            },
+            {
+              "season": 2023,
+              "level": "MLB",
+              "source_rows": 3,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 0
+                },
+                {
+                  "position_code": "4",
+                  "fielding_outs": 478,
+                  "games_started": 17
+                },
+                {
+                  "position_code": "8",
+                  "fielding_outs": 63,
+                  "games_started": 3
+                }
+              ]
+            },
+            {
+              "season": 2024,
+              "level": "AAA",
+              "source_rows": 3,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 1
+                },
+                {
+                  "position_code": "4",
+                  "fielding_outs": 141,
+                  "games_started": 6
+                },
+                {
+                  "position_code": "6",
+                  "fielding_outs": 477,
+                  "games_started": 19
+                }
+              ]
+            },
+            {
+              "season": 2024,
+              "level": "MLB",
+              "source_rows": 2,
+              "positions": [
+                {
+                  "position_code": "4",
+                  "fielding_outs": 27,
+                  "games_started": 1
+                },
+                {
+                  "position_code": "6",
+                  "fielding_outs": 1770,
+                  "games_started": 67
+                }
+              ]
+            }
+          ],
+          "current_MLB_PA": 303,
+          "origin_raw_DH_starts": 0,
+          "origin_certified_dual_starts": 0,
+          "origin_reviewed_DH_starts": 0,
+          "current_defensive_outs": {
+            "2": 0,
+            "3": 0,
+            "4": 27,
+            "5": 0,
+            "6": 1770,
+            "7": 0,
+            "8": 0,
+            "9": 0
+          },
+          "repertoire_fallback": "latest_minor_season",
+          "repertoire_shares": [
+            0.0,
+            0.0,
+            0.06791097177831099,
+            0.0,
+            0.932089028221689,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "current_sample_weight": 0.7518610421836228,
+          "prior": {
+            "key": [
+              "role_stage",
+              "6",
+              "Current MLB"
+            ],
+            "regimes": [
+              {
+                "scope": "one_league",
+                "rows": 142,
+                "people": 79,
+                "target_years": [
+                  2017,
+                  2018,
+                  2019
+                ],
+                "PA": 52364,
+                "DH_starts": 108
+              },
+              {
+                "scope": "both_leagues",
+                "rows": 132,
+                "people": 84,
+                "target_years": [
+                  2022,
+                  2023,
+                  2024
+                ],
+                "PA": 46011,
+                "DH_starts": 187
+              }
+            ],
+            "people": 138,
+            "DH_starts_per_PA": 0.0029987293519695046
+          },
+          "expected_PA": 451.1165008450376,
+          "actual_PA": 619,
+          "saved_own_DH": 0.0,
+          "saved_prior_DH": 0.3356764993155807,
+          "saved_forecast_DH": 0.3356764993155807,
+          "source_only_own_DH_delta": 0.0,
+          "source_only_forecast_position_run_delta": -0.0,
+          "actual_raw_DH": 1,
+          "actual_reviewed_DH": 1,
+          "actual_position_source_delta": -0.0,
+          "saved_forecast_fielding_outs": {
+            "2": 0.0,
+            "3": 0.0,
+            "4": 183.85398930108911,
+            "5": 0.0,
+            "6": 2523.4256223243087,
+            "7": 0.0,
+            "8": 0.0,
+            "9": 0.0
+          },
+          "actual_fielding_outs": {
+            "2": 0,
+            "3": 0,
+            "4": 2443,
+            "5": 0,
+            "6": 1079,
+            "7": 0,
+            "8": 0,
+            "9": 0
+          },
+          "saved_forecast_position_runs": 4.39568358362104,
+          "original_actual_position_runs": 3.1384316415180615,
+          "reviewed_actual_position_runs": 3.1384316415180615,
+          "unknown_repertoire": false,
+          "unknown_role_outs": 0.0,
+          "unchanged_inputs": [
+            "batting",
+            "expected_PA",
+            "defensive_quality",
+            "fielding_outs",
+            "native_opportunities"
+          ],
+          "qualification": "No fitted correction or accuracy verdict. The source-only change holds the saved pooled prior fixed."
+        },
+        {
+          "player_id": 683002,
+          "player_name": "Gunnar Henderson",
+          "origin": 2024,
+          "target_year": 2025,
+          "fold": 3,
+          "stage": "Current MLB",
+          "age": 23.0,
+          "primary_role": 6,
+          "source_history": [
+            {
+              "season": 2022,
+              "level": "AA",
+              "source_rows": 3,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 2
+                },
+                {
+                  "position_code": "5",
+                  "fielding_outs": 691,
+                  "games_started": 27
+                },
+                {
+                  "position_code": "6",
+                  "fielding_outs": 471,
+                  "games_started": 18
+                }
+              ]
+            },
+            {
+              "season": 2022,
+              "level": "AAA",
+              "source_rows": 5,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 2
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 81,
+                  "games_started": 3
+                },
+                {
+                  "position_code": "4",
+                  "fielding_outs": 153,
+                  "games_started": 6
+                },
+                {
+                  "position_code": "5",
+                  "fielding_outs": 544,
+                  "games_started": 21
+                },
+                {
+                  "position_code": "6",
+                  "fielding_outs": 807,
+                  "games_started": 32
+                }
+              ]
+            },
+            {
+              "season": 2022,
+              "level": "MLB",
+              "source_rows": 4,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 3
+                },
+                {
+                  "position_code": "4",
+                  "fielding_outs": 78,
+                  "games_started": 3
+                },
+                {
+                  "position_code": "5",
+                  "fielding_outs": 518,
+                  "games_started": 18
+                },
+                {
+                  "position_code": "6",
+                  "fielding_outs": 144,
+                  "games_started": 6
+                }
+              ]
+            },
+            {
+              "season": 2023,
+              "level": "MLB",
+              "source_rows": 3,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 11
+                },
+                {
+                  "position_code": "5",
+                  "fielding_outs": 1784,
+                  "games_started": 68
+                },
+                {
+                  "position_code": "6",
+                  "fielding_outs": 1754,
+                  "games_started": 64
+                }
+              ]
+            },
+            {
+              "season": 2024,
+              "level": "MLB",
+              "source_rows": 2,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 2
+                },
+                {
+                  "position_code": "6",
+                  "fielding_outs": 4152,
+                  "games_started": 157
+                }
+              ]
+            }
+          ],
+          "current_MLB_PA": 719,
+          "origin_raw_DH_starts": 2,
+          "origin_certified_dual_starts": 0,
+          "origin_reviewed_DH_starts": 2,
+          "current_defensive_outs": {
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 4152,
+            "7": 0,
+            "8": 0,
+            "9": 0
+          },
+          "repertoire_fallback": "latest_minor_season",
+          "repertoire_shares": [
+            0.0,
+            0.003600331230473204,
+            0.006800625657560497,
+            0.05489393913128897,
+            0.9347051039806773,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "current_sample_weight": 0.8778998778998779,
+          "prior": {
+            "key": [
+              "role_stage",
+              "6",
+              "Current MLB"
+            ],
+            "regimes": [
+              {
+                "scope": "one_league",
+                "rows": 139,
+                "people": 78,
+                "target_years": [
+                  2017,
+                  2018,
+                  2019
+                ],
+                "PA": 50736,
+                "DH_starts": 106
+              },
+              {
+                "scope": "both_leagues",
+                "rows": 154,
+                "people": 92,
+                "target_years": [
+                  2022,
+                  2023,
+                  2024
+                ],
+                "PA": 52908,
+                "DH_starts": 237
+              }
+            ],
+            "people": 146,
+            "DH_starts_per_PA": 0.0033094052718922466
+          },
+          "expected_PA": 609.477539714323,
+          "actual_PA": 651,
+          "saved_own_DH": 1.4883456403280169,
+          "saved_prior_DH": 0.24627694542496908,
+          "saved_forecast_DH": 1.734622585752986,
+          "source_only_own_DH_delta": 0.0,
+          "source_only_forecast_position_run_delta": -0.0,
+          "actual_raw_DH": 8,
+          "actual_reviewed_DH": 8,
+          "actual_position_source_delta": -0.0,
+          "saved_forecast_fielding_outs": {
+            "2": 0.0,
+            "3": 12.787158542300507,
+            "4": 24.15352169101207,
+            "5": 194.96470123137192,
+            "6": 3319.756319567153,
+            "7": 0.0,
+            "8": 0.0,
+            "9": 0.0
+          },
+          "actual_fielding_outs": {
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 3749,
+            "7": 0,
+            "8": 0,
+            "9": 0
+          },
+          "saved_forecast_position_runs": 5.593625811731267,
+          "original_actual_position_runs": 5.564128943758573,
+          "reviewed_actual_position_runs": 5.564128943758573,
+          "unknown_repertoire": false,
+          "unknown_role_outs": 0.0,
+          "unchanged_inputs": [
+            "batting",
+            "expected_PA",
+            "defensive_quality",
+            "fielding_outs",
+            "native_opportunities"
+          ],
+          "qualification": "No fitted correction or accuracy verdict. The source-only change holds the saved pooled prior fixed."
+        }
+      ]
+    },
+    {
+      "selection": "Fixed source/role cases named in the source contract",
+      "primary": {
+        "player_id": 805811,
+        "player_name": "Bryce Eldridge",
+        "origin": 2024,
+        "target_year": 2025,
+        "fold": 1,
+        "stage": "Upper minors",
+        "age": 19.0,
+        "primary_role": 3,
+        "source_history": [
+          {
+            "season": 2023,
+            "level": "A",
+            "source_rows": 2,
+            "positions": [
+              {
+                "position_code": "10",
+                "fielding_outs": 0,
+                "games_started": 4
+              },
+              {
+                "position_code": "9",
+                "fielding_outs": 296,
+                "games_started": 11
+              }
+            ]
+          },
+          {
+            "season": 2023,
+            "level": "COMPLEX",
+            "source_rows": 2,
+            "positions": [
+              {
+                "position_code": "10",
+                "fielding_outs": 0,
+                "games_started": 1
+              },
+              {
+                "position_code": "9",
+                "fielding_outs": 318,
+                "games_started": 15
+              }
+            ]
+          },
+          {
+            "season": 2024,
+            "level": "A",
+            "source_rows": 2,
+            "positions": [
+              {
+                "position_code": "10",
+                "fielding_outs": 0,
+                "games_started": 10
+              },
+              {
+                "position_code": "3",
+                "fielding_outs": 1065,
+                "games_started": 41
+              }
+            ]
+          },
+          {
+            "season": 2024,
+            "level": "AA",
+            "source_rows": 2,
+            "positions": [
+              {
+                "position_code": "10",
+                "fielding_outs": 0,
+                "games_started": 1
+              },
+              {
+                "position_code": "3",
+                "fielding_outs": 216,
+                "games_started": 8
+              }
+            ]
+          },
+          {
+            "season": 2024,
+            "level": "AAA",
+            "source_rows": 2,
+            "positions": [
+              {
+                "position_code": "10",
+                "fielding_outs": 0,
+                "games_started": 1
+              },
+              {
+                "position_code": "3",
+                "fielding_outs": 186,
+                "games_started": 7
+              }
+            ]
+          },
+          {
+            "season": 2024,
+            "level": "Aplus",
+            "source_rows": 2,
+            "positions": [
+              {
+                "position_code": "10",
+                "fielding_outs": 0,
+                "games_started": 4
+              },
+              {
+                "position_code": "3",
+                "fielding_outs": 1149,
+                "games_started": 44
+              }
+            ]
+          }
+        ],
+        "current_MLB_PA": 0,
+        "origin_raw_DH_starts": 0,
+        "origin_certified_dual_starts": 0,
+        "origin_reviewed_DH_starts": 0,
+        "current_defensive_outs": {
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0,
+          "9": 0
+        },
+        "repertoire_fallback": "latest_minor_season",
+        "repertoire_shares": [
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "current_sample_weight": 0.0,
+        "prior": {
+          "key": [
+            "role_stage",
+            "3",
+            "Upper minors"
+          ],
+          "regimes": [
+            {
+              "scope": "one_league",
+              "rows": 27,
+              "people": 27,
+              "target_years": [
+                2017,
+                2018,
+                2019
+              ],
+              "PA": 3502,
+              "DH_starts": 69
+            },
+            {
+              "scope": "both_leagues",
+              "rows": 28,
+              "people": 28,
+              "target_years": [
+                2022,
+                2023,
+                2024
+              ],
+              "PA": 3500,
+              "DH_starts": 191
+            }
+          ],
+          "people": 55,
+          "DH_starts_per_PA": 0.037132247929163094
+        },
+        "expected_PA": 68.12741807383506,
+        "actual_PA": 37,
+        "saved_own_DH": 0.0,
+        "saved_prior_DH": 2.5297241786913904,
+        "saved_forecast_DH": 2.5297241786913904,
+        "source_only_own_DH_delta": 0.0,
+        "source_only_forecast_position_run_delta": -0.0,
+        "actual_raw_DH": 6,
+        "actual_reviewed_DH": 6,
+        "actual_position_source_delta": -0.0,
+        "saved_forecast_fielding_outs": {
+          "2": 0.0,
+          "3": 352.312740424674,
+          "4": 0.0,
+          "5": 0.0,
+          "6": 0.0,
+          "7": 0.0,
+          "8": 0.0,
+          "9": 0.0
+        },
+        "actual_fielding_outs": {
+          "2": 0,
+          "3": 102,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0,
+          "9": 0
+        },
+        "saved_forecast_position_runs": -1.2801106378006648,
+        "original_actual_position_runs": -0.9396433470507545,
+        "reviewed_actual_position_runs": -0.9396433470507545,
+        "unknown_repertoire": false,
+        "unknown_role_outs": 0.0,
+        "unchanged_inputs": [
+          "batting",
+          "expected_PA",
+          "defensive_quality",
+          "fielding_outs",
+          "native_opportunities"
+        ],
+        "qualification": "No fitted correction or accuracy verdict. The source-only change holds the saved pooled prior fixed."
+      },
+      "eligible_origin_role_stage_peers": 107,
+      "peer_rule": "Same origin, stage and primary role; age difference plus absolute log1p current-MLB-PA distance; ID tie break. No target information.",
+      "peers": [
+        {
+          "player_id": 691775,
+          "player_name": "Ryan Clifford",
+          "origin": 2024,
+          "target_year": 2025,
+          "fold": 3,
+          "stage": "Upper minors",
+          "age": 20.0,
+          "primary_role": 3,
+          "source_history": [
+            {
+              "season": 2022,
+              "level": "A",
+              "source_rows": 4,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 1
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 54,
+                  "games_started": 2
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 183,
+                  "games_started": 7
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 51,
+                  "games_started": 2
+                }
+              ]
+            },
+            {
+              "season": 2022,
+              "level": "COMPLEX",
+              "source_rows": 4,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 4
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 3,
+                  "games_started": 0
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 147,
+                  "games_started": 7
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 39,
+                  "games_started": 2
+                }
+              ]
+            },
+            {
+              "season": 2023,
+              "level": "A",
+              "source_rows": 4,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 3
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 110,
+                  "games_started": 4
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 186,
+                  "games_started": 7
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 294,
+                  "games_started": 11
+                }
+              ]
+            },
+            {
+              "season": 2023,
+              "level": "Aplus",
+              "source_rows": 4,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 7
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 1216,
+                  "games_started": 47
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 471,
+                  "games_started": 18
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 452,
+                  "games_started": 18
+                }
+              ]
+            },
+            {
+              "season": 2024,
+              "level": "AA",
+              "source_rows": 4,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 7
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 1275,
+                  "games_started": 49
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 557,
+                  "games_started": 22
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 492,
+                  "games_started": 19
+                }
+              ]
+            },
+            {
+              "season": 2024,
+              "level": "Aplus",
+              "source_rows": 4,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 1
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 336,
+                  "games_started": 13
+                },
+                {
+                  "position_code": "7",
+                  "fielding_outs": 184,
+                  "games_started": 7
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 259,
+                  "games_started": 9
+                }
+              ]
+            }
+          ],
+          "current_MLB_PA": 0,
+          "origin_raw_DH_starts": 0,
+          "origin_certified_dual_starts": 0,
+          "origin_reviewed_DH_starts": 0,
+          "current_defensive_outs": {
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0
+          },
+          "repertoire_fallback": "latest_minor_season",
+          "repertoire_shares": [
+            0.0,
+            0.5191749919432807,
+            0.0,
+            0.0,
+            0.0,
+            0.23880116016757977,
+            0.0,
+            0.24202384788913955
+          ],
+          "current_sample_weight": 0.0,
+          "prior": {
+            "key": [
+              "role_stage",
+              "3",
+              "Upper minors"
+            ],
+            "regimes": [
+              {
+                "scope": "one_league",
+                "rows": 24,
+                "people": 24,
+                "target_years": [
+                  2017,
+                  2018,
+                  2019
+                ],
+                "PA": 3413,
+                "DH_starts": 51
+              },
+              {
+                "scope": "both_leagues",
+                "rows": 29,
+                "people": 29,
+                "target_years": [
+                  2022,
+                  2023,
+                  2024
+                ],
+                "PA": 3254,
+                "DH_starts": 207
+              }
+            ],
+            "people": 53,
+            "DH_starts_per_PA": 0.038698065096745164
+          },
+          "expected_PA": 3.562964930026018,
+          "actual_PA": 0,
+          "saved_own_DH": 0.0,
+          "saved_prior_DH": 0.1378798487995669,
+          "saved_forecast_DH": 0.1378798487995669,
+          "source_only_own_DH_delta": 0.0,
+          "source_only_forecast_position_run_delta": -0.0,
+          "actual_raw_DH": 0,
+          "actual_reviewed_DH": 0,
+          "actual_position_source_delta": -0.0,
+          "saved_forecast_fielding_outs": {
+            "2": 0.0,
+            "3": 9.353335077111204,
+            "4": 0.0,
+            "5": 0.0,
+            "6": 0.0,
+            "7": 4.30218578034724,
+            "8": 0.0,
+            "9": 4.3602449676663655
+          },
+          "actual_fielding_outs": {
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0
+          },
+          "saved_forecast_position_runs": -0.05647762863095278,
+          "original_actual_position_runs": 0.0,
+          "reviewed_actual_position_runs": 0.0,
+          "unknown_repertoire": false,
+          "unknown_role_outs": 0.0,
+          "unchanged_inputs": [
+            "batting",
+            "expected_PA",
+            "defensive_quality",
+            "fielding_outs",
+            "native_opportunities"
+          ],
+          "qualification": "No fitted correction or accuracy verdict. The source-only change holds the saved pooled prior fixed."
+        },
+        {
+          "player_id": 699078,
+          "player_name": "Luis Ariza",
+          "origin": 2024,
+          "target_year": 2025,
+          "fold": 0,
+          "stage": "Upper minors",
+          "age": 20.0,
+          "primary_role": 3,
+          "source_history": [
+            {
+              "season": 2022,
+              "level": "DSL",
+              "source_rows": 3,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 7
+                },
+                {
+                  "position_code": "2",
+                  "fielding_outs": 692,
+                  "games_started": 28
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 228,
+                  "games_started": 10
+                }
+              ]
+            },
+            {
+              "season": 2023,
+              "level": "COMPLEX",
+              "source_rows": 3,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 1
+                },
+                {
+                  "position_code": "2",
+                  "fielding_outs": 136,
+                  "games_started": 4
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 273,
+                  "games_started": 10
+                }
+              ]
+            },
+            {
+              "season": 2024,
+              "level": "AA",
+              "source_rows": 2,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 2
+                },
+                {
+                  "position_code": "2",
+                  "fielding_outs": 48,
+                  "games_started": 2
+                }
+              ]
+            },
+            {
+              "season": 2024,
+              "level": "Aplus",
+              "source_rows": 1,
+              "positions": [
+                {
+                  "position_code": "2",
+                  "fielding_outs": 78,
+                  "games_started": 3
+                }
+              ]
+            },
+            {
+              "season": 2024,
+              "level": "COMPLEX",
+              "source_rows": 3,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 2
+                },
+                {
+                  "position_code": "2",
+                  "fielding_outs": 83,
+                  "games_started": 4
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 311,
+                  "games_started": 13
+                }
+              ]
+            }
+          ],
+          "current_MLB_PA": 0,
+          "origin_raw_DH_starts": 0,
+          "origin_certified_dual_starts": 0,
+          "origin_reviewed_DH_starts": 0,
+          "current_defensive_outs": {
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0
+          },
+          "repertoire_fallback": "latest_minor_season",
+          "repertoire_shares": [
+            0.40192307692307694,
+            0.5980769230769231,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "current_sample_weight": 0.0,
+          "prior": {
+            "key": [
+              "role_stage",
+              "3",
+              "Upper minors"
+            ],
+            "regimes": [
+              {
+                "scope": "one_league",
+                "rows": 27,
+                "people": 27,
+                "target_years": [
+                  2017,
+                  2018,
+                  2019
+                ],
+                "PA": 4300,
+                "DH_starts": 48
+              },
+              {
+                "scope": "both_leagues",
+                "rows": 28,
+                "people": 28,
+                "target_years": [
+                  2022,
+                  2023,
+                  2024
+                ],
+                "PA": 3632,
+                "DH_starts": 172
+              }
+            ],
+            "people": 55,
+            "DH_starts_per_PA": 0.02773575390821987
+          },
+          "expected_PA": 0.04680664435835112,
+          "actual_PA": 0,
+          "saved_own_DH": 0.0,
+          "saved_prior_DH": 0.0012982175691927946,
+          "saved_forecast_DH": 0.0012982175691927946,
+          "source_only_own_DH_delta": 0.0,
+          "source_only_forecast_position_run_delta": -0.0,
+          "actual_raw_DH": 0,
+          "actual_reviewed_DH": 0,
+          "actual_position_source_delta": -0.0,
+          "saved_forecast_fielding_outs": {
+            "2": 0.10045282996021547,
+            "3": 0.149477656065201,
+            "4": 0.0,
+            "5": 0.0,
+            "6": 0.0,
+            "7": 0.0,
+            "8": 0.0,
+            "9": 0.0
+          },
+          "actual_fielding_outs": {
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0
+          },
+          "saved_forecast_position_runs": -0.00028034250748877794,
+          "original_actual_position_runs": 0.0,
+          "reviewed_actual_position_runs": 0.0,
+          "unknown_repertoire": false,
+          "unknown_role_outs": 2.7755575615628914e-17,
+          "unchanged_inputs": [
+            "batting",
+            "expected_PA",
+            "defensive_quality",
+            "fielding_outs",
+            "native_opportunities"
+          ],
+          "qualification": "No fitted correction or accuracy verdict. The source-only change holds the saved pooled prior fixed."
+        },
+        {
+          "player_id": 800060,
+          "player_name": "Xavier Isaac",
+          "origin": 2024,
+          "target_year": 2025,
+          "fold": 4,
+          "stage": "Upper minors",
+          "age": 20.0,
+          "primary_role": 3,
+          "source_history": [
+            {
+              "season": 2022,
+              "level": "COMPLEX",
+              "source_rows": 2,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 1
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 102,
+                  "games_started": 4
+                }
+              ]
+            },
+            {
+              "season": 2023,
+              "level": "A",
+              "source_rows": 2,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 15
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 1815,
+                  "games_started": 72
+                }
+              ]
+            },
+            {
+              "season": 2023,
+              "level": "Aplus",
+              "source_rows": 2,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 3
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 237,
+                  "games_started": 9
+                }
+              ]
+            },
+            {
+              "season": 2024,
+              "level": "AA",
+              "source_rows": 3,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 8
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 552,
+                  "games_started": 21
+                },
+                {
+                  "position_code": "9",
+                  "fielding_outs": 52,
+                  "games_started": 2
+                }
+              ]
+            },
+            {
+              "season": 2024,
+              "level": "Aplus",
+              "source_rows": 2,
+              "positions": [
+                {
+                  "position_code": "10",
+                  "fielding_outs": 0,
+                  "games_started": 9
+                },
+                {
+                  "position_code": "3",
+                  "fielding_outs": 1510,
+                  "games_started": 60
+                }
+              ]
+            }
+          ],
+          "current_MLB_PA": 0,
+          "origin_raw_DH_starts": 0,
+          "origin_certified_dual_starts": 0,
+          "origin_reviewed_DH_starts": 0,
+          "current_defensive_outs": {
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0
+          },
+          "repertoire_fallback": "latest_minor_season",
+          "repertoire_shares": [
+            0.0,
+            0.9754020813623463,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.02459791863765374
+          ],
+          "current_sample_weight": 0.0,
+          "prior": {
+            "key": [
+              "role_stage",
+              "3",
+              "Upper minors"
+            ],
+            "regimes": [
+              {
+                "scope": "one_league",
+                "rows": 25,
+                "people": 25,
+                "target_years": [
+                  2017,
+                  2018,
+                  2019
+                ],
+                "PA": 3735,
+                "DH_starts": 68
+              },
+              {
+                "scope": "both_leagues",
+                "rows": 28,
+                "people": 28,
+                "target_years": [
+                  2022,
+                  2023,
+                  2024
+                ],
+                "PA": 2710,
+                "DH_starts": 99
+              }
+            ],
+            "people": 53,
+            "DH_starts_per_PA": 0.02591155934833204
+          },
+          "expected_PA": 46.369245622665964,
+          "actual_PA": 0,
+          "saved_own_DH": 0.0,
+          "saved_prior_DH": 1.201499459889095,
+          "saved_forecast_DH": 1.201499459889095,
+          "source_only_own_DH_delta": 0.0,
+          "source_only_forecast_position_run_delta": -0.0,
+          "actual_raw_DH": 0,
+          "actual_reviewed_DH": 0,
+          "actual_position_source_delta": -0.0,
+          "saved_forecast_fielding_outs": {
+            "2": 0.0,
+            "3": 244.57862105786026,
+            "4": 0.0,
+            "5": 0.0,
+            "6": 0.0,
+            "7": 0.0,
+            "8": 0.0,
+            "9": 6.167841074204042
+          },
+          "actual_fielding_outs": {
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0
+          },
+          "saved_forecast_position_runs": -0.8393232889980295,
+          "original_actual_position_runs": 0.0,
+          "reviewed_actual_position_runs": 0.0,
+          "unknown_repertoire": false,
+          "unknown_role_outs": 0.0,
+          "unchanged_inputs": [
+            "batting",
+            "expected_PA",
+            "defensive_quality",
+            "fielding_outs",
+            "native_opportunities"
+          ],
+          "qualification": "No fitted correction or accuracy verdict. The source-only change holds the saved pooled prior fixed."
+        }
+      ]
+    }
+  ],
+  "negative_controls": [
+    {
+      "player_id": 596133,
+      "player_name": "Luke Weaver",
+      "season": 2022,
+      "pitching_starts": 1,
+      "raw_DH_starts": 0,
+      "DH_appearances": 1,
+      "reviewed_DH_starts": 0,
+      "game_evidence": [
+        {
+          "season": 2022,
+          "player_id": 596133,
+          "pitching_starts": 1,
+          "player_name": "Luke Weaver",
+          "raw_dh_starts": 0,
+          "dh_appearances": 1,
+          "game_id": 663351,
+          "date": "2022-06-18",
+          "side": "home",
+          "batting_order": null,
+          "roles": [
+            "1"
+          ],
+          "certified": false,
+          "status": "not_a_batting_start",
+          "box_pitching_starts": 1
+        }
+      ],
+      "reason": "No original batting-order slot in any pitching start; DH appearance is not a DH start."
+    },
+    {
+      "player_id": 425794,
+      "player_name": "Adam Wainwright",
+      "season": 2023,
+      "pitching_starts": 21,
+      "raw_DH_starts": 0,
+      "DH_appearances": 1,
+      "reviewed_DH_starts": 0,
+      "game_evidence": [
+        {
+          "season": 2023,
+          "player_id": 425794,
+          "pitching_starts": 21,
+          "player_name": "Adam Wainwright",
+          "raw_dh_starts": 0,
+          "dh_appearances": 1,
+          "game_id": 718288,
+          "date": "2023-05-06",
+          "side": "home",
+          "batting_order": null,
+          "roles": [
+            "1"
+          ],
+          "certified": false,
+          "status": "not_a_batting_start",
+          "box_pitching_starts": 1
+        },
+        {
+          "season": 2023,
+          "player_id": 425794,
+          "pitching_starts": 21,
+          "player_name": "Adam Wainwright",
+          "raw_dh_starts": 0,
+          "dh_appearances": 1,
+          "game_id": 718211,
+          "date": "2023-05-12",
+          "side": "away",
+          "batting_order": null,
+          "roles": [
+            "1"
+          ],
+          "certified": false,
+          "status": "not_a_batting_start",
+          "box_pitching_starts": 1
+        },
+        {
+          "season": 2023,
+          "player_id": 425794,
+          "pitching_starts": 21,
+          "player_name": "Adam Wainwright",
+          "raw_dh_starts": 0,
+          "dh_appearances": 1,
+          "game_id": 718124,
+          "date": "2023-05-18",
+          "side": "home",
+          "batting_order": null,
+          "roles": [
+            "1"
+          ],
+          "certified": false,
+          "status": "not_a_batting_start",
+          "box_pitching_starts": 1
+        },
+        {
+          "season": 2023,
+          "player_id": 425794,
+          "pitching_starts": 21,
+          "player_name": "Adam Wainwright",
+          "raw_dh_starts": 0,
+          "dh_appearances": 1,
+          "game_id": 718059,
+          "date": "2023-05-23",
+          "side": "away",
+          "batting_order": null,
+          "roles": [
+            "1"
+          ],
+          "certified": false,
+          "status": "not_a_batting_start",
+          "box_pitching_starts": 1
+        },
+        {
+          "season": 2023,
+          "player_id": 425794,
+          "pitching_starts": 21,
+          "player_name": "Adam Wainwright",
+          "raw_dh_starts": 0,
+          "dh_appearances": 1,
+          "game_id": 717975,
+          "date": "2023-05-29",
+          "side": "home",
+          "batting_order": null,
+          "roles": [
+            "1"
+          ],
+          "certified": false,
+          "status": "not_a_batting_start",
+          "box_pitching_starts": 1
+        },
+        {
+          "season": 2023,
+          "player_id": 425794,
+          "pitching_starts": 21,
+          "player_name": "Adam Wainwright",
+          "raw_dh_starts": 0,
+          "dh_appearances": 1,
+          "game_id": 717879,
+          "date": "2023-06-05",
+          "side": "away",
+          "batting_order": null,
+          "roles": [
+            "1"
+          ],
+          "certified": false,
+          "status": "not_a_batting_start",
+          "box_pitching_starts": 1
+        },
+        {
+          "season": 2023,
+          "player_id": 425794,
+          "pitching_starts": 21,
+          "player_name": "Adam Wainwright",
+          "raw_dh_starts": 0,
+          "dh_appearances": 1,
+          "game_id": 717797,
+          "date": "2023-06-11",
+          "side": "home",
+          "batting_order": null,
+          "roles": [
+            "1"
+          ],
+          "certified": false,
+          "status": "not_a_batting_start",
+          "box_pitching_starts": 1
+        },
+        {
+          "season": 2023,
+          "player_id": 425794,
+          "pitching_starts": 21,
+          "player_name": "Adam Wainwright",
+          "raw_dh_starts": 0,
+          "dh_appearances": 1,
+          "game_id": 717718,
+          "date": "2023-06-17",
+          "side": "away",
+          "batting_order": null,
+          "roles": [
+            "1"
+          ],
+          "certified": false,
+          "status": "not_a_batting_start",
+          "box_pitching_starts": 1
+        },
+        {
+          "season": 2023,
+          "player_id": 425794,
+          "pitching_starts": 21,
+          "player_name": "Adam Wainwright",
+          "raw_dh_starts": 0,
+          "dh_appearances": 1,
+          "game_id": 717637,
+          "date": "2023-06-24",
+          "side": "home",
+          "batting_order": null,
+          "roles": [
+            "1"
+          ],
+          "certified": false,
+          "status": "not_a_batting_start",
+          "box_pitching_starts": 1
+        },
+        {
+          "season": 2023,
+          "player_id": 425794,
+          "pitching_starts": 21,
+          "player_name": "Adam Wainwright",
+          "raw_dh_starts": 0,
+          "dh_appearances": 1,
+          "game_id": 717566,
+          "date": "2023-06-29",
+          "side": "home",
+          "batting_order": null,
+          "roles": [
+            "1"
+          ],
+          "certified": false,
+          "status": "not_a_batting_start",
+          "box_pitching_starts": 1
+        },
+        {
+          "season": 2023,
+          "player_id": 425794,
+          "pitching_starts": 21,
+          "player_name": "Adam Wainwright",
+          "raw_dh_starts": 0,
+          "dh_appearances": 1,
+          "game_id": 717502,
+          "date": "2023-07-04",
+          "side": "away",
+          "batting_order": null,
+          "roles": [
+            "1"
+          ],
+          "certified": false,
+          "status": "not_a_batting_start",
+          "box_pitching_starts": 1
+        },
+        {
+          "season": 2023,
+          "player_id": 425794,
+          "pitching_starts": 21,
+          "player_name": "Adam Wainwright",
+          "raw_dh_starts": 0,
+          "dh_appearances": 1,
+          "game_id": 717268,
+          "date": "2023-07-24",
+          "side": "away",
+          "batting_order": null,
+          "roles": [
+            "1"
+          ],
+          "certified": false,
+          "status": "not_a_batting_start",
+          "box_pitching_starts": 1
+        },
+        {
+          "season": 2023,
+          "player_id": 425794,
+          "pitching_starts": 21,
+          "player_name": "Adam Wainwright",
+          "raw_dh_starts": 0,
+          "dh_appearances": 1,
+          "game_id": 717213,
+          "date": "2023-07-29",
+          "side": "home",
+          "batting_order": null,
+          "roles": [
+            "1"
+          ],
+          "certified": false,
+          "status": "not_a_batting_start",
+          "box_pitching_starts": 1
+        },
+        {
+          "season": 2023,
+          "player_id": 425794,
+          "pitching_starts": 21,
+          "player_name": "Adam Wainwright",
+          "raw_dh_starts": 0,
+          "dh_appearances": 1,
+          "game_id": 717127,
+          "date": "2023-08-04",
+          "side": "home",
+          "batting_order": null,
+          "roles": [
+            "1"
+          ],
+          "certified": false,
+          "status": "not_a_batting_start",
+          "box_pitching_starts": 1
+        },
+        {
+          "season": 2023,
+          "player_id": 425794,
+          "pitching_starts": 21,
+          "player_name": "Adam Wainwright",
+          "raw_dh_starts": 0,
+          "dh_appearances": 1,
+          "game_id": 717039,
+          "date": "2023-08-11",
+          "side": "away",
+          "batting_order": null,
+          "roles": [
+            "1"
+          ],
+          "certified": false,
+          "status": "not_a_batting_start",
+          "box_pitching_starts": 1
+        },
+        {
+          "season": 2023,
+          "player_id": 425794,
+          "pitching_starts": 21,
+          "player_name": "Adam Wainwright",
+          "raw_dh_starts": 0,
+          "dh_appearances": 1,
+          "game_id": 716958,
+          "date": "2023-08-17",
+          "side": "home",
+          "batting_order": null,
+          "roles": [
+            "1"
+          ],
+          "certified": false,
+          "status": "not_a_batting_start",
+          "box_pitching_starts": 1
+        },
+        {
+          "season": 2023,
+          "player_id": 425794,
+          "pitching_starts": 21,
+          "player_name": "Adam Wainwright",
+          "raw_dh_starts": 0,
+          "dh_appearances": 1,
+          "game_id": 716901,
+          "date": "2023-08-22",
+          "side": "away",
+          "batting_order": null,
+          "roles": [
+            "1"
+          ],
+          "certified": false,
+          "status": "not_a_batting_start",
+          "box_pitching_starts": 1
+        },
+        {
+          "season": 2023,
+          "player_id": 425794,
+          "pitching_starts": 21,
+          "player_name": "Adam Wainwright",
+          "raw_dh_starts": 0,
+          "dh_appearances": 1,
+          "game_id": 716809,
+          "date": "2023-08-28",
+          "side": "home",
+          "batting_order": null,
+          "roles": [
+            "1"
+          ],
+          "certified": false,
+          "status": "not_a_batting_start",
+          "box_pitching_starts": 1
+        },
+        {
+          "season": 2023,
+          "player_id": 425794,
+          "pitching_starts": 21,
+          "player_name": "Adam Wainwright",
+          "raw_dh_starts": 0,
+          "dh_appearances": 1,
+          "game_id": 716680,
+          "date": "2023-09-07",
+          "side": "away",
+          "batting_order": null,
+          "roles": [
+            "1"
+          ],
+          "certified": false,
+          "status": "not_a_batting_start",
+          "box_pitching_starts": 1
+        },
+        {
+          "season": 2023,
+          "player_id": 425794,
+          "pitching_starts": 21,
+          "player_name": "Adam Wainwright",
+          "raw_dh_starts": 0,
+          "dh_appearances": 1,
+          "game_id": 716621,
+          "date": "2023-09-12",
+          "side": "away",
+          "batting_order": null,
+          "roles": [
+            "1"
+          ],
+          "certified": false,
+          "status": "not_a_batting_start",
+          "box_pitching_starts": 1
+        },
+        {
+          "season": 2023,
+          "player_id": 425794,
+          "pitching_starts": 21,
+          "player_name": "Adam Wainwright",
+          "raw_dh_starts": 0,
+          "dh_appearances": 1,
+          "game_id": 716531,
+          "date": "2023-09-18",
+          "side": "home",
+          "batting_order": null,
+          "roles": [
+            "1"
+          ],
+          "certified": false,
+          "status": "not_a_batting_start",
+          "box_pitching_starts": 1
+        }
+      ],
+      "reason": "No original batting-order slot in any pitching start; DH appearance is not a DH start."
+    }
+  ],
+  "new_fits": 0,
+  "forecast_or_explorer_changed": false,
+  "protected_outcomes_used": false,
+  "hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\review_defense_budget_v13.py": "44900b6b722327df7d9ffb959b87fe36e4cd97b3845f09141ac53ead112dc12e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-budget-v13\\source-review.json": "a7837877603fabcfaf87571ea071ff4e1e3cc4e33a0b8df6bdeb18b21df0a93e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-budget-v13\\independent-verification.json": "55bda7164490d6461946d35a5c1c13db3579bc6e97e89bfd309ccaee9d4d4711"
+  }
+}

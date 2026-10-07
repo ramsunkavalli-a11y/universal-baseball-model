@@ -2,6 +2,34 @@
 
 Updated 2026-10-07. This is the current start-here document.
 
+## DH source repaired and individual job allocation remains the next task
+
+[The job inventory review](defense-budget-v13-result.md) certifies 65 simultaneous
+P/DH starts missing from the old annual DH-start field. All 87 candidate pitching
+starts were checked; 22 Wainwright/Weaver negative controls receive no extra
+starts. The separate corrected view conserves league DH starts in 2022–2025
+without changing fielding outs or filling a residual by assumption. Two games
+require the starting-role rule rather than a later DH appearance; the original
+parser and additive amendments are preserved.
+
+The source repair is much smaller than the forecast gap. Own-history DH exposure
+is about 3,100 starts per origin and pooled history supplies another 971–1,191;
+forecast totals still fall hundreds short. The saved pooled priors combine
+one-league and universal-DH opportunity regimes. All 1,128 prior tables and
+12,432 DH forecast calculations replay independently. Seven focal/21 peer walks
+show why a blanket adjustment fails: Witt is already reasonable; Schwarber's
+role changes; Alvarez's playing time is too high; Ohtani's tiny old OF fallback
+is not a meaningful current role. Highest-level peer labels can also conceal
+tiny upper-minor stints, as Ariza's full source walk shows.
+
+Use the corrected measurements in one contracted physical-budget comparison,
+holding batting/skill fixed and keeping missing-player remainder explicit.
+Do not treat this source pass as an accuracy gain, double older AL DH rates,
+force the cohort into full-league jobs, or haircut every SS. Training/forecast
+propagation, individual allocation, sparse/minor talent and longer-horizon use
+remain unfinished. Frozen forecasts, explorer and 2026 selection are unchanged;
+Lovich's batting defect remains separate. The defense goal remains active.
+
 ## Defensive skill helps value but position budgets still fail
 
 [The completed integration](defense-value-v12-result.md) adds the fixed MLB

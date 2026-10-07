@@ -891,3 +891,12 @@ scripts/review_defense_value_v12.py -text -eol
 scripts/finalize_defense_value_v12.py -text -eol
 tests/test_defense_value.py -text -eol
 reports/model-evidence/defense-value-v12/** -text -eol
+
+docs/defense-budget-v13-*.md -text -eol
+src/universal_baseball/defense_budget_source.py -text -eol
+scripts/audit_defense_budget_v13.py -text -eol
+scripts/verify_defense_budget_v13.py -text -eol
+scripts/review_defense_budget_v13.py -text -eol
+scripts/finalize_defense_budget_v13.py -text -eol
+tests/test_defense_budget_source.py -text -eol
+reports/model-evidence/defense-budget-v13/** -text -eol
