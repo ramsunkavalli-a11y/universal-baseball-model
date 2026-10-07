@@ -2,6 +2,31 @@
 
 Updated 2026-10-07. This is the current start-here document.
 
+## Recent position source verified for the reviewed cases
+
+[The dated role review](defense-role-v15-result.md) certifies 114 historical
+player-season-level scopes for 74 distinct player-seasons. All 281 annual
+position totals, 9,396 position-game records, 424 period cells and 51 dated P/DH
+corrections replay independently. The original nineteen focal/57 peer traces
+and five source contrasts are reviewed. This is source integrity, not an
+accuracy gain: no new fit or forecast was made.
+
+Current assignments, older repertoires and quality must stay separate. Witt's
+current SS and Buxton's restored CF are clear; Eldridge has 1B/DH now and earlier
+RF, unlike multi-position prior contributors. Carter/Dawson/Chourio caution
+against deleting minor histories or treating tiny late MLB/AAA stints as firm
+assignments. Schwarber and Judge also require prospective assignment context,
+not merely extrapolating their latest appearances. Captured plural-sport and
+empty date-range failures are rejected rather than turned into zero usage.
+
+Existing PBP has dated fielder snapshots but not exact innings, starts or DH
+denominators. Next certify population-wide current-role/repertoire input rules
+before one fair role repair on the unchanged evaluation cohort. Do not fit only
+these examples or start a recency/algorithm tournament. Defensive talent is
+still distinct from assignment and delivery. Frozen forecasts, explorer and
+2026 selection are unchanged; the separate Lovich batting repair and the broader
+defense goal remain open.
+
 ## League job caps reviewed but individual role repair is still needed
 
 [The joint role comparison](defense-jobs-v14-result.md) holds batting, PA and all

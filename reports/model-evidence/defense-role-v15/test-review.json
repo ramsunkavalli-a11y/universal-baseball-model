@@ -1,0 +1,27 @@
+{
+  "command": [
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\.venv\\Scripts\\python.exe",
+    "-X",
+    "utf8",
+    "-m",
+    "pytest",
+    "tests/test_defense_role_logs.py",
+    "tests/test_defense_jobs.py",
+    "tests/test_defense_budget_source.py",
+    "tests/test_defense_value.py",
+    "tests/test_defense_value_source.py",
+    "tests/test_defense_repertoire.py",
+    "tests/test_defense_transition.py",
+    "tests/test_defense_transition_scores.py",
+    "tests/test_defense_opportunity_bridge.py",
+    "tests/test_position_role_source.py",
+    "-q",
+    "-p",
+    "no:cacheprovider"
+  ],
+  "exit_code": 0,
+  "passed": 74,
+  "stdout": "........................................................................ [ 97%]\n..                                                                       [100%]\n74 passed in 8.59s\n",
+  "stderr": "",
+  "qualification": "Execution regression tests, not predictive improvement."
+}

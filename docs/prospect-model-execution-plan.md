@@ -1,5 +1,31 @@
 # Prospect model: controlling execution plan
 
+## Current checkpoint 2026-10-07 Use verified role evidence across the population
+
+[The source review](defense-role-v15-result.md) passes for all 114 bounded
+player-season-level requests. Exact game logs, dated DH corrections and complete
+level records distinguish current use from older repertoire. No new forecast
+is fitted. All fixed player/peer walks are complete; pure DH, restored CF,
+established SS, tiny upper-level stints and genuine role-switch cases remain.
+
+Next declare and certify current-assignment versus repertoire construction for
+all training/forecast identities before the single coherent role repair. The
+74 reviewed player-seasons are diagnostic source evidence, not a full-model
+feature population. Explicit single-sport game logs work; plural-sport and
+empty date-range responses do not. PBP presence is not exact innings or DH use.
+Any source expansion must keep its historical cutoffs, unknown scopes and
+verified denominators; do not restrict evaluation to these reviewed names.
+
+Preserve fixed batting, PA, twelve quality recipes, physical caps and reserves.
+Check position exposure, positional runs, defense delivery and expanded value
+separately, followed by the fixed walks. Avoid generic-primary-role borrowing,
+old temporary roles overriding current use, and tiny MLB/AAA stints erasing
+larger minor records. Dated future assignment expectations remain a separately
+identified missing input, not retrospective overrides. No algorithm or arbitrary
+recency sweep. Sparse/minor talent and longer horizons are not closed by role
+source integrity. Frozen forecasts/explorer and 2026 selection remain unchanged;
+the Lovich batting defect and defense goal remain active.
+
 ## Current checkpoint 2026-10-07 Repair role representation rather than retuning job caps
 
 [The completed comparison](defense-jobs-v14-result.md) is fully traced and replayed.
