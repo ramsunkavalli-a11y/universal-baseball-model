@@ -1,5 +1,26 @@
 # Prospect model: controlling execution plan
 
+## Current checkpoint 2026-10-07 Retain useful defense and repair the position budget
+
+[Matched value integration](defense-value-v12-result.md) is fully walked and
+replayed. Qualified MLB history improves both defensive delivery and expanded
+value, including among actual participants. A lower total-value error alone is
+not a component verdict: named player calculations expose error cancellation.
+Do not repeat this skill/prior/algorithm comparison or claim it validates minors.
+
+The next work addresses the measured positional budget failure, not another
+unrelated idea. Preserve player-level skills and individual-role evidence;
+establish the origin-known league opportunity budget, source/matched remainder
+and separate DH exposure before any reconciliation comparison. A full league
+has one fielding slot at each position; marginal expected use cannot grant
+surplus SS jobs while leaving 1B/DH slots empty. Do not force incomplete observed
+native values to a WAR quota or invent future positions from target outcomes.
+Predeclare one physical accounting/reconciliation test with the existing anchors,
+walk individual gains/harms and keep current quality unchanged. Then address
+practical sparse/minor talent evidence and current research export/long-horizon
+limits within the active defense goal. Frozen forecasts/explorer/2026 selection
+remain unchanged.
+
 ## Current checkpoint 2026-10-07 Matched defense source reviewed
 
 [The source and player review](defense-value-v11-source-player-review.md) is

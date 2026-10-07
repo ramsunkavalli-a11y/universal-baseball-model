@@ -2,6 +2,32 @@
 
 Updated 2026-10-07. This is the current start-here document.
 
+## Defensive skill helps value but position budgets still fail
+
+[The completed integration](defense-value-v12-result.md) adds the fixed MLB
+skill recipes to three unchanged opportunity arms with no new fits. The primary
+history comparison lowers delivered-defense error 12.7% and expanded-value error
+2.0%; actual defenders show the same benefit. All twelve channel point errors
+improve versus neutral. Extra range calibration helps delivery but its additional
+whole-value gain is uncertain and Kwan/1B/3B remain harms. Removing framing as a
+full-ABS accounting sensitivity does not erase the history benefit.
+
+All 19 focal/57 peer walks and nine-combination accounting/score/interval replays
+finish. Bailey/Raleigh identify persistent skill; Realmuto/Murphy reverse;
+Castellanos/Olson/Tucker expose opposing component errors that make a total look
+good for the wrong reason. Scores cover 12,114 complete-native rows, not the
+318 partial defenders with 372,452 outs. Minor players without measured MLB
+history remain unknown: no new lower-minors talent gain is established.
+
+Keep this modular research integration, not a full-WAR deployment. Whole-cohort
+position credit is 14–16 common wins too generous, with too much SS and too
+little 1B/DH exposure. Complete-subset skill totals are also optimistic. Next
+resolve physically constrained position/DH opportunity budgets and the practical
+sparse/minor talent fallback, then current research export/longer-horizon use.
+This follows the reviewed value failure, not a repeated opportunity algorithm
+or prior sweep. Frozen forecasts, explorer, 2026 selection and the separate
+Lovich defect remain unchanged.
+
 ## Matched defensive measurements ready for value integration
 
 [The completed source review](defense-value-v11-source-player-review.md) pairs

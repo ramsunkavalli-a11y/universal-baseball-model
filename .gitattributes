@@ -882,3 +882,12 @@ scripts/verify_defense_value_v11.py -text -eol
 scripts/finalize_defense_value_v11_source.py -text -eol
 tests/test_defense_value_source.py -text -eol
 reports/model-evidence/defense-value-v11/** -text -eol
+
+docs/defense-value-v12-*.md -text -eol
+src/universal_baseball/defense_value.py -text -eol
+scripts/run_defense_value_v12.py -text -eol
+scripts/verify_defense_value_v12.py -text -eol
+scripts/review_defense_value_v12.py -text -eol
+scripts/finalize_defense_value_v12.py -text -eol
+tests/test_defense_value.py -text -eol
+reports/model-evidence/defense-value-v12/** -text -eol
