@@ -1,5 +1,22 @@
 # Prospect model: controlling execution plan
 
+## Current checkpoint 2026-10-06 Build the coherent defense layer
+
+[The active goal](defense-layer-v3-plan.md) supersedes the narrow next-test
+ordering below. [The reviewed native-range milestone](defense-native-range-v3-result.md)
+finds useful MLB defensive-history signal, with 261 evaluated people, a fixed
+chronological reliability/age model and explicit player/support limitations.
+It recovers all native components separately; it does not integrate full WAR or
+authorize deployment. Frozen forecasts and explorer 8810 remain unchanged.
+
+Next: use source-known other-position history coherently and audit native catcher
+pitch/steal opportunities; qualify arms/receiving before contribution integration.
+Do not tune to Jankowski, treat OF ability as automatic SS ability, reuse 2026,
+or repeat the closed adjusted minor ground-ball-share test. Keep current/no-MLB
+talent, position/exposure, measured future quality and delivered value separate.
+Complete each contract/source/player checkpoint before its next fit. Detailed
+profiles are still sparse; no lower-minors transfer validation is claimed.
+
 ## Current checkpoint 2026-10-06 Infield source/comparison milestone complete
 
 [The reviewed comparison](defensive-talent-position-v2-result.md) closes the

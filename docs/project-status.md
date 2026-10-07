@@ -2,6 +2,32 @@
 
 Updated 2026-10-06. This is the current start-here document.
 
+## Active defense-layer goal: a useful MLB range baseline
+
+[The new range milestone](defense-native-range-v3-result.md) tests trustworthy
+native defensive history in a broader MLB population. In the ordinary 2022
+origin, error is 2.707 runs/500 innings for neutral defense, 2.393 for shrunk
+history and 2.291 for one fixed age/reliability calibration. This is about 15%
+less range-quality error than neutral—not a total-WAR improvement. Player walks
+and independent replays are complete; no forecast/explorer promotion occurred.
+
+Retain these research baselines and the separate native component ledger.
+Do not lose the actual limitations: one ordinary mature test origin, conditional
+same-position survivors, 221/317 sparse detailed profiles, young-development
+misses, and omitted cross-position history. Jankowski's positive CF evidence
+does not enter his sparse LF prediction; Refsnyder gets the same generic prior.
+Oracle-exposure totals also remain underpredicted, especially in the 2021 stress
+check. These issues qualify the positive quality result, not erase it or prove
+that the full defensive/value layer is ready.
+
+Follow [the active defense-layer plan](defense-layer-v3-plan.md): use existing
+other-position evidence coherently, qualify arms/receiving and native catcher
+opportunities, then forecast defensive position/exposure and test integration
+on a matched expanded value target. Lower-minors unknown quality, rule effects,
+source gaps and the closed minor ground-ball-share result stay visible. The
+selected hitter package remains batting/replacement; the long goal is active.
+Prior checkpoints below are preserved history.
+
 ## Infield measurement repair and talent comparison completed
 
 [The completed milestone](defensive-talent-position-v2-result.md) extends actual
