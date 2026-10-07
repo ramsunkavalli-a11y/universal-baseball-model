@@ -2,6 +2,28 @@
 
 Updated 2026-10-07. This is the current start-here document.
 
+## Position transitions reviewed Next measure delivered defensive value
+
+[The completed transition comparison](defense-transition-v10-result.md) keeps
+playing time and scalar exposure fixed while allowing supported possible MLB
+positions. Overall fielding-time error is 2.1% below PA-scaled prior usage;
+the additional improvement over the own-repertoire repair is small and uncertain.
+Chourio/Holliday partly improve; Volpe/Winn/Neto lose useful individual SS
+information. Zero-current-PA placement improves versus the prior repair but
+still loses to the broader ratio reference. Young 2025 exposure remains a
+stress failure. All 20 focal/60 peer walks plus one return/three peers finish;
+30,506 input vectors, 446 distributions and 12,432 forecasts replay.
+
+Retain the source, scalar shrinkage, noncatcher C guard and position uncertainty
+as qualified research. Do not promote a universal allocator or begin another
+position algorithm/constant sweep. Next contract matched defensive-quality times
+opportunity and expanded-value testing, retaining opportunity anchors and unknown
+skill/measurement flags. Keep ability, delivered time and final value separate;
+show genuine participant placement, not only diluted nonarrival error. Dated
+assignments, older finite-return PA and lower-minor transfer are not solved.
+Frozen forecasts, explorer and 2026 selection remain unchanged. Lovich's separate
+batting small-sample defect is still open.
+
 ## Repertoire repair improves defensive time but fails young position changes
 
 [The completed repair](defense-repertoire-v9-result.md) reduces position-cell

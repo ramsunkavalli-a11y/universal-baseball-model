@@ -1,0 +1,238 @@
+{
+  "date": "2026-10-07",
+  "integrity_pass": true,
+  "player_walkthrough_status": "complete",
+  "focal_walks": 20,
+  "peer_walks": 60,
+  "additional_return_focal": 1,
+  "additional_return_peers": 3,
+  "independent_intervals_replayed": true,
+  "intervals": [
+    {
+      "contrast": "transition_minus_ratio",
+      "change": -3.5488271981816886,
+      "interval_95": [
+        -4.84396143683055,
+        -2.2782251498948507
+      ],
+      "seed": 708008,
+      "draws": 2000,
+      "whole_person_clustered": true,
+      "development_only": true
+    },
+    {
+      "contrast": "transition_minus_repair",
+      "change": -0.5246802378809813,
+      "interval_95": [
+        -1.2486282857777178,
+        0.18992015777173257
+      ],
+      "seed": 708008,
+      "draws": 2000,
+      "whole_person_clustered": true,
+      "development_only": true
+    }
+  ],
+  "equal_origin_rmse": {
+    "ratio": 166.14459065353276,
+    "repair": 163.12044369323237,
+    "transition": 162.59576345535103
+  },
+  "relative_error_improvement": 0.02135987205013623,
+  "primary_tolerance_pass": true,
+  "groups_pass": true,
+  "group_checks": [
+    {
+      "origin": 2022,
+      "field": "stage",
+      "value": "Lower minors",
+      "rows": 2369,
+      "transition_rmse": 22.323084400573677,
+      "reference_rmse": 22.228893265376104,
+      "tolerance_pass": true
+    },
+    {
+      "origin": 2022,
+      "field": "stage",
+      "value": "Upper minors",
+      "rows": 947,
+      "transition_rmse": 115.45515140484339,
+      "reference_rmse": 114.4052365107887,
+      "tolerance_pass": true
+    },
+    {
+      "origin": 2022,
+      "field": "stage",
+      "value": "Current MLB",
+      "rows": 688,
+      "transition_rmse": 383.30181691963645,
+      "reference_rmse": 393.20687308676514,
+      "tolerance_pass": true
+    },
+    {
+      "origin": 2022,
+      "field": "stage",
+      "value": "Inactive / unknown",
+      "rows": 240,
+      "transition_rmse": 62.50705480997313,
+      "reference_rmse": 62.862751408168016,
+      "tolerance_pass": true
+    },
+    {
+      "origin": 2022,
+      "field": "age_band",
+      "value": "5",
+      "rows": 872,
+      "transition_rmse": 240.87790233064584,
+      "reference_rmse": 246.501474921359,
+      "tolerance_pass": true
+    },
+    {
+      "origin": 2022,
+      "field": "age_band",
+      "value": "3",
+      "rows": 1226,
+      "transition_rmse": 5.756149520950608,
+      "reference_rmse": 5.489183475330159,
+      "tolerance_pass": true
+    },
+    {
+      "origin": 2022,
+      "field": "age_band",
+      "value": "4",
+      "rows": 1792,
+      "transition_rmse": 154.30288361646436,
+      "reference_rmse": 158.00093761944402,
+      "tolerance_pass": true
+    },
+    {
+      "origin": 2022,
+      "field": "age_band",
+      "value": "6",
+      "rows": 278,
+      "transition_rmse": 274.38692872551144,
+      "reference_rmse": 278.6129164864955,
+      "tolerance_pass": true
+    },
+    {
+      "origin": 2023,
+      "field": "stage",
+      "value": "Lower minors",
+      "rows": 2338,
+      "transition_rmse": 9.994799340402862,
+      "reference_rmse": 9.941390955473072,
+      "tolerance_pass": true
+    },
+    {
+      "origin": 2023,
+      "field": "stage",
+      "value": "Upper minors",
+      "rows": 976,
+      "transition_rmse": 108.80704073099204,
+      "reference_rmse": 107.79672636286789,
+      "tolerance_pass": true
+    },
+    {
+      "origin": 2023,
+      "field": "stage",
+      "value": "Current MLB",
+      "rows": 652,
+      "transition_rmse": 383.00227613371726,
+      "reference_rmse": 393.03973169376513,
+      "tolerance_pass": true
+    },
+    {
+      "origin": 2023,
+      "field": "stage",
+      "value": "Inactive / unknown",
+      "rows": 230,
+      "transition_rmse": 73.84358988276361,
+      "reference_rmse": 81.57581878800914,
+      "tolerance_pass": true
+    },
+    {
+      "origin": 2023,
+      "field": "age_band",
+      "value": "3",
+      "rows": 1206,
+      "transition_rmse": 27.75131766290311,
+      "reference_rmse": 28.745568542626348,
+      "tolerance_pass": true
+    },
+    {
+      "origin": 2023,
+      "field": "age_band",
+      "value": "4",
+      "rows": 1782,
+      "transition_rmse": 156.91647527063665,
+      "reference_rmse": 158.4844336228445,
+      "tolerance_pass": true
+    },
+    {
+      "origin": 2023,
+      "field": "age_band",
+      "value": "5",
+      "rows": 865,
+      "transition_rmse": 216.9286388459144,
+      "reference_rmse": 227.28487375592104,
+      "tolerance_pass": true
+    },
+    {
+      "origin": 2023,
+      "field": "age_band",
+      "value": "6",
+      "rows": 274,
+      "transition_rmse": 278.69106338790476,
+      "reference_rmse": 279.9040100518393,
+      "tolerance_pass": true
+    }
+  ],
+  "development_totals_pass": true,
+  "zero_current_MLB_PA_placement": {
+    "ratio": 0.04182746968513454,
+    "repair": 0.05057821040666192,
+    "transition": 0.04898764784168752
+  },
+  "placement_tolerance_pass": true,
+  "rare_young_participant_counts": [
+    4,
+    3,
+    2
+  ],
+  "later_young_stress_failure": true,
+  "full_population_reasonability_pass": false,
+  "conditional_position_transport_validated": false,
+  "disposition": "retain_qualified_research_bridge_not_universal_allocator_proceed_matched_skill_and_value_integration",
+  "gains": [
+    "Partly captures CF-to-corner and SS-to-2B arrival uncertainty.",
+    "Maintains unchanged scalar potential outs, DH and upstream PA with no unqualified C assignments.",
+    "Established missed-year roles prefer real older MLB history to minor rehab position."
+  ],
+  "limitations": [
+    "Dominant-role averages erase differences between SS keepers and movers and specific personal secondary positions.",
+    "Volpe/Winn/Neto and Basallo/Ballesteros retain substantive misses; some loss improvements are dilution of excessive PA.",
+    "New or returning defenders remain below actual exposure totals; known dated assignments and finite-return PA are absent.",
+    "Sparse detailed support and selected future fielders do not establish eventual lower-minor defensive quality."
+  ],
+  "next": "No further position algorithm or constant sweep; contract a matched native-quality-times-opportunity and expanded-value comparison, retaining the reviewed skill baselines and all opportunity anchors.",
+  "forecast_or_explorer_changed": false,
+  "protected_outcomes_used": false,
+  "deployment_approved": false,
+  "value_integration_complete": false,
+  "historical_receipt_corrections": [
+    "Prefit scoring-array correction and post-fit potential-total check recovery are preserved separately; 15 fitted means replayed unchanged.",
+    "Initial source-recovery-review contains the focal only; return-history-review completes all three announced comparisons."
+  ],
+  "hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\finalize_defense_transition_v10.py": "44746ae2274cebffa79450695451ad3599af1d7fd073110d3fb8ac0db2041e30",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-transition-v10\\preflight.json": "713fa56d8c33d60770eff6d7a551e87d213c611b9eb4194d9534e36205f88c05",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-transition-v10\\fit-report.json": "d2892817d0c94ccf118fd24daaff2c4086c5a9117d831c397f791c685754528a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-transition-v10\\player-walkthrough.json": "8b544a210990012ca19dc27d044e9b97d09f3d89d36429c382777b7b5051f553",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-transition-v10\\independent-verification.json": "c5794b9ae6afc26f4a602165fda0ded1d47475d35f29f5969003909b7b157813",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-transition-v10\\execution-amendment.json": "486ee644d2ca16a65d352a8555ec4d4333ee30569dee3f50cb9fc339129bfef8",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-transition-v10\\execution-recovery.json": "65ba0a0876a0bef3835f00ccb29a56058157690180402afd9930a9e34a9149ec",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-transition-v10\\return-history-review.json": "066ca6d72230831ef98e9ea0c424c6f858a81f9a049fda0d664529356da71231",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\defense-transition-v10-player-review.md": "008cacad52654780e1518f58f86c44bbd13f892793656a1e3d50b1dd790aa586",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\defense-transition-v10-result.md": "7f563f2d557435075ccd76fca5c3c03a54190f3a3cf7bbc552dc457848effa11"
+  }
+}

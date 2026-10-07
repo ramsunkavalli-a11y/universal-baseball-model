@@ -865,3 +865,13 @@ scripts/review_defense_repertoire_youth_v9.py -text -eol
 scripts/finalize_defense_repertoire_v9.py -text -eol
 tests/test_defense_repertoire.py -text -eol
 reports/model-evidence/defense-repertoire-v9/** -text -eol
+
+docs/defense-transition-v10-*.md -text -eol
+src/universal_baseball/defense_transition.py -text -eol
+scripts/run_defense_transition_v10.py -text -eol
+scripts/verify_defense_transition_v10.py -text -eol
+scripts/finalize_defense_transition_v10.py -text -eol
+scripts/review_defense_transition_return_v10.py -text -eol
+tests/test_defense_transition.py -text -eol
+tests/test_defense_transition_scores.py -text -eol
+reports/model-evidence/defense-transition-v10/** -text -eol

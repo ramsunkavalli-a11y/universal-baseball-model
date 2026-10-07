@@ -1,5 +1,28 @@
 # Prospect model: controlling execution plan
 
+## Current checkpoint 2026-10-07 Integrate reviewed quality with opportunity
+
+[Position uncertainty](defense-transition-v10-result.md) is fully walked and
+independently replayed. Numerical development tolerances pass, but individual
+SS development, dated roles, rare young exposure and PA errors remain. Do not
+waive those failures or run another position algorithm. Retain both reviewed
+allocators and the stronger ratio anchor as research comparisons, not automatic
+deployment. Freeze each opportunity arm within the upcoming integration test.
+
+Next audit the matched target ledger: range, arms, receiving, framing, throwing,
+blocking and separate positional/replacement/baserunning value, with native
+measurement and opportunity denominators reconciled. Avoid DP/receiving/range
+double credit and do not mistake changed historical WAR definitions for talent.
+Compare neutral versus reviewed skill histories on identical targets and fixed
+opportunities, then inspect expanded player value with the same batting forecast.
+Keep unknown lower-minor quality and unmeasured native channels explicit rather
+than deleting players or counting missing measurements as average observed skill.
+
+Predeclare this comparison after the source/units audit, complete player walks
+including skill keepers, movers, young misses and exits, and export a coherent
+research layer only to the extent its claims hold. No new batting fit, protected
+2026 selection or forecast/explorer alteration is authorized by this checkpoint.
+
 ## Current checkpoint 2026-10-07 Add supported prospect position uncertainty
 
 [The repertoire repair](defense-repertoire-v9-result.md) is fully walked and
