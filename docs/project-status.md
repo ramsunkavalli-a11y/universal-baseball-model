@@ -2,6 +2,30 @@
 
 Updated 2026-10-07. This is the current start-here document.
 
+## Full population role evidence is ready for one assignment repair
+
+[The population source review](defense-role-v16-result.md) verifies all 23,412
+annual fielding scopes and 23,406 start scopes, retaining all 16,674 input rows.
+The team-aware parser recovers 4,324 records without changing the 981,330
+previously accepted records. Six DH-start disagreements and 875 cases without
+current annual evidence remain explicit, not filled with zero.
+
+The player review also caught a calendar error in the intermediate repair:
+postponed listings carry an abstract Final state but are not played segments.
+Detailed completed states restore Witt's 1,346 late SS outs and Buxton's 484
+late CF outs. Truly resumed cross-period games stay qualified; only 0.23% of
+fielding outs have unresolved early/late placement. Conserving period bounds
+keep usable evidence without guessed dates. Nineteen focal/57 peer traces,
+ten discrepancies, all source vectors and bounds are reviewed; 57 focused tests
+pass. No model was fitted and no accuracy gain or promotion is claimed.
+
+Next run one contracted current-assignment/full-repertoire comparison, not
+another source expansion or recency/algorithm sweep. Preserve the same 12,432
+evaluation rows, batting, PA, twelve quality recipes, capacities and reserves.
+Position delivery is distinct from defensive talent; lower-minor talent and
+longer horizons remain unfinished. Frozen forecasts/explorer and 2026 selection
+are unchanged. The defense goal stays active and Lovich's batting defect is open.
+
 ## Recent position source verified for the reviewed cases
 
 [The dated role review](defense-role-v15-result.md) certifies 114 historical

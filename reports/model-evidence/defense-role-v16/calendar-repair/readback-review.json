@@ -1,0 +1,32 @@
+{
+  "source_integrity": "pass",
+  "player_walkthrough_status": "complete",
+  "review_lines": 684,
+  "clerical_correction": "The preserved final-review manual_reviewer description says 695 lines; the complete review is 684 lines. Case membership, review and source results are unchanged.",
+  "tests_passed": 57,
+  "test_command": [
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\.venv\\Scripts\\python.exe",
+    "-X",
+    "utf8",
+    "-m",
+    "pytest",
+    "tests/test_defense_role_calendar.py",
+    "tests/test_defense_role_scope.py",
+    "tests/test_defense_role_logs.py",
+    "tests/test_defense_budget_source.py",
+    "tests/test_defense_jobs.py",
+    "tests/test_defense_repertoire.py",
+    "tests/test_defense_value.py",
+    "tests/test_defense_opportunity_bridge.py",
+    "-q",
+    "-p",
+    "no:cacheprovider"
+  ],
+  "test_stdout": ".........................................................                [100%]\n57 passed in 5.45s\n",
+  "test_stderr": "",
+  "final_receipt_sha256": "5a558b6d0a66a57a8baaa0195b78b6d03efa41c122593de119caf266162128b7",
+  "readback_sha256": "8a6f5512c65683338c95152b105e6aa27e8d7c82e6c2e3fd96786daad15982d3",
+  "no_fits": true,
+  "no_accuracy_claim": true,
+  "no_deployment": true
+}

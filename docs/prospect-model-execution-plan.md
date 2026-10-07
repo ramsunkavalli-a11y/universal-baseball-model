@@ -1,5 +1,29 @@
 # Prospect model: controlling execution plan
 
+## Current checkpoint 2026-10-07 Run the assignment repair on the certified population
+
+[Full role evidence](defense-role-v16-result.md) is now constructed and reviewed
+for the entire historical feature population. Team-grain/error isolation and
+completed-versus-postponed calendar corrections retain annual exposure, exact
+known periods and conserving bounds. The source milestone is complete, not a
+new forecast or proof of lower-minor talent. The final calendar-repair receipt
+supersedes period treatment in the preserved intermediate audit.
+
+Do not start another source or weight sweep. Declare one current-assignment/
+full-repertoire comparison with fold-specific distinct-person support and sparse
+fallbacks, then fit on the same mature chronology and fixed identities. Keep
+batting, PA, twelve skill recipes, capacities and reserves fixed. Current MLB
+assignment must not erase larger minor evidence after a tiny promotion; old
+temporary roles must not override restored current use. Treat unobserved roles
+as uncertainty rather than broad arbitrary infield borrowing.
+
+Score role cells, positional runs, native defense and expanded value separately.
+Complete the fixed nineteen focal/57 peer walks plus new largest gains, harms,
+false highs/lows and ordinary cases before disposition. Then continue practical
+minor defensive talent and longer-horizon value, rather than declaring the
+defense goal achieved through assignment alone. Frozen forecasts, explorer and
+2026 selection remain unchanged; the separate Lovich batting defect remains open.
+
 ## Current checkpoint 2026-10-07 Use verified role evidence across the population
 
 [The source review](defense-role-v15-result.md) passes for all 114 bounded
