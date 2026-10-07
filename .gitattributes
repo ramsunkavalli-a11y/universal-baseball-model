@@ -964,3 +964,13 @@ scripts/*minor_count_players_v20.py -text -eol
 scripts/archive_minor_count_fits_v20.py -text -eol
 scripts/minor_count_archive_access_v20.py -text -eol
 reports/model-evidence/defense-count-reliability-v20/** -text -eol
+
+docs/defense-minor-correction-v21-*.md -text -eol
+src/universal_baseball/minor_range_correction.py -text -eol
+src/universal_baseball/nuisance_range_tuning.py -text -eol
+tests/test_minor_range_correction.py -text -eol
+tests/test_nuisance_range_tuning.py -text -eol
+tests/test_minor_range_resume.py -text -eol
+scripts/*minor_range_correction_v21*.py -text -eol
+scripts/minor_range_archive_access_v21.py -text -eol
+reports/model-evidence/defense-minor-correction-v21/** -text -eol

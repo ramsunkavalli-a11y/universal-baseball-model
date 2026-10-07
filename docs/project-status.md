@@ -2,6 +2,35 @@
 
 Updated 2026-10-07. This is the current start-here document.
 
+## Minor count correction reviewed but most defensive talent remains unresolved
+
+[The protected-baseline comparison](defense-minor-correction-v21-result.md)
+completes the source-reliability repair sequence. Primary range error falls
+2.73206 to 2.72086, but only three measurable players receive a correction;
+the paired interval ends at zero. Volpe, Rafaela and Meadows improve. Greene,
+Pratto and Rocchio worsen at the separate stress origin. No promotion or
+post-result threshold tuning follows this narrow result.
+
+The practical repair is real: unsupported forecasts keep the exact benchmark,
+and Frick's tiny 3B stint no longer generates a minus-13-run grade. Young,
+Crow-Armstrong and Edwards still expose missing talent identification. All
+13,133 forecasts, 7,519 source distributions, nested choices, fits and scores
+replay; 72 player origins/202 positions are walked, including all nine changed
+measurable forecasts and origin-selected peers. This is conditional later MLB
+quality, not a delivered-value or full-WAR upgrade.
+
+Keep the reviewed MLB-history components and sparse uncertain fallbacks. Stop
+retuning this count population. Next audit double-play measurements and older
+compatible fielding quality coverage before another learner, then qualify any
+supported skill's contribution to delivered value. Existing catcher/arm/receiving
+and position/value results remain available rather than restarted. The full
+defense goal stays active; forecasts, explorer, 2026 selection and Lovich repair
+are unchanged.
+
+Completed execution artifacts are recoverably archived. Only 7,519 verified
+duplicate local prior files were removed to free the full drive; raw data and
+earlier work are untouched. The archive access script restores exact bytes.
+
 ## Minor fielding sample weighting repaired and source test reviewed
 
 [The count-reliability comparison](defense-count-reliability-v20-result.md)

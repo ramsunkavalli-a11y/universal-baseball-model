@@ -1,5 +1,21 @@
 # Prospect model: controlling execution plan
 
+## Current checkpoint 2026 10 07 Move beyond the reviewed minor count correction
+
+[The count correction and player review](defense-minor-correction-v21-result.md)
+are complete. The sparse primary improvement does not establish a broadly useful
+minor-defense grade. Retain the actual benchmark fallback and reviewed count
+calibration, not an automatically promoted augmentation or another threshold
+sweep. Existing MLB skill recipes remain the practical research baseline.
+
+Next inspect double-play measurement and older comparable fielding targets.
+Audit raw availability, opportunity denominators, position scope and definition
+changes before estimating talent. Older source counts alone do not fix mature
+MLB-quality support. No synthetic zero labels or relaxed outcome thresholds.
+Use any supported signal in a separate unchanged-opportunity/value comparison;
+unknown prospect quality remains explicit. Other components, position movement
+and value assembly remain in scope; frozen forecasts and 2026 selection do not.
+
 ## Current checkpoint 2026 10 07 Use repaired counts in a separate talent test
 
 [The reviewed count-reliability gate](defense-count-reliability-v20-result.md)
