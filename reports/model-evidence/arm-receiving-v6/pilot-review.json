@@ -1,0 +1,115 @@
+{
+  "summaries": [
+    {
+      "kind": "arm",
+      "year": 2022,
+      "rows": 431,
+      "opportunities": 36215,
+      "source_runs": 2.09356952325168,
+      "native_discrepancies": [
+        {
+          "season": 2022,
+          "player_id": 608703,
+          "player_name": "Reynolds, Matt",
+          "kind": "arm",
+          "opportunities": 18,
+          "attempts": 3,
+          "outs": 0,
+          "safe": 3,
+          "holds": 15,
+          "runs": 0.3910860007971133,
+          "runs_per_100": 2.1727000044284073,
+          "native_runs": 0.21992066684671768,
+          "native_match": false,
+          "non_outfield_arm_runs": 0,
+          "of_outs": 189,
+          "other_outs": 1681,
+          "scope": "mixed_position_exposure",
+          "all_position_quality_valid": false,
+          "isolated_outfield_quality_valid": false,
+          "numerator_gap": 0.17116533395039563
+        }
+      ],
+      "isolated_of_rows": 212,
+      "mixed_position_rows": 125
+    },
+    {
+      "kind": "arm",
+      "year": 2025,
+      "rows": 412,
+      "opportunities": 36505,
+      "source_runs": -2.958618811452948,
+      "native_discrepancies": [
+        {
+          "season": 2025,
+          "player_id": 668723,
+          "player_name": "Vilade, Ryan",
+          "kind": "arm",
+          "opportunities": 12,
+          "attempts": 2,
+          "outs": 0,
+          "safe": 2,
+          "holds": 10,
+          "runs": 0.014712963446753012,
+          "runs_per_100": 0.12260802872294176,
+          "native_runs": 0.10542094212354788,
+          "native_match": false,
+          "non_outfield_arm_runs": 0,
+          "of_outs": 102,
+          "other_outs": 0,
+          "scope": "outfield_only_exposure",
+          "all_position_quality_valid": false,
+          "isolated_outfield_quality_valid": false,
+          "numerator_gap": -0.09070797867679486
+        }
+      ],
+      "isolated_of_rows": 208,
+      "mixed_position_rows": 112
+    },
+    {
+      "kind": "receiving",
+      "year": 2022,
+      "rows": 178,
+      "opportunities": 22009,
+      "source_runs": -12.995888458188931,
+      "native_discrepancies": [],
+      "isolated_of_rows": 0,
+      "mixed_position_rows": 0
+    },
+    {
+      "kind": "receiving",
+      "year": 2025,
+      "rows": 172,
+      "opportunities": 20399,
+      "source_runs": 3.167366641830019,
+      "native_discrepancies": [],
+      "isolated_of_rows": 0,
+      "mixed_position_rows": 0
+    }
+  ],
+  "player_walkthrough_status": "complete",
+  "rows": 1193,
+  "no_model_fit": true,
+  "no_2026_outcomes": true,
+  "arm_scope_correction": "with_team_only=0 leaves pilot numbers unchanged; does not repair two discrepancies.",
+  "disposition": "Receiving arithmetic/native scope passes. Two arm rows quarantined; mixed-position rates not isolated OF talent.",
+  "historical_extension_allowed": true,
+  "deployment_allowed": false,
+  "input_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\review_arm_receiving_pilot_v6.py": "917e5b8d741aa2cddace4a59ff29c6a9db804e6b5733f8ad9b8e5ed29e66d0fd",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-native-range-v3\\component-ledger.parquet": "e62c58b8272c69aeecca131395d00efda8655c61009580ef19ac6350dd6cfc87",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\src\\universal_baseball\\arm_receiving_source.py": "8fb6ec851acefd8c5e6e0b7decbf1215edfad7ebd42da0755449590b48733909",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\arm-receiving-v6-source-contract.md": "018cb4857582f2c743888794be8092f349e47aa5fcfde295285e414d09bc59f2",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\arm-receiving-v6-team-scope-amendment.md": "cdc918ba348b54eed22ada8227aaf87a69598e12032e953d4938425eaa81b2c1",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\arm-receiving-v6\\arm-allteams-2022.response": "50b31c8f41421c57fa2ff53464a5d97deee036125e4e054ad472938c131b3c1d",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\arm-receiving-v6\\arm-2022.response": "d0f6aa138dbf7ae221705aab72a95c9ef5011fecff9c5eb280f8192ba2370717",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\arm-receiving-v6\\arm-allteams-2025.response": "f40f7ac01e464c62a61a2135f403d268b7a3b2d1fe370accbc43d4054bcb2a63",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\arm-receiving-v6\\arm-2025.response": "f1fefb61b3cfb5d9c173af7920b3dc5978932d13dd6bc2f45a55ca5b3b7d4010",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\arm-receiving-v6\\receiving-2022.response": "53a6e3c402e4fe9dcde2b7dc219eb1fcfb7d5deefbe943bbb56db561786b920a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\arm-receiving-v6\\receiving-2025.response": "585193c622a85c5d14d1745bb1b897eb655ae90ac817d4cc01fbe5dfa451483e"
+  },
+  "output_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\arm-receiving-v6\\pilot-annual.parquet": "69f0f5a33efc41d5eab5825064f2c7176e0ff063c16901a6ce1c1d3850612fd7",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\arm-receiving-v6\\pilot-player-walkthrough.json": "548c7058973a93804638054267b72a39dff9548151e2b17e2f595beb8a1fb5d1"
+  }
+}

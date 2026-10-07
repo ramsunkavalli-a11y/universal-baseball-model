@@ -1,5 +1,22 @@
 # Prospect model: controlling execution plan
 
+## Current checkpoint 2026-10-06 Arms and receiving reviewed
+
+[The reviewed milestone](arm-receiving-v6-result.md) adds qualified research
+quality baselines, not full-WAR integration. Use the corrected official position
+scope and actual opportunities. Primary gains are uncertain; young-arm errors,
+reversals and selected mature survivors limit claims. All 20 focal/60 peer
+forecast traces and 752 current research rows replay; unknown skill is not an
+observed neutral grade. No receiving age fit, source-gap zero fill or prior sweep.
+
+The next component is defensive position/opportunity forecasting, followed by
+matched delivered defensive runs and total player value. Preserve component
+quality separately from where/how much a player fields. Inspect actual older
+MLB and minor-league position usage and source definitions before fitting; do
+not assume a roster position equals all-season innings or that non-arrival
+means poor skill. Keep sparse/minor transport and ABS scenarios visible. Do not
+change frozen forecasts or reuse 2026 results to choose the integration.
+
 ## Current checkpoint 2026-10-06 Throwing and blocking quality separated
 
 [The reviewed catcher milestone](catcher-throw-block-v5-result.md) retains one

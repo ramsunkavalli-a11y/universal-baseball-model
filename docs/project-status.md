@@ -2,6 +2,30 @@
 
 Updated 2026-10-06. This is the current start-here document.
 
+## Arm and first base receiving baselines reviewed
+
+[The completed comparison](arm-receiving-v6-result.md) uses real advancement
+opportunities and received throws, not assists or innings as skill denominators.
+Main-origin error falls 5.2% for arms and 2.9% for receiving, with uncertain
+intervals. Young-arm error worsens materially; Kwan/Nootbaar reversals and
+Walker/Alonso receiving improvement remain misses. Olson receiving and
+Castellanos arm history carry useful evidence. Twenty focal/60 peer walks finish.
+
+All 850 receiving records reconcile. Sixteen arm records remain unqualified;
+the team-scope request probe did not repair Reynolds/Vilade. Complete official
+position usage corrects 100 earlier native-only OF scope flags. Use the separate
+`arm-receiving-v6/official-scope` source/labels, not superseded pilot scope flags.
+Receiving has no mature age-model training at the primary cutoff; no learner or
+prior sweep was fitted. Current research outputs cover 470 arm/282 receiving
+players, with 184 unknown-quality fallback rows and no awarded future runs.
+
+Next finish defensive position/opportunity forecasting and a matched delivered
+defensive-run/total-value comparison. Range, framing, throwing, blocking, arms
+and receiving research baselines exist; that does not finish full WAR. Mixed
+position skill, unknown lower-minors transfer, young development and ABS value
+scenarios remain explicit. Frozen hitter forecasts, explorer and 2026 evaluation
+are unchanged. Lovich's separate batting defect remains open, not repaired here.
+
 ## Throwing and blocking talent baselines prepared
 
 [The completed catcher comparison](catcher-throw-block-v5-result.md) uses actual

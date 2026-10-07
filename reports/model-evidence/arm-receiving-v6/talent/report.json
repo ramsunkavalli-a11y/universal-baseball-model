@@ -1,0 +1,979 @@
+{
+  "reports": [
+    {
+      "kind": "arm",
+      "origin": 2016,
+      "eligible": 315,
+      "measured": 56,
+      "unknown": 259,
+      "neutral": {
+        "people": 56,
+        "rmse": 0.6875966966379039,
+        "mae": 0.5271455167700374,
+        "bias": 0.0671720609691924,
+        "predicted_runs_actual_exposure": 0.0,
+        "actual_runs": -26.282887977011345
+      },
+      "history": {
+        "people": 56,
+        "rmse": 0.6549879076710529,
+        "mae": 0.49462371626473695,
+        "bias": 0.17425752795853763,
+        "predicted_runs_actual_exposure": 46.97525654030339,
+        "actual_runs": -26.282887977011345
+      },
+      "paired_interval": {
+        "difference": -0.03260878896685104,
+        "low": -0.13752703608688882,
+        "high": 0.09826644059444797,
+        "draws": 2000,
+        "person_clustered": true
+      },
+      "groups": [
+        {
+          "group": "age<=24",
+          "neutral": {
+            "people": 18,
+            "rmse": 0.7706625516359142,
+            "mae": 0.5500949681884854,
+            "bias": -0.006646595203185435,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": -1.8053356822985411
+          },
+          "history": {
+            "people": 18,
+            "rmse": 0.655513396975734,
+            "mae": 0.498100678628438,
+            "bias": 0.08366807015447747,
+            "predicted_runs_actual_exposure": 12.343377667816842,
+            "actual_runs": -1.8053356822985411
+          }
+        },
+        {
+          "group": "age25-29",
+          "neutral": {
+            "people": 28,
+            "rmse": 0.6406300412828329,
+            "mae": 0.5083407142115075,
+            "bias": 0.019776410210891653,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": 4.922004209741606
+          },
+          "history": {
+            "people": 28,
+            "rmse": 0.6635848420343109,
+            "mae": 0.47725403331112737,
+            "bias": 0.16363369310641085,
+            "predicted_runs_actual_exposure": 30.900335905878794,
+            "actual_runs": 4.922004209741606
+          }
+        },
+        {
+          "group": "age30+",
+          "neutral": {
+            "people": 10,
+            "rmse": 0.6553037873846895,
+            "mae": 0.5384899513807146,
+            "bias": 0.3327534642027145,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": -29.39955650445441
+          },
+          "history": {
+            "people": 10,
+            "rmse": 0.6293088810510605,
+            "mae": 0.537000296280182,
+            "bias": 0.36706528959180074,
+            "predicted_runs_actual_exposure": 3.7315429666077504,
+            "actual_runs": -29.39955650445441
+          }
+        },
+        {
+          "group": "tiny",
+          "neutral": {
+            "people": 8,
+            "rmse": 0.42778571466535426,
+            "mae": 0.33284814043473276,
+            "bias": 0.263972458056887,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": -16.6274305474089
+          },
+          "history": {
+            "people": 8,
+            "rmse": 0.6159676232439997,
+            "mae": 0.529297022939258,
+            "bias": 0.42076435271509677,
+            "predicted_runs_actual_exposure": 8.688310763998608,
+            "actual_runs": -16.6274305474089
+          }
+        },
+        {
+          "group": "no_qualified_history",
+          "neutral": {
+            "people": 3,
+            "rmse": 0.5724530986810362,
+            "mae": 0.46082438881055987,
+            "bias": 0.3458780327347257,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": -9.567030415358749
+          },
+          "history": {
+            "people": 3,
+            "rmse": 0.5724530986810362,
+            "mae": 0.46082438881055987,
+            "bias": 0.3458780327347257,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": -9.567030415358749
+          }
+        }
+      ]
+    },
+    {
+      "kind": "arm",
+      "origin": 2017,
+      "eligible": 413,
+      "measured": 30,
+      "unknown": 383,
+      "neutral": {
+        "people": 30,
+        "rmse": 0.6516903207457777,
+        "mae": 0.5413051269859455,
+        "bias": 0.16001808658048153,
+        "predicted_runs_actual_exposure": 0.0,
+        "actual_runs": -31.046097477158188
+      },
+      "history": {
+        "people": 30,
+        "rmse": 0.5929292618625603,
+        "mae": 0.45344829253566493,
+        "bias": 0.27930307830445084,
+        "predicted_runs_actual_exposure": 25.38789021947921,
+        "actual_runs": -31.046097477158188
+      },
+      "paired_interval": {
+        "difference": -0.058761058883217365,
+        "low": -0.18975972209282532,
+        "high": 0.08602416352863593,
+        "draws": 2000,
+        "person_clustered": true
+      },
+      "groups": [
+        {
+          "group": "age<=24",
+          "neutral": {
+            "people": 8,
+            "rmse": 0.4325432277034075,
+            "mae": 0.3188941291674875,
+            "bias": 0.0037502731904154943,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": 0.7090887037866334
+          },
+          "history": {
+            "people": 8,
+            "rmse": 0.4103498521168857,
+            "mae": 0.29756073402803074,
+            "bias": 0.18116956491806097,
+            "predicted_runs_actual_exposure": 10.079705740810853,
+            "actual_runs": 0.7090887037866334
+          }
+        },
+        {
+          "group": "age25-29",
+          "neutral": {
+            "people": 15,
+            "rmse": 0.7694706340445819,
+            "mae": 0.6868263649472327,
+            "bias": 0.09409292618880025,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": -7.600149610136541
+          },
+          "history": {
+            "people": 15,
+            "rmse": 0.6875244428512126,
+            "mae": 0.5180762585192802,
+            "bias": 0.2871656866808129,
+            "predicted_runs_actual_exposure": 21.23299103717742,
+            "actual_runs": -7.600149610136541
+          }
+        },
+        {
+          "group": "age30+",
+          "neutral": {
+            "people": 7,
+            "rmse": 0.5810069121915874,
+            "mae": 0.48365790028999617,
+            "bias": 0.4798780741513027,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": -24.15503657080828
+          },
+          "history": {
+            "people": 7,
+            "rmse": 0.5489612769793467,
+            "mae": 0.49311700372235734,
+            "bias": 0.3746072185109777,
+            "predicted_runs_actual_exposure": -5.924806558509063,
+            "actual_runs": -24.15503657080828
+          }
+        },
+        {
+          "group": "tiny",
+          "neutral": {
+            "people": 1,
+            "rmse": 0.8129127648174114,
+            "mae": 0.8129127648174114,
+            "bias": 0.8129127648174114,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": -6.397623459113028
+          },
+          "history": {
+            "people": 1,
+            "rmse": 0.8129127648174114,
+            "mae": 0.8129127648174114,
+            "bias": 0.8129127648174114,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": -6.397623459113028
+          }
+        },
+        {
+          "group": "no_qualified_history",
+          "neutral": {
+            "people": 1,
+            "rmse": 0.8129127648174114,
+            "mae": 0.8129127648174114,
+            "bias": 0.8129127648174114,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": -6.397623459113028
+          },
+          "history": {
+            "people": 1,
+            "rmse": 0.8129127648174114,
+            "mae": 0.8129127648174114,
+            "bias": 0.8129127648174114,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": -6.397623459113028
+          }
+        }
+      ]
+    },
+    {
+      "kind": "arm",
+      "origin": 2018,
+      "eligible": 486,
+      "measured": 21,
+      "unknown": 465,
+      "neutral": {
+        "people": 21,
+        "rmse": 0.8731012144883223,
+        "mae": 0.7484731252912975,
+        "bias": -0.075342548257197,
+        "predicted_runs_actual_exposure": 0.0,
+        "actual_runs": 4.785516893860086
+      },
+      "history": {
+        "people": 21,
+        "rmse": 0.7047427792360568,
+        "mae": 0.5921763205150817,
+        "bias": 0.010202602164206865,
+        "predicted_runs_actual_exposure": 10.645705686028732,
+        "actual_runs": 4.785516893860086
+      },
+      "paired_interval": {
+        "difference": -0.16835843525226557,
+        "low": -0.2972898738443794,
+        "high": -0.0410217573708803,
+        "draws": 2000,
+        "person_clustered": true
+      },
+      "groups": [
+        {
+          "group": "age<=24",
+          "neutral": {
+            "people": 7,
+            "rmse": 1.0806104620820718,
+            "mae": 0.9321883413383854,
+            "bias": -0.4645267930826882,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": 18.519726218412057
+          },
+          "history": {
+            "people": 7,
+            "rmse": 0.9071813286461384,
+            "mae": 0.8159656203998361,
+            "bias": -0.2997614214812176,
+            "predicted_runs_actual_exposure": 7.594145749878298,
+            "actual_runs": 18.519726218412057
+          }
+        },
+        {
+          "group": "age25-29",
+          "neutral": {
+            "people": 11,
+            "rmse": 0.8038674176111731,
+            "mae": 0.7120295103002013,
+            "bias": 0.06872307879239023,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": -6.599587887029362
+          },
+          "history": {
+            "people": 11,
+            "rmse": 0.5978445396322266,
+            "mae": 0.5023113279447826,
+            "bias": 0.10127871047196502,
+            "predicted_runs_actual_exposure": 2.423550853740031,
+            "actual_runs": -6.599587887029362
+          }
+        },
+        {
+          "group": "age30+",
+          "neutral": {
+            "people": 3,
+            "rmse": 0.4919879653564146,
+            "mae": 0.45343087614877803,
+            "bias": 0.3045133904871291,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": -7.13462143752261
+          },
+          "history": {
+            "people": 3,
+            "rmse": 0.49580416565233437,
+            "mae": 0.39950626020841756,
+            "bias": 0.39950626020841756,
+            "predicted_runs_actual_exposure": 0.6280090824104022,
+            "actual_runs": -7.13462143752261
+          }
+        },
+        {
+          "group": "tiny",
+          "neutral": {
+            "people": 3,
+            "rmse": 1.0066840346752344,
+            "mae": 0.9931818373242663,
+            "bias": -0.9931818373242663,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": 19.905832214134556
+          },
+          "history": {
+            "people": 3,
+            "rmse": 0.9256633344294422,
+            "mae": 0.9005423595894237,
+            "bias": -0.9005423595894237,
+            "predicted_runs_actual_exposure": 1.950022501405916,
+            "actual_runs": 19.905832214134556
+          }
+        },
+        {
+          "group": "no_qualified_history",
+          "neutral": {
+            "people": 1,
+            "rmse": 1.2020281637610073,
+            "mae": 1.2020281637610073,
+            "bias": -1.2020281637610073,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": 7.380452925492586
+          },
+          "history": {
+            "people": 1,
+            "rmse": 1.2020281637610073,
+            "mae": 1.2020281637610073,
+            "bias": -1.2020281637610073,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": 7.380452925492586
+          }
+        }
+      ]
+    },
+    {
+      "kind": "arm",
+      "origin": 2019,
+      "eligible": 490,
+      "measured": 20,
+      "unknown": 470,
+      "neutral": {
+        "people": 20,
+        "rmse": 0.6745389361321051,
+        "mae": 0.5740075508447292,
+        "bias": 0.11683274732052258,
+        "predicted_runs_actual_exposure": 0.0,
+        "actual_runs": -16.345450963123334
+      },
+      "history": {
+        "people": 20,
+        "rmse": 0.499457394971812,
+        "mae": 0.44263958889007143,
+        "bias": 0.05471962554125818,
+        "predicted_runs_actual_exposure": -9.638228909592025,
+        "actual_runs": -16.345450963123334
+      },
+      "paired_interval": {
+        "difference": -0.17508154116029312,
+        "low": -0.3351097242924995,
+        "high": -0.025275180807252662,
+        "draws": 2000,
+        "person_clustered": true
+      },
+      "groups": [
+        {
+          "group": "age<=24",
+          "neutral": {
+            "people": 11,
+            "rmse": 0.5519334381056439,
+            "mae": 0.4688067721727043,
+            "bias": 0.005753857874693392,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": 0.20796188633174795
+          },
+          "history": {
+            "people": 11,
+            "rmse": 0.49175298958664854,
+            "mae": 0.415679508679835,
+            "bias": 0.003446180503521866,
+            "predicted_runs_actual_exposure": -1.4869117030808308,
+            "actual_runs": 0.20796188633174795
+          }
+        },
+        {
+          "group": "age25-29",
+          "neutral": {
+            "people": 7,
+            "rmse": 0.8429123664480356,
+            "mae": 0.7543882444285008,
+            "bias": 0.422107585095476,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": -20.94248170061211
+          },
+          "history": {
+            "people": 7,
+            "rmse": 0.5342867280367923,
+            "mae": 0.4954831525245634,
+            "bias": 0.14373427921562495,
+            "predicted_runs_actual_exposure": -13.0469103317707,
+            "actual_runs": -20.94248170061211
+          }
+        },
+        {
+          "group": "age30+",
+          "neutral": {
+            "people": 2,
+            "rmse": 0.6227403164631182,
+            "mae": 0.5212794059976666,
+            "bias": -0.3406952929397537,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": 4.389068851157029
+          },
+          "history": {
+            "people": 2,
+            "rmse": 0.4067472207067138,
+            "mae": 0.4059675573256499,
+            "bias": 0.025172285388524063,
+            "predicted_runs_actual_exposure": 4.895593125259506,
+            "actual_runs": 4.389068851157029
+          }
+        },
+        {
+          "group": "tiny",
+          "neutral": {
+            "people": 4,
+            "rmse": 0.5918626917923712,
+            "mae": 0.5552111493076365,
+            "bias": -0.4160652338295384,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": 11.855382184229589
+          },
+          "history": {
+            "people": 4,
+            "rmse": 0.662468510242992,
+            "mae": 0.6356060205074496,
+            "bias": -0.40847817210887843,
+            "predicted_runs_actual_exposure": -0.07682525796007336,
+            "actual_runs": 11.855382184229589
+          }
+        }
+      ]
+    },
+    {
+      "kind": "arm",
+      "origin": 2021,
+      "eligible": 465,
+      "measured": 39,
+      "unknown": 426,
+      "neutral": {
+        "people": 39,
+        "rmse": 0.6504485600286997,
+        "mae": 0.4837371094899813,
+        "bias": 0.16146997545051706,
+        "predicted_runs_actual_exposure": 0.0,
+        "actual_runs": -48.75836185067348
+      },
+      "history": {
+        "people": 39,
+        "rmse": 0.6176292962627081,
+        "mae": 0.5250909418311815,
+        "bias": 0.19162879730160848,
+        "predicted_runs_actual_exposure": 6.905865796990911,
+        "actual_runs": -48.75836185067348
+      },
+      "paired_interval": {
+        "difference": -0.032819263765991535,
+        "low": -0.14908889687185317,
+        "high": 0.08414890086871771,
+        "draws": 2000,
+        "person_clustered": true
+      },
+      "groups": [
+        {
+          "group": "age<=24",
+          "neutral": {
+            "people": 15,
+            "rmse": 0.4618638691743898,
+            "mae": 0.33145571442494476,
+            "bias": -0.06123230634535599,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": 6.940643717150692
+          },
+          "history": {
+            "people": 15,
+            "rmse": 0.5235469727485841,
+            "mae": 0.47086820788033606,
+            "bias": -0.0797541945429254,
+            "predicted_runs_actual_exposure": -5.594894059498292,
+            "actual_runs": 6.940643717150692
+          }
+        },
+        {
+          "group": "age25-29",
+          "neutral": {
+            "people": 20,
+            "rmse": 0.7824103789932614,
+            "mae": 0.6078736896581016,
+            "bias": 0.30634250920467554,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": -47.83012904007065
+          },
+          "history": {
+            "people": 20,
+            "rmse": 0.6952194819970795,
+            "mae": 0.568533750424733,
+            "bias": 0.3759464192011856,
+            "predicted_runs_actual_exposure": 12.729653628513397,
+            "actual_runs": -47.83012904007065
+          }
+        },
+        {
+          "group": "age30+",
+          "neutral": {
+            "people": 4,
+            "rmse": 0.5140905349824806,
+            "mae": 0.43410944014326713,
+            "bias": 0.272240863414248,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": -7.868876527753522
+          },
+          "history": {
+            "people": 4,
+            "rmse": 0.5241774278328627,
+            "mae": 0.5112121511790947,
+            "bias": 0.2877269072207247,
+            "predicted_runs_actual_exposure": -0.22889377202419334,
+            "actual_runs": -7.868876527753522
+          }
+        },
+        {
+          "group": "tiny",
+          "neutral": {
+            "people": 4,
+            "rmse": 0.81731676674395,
+            "mae": 0.5504451496584708,
+            "bias": 0.4794426058191766,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": -12.292428572306116
+          },
+          "history": {
+            "people": 4,
+            "rmse": 0.9870492061968765,
+            "mae": 0.7140003149221807,
+            "bias": 0.6429977710828865,
+            "predicted_runs_actual_exposure": 4.515670468227326,
+            "actual_runs": -12.292428572306116
+          }
+        },
+        {
+          "group": "no_qualified_history",
+          "neutral": {
+            "people": 1,
+            "rmse": 0.14200508767858855,
+            "mae": 0.14200508767858855,
+            "bias": -0.14200508767858855,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": 1.535074997805542
+          },
+          "history": {
+            "people": 1,
+            "rmse": 0.14200508767858855,
+            "mae": 0.14200508767858855,
+            "bias": -0.14200508767858855,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": 1.535074997805542
+          }
+        }
+      ]
+    },
+    {
+      "kind": "arm",
+      "origin": 2022,
+      "eligible": 488,
+      "measured": 47,
+      "unknown": 441,
+      "neutral": {
+        "people": 47,
+        "rmse": 0.6046415268126164,
+        "mae": 0.4605103133257654,
+        "bias": 0.08671995567379961,
+        "predicted_runs_actual_exposure": 0.0,
+        "actual_runs": -34.42277559516189
+      },
+      "history": {
+        "people": 47,
+        "rmse": 0.5731653413969746,
+        "mae": 0.45321113624320064,
+        "bias": 0.10609940819881061,
+        "predicted_runs_actual_exposure": -0.26534197019975375,
+        "actual_runs": -34.42277559516189
+      },
+      "paired_interval": {
+        "difference": -0.03147618541564179,
+        "low": -0.15142884834731218,
+        "high": 0.09673501540393882,
+        "draws": 2000,
+        "person_clustered": true
+      },
+      "groups": [
+        {
+          "group": "age<=24",
+          "neutral": {
+            "people": 20,
+            "rmse": 0.5274944109839413,
+            "mae": 0.4151784896768088,
+            "bias": 0.04207308754169191,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": -5.009728293554221
+          },
+          "history": {
+            "people": 20,
+            "rmse": 0.6346683387118677,
+            "mae": 0.491298616412679,
+            "bias": 0.10402523383223942,
+            "predicted_runs_actual_exposure": 6.50807470307393,
+            "actual_runs": -5.009728293554221
+          }
+        },
+        {
+          "group": "age25-29",
+          "neutral": {
+            "people": 23,
+            "rmse": 0.6145624901383894,
+            "mae": 0.4450387088115822,
+            "bias": 0.04724852293305271,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": -10.474067492911507
+          },
+          "history": {
+            "people": 23,
+            "rmse": 0.4957928885359018,
+            "mae": 0.3964501292939795,
+            "bias": 0.023894322055825635,
+            "predicted_runs_actual_exposure": -6.245051531981929,
+            "actual_runs": -10.474067492911507
+          }
+        },
+        {
+          "group": "age30+",
+          "neutral": {
+            "people": 4,
+            "rmse": 0.8560060380237643,
+            "mae": 0.7761311575271006,
+            "bias": 0.5369150345936329,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": -18.93897980869616
+          },
+          "history": {
+            "people": 4,
+            "rmse": 0.6577705467163235,
+            "mae": 0.5891495253538303,
+            "bias": 0.5891495253538303,
+            "predicted_runs_actual_exposure": -0.5283651412917552,
+            "actual_runs": -18.93897980869616
+          }
+        },
+        {
+          "group": "tiny",
+          "neutral": {
+            "people": 3,
+            "rmse": 0.27266229628522665,
+            "mae": 0.2538462831583757,
+            "bias": -0.002935278398662894,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": 0.6341108464430438
+          },
+          "history": {
+            "people": 3,
+            "rmse": 0.22771576064226107,
+            "mae": 0.16567807427742282,
+            "bias": -0.09110348727961583,
+            "predicted_runs_actual_exposure": -1.705038257885532,
+            "actual_runs": 0.6341108464430438
+          }
+        },
+        {
+          "group": "no_qualified_history",
+          "neutral": {
+            "people": 1,
+            "rmse": 0.38517234233555797,
+            "mae": 0.38517234233555797,
+            "bias": -0.38517234233555797,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": 3.0929339089545307
+          },
+          "history": {
+            "people": 1,
+            "rmse": 0.38517234233555797,
+            "mae": 0.38517234233555797,
+            "bias": -0.38517234233555797,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": 3.0929339089545307
+          }
+        }
+      ]
+    },
+    {
+      "kind": "receiving",
+      "origin": 2021,
+      "eligible": 180,
+      "measured": 18,
+      "unknown": 162,
+      "neutral": {
+        "people": 18,
+        "rmse": 0.3418065927459757,
+        "mae": 0.284605105187061,
+        "bias": -0.081540776541226,
+        "predicted_runs_actual_exposure": 0.0,
+        "actual_runs": 31.030676896607833
+      },
+      "history": {
+        "people": 18,
+        "rmse": 0.35668490616358434,
+        "mae": 0.2559840468407557,
+        "bias": -0.055022882702657844,
+        "predicted_runs_actual_exposure": 8.262366379829688,
+        "actual_runs": 31.030676896607833
+      },
+      "paired_interval": {
+        "difference": 0.014878313417608646,
+        "low": -0.09545707477223297,
+        "high": 0.09306130447526344,
+        "draws": 2000,
+        "person_clustered": true
+      },
+      "groups": [
+        {
+          "group": "age<=24",
+          "neutral": {
+            "people": 4,
+            "rmse": 0.2704325929674068,
+            "mae": 0.255502275183419,
+            "bias": -0.07076936323317429,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": 2.947984363743001
+          },
+          "history": {
+            "people": 4,
+            "rmse": 0.17802863597417323,
+            "mae": 0.16101628352626288,
+            "bias": -0.04133148812605174,
+            "predicted_runs_actual_exposure": 1.3594847929797553,
+            "actual_runs": 2.947984363743001
+          }
+        },
+        {
+          "group": "age25-29",
+          "neutral": {
+            "people": 8,
+            "rmse": 0.32895495937206065,
+            "mae": 0.28234169041071366,
+            "bias": -0.04837129442338566,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": 14.586891182550675
+          },
+          "history": {
+            "people": 8,
+            "rmse": 0.3774307417994615,
+            "mae": 0.29116813766529437,
+            "bias": 0.057877221483601714,
+            "predicted_runs_actual_exposure": 13.507169312683857,
+            "actual_runs": 14.586891182550675
+          }
+        },
+        {
+          "group": "age30+",
+          "neutral": {
+            "people": 6,
+            "rmse": 0.3968092260946365,
+            "mae": 0.3070248782246187,
+            "bias": -0.1329476949037143,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": 13.495801350314157
+          },
+          "history": {
+            "people": 6,
+            "rmse": 0.4130427139693538,
+            "mae": 0.27238376795103275,
+            "bias": -0.21468395133540796,
+            "predicted_runs_actual_exposure": -6.604287725833925,
+            "actual_runs": 13.495801350314157
+          }
+        },
+        {
+          "group": "tiny",
+          "neutral": {
+            "people": 2,
+            "rmse": 0.2261581642234264,
+            "mae": 0.2103674497131513,
+            "bias": -0.2103674497131513,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": 5.385421928965076
+          },
+          "history": {
+            "people": 2,
+            "rmse": 0.22026093000393318,
+            "mae": 0.2023477716523146,
+            "bias": -0.2023477716523146,
+            "predicted_runs_actual_exposure": 0.18664833134685344,
+            "actual_runs": 5.385421928965076
+          }
+        }
+      ]
+    },
+    {
+      "kind": "receiving",
+      "origin": 2022,
+      "eligible": 246,
+      "measured": 18,
+      "unknown": 228,
+      "neutral": {
+        "people": 18,
+        "rmse": 0.36997880544140677,
+        "mae": 0.31090010543931634,
+        "bias": -0.1538718221037134,
+        "predicted_runs_actual_exposure": 0.0,
+        "actual_runs": 44.58263145698087
+      },
+      "history": {
+        "people": 18,
+        "rmse": 0.3591786642802579,
+        "mae": 0.2899652711604019,
+        "bias": -0.0883076159972365,
+        "predicted_runs_actual_exposure": 19.151196166217986,
+        "actual_runs": 44.58263145698087
+      },
+      "paired_interval": {
+        "difference": -0.010800141161148857,
+        "low": -0.09517188184051939,
+        "high": 0.06461329901680744,
+        "draws": 2000,
+        "person_clustered": true
+      },
+      "groups": [
+        {
+          "group": "age<=24",
+          "neutral": {
+            "people": 4,
+            "rmse": 0.29305938703827905,
+            "mae": 0.24949326110017403,
+            "bias": 0.05536055517504786,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": -4.382382699392815
+          },
+          "history": {
+            "people": 4,
+            "rmse": 0.23722076922102123,
+            "mae": 0.2068839092068818,
+            "bias": 0.04119753230318233,
+            "predicted_runs_actual_exposure": -0.7879344978127677,
+            "actual_runs": -4.382382699392815
+          }
+        },
+        {
+          "group": "age25-29",
+          "neutral": {
+            "people": 9,
+            "rmse": 0.3702878963620052,
+            "mae": 0.2945796182513568,
+            "bias": -0.20148380121167386,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": 27.691120159384283
+          },
+          "history": {
+            "people": 9,
+            "rmse": 0.3848545311767441,
+            "mae": 0.29336683981302475,
+            "bias": -0.04344233129123506,
+            "predicted_runs_actual_exposure": 22.15028083892371,
+            "actual_runs": 27.691120159384283
+          }
+        },
+        {
+          "group": "age30+",
+          "neutral": {
+            "people": 5,
+            "rmse": 0.4210378471136549,
+            "mae": 0.38940245784895744,
+            "bias": -0.23555616153239364,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": 21.273893996989404
+          },
+          "history": {
+            "people": 5,
+            "rmse": 0.3909106718497228,
+            "mae": 0.3503075371484967,
+            "bias": -0.27266924710837415,
+            "predicted_runs_actual_exposure": -2.2111501748929543,
+            "actual_runs": 21.273893996989404
+          }
+        },
+        {
+          "group": "tiny",
+          "neutral": {
+            "people": 1,
+            "rmse": 0.7151752110690286,
+            "mae": 0.7151752110690286,
+            "bias": -0.7151752110690286,
+            "predicted_runs_actual_exposure": 0.0,
+            "actual_runs": 7.695285271102748
+          },
+          "history": {
+            "people": 1,
+            "rmse": 0.6738537687018943,
+            "mae": 0.6738537687018943,
+            "bias": -0.6738537687018943,
+            "predicted_runs_actual_exposure": 0.4446187198703656,
+            "actual_runs": 7.695285271102748
+          }
+        }
+      ]
+    }
+  ],
+  "no_model_fit": true,
+  "no_2026_outcomes": true,
+  "player_walkthrough_status": "pending",
+  "disposition": "provisional_until_player_review",
+  "deployment_allowed": false,
+  "input_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\evaluate_arm_receiving_talent_v6.py": "08cea9c1bf36c3d5a4a3c2d949145fb7fa9025856ca08a9e5abb69cba9b3c887",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\src\\universal_baseball\\arm_receiving_baseline.py": "114334fda933075d4941fa8c85c056ee0ed852a6f3a770fffd7af63048d3fe6f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\arm-receiving-v6-talent-contract.md": "9b17cf3787ed8fe715599c2944b498c5a78794b86ef6df87a4eed35402d1cc4b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\arm-receiving-v6\\official-scope\\annual.parquet": "dd445529f2f7bfdd11873cf55173db2fa0a0814e46eb4850350996e1c9d30ca1",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\arm-receiving-v6\\official-scope\\talent-labels.parquet": "e3f9934f94ce0fec4552e608bb85185f68cb90b1290ded3ce4a5c1376fb2d586",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\arm-receiving-v6\\official-scope\\talent-support-review.json": "2a73d1cb42b9a00cda9bed961f951bc6796eebb20228dd207c23974349d339a3"
+  },
+  "output_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\arm-receiving-v6\\talent\\predictions.parquet": "5065a8523f4aae4b63e40369c351c203d8b51dbe160c401c4b78f44549aef28a"
+  }
+}
