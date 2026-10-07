@@ -2,6 +2,33 @@
 
 Updated 2026-10-07. This is the current start-here document.
 
+## Outfield history correction improves measured MLB skill but not the whole model
+
+[The fixed comparison and full player review](defense-reference-history-v26-result.md)
+are complete. Center each annual OF observation before shrinking toward the
+position-average prior; keep intrinsic skill separate and unknown talent explicit.
+Main later-MLB quality error falls 2.48650→2.28984 runs per 500 innings across
+116 measured people, about 7.9%; the paired improvement interval excludes zero.
+Delivered-defense error improves about 1.6% in all three years. Expanded player
+value improves only 0.17%, with uncertainty including no gain. This is a useful
+research baseline, not a full defense or WAR deployment.
+
+All sixteen groups and 64 player calculations are reviewed. Trout and
+Castellanos improve; Adell worsens. Siani is still missed as a strong defender,
+Witt's development remains missed, and Hernández exposes a role/skill failure.
+Unknown minor CF priors no longer receive an artificial penalty, but this does
+not identify their talent. Corrected lower-minors and inactive delivery results
+worsen slightly. Complete-subset defensive totals remain too optimistic.
+
+Channel decomposition locates significant unchanged first-base and framing
+misses. Next reconcile those components' native reference/prior and opportunity
+definitions without forcing totals to zero, then return to older-quality
+compatibility and supported minor-to-MLB talent. No new weight tournament.
+All scores/intervals and 428 raw minor splits/582 annual position records replay;
+nine unit tests pass. Disk-full outputs were preserved and the unchanged replay
+completed. Full goal, development, minor transport and integration remain open.
+Frozen forecasts, explorer, 2026 selection and Lovich repair are unchanged.
+
 ## Defensive value references are reconciled and the sparse prior needs repair
 
 [The accounting and player review](defense-reference-v25-result.md) confirms

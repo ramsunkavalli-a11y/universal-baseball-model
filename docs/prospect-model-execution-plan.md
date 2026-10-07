@@ -1,5 +1,29 @@
 # Prospect model: controlling execution plan
 
+## Current checkpoint 2026 10 07 Retain the corrected outfield research baseline
+
+[The completed comparison and player review](defense-reference-history-v26-result.md)
+support centering OF observations before shrinkage: about 7.9% less measured
+later-MLB quality error and 1.6% less delivered-defense error. Keep it as a
+research baseline with separate intrinsic skill and position-relative value.
+Do not claim minor talent, improved development, full WAR or deployment.
+Expanded value improves only 0.17% and remains uncertain; lower-minors delivery
+worsens slightly and cohort totals remain too optimistic.
+
+Next use the saved channel decomposition to reconcile unchanged first-base and
+catcher component references, priors and opportunity definitions. Full native
+1B range has a negative aggregate baseline, while the history rule shrinks toward
+raw zero; framing totals also overshoot. Determine what is a reference mismatch,
+selection/exposure problem or genuine forecast failure before another learner.
+Do not automatically center every infield position, impose a future league quota,
+or tune a prior to the exposed test names. Preserve existing targets and append
+any correction under a separate contract and matched player walkthrough.
+
+Then return to compatible older MLB quality and a supported contextual
+minor-to-MLB talent test, addressing development and cross-position paths.
+The broad defense goal stays active. Frozen forecasts/explorer, 2026 selection
+and the separate Lovich repair remain unchanged.
+
 ## Current checkpoint 2026 10 07 Repair the defensive reference before integration
 
 [The complete accounting/player audit](defense-reference-v25-result.md) confirms
