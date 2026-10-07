@@ -2,6 +2,28 @@
 
 Updated 2026-10-07. This is the current start-here document.
 
+## Older defensive quality recovered and reference differences identified
+
+[The older source and player review](defense-older-quality-v24-result.md) recovers
+2009–2021 range/error measurements. There are 14,566 certified player-position
+seasons. Potential earlier prospect support roughly doubles, but old conversion
+and native range remain separate: no bridge, new labels or accuracy claim.
+All 231,156 existing range windows and 15,010 support cells replay; 36 player
+origins and all nine origin-selected peer groups are reviewed.
+
+The important new finding is a different outfield reference point. Native CF
+credit is positive on average and LF credit negative; older position-relative
+credit is near zero. FanGraphs centers outfield range before adding positional
+value. Audit that accounting in our existing assembly next, keeping intrinsic
+range skill separate from within-position value. Only afterward choose a
+measurement bridge or a separate older-quality test. Do not silently splice
+metrics or reopen the closed count/DP recipes.
+
+Modern DSL/complex training remains unsupported at the audited cutoffs. Rojas's
+early five-year window still lacks enough exposure; unknown is not poor talent.
+The defense goal remains active. Frozen forecasts, explorer, 2026 selection and
+the separate Lovich batting defect are unchanged.
+
 ## Double play history does not justify an added skill forecast
 
 [The fixed comparison and player review](defense-double-play-talent-v23-result.md)

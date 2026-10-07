@@ -1,5 +1,27 @@
 # Prospect model: controlling execution plan
 
+## Current checkpoint 2026 10 07 Reconcile defensive skill and positional value
+
+[The older quality audit](defense-older-quality-v24-result.md) is reviewed and
+provides materially more potential prospect follow-up. It does not authorize
+joined skill labels. Native outfield range and UZR conversion use different
+position references, confirmed by full-population sums and player paths.
+
+Next audit the existing twelve-channel value assembly against that difference:
+trace actual range credit and positional adjustment, identify where intrinsic
+skill becomes within-position contribution, and qualify any apparent double
+credit. Preserve raw talent output, role/exposure forecasts and past results.
+Use a separate contract before any corrected value comparison or fitted bridge;
+do not select a definition because it lowers an exposed score. Then choose a
+measurement bridge or explicitly separate older-quality validation to test
+contextual minor evidence, with actual mature held-player support.
+
+Modern lower-rookie transfer and longer-path talent still need support; the
+combined historical rookie source is not modern DSL. Keep reviewed practical
+component fallbacks and continue toward matched delivered-value integration.
+The broad defense goal remains active; forecasts, explorer, 2026 selection and
+the unrelated Lovich batting repair remain unchanged.
+
 ## Current checkpoint 2026 10 07 Keep double plays neutral and address longer path support
 
 [The fixed DP comparison](defense-double-play-talent-v23-result.md) is reviewed
