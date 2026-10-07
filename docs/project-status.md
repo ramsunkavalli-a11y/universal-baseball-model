@@ -4,6 +4,17 @@ Updated 2026-10-06. This is the current start-here document.
 
 ## Active defense-layer goal: a useful MLB range baseline
 
+[The catcher source milestone](catcher-native-opportunity-v3-result.md) also
+recovers omitted backup/limited-sample catchers. The source ignored `min=1` for
+pitch eligibility and retained its qualified cutoff; explicit `minPitches=1`
+recovers 878 catcher-seasons/252 people in 2018–2025. In 2025 alone, 20 formerly
+omitted catchers meet the old 1,000-pitch local threshold, including Gary Sánchez.
+Modern 2016–2017 framing values are all-zero placeholders, now quarantined in
+the corrected view rather than counted as measured average talent. Older
+qualified-catcher evidence stays narrow; any old reuse of the placeholders
+requires a measurement correction. Source/player reviews are complete. No new
+catcher learner or 2026 outcome query occurred.
+
 [The new range milestone](defense-native-range-v3-result.md) tests trustworthy
 native defensive history in a broader MLB population. In the ordinary 2022
 origin, error is 2.707 runs/500 innings for neutral defense, 2.393 for shrunk

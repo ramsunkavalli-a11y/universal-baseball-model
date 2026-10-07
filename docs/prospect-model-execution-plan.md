@@ -9,6 +9,13 @@ chronological reliability/age model and explicit player/support limitations.
 It recovers all native components separately; it does not integrate full WAR or
 authorize deployment. Frozen forecasts and explorer 8810 remain unchanged.
 
+[The catcher source checkpoint](catcher-native-opportunity-v3-result.md) is also
+complete: corrected all-pitch coverage for 2018–2025, limited-sample player/peer
+traces, and quarantine of modern 2016–2017 all-zero framing placeholders. Do not
+reuse those zeros as ability or assume generic `min=1` supplies all catchers.
+Next framing step is a locked native-rate future-MLB baseline/window-support
+test; older qualified-only results are not an all-catcher certificate.
+
 Next: use source-known other-position history coherently and audit native catcher
 pitch/steal opportunities; qualify arms/receiving before contribution integration.
 Do not tune to Jankowski, treat OF ability as automatic SS ability, reuse 2026,
