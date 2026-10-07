@@ -1,5 +1,27 @@
 # Prospect model: controlling execution plan
 
+## Current checkpoint 2026 10 07 Repair the defensive reference before integration
+
+[The complete accounting/player audit](defense-reference-v25-result.md) confirms
+the OF skill/value reference mismatch and exposes the sparse-prior issue.
+Preserve intrinsic talent, all saved forecasts, measured-null outcomes and
+existing opportunity arms. Moving a baseline between columns is not improvement.
+
+Next contract one fixed position-relative history baseline: center annual MLB
+evidence with origin-known, held-person references before the existing shrinkage;
+unknown talent retains an explicit position-neutral prior mean, not a grade.
+Keep neutral-position and old intrinsic benchmarks. Evaluate later pooled MLB
+quality separately from delivered defense/common value on an aligned target and
+unchanged opportunity. Review specific CF/corner movers and sparse peers before
+disposition. Do not select a reference by exposed RMSE, tune recency/prior weights,
+rerun closed DP/count recipes or pretend this fixes infield development.
+
+Then return to the older-quality bridge or separate older-quality validation
+and contextual minor evidence, with mature held-player support. Reviewed catcher,
+arm and receiving baselines remain useful but separately qualified. The entire
+defense goal is still active; frozen forecasts/explorer and 2026 selection stay
+unchanged. Lovich's batting defect remains a separate open repair.
+
 ## Current checkpoint 2026 10 07 Reconcile defensive skill and positional value
 
 [The older quality audit](defense-older-quality-v24-result.md) is reviewed and

@@ -2,6 +2,29 @@
 
 Updated 2026-10-07. This is the current start-here document.
 
+## Defensive value references are reconciled and the sparse prior needs repair
+
+[The accounting and player review](defense-reference-v25-result.md) confirms
+raw native OF range was combined with a position-relative schedule in the
+custom research target. All 111,888 saved assemblies replay unchanged. Individual
+offsets matter even when CF and corner totals largely cancel: Trout carries
++3.457 projected reference runs and Happ −1.924. Neither is an accuracy gain.
+
+Keep intrinsic talent separate from position-relative value. Naively subtracting
+the reference after raw-zero shrinkage is not a completed forecast repair:
+Hernández's 24 weighted LF outs would look +0.914 despite less than 1% reliability.
+Rafaela has unknown origin MLB range, not below-average measured CF skill.
+Next center historical evidence before shrinking to a position-neutral prior,
+under one fixed comparison with unchanged opportunity and aligned value target.
+No prior/recency tournament or claim this fixes Witt's young-development miss.
+
+Thirty annual and 45 held-person cutoff references, all eight peer groups,
+32 player records and 147 raw minor splits independently replay; 13 unit checks
+pass. No new fit or predictive approval. The older-source checkpoint is committed
+and pushed as `2a56a092`; its useful added coverage does not authorize old/native
+splicing. Full defense goal, lower-minors transport and value integration remain
+open. Frozen forecasts, explorer, 2026 selection and Lovich repair are unchanged.
+
 ## Older defensive quality recovered and reference differences identified
 
 [The older source and player review](defense-older-quality-v24-result.md) recovers
