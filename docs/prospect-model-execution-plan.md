@@ -1,5 +1,26 @@
 # Prospect model: controlling execution plan
 
+## Current checkpoint 2026-10-07 Repair role representation rather than retuning job caps
+
+[The completed comparison](defense-jobs-v14-result.md) is fully traced and replayed.
+League caps reduce overallocated SS jobs and mean positional bias, but do not
+improve individual value accuracy. Specific defects are unobserved infield use
+from broad DH fallback, true 1B versus multi-position pooling, and older/temporary
+roles displacing current assignments. The existing defensive quality recipes stay
+fixed and useful; the candidate is not promoted. Do not repeat the broad-group,
+prior-strength or allocation algorithm comparison to seek a microscopic win.
+
+Next audit already available game/position data for recent role evidence,
+complete known repertoire, and missed-year/temporary assignments. Current field
+assignment is not the same object as multi-year defensive ability. Check Ohtani,
+Witt, Buxton, Schwarber, Eldridge and the failed/ordinary cases before fitting a
+single coherent repair. Identify cutoff-known public assignment plans separately;
+these may diagnose omissions but cannot be retroactively added to frozen runs.
+Then contract the fair corrected-role comparison, retaining all fixed identities,
+quality, PA, reserves and player walkthroughs. Unknown lower-minor talent is still
+unknown. Frozen forecasts, explorer and 2026 selection remain unchanged; the
+defense goal and the separate Lovich batting defect remain open.
+
 ## Current checkpoint 2026-10-07 Use corrected DH measurements in the job budget
 
 [The completed source review](defense-budget-v13-result.md) separates overlapping

@@ -900,3 +900,13 @@ scripts/review_defense_budget_v13.py -text -eol
 scripts/finalize_defense_budget_v13.py -text -eol
 tests/test_defense_budget_source.py -text -eol
 reports/model-evidence/defense-budget-v13/** -text -eol
+
+docs/defense-jobs-v14-*.md -text -eol
+src/universal_baseball/defense_jobs.py -text -eol
+scripts/run_defense_jobs_v14.py -text -eol
+scripts/verify_defense_jobs_v14.py -text -eol
+scripts/review_defense_jobs_v14.py -text -eol
+scripts/diagnose_defense_jobs_v14.py -text -eol
+scripts/finalize_defense_jobs_v14.py -text -eol
+tests/test_defense_jobs.py -text -eol
+reports/model-evidence/defense-jobs-v14/** -text -eol

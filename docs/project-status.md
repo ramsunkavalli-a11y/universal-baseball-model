@@ -2,6 +2,33 @@
 
 Updated 2026-10-07. This is the current start-here document.
 
+## League job caps reviewed but individual role repair is still needed
+
+[The joint role comparison](defense-jobs-v14-result.md) holds batting, PA and all
+twelve quality recipes fixed, with corrected DH measurements in both arms.
+Physical caps reduce excess SS time and positional-credit bias, but expanded-value
+RMSE is essentially unchanged, 0.433262 to 0.433346. Position and native-defense
+errors deteriorate slightly. This is not a better individual forecast or a
+rejection of the already useful skill histories.
+
+Nineteen focal/57 peer walks expose specific representation defects: broad DH
+fallback gives Ohtani unobserved infield time; primary 1B pooling imports Bride's
+and Aranda's real multi-position jobs into Eldridge; older assignments displace
+Witt's current SS role and Buxton's restored CF role. Schwarber remains a missed
+DH assignment. Carter and the apparently ordinary Abrams show why final-value
+error cancellation cannot certify components. All group/seed/cap/native/score
+calculations and paired intervals replay; 85 focused tests pass. Sparse or unseen
+profiles and native partial outcomes remain visible.
+
+Do not promote or retune this allocator. Keep corrected measurements and capacity
+checks. Next audit existing game/position history for current assignment versus
+older/temporary use and full known repertoires before one coherent role repair.
+Dated assignment reports must retain their cutoffs, not become future-informed
+player overrides. No broad role-bin or algorithm tournament. Practical minor
+talent and longer-horizon use remain open. Frozen forecasts, explorer and 2026
+selection are unchanged; the separate Lovich batting repair remains open. The
+defense goal remains active.
+
 ## DH source repaired and individual job allocation remains the next task
 
 [The job inventory review](defense-budget-v13-result.md) certifies 65 simultaneous
