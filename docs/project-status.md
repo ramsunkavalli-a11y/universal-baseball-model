@@ -2,6 +2,35 @@
 
 Updated 2026-10-07. This is the current start-here document.
 
+## Position replacement reviewed and not promoted
+
+[The completed assignment comparison](defense-assignments-v17-result.md)
+retains all 12,432 forecasts and uses certified current, late and older role
+evidence. Batting, playing time and twelve defensive-quality recipes are fixed.
+Combined custom-value error changes 0.433346 to 0.432927, only 0.10% better;
+the paired interval includes no improvement. Defensive-run error worsens 0.89%.
+Conditional role shares improve, but individual exposure and baseball checks do
+not. Twenty-three focal cases and 69 peer traces are reviewed, including all
+nineteen original focal cases and 57 original peers. Arithmetic, detailed
+support counts, margins, scores and interval replays pass; approval is separate.
+
+The model spreads current specialists too broadly. Witt loses established SS
+time; Eldridge's older RF record competes too strongly with current 1B/DH.
+Rice's combined-value gain includes an incorrect positive catcher position
+adjustment offsetting low batting/workload. Rafaela's move toward CF helps, but
+does not validate those harms. Across origin-known current-role specialists,
+candidate same-role share is about 79% versus actual 84–88%. Sparse joint
+profiles remain 11,364/12,432, with 1,620 unseen-group own-role fallbacks.
+
+Retain verified source representation and existing practical quality baselines,
+not this assignment replacement. Next audit the older captured minor fielding
+counts against mature pooled later-MLB quality and reconcile the older
+traditional-stat screen. Position-usage tables alone do not contain defensive
+quality counts. No new role-weight sweep or adjusted ground-ball-share retry.
+Lower-minor talent and longer-horizon defense/value remain unfinished. Frozen
+forecasts, explorer and 2026 selection are unchanged; Lovich's batting defect
+remains open. The full defense goal stays active.
+
 ## Full population role evidence is ready for one assignment repair
 
 [The population source review](defense-role-v16-result.md) verifies all 23,412

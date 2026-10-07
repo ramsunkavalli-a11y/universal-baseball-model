@@ -1,5 +1,36 @@
 # Prospect model: controlling execution plan
 
+## Current checkpoint 2026 10 07 Identify minor defensive talent next
+
+[The assignment comparison is reviewed](defense-assignments-v17-result.md), not
+promoted. Its tiny uncertain combined-value gain is accompanied by worse
+delivered defense and overdiffuse current specialist assignments. Keep certified
+current/late/older source representation and separate native quality baselines.
+Do not repeat a role-weight or algorithm sweep on these exposed player cases.
+
+Next recover traditional fielding count coverage from the already certified
+older raw captures. The position-usage parquet supplies innings and starts,
+not putouts, assists, errors, steal attempts or blocking numerators. Inventory
+actual fields, level context, source completeness and opportunities before
+assuming that the long historical usage file supplies quality evidence.
+Reconcile the prior traditional-stat screen: adjacent-year repeatability and
+next-year same-position survivors are not long-run minor-talent validation.
+
+Lock a source/support audit using fixed 3- and 5-calendar-year future MLB
+position-specific native quality windows, ending by 2025. Keep all origin
+players and unknown outcomes; count distinct mature held-person training by
+level, age, position and origin sample. Choose one component from usable joint
+support, not favorable outcomes; no fit before source/player review. Do not
+reopen adjusted ground-ball shares, synthesize the canceled 2020 minor season,
+or treat future absence as measured poor defense. Keep current role, repertoire
+and unknown quality distinct. If source/target support cannot support lower
+minors, state the precise limitation and retain an uncertain practical fallback.
+
+Then test that supported talent signal against transparent age/position/history
+baselines, with all-player delivery and longer-horizon value as separate checks.
+No frozen forecast/explorer changes or 2026 selection. The broader defense goal
+and separate Lovich batting defect remain open.
+
 ## Current checkpoint 2026-10-07 Run the assignment repair on the certified population
 
 [Full role evidence](defense-role-v16-result.md) is now constructed and reviewed
