@@ -2,6 +2,30 @@
 
 Updated 2026-10-06. This is the current start-here document.
 
+## Related position range evidence reviewed
+
+[The completed related-position comparison](defense-position-transfer-v4-result.md)
+keeps every native-range origin and label, using shrunk within-family history.
+Ordinary-origin error improves 2.291 to 2.228 runs/500 innings, but the paired
+95% interval includes no gain. Jankowski and Varsho improve; Mateo's positive
+SS history overstates his 2B quality, and Witt's young development remains missed.
+Ten focal/30 peer calculations and all 13,402 forecasts replay independently.
+Keep the practical range baseline and qualified transfer research, not an
+automatic promoted upgrade. Small-target bias and sparse detailed profiles remain.
+
+Next within the defense goal: native catcher talent/support, other component
+baselines, position exposure and matched value integration. Do not repeat the
+position-feature/shrinkage comparison or reuse 2026 to settle it. The selected
+hitter forecast and explorer are unchanged.
+
+Separate batting issue from the user's explorer review: Jackson Lovich's 26
+Single-A PA supplied +1.1445 of his +1.1692 conditional hitting estimate. A separate
+reliability input did not shrink the translated event signal. The coarser
+28-person support profile contained no players with fewer than 50 translated PA.
+This is an open small-sample/support defect, not repaired by a near-zero expected
+PA or by these defense changes. Preserve it for a contracted batting repair;
+no frozen forecast alteration or new batting fit follows from this diagnosis.
+
 ## Active defense-layer goal: a useful MLB range baseline
 
 [The catcher source milestone](catcher-native-opportunity-v3-result.md) also

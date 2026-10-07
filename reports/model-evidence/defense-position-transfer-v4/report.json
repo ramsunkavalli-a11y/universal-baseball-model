@@ -1,0 +1,1026 @@
+{
+  "disposition": "provisional until player walkthrough",
+  "player_walkthrough_status": "pending",
+  "primary": {
+    "scores": {
+      "neutral": {
+        "rows": 317,
+        "people": 261,
+        "rmse": 2.707351410019356,
+        "mae": 2.156960672862131,
+        "bias": 0.10253052355229436,
+        "oracle_exposure_actual_runs": 180.80845841991578,
+        "oracle_exposure_predicted_runs": 0.0
+      },
+      "history": {
+        "rows": 317,
+        "people": 261,
+        "rmse": 2.3927680005952716,
+        "mae": 1.8674841136837765,
+        "bias": 0.328530241770606,
+        "oracle_exposure_actual_runs": 180.80845841991578,
+        "oracle_exposure_predicted_runs": 265.50128371562886
+      },
+      "calibrated": {
+        "rows": 317,
+        "people": 261,
+        "rmse": 2.2914800960197406,
+        "mae": 1.7865088850492234,
+        "bias": 0.13205243372897754,
+        "oracle_exposure_actual_runs": 180.80845841991578,
+        "oracle_exposure_predicted_runs": 104.64787863128969
+      },
+      "transfer": {
+        "rows": 317,
+        "people": 261,
+        "rmse": 2.227960271383364,
+        "mae": 1.7343106983930991,
+        "bias": 0.22856740336294676,
+        "oracle_exposure_actual_runs": 180.80845841991578,
+        "oracle_exposure_predicted_runs": 220.8157070350738
+      }
+    },
+    "transfer_minus_calibrated": {
+      "left": "transfer",
+      "right": "calibrated",
+      "difference": -0.06351982463637684,
+      "interval_95": [
+        -0.1352285625121747,
+        0.004050423002002941
+      ],
+      "draws": 2000,
+      "seed": 313
+    },
+    "sparse_transfer_rows": 313,
+    "sparse_own_rows": 221
+  },
+  "by_origin": {
+    "2016": {
+      "scores": {
+        "neutral": {
+          "rows": 302,
+          "people": 258,
+          "rmse": 2.7759948151273734,
+          "mae": 2.121763264337949,
+          "bias": -0.05861190588629088,
+          "oracle_exposure_actual_runs": 535.9825620151967,
+          "oracle_exposure_predicted_runs": 0.0
+        },
+        "history": {
+          "rows": 302,
+          "people": 258,
+          "rmse": 2.4682781893462895,
+          "mae": 1.892572647836619,
+          "bias": 0.11089420925251453,
+          "oracle_exposure_actual_runs": 535.9825620151967,
+          "oracle_exposure_predicted_runs": 354.3504456913322
+        },
+        "calibrated": {
+          "rows": 302,
+          "people": 258,
+          "rmse": 2.4682781893462895,
+          "mae": 1.892572647836619,
+          "bias": 0.11089420925251453,
+          "oracle_exposure_actual_runs": 535.9825620151967,
+          "oracle_exposure_predicted_runs": 354.3504456913322
+        },
+        "transfer": {
+          "rows": 302,
+          "people": 258,
+          "rmse": 2.4682781893462895,
+          "mae": 1.892572647836619,
+          "bias": 0.11089420925251453,
+          "oracle_exposure_actual_runs": 535.9825620151967,
+          "oracle_exposure_predicted_runs": 354.3504456913322
+        }
+      },
+      "transfer_minus_calibrated": {
+        "left": "transfer",
+        "right": "calibrated",
+        "difference": 0.0,
+        "interval_95": [
+          0.0,
+          0.0
+        ],
+        "draws": 2000,
+        "seed": 313
+      },
+      "sparse_transfer_rows": 302,
+      "sparse_own_rows": 302
+    },
+    "2017": {
+      "scores": {
+        "neutral": {
+          "rows": 297,
+          "people": 260,
+          "rmse": 2.9219799485768903,
+          "mae": 2.213810449654069,
+          "bias": -0.20543854306305923,
+          "oracle_exposure_actual_runs": 420.38035072375527,
+          "oracle_exposure_predicted_runs": 0.0
+        },
+        "history": {
+          "rows": 297,
+          "people": 260,
+          "rmse": 2.4695939002195146,
+          "mae": 1.8478035298738422,
+          "bias": 0.03095213685677205,
+          "oracle_exposure_actual_runs": 420.38035072375527,
+          "oracle_exposure_predicted_runs": 309.3482566036819
+        },
+        "calibrated": {
+          "rows": 297,
+          "people": 260,
+          "rmse": 2.4695939002195146,
+          "mae": 1.8478035298738422,
+          "bias": 0.03095213685677205,
+          "oracle_exposure_actual_runs": 420.38035072375527,
+          "oracle_exposure_predicted_runs": 309.3482566036819
+        },
+        "transfer": {
+          "rows": 297,
+          "people": 260,
+          "rmse": 2.4695939002195146,
+          "mae": 1.8478035298738422,
+          "bias": 0.03095213685677205,
+          "oracle_exposure_actual_runs": 420.38035072375527,
+          "oracle_exposure_predicted_runs": 309.3482566036819
+        }
+      },
+      "transfer_minus_calibrated": {
+        "left": "transfer",
+        "right": "calibrated",
+        "difference": 0.0,
+        "interval_95": [
+          0.0,
+          0.0
+        ],
+        "draws": 2000,
+        "seed": 313
+      },
+      "sparse_transfer_rows": 297,
+      "sparse_own_rows": 297
+    },
+    "2018": {
+      "scores": {
+        "neutral": {
+          "rows": 284,
+          "people": 244,
+          "rmse": 2.794978809047533,
+          "mae": 2.1162214735592446,
+          "bias": -0.25833557571399285,
+          "oracle_exposure_actual_runs": 328.62658609671195,
+          "oracle_exposure_predicted_runs": 0.0
+        },
+        "history": {
+          "rows": 284,
+          "people": 244,
+          "rmse": 2.3519543460373367,
+          "mae": 1.799728278416885,
+          "bias": 0.04773118648532787,
+          "oracle_exposure_actual_runs": 328.62658609671195,
+          "oracle_exposure_predicted_runs": 257.3204725107664
+        },
+        "calibrated": {
+          "rows": 284,
+          "people": 244,
+          "rmse": 2.3519543460373367,
+          "mae": 1.799728278416885,
+          "bias": 0.04773118648532787,
+          "oracle_exposure_actual_runs": 328.62658609671195,
+          "oracle_exposure_predicted_runs": 257.3204725107664
+        },
+        "transfer": {
+          "rows": 284,
+          "people": 244,
+          "rmse": 2.3519543460373367,
+          "mae": 1.799728278416885,
+          "bias": 0.04773118648532787,
+          "oracle_exposure_actual_runs": 328.62658609671195,
+          "oracle_exposure_predicted_runs": 257.3204725107664
+        }
+      },
+      "transfer_minus_calibrated": {
+        "left": "transfer",
+        "right": "calibrated",
+        "difference": 0.0,
+        "interval_95": [
+          0.0,
+          0.0
+        ],
+        "draws": 2000,
+        "seed": 313
+      },
+      "sparse_transfer_rows": 284,
+      "sparse_own_rows": 284
+    },
+    "2019": {
+      "scores": {
+        "neutral": {
+          "rows": 277,
+          "people": 240,
+          "rmse": 2.4486507642745106,
+          "mae": 1.8858556134054558,
+          "bias": -0.10290999317206924,
+          "oracle_exposure_actual_runs": 223.67681513544446,
+          "oracle_exposure_predicted_runs": 0.0
+        },
+        "history": {
+          "rows": 277,
+          "people": 240,
+          "rmse": 1.9999836721586204,
+          "mae": 1.5490571027237185,
+          "bias": 0.1467251021554725,
+          "oracle_exposure_actual_runs": 223.67681513544446,
+          "oracle_exposure_predicted_runs": 255.57837491723816
+        },
+        "calibrated": {
+          "rows": 277,
+          "people": 240,
+          "rmse": 1.9999836721586204,
+          "mae": 1.5490571027237185,
+          "bias": 0.1467251021554725,
+          "oracle_exposure_actual_runs": 223.67681513544446,
+          "oracle_exposure_predicted_runs": 255.57837491723816
+        },
+        "transfer": {
+          "rows": 277,
+          "people": 240,
+          "rmse": 1.9999836721586204,
+          "mae": 1.5490571027237185,
+          "bias": 0.1467251021554725,
+          "oracle_exposure_actual_runs": 223.67681513544446,
+          "oracle_exposure_predicted_runs": 255.57837491723816
+        }
+      },
+      "transfer_minus_calibrated": {
+        "left": "transfer",
+        "right": "calibrated",
+        "difference": 0.0,
+        "interval_95": [
+          0.0,
+          0.0
+        ],
+        "draws": 2000,
+        "seed": 313
+      },
+      "sparse_transfer_rows": 277,
+      "sparse_own_rows": 277
+    },
+    "2021": {
+      "scores": {
+        "neutral": {
+          "rows": 319,
+          "people": 261,
+          "rmse": 2.6319213287202663,
+          "mae": 1.991223266943517,
+          "bias": -0.1096325764936214,
+          "oracle_exposure_actual_runs": 302.20134114299515,
+          "oracle_exposure_predicted_runs": 0.0
+        },
+        "history": {
+          "rows": 319,
+          "people": 261,
+          "rmse": 2.3776365610710726,
+          "mae": 1.7865707928857015,
+          "bias": 0.0707485350541391,
+          "oracle_exposure_actual_runs": 302.20134114299515,
+          "oracle_exposure_predicted_runs": 278.632792139688
+        },
+        "calibrated": {
+          "rows": 319,
+          "people": 261,
+          "rmse": 2.3157862984572706,
+          "mae": 1.7634863135702727,
+          "bias": -0.17601485032251746,
+          "oracle_exposure_actual_runs": 302.20134114299515,
+          "oracle_exposure_predicted_runs": 93.1630341196026
+        },
+        "transfer": {
+          "rows": 319,
+          "people": 261,
+          "rmse": 2.312998210729322,
+          "mae": 1.7643420263781104,
+          "bias": -0.038900668498387,
+          "oracle_exposure_actual_runs": 302.20134114299515,
+          "oracle_exposure_predicted_runs": 250.8917563168914
+        }
+      },
+      "transfer_minus_calibrated": {
+        "left": "transfer",
+        "right": "calibrated",
+        "difference": -0.002788087727948696,
+        "interval_95": [
+          -0.08214163610291222,
+          0.07437651603856577
+        ],
+        "draws": 2000,
+        "seed": 313
+      },
+      "sparse_transfer_rows": 319,
+      "sparse_own_rows": 283
+    },
+    "2022": {
+      "scores": {
+        "neutral": {
+          "rows": 317,
+          "people": 261,
+          "rmse": 2.707351410019356,
+          "mae": 2.156960672862131,
+          "bias": 0.10253052355229436,
+          "oracle_exposure_actual_runs": 180.80845841991578,
+          "oracle_exposure_predicted_runs": 0.0
+        },
+        "history": {
+          "rows": 317,
+          "people": 261,
+          "rmse": 2.3927680005952716,
+          "mae": 1.8674841136837765,
+          "bias": 0.328530241770606,
+          "oracle_exposure_actual_runs": 180.80845841991578,
+          "oracle_exposure_predicted_runs": 265.50128371562886
+        },
+        "calibrated": {
+          "rows": 317,
+          "people": 261,
+          "rmse": 2.2914800960197406,
+          "mae": 1.7865088850492234,
+          "bias": 0.13205243372897754,
+          "oracle_exposure_actual_runs": 180.80845841991578,
+          "oracle_exposure_predicted_runs": 104.64787863128969
+        },
+        "transfer": {
+          "rows": 317,
+          "people": 261,
+          "rmse": 2.227960271383364,
+          "mae": 1.7343106983930991,
+          "bias": 0.22856740336294676,
+          "oracle_exposure_actual_runs": 180.80845841991578,
+          "oracle_exposure_predicted_runs": 220.8157070350738
+        }
+      },
+      "transfer_minus_calibrated": {
+        "left": "transfer",
+        "right": "calibrated",
+        "difference": -0.06351982463637684,
+        "interval_95": [
+          -0.1352285625121747,
+          0.004050423002002941
+        ],
+        "draws": 2000,
+        "seed": 313
+      },
+      "sparse_transfer_rows": 313,
+      "sparse_own_rows": 221
+    }
+  },
+  "by_position": {
+    "3": {
+      "scores": {
+        "neutral": {
+          "rows": 47,
+          "people": 47,
+          "rmse": 1.960111308674413,
+          "mae": 1.625062110841779,
+          "bias": 0.683514373828619,
+          "oracle_exposure_actual_runs": -79.89830670262428,
+          "oracle_exposure_predicted_runs": 0.0
+        },
+        "history": {
+          "rows": 47,
+          "people": 47,
+          "rmse": 1.908431701897422,
+          "mae": 1.5142718286657804,
+          "bias": 0.7810085628224596,
+          "oracle_exposure_actual_runs": -79.89830670262428,
+          "oracle_exposure_predicted_runs": 12.069485518673181
+        },
+        "calibrated": {
+          "rows": 47,
+          "people": 47,
+          "rmse": 1.8924521226658053,
+          "mae": 1.553103508859991,
+          "bias": 0.33309750268892124,
+          "oracle_exposure_actual_runs": -79.89830670262428,
+          "oracle_exposure_predicted_runs": -62.7866419701531
+        },
+        "transfer": {
+          "rows": 47,
+          "people": 47,
+          "rmse": 1.8644457498599076,
+          "mae": 1.5339150595478708,
+          "bias": 0.30441528827904085,
+          "oracle_exposure_actual_runs": -79.89830670262428,
+          "oracle_exposure_predicted_runs": -64.3097860876942
+        }
+      },
+      "transfer_minus_calibrated": {
+        "left": "transfer",
+        "right": "calibrated",
+        "difference": -0.028006372805897684,
+        "interval_95": [
+          -0.0512988593558724,
+          -0.004079673330552921
+        ],
+        "draws": 2000,
+        "seed": 313
+      },
+      "sparse_transfer_rows": 43,
+      "sparse_own_rows": 43
+    },
+    "4": {
+      "scores": {
+        "neutral": {
+          "rows": 42,
+          "people": 42,
+          "rmse": 2.59080770251303,
+          "mae": 2.2078391914370012,
+          "bias": -0.04799659578839438,
+          "oracle_exposure_actual_runs": 48.19856863581426,
+          "oracle_exposure_predicted_runs": 0.0
+        },
+        "history": {
+          "rows": 42,
+          "people": 42,
+          "rmse": 2.5044981961435657,
+          "mae": 2.1044591029894155,
+          "bias": 0.20021662312205965,
+          "oracle_exposure_actual_runs": 48.19856863581426,
+          "oracle_exposure_predicted_runs": 31.047032542851948
+        },
+        "calibrated": {
+          "rows": 42,
+          "people": 42,
+          "rmse": 2.489913859815836,
+          "mae": 2.061435959778096,
+          "bias": 0.22736916229356763,
+          "oracle_exposure_actual_runs": 48.19856863581426,
+          "oracle_exposure_predicted_runs": 42.3757838381551
+        },
+        "transfer": {
+          "rows": 42,
+          "people": 42,
+          "rmse": 2.5081174313791297,
+          "mae": 2.010097466279518,
+          "bias": 0.4438980202464662,
+          "oracle_exposure_actual_runs": 48.19856863581426,
+          "oracle_exposure_predicted_runs": 63.03174597052964
+        }
+      },
+      "transfer_minus_calibrated": {
+        "left": "transfer",
+        "right": "calibrated",
+        "difference": 0.018203571563293774,
+        "interval_95": [
+          -0.24451902518508928,
+          0.3301552261356
+        ],
+        "draws": 2000,
+        "seed": 313
+      },
+      "sparse_transfer_rows": 42,
+      "sparse_own_rows": 25
+    },
+    "5": {
+      "scores": {
+        "neutral": {
+          "rows": 44,
+          "people": 44,
+          "rmse": 2.676938577777097,
+          "mae": 2.057167579661298,
+          "bias": 0.21859353267818954,
+          "oracle_exposure_actual_runs": 40.58124765375015,
+          "oracle_exposure_predicted_runs": 0.0
+        },
+        "history": {
+          "rows": 44,
+          "people": 44,
+          "rmse": 2.289333341238827,
+          "mae": 1.7733410577897133,
+          "bias": 0.45817266761772457,
+          "oracle_exposure_actual_runs": 40.58124765375015,
+          "oracle_exposure_predicted_runs": 64.22832577073397
+        },
+        "calibrated": {
+          "rows": 44,
+          "people": 44,
+          "rmse": 2.3498518452409005,
+          "mae": 1.823551252299179,
+          "bias": 0.271714206210817,
+          "oracle_exposure_actual_runs": 40.58124765375015,
+          "oracle_exposure_predicted_runs": 35.734488024121525
+        },
+        "transfer": {
+          "rows": 44,
+          "people": 44,
+          "rmse": 2.3414154620786602,
+          "mae": 1.8762030436786377,
+          "bias": 0.38697751837593297,
+          "oracle_exposure_actual_runs": 40.58124765375015,
+          "oracle_exposure_predicted_runs": 33.80193341054807
+        }
+      },
+      "transfer_minus_calibrated": {
+        "left": "transfer",
+        "right": "calibrated",
+        "difference": -0.008436383162240269,
+        "interval_95": [
+          -0.1974500567772013,
+          0.18870842057762569
+        ],
+        "draws": 2000,
+        "seed": 313
+      },
+      "sparse_transfer_rows": 44,
+      "sparse_own_rows": 34
+    },
+    "6": {
+      "scores": {
+        "neutral": {
+          "rows": 40,
+          "people": 40,
+          "rmse": 2.7618768695630114,
+          "mae": 2.161645166816734,
+          "bias": -0.8735472365487859,
+          "oracle_exposure_actual_runs": 153.02349429164,
+          "oracle_exposure_predicted_runs": 0.0
+        },
+        "history": {
+          "rows": 40,
+          "people": 40,
+          "rmse": 2.4553927311424815,
+          "mae": 1.7202003697420643,
+          "bias": -0.6033582290183486,
+          "oracle_exposure_actual_runs": 153.02349429164,
+          "oracle_exposure_predicted_runs": 32.36777423909096
+        },
+        "calibrated": {
+          "rows": 40,
+          "people": 40,
+          "rmse": 2.3704410992576435,
+          "mae": 1.7154467782747091,
+          "bias": -0.4576451360534609,
+          "oracle_exposure_actual_runs": 153.02349429164,
+          "oracle_exposure_predicted_runs": 64.2510589946468
+        },
+        "transfer": {
+          "rows": 40,
+          "people": 40,
+          "rmse": 2.2508310161098044,
+          "mae": 1.6772893175539405,
+          "bias": -0.48771013803624735,
+          "oracle_exposure_actual_runs": 153.02349429164,
+          "oracle_exposure_predicted_runs": 68.39199120821874
+        }
+      },
+      "transfer_minus_calibrated": {
+        "left": "transfer",
+        "right": "calibrated",
+        "difference": -0.11961008314783905,
+        "interval_95": [
+          -0.3424646024399507,
+          0.1158700941706555
+        ],
+        "draws": 2000,
+        "seed": 313
+      },
+      "sparse_transfer_rows": 40,
+      "sparse_own_rows": 38
+    },
+    "7": {
+      "scores": {
+        "neutral": {
+          "rows": 46,
+          "people": 46,
+          "rmse": 2.891545378145034,
+          "mae": 2.2978949008900273,
+          "bias": 1.5240903758463378,
+          "oracle_exposure_actual_runs": -164.69740310906758,
+          "oracle_exposure_predicted_runs": 0.0
+        },
+        "history": {
+          "rows": 46,
+          "people": 46,
+          "rmse": 2.6354263254876966,
+          "mae": 2.2218608024974777,
+          "bias": 1.4411134042279155,
+          "oracle_exposure_actual_runs": -164.69740310906758,
+          "oracle_exposure_predicted_runs": -13.300314212958451
+        },
+        "calibrated": {
+          "rows": 46,
+          "people": 46,
+          "rmse": 2.249607511254247,
+          "mae": 1.8342332627273523,
+          "bias": 0.19805318941194586,
+          "oracle_exposure_actual_runs": -164.69740310906758,
+          "oracle_exposure_predicted_runs": -176.1169625125221
+        },
+        "transfer": {
+          "rows": 46,
+          "people": 46,
+          "rmse": 2.0504500692646843,
+          "mae": 1.6604961572390082,
+          "bias": 0.4239180238199825,
+          "oracle_exposure_actual_runs": -164.69740310906758,
+          "oracle_exposure_predicted_runs": -152.74810962564163
+        }
+      },
+      "transfer_minus_calibrated": {
+        "left": "transfer",
+        "right": "calibrated",
+        "difference": -0.19915744198956276,
+        "interval_95": [
+          -0.4928085061824759,
+          0.04396716070386869
+        ],
+        "draws": 2000,
+        "seed": 313
+      },
+      "sparse_transfer_rows": 46,
+      "sparse_own_rows": 29
+    },
+    "8": {
+      "scores": {
+        "neutral": {
+          "rows": 48,
+          "people": 48,
+          "rmse": 3.1606408809896847,
+          "mae": 2.5794354393185888,
+          "bias": -1.735009272297748,
+          "oracle_exposure_actual_runs": 303.57781595443413,
+          "oracle_exposure_predicted_runs": 0.0
+        },
+        "history": {
+          "rows": 48,
+          "people": 48,
+          "rmse": 2.627087498011461,
+          "mae": 2.062829932343374,
+          "bias": -0.8109540981584136,
+          "oracle_exposure_actual_runs": 303.57781595443413,
+          "oracle_exposure_predicted_runs": 177.12223076755987
+        },
+        "calibrated": {
+          "rows": 48,
+          "people": 48,
+          "rmse": 2.5549791242367035,
+          "mae": 1.9973382490245288,
+          "bias": 0.09901325285479572,
+          "oracle_exposure_actual_runs": 303.57781595443413,
+          "oracle_exposure_predicted_runs": 311.71145292782535
+        },
+        "transfer": {
+          "rows": 48,
+          "people": 48,
+          "rmse": 2.45047711910132,
+          "mae": 1.88760815312926,
+          "bias": 0.14158317683431657,
+          "oracle_exposure_actual_runs": 303.57781595443413,
+          "oracle_exposure_predicted_runs": 328.66223303472646
+        }
+      },
+      "transfer_minus_calibrated": {
+        "left": "transfer",
+        "right": "calibrated",
+        "difference": -0.10450200513538332,
+        "interval_95": [
+          -0.33078688508834436,
+          0.08621503353204135
+        ],
+        "draws": 2000,
+        "seed": 313
+      },
+      "sparse_transfer_rows": 48,
+      "sparse_own_rows": 18
+    },
+    "9": {
+      "scores": {
+        "neutral": {
+          "rows": 50,
+          "people": 50,
+          "rmse": 2.6057197618136825,
+          "mae": 2.043037476319755,
+          "bias": 0.9372674220375241,
+          "oracle_exposure_actual_runs": -119.97695830403089,
+          "oracle_exposure_predicted_runs": 0.0
+        },
+        "history": {
+          "rows": 50,
+          "people": 50,
+          "rmse": 2.328637315232955,
+          "mae": 1.7823151725252142,
+          "bias": 0.7753319286557712,
+          "oracle_exposure_actual_runs": -119.97695830403089,
+          "oracle_exposure_predicted_runs": -38.03325091032263
+        },
+        "calibrated": {
+          "rows": 50,
+          "people": 50,
+          "rmse": 2.2628767849468683,
+          "mae": 1.6721349919025392,
+          "bias": 0.262189269956431,
+          "oracle_exposure_actual_runs": -119.97695830403089,
+          "oracle_exposure_predicted_runs": -110.52130067078392
+        },
+        "transfer": {
+          "rows": 50,
+          "people": 50,
+          "rmse": 2.198444751626038,
+          "mae": 1.5736447186111782,
+          "bias": 0.6233593426572617,
+          "oracle_exposure_actual_runs": -119.97695830403089,
+          "oracle_exposure_predicted_runs": -56.01430087561324
+        }
+      },
+      "transfer_minus_calibrated": {
+        "left": "transfer",
+        "right": "calibrated",
+        "difference": -0.06443203332083014,
+        "interval_95": [
+          -0.2506428352885291,
+          0.092944157950749
+        ],
+        "draws": 2000,
+        "seed": 313
+      },
+      "sparse_transfer_rows": 50,
+      "sparse_own_rows": 34
+    }
+  },
+  "by_profile": {
+    "thin_target_other_sample": {
+      "scores": {
+        "neutral": {
+          "rows": 93,
+          "people": 75,
+          "rmse": 2.85437139783646,
+          "mae": 2.318925355042409,
+          "bias": 0.1648655014866179,
+          "oracle_exposure_actual_runs": 43.86816229133275,
+          "oracle_exposure_predicted_runs": 0.0
+        },
+        "history": {
+          "rows": 93,
+          "people": 75,
+          "rmse": 2.7347356344018654,
+          "mae": 2.2294601265870724,
+          "bias": 0.2750335381468327,
+          "oracle_exposure_actual_runs": 43.86816229133275,
+          "oracle_exposure_predicted_runs": 27.742721887864572
+        },
+        "calibrated": {
+          "rows": 93,
+          "people": 75,
+          "rmse": 2.6919842000437493,
+          "mae": 2.1523226923679855,
+          "bias": 0.012164313134775308,
+          "oracle_exposure_actual_runs": 43.86816229133275,
+          "oracle_exposure_predicted_runs": -6.344116795061405
+        },
+        "transfer": {
+          "rows": 93,
+          "people": 75,
+          "rmse": 2.57076042210064,
+          "mae": 2.005047722850547,
+          "bias": 0.5710167253123067,
+          "oracle_exposure_actual_runs": 43.86816229133275,
+          "oracle_exposure_predicted_runs": 113.68062789329613
+        }
+      },
+      "transfer_minus_calibrated": {
+        "left": "transfer",
+        "right": "calibrated",
+        "difference": -0.12122377794310912,
+        "interval_95": [
+          -0.38133527981319043,
+          0.1331507547236613
+        ],
+        "draws": 2000,
+        "seed": 313
+      },
+      "sparse_transfer_rows": 93,
+      "sparse_own_rows": 32
+    },
+    "no_related_history": {
+      "scores": {
+        "neutral": {
+          "rows": 112,
+          "people": 111,
+          "rmse": 2.6870553091812566,
+          "mae": 2.1075338611894074,
+          "bias": 0.3205440889316779,
+          "oracle_exposure_actual_runs": 36.81594777072683,
+          "oracle_exposure_predicted_runs": 0.0
+        },
+        "history": {
+          "rows": 112,
+          "people": 111,
+          "rmse": 2.3313908175954032,
+          "mae": 1.7480659953926463,
+          "bias": 0.5406364656598301,
+          "oracle_exposure_actual_runs": 36.81594777072683,
+          "oracle_exposure_predicted_runs": 134.30253418332322
+        },
+        "calibrated": {
+          "rows": 112,
+          "people": 111,
+          "rmse": 2.215567850117255,
+          "mae": 1.7205488803846103,
+          "bias": 0.3565621834837331,
+          "oracle_exposure_actual_runs": 36.81594777072683,
+          "oracle_exposure_predicted_runs": 80.60914733915563
+        },
+        "transfer": {
+          "rows": 112,
+          "people": 111,
+          "rmse": 2.18344886906654,
+          "mae": 1.6939074287263192,
+          "bias": 0.33733438540983485,
+          "oracle_exposure_actual_runs": 36.81594777072683,
+          "oracle_exposure_predicted_runs": 77.65589670318481
+        }
+      },
+      "transfer_minus_calibrated": {
+        "left": "transfer",
+        "right": "calibrated",
+        "difference": -0.03211898105071498,
+        "interval_95": [
+          -0.05972863736514109,
+          -0.004647160555287157
+        ],
+        "draws": 2000,
+        "seed": 313
+      },
+      "sparse_transfer_rows": 108,
+      "sparse_own_rows": 97
+    },
+    "strong_target_history": {
+      "scores": {
+        "neutral": {
+          "rows": 61,
+          "people": 61,
+          "rmse": 2.412697622414923,
+          "mae": 1.8268517394140713,
+          "bias": -0.025084317383793468,
+          "oracle_exposure_actual_runs": 106.00559084798377,
+          "oracle_exposure_predicted_runs": 0.0
+        },
+        "history": {
+          "rows": 61,
+          "people": 61,
+          "rmse": 1.7692919656549007,
+          "mae": 1.3203714246988685,
+          "bias": 0.33188192401195893,
+          "oracle_exposure_actual_runs": 106.00559084798377,
+          "oracle_exposure_predicted_runs": 134.54274201727202
+        },
+        "calibrated": {
+          "rows": 61,
+          "people": 61,
+          "rmse": 1.7518314357903102,
+          "mae": 1.4353982729406816,
+          "bias": -0.00479898825261569,
+          "oracle_exposure_actual_runs": 106.00559084798377,
+          "oracle_exposure_predicted_runs": 37.674647323881516
+        },
+        "transfer": {
+          "rows": 61,
+          "people": 61,
+          "rmse": 1.740815428175476,
+          "mae": 1.421993638454052,
+          "bias": 0.015594142579930283,
+          "oracle_exposure_actual_runs": 106.00559084798377,
+          "oracle_exposure_predicted_runs": 38.179563912792645
+        }
+      },
+      "transfer_minus_calibrated": {
+        "left": "transfer",
+        "right": "calibrated",
+        "difference": -0.011016007614834233,
+        "interval_95": [
+          -0.06676816722146608,
+          0.044693129063209824
+        ],
+        "draws": 2000,
+        "seed": 313
+      },
+      "sparse_transfer_rows": 61,
+      "sparse_own_rows": 61
+    },
+    "young": {
+      "scores": {
+        "neutral": {
+          "rows": 86,
+          "people": 72,
+          "rmse": 2.7862585930228656,
+          "mae": 2.2597226540774833,
+          "bias": 0.27809596643997214,
+          "oracle_exposure_actual_runs": 14.526354055178967,
+          "oracle_exposure_predicted_runs": 0.0
+        },
+        "history": {
+          "rows": 86,
+          "people": 72,
+          "rmse": 2.60278499313995,
+          "mae": 2.004849566212087,
+          "bias": 0.28357919903598955,
+          "oracle_exposure_actual_runs": 14.526354055178967,
+          "oracle_exposure_predicted_runs": 11.674486109343448
+        },
+        "calibrated": {
+          "rows": 86,
+          "people": 72,
+          "rmse": 2.458340814221713,
+          "mae": 1.9096212582116954,
+          "bias": 0.6000732362116273,
+          "oracle_exposure_actual_runs": 14.526354055178967,
+          "oracle_exposure_predicted_runs": 116.89306011800753
+        },
+        "transfer": {
+          "rows": 86,
+          "people": 72,
+          "rmse": 2.4613812552973617,
+          "mae": 1.9167775942239476,
+          "bias": 0.523129449213382,
+          "oracle_exposure_actual_runs": 14.526354055178967,
+          "oracle_exposure_predicted_runs": 100.96572754035826
+        }
+      },
+      "transfer_minus_calibrated": {
+        "left": "transfer",
+        "right": "calibrated",
+        "difference": 0.0030404410756488254,
+        "interval_95": [
+          -0.10851307527158988,
+          0.0982982694068509
+        ],
+        "draws": 2000,
+        "seed": 313
+      },
+      "sparse_transfer_rows": 86,
+      "sparse_own_rows": 68
+    },
+    "age30plus": {
+      "scores": {
+        "neutral": {
+          "rows": 59,
+          "people": 56,
+          "rmse": 2.8033738394763024,
+          "mae": 2.2416686447509395,
+          "bias": 0.08840941795956206,
+          "oracle_exposure_actual_runs": 52.00807235705615,
+          "oracle_exposure_predicted_runs": 0.0
+        },
+        "history": {
+          "rows": 59,
+          "people": 56,
+          "rmse": 2.4080608694868313,
+          "mae": 1.9372018807298754,
+          "bias": 0.46974734917490124,
+          "oracle_exposure_actual_runs": 52.00807235705615,
+          "oracle_exposure_predicted_runs": 76.23654397971016
+        },
+        "calibrated": {
+          "rows": 59,
+          "people": 56,
+          "rmse": 2.4215983657681996,
+          "mae": 1.9315800289588265,
+          "bias": -0.28958610167530835,
+          "oracle_exposure_actual_runs": 52.00807235705615,
+          "oracle_exposure_predicted_runs": -55.27133616906589
+        },
+        "transfer": {
+          "rows": 59,
+          "people": 56,
+          "rmse": 2.2847622287267435,
+          "mae": 1.8313410860985686,
+          "bias": -0.13086665063508693,
+          "oracle_exposure_actual_runs": 52.00807235705615,
+          "oracle_exposure_predicted_runs": -37.26634925585574
+        }
+      },
+      "transfer_minus_calibrated": {
+        "left": "transfer",
+        "right": "calibrated",
+        "difference": -0.13683613704145614,
+        "interval_95": [
+          -0.3077256218067054,
+          0.04786400888108941
+        ],
+        "draws": 2000,
+        "seed": 313
+      },
+      "sparse_transfer_rows": 59,
+      "sparse_own_rows": 59
+    }
+  },
+  "all_predicted_rows": 13402,
+  "protections": null,
+  "full_value_forecast": false,
+  "deployment_approved": false,
+  "hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-position-transfer-v4\\predictions.parquet": "1fb694bcbfcba0e06b5eea6cfb8972d0a049ccd80dd072dbff45c3149de0bded",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-position-transfer-v4\\models.json": "915ebee85a00e60b7d28fa8d08e348cf596569f43f598c1063a1075db2a90f43",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-position-transfer-v4\\preflight.json": "abfd20b0a090820c03492d900ce9e51889b80158460b08e05b087be2af22f155"
+  }
+}

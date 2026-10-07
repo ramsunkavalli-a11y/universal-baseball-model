@@ -1,5 +1,19 @@
 # Prospect model: controlling execution plan
 
+## Current checkpoint 2026-10-06 Related position representation reviewed
+
+[The fixed comparison](defense-position-transfer-v4-result.md) is complete with
+ten focal and 30 origin-selected peer walkthroughs. Related-position history
+improves some MLB range estimates, but the aggregate gain is uncertain; Mateo
+2B transfer, small-target bias and young development remain unresolved. Keep the
+existing practical baseline and this qualified research representation, without
+another position/shrinkage sweep. No frozen forecast or explorer change.
+
+Continue the coherent defense plan with native catcher talent/support and other
+component baselines, then exposure and matched value integration. The separate
+Lovich batting small-sample/support defect is recorded in project status and
+must not be concealed by low expected PA or treated as fixed by defense work.
+
 ## Current checkpoint 2026-10-06 Build the coherent defense layer
 
 [The active goal](defense-layer-v3-plan.md) supersedes the narrow next-test
