@@ -1,0 +1,217 @@
+{
+  "date": "2026-10-07",
+  "integrity_pass": true,
+  "player_walkthrough_status": "complete",
+  "independent_interval_replayed": true,
+  "independent_interval_95": [
+    -4.24162835701947,
+    -1.9054741031792597
+  ],
+  "equal_origin_rmse": {
+    "ratio": 166.14459065353276,
+    "repair": 163.12044369323237
+  },
+  "relative_error_improvement": 0.018201898409119677,
+  "primary_tolerance_pass": "True",
+  "groups_pass": false,
+  "dev_totals_pass": true,
+  "group_checks": [
+    {
+      "origin": 2022,
+      "field": "stage",
+      "value": "Current MLB",
+      "rows": 688,
+      "reference_rmse": 393.20687308676514,
+      "repair_rmse": 382.7148124988292,
+      "ratio": 0.9733166907649126,
+      "tolerance_pass": true
+    },
+    {
+      "origin": 2022,
+      "field": "stage",
+      "value": "Lower minors",
+      "rows": 2369,
+      "reference_rmse": 22.228893265376104,
+      "repair_rmse": 23.162620147309582,
+      "ratio": 1.0420050998844759,
+      "tolerance_pass": true
+    },
+    {
+      "origin": 2022,
+      "field": "stage",
+      "value": "Inactive / unknown",
+      "rows": 240,
+      "reference_rmse": 62.862751408168016,
+      "repair_rmse": 62.36086133613574,
+      "ratio": 0.9920160975969139,
+      "tolerance_pass": true
+    },
+    {
+      "origin": 2022,
+      "field": "stage",
+      "value": "Upper minors",
+      "rows": 947,
+      "reference_rmse": 114.4052365107887,
+      "repair_rmse": 113.45030189795553,
+      "ratio": 0.9916530515389205,
+      "tolerance_pass": true
+    },
+    {
+      "origin": 2022,
+      "field": "age_band",
+      "value": "3",
+      "rows": 1226,
+      "reference_rmse": 5.489183475330159,
+      "repair_rmse": 8.604609381766863,
+      "ratio": 1.5675572551798007,
+      "tolerance_pass": false
+    },
+    {
+      "origin": 2022,
+      "field": "age_band",
+      "value": "4",
+      "rows": 1792,
+      "reference_rmse": 158.00093761944402,
+      "repair_rmse": 152.77152842813783,
+      "ratio": 0.9669026698822409,
+      "tolerance_pass": true
+    },
+    {
+      "origin": 2022,
+      "field": "age_band",
+      "value": "6",
+      "rows": 278,
+      "reference_rmse": 278.6129164864955,
+      "repair_rmse": 277.4111480130256,
+      "ratio": 0.9956866017246254,
+      "tolerance_pass": true
+    },
+    {
+      "origin": 2022,
+      "field": "age_band",
+      "value": "5",
+      "rows": 872,
+      "reference_rmse": 246.501474921359,
+      "repair_rmse": 240.02228702260925,
+      "ratio": 0.9737154193466112,
+      "tolerance_pass": true
+    },
+    {
+      "origin": 2023,
+      "field": "stage",
+      "value": "Lower minors",
+      "rows": 2338,
+      "reference_rmse": 9.941390955473072,
+      "repair_rmse": 10.12116293758402,
+      "ratio": 1.018083182013074,
+      "tolerance_pass": true
+    },
+    {
+      "origin": 2023,
+      "field": "stage",
+      "value": "Current MLB",
+      "rows": 652,
+      "reference_rmse": 393.03973169376513,
+      "repair_rmse": 382.7286459702519,
+      "ratio": 0.9737657928905084,
+      "tolerance_pass": true
+    },
+    {
+      "origin": 2023,
+      "field": "stage",
+      "value": "Inactive / unknown",
+      "rows": 230,
+      "reference_rmse": 81.57581878800914,
+      "repair_rmse": 77.51054088960566,
+      "ratio": 0.9501656500810871,
+      "tolerance_pass": true
+    },
+    {
+      "origin": 2023,
+      "field": "stage",
+      "value": "Upper minors",
+      "rows": 976,
+      "reference_rmse": 107.79672636286789,
+      "repair_rmse": 116.56563150008506,
+      "ratio": 1.0813466738099178,
+      "tolerance_pass": true
+    },
+    {
+      "origin": 2023,
+      "field": "age_band",
+      "value": "3",
+      "rows": 1206,
+      "reference_rmse": 28.745568542626348,
+      "repair_rmse": 38.75411175897306,
+      "ratio": 1.3481769094775495,
+      "tolerance_pass": false
+    },
+    {
+      "origin": 2023,
+      "field": "age_band",
+      "value": "6",
+      "rows": 274,
+      "reference_rmse": 279.9040100518393,
+      "repair_rmse": 279.80819346091965,
+      "ratio": 0.9996576805351881,
+      "tolerance_pass": true
+    },
+    {
+      "origin": 2023,
+      "field": "age_band",
+      "value": "4",
+      "rows": 1782,
+      "reference_rmse": 158.4844336228445,
+      "repair_rmse": 157.13224715594959,
+      "ratio": 0.9914680171674601,
+      "tolerance_pass": true
+    },
+    {
+      "origin": 2023,
+      "field": "age_band",
+      "value": "5",
+      "rows": 865,
+      "reference_rmse": 227.28487375592104,
+      "repair_rmse": 218.292924522856,
+      "ratio": 0.960437537771557,
+      "tolerance_pass": true
+    }
+  ],
+  "no_donated_position_mechanics_pass": true,
+  "full_population_reasonability_pass": false,
+  "focal_walks": 16,
+  "peer_walks": 48,
+  "extra_young_walks": 4,
+  "extra_young_peer_walks": 12,
+  "unique_focal_player_origins": 19,
+  "disposition": "retain_research_mechanics_not_full_allocator_young_position_transition_repair_required",
+  "defects": [
+    "Prospect repertoire concentration misses CF-to-corner and SS-to-2B MLB transitions.",
+    "Some young prospect losses are excessive fixed PA, not incorrect position ability.",
+    "Dated planned assignments are not represented; older cache still misses finite returns.",
+    "Legacy batting cohort contains pitcher-only/unknown-repertoire rows; zero nonpitcher assignments are not a new talent discovery."
+  ],
+  "gains": [
+    "No role-group donation of catcher innings to unrelated first basemen/outfielders.",
+    "Tiny MLB fielding/PA ratios lean toward a supported group while using fuller minor position evidence.",
+    "Established-player and measured positive native-opportunity errors improve across all three origins."
+  ],
+  "next": "Predeclare one experienced-player/potential-position transition bridge, preserve no-donated-C constraint and anchors, then complete matched delivered-runs/value integration.",
+  "no_threshold_sweep_or_named_override": true,
+  "forecast_or_explorer_changed": false,
+  "protected_outcomes_used": false,
+  "value_integration_complete": false,
+  "eventual_minor_quality_validated": false,
+  "deployment_approved": false,
+  "old_walkthrough_date_wording_correction": "The v8 source trace uses each origin's preceding three calendar years, not every year from 2020 through later origins.",
+  "hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\finalize_defense_repertoire_v9.py": "e910f856136169f76210df1192994c771ec8d4f374bcf60b00016d0da368d0ae",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-repertoire-v9\\preflight.json": "746ff5198cbb0c19217ff6b250792a56253d0a5a38af6bad4b7312693beecdc5",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-repertoire-v9\\fit-report.json": "103b893aed359b2ba1a162db2b102a3a2539c7ffe16eb1d0d5d724409fce0dd4",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-repertoire-v9\\independent-verification.json": "d3744eb2a19efc8192a9606e30b0a63c1262c7f9158608e383114de55b78eabe",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-repertoire-v9\\player-walkthrough.json": "b554a5efc5fe60bd4c8590789e5e3026f38b94829af7ac8cef98b9c613e9e477",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-repertoire-v9\\young-profile-diagnosis.json": "7bf9677f31489e80b6a4869c98c7439d66f75c74e2f2714b92514c98e7680da4",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\defense-repertoire-v9-player-review.md": "927922f7923ff19ab52aa1e4797cd910f65ef2f9d971c072b1c954eecd2e71f7",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\defense-repertoire-v9-result.md": "b337eb3ee823a50e58fa3925200fc913468cd8d80a7962535c0eabc9ca72d511"
+  }
+}

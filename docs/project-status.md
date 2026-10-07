@@ -2,6 +2,30 @@
 
 Updated 2026-10-07. This is the current start-here document.
 
+## Repertoire repair improves defensive time but fails young position changes
+
+[The completed repair](defense-repertoire-v9-result.md) reduces position-cell
+error 1.8% versus the strongest PA-ratio anchor and improves positive measured
+native-opportunity errors in all three target years. Own-position allocation
+removes donated catcher/IF/OF roles; tiny MLB samples use fuller minor role
+evidence. All 30,506 inputs, 1,128 scalar means and 12,432 forecasts replay.
+The 16 focal/48 peer walks plus four young-case/12 peer extensions are complete.
+
+The full candidate is not promoted. Ages 15–19 fail the locked group check:
+Chourio changes CF to corners and Holliday SS to 2B, while the method holds
+them too closely to their observed minor shares. Lawlar is mainly a PA miss;
+Basallo/Ballesteros also field less and DH more. Do not discard those players,
+waive the gate or mistake these role failures for bad defensive talent.
+
+Next predeclare one position-transition repair: retain individual MLB usage
+when evidence is substantial, allow supported possible MLB roles for developing
+players, and preserve the no-donated-catcher constraint. Distinguish established
+missed-year returns from first arrivals and dated plans from historical usage.
+Keep the same anchors and fixed cohort; no pseudo-sample tuning around named
+misses. Then complete matched delivered defensive runs and expanded player-value
+integration. Skill histories, frozen forecasts and explorer remain unchanged;
+the independent Lovich batting defect remains open.
+
 ## Defensive opportunity comparison requires an allocation repair
 
 [The completed opportunity review](defense-opportunity-v8-result.md) traces 13

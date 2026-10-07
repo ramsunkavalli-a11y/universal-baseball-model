@@ -1,5 +1,27 @@
 # Prospect model: controlling execution plan
 
+## Current checkpoint 2026-10-07 Add supported prospect position uncertainty
+
+[The repertoire repair](defense-repertoire-v9-result.md) is fully walked and
+independently replayed. It improves the primary score and native opportunity
+counts but fails the predeclared young-profile tolerance. Preserve its useful
+scalar-exposure and no-donated-position mechanics; do not promote it wholesale.
+
+One coherent allocation repair remains before delivered-value integration:
+learn supported possible MLB positions for inexperienced players rather than
+copying minor shares, with strong current MLB evidence retaining individual
+roles. Do not restore noncatcher C allocations, rerun age bins or tune the fixed
+100-PA pseudo-sample. Include current established players, known missed-year
+returns and first arrivals explicitly in support and player checks; a minor
+rehab season is not equivalent to a never-debut prospect's whole development.
+Keep available dated plans separate from later changes/injuries. The same
+matched population, stronger anchors and young cases remain mandatory.
+
+After the allocation review, use the reviewed skill histories on the identical
+official/native target to test delivered defensive runs and expanded value.
+Unknown minor defensive talent remains uncertainty, not observed neutral skill.
+Frozen forecasts and explorer remain unchanged; no 2026 selection is permitted.
+
 ## Current checkpoint 2026-10-07 Repair defensive position allocation
 
 [The opportunity comparison](defense-opportunity-v8-result.md) is fully reviewed,

@@ -1,0 +1,571 @@
+{
+  "integrity_pass": true,
+  "source_repertoires_replayed": 30506,
+  "scalar_tables_replayed": 1128,
+  "all_forecasts_replayed": 12432,
+  "anchors_identical": true,
+  "unrelated_position_allocations": 0,
+  "native_conversions_unchanged": true,
+  "profile_rows": 12432,
+  "sparse_profiles": 9339,
+  "unseen_profiles": 2676,
+  "per_fold_diagnostics": [
+    {
+      "origin": 2022,
+      "fold": 0,
+      "test_rows": 875,
+      "unknown_repertoire_rows": 20,
+      "unallocated_potential_outs": 29.600209596012075,
+      "coarse_group_rows": 561,
+      "large_training_range_rows": 0
+    },
+    {
+      "origin": 2022,
+      "fold": 1,
+      "test_rows": 801,
+      "unknown_repertoire_rows": 18,
+      "unallocated_potential_outs": 261.4132777366479,
+      "coarse_group_rows": 502,
+      "large_training_range_rows": 0
+    },
+    {
+      "origin": 2022,
+      "fold": 2,
+      "test_rows": 873,
+      "unknown_repertoire_rows": 20,
+      "unallocated_potential_outs": 230.67413854057503,
+      "coarse_group_rows": 525,
+      "large_training_range_rows": 0
+    },
+    {
+      "origin": 2022,
+      "fold": 3,
+      "test_rows": 851,
+      "unknown_repertoire_rows": 19,
+      "unallocated_potential_outs": 65.10108598996365,
+      "coarse_group_rows": 517,
+      "large_training_range_rows": 0
+    },
+    {
+      "origin": 2022,
+      "fold": 4,
+      "test_rows": 844,
+      "unknown_repertoire_rows": 12,
+      "unallocated_potential_outs": 50.51610605680274,
+      "coarse_group_rows": 537,
+      "large_training_range_rows": 0
+    },
+    {
+      "origin": 2023,
+      "fold": 0,
+      "test_rows": 872,
+      "unknown_repertoire_rows": 16,
+      "unallocated_potential_outs": 54.254820568225604,
+      "coarse_group_rows": 571,
+      "large_training_range_rows": 0
+    },
+    {
+      "origin": 2023,
+      "fold": 1,
+      "test_rows": 773,
+      "unknown_repertoire_rows": 16,
+      "unallocated_potential_outs": 35.546467648224876,
+      "coarse_group_rows": 466,
+      "large_training_range_rows": 0
+    },
+    {
+      "origin": 2023,
+      "fold": 2,
+      "test_rows": 874,
+      "unknown_repertoire_rows": 12,
+      "unallocated_potential_outs": 19.806033325912942,
+      "coarse_group_rows": 528,
+      "large_training_range_rows": 0
+    },
+    {
+      "origin": 2023,
+      "fold": 3,
+      "test_rows": 834,
+      "unknown_repertoire_rows": 10,
+      "unallocated_potential_outs": 24.655744176110275,
+      "coarse_group_rows": 511,
+      "large_training_range_rows": 0
+    },
+    {
+      "origin": 2023,
+      "fold": 4,
+      "test_rows": 843,
+      "unknown_repertoire_rows": 18,
+      "unallocated_potential_outs": 158.45118920813664,
+      "coarse_group_rows": 523,
+      "large_training_range_rows": 0
+    },
+    {
+      "origin": 2024,
+      "fold": 0,
+      "test_rows": 807,
+      "unknown_repertoire_rows": 26,
+      "unallocated_potential_outs": 88.39043355319973,
+      "coarse_group_rows": 509,
+      "large_training_range_rows": 0
+    },
+    {
+      "origin": 2024,
+      "fold": 1,
+      "test_rows": 734,
+      "unknown_repertoire_rows": 14,
+      "unallocated_potential_outs": 187.32032476837492,
+      "coarse_group_rows": 427,
+      "large_training_range_rows": 0
+    },
+    {
+      "origin": 2024,
+      "fold": 2,
+      "test_rows": 841,
+      "unknown_repertoire_rows": 18,
+      "unallocated_potential_outs": 115.12827555467425,
+      "coarse_group_rows": 521,
+      "large_training_range_rows": 0
+    },
+    {
+      "origin": 2024,
+      "fold": 3,
+      "test_rows": 812,
+      "unknown_repertoire_rows": 21,
+      "unallocated_potential_outs": 173.90836637809971,
+      "coarse_group_rows": 484,
+      "large_training_range_rows": 0
+    },
+    {
+      "origin": 2024,
+      "fold": 4,
+      "test_rows": 798,
+      "unknown_repertoire_rows": 27,
+      "unallocated_potential_outs": 208.4038390047557,
+      "coarse_group_rows": 507,
+      "large_training_range_rows": 0
+    }
+  ],
+  "exposure_cohorts": [
+    {
+      "origin": 2022,
+      "cohort": "continuing",
+      "arm": "ratio",
+      "rows": 518,
+      "rmse": 437.5466004367979,
+      "predicted_outs": 847147.9261809785,
+      "actual_outs": 925654.0
+    },
+    {
+      "origin": 2022,
+      "cohort": "continuing",
+      "arm": "repair",
+      "rows": 518,
+      "rmse": 426.92128884566995,
+      "predicted_outs": 844118.4903603955,
+      "actual_outs": 925654.0
+    },
+    {
+      "origin": 2022,
+      "cohort": "new_or_returning",
+      "arm": "ratio",
+      "rows": 126,
+      "rmse": 335.67508459121507,
+      "predicted_outs": 44359.51915863574,
+      "actual_outs": 102951.0
+    },
+    {
+      "origin": 2022,
+      "cohort": "new_or_returning",
+      "arm": "repair",
+      "rows": 126,
+      "rmse": 328.3096899813765,
+      "predicted_outs": 47404.29087008711,
+      "actual_outs": 102951.0
+    },
+    {
+      "origin": 2022,
+      "cohort": "exit",
+      "arm": "ratio",
+      "rows": 164,
+      "rmse": 207.56906502921032,
+      "predicted_outs": 70981.65024916918,
+      "actual_outs": 0.0
+    },
+    {
+      "origin": 2022,
+      "cohort": "exit",
+      "arm": "repair",
+      "rows": 164,
+      "rmse": 194.9610660320562,
+      "predicted_outs": 68246.83443404571,
+      "actual_outs": 0.0
+    },
+    {
+      "origin": 2022,
+      "cohort": "no_defense_before_or_after",
+      "arm": "ratio",
+      "rows": 3436,
+      "rmse": 11.49207377896694,
+      "predicted_outs": 45309.345337657374,
+      "actual_outs": 0.0
+    },
+    {
+      "origin": 2022,
+      "cohort": "no_defense_before_or_after",
+      "arm": "repair",
+      "rows": 3436,
+      "rmse": 16.526933715661055,
+      "predicted_outs": 46791.9713925376,
+      "actual_outs": 0.0
+    },
+    {
+      "origin": 2023,
+      "cohort": "continuing",
+      "arm": "ratio",
+      "rows": 506,
+      "rmse": 429.6929234189952,
+      "predicted_outs": 887213.9099205058,
+      "actual_outs": 942426.0
+    },
+    {
+      "origin": 2023,
+      "cohort": "continuing",
+      "arm": "repair",
+      "rows": 506,
+      "rmse": 419.99261711511224,
+      "predicted_outs": 880650.5117486465,
+      "actual_outs": 942426.0
+    },
+    {
+      "origin": 2023,
+      "cohort": "new_or_returning",
+      "arm": "ratio",
+      "rows": 132,
+      "rmse": 314.2633105553475,
+      "predicted_outs": 45685.507097922666,
+      "actual_outs": 91038.0
+    },
+    {
+      "origin": 2023,
+      "cohort": "new_or_returning",
+      "arm": "repair",
+      "rows": 132,
+      "rmse": 324.90952107926523,
+      "predicted_outs": 49004.19954037026,
+      "actual_outs": 91038.0
+    },
+    {
+      "origin": 2023,
+      "cohort": "exit",
+      "arm": "ratio",
+      "rows": 141,
+      "rmse": 217.31747298049544,
+      "predicted_outs": 67671.45902379914,
+      "actual_outs": 0.0
+    },
+    {
+      "origin": 2023,
+      "cohort": "exit",
+      "arm": "repair",
+      "rows": 141,
+      "rmse": 201.31161524850782,
+      "predicted_outs": 64817.50119597075,
+      "actual_outs": 0.0
+    },
+    {
+      "origin": 2023,
+      "cohort": "no_defense_before_or_after",
+      "arm": "ratio",
+      "rows": 3417,
+      "rmse": 14.340141156893427,
+      "predicted_outs": 56000.08789412453,
+      "actual_outs": 0.0
+    },
+    {
+      "origin": 2023,
+      "cohort": "no_defense_before_or_after",
+      "arm": "repair",
+      "rows": 3417,
+      "rmse": 20.84190811730409,
+      "predicted_outs": 58466.21364360777,
+      "actual_outs": 0.0
+    },
+    {
+      "origin": 2024,
+      "cohort": "continuing",
+      "arm": "ratio",
+      "rows": 527,
+      "rmse": 415.5891546014718,
+      "predicted_outs": 908377.9694425969,
+      "actual_outs": 931213.0
+    },
+    {
+      "origin": 2024,
+      "cohort": "continuing",
+      "arm": "repair",
+      "rows": 527,
+      "rmse": 408.03143240950465,
+      "predicted_outs": 895727.4639573273,
+      "actual_outs": 931213.0
+    },
+    {
+      "origin": 2024,
+      "cohort": "new_or_returning",
+      "arm": "ratio",
+      "rows": 134,
+      "rmse": 312.7860755400771,
+      "predicted_outs": 42934.94129754881,
+      "actual_outs": 102312.0
+    },
+    {
+      "origin": 2024,
+      "cohort": "new_or_returning",
+      "arm": "repair",
+      "rows": 134,
+      "rmse": 313.22460105901246,
+      "predicted_outs": 46975.12056545958,
+      "actual_outs": 102312.0
+    },
+    {
+      "origin": 2024,
+      "cohort": "exit",
+      "arm": "ratio",
+      "rows": 113,
+      "rmse": 188.27706877545745,
+      "predicted_outs": 48444.427038444206,
+      "actual_outs": 0.0
+    },
+    {
+      "origin": 2024,
+      "cohort": "exit",
+      "arm": "repair",
+      "rows": 113,
+      "rmse": 172.32580629221815,
+      "predicted_outs": 46116.26301108785,
+      "actual_outs": 0.0
+    },
+    {
+      "origin": 2024,
+      "cohort": "no_defense_before_or_after",
+      "arm": "ratio",
+      "rows": 3218,
+      "rmse": 12.370804114703796,
+      "predicted_outs": 44754.00967245558,
+      "actual_outs": 0.0
+    },
+    {
+      "origin": 2024,
+      "cohort": "no_defense_before_or_after",
+      "arm": "repair",
+      "rows": 3218,
+      "rmse": 18.367431629406333,
+      "predicted_outs": 47197.51957270448,
+      "actual_outs": 0.0
+    }
+  ],
+  "matched_and_full_MLB": [
+    {
+      "origin": 2022,
+      "position": 2,
+      "full_actual": 129262,
+      "matched_actual": 129262,
+      "omitted_actual": 0,
+      "repair_outs": 125606.0972367828
+    },
+    {
+      "origin": 2022,
+      "position": 3,
+      "full_actual": 129262,
+      "matched_actual": 128530,
+      "omitted_actual": 732,
+      "repair_outs": 114947.24947352493
+    },
+    {
+      "origin": 2022,
+      "position": 4,
+      "full_actual": 129262,
+      "matched_actual": 129262,
+      "omitted_actual": 0,
+      "repair_outs": 125600.02637794316
+    },
+    {
+      "origin": 2022,
+      "position": 5,
+      "full_actual": 129262,
+      "matched_actual": 129262,
+      "omitted_actual": 0,
+      "repair_outs": 120580.44450923892
+    },
+    {
+      "origin": 2022,
+      "position": 6,
+      "full_actual": 129262,
+      "matched_actual": 129262,
+      "omitted_actual": 0,
+      "repair_outs": 150692.25322041582
+    },
+    {
+      "origin": 2022,
+      "position": 7,
+      "full_actual": 129262,
+      "matched_actual": 126786,
+      "omitted_actual": 2476,
+      "repair_outs": 116775.30906031911
+    },
+    {
+      "origin": 2022,
+      "position": 8,
+      "full_actual": 129262,
+      "matched_actual": 129262,
+      "omitted_actual": 0,
+      "repair_outs": 130694.01389215264
+    },
+    {
+      "origin": 2022,
+      "position": 9,
+      "full_actual": 129262,
+      "matched_actual": 126979,
+      "omitted_actual": 2283,
+      "repair_outs": 121666.19328668859
+    },
+    {
+      "origin": 2023,
+      "position": 2,
+      "full_actual": 129349,
+      "matched_actual": 129349,
+      "omitted_actual": 0,
+      "repair_outs": 128863.93227204935
+    },
+    {
+      "origin": 2023,
+      "position": 3,
+      "full_actual": 129349,
+      "matched_actual": 129262,
+      "omitted_actual": 87,
+      "repair_outs": 119709.14851097048
+    },
+    {
+      "origin": 2023,
+      "position": 4,
+      "full_actual": 129349,
+      "matched_actual": 129349,
+      "omitted_actual": 0,
+      "repair_outs": 128016.77486465525
+    },
+    {
+      "origin": 2023,
+      "position": 5,
+      "full_actual": 129349,
+      "matched_actual": 129028,
+      "omitted_actual": 321,
+      "repair_outs": 130674.72276197918
+    },
+    {
+      "origin": 2023,
+      "position": 6,
+      "full_actual": 129349,
+      "matched_actual": 129349,
+      "omitted_actual": 0,
+      "repair_outs": 152426.76671362025
+    },
+    {
+      "origin": 2023,
+      "position": 7,
+      "full_actual": 129349,
+      "matched_actual": 129349,
+      "omitted_actual": 0,
+      "repair_outs": 121121.53947040511
+    },
+    {
+      "origin": 2023,
+      "position": 8,
+      "full_actual": 129349,
+      "matched_actual": 128429,
+      "omitted_actual": 920,
+      "repair_outs": 140254.20692670654
+    },
+    {
+      "origin": 2023,
+      "position": 9,
+      "full_actual": 129349,
+      "matched_actual": 129349,
+      "omitted_actual": 0,
+      "repair_outs": 131871.3346082091
+    },
+    {
+      "origin": 2024,
+      "position": 2,
+      "full_actual": 129225,
+      "matched_actual": 128950,
+      "omitted_actual": 275,
+      "repair_outs": 132566.05831036493
+    },
+    {
+      "origin": 2024,
+      "position": 3,
+      "full_actual": 129225,
+      "matched_actual": 129225,
+      "omitted_actual": 0,
+      "repair_outs": 120349.3558861899
+    },
+    {
+      "origin": 2024,
+      "position": 4,
+      "full_actual": 129225,
+      "matched_actual": 129225,
+      "omitted_actual": 0,
+      "repair_outs": 124801.84082378345
+    },
+    {
+      "origin": 2024,
+      "position": 5,
+      "full_actual": 129225,
+      "matched_actual": 129225,
+      "omitted_actual": 0,
+      "repair_outs": 127892.16607790878
+    },
+    {
+      "origin": 2024,
+      "position": 6,
+      "full_actual": 129225,
+      "matched_actual": 129225,
+      "omitted_actual": 0,
+      "repair_outs": 144284.12240398722
+    },
+    {
+      "origin": 2024,
+      "position": 7,
+      "full_actual": 129225,
+      "matched_actual": 129225,
+      "omitted_actual": 0,
+      "repair_outs": 121003.93819966377
+    },
+    {
+      "origin": 2024,
+      "position": 8,
+      "full_actual": 129225,
+      "matched_actual": 129225,
+      "omitted_actual": 0,
+      "repair_outs": 139159.96645453366
+    },
+    {
+      "origin": 2024,
+      "position": 9,
+      "full_actual": 129225,
+      "matched_actual": 129225,
+      "omitted_actual": 0,
+      "repair_outs": 125958.9189501476
+    }
+  ],
+  "forecast_or_explorer_changed": false,
+  "protected_outcomes_used": false,
+  "player_walkthrough_status": "baseball_judgment_pending",
+  "hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\verify_defense_repertoire_v9.py": "71add9618414cc28d6aa7efbcfc6cd2b4341c6533d1b8a1196f91917eb156131",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-repertoire-v9\\preflight.json": "746ff5198cbb0c19217ff6b250792a56253d0a5a38af6bad4b7312693beecdc5",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-repertoire-v9\\fit-report.json": "103b893aed359b2ba1a162db2b102a3a2539c7ffe16eb1d0d5d724409fce0dd4",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-repertoire-v9\\predictions.parquet": "64a9ead7bb5412a7db7e4f00db36eafb769918468d189ba04b933d62f6fa8477",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-repertoire-v9\\player-walkthrough.json": "b554a5efc5fe60bd4c8590789e5e3026f38b94829af7ac8cef98b9c613e9e477"
+  }
+}

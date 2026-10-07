@@ -856,3 +856,12 @@ scripts/verify_defense_opportunity_v8.py -text -eol
 scripts/finalize_defense_opportunity_v8.py -text -eol
 tests/test_defense_opportunity_bridge.py -text -eol
 reports/model-evidence/defense-opportunity-v8/** -text -eol
+
+docs/defense-repertoire-v9-*.md -text -eol
+src/universal_baseball/defense_repertoire.py -text -eol
+scripts/run_defense_repertoire_v9.py -text -eol
+scripts/verify_defense_repertoire_v9.py -text -eol
+scripts/review_defense_repertoire_youth_v9.py -text -eol
+scripts/finalize_defense_repertoire_v9.py -text -eol
+tests/test_defense_repertoire.py -text -eol
+reports/model-evidence/defense-repertoire-v9/** -text -eol
