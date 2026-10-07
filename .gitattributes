@@ -955,3 +955,12 @@ scripts/review_minor_range_players_v19.py -text -eol
 scripts/diagnose_minor_range_recipe_v19.py -text -eol
 scripts/finalize_minor_range_talent_v19.py -text -eol
 reports/model-evidence/defense-minor-range-v19/** -text -eol
+
+docs/defense-count-reliability-v20-*.md -text -eol
+src/universal_baseball/minor_count_reliability.py -text -eol
+tests/test_minor_count_reliability.py -text -eol
+scripts/*minor_count_reliability_v20.py -text -eol
+scripts/*minor_count_players_v20.py -text -eol
+scripts/archive_minor_count_fits_v20.py -text -eol
+scripts/minor_count_archive_access_v20.py -text -eol
+reports/model-evidence/defense-count-reliability-v20/** -text -eol

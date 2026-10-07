@@ -1,5 +1,24 @@
 # Prospect model: controlling execution plan
 
+## Current checkpoint 2026 10 07 Use repaired counts in a separate talent test
+
+[The reviewed count-reliability gate](defense-count-reliability-v20-result.md)
+improves historical source-count predictions and fixes the Canzone/Frick sample
+overreactions. All source folds, distributions, scores and player paths are
+reviewed. It does not establish future MLB quality or close the defense goal.
+
+Freeze this input recipe. Follow [the repair sequence](defense-minor-range-repair-sequence.md)
+with a separately contracted count correction for later MLB quality, preserving
+the useful baseline's penalty and independently generated training residuals.
+Audit actual measured-player support in outer and nested folds. Unsupported
+correction profiles must use the unchanged baseline, not an extrapolated grade
+with a warning. Keep exposed historical cohorts labeled development evidence.
+
+Complete player walks after that test before moving to other defense components.
+MLB-history quality, throwing, receiving, double plays, catcher history, position
+movement, longer-path lower-minor talent and delivered-value integration remain
+part of the goal. No 2026 selection, frozen forecast or explorer changes.
+
 ## Current checkpoint 2026 10 07 Repair evidence weighting before another range fit
 
 [The minor range comparison](defense-minor-range-v19-result.md) is reviewed and

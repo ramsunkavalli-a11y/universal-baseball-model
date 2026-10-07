@@ -2,6 +2,31 @@
 
 Updated 2026-10-07. This is the current start-here document.
 
+## Minor fielding sample weighting repaired and source test reviewed
+
+[The count-reliability comparison](defense-count-reliability-v20-result.md)
+improves prediction of following-season minor fielding counts in 2018, 2021 and
+2022. Primary count loss falls from 1.63389 to 1.57229; the paired 95 percent
+change interval is [-0.07360, -0.05013]. All four channels and six observed levels
+improve average primary loss. This is input calibration, not MLB talent or WAR.
+
+Canzone's six complex RF chances no longer receive 94.5 percent personal weight;
+Frick's sixteen AA third-base chances receive 4.9 rather than 62.8 percent.
+Young's larger CF sample now contributes source evidence instead of being erased.
+Ogando's persistent DSL throwing errors worsen after heavier regression, a real
+tradeoff retained alongside the gains. Nine focal cases and 27 origin-selected
+peers cover 36 player origins; all position/level paths remain visible. All
+73,069 count forecasts and 5,352 reference distributions replay independently.
+
+Keep the frozen count recipe for the next separately contracted future-MLB-quality
+correction, holding the existing age/position/level baseline unchanged. Do not
+promote these source scores as defensive grades or rescue an exposed penalty.
+Unknown matching targets include promotions and position moves, not zero talent.
+Count traffic still lacks play-difficulty, park and pitcher-context adjustment;
+13 optimizer fallbacks and plug-in reference uncertainty remain qualified.
+The full defense layer, other components and value integration remain open.
+Frozen forecasts, explorer, Lovich batting repair and 2026 selection are unchanged.
+
 ## Minor range recipe reviewed and reliability repair required
 
 [The completed count comparison](defense-minor-range-v19-result.md) replays all
