@@ -1,5 +1,23 @@
 # Prospect model: controlling execution plan
 
+## Current checkpoint 2026-10-06 Infield source/comparison milestone complete
+
+[The reviewed comparison](defensive-talent-position-v2-result.md) closes the
+position-source extension, immutable-cohort context repair and fixed three-year
+MLB-range test. Keep the repaired source; do not adopt or retune the adjusted
+play-share addition. It did not beat contextual or raw-share references in the
+ordinary origin. Full player/peer traces and independent fit replays are saved.
+
+Next: inspect existing PBP/traditional fielding sources for comparable actual
+opportunity, errors/assists and position-retention evidence. The current team's
+ground-ball denominator cannot separate ball distribution from individual range.
+This source-feasibility checkpoint must precede a materially different talent
+contract; no automatic second fit. Preserve unknown quality for non-arrivals
+and position converts. Do not invent five/seven-year chronological support or
+claim the narrow result validates/rejects lower-minors defense. Catcher, outfield,
+running and position development remain separate open talent components. No new
+2026 outcome use or production/explorer change. Prior checkpoints below are history.
+
 ## Current checkpoint 2026-10-06 Position split route verified
 
 [The position-source pilot](defensive-position-source-pilot-result.md) and its

@@ -1,0 +1,1130 @@
+{
+  "status": "source_certified_observed_position_rows_individual_exclusions_preserved",
+  "checks": [
+    {
+      "season": 2016,
+      "position_rows": 1297,
+      "pitcher_rows_without_range": 3,
+      "people": 626,
+      "official_mismatches": 245,
+      "missing_positive_positions": 76,
+      "null_ranges": 123,
+      "unresolved_pitcher_gaps": 1,
+      "max_recomposition_error": 2.1316282072803006e-14
+    },
+    {
+      "season": 2017,
+      "position_rows": 1306,
+      "pitcher_rows_without_range": 8,
+      "people": 626,
+      "official_mismatches": 213,
+      "missing_positive_positions": 80,
+      "null_ranges": 136,
+      "unresolved_pitcher_gaps": 1,
+      "max_recomposition_error": 1.0658141036401503e-14
+    },
+    {
+      "season": 2018,
+      "position_rows": 1324,
+      "pitcher_rows_without_range": 2,
+      "people": 624,
+      "official_mismatches": 195,
+      "missing_positive_positions": 92,
+      "null_ranges": 129,
+      "unresolved_pitcher_gaps": 1,
+      "max_recomposition_error": 8.881784197001252e-15
+    },
+    {
+      "season": 2019,
+      "position_rows": 1364,
+      "pitcher_rows_without_range": 0,
+      "people": 626,
+      "official_mismatches": 200,
+      "missing_positive_positions": 69,
+      "null_ranges": 135,
+      "unresolved_pitcher_gaps": 0,
+      "max_recomposition_error": 2.4868995751603507e-14
+    },
+    {
+      "season": 2020,
+      "position_rows": 1069,
+      "pitcher_rows_without_range": 0,
+      "people": 567,
+      "official_mismatches": 8,
+      "missing_positive_positions": 59,
+      "null_ranges": 116,
+      "unresolved_pitcher_gaps": 0,
+      "max_recomposition_error": 5.329070518200751e-15
+    },
+    {
+      "season": 2021,
+      "position_rows": 1467,
+      "pitcher_rows_without_range": 0,
+      "people": 655,
+      "official_mismatches": 0,
+      "missing_positive_positions": 69,
+      "null_ranges": 168,
+      "unresolved_pitcher_gaps": 0,
+      "max_recomposition_error": 1.0658141036401503e-14
+    },
+    {
+      "season": 2022,
+      "position_rows": 1454,
+      "pitcher_rows_without_range": 0,
+      "people": 679,
+      "official_mismatches": 0,
+      "missing_positive_positions": 74,
+      "null_ranges": 150,
+      "unresolved_pitcher_gaps": 0,
+      "max_recomposition_error": 1.0658141036401503e-14
+    },
+    {
+      "season": 2023,
+      "position_rows": 1359,
+      "pitcher_rows_without_range": 0,
+      "people": 645,
+      "official_mismatches": 8,
+      "missing_positive_positions": 68,
+      "null_ranges": 133,
+      "unresolved_pitcher_gaps": 0,
+      "max_recomposition_error": 8.881784197001252e-15
+    },
+    {
+      "season": 2024,
+      "position_rows": 1311,
+      "pitcher_rows_without_range": 0,
+      "people": 639,
+      "official_mismatches": 0,
+      "missing_positive_positions": 61,
+      "null_ranges": 135,
+      "unresolved_pitcher_gaps": 0,
+      "max_recomposition_error": 1.2434497875801753e-14
+    },
+    {
+      "season": 2025,
+      "position_rows": 1366,
+      "pitcher_rows_without_range": 0,
+      "people": 661,
+      "official_mismatches": 0,
+      "missing_positive_positions": 57,
+      "null_ranges": 138,
+      "unresolved_pitcher_gaps": 0,
+      "max_recomposition_error": 1.2434497875801753e-14
+    }
+  ],
+  "captures": [
+    {
+      "year": 2016,
+      "split": true,
+      "requested": {
+        "type": "fielder",
+        "seasonStart": 2016,
+        "seasonEnd": 2016,
+        "minInnings": 0,
+        "minResults": 0,
+        "groupBy": "position"
+      },
+      "observed": {
+        "type": "fielder",
+        "minSwings": "q",
+        "minGroupSwings": 1,
+        "minContact": 0,
+        "gameType": "Regular",
+        "seasonStart": 2016,
+        "seasonEnd": 2016,
+        "minInnings": "0",
+        "minResults": 0,
+        "groupBy": "position",
+        "minPitches": null,
+        "secondaryGroupBy": [
+          "position"
+        ],
+        "validSwingTimingX": [],
+        "validSwingTimingY": [],
+        "validSwingTimingZ": [],
+        "validPitchTypes": [],
+        "validCounts": [],
+        "validTeams": [],
+        "validShadowZones": [],
+        "sort": {
+          "column": "total_runs",
+          "direction": "desc"
+        },
+        "validTypes": [
+          "fielder",
+          "pitcher",
+          "batter",
+          "fielding-team",
+          "batting-team"
+        ]
+      },
+      "response_sha256": "bbd98cbef5149b2b576818efa232f300cd51ac6c1900ebdd1672ed5d204b509f",
+      "parsed_sha256": "1ab7bdae8b16ea5c60d6d72d9f844200e389b3e4f7d8e7d3fa89e07eb3399b9d",
+      "reused_pilot": false,
+      "rows": 1297
+    },
+    {
+      "year": 2016,
+      "split": false,
+      "requested": {
+        "type": "fielder",
+        "seasonStart": 2016,
+        "seasonEnd": 2016,
+        "minInnings": 0,
+        "minResults": 0
+      },
+      "observed": {
+        "type": "fielder",
+        "minSwings": "q",
+        "minGroupSwings": 1,
+        "minContact": 0,
+        "gameType": "Regular",
+        "seasonStart": 2016,
+        "seasonEnd": 2016,
+        "minInnings": "0",
+        "minResults": 0,
+        "minPitches": null,
+        "secondaryGroupBy": [],
+        "validSwingTimingX": [],
+        "validSwingTimingY": [],
+        "validSwingTimingZ": [],
+        "validPitchTypes": [],
+        "validCounts": [],
+        "validTeams": [],
+        "validShadowZones": [],
+        "sort": {
+          "column": "total_runs",
+          "direction": "desc"
+        },
+        "validTypes": [
+          "fielder",
+          "pitcher",
+          "batter",
+          "fielding-team",
+          "batting-team"
+        ]
+      },
+      "response_sha256": "2115bed358f60f77ff38dfb4517acbf1aa3125fe7f6c50cad6c26b1b6f9e6bf2",
+      "parsed_sha256": "dafd5514809a1a7448b09b7224283f5c95f4f9642f1166f5b49a3519c7ed8601",
+      "reused_pilot": false,
+      "rows": 626
+    },
+    {
+      "year": 2017,
+      "split": true,
+      "requested": {
+        "type": "fielder",
+        "seasonStart": 2017,
+        "seasonEnd": 2017,
+        "minInnings": 0,
+        "minResults": 0,
+        "groupBy": "position"
+      },
+      "observed": {
+        "type": "fielder",
+        "minSwings": "q",
+        "minGroupSwings": 1,
+        "minContact": 0,
+        "gameType": "Regular",
+        "seasonStart": 2017,
+        "seasonEnd": 2017,
+        "minInnings": "0",
+        "minResults": 0,
+        "groupBy": "position",
+        "minPitches": null,
+        "secondaryGroupBy": [
+          "position"
+        ],
+        "validSwingTimingX": [],
+        "validSwingTimingY": [],
+        "validSwingTimingZ": [],
+        "validPitchTypes": [],
+        "validCounts": [],
+        "validTeams": [],
+        "validShadowZones": [],
+        "sort": {
+          "column": "total_runs",
+          "direction": "desc"
+        },
+        "validTypes": [
+          "fielder",
+          "pitcher",
+          "batter",
+          "fielding-team",
+          "batting-team"
+        ]
+      },
+      "response_sha256": "855227adddb8ac121eca5730fb426b3221733920d17fac3440d08c6543c8a87a",
+      "parsed_sha256": "fd18f5564a6b507ad34d79c6f6ebcfe22b5acd94b7a81e96fd25c06c6c1812f0",
+      "reused_pilot": false,
+      "rows": 1306
+    },
+    {
+      "year": 2017,
+      "split": false,
+      "requested": {
+        "type": "fielder",
+        "seasonStart": 2017,
+        "seasonEnd": 2017,
+        "minInnings": 0,
+        "minResults": 0
+      },
+      "observed": {
+        "type": "fielder",
+        "minSwings": "q",
+        "minGroupSwings": 1,
+        "minContact": 0,
+        "gameType": "Regular",
+        "seasonStart": 2017,
+        "seasonEnd": 2017,
+        "minInnings": "0",
+        "minResults": 0,
+        "minPitches": null,
+        "secondaryGroupBy": [],
+        "validSwingTimingX": [],
+        "validSwingTimingY": [],
+        "validSwingTimingZ": [],
+        "validPitchTypes": [],
+        "validCounts": [],
+        "validTeams": [],
+        "validShadowZones": [],
+        "sort": {
+          "column": "total_runs",
+          "direction": "desc"
+        },
+        "validTypes": [
+          "fielder",
+          "pitcher",
+          "batter",
+          "fielding-team",
+          "batting-team"
+        ]
+      },
+      "response_sha256": "c3497869da3610c5136b82440906bef0eb5888ded0d598fac10277f26f9d39e3",
+      "parsed_sha256": "92fe227873366122e236a53d118350d6b1f95471ee9ed807ba734235f09bfdb6",
+      "reused_pilot": false,
+      "rows": 626
+    },
+    {
+      "year": 2018,
+      "split": true,
+      "requested": {
+        "type": "fielder",
+        "seasonStart": 2018,
+        "seasonEnd": 2018,
+        "minInnings": 0,
+        "minResults": 0,
+        "groupBy": "position"
+      },
+      "observed": {
+        "type": "fielder",
+        "minSwings": "q",
+        "minGroupSwings": 1,
+        "minContact": 0,
+        "gameType": "Regular",
+        "seasonStart": 2018,
+        "seasonEnd": 2018,
+        "minInnings": "0",
+        "minResults": 0,
+        "groupBy": "position",
+        "minPitches": null,
+        "secondaryGroupBy": [
+          "position"
+        ],
+        "validSwingTimingX": [],
+        "validSwingTimingY": [],
+        "validSwingTimingZ": [],
+        "validPitchTypes": [],
+        "validCounts": [],
+        "validTeams": [],
+        "validShadowZones": [],
+        "sort": {
+          "column": "total_runs",
+          "direction": "desc"
+        },
+        "validTypes": [
+          "fielder",
+          "pitcher",
+          "batter",
+          "fielding-team",
+          "batting-team"
+        ]
+      },
+      "response_sha256": "50412174ce1d46b780115a63df774629abeee768c7bf77093024cdf68a96e390",
+      "parsed_sha256": "f1d3b1ed55be8bbf8aa58c16b34f9b2d9d3ca70f1cb1248da7b21bb2b4a2485f",
+      "reused_pilot": false,
+      "rows": 1324
+    },
+    {
+      "year": 2018,
+      "split": false,
+      "requested": {
+        "type": "fielder",
+        "seasonStart": 2018,
+        "seasonEnd": 2018,
+        "minInnings": 0,
+        "minResults": 0
+      },
+      "observed": {
+        "type": "fielder",
+        "minSwings": "q",
+        "minGroupSwings": 1,
+        "minContact": 0,
+        "gameType": "Regular",
+        "seasonStart": 2018,
+        "seasonEnd": 2018,
+        "minInnings": "0",
+        "minResults": 0,
+        "minPitches": null,
+        "secondaryGroupBy": [],
+        "validSwingTimingX": [],
+        "validSwingTimingY": [],
+        "validSwingTimingZ": [],
+        "validPitchTypes": [],
+        "validCounts": [],
+        "validTeams": [],
+        "validShadowZones": [],
+        "sort": {
+          "column": "total_runs",
+          "direction": "desc"
+        },
+        "validTypes": [
+          "fielder",
+          "pitcher",
+          "batter",
+          "fielding-team",
+          "batting-team"
+        ]
+      },
+      "response_sha256": "f52f57369517e9f096b1b227cf454cdc9255cac97dcdb8a08d7f89d81133f9bf",
+      "parsed_sha256": "d4c4ed07c7048f21efc9ba092ff8444333e911f5e756e82e30828fc6f441484f",
+      "reused_pilot": false,
+      "rows": 624
+    },
+    {
+      "year": 2019,
+      "split": true,
+      "requested": {
+        "type": "fielder",
+        "seasonStart": 2019,
+        "seasonEnd": 2019,
+        "minInnings": 0,
+        "minResults": 0,
+        "groupBy": "position"
+      },
+      "observed": {
+        "type": "fielder",
+        "minSwings": "q",
+        "minGroupSwings": 1,
+        "minContact": 0,
+        "gameType": "Regular",
+        "seasonStart": 2019,
+        "seasonEnd": 2019,
+        "minInnings": "0",
+        "minResults": 0,
+        "groupBy": "position",
+        "minPitches": null,
+        "secondaryGroupBy": [
+          "position"
+        ],
+        "validSwingTimingX": [],
+        "validSwingTimingY": [],
+        "validSwingTimingZ": [],
+        "validPitchTypes": [],
+        "validCounts": [],
+        "validTeams": [],
+        "validShadowZones": [],
+        "sort": {
+          "column": "total_runs",
+          "direction": "desc"
+        },
+        "validTypes": [
+          "fielder",
+          "pitcher",
+          "batter",
+          "fielding-team",
+          "batting-team"
+        ]
+      },
+      "response_sha256": "0fa8dee42c2624425b3cca5e36c7ad3fa1ebd0f5ea158b0fdcaa550fc6618546",
+      "parsed_sha256": "8a9284c3b640a7183846523f05b3d5acf12edbf8f0b722b9678701a4a55f254f",
+      "reused_pilot": false,
+      "rows": 1364
+    },
+    {
+      "year": 2019,
+      "split": false,
+      "requested": {
+        "type": "fielder",
+        "seasonStart": 2019,
+        "seasonEnd": 2019,
+        "minInnings": 0,
+        "minResults": 0
+      },
+      "observed": {
+        "type": "fielder",
+        "minSwings": "q",
+        "minGroupSwings": 1,
+        "minContact": 0,
+        "gameType": "Regular",
+        "seasonStart": 2019,
+        "seasonEnd": 2019,
+        "minInnings": "0",
+        "minResults": 0,
+        "minPitches": null,
+        "secondaryGroupBy": [],
+        "validSwingTimingX": [],
+        "validSwingTimingY": [],
+        "validSwingTimingZ": [],
+        "validPitchTypes": [],
+        "validCounts": [],
+        "validTeams": [],
+        "validShadowZones": [],
+        "sort": {
+          "column": "total_runs",
+          "direction": "desc"
+        },
+        "validTypes": [
+          "fielder",
+          "pitcher",
+          "batter",
+          "fielding-team",
+          "batting-team"
+        ]
+      },
+      "response_sha256": "a2e918ace4172216bb9f359ae1fd3db56d4cfc5c6b6aaf7720cd3e09c275ee61",
+      "parsed_sha256": "fbe9a3b5f1b084919f3d36fb35b1e2c721eb64001fe6e5e26d8a3204bbf24f82",
+      "reused_pilot": false,
+      "rows": 626
+    },
+    {
+      "year": 2020,
+      "split": true,
+      "requested": {
+        "type": "fielder",
+        "seasonStart": 2020,
+        "seasonEnd": 2020,
+        "minInnings": 0,
+        "minResults": 0,
+        "groupBy": "position"
+      },
+      "observed": {
+        "type": "fielder",
+        "minSwings": "q",
+        "minGroupSwings": 1,
+        "minContact": 0,
+        "gameType": "Regular",
+        "seasonStart": 2020,
+        "seasonEnd": 2020,
+        "minInnings": "0",
+        "minResults": 0,
+        "groupBy": "position",
+        "minPitches": null,
+        "secondaryGroupBy": [
+          "position"
+        ],
+        "validSwingTimingX": [],
+        "validSwingTimingY": [],
+        "validSwingTimingZ": [],
+        "validPitchTypes": [],
+        "validCounts": [],
+        "validTeams": [],
+        "validShadowZones": [],
+        "sort": {
+          "column": "total_runs",
+          "direction": "desc"
+        },
+        "validTypes": [
+          "fielder",
+          "pitcher",
+          "batter",
+          "fielding-team",
+          "batting-team"
+        ]
+      },
+      "response_sha256": "850627fd299dd3b5a770257e87b7716a4c0e1c0ac09aa63f2cc697b4ccaaf5f6",
+      "parsed_sha256": "6c0b80d88f414dffaedc8198ec635f6adbc0e1580882addec562c2ac2c737dd6",
+      "reused_pilot": false,
+      "rows": 1069
+    },
+    {
+      "year": 2020,
+      "split": false,
+      "requested": {
+        "type": "fielder",
+        "seasonStart": 2020,
+        "seasonEnd": 2020,
+        "minInnings": 0,
+        "minResults": 0
+      },
+      "observed": {
+        "type": "fielder",
+        "minSwings": "q",
+        "minGroupSwings": 1,
+        "minContact": 0,
+        "gameType": "Regular",
+        "seasonStart": 2020,
+        "seasonEnd": 2020,
+        "minInnings": "0",
+        "minResults": 0,
+        "minPitches": null,
+        "secondaryGroupBy": [],
+        "validSwingTimingX": [],
+        "validSwingTimingY": [],
+        "validSwingTimingZ": [],
+        "validPitchTypes": [],
+        "validCounts": [],
+        "validTeams": [],
+        "validShadowZones": [],
+        "sort": {
+          "column": "total_runs",
+          "direction": "desc"
+        },
+        "validTypes": [
+          "fielder",
+          "pitcher",
+          "batter",
+          "fielding-team",
+          "batting-team"
+        ]
+      },
+      "response_sha256": "adbbbc5ddeb280a8f307025482f04c72a254dbbfa6f4fa516622b95a80d9f254",
+      "parsed_sha256": "35ad3a9ebcd91a9ff7384b9cdb4c21301da8fea87fe0b078f43fe4f37ad42e7e",
+      "reused_pilot": false,
+      "rows": 567
+    },
+    {
+      "year": 2021,
+      "split": true,
+      "requested": {
+        "type": "fielder",
+        "seasonStart": 2021,
+        "seasonEnd": 2021,
+        "minInnings": 0,
+        "minResults": 0,
+        "groupBy": "position"
+      },
+      "observed": {
+        "type": "fielder",
+        "minSwings": "q",
+        "minGroupSwings": 1,
+        "minContact": 0,
+        "gameType": "Regular",
+        "seasonStart": 2021,
+        "seasonEnd": 2021,
+        "minInnings": "0",
+        "minResults": 0,
+        "groupBy": "position",
+        "minPitches": null,
+        "secondaryGroupBy": [
+          "position"
+        ],
+        "validSwingTimingX": [],
+        "validSwingTimingY": [],
+        "validSwingTimingZ": [],
+        "validPitchTypes": [],
+        "validCounts": [],
+        "validTeams": [],
+        "validShadowZones": [],
+        "sort": {
+          "column": "total_runs",
+          "direction": "desc"
+        },
+        "validTypes": [
+          "fielder",
+          "pitcher",
+          "batter",
+          "fielding-team",
+          "batting-team"
+        ]
+      },
+      "response_sha256": "7e92895914fd2005ee91abe8f3b9d55e0548bf0f2cf15a97160c43421b1bb73d",
+      "parsed_sha256": "2b5353681191ba909b84b641951ca7a669d057544baadd23d0673912f1605ffb",
+      "reused_pilot": false,
+      "rows": 1467
+    },
+    {
+      "year": 2021,
+      "split": false,
+      "requested": {
+        "type": "fielder",
+        "seasonStart": 2021,
+        "seasonEnd": 2021,
+        "minInnings": 0,
+        "minResults": 0
+      },
+      "observed": {
+        "type": "fielder",
+        "minSwings": "q",
+        "minGroupSwings": 1,
+        "minContact": 0,
+        "gameType": "Regular",
+        "seasonStart": 2021,
+        "seasonEnd": 2021,
+        "minInnings": "0",
+        "minResults": 0,
+        "minPitches": null,
+        "secondaryGroupBy": [],
+        "validSwingTimingX": [],
+        "validSwingTimingY": [],
+        "validSwingTimingZ": [],
+        "validPitchTypes": [],
+        "validCounts": [],
+        "validTeams": [],
+        "validShadowZones": [],
+        "sort": {
+          "column": "total_runs",
+          "direction": "desc"
+        },
+        "validTypes": [
+          "fielder",
+          "pitcher",
+          "batter",
+          "fielding-team",
+          "batting-team"
+        ]
+      },
+      "response_sha256": "c4cc96f02daf4e644865e77091c1103ab86e73ae01bdafbf27587514b7cd5d91",
+      "parsed_sha256": "ecf1c6ea71355c8b3ae3f7605b66213fde6cf300dbe5cb5f3efc5cc512f405b2",
+      "reused_pilot": false,
+      "rows": 655
+    },
+    {
+      "year": 2022,
+      "split": true,
+      "requested": {
+        "type": "fielder",
+        "seasonStart": 2022,
+        "seasonEnd": 2022,
+        "minInnings": 0,
+        "minResults": 0,
+        "groupBy": "position"
+      },
+      "observed": {
+        "type": "fielder",
+        "minSwings": "q",
+        "minGroupSwings": 1,
+        "minContact": 0,
+        "gameType": "Regular",
+        "seasonStart": 2022,
+        "seasonEnd": 2022,
+        "minInnings": "0",
+        "minResults": 0,
+        "groupBy": "position",
+        "minPitches": null,
+        "secondaryGroupBy": [
+          "position"
+        ],
+        "validSwingTimingX": [],
+        "validSwingTimingY": [],
+        "validSwingTimingZ": [],
+        "validPitchTypes": [],
+        "validCounts": [],
+        "validTeams": [],
+        "validShadowZones": [],
+        "sort": {
+          "column": "total_runs",
+          "direction": "desc"
+        },
+        "validTypes": [
+          "fielder",
+          "pitcher",
+          "batter",
+          "fielding-team",
+          "batting-team"
+        ]
+      },
+      "response_sha256": "dce7745e52a112a6c0ac800b4a866bdebd3338242ee31612b408e612448c6929",
+      "parsed_sha256": "1b8ef9829116ad0df322d4288655c7c07a87f77ec4fd1029fb2f2d90a3775119",
+      "reused_pilot": true,
+      "rows": 1454
+    },
+    {
+      "year": 2022,
+      "split": false,
+      "requested": {
+        "type": "fielder",
+        "seasonStart": 2022,
+        "seasonEnd": 2022,
+        "minInnings": 0,
+        "minResults": 0
+      },
+      "observed": {
+        "type": "fielder",
+        "minSwings": "q",
+        "minGroupSwings": 1,
+        "minContact": 0,
+        "gameType": "Regular",
+        "seasonStart": 2022,
+        "seasonEnd": 2022,
+        "minInnings": "0",
+        "minResults": 0,
+        "minPitches": null,
+        "secondaryGroupBy": [],
+        "validSwingTimingX": [],
+        "validSwingTimingY": [],
+        "validSwingTimingZ": [],
+        "validPitchTypes": [],
+        "validCounts": [],
+        "validTeams": [],
+        "validShadowZones": [],
+        "sort": {
+          "column": "total_runs",
+          "direction": "desc"
+        },
+        "validTypes": [
+          "fielder",
+          "pitcher",
+          "batter",
+          "fielding-team",
+          "batting-team"
+        ]
+      },
+      "response_sha256": "3f039fce658b722dade00dceee86dddf5319b234344d2c6714a8448a4ccdf675",
+      "parsed_sha256": "c6e497cbc5d9fbc5fdace947a1edb206f4d8992d2f0021d3b2f076b8c00ba8a4",
+      "reused_pilot": true,
+      "rows": 679
+    },
+    {
+      "year": 2023,
+      "split": true,
+      "requested": {
+        "type": "fielder",
+        "seasonStart": 2023,
+        "seasonEnd": 2023,
+        "minInnings": 0,
+        "minResults": 0,
+        "groupBy": "position"
+      },
+      "observed": {
+        "type": "fielder",
+        "minSwings": "q",
+        "minGroupSwings": 1,
+        "minContact": 0,
+        "gameType": "Regular",
+        "seasonStart": 2023,
+        "seasonEnd": 2023,
+        "minInnings": "0",
+        "minResults": 0,
+        "groupBy": "position",
+        "minPitches": null,
+        "secondaryGroupBy": [
+          "position"
+        ],
+        "validSwingTimingX": [],
+        "validSwingTimingY": [],
+        "validSwingTimingZ": [],
+        "validPitchTypes": [],
+        "validCounts": [],
+        "validTeams": [],
+        "validShadowZones": [],
+        "sort": {
+          "column": "total_runs",
+          "direction": "desc"
+        },
+        "validTypes": [
+          "fielder",
+          "pitcher",
+          "batter",
+          "fielding-team",
+          "batting-team"
+        ]
+      },
+      "response_sha256": "03d85289ecd0c1187492a4ab37884f3cb0a5fac47b9809f275fb2456a0a9a7d3",
+      "parsed_sha256": "81422406787cad5968adea2df3afa5edf62606c9d687cf35350a2d4c6102b4a3",
+      "reused_pilot": false,
+      "rows": 1359
+    },
+    {
+      "year": 2023,
+      "split": false,
+      "requested": {
+        "type": "fielder",
+        "seasonStart": 2023,
+        "seasonEnd": 2023,
+        "minInnings": 0,
+        "minResults": 0
+      },
+      "observed": {
+        "type": "fielder",
+        "minSwings": "q",
+        "minGroupSwings": 1,
+        "minContact": 0,
+        "gameType": "Regular",
+        "seasonStart": 2023,
+        "seasonEnd": 2023,
+        "minInnings": "0",
+        "minResults": 0,
+        "minPitches": null,
+        "secondaryGroupBy": [],
+        "validSwingTimingX": [],
+        "validSwingTimingY": [],
+        "validSwingTimingZ": [],
+        "validPitchTypes": [],
+        "validCounts": [],
+        "validTeams": [],
+        "validShadowZones": [],
+        "sort": {
+          "column": "total_runs",
+          "direction": "desc"
+        },
+        "validTypes": [
+          "fielder",
+          "pitcher",
+          "batter",
+          "fielding-team",
+          "batting-team"
+        ]
+      },
+      "response_sha256": "50b922aa906ee6336bf1263b9c788d74fd41369ef71f52c83ef6eda5a3d5ffca",
+      "parsed_sha256": "9cbedb99a1d10812312c13ff85d5a51f9b435e1f37475e4916dd7684b4c3ce7b",
+      "reused_pilot": false,
+      "rows": 645
+    },
+    {
+      "year": 2024,
+      "split": true,
+      "requested": {
+        "type": "fielder",
+        "seasonStart": 2024,
+        "seasonEnd": 2024,
+        "minInnings": 0,
+        "minResults": 0,
+        "groupBy": "position"
+      },
+      "observed": {
+        "type": "fielder",
+        "minSwings": "q",
+        "minGroupSwings": 1,
+        "minContact": 0,
+        "gameType": "Regular",
+        "seasonStart": 2024,
+        "seasonEnd": 2024,
+        "minInnings": "0",
+        "minResults": 0,
+        "groupBy": "position",
+        "minPitches": null,
+        "secondaryGroupBy": [
+          "position"
+        ],
+        "validSwingTimingX": [],
+        "validSwingTimingY": [],
+        "validSwingTimingZ": [],
+        "validPitchTypes": [],
+        "validCounts": [],
+        "validTeams": [],
+        "validShadowZones": [],
+        "sort": {
+          "column": "total_runs",
+          "direction": "desc"
+        },
+        "validTypes": [
+          "fielder",
+          "pitcher",
+          "batter",
+          "fielding-team",
+          "batting-team"
+        ]
+      },
+      "response_sha256": "7ad32c08b59a8ef157dc98659e2258d716b6f94475bbe39922291c7410c7e462",
+      "parsed_sha256": "c97add40c9da0ad868f70631d6361492415b77ec61b9a2a3327be948596880e7",
+      "reused_pilot": false,
+      "rows": 1311
+    },
+    {
+      "year": 2024,
+      "split": false,
+      "requested": {
+        "type": "fielder",
+        "seasonStart": 2024,
+        "seasonEnd": 2024,
+        "minInnings": 0,
+        "minResults": 0
+      },
+      "observed": {
+        "type": "fielder",
+        "minSwings": "q",
+        "minGroupSwings": 1,
+        "minContact": 0,
+        "gameType": "Regular",
+        "seasonStart": 2024,
+        "seasonEnd": 2024,
+        "minInnings": "0",
+        "minResults": 0,
+        "minPitches": null,
+        "secondaryGroupBy": [],
+        "validSwingTimingX": [],
+        "validSwingTimingY": [],
+        "validSwingTimingZ": [],
+        "validPitchTypes": [],
+        "validCounts": [],
+        "validTeams": [],
+        "validShadowZones": [],
+        "sort": {
+          "column": "total_runs",
+          "direction": "desc"
+        },
+        "validTypes": [
+          "fielder",
+          "pitcher",
+          "batter",
+          "fielding-team",
+          "batting-team"
+        ]
+      },
+      "response_sha256": "4402290c13ad523c2a00d4ca8a32ae18232e15125b2e1b89f5c5c7d647a0ff27",
+      "parsed_sha256": "3f7f705eb049b5549ca56b29dcd0fae3ee4007594552e93b16266d181edc90ac",
+      "reused_pilot": false,
+      "rows": 639
+    },
+    {
+      "year": 2025,
+      "split": true,
+      "requested": {
+        "type": "fielder",
+        "seasonStart": 2025,
+        "seasonEnd": 2025,
+        "minInnings": 0,
+        "minResults": 0,
+        "groupBy": "position"
+      },
+      "observed": {
+        "type": "fielder",
+        "minSwings": "q",
+        "minGroupSwings": 1,
+        "minContact": 0,
+        "gameType": "Regular",
+        "seasonStart": 2025,
+        "seasonEnd": 2025,
+        "minInnings": "0",
+        "minResults": 0,
+        "groupBy": "position",
+        "minPitches": null,
+        "secondaryGroupBy": [
+          "position"
+        ],
+        "validSwingTimingX": [],
+        "validSwingTimingY": [],
+        "validSwingTimingZ": [],
+        "validPitchTypes": [],
+        "validCounts": [],
+        "validTeams": [],
+        "validShadowZones": [],
+        "sort": {
+          "column": "total_runs",
+          "direction": "desc"
+        },
+        "validTypes": [
+          "fielder",
+          "pitcher",
+          "batter",
+          "fielding-team",
+          "batting-team"
+        ]
+      },
+      "response_sha256": "e96566395fea5b634f26330a7516592cb57aa209f5339bac593889de2b17e986",
+      "parsed_sha256": "73c01c8440e3d725771c09b2871d29f1987dfa216614d7edded3fa5d68db080d",
+      "reused_pilot": true,
+      "rows": 1366
+    },
+    {
+      "year": 2025,
+      "split": false,
+      "requested": {
+        "type": "fielder",
+        "seasonStart": 2025,
+        "seasonEnd": 2025,
+        "minInnings": 0,
+        "minResults": 0
+      },
+      "observed": {
+        "type": "fielder",
+        "minSwings": "q",
+        "minGroupSwings": 1,
+        "minContact": 0,
+        "gameType": "Regular",
+        "seasonStart": 2025,
+        "seasonEnd": 2025,
+        "minInnings": "0",
+        "minResults": 0,
+        "minPitches": null,
+        "secondaryGroupBy": [],
+        "validSwingTimingX": [],
+        "validSwingTimingY": [],
+        "validSwingTimingZ": [],
+        "validPitchTypes": [],
+        "validCounts": [],
+        "validTeams": [],
+        "validShadowZones": [],
+        "sort": {
+          "column": "total_runs",
+          "direction": "desc"
+        },
+        "validTypes": [
+          "fielder",
+          "pitcher",
+          "batter",
+          "fielding-team",
+          "batting-team"
+        ]
+      },
+      "response_sha256": "e70c3cfa679d74f8037e50e18fca8eb100379f03f2a1487b5c48bb93b03f230d",
+      "parsed_sha256": "fcf9eacb755cf9313125446f70b20181a70f9371e48b72b7a5d7a2c070aaf48c",
+      "reused_pilot": true,
+      "rows": 661
+    }
+  ],
+  "fits": 0,
+  "player_walkthrough_status": "pending",
+  "production_changed": false,
+  "additional_2026_data_ingested_or_used": false,
+  "hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\source_defensive_positions_v2.py": "532140e83e349f952c23d93df71925dcfc63d78e5ed13c10f05872ce62bac24d",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\defensive-talent-position-v2-contract.md": "53ca63e8da8b42041b1e610b60e94bf6c018ebdeda555f0049e5d556124f73bc",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-07\\new-chat-4\\work\\universal-baseball-model\\reports\\generated\\mlb-fielding-outcome-inventory-2004-2025\\tables\\mlb_fielding_usage_2004_2025.parquet": "d764ad9e71cddc7e23f0bc30ea5fd8b06502076dbddfd6f4c00969524842fbd8",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\multiyear-hitter-components-v1\\source-audit.json": "c6f556ab5556d8d3599152508ccc3b2b4a82dfaa0466e2d0d178e4ee712e365e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-position-source-pilot\\final-review.json": "d129c545906f2325111ab9cf0d96178b418fe8f053cbddae1ef443e315c46efd",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\aggregate-2016.response": "2115bed358f60f77ff38dfb4517acbf1aa3125fe7f6c50cad6c26b1b6f9e6bf2",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\aggregate-2017.response": "c3497869da3610c5136b82440906bef0eb5888ded0d598fac10277f26f9d39e3",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\aggregate-2018.response": "f52f57369517e9f096b1b227cf454cdc9255cac97dcdb8a08d7f89d81133f9bf",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\aggregate-2019.response": "a2e918ace4172216bb9f359ae1fd3db56d4cfc5c6b6aaf7720cd3e09c275ee61",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\aggregate-2020.response": "adbbbc5ddeb280a8f307025482f04c72a254dbbfa6f4fa516622b95a80d9f254",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\aggregate-2021.response": "c4cc96f02daf4e644865e77091c1103ab86e73ae01bdafbf27587514b7cd5d91",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\aggregate-2022.response": "3f039fce658b722dade00dceee86dddf5319b234344d2c6714a8448a4ccdf675",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\aggregate-2023.response": "50b922aa906ee6336bf1263b9c788d74fd41369ef71f52c83ef6eda5a3d5ffca",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\aggregate-2024.response": "4402290c13ad523c2a00d4ca8a32ae18232e15125b2e1b89f5c5c7d647a0ff27",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\aggregate-2025.response": "e70c3cfa679d74f8037e50e18fca8eb100379f03f2a1487b5c48bb93b03f230d",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\position-2016.response": "bbd98cbef5149b2b576818efa232f300cd51ac6c1900ebdd1672ed5d204b509f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\position-2017.response": "855227adddb8ac121eca5730fb426b3221733920d17fac3440d08c6543c8a87a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\position-2018.response": "50412174ce1d46b780115a63df774629abeee768c7bf77093024cdf68a96e390",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\position-2019.response": "0fa8dee42c2624425b3cca5e36c7ad3fa1ebd0f5ea158b0fdcaa550fc6618546",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\position-2020.response": "850627fd299dd3b5a770257e87b7716a4c0e1c0ac09aa63f2cc697b4ccaaf5f6",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\position-2021.response": "7e92895914fd2005ee91abe8f3b9d55e0548bf0f2cf15a97160c43421b1bb73d",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\position-2022.response": "dce7745e52a112a6c0ac800b4a866bdebd3338242ee31612b408e612448c6929",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\position-2023.response": "03d85289ecd0c1187492a4ab37884f3cb0a5fac47b9809f275fb2456a0a9a7d3",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\position-2024.response": "7ad32c08b59a8ef157dc98659e2258d716b6f94475bbe39922291c7410c7e462",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\position-2025.response": "e96566395fea5b634f26330a7516592cb57aa209f5339bac593889de2b17e986",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\aggregate-2016.parquet": "dafd5514809a1a7448b09b7224283f5c95f4f9642f1166f5b49a3519c7ed8601",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\aggregate-2017.parquet": "92fe227873366122e236a53d118350d6b1f95471ee9ed807ba734235f09bfdb6",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\aggregate-2018.parquet": "d4c4ed07c7048f21efc9ba092ff8444333e911f5e756e82e30828fc6f441484f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\aggregate-2019.parquet": "fbe9a3b5f1b084919f3d36fb35b1e2c721eb64001fe6e5e26d8a3204bbf24f82",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\aggregate-2020.parquet": "35ad3a9ebcd91a9ff7384b9cdb4c21301da8fea87fe0b078f43fe4f37ad42e7e",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\aggregate-2021.parquet": "ecf1c6ea71355c8b3ae3f7605b66213fde6cf300dbe5cb5f3efc5cc512f405b2",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\aggregate-2022.parquet": "c6e497cbc5d9fbc5fdace947a1edb206f4d8992d2f0021d3b2f076b8c00ba8a4",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\aggregate-2023.parquet": "9cbedb99a1d10812312c13ff85d5a51f9b435e1f37475e4916dd7684b4c3ce7b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\aggregate-2024.parquet": "3f7f705eb049b5549ca56b29dcd0fae3ee4007594552e93b16266d181edc90ac",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\aggregate-2025.parquet": "fcf9eacb755cf9313125446f70b20181a70f9371e48b72b7a5d7a2c070aaf48c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\annual.parquet": "5bfe1c2855cf3b77d70fa16ceffc5b2df7b21978f84cb6534f955773992eda03",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\measurement-gaps.parquet": "2d65ad6fc431550b005c20a46400dc166217695b2cd95fc8ab64cd946220ca6a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\position-2016.parquet": "1ab7bdae8b16ea5c60d6d72d9f844200e389b3e4f7d8e7d3fa89e07eb3399b9d",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\position-2017.parquet": "fd18f5564a6b507ad34d79c6f6ebcfe22b5acd94b7a81e96fd25c06c6c1812f0",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\position-2018.parquet": "f1d3b1ed55be8bbf8aa58c16b34f9b2d9d3ca70f1cb1248da7b21bb2b4a2485f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\position-2019.parquet": "8a9284c3b640a7183846523f05b3d5acf12edbf8f0b722b9678701a4a55f254f",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\position-2020.parquet": "6c0b80d88f414dffaedc8198ec635f6adbc0e1580882addec562c2ac2c737dd6",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\position-2021.parquet": "2b5353681191ba909b84b641951ca7a669d057544baadd23d0673912f1605ffb",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\position-2022.parquet": "1b8ef9829116ad0df322d4288655c7c07a87f77ec4fd1029fb2f2d90a3775119",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\position-2023.parquet": "81422406787cad5968adea2df3afa5edf62606c9d687cf35350a2d4c6102b4a3",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\position-2024.parquet": "c97add40c9da0ad868f70631d6361492415b77ec61b9a2a3327be948596880e7",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\position-2025.parquet": "73c01c8440e3d725771c09b2871d29f1987dfa216614d7edded3fa5d68db080d"
+  }
+}

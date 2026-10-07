@@ -752,3 +752,17 @@ docs/defensive-position-source-pilot-result.md -text -eol
 scripts/pilot_defensive_position_source.py -text -eol
 scripts/review_defensive_position_source.py -text -eol
 reports/model-evidence/defensive-position-source-pilot/** -text -eol
+# Preserve the repaired position/context milestone and its fixed comparison.
+docs/defensive-talent-position-v2-*.md -text -eol
+src/universal_baseball/defensive_talent_position.py -text -eol
+scripts/source_defensive_positions_v2.py -text -eol
+scripts/source_defensive_identity_v2.py -text -eol
+scripts/prepare_defensive_talent_position_v2.py -text -eol
+scripts/qualify_defensive_exposure_v2.py -text -eol
+scripts/close_defensive_source_review_v2.py -text -eol
+scripts/fit_defensive_talent_position_v2.py -text -eol
+scripts/review_defensive_talent_position_v2.py -text -eol
+scripts/finalize_defensive_talent_position_v2.py -text -eol
+scripts/verify_defensive_position_milestone_v2.py -text -eol
+tests/test_defensive_talent_position.py -text -eol
+reports/model-evidence/defensive-talent-position-v2/** -text -eol

@@ -2,6 +2,29 @@
 
 Updated 2026-10-06. This is the current start-here document.
 
+## Infield measurement repair and talent comparison completed
+
+[The completed milestone](defensive-talent-position-v2-result.md) extends actual
+MLB position range through 2016–2025 and repairs origin identity/age/fielding context
+on all 31,563 existing origins. Three-year no-prior-fielding quality coverage rises
+from 28 to 119 people. Small exposure-count differences have an explicit pre-fit
+bounded certification; missing quality remains unknown. Both the strict anchor
+and qualified preparation are preserved.
+
+The one fixed later-MLB comparison did not improve: 2022-origin error is 2.642
+versus 2.627 runs/500 innings for the contextual baseline (paired difference
++0.015; 95% interval −0.026 to +0.057). Raw credit share is 2.614. Twenty-five
+focal cases plus origin-blind peers show gains for Clement/Mateo, deterioration
+for Edwards/Witt, and large missed talent in Tovar/Lopez. Do not deploy or retune
+this particular play-share addition. Five/seven-year chronology and DSL talent
+validation remain unsupported, not failed baseball ideas.
+
+Next infield work is a bounded feasibility review of individual opportunity,
+traditional fielding and position-retention evidence in existing sources, not
+another algorithm tournament. Other nonbatting components need separate talent
+targets/support checks. Forecasts, 2026 evaluation and the 8810 explorer remain
+unchanged. Earlier checkpoint sections below are preserved history.
+
 ## MLB position source pilot verified
 
 [The 2022/2025 source pilot](defensive-position-source-pilot-result.md) recovers

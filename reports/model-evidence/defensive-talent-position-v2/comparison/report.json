@@ -1,0 +1,1369 @@
+{
+  "status": "provisional_component_comparison_requires_player_review",
+  "fits": 30,
+  "origins": {
+    "2021": {
+      "rows": 113,
+      "people": 99,
+      "observed_mean": 0.1859835666048361,
+      "sparse_profiles": 113,
+      "rows_with_measurement_gaps": 1,
+      "baseline": {
+        "rmse": 2.737830256017623,
+        "unweighted_rmse": 2.7666164093454735,
+        "mean_error": -0.026194509959196016,
+        "predicted_mean": 0.15978905664564005
+      },
+      "raw_share": {
+        "rmse": 2.7328736300748777,
+        "unweighted_rmse": 2.763075836674587,
+        "mean_error": 0.020808385954211275,
+        "predicted_mean": 0.20679195255904742
+      },
+      "candidate": {
+        "rmse": 2.773233143706074,
+        "unweighted_rmse": 2.7984110570151652,
+        "mean_error": 0.026832952488283664,
+        "predicted_mean": 0.21281651909311983
+      },
+      "zero": {
+        "rmse": 2.761360595878057,
+        "unweighted_rmse": 2.819198077802669,
+        "mean_error": -0.1859835666048361,
+        "predicted_mean": 0.0
+      },
+      "candidate_paired_differences": {
+        "baseline": {
+          "rmse_difference": 0.03540288768845112,
+          "player_bootstrap_95": [
+            -0.040918988257235445,
+            0.11323251634858077
+          ]
+        },
+        "raw_share": {
+          "rmse_difference": 0.040359513631196275,
+          "player_bootstrap_95": [
+            -0.013650835580800746,
+            0.09925859453543191
+          ]
+        },
+        "zero": {
+          "rmse_difference": 0.011872547828017055,
+          "player_bootstrap_95": [
+            -0.14322555945536358,
+            0.16830990087687936
+          ]
+        }
+      }
+    },
+    "2022": {
+      "rows": 102,
+      "people": 89,
+      "observed_mean": 0.0062200270387415746,
+      "sparse_profiles": 70,
+      "rows_with_measurement_gaps": 2,
+      "baseline": {
+        "rmse": 2.626664855020242,
+        "unweighted_rmse": 2.7237183515843864,
+        "mean_error": -0.08435228346752394,
+        "predicted_mean": -0.07813225642878241
+      },
+      "raw_share": {
+        "rmse": 2.6144476363238804,
+        "unweighted_rmse": 2.7100558538636172,
+        "mean_error": -0.06196779224251024,
+        "predicted_mean": -0.05574776520376869
+      },
+      "candidate": {
+        "rmse": 2.6421053495656817,
+        "unweighted_rmse": 2.7461725617006554,
+        "mean_error": -0.07079037400807692,
+        "predicted_mean": -0.06457034696933535
+      },
+      "zero": {
+        "rmse": 2.7560396058207655,
+        "unweighted_rmse": 2.850997081035265,
+        "mean_error": -0.0062200270387415746,
+        "predicted_mean": 0.0
+      },
+      "candidate_paired_differences": {
+        "baseline": {
+          "rmse_difference": 0.01544049454543961,
+          "player_bootstrap_95": [
+            -0.026495927241268844,
+            0.05705368269691059
+          ]
+        },
+        "raw_share": {
+          "rmse_difference": 0.02765771324180122,
+          "player_bootstrap_95": [
+            -0.001319065561034349,
+            0.05629296745071321
+          ]
+        },
+        "zero": {
+          "rmse_difference": -0.1139342562550838,
+          "player_bootstrap_95": [
+            -0.2485139493376438,
+            0.010732540022409608
+          ]
+        }
+      }
+    }
+  },
+  "groups": [
+    {
+      "origin": 2021,
+      "field": "position",
+      "value": 4,
+      "score": {
+        "rows": 45,
+        "people": 45,
+        "observed_mean": 0.40848621066288787,
+        "sparse_profiles": 45,
+        "rows_with_measurement_gaps": 1,
+        "baseline": {
+          "rmse": 2.6655175939423366,
+          "unweighted_rmse": 2.6655175939423366,
+          "mean_error": -0.41475514551179243,
+          "predicted_mean": -0.006268934848904532
+        },
+        "raw_share": {
+          "rmse": 2.712146792823393,
+          "unweighted_rmse": 2.712146792823393,
+          "mean_error": -0.3922946588413513,
+          "predicted_mean": 0.016191551821536716
+        },
+        "candidate": {
+          "rmse": 2.765549321509821,
+          "unweighted_rmse": 2.765549321509821,
+          "mean_error": -0.3292389297221351,
+          "predicted_mean": 0.07924728094075272
+        },
+        "zero": {
+          "rmse": 2.821351555007052,
+          "unweighted_rmse": 2.821351555007052,
+          "mean_error": -0.40848621066288787,
+          "predicted_mean": 0.0
+        },
+        "candidate_paired_differences": {
+          "baseline": {
+            "rmse_difference": 0.10003172756748446,
+            "player_bootstrap_95": [
+              -0.01058960201205658,
+              0.20689119975332176
+            ]
+          },
+          "raw_share": {
+            "rmse_difference": 0.05340252868642814,
+            "player_bootstrap_95": [
+              -0.021980994732639553,
+              0.13429719269266432
+            ]
+          },
+          "zero": {
+            "rmse_difference": -0.05580223349723079,
+            "player_bootstrap_95": [
+              -0.24540161328310023,
+              0.11867039196961257
+            ]
+          }
+        }
+      }
+    },
+    {
+      "origin": 2021,
+      "field": "position",
+      "value": 5,
+      "score": {
+        "rows": 35,
+        "people": 35,
+        "observed_mean": -0.10788416964692729,
+        "sparse_profiles": 35,
+        "rows_with_measurement_gaps": 0,
+        "baseline": {
+          "rmse": 2.8711016408317964,
+          "unweighted_rmse": 2.8711016408317964,
+          "mean_error": 0.5372956154141315,
+          "predicted_mean": 0.4294114457672043
+        },
+        "raw_share": {
+          "rmse": 2.8425954681655687,
+          "unweighted_rmse": 2.8425954681655687,
+          "mean_error": 0.5444505768120728,
+          "predicted_mean": 0.43656640716514544
+        },
+        "candidate": {
+          "rmse": 2.8488913744894355,
+          "unweighted_rmse": 2.8488913744894355,
+          "mean_error": 0.5904142963077393,
+          "predicted_mean": 0.4825301266608121
+        },
+        "zero": {
+          "rmse": 2.855553218656251,
+          "unweighted_rmse": 2.855553218656251,
+          "mean_error": 0.10788416964692729,
+          "predicted_mean": 0.0
+        },
+        "candidate_paired_differences": {
+          "baseline": {
+            "rmse_difference": -0.022210266342360896,
+            "player_bootstrap_95": [
+              -0.13353538368235632,
+              0.11679841992458162
+            ]
+          },
+          "raw_share": {
+            "rmse_difference": 0.0062959063238667845,
+            "player_bootstrap_95": [
+              -0.073500319194438,
+              0.10762873653919791
+            ]
+          },
+          "zero": {
+            "rmse_difference": -0.006661844166815367,
+            "player_bootstrap_95": [
+              -0.29882249335986094,
+              0.28991257428242845
+            ]
+          }
+        }
+      }
+    },
+    {
+      "origin": 2021,
+      "field": "position",
+      "value": 6,
+      "score": {
+        "rows": 33,
+        "people": 33,
+        "observed_mean": 0.521065663994554,
+        "sparse_profiles": 33,
+        "rows_with_measurement_gaps": 0,
+        "baseline": {
+          "rmse": 2.788959044418624,
+          "unweighted_rmse": 2.788959044418624,
+          "mean_error": -0.2972717978887239,
+          "predicted_mean": 0.22379386610583032
+        },
+        "raw_share": {
+          "rmse": 2.746280834599117,
+          "unweighted_rmse": 2.746280834599117,
+          "mean_error": -0.17061739277215038,
+          "predicted_mean": 0.35044827122240374
+        },
+        "candidate": {
+          "rmse": 2.7889206813733183,
+          "unweighted_rmse": 2.7889206813733183,
+          "mean_error": -0.27649330621353774,
+          "predicted_mean": 0.24457235778101646
+        },
+        "zero": {
+          "rmse": 2.7771395698854855,
+          "unweighted_rmse": 2.7771395698854855,
+          "mean_error": -0.521065663994554,
+          "predicted_mean": 0.0
+        },
+        "candidate_paired_differences": {
+          "baseline": {
+            "rmse_difference": -3.836304530580037e-05,
+            "player_bootstrap_95": [
+              -0.09239329291930423,
+              0.08893848111327349
+            ]
+          },
+          "raw_share": {
+            "rmse_difference": 0.042639846774201295,
+            "player_bootstrap_95": [
+              -0.0381143087071391,
+              0.12008646941232243
+            ]
+          },
+          "zero": {
+            "rmse_difference": 0.011781111487832785,
+            "player_bootstrap_95": [
+              -0.2614789197655834,
+              0.2947225468220776
+            ]
+          }
+        }
+      }
+    },
+    {
+      "origin": 2021,
+      "field": "prior_mlb_defense",
+      "value": false,
+      "score": {
+        "rows": 43,
+        "people": 39,
+        "observed_mean": -0.04607988911945117,
+        "sparse_profiles": 43,
+        "rows_with_measurement_gaps": 0,
+        "baseline": {
+          "rmse": 3.1034020148104933,
+          "unweighted_rmse": 3.124757572484322,
+          "mean_error": -0.03717384558534746,
+          "predicted_mean": -0.08325373470479851
+        },
+        "raw_share": {
+          "rmse": 3.1310831000754478,
+          "unweighted_rmse": 3.150958021629445,
+          "mean_error": 0.021047955372592374,
+          "predicted_mean": -0.025031933746858612
+        },
+        "candidate": {
+          "rmse": 3.2595494028377208,
+          "unweighted_rmse": 3.2644477681147106,
+          "mean_error": -0.0010110005925028714,
+          "predicted_mean": -0.04709088971195394
+        },
+        "zero": {
+          "rmse": 3.0025551183429435,
+          "unweighted_rmse": 3.0361990436227044,
+          "mean_error": 0.04607988911945117,
+          "predicted_mean": 0.0
+        },
+        "candidate_paired_differences": {
+          "baseline": {
+            "rmse_difference": 0.1561473880272275,
+            "player_bootstrap_95": [
+              0.03896243556741067,
+              0.2778632727880568
+            ]
+          },
+          "raw_share": {
+            "rmse_difference": 0.128466302762273,
+            "player_bootstrap_95": [
+              0.03750485219943783,
+              0.22086214884862512
+            ]
+          },
+          "zero": {
+            "rmse_difference": 0.25699428449477724,
+            "player_bootstrap_95": [
+              0.05682970271600988,
+              0.4706386209319504
+            ]
+          }
+        }
+      }
+    },
+    {
+      "origin": 2021,
+      "field": "prior_mlb_defense",
+      "value": true,
+      "score": {
+        "rows": 70,
+        "people": 60,
+        "observed_mean": 0.3368248128256227,
+        "sparse_profiles": 70,
+        "rows_with_measurement_gaps": 1,
+        "baseline": {
+          "rmse": 2.471378421077744,
+          "unweighted_rmse": 2.521519023886822,
+          "mean_error": -0.019057941802197567,
+          "predicted_mean": 0.3177668710234252
+        },
+        "raw_share": {
+          "rmse": 2.4394249859149193,
+          "unweighted_rmse": 2.4950848408885844,
+          "mean_error": 0.02065266583226355,
+          "predicted_mean": 0.35747747865788626
+        },
+        "candidate": {
+          "rmse": 2.4049586094622213,
+          "unweighted_rmse": 2.4688926819602544,
+          "mean_error": 0.04493152199079501,
+          "predicted_mean": 0.38175633481641774
+        },
+        "zero": {
+          "rmse": 2.5925790550387107,
+          "unweighted_rmse": 2.6771906715164917,
+          "mean_error": -0.3368248128256227,
+          "predicted_mean": 0.0
+        },
+        "candidate_paired_differences": {
+          "baseline": {
+            "rmse_difference": -0.06641981161552257,
+            "player_bootstrap_95": [
+              -0.13658652366205778,
+              0.009923957761309185
+            ]
+          },
+          "raw_share": {
+            "rmse_difference": -0.03446637645269801,
+            "player_bootstrap_95": [
+              -0.07706139820611083,
+              0.012076142528983622
+            ]
+          },
+          "zero": {
+            "rmse_difference": -0.18762044557648938,
+            "player_bootstrap_95": [
+              -0.39099514912109845,
+              0.0040380505655727645
+            ]
+          }
+        }
+      }
+    },
+    {
+      "origin": 2021,
+      "field": "fielding_level",
+      "value": "NO_CURRENT_MINOR_FIELDING",
+      "score": {
+        "rows": 18,
+        "people": 16,
+        "observed_mean": 0.3423446594623172,
+        "sparse_profiles": 18,
+        "rows_with_measurement_gaps": 1,
+        "baseline": {
+          "rmse": 1.7359426039541341,
+          "unweighted_rmse": 1.9383274746159715,
+          "mean_error": -0.20265557494978625,
+          "predicted_mean": 0.1396890845125309
+        },
+        "raw_share": {
+          "rmse": 1.7565911754146168,
+          "unweighted_rmse": 1.953550943311202,
+          "mean_error": -0.18612219457910006,
+          "predicted_mean": 0.15622246488321714
+        },
+        "candidate": {
+          "rmse": 1.7433946166815941,
+          "unweighted_rmse": 1.9473373143595083,
+          "mean_error": -0.14269793949015247,
+          "predicted_mean": 0.1996467199721647
+        },
+        "zero": {
+          "rmse": 1.9097001446481447,
+          "unweighted_rmse": 2.2364855451841548,
+          "mean_error": -0.3423446594623172,
+          "predicted_mean": 0.0
+        },
+        "candidate_paired_differences": {
+          "baseline": {
+            "rmse_difference": 0.007452012727459989,
+            "player_bootstrap_95": [
+              -0.07858446984793217,
+              0.0700441155703495
+            ]
+          },
+          "raw_share": {
+            "rmse_difference": -0.013196558733022723,
+            "player_bootstrap_95": [
+              -0.056247676392648965,
+              0.01683693135106737
+            ]
+          },
+          "zero": {
+            "rmse_difference": -0.16630552796655063,
+            "player_bootstrap_95": [
+              -0.5193027763909459,
+              0.23878941588767552
+            ]
+          }
+        }
+      }
+    },
+    {
+      "origin": 2021,
+      "field": "fielding_level",
+      "value": "a",
+      "score": {
+        "rows": 2,
+        "people": 2,
+        "observed_mean": -0.743197174780666,
+        "sparse_profiles": 2,
+        "rows_with_measurement_gaps": 0,
+        "baseline": {
+          "rmse": 4.338772627672361,
+          "unweighted_rmse": 4.338772627672361,
+          "mean_error": 4.308729282400698,
+          "predicted_mean": 3.565532107620032
+        },
+        "raw_share": {
+          "rmse": 4.3083390484509625,
+          "unweighted_rmse": 4.3083390484509625,
+          "mean_error": 4.285722667419298,
+          "predicted_mean": 3.542525492638632
+        },
+        "candidate": {
+          "rmse": 4.41549151491327,
+          "unweighted_rmse": 4.41549151491327,
+          "mean_error": 4.377030615030965,
+          "predicted_mean": 3.633833440250299
+        },
+        "zero": {
+          "rmse": 3.650266301161443,
+          "unweighted_rmse": 3.650266301161443,
+          "mean_error": 0.743197174780666,
+          "predicted_mean": 0.0
+        },
+        "candidate_paired_differences": {
+          "baseline": {
+            "rmse_difference": 0.0767188872409088,
+            "player_bootstrap_95": [
+              -0.0035153920927348814,
+              0.14011805735326988
+            ]
+          },
+          "raw_share": {
+            "rmse_difference": 0.10715246646230714,
+            "player_bootstrap_95": [
+              -0.04934421576218062,
+              0.23196011098551494
+            ]
+          },
+          "zero": {
+            "rmse_difference": 0.7652252137518265,
+            "player_bootstrap_95": [
+              -0.5214967470257852,
+              2.1279424225708445
+            ]
+          }
+        }
+      }
+    },
+    {
+      "origin": 2021,
+      "field": "fielding_level",
+      "value": "a+",
+      "score": {
+        "rows": 10,
+        "people": 10,
+        "observed_mean": 0.6394026148788922,
+        "sparse_profiles": 10,
+        "rows_with_measurement_gaps": 0,
+        "baseline": {
+          "rmse": 2.7911009674920297,
+          "unweighted_rmse": 2.7911009674920297,
+          "mean_error": -1.409925511988056,
+          "predicted_mean": -0.7705228971091638
+        },
+        "raw_share": {
+          "rmse": 2.831710953338725,
+          "unweighted_rmse": 2.831710953338725,
+          "mean_error": -1.3126344470147155,
+          "predicted_mean": -0.673231832135823
+        },
+        "candidate": {
+          "rmse": 2.9008620636108655,
+          "unweighted_rmse": 2.9008620636108655,
+          "mean_error": -1.3373631286942262,
+          "predicted_mean": -0.6979605138153337
+        },
+        "zero": {
+          "rmse": 2.5141692527927124,
+          "unweighted_rmse": 2.5141692527927124,
+          "mean_error": -0.6394026148788922,
+          "predicted_mean": 0.0
+        },
+        "candidate_paired_differences": {
+          "baseline": {
+            "rmse_difference": 0.10976109611883578,
+            "player_bootstrap_95": [
+              -0.14463234103776423,
+              0.37883195377689444
+            ]
+          },
+          "raw_share": {
+            "rmse_difference": 0.06915111027214049,
+            "player_bootstrap_95": [
+              -0.06415789640937908,
+              0.18713436760158147
+            ]
+          },
+          "zero": {
+            "rmse_difference": 0.3866928108181531,
+            "player_bootstrap_95": [
+              -0.01667839900486049,
+              0.7731378058171073
+            ]
+          }
+        }
+      }
+    },
+    {
+      "origin": 2021,
+      "field": "fielding_level",
+      "value": "aa",
+      "score": {
+        "rows": 14,
+        "people": 13,
+        "observed_mean": -0.6068857240266294,
+        "sparse_profiles": 14,
+        "rows_with_measurement_gaps": 0,
+        "baseline": {
+          "rmse": 3.0184075757524615,
+          "unweighted_rmse": 2.9164164577995506,
+          "mean_error": 0.5245538922144546,
+          "predicted_mean": -0.08233183181217464
+        },
+        "raw_share": {
+          "rmse": 3.0680774054770605,
+          "unweighted_rmse": 2.964734552317605,
+          "mean_error": 0.6203625175136029,
+          "predicted_mean": 0.013476793486973598
+        },
+        "candidate": {
+          "rmse": 3.256627930210646,
+          "unweighted_rmse": 3.1458049758922737,
+          "mean_error": 0.5694113986948501,
+          "predicted_mean": -0.0374743253317794
+        },
+        "zero": {
+          "rmse": 3.0945326911315494,
+          "unweighted_rmse": 2.9852437293015477,
+          "mean_error": 0.6068857240266294,
+          "predicted_mean": 0.0
+        },
+        "candidate_paired_differences": {
+          "baseline": {
+            "rmse_difference": 0.23822035445818424,
+            "player_bootstrap_95": [
+              -0.043344591370543084,
+              0.5095154779588634
+            ]
+          },
+          "raw_share": {
+            "rmse_difference": 0.18855052473358525,
+            "player_bootstrap_95": [
+              -0.04907324788350664,
+              0.4113665319426535
+            ]
+          },
+          "zero": {
+            "rmse_difference": 0.1620952390790964,
+            "player_bootstrap_95": [
+              -0.1380118198209464,
+              0.4474024558790884
+            ]
+          }
+        }
+      }
+    },
+    {
+      "origin": 2021,
+      "field": "fielding_level",
+      "value": "aaa",
+      "score": {
+        "rows": 68,
+        "people": 61,
+        "observed_mean": 0.29459534900079803,
+        "sparse_profiles": 68,
+        "rows_with_measurement_gaps": 0,
+        "baseline": {
+          "rmse": 2.7802485440649276,
+          "unweighted_rmse": 2.836238265752654,
+          "mean_error": -0.028234302471259822,
+          "predicted_mean": 0.26636104652953807
+        },
+        "raw_share": {
+          "rmse": 2.7549176676336224,
+          "unweighted_rmse": 2.811994903141231,
+          "mean_error": 0.012664929924310184,
+          "predicted_mean": 0.30726027892510804
+        },
+        "candidate": {
+          "rmse": 2.75679775915323,
+          "unweighted_rmse": 2.8180570668243607,
+          "mean_error": 0.016090565790105957,
+          "predicted_mean": 0.310685914790904
+        },
+        "zero": {
+          "rmse": 2.848262980124588,
+          "unweighted_rmse": 2.9096178568130133,
+          "mean_error": -0.29459534900079803,
+          "predicted_mean": 0.0
+        },
+        "candidate_paired_differences": {
+          "baseline": {
+            "rmse_difference": -0.023450784911697387,
+            "player_bootstrap_95": [
+              -0.10810697903577063,
+              0.05673057254021409
+            ]
+          },
+          "raw_share": {
+            "rmse_difference": 0.0018800915196077739,
+            "player_bootstrap_95": [
+              -0.051309881481496365,
+              0.058948194078050686
+            ]
+          },
+          "zero": {
+            "rmse_difference": -0.09146522097135756,
+            "player_bootstrap_95": [
+              -0.2825917097019675,
+              0.0755900378874019
+            ]
+          }
+        }
+      }
+    },
+    {
+      "origin": 2021,
+      "field": "fielding_level",
+      "value": "rk",
+      "score": {
+        "rows": 1,
+        "people": 1,
+        "observed_mean": 4.215936645573355,
+        "sparse_profiles": 1,
+        "rows_with_measurement_gaps": 0,
+        "baseline": {
+          "rmse": 3.9566141815092877,
+          "unweighted_rmse": 3.9566141815092877,
+          "mean_error": -3.9566141815092877,
+          "predicted_mean": 0.2593224640640673
+        },
+        "raw_share": {
+          "rmse": 3.9939896720094565,
+          "unweighted_rmse": 3.9939896720094565,
+          "mean_error": -3.9939896720094565,
+          "predicted_mean": 0.2219469735638983
+        },
+        "candidate": {
+          "rmse": 3.8665112329473974,
+          "unweighted_rmse": 3.8665112329473974,
+          "mean_error": -3.8665112329473974,
+          "predicted_mean": 0.3494254126259573
+        },
+        "zero": {
+          "rmse": 4.215936645573355,
+          "unweighted_rmse": 4.215936645573355,
+          "mean_error": -4.215936645573355,
+          "predicted_mean": 0.0
+        },
+        "candidate_paired_differences": {
+          "baseline": {
+            "rmse_difference": -0.09010294856189027,
+            "player_bootstrap_95": [
+              -0.09010294856189027,
+              -0.09010294856189027
+            ]
+          },
+          "raw_share": {
+            "rmse_difference": -0.12747843906205913,
+            "player_bootstrap_95": [
+              -0.12747843906205913,
+              -0.12747843906205913
+            ]
+          },
+          "zero": {
+            "rmse_difference": -0.3494254126259575,
+            "player_bootstrap_95": [
+              -0.3494254126259575,
+              -0.3494254126259575
+            ]
+          }
+        }
+      }
+    },
+    {
+      "origin": 2022,
+      "field": "position",
+      "value": 4,
+      "score": {
+        "rows": 33,
+        "people": 33,
+        "observed_mean": 0.5110621930269712,
+        "sparse_profiles": 21,
+        "rows_with_measurement_gaps": 1,
+        "baseline": {
+          "rmse": 2.67266225639891,
+          "unweighted_rmse": 2.67266225639891,
+          "mean_error": -0.6760308593071884,
+          "predicted_mean": -0.1649686662802171
+        },
+        "raw_share": {
+          "rmse": 2.6623359163348383,
+          "unweighted_rmse": 2.6623359163348383,
+          "mean_error": -0.6432311144964986,
+          "predicted_mean": -0.13216892146952727
+        },
+        "candidate": {
+          "rmse": 2.6834617186363867,
+          "unweighted_rmse": 2.6834617186363867,
+          "mean_error": -0.6435485210328207,
+          "predicted_mean": -0.13248632800584945
+        },
+        "zero": {
+          "rmse": 2.7413325170149325,
+          "unweighted_rmse": 2.7413325170149325,
+          "mean_error": -0.5110621930269712,
+          "predicted_mean": 0.0
+        },
+        "candidate_paired_differences": {
+          "baseline": {
+            "rmse_difference": 0.010799462237476742,
+            "player_bootstrap_95": [
+              -0.05247991627478057,
+              0.07496507217246746
+            ]
+          },
+          "raw_share": {
+            "rmse_difference": 0.02112580230154837,
+            "player_bootstrap_95": [
+              -0.0225746591570119,
+              0.07073256798740817
+            ]
+          },
+          "zero": {
+            "rmse_difference": -0.05787079837854581,
+            "player_bootstrap_95": [
+              -0.19605363255389252,
+              0.049953493302895224
+            ]
+          }
+        }
+      }
+    },
+    {
+      "origin": 2022,
+      "field": "position",
+      "value": 5,
+      "score": {
+        "rows": 36,
+        "people": 36,
+        "observed_mean": -0.8470737117486359,
+        "sparse_profiles": 24,
+        "rows_with_measurement_gaps": 1,
+        "baseline": {
+          "rmse": 2.857435671129503,
+          "unweighted_rmse": 2.857435671129503,
+          "mean_error": 0.7543745324454779,
+          "predicted_mean": -0.09269917930315791
+        },
+        "raw_share": {
+          "rmse": 2.8453820526657347,
+          "unweighted_rmse": 2.8453820526657347,
+          "mean_error": 0.700872762146327,
+          "predicted_mean": -0.14620094960230887
+        },
+        "candidate": {
+          "rmse": 2.8695894994389977,
+          "unweighted_rmse": 2.8695894994389977,
+          "mean_error": 0.7277941070604252,
+          "predicted_mean": -0.11927960468821078
+        },
+        "zero": {
+          "rmse": 2.952958918895321,
+          "unweighted_rmse": 2.952958918895321,
+          "mean_error": 0.8470737117486359,
+          "predicted_mean": 0.0
+        },
+        "candidate_paired_differences": {
+          "baseline": {
+            "rmse_difference": 0.012153828309494852,
+            "player_bootstrap_95": [
+              -0.05808478273672215,
+              0.08976860320952021
+            ]
+          },
+          "raw_share": {
+            "rmse_difference": 0.02420744677326292,
+            "player_bootstrap_95": [
+              -0.02367773022136237,
+              0.07630125444457436
+            ]
+          },
+          "zero": {
+            "rmse_difference": -0.08336941945632326,
+            "player_bootstrap_95": [
+              -0.2722867991068851,
+              0.1324017280229329
+            ]
+          }
+        }
+      }
+    },
+    {
+      "origin": 2022,
+      "field": "position",
+      "value": 6,
+      "score": {
+        "rows": 33,
+        "people": 33,
+        "observed_mean": 0.5560531464918511,
+        "sparse_profiles": 25,
+        "rows_with_measurement_gaps": 0,
+        "baseline": {
+          "rmse": 2.6229787736545416,
+          "unweighted_rmse": 2.6229787736545416,
+          "mean_error": -0.524195967537169,
+          "predicted_mean": 0.03185717895468229
+        },
+        "raw_share": {
+          "rmse": 2.6039645770352378,
+          "unweighted_rmse": 2.6039645770352378,
+          "mean_error": -0.4275603260966995,
+          "predicted_mean": 0.1284928203951518
+        },
+        "candidate": {
+          "rmse": 2.669433130510421,
+          "unweighted_rmse": 2.669433130510421,
+          "mean_error": -0.4880836232005381,
+          "predicted_mean": 0.06796952329131319
+        },
+        "zero": {
+          "rmse": 2.845326757540826,
+          "unweighted_rmse": 2.845326757540826,
+          "mean_error": -0.5560531464918511,
+          "predicted_mean": 0.0
+        },
+        "candidate_paired_differences": {
+          "baseline": {
+            "rmse_difference": 0.046454356855879286,
+            "player_bootstrap_95": [
+              -0.04964812037410676,
+              0.12943925660436004
+            ]
+          },
+          "raw_share": {
+            "rmse_difference": 0.0654685534751831,
+            "player_bootstrap_95": [
+              0.021238551189603015,
+              0.10215368346561746
+            ]
+          },
+          "zero": {
+            "rmse_difference": -0.17589362703040523,
+            "player_bootstrap_95": [
+              -0.47753758402123303,
+              0.07106647222550246
+            ]
+          }
+        }
+      }
+    },
+    {
+      "origin": 2022,
+      "field": "prior_mlb_defense",
+      "value": false,
+      "score": {
+        "rows": 37,
+        "people": 32,
+        "observed_mean": -0.023405280582243254,
+        "sparse_profiles": 37,
+        "rows_with_measurement_gaps": 1,
+        "baseline": {
+          "rmse": 2.6202312000324812,
+          "unweighted_rmse": 2.7728658072640244,
+          "mean_error": -0.17473327238920253,
+          "predicted_mean": -0.19813855297144572
+        },
+        "raw_share": {
+          "rmse": 2.6159723448379038,
+          "unweighted_rmse": 2.7804968482895354,
+          "mean_error": -0.15483772228244308,
+          "predicted_mean": -0.17824300286468628
+        },
+        "candidate": {
+          "rmse": 2.6393172982554107,
+          "unweighted_rmse": 2.8184504037461906,
+          "mean_error": -0.20138525983569625,
+          "predicted_mean": -0.22479054041793933
+        },
+        "zero": {
+          "rmse": 2.668157272120307,
+          "unweighted_rmse": 2.8256101466386427,
+          "mean_error": 0.023405280582243254,
+          "predicted_mean": 0.0
+        },
+        "candidate_paired_differences": {
+          "baseline": {
+            "rmse_difference": 0.019086098222929504,
+            "player_bootstrap_95": [
+              -0.0668223675773523,
+              0.0963423880302919
+            ]
+          },
+          "raw_share": {
+            "rmse_difference": 0.023344953417506975,
+            "player_bootstrap_95": [
+              -0.03134259646632025,
+              0.07950004238494646
+            ]
+          },
+          "zero": {
+            "rmse_difference": -0.02883997386489634,
+            "player_bootstrap_95": [
+              -0.17773100312240647,
+              0.12180489223064773
+            ]
+          }
+        }
+      }
+    },
+    {
+      "origin": 2022,
+      "field": "prior_mlb_defense",
+      "value": true,
+      "score": {
+        "rows": 65,
+        "people": 57,
+        "observed_mean": 0.022851778685610235,
+        "sparse_profiles": 33,
+        "rows_with_measurement_gaps": 1,
+        "baseline": {
+          "rmse": 2.630269834270929,
+          "unweighted_rmse": 2.695341885392407,
+          "mean_error": -0.03361207916061678,
+          "predicted_mean": -0.010760300475006522
+        },
+        "raw_share": {
+          "rmse": 2.6135912697654318,
+          "unweighted_rmse": 2.6691285175395576,
+          "mean_error": -0.009830287658688442,
+          "predicted_mean": 0.013021491026921886
+        },
+        "candidate": {
+          "rmse": 2.643669282645765,
+          "unweighted_rmse": 2.704167104079519,
+          "mean_error": 0.0025260531232180984,
+          "predicted_mean": 0.025377831808828303
+        },
+        "zero": {
+          "rmse": 2.804170172049519,
+          "unweighted_rmse": 2.8653476480986093,
+          "mean_error": -0.022851778685610235,
+          "predicted_mean": 0.0
+        },
+        "candidate_paired_differences": {
+          "baseline": {
+            "rmse_difference": 0.013399448374836087,
+            "player_bootstrap_95": [
+              -0.034723145138588825,
+              0.05839380421225515
+            ]
+          },
+          "raw_share": {
+            "rmse_difference": 0.030078012880333294,
+            "player_bootstrap_95": [
+              -0.0036326769039591532,
+              0.06552665266199903
+            ]
+          },
+          "zero": {
+            "rmse_difference": -0.16050088940375407,
+            "player_bootstrap_95": [
+              -0.3537988983121146,
+              0.02280458431109872
+            ]
+          }
+        }
+      }
+    },
+    {
+      "origin": 2022,
+      "field": "fielding_level",
+      "value": "NO_CURRENT_MINOR_FIELDING",
+      "score": {
+        "rows": 14,
+        "people": 14,
+        "observed_mean": 0.34816448313308346,
+        "sparse_profiles": 14,
+        "rows_with_measurement_gaps": 1,
+        "baseline": {
+          "rmse": 3.270369246486727,
+          "unweighted_rmse": 3.270369246486727,
+          "mean_error": -0.5800038977496679,
+          "predicted_mean": -0.23183941461658428
+        },
+        "raw_share": {
+          "rmse": 3.3011888882643667,
+          "unweighted_rmse": 3.3011888882643667,
+          "mean_error": -0.5843022431295191,
+          "predicted_mean": -0.23613775999643538
+        },
+        "candidate": {
+          "rmse": 3.299354293623431,
+          "unweighted_rmse": 3.299354293623431,
+          "mean_error": -0.5826601998971489,
+          "predicted_mean": -0.2344957167640656
+        },
+        "zero": {
+          "rmse": 3.344439697307055,
+          "unweighted_rmse": 3.344439697307055,
+          "mean_error": -0.34816448313308346,
+          "predicted_mean": 0.0
+        },
+        "candidate_paired_differences": {
+          "baseline": {
+            "rmse_difference": 0.028985047136703912,
+            "player_bootstrap_95": [
+              -0.05259474691937606,
+              0.12212839492312604
+            ]
+          },
+          "raw_share": {
+            "rmse_difference": -0.0018345946409357161,
+            "player_bootstrap_95": [
+              -0.060783592507315,
+              0.06534626059444205
+            ]
+          },
+          "zero": {
+            "rmse_difference": -0.045085403683624126,
+            "player_bootstrap_95": [
+              -0.305584586606254,
+              0.2797920288952754
+            ]
+          }
+        }
+      }
+    },
+    {
+      "origin": 2022,
+      "field": "fielding_level",
+      "value": "a",
+      "score": {
+        "rows": 3,
+        "people": 3,
+        "observed_mean": -0.38007113949471477,
+        "sparse_profiles": 3,
+        "rows_with_measurement_gaps": 0,
+        "baseline": {
+          "rmse": 1.7222456560211925,
+          "unweighted_rmse": 1.7222456560211925,
+          "mean_error": -0.60884819098077,
+          "predicted_mean": -0.9889193304754847
+        },
+        "raw_share": {
+          "rmse": 1.7681153066537896,
+          "unweighted_rmse": 1.7681153066537896,
+          "mean_error": -0.7358313159837438,
+          "predicted_mean": -1.115902455478459
+        },
+        "candidate": {
+          "rmse": 1.7096728070427722,
+          "unweighted_rmse": 1.7096728070427722,
+          "mean_error": -0.7895535488096838,
+          "predicted_mean": -1.1696246883043988
+        },
+        "zero": {
+          "rmse": 1.305773481121643,
+          "unweighted_rmse": 1.305773481121643,
+          "mean_error": 0.38007113949471477,
+          "predicted_mean": 0.0
+        },
+        "candidate_paired_differences": {
+          "baseline": {
+            "rmse_difference": -0.012572848978420259,
+            "player_bootstrap_95": [
+              -0.4144952439962827,
+              0.17110302340406447
+            ]
+          },
+          "raw_share": {
+            "rmse_difference": -0.05844249961101733,
+            "player_bootstrap_95": [
+              -0.11816783417117627,
+              0.2015235778568938
+            ]
+          },
+          "zero": {
+            "rmse_difference": 0.4038993259211292,
+            "player_bootstrap_95": [
+              -0.9560818298370539,
+              1.3826643995551597
+            ]
+          }
+        }
+      }
+    },
+    {
+      "origin": 2022,
+      "field": "fielding_level",
+      "value": "a+",
+      "score": {
+        "rows": 2,
+        "people": 2,
+        "observed_mean": 0.27839495860302355,
+        "sparse_profiles": 2,
+        "rows_with_measurement_gaps": 0,
+        "baseline": {
+          "rmse": 0.8110837689881678,
+          "unweighted_rmse": 0.8110837689881678,
+          "mean_error": -0.14111257308987374,
+          "predicted_mean": 0.1372823855131498
+        },
+        "raw_share": {
+          "rmse": 0.8566683618648977,
+          "unweighted_rmse": 0.8566683618648977,
+          "mean_error": -0.13814497764708716,
+          "predicted_mean": 0.14024998095593638
+        },
+        "candidate": {
+          "rmse": 0.8253804236841791,
+          "unweighted_rmse": 0.8253804236841791,
+          "mean_error": -0.17819329003122347,
+          "predicted_mean": 0.10020166857180007
+        },
+        "zero": {
+          "rmse": 0.2786084975080442,
+          "unweighted_rmse": 0.2786084975080442,
+          "mean_error": -0.27839495860302355,
+          "predicted_mean": 0.0
+        },
+        "candidate_paired_differences": {
+          "baseline": {
+            "rmse_difference": 0.014296654696011268,
+            "player_bootstrap_95": [
+              -0.029879134304018784,
+              0.044282299578680684
+            ]
+          },
+          "raw_share": {
+            "rmse_difference": -0.03128793818071862,
+            "player_bootstrap_95": [
+              -0.07958915981393266,
+              0.0005074649543399534
+            ]
+          },
+          "zero": {
+            "rmse_difference": 0.5467719261761349,
+            "player_bootstrap_95": [
+              0.3384213275670311,
+              0.7166200059339223
+            ]
+          }
+        }
+      }
+    },
+    {
+      "origin": 2022,
+      "field": "fielding_level",
+      "value": "aa",
+      "score": {
+        "rows": 22,
+        "people": 20,
+        "observed_mean": 0.12240843345567323,
+        "sparse_profiles": 22,
+        "rows_with_measurement_gaps": 0,
+        "baseline": {
+          "rmse": 2.968040807938639,
+          "unweighted_rmse": 2.9471434136394845,
+          "mean_error": 0.047631229676211584,
+          "predicted_mean": 0.17003966313188487
+        },
+        "raw_share": {
+          "rmse": 2.9389660969801836,
+          "unweighted_rmse": 2.9241387174805276,
+          "mean_error": 0.061482346950306674,
+          "predicted_mean": 0.1838907804059799
+        },
+        "candidate": {
+          "rmse": 2.9362759673920604,
+          "unweighted_rmse": 2.934344870528146,
+          "mean_error": 0.036101371911999934,
+          "predicted_mean": 0.15850980536767326
+        },
+        "zero": {
+          "rmse": 3.1464961501419957,
+          "unweighted_rmse": 3.1187566785300103,
+          "mean_error": -0.12240843345567323,
+          "predicted_mean": 0.0
+        },
+        "candidate_paired_differences": {
+          "baseline": {
+            "rmse_difference": -0.031764840546578466,
+            "player_bootstrap_95": [
+              -0.07553561231002967,
+              0.01949828807232895
+            ]
+          },
+          "raw_share": {
+            "rmse_difference": -0.0026901295881232024,
+            "player_bootstrap_95": [
+              -0.03850490064766478,
+              0.030073657930965152
+            ]
+          },
+          "zero": {
+            "rmse_difference": -0.21022018274993526,
+            "player_bootstrap_95": [
+              -0.5573074784560058,
+              0.10315582804626307
+            ]
+          }
+        }
+      }
+    },
+    {
+      "origin": 2022,
+      "field": "fielding_level",
+      "value": "aaa",
+      "score": {
+        "rows": 61,
+        "people": 53,
+        "observed_mean": -0.15330902821915413,
+        "sparse_profiles": 29,
+        "rows_with_measurement_gaps": 1,
+        "baseline": {
+          "rmse": 2.4205697741962813,
+          "unweighted_rmse": 2.578818322614452,
+          "mean_error": 0.05915927703128056,
+          "predicted_mean": -0.0941497511878736
+        },
+        "raw_share": {
+          "rmse": 2.3947160441276307,
+          "unweighted_rmse": 2.553043280977943,
+          "mean_error": 0.1011809235527441,
+          "predicted_mean": -0.052128104666410026
+        },
+        "candidate": {
+          "rmse": 2.449512833727068,
+          "unweighted_rmse": 2.6154307351167585,
+          "mean_error": 0.10184768767377951,
+          "predicted_mean": -0.051461340545374615
+        },
+        "zero": {
+          "rmse": 2.582086341707997,
+          "unweighted_rmse": 2.72578578983288,
+          "mean_error": 0.15330902821915413,
+          "predicted_mean": 0.0
+        },
+        "candidate_paired_differences": {
+          "baseline": {
+            "rmse_difference": 0.028943059530786908,
+            "player_bootstrap_95": [
+              -0.03768575959495098,
+              0.09010856954307908
+            ]
+          },
+          "raw_share": {
+            "rmse_difference": 0.054796789599437457,
+            "player_bootstrap_95": [
+              0.01192374060059891,
+              0.09615520480743744
+            ]
+          },
+          "zero": {
+            "rmse_difference": -0.1325735079809287,
+            "player_bootstrap_95": [
+              -0.2727751209679547,
+              -0.0040351229649663615
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "predictions": 7333,
+  "measured_rows": 215,
+  "long_window_fits": 0,
+  "player_walkthrough_status": "pending",
+  "production_changed": false,
+  "additional_2026_data_ingested_or_used": false,
+  "hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\fit_defensive_talent_position_v2.py": "1a8cc33682d4a885a57fa4e12570af1103ad74c36cd5c34ef8fa3cc14a9f8b9d",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\qualified\\comparison\\fit-preflight.json": "208c949dc51d2fa6725a89883eeab6ab7724da03c862ce20e284fd4975208e8b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\qualified\\comparison\\fits.json": "b3c27140ca01081b96e1009b6736a6a0b1aa2b30643de328801046e62435c6e1",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\qualified\\comparison\\predictions.parquet": "3238f8ddc94ddbed36b146b1c97fcfafdcdc241d4303dd1b6fde2fd0a84d24cf",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\qualified\\labels.parquet": "82c668d17f6dd91f70d8806fe76bd588c49c425de139cc054dacc17402fd4726",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defensive-talent-position-v2\\qualified\\source-final-review.json": "2e562a804ffc88075316e9a4cb812282c6e1206c2c25f2d0e0546808d007b79a"
+  }
+}
