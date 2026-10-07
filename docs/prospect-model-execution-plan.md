@@ -1,5 +1,19 @@
 # Prospect model: controlling execution plan
 
+## Current checkpoint 2026-10-06 Throwing and blocking quality separated
+
+[The reviewed catcher milestone](catcher-throw-block-v5-result.md) retains one
+transparent shrunk-history recipe per channel. Both primary quality gains are
+uncertain; later development, reversals, sparse profiles and source gaps remain
+explicit. Current research baselines cover 140 throwing/147 blocking people;
+no future opportunities, WAR, lower-minors transfer or deployment are implied.
+
+Continue the active defense goal with outfield arms/first-base receiving, then
+separate defensive positions/opportunities and matched value integration. Do not
+repeat the closed narrative blocking/deterrence fits, retune the catcher priors,
+or change frozen forecasts/explorer. All score-selected gains/losses and
+origin-selected peers have been walked before proceeding to another comparison.
+
 ## Current checkpoint 2026-10-06 Framing baseline and source correction applied
 
 [The reviewed framing comparison](catcher-framing-talent-v4-result.md) retains

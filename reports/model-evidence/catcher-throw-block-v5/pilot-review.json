@@ -1,0 +1,86 @@
+{
+  "source_integrity": "pass",
+  "source_coverage": "qualified_missing_rows",
+  "player_walkthrough_status": "complete",
+  "year_specific_payloads": true,
+  "summary": [
+    {
+      "component": "throwing",
+      "year": 2022,
+      "rows": 111,
+      "people": 111,
+      "valid": 111,
+      "opportunities": 2533,
+      "runs": -1.5151486274772412,
+      "missing_native_rows": 0,
+      "minimum": 1,
+      "blocking_equals_framing_count": null
+    },
+    {
+      "component": "throwing",
+      "year": 2025,
+      "rows": 101,
+      "people": 101,
+      "valid": 101,
+      "opportunities": 3380,
+      "runs": -3.5217426334400224,
+      "missing_native_rows": 0,
+      "minimum": 1,
+      "blocking_equals_framing_count": null
+    },
+    {
+      "component": "blocking",
+      "year": 2022,
+      "rows": 119,
+      "people": 119,
+      "valid": 119,
+      "opportunities": 190728,
+      "runs": -2.572975914061948,
+      "missing_native_rows": 0,
+      "minimum": 2,
+      "blocking_equals_framing_count": 0
+    },
+    {
+      "component": "blocking",
+      "year": 2025,
+      "rows": 110,
+      "people": 110,
+      "valid": 110,
+      "opportunities": 192874,
+      "runs": 0.11394919042172465,
+      "missing_native_rows": 1,
+      "minimum": 4,
+      "blocking_equals_framing_count": 0
+    }
+  ],
+  "source_cases": 30,
+  "missing_native_rows": [
+    {
+      "component": "blocking",
+      "season": 2025,
+      "player_id": 595453,
+      "native_outs": 6,
+      "runs": 0.002331174147837216,
+      "quality": "unknown"
+    }
+  ],
+  "rounded_blocking_display_not_used_as_numerator": true,
+  "opportunity_scopes_separate": true,
+  "no_2026_outcomes": true,
+  "model_fit": false,
+  "deployment_approved": false,
+  "protections": null,
+  "hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-native-range-v3\\component-ledger.parquet": "e62c58b8272c69aeecca131395d00efda8655c61009580ef19ac6350dd6cfc87",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\catcher-throw-block-v5\\throwing-2022.response": "4304b3839f3647e648b0356d25cc94f650f19dfef90168f2237b2d51717d6ec7",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\catcher-throw-block-v5\\throwing-2025.response": "e683baa5a2dff11bb7b7039ae494baaad5a17af7edb1f8dc1a3f5c8a3b892941",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\catcher-throw-block-v5\\blocking-2022.response": "c5dc40f271a3a8926f17ba816ef1c1337785901ca979808b558aa3e9316eda3c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\catcher-throw-block-v5\\blocking-2025.response": "1afc63efc6be0e2df717845634581334fa75931823a665b906cfe6203f0ad01a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\catcher-throw-block-v5\\pilot-annual.parquet": "31b80662bf95e5fc7f5faba7ecafae84ba9256abde4d43c463af03c639b35d45",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\catcher-throw-block-v5\\pilot-player-walkthrough.json": "8b0687671f824ed1672d2798ecbfd298be791fe1329b3beb3ad5c65b46c5d368",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\catcher-throw-block-v5-source-contract.md": "2c434d76b4a4548db1c368b33b5232f1a1a9eb0b94987812ea18c29cfc0b3464",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\review_catcher_throw_block_source_v5.py": "6ff21135a25a3fd69a5a1f7a31e45e6b7f71edd223660f6a16ae9fa3f9e7d6a8",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\src\\universal_baseball\\catcher_throw_block.py": "81fe20a08b32b23365635a4ffa4a3469878acb8d7472b4fbcf0da158178dca13",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\catcher-throw-block-v5\\pilot-capture.json": "83e18fa42435cf1e20138102cd0a81fe5c85962517e2d71fdb79e3c5abca6fb7"
+  }
+}

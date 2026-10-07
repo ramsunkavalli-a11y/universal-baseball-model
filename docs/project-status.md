@@ -2,6 +2,27 @@
 
 Updated 2026-10-06. This is the current start-here document.
 
+## Throwing and blocking talent baselines prepared
+
+[The completed catcher comparison](catcher-throw-block-v5-result.md) uses actual
+channel opportunities and unrounded difficulty-adjusted native run numerators.
+Main-origin error falls 7.1% for throwing and 8.9% for blocking versus neutral,
+with uncertain paired intervals. Realmuto throwing and Hedges/Sánchez blocking
+carry useful evidence; Maldonado reversal, Moreno development, Grandal and
+Campusano blocking misses remain. Twenty-three focal/69 peer walks complete.
+
+Current research quality is prepared for 140 throwing and 147 blocking players,
+not awarded defensive runs. All 1,888 source records and 1,971 origin forecasts
+replay independently. Eight early throwing context discrepancies and five tiny
+blocking coverage gaps remain unknown skill; rounded blocking displays never
+replace exact numerators. Sparse profiles and selected measured MLB survivors
+limit transport claims. No age learner, prior sweep or lower-minors transfer win.
+
+Next qualify outfield arms and first-base receiving, then position/opportunity
+forecasting and matched delivered-value integration. Catcher throwing is success
+given tracked attempts, not deterrence; blocking opportunities are not framing
+pitches. The selected hitter forecast, explorer and 2026 evaluation are unchanged.
+
 ## Native framing talent baseline prepared
 
 [The framing milestone](catcher-framing-talent-v4-result.md) tests later pooled
