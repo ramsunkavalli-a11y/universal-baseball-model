@@ -1,5 +1,20 @@
 # Prospect model: controlling execution plan
 
+## Current checkpoint 2026-10-06 Framing baseline and source correction applied
+
+[The reviewed framing comparison](catcher-framing-talent-v4-result.md) retains
+the transparent native-pitch history recipe, not the failed age calibration.
+Its ordinary-origin quality gain is uncertain; young/support and mean-value
+limits remain explicit. Thirteen focal and 39 peers are traced. The practical
+recipe is separately prepared for 149 current-history catchers; missing age
+context is corrected from cutoff-known records without rewriting old fits.
+
+Next in the active defense goal: qualify other components/opportunities, then
+position exposure and value integration. Do not repeat an age/prior/history
+sweep, interpret non-arrival as bad receiving, or assume the same framing
+quality earns the same runs under ABS. Frozen forecasts, 2026 evaluation and
+the explorer remain unchanged. These research components do not finish full WAR.
+
 ## Current checkpoint 2026-10-06 Related position representation reviewed
 
 [The fixed comparison](defense-position-transfer-v4-result.md) is complete with

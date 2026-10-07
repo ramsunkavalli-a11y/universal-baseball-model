@@ -2,6 +2,28 @@
 
 Updated 2026-10-06. This is the current start-here document.
 
+## Native framing talent baseline prepared
+
+[The framing milestone](catcher-framing-talent-v4-result.md) tests later pooled
+MLB quality per actual received pitch on all-source coverage. At the 2022 origin,
+55/165 catchers have measured future quality: shrunk-history error is 0.782
+versus 0.866 for neutral, a 9.6% uncertain improvement. The small age calibration
+loses, especially for young/small samples; source/support defects qualify that
+failure rather than reject age or framing. Thirteen focal/39 peer walks complete.
+
+The retained transparent recipe is applied separately to 149 current-history
+catchers as a research quality layer. Its small samples shrink directly. A
+verified missing-age defect, including Rogers, is corrected in a separate view
+using consistent cutoff-known snapshot ages: 91 origin records recovered, all
+19 missing 2022 ages resolved. Old fits/scores and the selected forecast stay
+unchanged; the failed missing-age penalty is not used by the retained baseline.
+
+Continue with arms/receiving and catcher throwing/blocking opportunities, then
+position/exposure and matched value integration. Keep Hedges/Kirk/Raleigh misses,
+one ordinary origin, left-truncated framing training and ABS awarded-value
+scenarios visible. Lower-minors framing remains unknown without genuine calls/
+locations; modern pre-2018 zero placeholders remain quarantined.
+
 ## Related position range evidence reviewed
 
 [The completed related-position comparison](defense-position-transfer-v4-result.md)
