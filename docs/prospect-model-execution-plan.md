@@ -1,5 +1,32 @@
 # Prospect model: controlling execution plan
 
+## Current checkpoint 2026 10 07 Test the recovered counts for later MLB range
+
+[The reviewed minor-count audit](defense-minor-counts-v18-result.md) supplies
+complete traditional counts and independent raw/origin/label/fold replay.
+Twelve focal players and 36 peers are reviewed. No fitted winner exists.
+Returners with prior MLB fielding are separated from genuine prospect evidence.
+
+Range has the clearest available prospect training support: 137–153 earlier
+people for 2022's three-year quality window. Catcher throwing/blocking have too
+few comparable earlier prospect examples for a complex transfer model. Modern
+DSL/complex levels lack direct chronological support; all joint profiles remain
+sparse. Older five-year labels have a later-arrival measurement-selection bias.
+
+Next contract one transparent range-count comparison against age/position/level/
+sample baselines. Use the sealed three-year same-position native MLB quality
+target, primary 2022 and separate 2021 stress; keep unknown outcomes and every
+origin identity. Regress small samples toward training-only expectations.
+Audit actual fitted age/level/position and count ranges before allowing a
+candidate effect; unsupported profiles need visible practical fallbacks.
+Follow with player walkthroughs and a separate delivered-value check if the
+quality signal survives. Do not tune to Witt, Volpe, Abrams or Bailey examples.
+
+No new role-weight sweep, adjusted ground-ball-share retry, catcher opportunity
+threshold rescue or algorithm tournament. Do not present conditional survivor
+quality as all-prospect validation. Frozen forecasts, explorer and 2026 selection
+remain unchanged; the broader defense goal and Lovich repair remain open.
+
 ## Current checkpoint 2026 10 07 Identify minor defensive talent next
 
 [The assignment comparison is reviewed](defense-assignments-v17-result.md), not

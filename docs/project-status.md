@@ -2,6 +2,34 @@
 
 Updated 2026-10-07. This is the current start-here document.
 
+## Minor fielding evidence recovered and reviewed
+
+[The minor count review](defense-minor-counts-v18-result.md) independently replays
+324,454 source records, 127,811 origin-position rows and all future-quality and
+held-player support calculations. Twelve focal players and 36 origin-selected
+peers are reviewed. No model was fitted or accuracy gain claimed.
+
+Prospect evidence is materially smaller than the mixed MLB-returner population.
+For 2022's three-year range window, there are 63 measurable people without prior
+MLB fielding and 137–153 chronologically earlier training people per fold.
+Prospect catcher throwing has only 1–4 earlier training people; blocking 8–14.
+Every detailed prospect profile remains sparse. Modern DSL/complex training
+levels are absent; older combined rookie records cannot certify DSL coverage.
+
+Witt's range improves after his first MLB season. Rafaela and Edwards move away
+from their selected origin positions; their other-position outcomes do not
+validate those labels. Bailey's strong later throwing is measurable but cannot
+solve the historical training shortage. The August traditional-stat screen
+contains positive signals, not a validated minor-to-MLB transfer forecast.
+
+Next make one transparent range comparison using age, position, exposure and
+training-only level expectations, with small-sample regression and explicit
+unsupported-level fallbacks. Primary origin 2022; 2021 remains a separate stress
+cohort. Do not substitute a next-year run target or reopen adjusted ground-ball
+shares. Catcher historical quality support, lower-minor eventual talent, position
+transfer and longer-horizon value remain unfinished. Frozen forecasts, explorer,
+2026 selection and the separate Lovich batting defect are unchanged. Goal active.
+
 ## Position replacement reviewed and not promoted
 
 [The completed assignment comparison](defense-assignments-v17-result.md)

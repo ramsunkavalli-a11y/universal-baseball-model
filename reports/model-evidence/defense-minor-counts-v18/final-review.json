@@ -1,0 +1,185 @@
+{
+  "status": "reviewed_source_and_support_no_forecast",
+  "player_walkthrough_status": "complete",
+  "focal_players": 12,
+  "peers": 36,
+  "reviewed_cases": [
+    {
+      "player_id": 677951,
+      "origin": 2019,
+      "position": 6,
+      "player_name": "Bobby Witt Jr.",
+      "main_review": "Witt develops from negative first-season range to strongly positive later seasons; three-year and five-year labels are not interchangeable. Rookie peers lack measured MLB quality, not zero talent.",
+      "peer_ids": [
+        678356,
+        687691,
+        672625
+      ]
+    },
+    {
+      "player_id": 665161,
+      "origin": 2019,
+      "position": 6,
+      "player_name": "Jeremy Pe\u00f1a",
+      "main_review": "Pe\u00f1a has promoted multi-level evidence, modest positive later pooled range and very thin matching prospect support; peers show selection into MLB.",
+      "peer_ids": [
+        660618,
+        681581,
+        664321
+      ]
+    },
+    {
+      "player_id": 683011,
+      "origin": 2019,
+      "position": 6,
+      "player_name": "Anthony Volpe",
+      "main_review": "Volpe has positive later range but no same-level advanced-rookie training support; Jim\u00e9nez is an insufficient-exposure peer, not a measured poor defender.",
+      "peer_ids": [
+        681941,
+        677870,
+        677591
+      ]
+    },
+    {
+      "player_id": 682928,
+      "origin": 2019,
+      "position": 6,
+      "player_name": "CJ Abrams",
+      "main_review": "Abrams has negative later shortstop range despite similarly aged origin profile; his peers lack measured MLB quality. Do not tune an error threshold to Abrams versus Volpe.",
+      "peer_ids": [
+        687426,
+        678850,
+        680598
+      ]
+    },
+    {
+      "player_id": 678882,
+      "origin": 2019,
+      "position": 4,
+      "player_name": "Ceddanne Rafaela",
+      "main_review": "Rafaela moves away from second base; center-field success cannot validate the second-base label. Same-position exposure is too small.",
+      "peer_ids": [
+        678659,
+        677623,
+        678854
+      ]
+    },
+    {
+      "player_id": 669364,
+      "origin": 2019,
+      "position": 4,
+      "player_name": "Xavier Edwards",
+      "main_review": "Edwards moves toward shortstop and has missing second-base range at positive official exposure. Bae qualifies narrowly at second base; position and measurement selection matter.",
+      "peer_ids": [
+        666695,
+        672716,
+        678225
+      ]
+    },
+    {
+      "player_id": 672275,
+      "origin": 2022,
+      "position": 2,
+      "player_name": "Patrick Bailey",
+      "main_review": "Bailey has strong later throwing, near-average pooled blocking and tiny prior prospect support; his raw minor steal counts remain a battery outcome. Peers do not have measured future quality.",
+      "peer_ids": [
+        680756,
+        688002,
+        682182
+      ]
+    },
+    {
+      "player_id": 663728,
+      "origin": 2019,
+      "position": 2,
+      "player_name": "Cal Raleigh",
+      "main_review": "Raleigh reaches sufficient throwing exposure only in the five-year window. Earlier blocking training has one person in his fold. Carlos P\u00e9rez has cameo exposure, not a stable quality label.",
+      "peer_ids": [
+        656024,
+        682204,
+        667372
+      ]
+    },
+    {
+      "player_id": 672386,
+      "origin": 2019,
+      "position": 2,
+      "player_name": "Alejandro Kirk",
+      "main_review": "Kirk has positive later throwing/blocking. Campusano and Amaya have inadequate throwing attempts but measurable blocking; Melendez moves to outfield. Their throwing quality remains unknown.",
+      "peer_ids": [
+        669134,
+        665804,
+        669004
+      ]
+    },
+    {
+      "player_id": 805811,
+      "origin": 2023,
+      "position": 9,
+      "player_name": "Bryce Eldridge",
+      "main_review": "Eldridge origin 2023 is primarily RF, with later 1B exposure; both windows incomplete. Do not convert this trace into a first-base talent claim.",
+      "peer_ids": [
+        805103,
+        800377,
+        800412
+      ]
+    },
+    {
+      "player_id": 456430,
+      "origin": 2009,
+      "position": 6,
+      "player_name": "Nate Sutton",
+      "main_review": "Sutton has nine shortstop chances; nearby old thin peers and zero chronological quality training do not establish a reliable fielding grade.",
+      "peer_ids": [
+        452301,
+        457042,
+        448151
+      ]
+    },
+    {
+      "player_id": 500743,
+      "origin": 2009,
+      "position": 6,
+      "player_name": "Miguel Rojas",
+      "main_review": "Rojas has substantial minor exposure but his real pretracking MLB fielding is unmeasured. Escobar also has real pretracking exposure; neither is zero-quality talent.",
+      "peer_ids": [
+        500871,
+        503437,
+        501644
+      ]
+    }
+  ],
+  "cohort_rows_replayed": 546,
+  "raw_origin_label_support_replay": "independent-review.json",
+  "focused_tests": {
+    "count": 15,
+    "command": ".venv/Scripts/python.exe -X utf8 -m pytest tests/test_minor_fielding_counts.py -p no:cacheprovider -q",
+    "observed_exit_code": 0
+  },
+  "selected_next_component": "range: fixed three-year same-position MLB quality, genuinely pre-MLB prospects, primary origin 2022 and separate 2021 stress",
+  "no_accuracy_gain_claimed": true,
+  "no_fit": true,
+  "no_forecast_or_explorer_change": true,
+  "no_2026_outcome_access": true,
+  "goal_complete": false,
+  "previous_goal_turn": "No defense progress: read-only Lovich explanation. Revalidated source/support state and completed the next available audit.",
+  "unresolved": [
+    "Every detailed prospect profile is sparse; modern DSL/complex levels have no comparable training level",
+    "Catcher prospect future-quality training remains tiny",
+    "Five-year earlier labels favor later arrivals due pretracking coverage",
+    "Same-position quality does not settle position transfer or delivered player value",
+    "Separate Lovich batting defect remains open"
+  ],
+  "hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\finalize_minor_fielding_counts_v18.py": "d4bc20c40a7ca20a73450b730186e24380747c50b9c565c623bd75205dc58892",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\defense-minor-counts-v18-contract.md": "64f788b7ee197540941f845f72d8fc2974642818eaa475f93bfbd928e1a9137b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\defense-minor-counts-v18-result.md": "424340ff33132312691b881d87eef00db8a7ecbf63cc5f705b8a90ed7cfea4b2",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-minor-counts-v18\\source-preflight.json": "7f24f058658bfdac2e6901786c6a47a0987ae75e68d25a52e4272f2972325c85",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-minor-counts-v18\\source-review.json": "b7aa9cecc4d0a9e443294d308700adaa5a4432c223fe913d8f52bf8557b2eea4",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-minor-counts-v18\\support-preflight.json": "1fb601d5943326c8ca0c2f9a9d5c23e252709af479822eebbe356fa735e92f5c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-minor-counts-v18\\support-review.json": "67b4f7c14e071ad05cdef3509fa580f860c9c2e7152aa357eeeee23a4681e7af",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-minor-counts-v18\\independent-review.json": "67328bb9eb644e804164b32f99942c2a9de60c2ad83d1ddf97910c7ab400f894",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-minor-counts-v18\\player-walkthrough.json": "b6658f99e6705dbce7e933173963714e171330f3f9e81cff29f43002f651d42c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-minor-counts-v18\\player-walkthrough.md": "78be01236a03a53094b2f004e3179af0bebf47e31bcf743c4b048df5fe32b14e"
+  }
+}
