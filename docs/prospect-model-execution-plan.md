@@ -1,5 +1,26 @@
 # Prospect model: controlling execution plan
 
+## Current checkpoint 2026 10 07 Repair evidence weighting before another range fit
+
+[The minor range comparison](defense-minor-range-v19-result.md) is reviewed and
+not promoted. Its small selected loss confounds count effects with stronger
+regression of age/position/level. Equal-penalty diagnostics are mixed by year.
+Sample reliability is unstable in short reference records, and unsupported
+count extrapolations mostly escape conditional MLB-quality scoring.
+
+Follow [the explicit repair sequence](defense-minor-range-repair-sequence.md).
+First contract a source count-likelihood/reliability comparison with dated,
+held-person references, proper sample handling and all-forecast support checks.
+That source gate does not prove future MLB talent. Complete its player walkthrough
+before a separately contracted quality fit. Then test a count correction with
+the existing age/position/level baseline protected from changed penalty strength.
+No penalty rescue based on exposed 2022 scores or algorithm tournament.
+
+Retain the useful MLB-history quality baseline; keep sparse prospect priors
+visibly uncertain. Catcher historical targets, other-position talent, longer-path
+lower-minors support and delivered value are still required by the full goal.
+Frozen forecasts, explorer, 2026 selection and Lovich repair remain unchanged.
+
 ## Current checkpoint 2026 10 07 Test the recovered counts for later MLB range
 
 [The reviewed minor-count audit](defense-minor-counts-v18-result.md) supplies

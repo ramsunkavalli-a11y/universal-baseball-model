@@ -2,6 +2,37 @@
 
 Updated 2026-10-07. This is the current start-here document.
 
+## Minor range recipe reviewed and reliability repair required
+
+[The completed count comparison](defense-minor-range-v19-result.md) replays all
+13,133 forecasts, 184 fitted parameter sets, scores and tuning. Eleven focal
+selections, 33 peer selections and 106 position walks are reviewed, with a
+supplemental check of the most extreme unmeasured forecast. No forecast changed.
+
+The selected count recipe slightly worsens 2022 range RMSE, 2.732 to 2.753,
+and worsens 2021, 3.012 to 3.110. This does not reject minor counts: most CF
+downgrades come from stronger regression of the existing position baseline.
+Equal-penalty saved-fit diagnostics modestly improve 2022 and worsen 2021;
+they are explanatory development evidence, not a new winner.
+
+More important, six chances receive 94.5% reliability after tiny reference
+outliers inflate estimated variation; a thin Frick 3B stint becomes an unsupported
+minus-13-run grade. Most such forecasts lack measurable later MLB quality, so
+conditional scores cannot certify them. The recipe is not promoted.
+
+Next follow [the repair sequence](defense-minor-range-repair-sequence.md): repair
+source reliability and extrapolation first; only after that gate, test a count
+correction without silently changing the existing baseline's penalty. No
+algorithm tournament, known-player overrides or penalty choice from exposed
+diagnostics. MLB-history range remains the useful research fallback. Catcher
+history, position transfer, longer-path minor talent and value integration remain
+open. Frozen forecasts, explorer, 2026 selection and Lovich repair are unchanged.
+The previous read-only Lovich turn made no defense progress; this review does.
+
+Additive correction to the sealed preceding audit: 2022 has 62 globally distinct
+measurable prospect range players, not 63. Davis Schneider appears in two
+principal-level counts. Source rows, original support cells and fits are unchanged.
+
 ## Minor fielding evidence recovered and reviewed
 
 [The minor count review](defense-minor-counts-v18-result.md) independently replays
