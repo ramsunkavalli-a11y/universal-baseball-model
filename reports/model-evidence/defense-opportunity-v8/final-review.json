@@ -1,0 +1,1034 @@
+{
+  "date": "2026-10-07",
+  "integrity_pass": true,
+  "player_walkthrough_status": "complete",
+  "focal_players": 13,
+  "origin_selected_peer_walks": 39,
+  "statistical_tolerance_checks": {
+    "primary_improves_pooled": true,
+    "large_groups_within_tolerance": true,
+    "dev_total_within_tolerance": true,
+    "group_checks": [
+      {
+        "origin": 2022,
+        "field": "stage",
+        "value": "Inactive / unknown",
+        "rows": 240,
+        "rmse_ratio": 1.0
+      },
+      {
+        "origin": 2022,
+        "field": "stage",
+        "value": "Current MLB",
+        "rows": 688,
+        "rmse_ratio": 0.9946226640339243
+      },
+      {
+        "origin": 2022,
+        "field": "stage",
+        "value": "Upper minors",
+        "rows": 947,
+        "rmse_ratio": 1.0075650340324225
+      },
+      {
+        "origin": 2022,
+        "field": "stage",
+        "value": "Lower minors",
+        "rows": 2369,
+        "rmse_ratio": 0.999327010329244
+      },
+      {
+        "origin": 2022,
+        "field": "age_band",
+        "value": "3",
+        "rows": 1226,
+        "rmse_ratio": 0.975087354461378
+      },
+      {
+        "origin": 2022,
+        "field": "age_band",
+        "value": "5",
+        "rows": 872,
+        "rmse_ratio": 0.9941344156186861
+      },
+      {
+        "origin": 2022,
+        "field": "age_band",
+        "value": "4",
+        "rows": 1792,
+        "rmse_ratio": 1.0090474007791836
+      },
+      {
+        "origin": 2022,
+        "field": "age_band",
+        "value": "6",
+        "rows": 278,
+        "rmse_ratio": 0.9738379219558913
+      },
+      {
+        "origin": 2023,
+        "field": "stage",
+        "value": "Upper minors",
+        "rows": 976,
+        "rmse_ratio": 0.9894393094913265
+      },
+      {
+        "origin": 2023,
+        "field": "stage",
+        "value": "Current MLB",
+        "rows": 652,
+        "rmse_ratio": 0.9976950671931423
+      },
+      {
+        "origin": 2023,
+        "field": "stage",
+        "value": "Inactive / unknown",
+        "rows": 230,
+        "rmse_ratio": 1.0
+      },
+      {
+        "origin": 2023,
+        "field": "stage",
+        "value": "Lower minors",
+        "rows": 2338,
+        "rmse_ratio": 1.0008738537248334
+      },
+      {
+        "origin": 2023,
+        "field": "age_band",
+        "value": "3",
+        "rows": 1206,
+        "rmse_ratio": 0.9194399683415962
+      },
+      {
+        "origin": 2023,
+        "field": "age_band",
+        "value": "5",
+        "rows": 865,
+        "rmse_ratio": 0.9940432663529056
+      },
+      {
+        "origin": 2023,
+        "field": "age_band",
+        "value": "4",
+        "rows": 1782,
+        "rmse_ratio": 1.009410733989169
+      },
+      {
+        "origin": 2023,
+        "field": "age_band",
+        "value": "6",
+        "rows": 274,
+        "rmse_ratio": 0.9821438230512908
+      }
+    ]
+  },
+  "numerical_conditions_pass": true,
+  "beats_stronger_ratio_anchor": false,
+  "ratio_beats_context_all_origins": true,
+  "baseball_reasonability_pass": false,
+  "disposition": "repair_allocation_before_value_integration_no_role_average_promotion",
+  "retained": "Audited sources, separate skill baselines, native conversions and stronger prior-usage/PA ratio reference.",
+  "next": "One bounded repertoire/exposure repair with tiny-MLB fallback and explicit dated role-input limits; then matched delivered-runs/value integration.",
+  "allocator_defect": "Nonexclusive origin-role weights borrow entire future position vectors, then mix those again; unrelated role exposure is not individualized evidence.",
+  "design_defect_not_rejection_of_age_or_position_information": true,
+  "cohort_diagnostics": [
+    {
+      "origin": 2022,
+      "cohort": "continuing_defender",
+      "arm": "carry",
+      "rows": 518,
+      "cell_rmse": 473.8571867619462,
+      "cell_mae": 165.6324806949807,
+      "predicted_total_outs": 932893.0,
+      "actual_total_outs": 925654.0,
+      "total_out_rmse": 1060.3894263529958
+    },
+    {
+      "origin": 2022,
+      "cohort": "continuing_defender",
+      "arm": "ratio",
+      "rows": 518,
+      "cell_rmse": 437.5466004367979,
+      "cell_mae": 153.2078015918354,
+      "predicted_total_outs": 847147.9261809785,
+      "actual_total_outs": 925654.0,
+      "total_out_rmse": 893.9198472247671
+    },
+    {
+      "origin": 2022,
+      "cohort": "continuing_defender",
+      "arm": "pooled",
+      "rows": 518,
+      "cell_rmse": 458.89970938435965,
+      "cell_mae": 203.71819841573955,
+      "predicted_total_outs": 844893.5334201835,
+      "actual_total_outs": 925654.0,
+      "total_out_rmse": 917.6619112094003
+    },
+    {
+      "origin": 2022,
+      "cohort": "continuing_defender",
+      "arm": "context",
+      "rows": 518,
+      "cell_rmse": 455.8921905388109,
+      "cell_mae": 202.2279598067941,
+      "predicted_total_outs": 850631.3768991181,
+      "actual_total_outs": 925654.0,
+      "total_out_rmse": 913.6158517521545
+    },
+    {
+      "origin": 2022,
+      "cohort": "new_or_returning_defender",
+      "arm": "carry",
+      "rows": 126,
+      "cell_rmse": 374.79208124861265,
+      "cell_mae": 102.13392857142857,
+      "predicted_total_outs": 0.0,
+      "actual_total_outs": 102951.0,
+      "total_out_rmse": 1184.7562437661416
+    },
+    {
+      "origin": 2022,
+      "cohort": "new_or_returning_defender",
+      "arm": "ratio",
+      "rows": 126,
+      "cell_rmse": 335.67508459121507,
+      "cell_mae": 103.34441184372565,
+      "predicted_total_outs": 44359.51915863574,
+      "actual_total_outs": 102951.0,
+      "total_out_rmse": 948.7043429598423
+    },
+    {
+      "origin": 2022,
+      "cohort": "new_or_returning_defender",
+      "arm": "pooled",
+      "rows": 126,
+      "cell_rmse": 336.94232358011357,
+      "cell_mae": 106.95341412433257,
+      "predicted_total_outs": 48301.41466138803,
+      "actual_total_outs": 102951.0,
+      "total_out_rmse": 971.9207330855071
+    },
+    {
+      "origin": 2022,
+      "cohort": "new_or_returning_defender",
+      "arm": "context",
+      "rows": 126,
+      "cell_rmse": 339.24684887334035,
+      "cell_mae": 110.3344691813609,
+      "predicted_total_outs": 50012.922809836964,
+      "actual_total_outs": 102951.0,
+      "total_out_rmse": 960.5019634035353
+    },
+    {
+      "origin": 2022,
+      "cohort": "no_defense_before_or_after",
+      "arm": "carry",
+      "rows": 3436,
+      "cell_rmse": 0.0,
+      "cell_mae": 0.0,
+      "predicted_total_outs": 0.0,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 0.0
+    },
+    {
+      "origin": 2022,
+      "cohort": "no_defense_before_or_after",
+      "arm": "ratio",
+      "rows": 3436,
+      "cell_rmse": 11.49207377896694,
+      "cell_mae": 1.6483318298041827,
+      "predicted_total_outs": 45309.345337657374,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 54.926381294457315
+    },
+    {
+      "origin": 2022,
+      "cohort": "no_defense_before_or_after",
+      "arm": "pooled",
+      "rows": 3436,
+      "cell_rmse": 12.797463806738138,
+      "cell_mae": 1.7460903764991162,
+      "predicted_total_outs": 47996.53226920771,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 68.64936112055008
+    },
+    {
+      "origin": 2022,
+      "cohort": "no_defense_before_or_after",
+      "arm": "context",
+      "rows": 3436,
+      "cell_rmse": 13.249896389824501,
+      "cell_mae": 1.8497571777988884,
+      "predicted_total_outs": 50846.125303335844,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 76.6997655437505
+    },
+    {
+      "origin": 2022,
+      "cohort": "defensive_exit",
+      "arm": "carry",
+      "rows": 164,
+      "cell_rmse": 298.7949182988551,
+      "cell_mae": 76.91692073170732,
+      "predicted_total_outs": 100915.0,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 972.6807594252584
+    },
+    {
+      "origin": 2022,
+      "cohort": "defensive_exit",
+      "arm": "ratio",
+      "rows": 164,
+      "cell_rmse": 207.56906502921032,
+      "cell_mae": 54.10186756796431,
+      "predicted_total_outs": 70981.65024916918,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 671.6919775945387
+    },
+    {
+      "origin": 2022,
+      "cohort": "defensive_exit",
+      "arm": "pooled",
+      "rows": 164,
+      "cell_rmse": 139.77905714066077,
+      "cell_mae": 51.669478474886006,
+      "predicted_total_outs": 67790.35575905044,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 654.6739307674461
+    },
+    {
+      "origin": 2022,
+      "cohort": "defensive_exit",
+      "arm": "context",
+      "rows": 164,
+      "cell_rmse": 143.3710551486847,
+      "cell_mae": 52.3261491144332,
+      "predicted_total_outs": 68651.90763813636,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 667.4784826417637
+    },
+    {
+      "origin": 2023,
+      "cohort": "defensive_exit",
+      "arm": "carry",
+      "rows": 141,
+      "cell_rmse": 251.2998759641048,
+      "cell_mae": 72.29609929078015,
+      "predicted_total_outs": 81550.0,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 830.6060762483677
+    },
+    {
+      "origin": 2023,
+      "cohort": "defensive_exit",
+      "arm": "ratio",
+      "rows": 141,
+      "cell_rmse": 217.31747298049544,
+      "cell_mae": 59.99242821258789,
+      "predicted_total_outs": 67671.45902379914,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 703.4346126418696
+    },
+    {
+      "origin": 2023,
+      "cohort": "defensive_exit",
+      "arm": "pooled",
+      "rows": 141,
+      "cell_rmse": 149.3315099478469,
+      "cell_mae": 61.40805254016913,
+      "predicted_total_outs": 69268.28326531078,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 731.6530059110498
+    },
+    {
+      "origin": 2023,
+      "cohort": "defensive_exit",
+      "arm": "context",
+      "rows": 141,
+      "cell_rmse": 154.11290525566955,
+      "cell_mae": 61.16283273763957,
+      "predicted_total_outs": 68991.67532805743,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 728.0884643115304
+    },
+    {
+      "origin": 2023,
+      "cohort": "no_defense_before_or_after",
+      "arm": "carry",
+      "rows": 3417,
+      "cell_rmse": 0.0,
+      "cell_mae": 0.0,
+      "predicted_total_outs": 0.0,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 0.0
+    },
+    {
+      "origin": 2023,
+      "cohort": "no_defense_before_or_after",
+      "arm": "ratio",
+      "rows": 3417,
+      "cell_rmse": 14.340141156893427,
+      "cell_mae": 2.048583841605375,
+      "predicted_total_outs": 56000.08789412453,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 65.29535357505506
+    },
+    {
+      "origin": 2023,
+      "cohort": "no_defense_before_or_after",
+      "arm": "pooled",
+      "rows": 3417,
+      "cell_rmse": 15.582060445905517,
+      "cell_mae": 2.1752307663278576,
+      "predicted_total_outs": 59462.108228338315,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 79.07228886173837
+    },
+    {
+      "origin": 2023,
+      "cohort": "no_defense_before_or_after",
+      "arm": "context",
+      "rows": 3417,
+      "cell_rmse": 15.21183086309425,
+      "cell_mae": 2.2972824129321623,
+      "predicted_total_outs": 62798.51203991359,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 85.00935888796711
+    },
+    {
+      "origin": 2023,
+      "cohort": "new_or_returning_defender",
+      "arm": "carry",
+      "rows": 132,
+      "cell_rmse": 338.0957704556506,
+      "cell_mae": 86.21022727272727,
+      "predicted_total_outs": 0.0,
+      "actual_total_outs": 91038.0,
+      "total_out_rmse": 1090.895607871224
+    },
+    {
+      "origin": 2023,
+      "cohort": "new_or_returning_defender",
+      "arm": "ratio",
+      "rows": 132,
+      "cell_rmse": 314.2633105553475,
+      "cell_mae": 95.33459487650943,
+      "predicted_total_outs": 45685.507097922666,
+      "actual_total_outs": 91038.0,
+      "total_out_rmse": 838.4078920507844
+    },
+    {
+      "origin": 2023,
+      "cohort": "new_or_returning_defender",
+      "arm": "pooled",
+      "rows": 132,
+      "cell_rmse": 311.8029032653375,
+      "cell_mae": 96.34377639709678,
+      "predicted_total_outs": 47762.90061523266,
+      "actual_total_outs": 91038.0,
+      "total_out_rmse": 816.0687387602026
+    },
+    {
+      "origin": 2023,
+      "cohort": "new_or_returning_defender",
+      "arm": "context",
+      "rows": 132,
+      "cell_rmse": 309.6519755219153,
+      "cell_mae": 98.91199581840608,
+      "predicted_total_outs": 50578.64538130065,
+      "actual_total_outs": 91038.0,
+      "total_out_rmse": 809.2156905276188
+    },
+    {
+      "origin": 2023,
+      "cohort": "continuing_defender",
+      "arm": "carry",
+      "rows": 506,
+      "cell_rmse": 471.8986846528343,
+      "cell_mae": 164.0548418972332,
+      "predicted_total_outs": 952546.0,
+      "actual_total_outs": 942426.0,
+      "total_out_rmse": 1139.5842803477988
+    },
+    {
+      "origin": 2023,
+      "cohort": "continuing_defender",
+      "arm": "ratio",
+      "rows": 506,
+      "cell_rmse": 429.6929234189952,
+      "cell_mae": 155.11515142369518,
+      "predicted_total_outs": 887213.9099205058,
+      "actual_total_outs": 942426.0,
+      "total_out_rmse": 963.555414827311
+    },
+    {
+      "origin": 2023,
+      "cohort": "continuing_defender",
+      "arm": "pooled",
+      "rows": 506,
+      "cell_rmse": 465.95677671470327,
+      "cell_mae": 215.5561413112127,
+      "predicted_total_outs": 880428.7352322387,
+      "actual_total_outs": 942426.0,
+      "total_out_rmse": 981.0115677578053
+    },
+    {
+      "origin": 2023,
+      "cohort": "continuing_defender",
+      "arm": "context",
+      "rows": 506,
+      "cell_rmse": 464.363627018169,
+      "cell_mae": 214.48154250655008,
+      "predicted_total_outs": 884696.7671697557,
+      "actual_total_outs": 942426.0,
+      "total_out_rmse": 982.8629836280967
+    },
+    {
+      "origin": 2024,
+      "cohort": "continuing_defender",
+      "arm": "carry",
+      "rows": 527,
+      "cell_rmse": 467.2041052861211,
+      "cell_mae": 163.12523719165085,
+      "predicted_total_outs": 971471.0,
+      "actual_total_outs": 931213.0,
+      "total_out_rmse": 1088.038363329116
+    },
+    {
+      "origin": 2024,
+      "cohort": "continuing_defender",
+      "arm": "ratio",
+      "rows": 527,
+      "cell_rmse": 415.5891546014718,
+      "cell_mae": 149.72311368950392,
+      "predicted_total_outs": 908377.9694425969,
+      "actual_total_outs": 931213.0,
+      "total_out_rmse": 883.0162143593805
+    },
+    {
+      "origin": 2024,
+      "cohort": "continuing_defender",
+      "arm": "pooled",
+      "rows": 527,
+      "cell_rmse": 459.26324484930296,
+      "cell_mae": 209.57295486860886,
+      "predicted_total_outs": 884487.6548848286,
+      "actual_total_outs": 931213.0,
+      "total_out_rmse": 917.6068889453317
+    },
+    {
+      "origin": 2024,
+      "cohort": "continuing_defender",
+      "arm": "context",
+      "rows": 527,
+      "cell_rmse": 456.78072009423664,
+      "cell_mae": 207.68890895499018,
+      "predicted_total_outs": 886947.6369042866,
+      "actual_total_outs": 931213.0,
+      "total_out_rmse": 914.1286954315242
+    },
+    {
+      "origin": 2024,
+      "cohort": "new_or_returning_defender",
+      "arm": "carry",
+      "rows": 134,
+      "cell_rmse": 345.61206522178253,
+      "cell_mae": 95.44029850746269,
+      "predicted_total_outs": 0.0,
+      "actual_total_outs": 102312.0,
+      "total_out_rmse": 1109.5487115415808
+    },
+    {
+      "origin": 2024,
+      "cohort": "new_or_returning_defender",
+      "arm": "ratio",
+      "rows": 134,
+      "cell_rmse": 312.7860755400771,
+      "cell_mae": 96.83070244810226,
+      "predicted_total_outs": 42934.94129754881,
+      "actual_total_outs": 102312.0,
+      "total_out_rmse": 908.8674066839382
+    },
+    {
+      "origin": 2024,
+      "cohort": "new_or_returning_defender",
+      "arm": "pooled",
+      "rows": 134,
+      "cell_rmse": 313.5370285974466,
+      "cell_mae": 99.1913914637363,
+      "predicted_total_outs": 46953.59992230849,
+      "actual_total_outs": 102312.0,
+      "total_out_rmse": 923.8738289433217
+    },
+    {
+      "origin": 2024,
+      "cohort": "new_or_returning_defender",
+      "arm": "context",
+      "rows": 134,
+      "cell_rmse": 316.7823257599328,
+      "cell_mae": 102.84508018985765,
+      "predicted_total_outs": 49284.84298616116,
+      "actual_total_outs": 102312.0,
+      "total_out_rmse": 916.9641224730306
+    },
+    {
+      "origin": 2024,
+      "cohort": "defensive_exit",
+      "arm": "carry",
+      "rows": 113,
+      "cell_rmse": 256.72366647662915,
+      "cell_mae": 70.04535398230088,
+      "predicted_total_outs": 63321.0,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 832.3895924555512
+    },
+    {
+      "origin": 2024,
+      "cohort": "defensive_exit",
+      "arm": "ratio",
+      "rows": 113,
+      "cell_rmse": 188.27706877545745,
+      "cell_mae": 53.58896796288076,
+      "predicted_total_outs": 48444.427038444206,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 588.8827473799562
+    },
+    {
+      "origin": 2024,
+      "cohort": "defensive_exit",
+      "arm": "pooled",
+      "rows": 113,
+      "cell_rmse": 125.98248677066053,
+      "cell_mae": 53.33441704256974,
+      "predicted_total_outs": 48214.31300648305,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 586.1576847437569
+    },
+    {
+      "origin": 2024,
+      "cohort": "defensive_exit",
+      "arm": "context",
+      "rows": 113,
+      "cell_rmse": 128.6827923618316,
+      "cell_mae": 53.16579003191173,
+      "predicted_total_outs": 48061.8741888482,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 587.9934091823011
+    },
+    {
+      "origin": 2024,
+      "cohort": "no_defense_before_or_after",
+      "arm": "carry",
+      "rows": 3218,
+      "cell_rmse": 0.0,
+      "cell_mae": 0.0,
+      "predicted_total_outs": 0.0,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 0.0
+    },
+    {
+      "origin": 2024,
+      "cohort": "no_defense_before_or_after",
+      "arm": "ratio",
+      "rows": 3218,
+      "cell_rmse": 12.370804114703796,
+      "cell_mae": 1.7384248629760557,
+      "predicted_total_outs": 44754.00967245558,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 59.4205258074079
+    },
+    {
+      "origin": 2024,
+      "cohort": "no_defense_before_or_after",
+      "arm": "pooled",
+      "rows": 3218,
+      "cell_rmse": 15.335413219741582,
+      "cell_mae": 2.014884881652195,
+      "predicted_total_outs": 51871.19639325411,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 88.09437553078713
+    },
+    {
+      "origin": 2024,
+      "cohort": "no_defense_before_or_after",
+      "arm": "context",
+      "rows": 3218,
+      "cell_rmse": 15.19036268403374,
+      "cell_mae": 2.0982316830320142,
+      "predicted_total_outs": 54016.876447976174,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 89.52583187125525
+    }
+  ],
+  "explanation_donor_trace": [
+    {
+      "scope": [
+        "role_stage_age",
+        "3",
+        "Current MLB",
+        "4"
+      ],
+      "focal_role_share": 0.7952522255192879,
+      "target_position": 2,
+      "borrowed_weighted_target_outs": 272.11199822145045,
+      "top_training_donors": [
+        {
+          "player_id": 663886,
+          "player_name": "Tyler Stephenson",
+          "origin_year": 2021,
+          "target_year": 2022,
+          "actual_2": 1055,
+          "weighted_target_outs": 169.19811320754715
+        },
+        {
+          "player_id": 663728,
+          "player_name": "Cal Raleigh",
+          "origin_year": 2021,
+          "target_year": 2022,
+          "actual_2": 2751,
+          "weighted_target_outs": 25.29655172413793
+        },
+        {
+          "player_id": 575929,
+          "player_name": "Willson Contreras",
+          "origin_year": 2016,
+          "target_year": 2017,
+          "actual_2": 2464,
+          "weighted_target_outs": 24.88888888888889
+        },
+        {
+          "player_id": 595751,
+          "player_name": "Jorge Alfaro",
+          "origin_year": 2016,
+          "target_year": 2017,
+          "actual_2": 730,
+          "weighted_target_outs": 23.472668810289388
+        },
+        {
+          "player_id": 595751,
+          "player_name": "Jorge Alfaro",
+          "origin_year": 2017,
+          "target_year": 2018,
+          "actual_2": 2607,
+          "weighted_target_outs": 18.755395683453237
+        }
+      ],
+      "focal_predicted_outs_from_group": 18.50108656294162
+    },
+    {
+      "scope": [
+        "role_stage_age",
+        "3",
+        "Current MLB",
+        "4"
+      ],
+      "focal_role_share": 0.7952522255192879,
+      "target_position": 7,
+      "borrowed_weighted_target_outs": 8515.232996057015,
+      "top_training_donors": [
+        {
+          "player_id": 656555,
+          "player_name": "Rhys Hoskins",
+          "origin_year": 2017,
+          "target_year": 2018,
+          "actual_7": 3517,
+          "weighted_target_outs": 2923.091509433962
+        },
+        {
+          "player_id": 641820,
+          "player_name": "Trey Mancini",
+          "origin_year": 2016,
+          "target_year": 2017,
+          "actual_7": 2188,
+          "weighted_target_outs": 2055.5277497477296
+        },
+        {
+          "player_id": 641343,
+          "player_name": "Jake Bauers",
+          "origin_year": 2018,
+          "target_year": 2019,
+          "actual_7": 1213,
+          "weighted_target_outs": 778.6062827225131
+        },
+        {
+          "player_id": 608336,
+          "player_name": "Joey Gallo",
+          "origin_year": 2017,
+          "target_year": 2018,
+          "actual_7": 1985,
+          "weighted_target_outs": 629.6136101499424
+        },
+        {
+          "player_id": 642086,
+          "player_name": "Dominic Smith",
+          "origin_year": 2018,
+          "target_year": 2019,
+          "actual_7": 657,
+          "weighted_target_outs": 506.72486187845305
+        }
+      ],
+      "focal_predicted_outs_from_group": 578.9566935429922
+    },
+    {
+      "scope": [
+        "role_stage_age",
+        "10",
+        "Current MLB",
+        "4"
+      ],
+      "focal_role_share": 0.20474777448071216,
+      "target_position": 2,
+      "borrowed_weighted_target_outs": 4509.078835744763,
+      "top_training_donors": [
+        {
+          "player_id": 643376,
+          "player_name": "Danny Jansen",
+          "origin_year": 2018,
+          "target_year": 2019,
+          "actual_2": 2558,
+          "weighted_target_outs": 566.4142857142857
+        },
+        {
+          "player_id": 663728,
+          "player_name": "Cal Raleigh",
+          "origin_year": 2021,
+          "target_year": 2022,
+          "actual_2": 2751,
+          "weighted_target_outs": 474.3103448275862
+        },
+        {
+          "player_id": 596142,
+          "player_name": "Gary S\u00e1nchez",
+          "origin_year": 2016,
+          "target_year": 2017,
+          "actual_2": 2643,
+          "weighted_target_outs": 439.3819796954315
+        },
+        {
+          "player_id": 575929,
+          "player_name": "Willson Contreras",
+          "origin_year": 2016,
+          "target_year": 2017,
+          "actual_2": 2464,
+          "weighted_target_outs": 364.0
+        },
+        {
+          "player_id": 596142,
+          "player_name": "Gary S\u00e1nchez",
+          "origin_year": 2017,
+          "target_year": 2018,
+          "actual_2": 1959,
+          "weighted_target_outs": 320.1292682926829
+        }
+      ],
+      "focal_predicted_outs_from_group": 111.94835835433553
+    },
+    {
+      "scope": [
+        "role_stage_age",
+        "10",
+        "Current MLB",
+        "4"
+      ],
+      "focal_role_share": 0.20474777448071216,
+      "target_position": 7,
+      "borrowed_weighted_target_outs": 4703.015429543897,
+      "top_training_donors": [
+        {
+          "player_id": 656941,
+          "player_name": "Kyle Schwarber",
+          "origin_year": 2016,
+          "target_year": 2017,
+          "actual_7": 2463,
+          "weighted_target_outs": 483.80357142857144
+        },
+        {
+          "player_id": 656941,
+          "player_name": "Kyle Schwarber",
+          "origin_year": 2017,
+          "target_year": 2018,
+          "actual_7": 2831,
+          "weighted_target_outs": 284.03125
+        },
+        {
+          "player_id": 643217,
+          "player_name": "Andrew Benintendi",
+          "origin_year": 2016,
+          "target_year": 2017,
+          "actual_7": 3235,
+          "weighted_target_outs": 243.1535947712418
+        },
+        {
+          "player_id": 621514,
+          "player_name": "Christin Stewart",
+          "origin_year": 2018,
+          "target_year": 2019,
+          "actual_7": 2300,
+          "weighted_target_outs": 237.9310344827586
+        },
+        {
+          "player_id": 592325,
+          "player_name": "Ben Gamel",
+          "origin_year": 2016,
+          "target_year": 2017,
+          "actual_7": 2136,
+          "weighted_target_outs": 222.39816933638443
+        }
+      ],
+      "focal_predicted_outs_from_group": 116.76328488179755
+    }
+  ],
+  "case_judgments": [
+    {
+      "player_id": 543807,
+      "origin": 2022,
+      "classification": "missing_available_assignment_and_PA_shortfall",
+      "judgment": "Springer: December 2022 RF assignment omitted; broad role change helps slightly but remains far short and adds unrelated C innings.",
+      "three_peer_outcomes_reviewed": true
+    },
+    {
+      "player_id": 605141,
+      "origin": 2023,
+      "classification": "missing_available_assignment_and_diffuse_roles",
+      "judgment": "Betts: December 2B plan is origin-known; March SS revision belongs to a later update. Fair PA does not excuse diffuse/unrelated roles.",
+      "three_peer_outcomes_reviewed": true
+    },
+    {
+      "player_id": 656555,
+      "origin": 2022,
+      "classification": "post_cutoff_injury_and_unrelated_role_allocation",
+      "judgment": "Hoskins: March ACL injury explains zero opportunity after cutoff; predicted catcher innings remain a separate allocation defect.",
+      "three_peer_outcomes_reviewed": true
+    },
+    {
+      "player_id": 656941,
+      "origin": 2023,
+      "classification": "later_assignment_update_and_diffuse_roles",
+      "judgment": "Schwarber: February 2024 primary-DH report is later than the January information date. History-only allocations miss DH and add unrelated positions.",
+      "three_peer_outcomes_reviewed": true
+    },
+    {
+      "player_id": 662139,
+      "origin": 2022,
+      "classification": "missing_available_assignment_and_older_role_overhang",
+      "judgment": "Varsho: dated December LF plan omitted; older C/RF roles persist. OF peers receive C innings without personal C role evidence.",
+      "three_peer_outcomes_reviewed": true
+    },
+    {
+      "player_id": 664761,
+      "origin": 2022,
+      "classification": "reasonable_main_role_but_missing_split_and_diffusion",
+      "judgment": "Bohm: main 3B role identified, increased 1B exposure missed; 2B/SS/C spread recurs among his established 3B peers.",
+      "three_peer_outcomes_reviewed": true
+    },
+    {
+      "player_id": 665487,
+      "origin": 2022,
+      "classification": "known_cached_upstream_return_defect",
+      "judgment": "Tatis: 40 expected PA fails to distinguish a known finite suspension return. Inactivity-matched minor peers are not equivalent established-MLB returns.",
+      "three_peer_outcomes_reviewed": true
+    },
+    {
+      "player_id": 665489,
+      "origin": 2022,
+      "classification": "age_group_role_borrowing_inappropriate",
+      "judgment": "Guerrero: reasonable PA and concentrated 1B history become broad LF/RF/C predictions. Ratio anchor better preserves his established role.",
+      "three_peer_outcomes_reviewed": true
+    },
+    {
+      "player_id": 671655,
+      "origin": 2022,
+      "classification": "nonarrival_opportunity_not_quality",
+      "judgment": "Valera: OF record supplies expected opportunities but no next-season arrival; peers also do not arrive. Do not label their skill zero.",
+      "three_peer_outcomes_reviewed": true
+    },
+    {
+      "player_id": 680574,
+      "origin": 2023,
+      "classification": "post_cutoff_injury_and_peer_opportunity_misses",
+      "judgment": "McLain: March shoulder injury is later information; peers have independently large role/PA shortfalls, not evidence of bad defensive quality.",
+      "three_peer_outcomes_reviewed": true
+    },
+    {
+      "player_id": 682626,
+      "origin": 2022,
+      "classification": "tiny_MLB_ratio_and_minor_DH_role_overhang",
+      "judgment": "Alvarez: fuller minor C record beats scaling tiny MLB history, but minor DH share and broad-role spreading still underallocate MLB catching.",
+      "three_peer_outcomes_reviewed": true
+    },
+    {
+      "player_id": 682829,
+      "origin": 2022,
+      "classification": "upstream_PA_shortfall_plus_wrong_position_split",
+      "judgment": "De La Cruz: most total-out shortfall comes from fixed PA; 2B spread dilutes the actual known SS/3B repertoire. Winn peer arrives while other peers do not.",
+      "three_peer_outcomes_reviewed": true
+    },
+    {
+      "player_id": 805811,
+      "origin": 2024,
+      "classification": "older_repertoire_and_unrelated_role_allocation",
+      "judgment": "Eldridge: current 2024 fielding is all 1B, older RF persists, and C comes solely from group borrowing. Low next-season exposure does not settle eventual value.",
+      "three_peer_outcomes_reviewed": true
+    }
+  ],
+  "source_dates": [
+    {
+      "date": "2022-12-24",
+      "known_by_year_end": true,
+      "subject": "Toronto LF/CF/RF plans",
+      "url": "https://www.mlb.com/bluejays/news/daulton-varsho-traded-to-blue-jays"
+    },
+    {
+      "date": "2023-12-04",
+      "known_by_year_end": true,
+      "subject": "Betts everyday 2B",
+      "url": "https://www.mlb.com/dodgers/news/mookie-betts-second-base-dodgers-2024"
+    },
+    {
+      "date": "2024-03-08",
+      "known_by_year_end": false,
+      "subject": "Betts SS revision",
+      "url": "https://www.mlb.com/news/mookie-betts-dodgers-shortstop"
+    },
+    {
+      "date": "2024-02-21",
+      "known_by_year_end": false,
+      "subject": "Schwarber primary DH",
+      "url": "https://www.mlb.com/news/kyle-schwarber-ready-for-2024-after-injury"
+    },
+    {
+      "date": "2023-03-23",
+      "known_by_year_end": false,
+      "subject": "Hoskins ACL injury",
+      "url": "https://www.mlb.com/news/rhys-hoskins-suffers-left-knee-injury"
+    },
+    {
+      "date": "2024-03-18",
+      "known_by_year_end": false,
+      "subject": "McLain shoulder injury",
+      "url": "https://www.mlb.com/news/matt-mclain-shoulder-surgery"
+    },
+    {
+      "date": "2022-10-25",
+      "known_by_year_end": true,
+      "subject": "Tatis finite suspension return",
+      "url": "https://www.mlb.com/news/fernando-tatis-jr-return-date-from-suspension-in-2023"
+    }
+  ],
+  "protected_outcomes_used": false,
+  "forecast_or_explorer_changed": false,
+  "upstream_PA_repaired_here": false,
+  "eventual_minor_talent_validated": false,
+  "value_integration_complete": false,
+  "deployment_approved": false,
+  "hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\finalize_defense_opportunity_v8.py": "d1ff3095e282d599d236850b65ac2bfcbb1808b63efd9b1e7cedf10f07e195e8",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-opportunity-v8\\independent-verification.json": "47aad7e282d956270489a7c72ab2f55c8133da5d870cd9fd06c8778f3317efcc",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-opportunity-v8\\player-walkthrough.json": "855eff01b06692ec46c8c2288bb870856190e634cf60d0481ef67c0822a6c70a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-opportunity-v8\\fit-report.json": "3facbce754f0ba2e9c241dfce498bbbbe479fb9b1aeaf93a7f25d8864021ab77",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\defense-opportunity-v8-player-review.md": "a70d93104164b8199c3983f3e8a3ad60307554a6b823159f07de87da3fe72fee",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\docs\\defense-opportunity-v8-result.md": "4d023e6c1f0728d036a09c1179ae7ed4f57264b61740f0b3a88c5b2ff51c3a07"
+  }
+}

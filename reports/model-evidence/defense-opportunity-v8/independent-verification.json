@@ -1,0 +1,1512 @@
+{
+  "integrity_pass": true,
+  "empirical_tables_replayed": 2604,
+  "all_forecasts_replayed": 12432,
+  "native_cells_replayed": 75,
+  "native_source_records_replayed": 7598,
+  "conditional_target_not_quality": true,
+  "paired_interval_95": [
+    -1.2533645548754218,
+    -0.01544583514222977
+  ],
+  "scores": [
+    {
+      "origin": 2022,
+      "arm": "carry",
+      "rows": 4244,
+      "cell_rmse": 187.15389883956,
+      "cell_mae": 26.220752827521206,
+      "predicted_total_outs": 1033808.0,
+      "actual_total_outs": 1028605.0,
+      "total_out_rmse": 464.1923115699364
+    },
+    {
+      "origin": 2022,
+      "arm": "ratio",
+      "rows": 4244,
+      "cell_rmse": 168.77243594200075,
+      "cell_mae": 25.193075298122878,
+      "predicted_total_outs": 1007798.4409264408,
+      "actual_total_outs": 1028605.0,
+      "total_out_rmse": 379.64622108820436
+    },
+    {
+      "origin": 2022,
+      "arm": "pooled",
+      "rows": 4244,
+      "cell_rmse": 173.09407966833473,
+      "cell_mae": 31.45040479796213,
+      "predicted_total_outs": 1008981.8361098296,
+      "actual_total_outs": 1028605.0,
+      "total_out_rmse": 388.8514537276451
+    },
+    {
+      "origin": 2022,
+      "arm": "context",
+      "rows": 4244,
+      "cell_rmse": 172.39740386001304,
+      "cell_mae": 31.478199909155236,
+      "predicted_total_outs": 1020142.3326504272,
+      "actual_total_outs": 1028605.0,
+      "total_out_rmse": 388.9055549571297
+    },
+    {
+      "origin": 2023,
+      "arm": "carry",
+      "rows": 4196,
+      "cell_rmse": 180.47802812751738,
+      "cell_mae": 24.924988083889417,
+      "predicted_total_outs": 1034096.0,
+      "actual_total_outs": 1033464.0,
+      "total_out_rmse": 466.0755154285439
+    },
+    {
+      "origin": 2023,
+      "arm": "ratio",
+      "rows": 4196,
+      "cell_rmse": 164.70211008866124,
+      "cell_mae": 25.388793257585668,
+      "predicted_total_outs": 1056570.9639363522,
+      "actual_total_outs": 1033464.0,
+      "total_out_rmse": 392.65012175955155
+    },
+    {
+      "origin": 2023,
+      "arm": "pooled",
+      "rows": 4196,
+      "cell_rmse": 173.746132732355,
+      "cell_mae": 32.85988677897915,
+      "predicted_total_outs": 1056922.0273411206,
+      "actual_total_outs": 1033464.0,
+      "total_out_rmse": 400.10665477700695
+    },
+    {
+      "origin": 2023,
+      "arm": "context",
+      "rows": 4196,
+      "cell_rmse": 173.22357144821885,
+      "cell_mae": 32.9022443701955,
+      "predicted_total_outs": 1067065.5999190272,
+      "actual_total_outs": 1033464.0,
+      "total_out_rmse": 400.988611744606
+    },
+    {
+      "origin": 2024,
+      "arm": "carry",
+      "rows": 3992,
+      "cell_rmse": 186.2554733664703,
+      "cell_mae": 26.72122369739479,
+      "predicted_total_outs": 1034792.0,
+      "actual_total_outs": 1033525.0,
+      "total_out_rmse": 466.06775210166404
+    },
+    {
+      "origin": 2024,
+      "arm": "ratio",
+      "rows": 3992,
+      "cell_rmse": 164.95922592993625,
+      "cell_mae": 25.934168244307802,
+      "predicted_total_outs": 1044511.3474510454,
+      "actual_total_outs": 1033525.0,
+      "total_out_rmse": 378.5814699064595
+    },
+    {
+      "origin": 2024,
+      "arm": "pooled",
+      "rows": 3992,
+      "cell_rmse": 178.279107102456,
+      "cell_mae": 34.1300807482126,
+      "predicted_total_outs": 1031526.7642068744,
+      "actual_total_outs": 1033525.0,
+      "total_out_rmse": 394.7007168314878
+    },
+    {
+      "origin": 2024,
+      "arm": "context",
+      "rows": 3992,
+      "cell_rmse": 177.67325957593752,
+      "cell_mae": 34.06641773404905,
+      "predicted_total_outs": 1038311.230527272,
+      "actual_total_outs": 1033525.0,
+      "total_out_rmse": 393.42926445753596
+    }
+  ],
+  "exposure_cohorts": [
+    {
+      "origin": 2022,
+      "cohort": "continuing_defender",
+      "arm": "carry",
+      "rows": 518,
+      "cell_rmse": 473.8571867619462,
+      "cell_mae": 165.6324806949807,
+      "predicted_total_outs": 932893.0,
+      "actual_total_outs": 925654.0,
+      "total_out_rmse": 1060.3894263529958
+    },
+    {
+      "origin": 2022,
+      "cohort": "continuing_defender",
+      "arm": "ratio",
+      "rows": 518,
+      "cell_rmse": 437.5466004367979,
+      "cell_mae": 153.2078015918354,
+      "predicted_total_outs": 847147.9261809785,
+      "actual_total_outs": 925654.0,
+      "total_out_rmse": 893.9198472247671
+    },
+    {
+      "origin": 2022,
+      "cohort": "continuing_defender",
+      "arm": "pooled",
+      "rows": 518,
+      "cell_rmse": 458.89970938435965,
+      "cell_mae": 203.71819841573955,
+      "predicted_total_outs": 844893.5334201835,
+      "actual_total_outs": 925654.0,
+      "total_out_rmse": 917.6619112094003
+    },
+    {
+      "origin": 2022,
+      "cohort": "continuing_defender",
+      "arm": "context",
+      "rows": 518,
+      "cell_rmse": 455.8921905388109,
+      "cell_mae": 202.2279598067941,
+      "predicted_total_outs": 850631.3768991181,
+      "actual_total_outs": 925654.0,
+      "total_out_rmse": 913.6158517521545
+    },
+    {
+      "origin": 2022,
+      "cohort": "new_or_returning_defender",
+      "arm": "carry",
+      "rows": 126,
+      "cell_rmse": 374.79208124861265,
+      "cell_mae": 102.13392857142857,
+      "predicted_total_outs": 0.0,
+      "actual_total_outs": 102951.0,
+      "total_out_rmse": 1184.7562437661416
+    },
+    {
+      "origin": 2022,
+      "cohort": "new_or_returning_defender",
+      "arm": "ratio",
+      "rows": 126,
+      "cell_rmse": 335.67508459121507,
+      "cell_mae": 103.34441184372565,
+      "predicted_total_outs": 44359.51915863574,
+      "actual_total_outs": 102951.0,
+      "total_out_rmse": 948.7043429598423
+    },
+    {
+      "origin": 2022,
+      "cohort": "new_or_returning_defender",
+      "arm": "pooled",
+      "rows": 126,
+      "cell_rmse": 336.94232358011357,
+      "cell_mae": 106.95341412433257,
+      "predicted_total_outs": 48301.41466138803,
+      "actual_total_outs": 102951.0,
+      "total_out_rmse": 971.9207330855071
+    },
+    {
+      "origin": 2022,
+      "cohort": "new_or_returning_defender",
+      "arm": "context",
+      "rows": 126,
+      "cell_rmse": 339.24684887334035,
+      "cell_mae": 110.3344691813609,
+      "predicted_total_outs": 50012.922809836964,
+      "actual_total_outs": 102951.0,
+      "total_out_rmse": 960.5019634035353
+    },
+    {
+      "origin": 2022,
+      "cohort": "no_defense_before_or_after",
+      "arm": "carry",
+      "rows": 3436,
+      "cell_rmse": 0.0,
+      "cell_mae": 0.0,
+      "predicted_total_outs": 0.0,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 0.0
+    },
+    {
+      "origin": 2022,
+      "cohort": "no_defense_before_or_after",
+      "arm": "ratio",
+      "rows": 3436,
+      "cell_rmse": 11.49207377896694,
+      "cell_mae": 1.6483318298041827,
+      "predicted_total_outs": 45309.345337657374,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 54.926381294457315
+    },
+    {
+      "origin": 2022,
+      "cohort": "no_defense_before_or_after",
+      "arm": "pooled",
+      "rows": 3436,
+      "cell_rmse": 12.797463806738138,
+      "cell_mae": 1.7460903764991162,
+      "predicted_total_outs": 47996.53226920771,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 68.64936112055008
+    },
+    {
+      "origin": 2022,
+      "cohort": "no_defense_before_or_after",
+      "arm": "context",
+      "rows": 3436,
+      "cell_rmse": 13.249896389824501,
+      "cell_mae": 1.8497571777988884,
+      "predicted_total_outs": 50846.125303335844,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 76.6997655437505
+    },
+    {
+      "origin": 2022,
+      "cohort": "defensive_exit",
+      "arm": "carry",
+      "rows": 164,
+      "cell_rmse": 298.7949182988551,
+      "cell_mae": 76.91692073170732,
+      "predicted_total_outs": 100915.0,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 972.6807594252584
+    },
+    {
+      "origin": 2022,
+      "cohort": "defensive_exit",
+      "arm": "ratio",
+      "rows": 164,
+      "cell_rmse": 207.56906502921032,
+      "cell_mae": 54.10186756796431,
+      "predicted_total_outs": 70981.65024916918,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 671.6919775945387
+    },
+    {
+      "origin": 2022,
+      "cohort": "defensive_exit",
+      "arm": "pooled",
+      "rows": 164,
+      "cell_rmse": 139.77905714066077,
+      "cell_mae": 51.669478474886006,
+      "predicted_total_outs": 67790.35575905044,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 654.6739307674461
+    },
+    {
+      "origin": 2022,
+      "cohort": "defensive_exit",
+      "arm": "context",
+      "rows": 164,
+      "cell_rmse": 143.3710551486847,
+      "cell_mae": 52.3261491144332,
+      "predicted_total_outs": 68651.90763813636,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 667.4784826417637
+    },
+    {
+      "origin": 2023,
+      "cohort": "defensive_exit",
+      "arm": "carry",
+      "rows": 141,
+      "cell_rmse": 251.2998759641048,
+      "cell_mae": 72.29609929078015,
+      "predicted_total_outs": 81550.0,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 830.6060762483677
+    },
+    {
+      "origin": 2023,
+      "cohort": "defensive_exit",
+      "arm": "ratio",
+      "rows": 141,
+      "cell_rmse": 217.31747298049544,
+      "cell_mae": 59.99242821258789,
+      "predicted_total_outs": 67671.45902379914,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 703.4346126418696
+    },
+    {
+      "origin": 2023,
+      "cohort": "defensive_exit",
+      "arm": "pooled",
+      "rows": 141,
+      "cell_rmse": 149.3315099478469,
+      "cell_mae": 61.40805254016913,
+      "predicted_total_outs": 69268.28326531078,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 731.6530059110498
+    },
+    {
+      "origin": 2023,
+      "cohort": "defensive_exit",
+      "arm": "context",
+      "rows": 141,
+      "cell_rmse": 154.11290525566955,
+      "cell_mae": 61.16283273763957,
+      "predicted_total_outs": 68991.67532805743,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 728.0884643115304
+    },
+    {
+      "origin": 2023,
+      "cohort": "no_defense_before_or_after",
+      "arm": "carry",
+      "rows": 3417,
+      "cell_rmse": 0.0,
+      "cell_mae": 0.0,
+      "predicted_total_outs": 0.0,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 0.0
+    },
+    {
+      "origin": 2023,
+      "cohort": "no_defense_before_or_after",
+      "arm": "ratio",
+      "rows": 3417,
+      "cell_rmse": 14.340141156893427,
+      "cell_mae": 2.048583841605375,
+      "predicted_total_outs": 56000.08789412453,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 65.29535357505506
+    },
+    {
+      "origin": 2023,
+      "cohort": "no_defense_before_or_after",
+      "arm": "pooled",
+      "rows": 3417,
+      "cell_rmse": 15.582060445905517,
+      "cell_mae": 2.1752307663278576,
+      "predicted_total_outs": 59462.108228338315,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 79.07228886173837
+    },
+    {
+      "origin": 2023,
+      "cohort": "no_defense_before_or_after",
+      "arm": "context",
+      "rows": 3417,
+      "cell_rmse": 15.21183086309425,
+      "cell_mae": 2.2972824129321623,
+      "predicted_total_outs": 62798.51203991359,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 85.00935888796711
+    },
+    {
+      "origin": 2023,
+      "cohort": "new_or_returning_defender",
+      "arm": "carry",
+      "rows": 132,
+      "cell_rmse": 338.0957704556506,
+      "cell_mae": 86.21022727272727,
+      "predicted_total_outs": 0.0,
+      "actual_total_outs": 91038.0,
+      "total_out_rmse": 1090.895607871224
+    },
+    {
+      "origin": 2023,
+      "cohort": "new_or_returning_defender",
+      "arm": "ratio",
+      "rows": 132,
+      "cell_rmse": 314.2633105553475,
+      "cell_mae": 95.33459487650943,
+      "predicted_total_outs": 45685.507097922666,
+      "actual_total_outs": 91038.0,
+      "total_out_rmse": 838.4078920507844
+    },
+    {
+      "origin": 2023,
+      "cohort": "new_or_returning_defender",
+      "arm": "pooled",
+      "rows": 132,
+      "cell_rmse": 311.8029032653375,
+      "cell_mae": 96.34377639709678,
+      "predicted_total_outs": 47762.90061523266,
+      "actual_total_outs": 91038.0,
+      "total_out_rmse": 816.0687387602026
+    },
+    {
+      "origin": 2023,
+      "cohort": "new_or_returning_defender",
+      "arm": "context",
+      "rows": 132,
+      "cell_rmse": 309.6519755219153,
+      "cell_mae": 98.91199581840608,
+      "predicted_total_outs": 50578.64538130065,
+      "actual_total_outs": 91038.0,
+      "total_out_rmse": 809.2156905276188
+    },
+    {
+      "origin": 2023,
+      "cohort": "continuing_defender",
+      "arm": "carry",
+      "rows": 506,
+      "cell_rmse": 471.8986846528343,
+      "cell_mae": 164.0548418972332,
+      "predicted_total_outs": 952546.0,
+      "actual_total_outs": 942426.0,
+      "total_out_rmse": 1139.5842803477988
+    },
+    {
+      "origin": 2023,
+      "cohort": "continuing_defender",
+      "arm": "ratio",
+      "rows": 506,
+      "cell_rmse": 429.6929234189952,
+      "cell_mae": 155.11515142369518,
+      "predicted_total_outs": 887213.9099205058,
+      "actual_total_outs": 942426.0,
+      "total_out_rmse": 963.555414827311
+    },
+    {
+      "origin": 2023,
+      "cohort": "continuing_defender",
+      "arm": "pooled",
+      "rows": 506,
+      "cell_rmse": 465.95677671470327,
+      "cell_mae": 215.5561413112127,
+      "predicted_total_outs": 880428.7352322387,
+      "actual_total_outs": 942426.0,
+      "total_out_rmse": 981.0115677578053
+    },
+    {
+      "origin": 2023,
+      "cohort": "continuing_defender",
+      "arm": "context",
+      "rows": 506,
+      "cell_rmse": 464.363627018169,
+      "cell_mae": 214.48154250655008,
+      "predicted_total_outs": 884696.7671697557,
+      "actual_total_outs": 942426.0,
+      "total_out_rmse": 982.8629836280967
+    },
+    {
+      "origin": 2024,
+      "cohort": "continuing_defender",
+      "arm": "carry",
+      "rows": 527,
+      "cell_rmse": 467.2041052861211,
+      "cell_mae": 163.12523719165085,
+      "predicted_total_outs": 971471.0,
+      "actual_total_outs": 931213.0,
+      "total_out_rmse": 1088.038363329116
+    },
+    {
+      "origin": 2024,
+      "cohort": "continuing_defender",
+      "arm": "ratio",
+      "rows": 527,
+      "cell_rmse": 415.5891546014718,
+      "cell_mae": 149.72311368950392,
+      "predicted_total_outs": 908377.9694425969,
+      "actual_total_outs": 931213.0,
+      "total_out_rmse": 883.0162143593805
+    },
+    {
+      "origin": 2024,
+      "cohort": "continuing_defender",
+      "arm": "pooled",
+      "rows": 527,
+      "cell_rmse": 459.26324484930296,
+      "cell_mae": 209.57295486860886,
+      "predicted_total_outs": 884487.6548848286,
+      "actual_total_outs": 931213.0,
+      "total_out_rmse": 917.6068889453317
+    },
+    {
+      "origin": 2024,
+      "cohort": "continuing_defender",
+      "arm": "context",
+      "rows": 527,
+      "cell_rmse": 456.78072009423664,
+      "cell_mae": 207.68890895499018,
+      "predicted_total_outs": 886947.6369042866,
+      "actual_total_outs": 931213.0,
+      "total_out_rmse": 914.1286954315242
+    },
+    {
+      "origin": 2024,
+      "cohort": "new_or_returning_defender",
+      "arm": "carry",
+      "rows": 134,
+      "cell_rmse": 345.61206522178253,
+      "cell_mae": 95.44029850746269,
+      "predicted_total_outs": 0.0,
+      "actual_total_outs": 102312.0,
+      "total_out_rmse": 1109.5487115415808
+    },
+    {
+      "origin": 2024,
+      "cohort": "new_or_returning_defender",
+      "arm": "ratio",
+      "rows": 134,
+      "cell_rmse": 312.7860755400771,
+      "cell_mae": 96.83070244810226,
+      "predicted_total_outs": 42934.94129754881,
+      "actual_total_outs": 102312.0,
+      "total_out_rmse": 908.8674066839382
+    },
+    {
+      "origin": 2024,
+      "cohort": "new_or_returning_defender",
+      "arm": "pooled",
+      "rows": 134,
+      "cell_rmse": 313.5370285974466,
+      "cell_mae": 99.1913914637363,
+      "predicted_total_outs": 46953.59992230849,
+      "actual_total_outs": 102312.0,
+      "total_out_rmse": 923.8738289433217
+    },
+    {
+      "origin": 2024,
+      "cohort": "new_or_returning_defender",
+      "arm": "context",
+      "rows": 134,
+      "cell_rmse": 316.7823257599328,
+      "cell_mae": 102.84508018985765,
+      "predicted_total_outs": 49284.84298616116,
+      "actual_total_outs": 102312.0,
+      "total_out_rmse": 916.9641224730306
+    },
+    {
+      "origin": 2024,
+      "cohort": "defensive_exit",
+      "arm": "carry",
+      "rows": 113,
+      "cell_rmse": 256.72366647662915,
+      "cell_mae": 70.04535398230088,
+      "predicted_total_outs": 63321.0,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 832.3895924555512
+    },
+    {
+      "origin": 2024,
+      "cohort": "defensive_exit",
+      "arm": "ratio",
+      "rows": 113,
+      "cell_rmse": 188.27706877545745,
+      "cell_mae": 53.58896796288076,
+      "predicted_total_outs": 48444.427038444206,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 588.8827473799562
+    },
+    {
+      "origin": 2024,
+      "cohort": "defensive_exit",
+      "arm": "pooled",
+      "rows": 113,
+      "cell_rmse": 125.98248677066053,
+      "cell_mae": 53.33441704256974,
+      "predicted_total_outs": 48214.31300648305,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 586.1576847437569
+    },
+    {
+      "origin": 2024,
+      "cohort": "defensive_exit",
+      "arm": "context",
+      "rows": 113,
+      "cell_rmse": 128.6827923618316,
+      "cell_mae": 53.16579003191173,
+      "predicted_total_outs": 48061.8741888482,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 587.9934091823011
+    },
+    {
+      "origin": 2024,
+      "cohort": "no_defense_before_or_after",
+      "arm": "carry",
+      "rows": 3218,
+      "cell_rmse": 0.0,
+      "cell_mae": 0.0,
+      "predicted_total_outs": 0.0,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 0.0
+    },
+    {
+      "origin": 2024,
+      "cohort": "no_defense_before_or_after",
+      "arm": "ratio",
+      "rows": 3218,
+      "cell_rmse": 12.370804114703796,
+      "cell_mae": 1.7384248629760557,
+      "predicted_total_outs": 44754.00967245558,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 59.4205258074079
+    },
+    {
+      "origin": 2024,
+      "cohort": "no_defense_before_or_after",
+      "arm": "pooled",
+      "rows": 3218,
+      "cell_rmse": 15.335413219741582,
+      "cell_mae": 2.014884881652195,
+      "predicted_total_outs": 51871.19639325411,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 88.09437553078713
+    },
+    {
+      "origin": 2024,
+      "cohort": "no_defense_before_or_after",
+      "arm": "context",
+      "rows": 3218,
+      "cell_rmse": 15.19036268403374,
+      "cell_mae": 2.0982316830320142,
+      "predicted_total_outs": 54016.876447976174,
+      "actual_total_outs": 0.0,
+      "total_out_rmse": 89.52583187125525
+    }
+  ],
+  "full_MLB_and_matched_totals": [
+    {
+      "origin": 2022,
+      "position": 2,
+      "full_actual": 129262,
+      "matched_actual": 129262,
+      "omitted_actual": 0,
+      "carry": 129226.0,
+      "ratio": 123915.38247779678,
+      "pooled": 125341.55637756243,
+      "context": 126217.23399452564
+    },
+    {
+      "origin": 2022,
+      "position": 3,
+      "full_actual": 129262,
+      "matched_actual": 128530,
+      "omitted_actual": 732,
+      "carry": 129226.0,
+      "ratio": 113773.6388443379,
+      "pooled": 126871.93934154394,
+      "context": 128244.51982010453
+    },
+    {
+      "origin": 2022,
+      "position": 4,
+      "full_actual": 129262,
+      "matched_actual": 129262,
+      "omitted_actual": 0,
+      "carry": 129226.0,
+      "ratio": 130303.81446544158,
+      "pooled": 125685.98080417149,
+      "context": 127336.94181234045
+    },
+    {
+      "origin": 2022,
+      "position": 5,
+      "full_actual": 129262,
+      "matched_actual": 129262,
+      "omitted_actual": 0,
+      "carry": 129226.0,
+      "ratio": 126510.85674397023,
+      "pooled": 123903.3220952247,
+      "context": 125343.83040840844
+    },
+    {
+      "origin": 2022,
+      "position": 6,
+      "full_actual": 129262,
+      "matched_actual": 129262,
+      "omitted_actual": 0,
+      "carry": 129226.0,
+      "ratio": 138622.72887879517,
+      "pooled": 129462.26794039506,
+      "context": 129246.79052739036
+    },
+    {
+      "origin": 2022,
+      "position": 7,
+      "full_actual": 129262,
+      "matched_actual": 126786,
+      "omitted_actual": 2476,
+      "carry": 129226.0,
+      "ratio": 126847.53684147145,
+      "pooled": 127921.80167414526,
+      "context": 129433.87145475621
+    },
+    {
+      "origin": 2022,
+      "position": 8,
+      "full_actual": 129262,
+      "matched_actual": 129262,
+      "omitted_actual": 0,
+      "carry": 129226.0,
+      "ratio": 122425.73026107674,
+      "pooled": 122946.96097668495,
+      "context": 124061.56017778932
+    },
+    {
+      "origin": 2022,
+      "position": 9,
+      "full_actual": 129262,
+      "matched_actual": 126979,
+      "omitted_actual": 2283,
+      "carry": 129226.0,
+      "ratio": 125398.75241355096,
+      "pooled": 126848.00690010193,
+      "context": 130257.58445511234
+    },
+    {
+      "origin": 2023,
+      "position": 2,
+      "full_actual": 129349,
+      "matched_actual": 129349,
+      "omitted_actual": 0,
+      "carry": 129262.0,
+      "ratio": 128555.46691269164,
+      "pooled": 130175.89248148129,
+      "context": 129730.54927012173
+    },
+    {
+      "origin": 2023,
+      "position": 3,
+      "full_actual": 129349,
+      "matched_actual": 129262,
+      "omitted_actual": 87,
+      "carry": 129262.0,
+      "ratio": 122249.72293453329,
+      "pooled": 129737.63088945618,
+      "context": 130101.80452569069
+    },
+    {
+      "origin": 2023,
+      "position": 4,
+      "full_actual": 129349,
+      "matched_actual": 129349,
+      "omitted_actual": 0,
+      "carry": 129262.0,
+      "ratio": 133652.54431849506,
+      "pooled": 131979.42387153578,
+      "context": 132427.79299482174
+    },
+    {
+      "origin": 2023,
+      "position": 5,
+      "full_actual": 129349,
+      "matched_actual": 129028,
+      "omitted_actual": 321,
+      "carry": 129262.0,
+      "ratio": 133043.43680624012,
+      "pooled": 132378.83227339078,
+      "context": 133559.376182829
+    },
+    {
+      "origin": 2023,
+      "position": 6,
+      "full_actual": 129349,
+      "matched_actual": 129349,
+      "omitted_actual": 0,
+      "carry": 129262.0,
+      "ratio": 143197.13268379224,
+      "pooled": 132914.3257489436,
+      "context": 134938.1387762374
+    },
+    {
+      "origin": 2023,
+      "position": 7,
+      "full_actual": 129349,
+      "matched_actual": 129349,
+      "omitted_actual": 0,
+      "carry": 129262.0,
+      "ratio": 128688.50064076667,
+      "pooled": 134577.0569904281,
+      "context": 136509.41733244742
+    },
+    {
+      "origin": 2023,
+      "position": 8,
+      "full_actual": 129349,
+      "matched_actual": 128429,
+      "omitted_actual": 920,
+      "carry": 129262.0,
+      "ratio": 135092.60046810587,
+      "pooled": 130425.77154516336,
+      "context": 131866.41370466753
+    },
+    {
+      "origin": 2023,
+      "position": 9,
+      "full_actual": 129349,
+      "matched_actual": 129349,
+      "omitted_actual": 0,
+      "carry": 129262.0,
+      "ratio": 132091.5591717273,
+      "pooled": 134733.09354072134,
+      "context": 137932.10713221182
+    },
+    {
+      "origin": 2024,
+      "position": 2,
+      "full_actual": 129225,
+      "matched_actual": 128950,
+      "omitted_actual": 275,
+      "carry": 129349.0,
+      "ratio": 130778.56961546683,
+      "pooled": 132381.13647897606,
+      "context": 131588.49867887975
+    },
+    {
+      "origin": 2024,
+      "position": 3,
+      "full_actual": 129225,
+      "matched_actual": 129225,
+      "omitted_actual": 0,
+      "carry": 129349.0,
+      "ratio": 122242.78925358011,
+      "pooled": 128304.07272614817,
+      "context": 129141.64266765346
+    },
+    {
+      "origin": 2024,
+      "position": 4,
+      "full_actual": 129225,
+      "matched_actual": 129225,
+      "omitted_actual": 0,
+      "carry": 129349.0,
+      "ratio": 130829.8484154869,
+      "pooled": 128281.86233617114,
+      "context": 128291.8831678178
+    },
+    {
+      "origin": 2024,
+      "position": 5,
+      "full_actual": 129225,
+      "matched_actual": 129225,
+      "omitted_actual": 0,
+      "carry": 129349.0,
+      "ratio": 135229.49903714517,
+      "pooled": 128370.07959987149,
+      "context": 131738.15424003213
+    },
+    {
+      "origin": 2024,
+      "position": 6,
+      "full_actual": 129225,
+      "matched_actual": 129225,
+      "omitted_actual": 0,
+      "carry": 129349.0,
+      "ratio": 133762.08983235148,
+      "pooled": 125682.91848065927,
+      "context": 125338.99911261324
+    },
+    {
+      "origin": 2024,
+      "position": 7,
+      "full_actual": 129225,
+      "matched_actual": 129225,
+      "omitted_actual": 0,
+      "carry": 129349.0,
+      "ratio": 130229.54745120273,
+      "pooled": 130793.40457751272,
+      "context": 131433.16128543363
+    },
+    {
+      "origin": 2024,
+      "position": 8,
+      "full_actual": 129225,
+      "matched_actual": 129225,
+      "omitted_actual": 0,
+      "carry": 129349.0,
+      "ratio": 127462.84997377446,
+      "pooled": 128787.45822044247,
+      "context": 131247.02907805846
+    },
+    {
+      "origin": 2024,
+      "position": 9,
+      "full_actual": 129225,
+      "matched_actual": 129225,
+      "omitted_actual": 0,
+      "carry": 129349.0,
+      "ratio": 133976.1538720377,
+      "pooled": 128925.83178709302,
+      "context": 129531.86229678353
+    }
+  ],
+  "extrapolation_warnings": [
+    {
+      "player_id": 621566,
+      "player_name": "Matt Olson",
+      "origin": 2022,
+      "fold": 1,
+      "arm": "carry",
+      "positions_beyond_training_max": [
+        3
+      ],
+      "total_beyond_training_max": true
+    },
+    {
+      "player_id": 663586,
+      "player_name": "Austin Riley",
+      "origin": 2022,
+      "fold": 1,
+      "arm": "carry",
+      "positions_beyond_training_max": [
+        5
+      ],
+      "total_beyond_training_max": false
+    },
+    {
+      "player_id": 608324,
+      "player_name": "Alex Bregman",
+      "origin": 2023,
+      "fold": 0,
+      "arm": "carry",
+      "positions_beyond_training_max": [
+        5
+      ],
+      "total_beyond_training_max": false
+    },
+    {
+      "player_id": 543760,
+      "player_name": "Marcus Semien",
+      "origin": 2023,
+      "fold": 1,
+      "arm": "carry",
+      "positions_beyond_training_max": [
+        4
+      ],
+      "total_beyond_training_max": false
+    },
+    {
+      "player_id": 621566,
+      "player_name": "Matt Olson",
+      "origin": 2023,
+      "fold": 1,
+      "arm": "carry",
+      "positions_beyond_training_max": [
+        3
+      ],
+      "total_beyond_training_max": false
+    },
+    {
+      "player_id": 680757,
+      "player_name": "Steven Kwan",
+      "origin": 2023,
+      "fold": 1,
+      "arm": "carry",
+      "positions_beyond_training_max": [
+        7
+      ],
+      "total_beyond_training_max": false
+    },
+    {
+      "player_id": 621566,
+      "player_name": "Matt Olson",
+      "origin": 2024,
+      "fold": 1,
+      "arm": "carry",
+      "positions_beyond_training_max": [
+        3
+      ],
+      "total_beyond_training_max": true
+    },
+    {
+      "player_id": 542303,
+      "player_name": "Marcell Ozuna",
+      "origin": 2024,
+      "fold": 2,
+      "arm": "carry",
+      "positions_beyond_training_max": [
+        10
+      ],
+      "total_beyond_training_max": false
+    }
+  ],
+  "catcher_role_contamination": [
+    {
+      "origin": 2022,
+      "arm": "pooled",
+      "zero_origin_C_share_rows": 3329,
+      "forecast_C_outs": 13395.471210091271,
+      "actual_C_outs": 0,
+      "at_least_nine_C_innings_rows": 120,
+      "examples": [
+        {
+          "player_id": 660271,
+          "player_name": "Shohei Ohtani",
+          "pooled_2": 392.26954378986864,
+          "actual_2": 0
+        },
+        {
+          "player_id": 502110,
+          "player_name": "J.D. Martinez",
+          "pooled_2": 279.8183367710924,
+          "actual_2": 0
+        },
+        {
+          "player_id": 596129,
+          "player_name": "Daniel Vogelbach",
+          "pooled_2": 222.90731535708073,
+          "actual_2": 0
+        },
+        {
+          "player_id": 670541,
+          "player_name": "Yordan Alvarez",
+          "pooled_2": 211.52204396063874,
+          "actual_2": 0
+        },
+        {
+          "player_id": 519317,
+          "player_name": "Giancarlo Stanton",
+          "pooled_2": 195.33259439492758,
+          "actual_2": 0
+        },
+        {
+          "player_id": 408234,
+          "player_name": "Miguel Cabrera",
+          "pooled_2": 189.35663185459734,
+          "actual_2": 0
+        },
+        {
+          "player_id": 547180,
+          "player_name": "Bryce Harper",
+          "pooled_2": 171.5908465082426,
+          "actual_2": 0
+        },
+        {
+          "player_id": 686469,
+          "player_name": "Vinnie Pasquantino",
+          "pooled_2": 167.4221878140675,
+          "actual_2": 0
+        },
+        {
+          "player_id": 614177,
+          "player_name": "Franmil Reyes",
+          "pooled_2": 162.22465543716942,
+          "actual_2": 0
+        },
+        {
+          "player_id": 650391,
+          "player_name": "Eloy Jim\u00e9nez",
+          "pooled_2": 157.32974988985248,
+          "actual_2": 0
+        }
+      ]
+    },
+    {
+      "origin": 2022,
+      "arm": "context",
+      "zero_origin_C_share_rows": 3329,
+      "forecast_C_outs": 14836.172146260675,
+      "actual_C_outs": 0,
+      "at_least_nine_C_innings_rows": 132,
+      "examples": [
+        {
+          "player_id": 660271,
+          "player_name": "Shohei Ohtani",
+          "context_2": 503.7984523432379,
+          "actual_2": 0
+        },
+        {
+          "player_id": 596129,
+          "player_name": "Daniel Vogelbach",
+          "context_2": 284.31637155342025,
+          "actual_2": 0
+        },
+        {
+          "player_id": 670541,
+          "player_name": "Yordan Alvarez",
+          "context_2": 283.9477080937472,
+          "actual_2": 0
+        },
+        {
+          "player_id": 547180,
+          "player_name": "Bryce Harper",
+          "context_2": 229.06084534871772,
+          "actual_2": 0
+        },
+        {
+          "player_id": 502110,
+          "player_name": "J.D. Martinez",
+          "context_2": 226.22855822324482,
+          "actual_2": 0
+        },
+        {
+          "player_id": 614177,
+          "player_name": "Franmil Reyes",
+          "context_2": 217.64041548673575,
+          "actual_2": 0
+        },
+        {
+          "player_id": 650391,
+          "player_name": "Eloy Jim\u00e9nez",
+          "context_2": 208.94681402371734,
+          "actual_2": 0
+        },
+        {
+          "player_id": 408234,
+          "player_name": "Miguel Cabrera",
+          "context_2": 183.97217538427833,
+          "actual_2": 0
+        },
+        {
+          "player_id": 519317,
+          "player_name": "Giancarlo Stanton",
+          "context_2": 183.06662176357335,
+          "actual_2": 0
+        },
+        {
+          "player_id": 686469,
+          "player_name": "Vinnie Pasquantino",
+          "context_2": 175.54901827380797,
+          "actual_2": 0
+        }
+      ]
+    },
+    {
+      "origin": 2022,
+      "arm": "ratio",
+      "zero_origin_C_share_rows": 3329,
+      "forecast_C_outs": 1042.5409375290749,
+      "actual_C_outs": 0,
+      "at_least_nine_C_innings_rows": 0,
+      "examples": []
+    },
+    {
+      "origin": 2023,
+      "arm": "pooled",
+      "zero_origin_C_share_rows": 3285,
+      "forecast_C_outs": 15888.782056876315,
+      "actual_C_outs": 0,
+      "at_least_nine_C_innings_rows": 147,
+      "examples": [
+        {
+          "player_id": 660271,
+          "player_name": "Shohei Ohtani",
+          "pooled_2": 431.8076389308761,
+          "actual_2": 0
+        },
+        {
+          "player_id": 542303,
+          "player_name": "Marcell Ozuna",
+          "pooled_2": 263.9377735089997,
+          "actual_2": 0
+        },
+        {
+          "player_id": 547180,
+          "player_name": "Bryce Harper",
+          "pooled_2": 261.3016576249651,
+          "actual_2": 0
+        },
+        {
+          "player_id": 670541,
+          "player_name": "Yordan Alvarez",
+          "pooled_2": 253.8332633346153,
+          "actual_2": 0
+        },
+        {
+          "player_id": 650391,
+          "player_name": "Eloy Jim\u00e9nez",
+          "pooled_2": 248.6927401359525,
+          "actual_2": 0
+        },
+        {
+          "player_id": 502110,
+          "player_name": "J.D. Martinez",
+          "pooled_2": 222.62045194415776,
+          "actual_2": 0
+        },
+        {
+          "player_id": 608841,
+          "player_name": "Joey Meneses",
+          "pooled_2": 216.13526012864048,
+          "actual_2": 0
+        },
+        {
+          "player_id": 605137,
+          "player_name": "Josh Bell",
+          "pooled_2": 197.95598640883705,
+          "actual_2": 0
+        },
+        {
+          "player_id": 519317,
+          "player_name": "Giancarlo Stanton",
+          "pooled_2": 192.77964153861674,
+          "actual_2": 0
+        },
+        {
+          "player_id": 621439,
+          "player_name": "Byron Buxton",
+          "pooled_2": 190.19316411903185,
+          "actual_2": 0
+        }
+      ]
+    },
+    {
+      "origin": 2023,
+      "arm": "context",
+      "zero_origin_C_share_rows": 3285,
+      "forecast_C_outs": 17088.820890568928,
+      "actual_C_outs": 0,
+      "at_least_nine_C_innings_rows": 163,
+      "examples": [
+        {
+          "player_id": 660271,
+          "player_name": "Shohei Ohtani",
+          "context_2": 479.743886082405,
+          "actual_2": 0
+        },
+        {
+          "player_id": 670541,
+          "player_name": "Yordan Alvarez",
+          "context_2": 280.3755323545611,
+          "actual_2": 0
+        },
+        {
+          "player_id": 650391,
+          "player_name": "Eloy Jim\u00e9nez",
+          "context_2": 274.9908164997269,
+          "actual_2": 0
+        },
+        {
+          "player_id": 547180,
+          "player_name": "Bryce Harper",
+          "context_2": 221.0254597175643,
+          "actual_2": 0
+        },
+        {
+          "player_id": 542303,
+          "player_name": "Marcell Ozuna",
+          "context_2": 219.6085062070696,
+          "actual_2": 0
+        },
+        {
+          "player_id": 665489,
+          "player_name": "Vladimir Guerrero Jr.",
+          "context_2": 211.92954777145,
+          "actual_2": 0
+        },
+        {
+          "player_id": 621439,
+          "player_name": "Byron Buxton",
+          "context_2": 210.09620880430293,
+          "actual_2": 0
+        },
+        {
+          "player_id": 502110,
+          "player_name": "J.D. Martinez",
+          "context_2": 209.02883010485613,
+          "actual_2": 0
+        },
+        {
+          "player_id": 608841,
+          "player_name": "Joey Meneses",
+          "context_2": 198.55948757143247,
+          "actual_2": 0
+        },
+        {
+          "player_id": 623912,
+          "player_name": "Harold Ram\u00edrez",
+          "context_2": 187.8449933100225,
+          "actual_2": 0
+        }
+      ]
+    },
+    {
+      "origin": 2023,
+      "arm": "ratio",
+      "zero_origin_C_share_rows": 3285,
+      "forecast_C_outs": 1424.1403330638218,
+      "actual_C_outs": 0,
+      "at_least_nine_C_innings_rows": 3,
+      "examples": [
+        {
+          "player_id": 694671,
+          "player_name": "Wyatt Langford",
+          "ratio_2": 49.86695057334976,
+          "actual_2": 0
+        },
+        {
+          "player_id": 700932,
+          "player_name": "Kyle Manzardo",
+          "ratio_2": 41.94226527718379,
+          "actual_2": 0
+        },
+        {
+          "player_id": 690993,
+          "player_name": "Colt Keith",
+          "ratio_2": 34.705345262866174,
+          "actual_2": 0
+        }
+      ]
+    },
+    {
+      "origin": 2024,
+      "arm": "pooled",
+      "zero_origin_C_share_rows": 3138,
+      "forecast_C_outs": 15901.882279031848,
+      "actual_C_outs": 0,
+      "at_least_nine_C_innings_rows": 141,
+      "examples": [
+        {
+          "player_id": 660271,
+          "player_name": "Shohei Ohtani",
+          "pooled_2": 458.7218566953644,
+          "actual_2": 0
+        },
+        {
+          "player_id": 542303,
+          "player_name": "Marcell Ozuna",
+          "pooled_2": 391.3127351445174,
+          "actual_2": 0
+        },
+        {
+          "player_id": 670541,
+          "player_name": "Yordan Alvarez",
+          "pooled_2": 284.91725854974976,
+          "actual_2": 0
+        },
+        {
+          "player_id": 656941,
+          "player_name": "Kyle Schwarber",
+          "pooled_2": 247.7012747434925,
+          "actual_2": 0
+        },
+        {
+          "player_id": 807799,
+          "player_name": "Masataka Yoshida",
+          "pooled_2": 245.72067130107982,
+          "actual_2": 0
+        },
+        {
+          "player_id": 457705,
+          "player_name": "Andrew McCutchen",
+          "pooled_2": 242.86711458297677,
+          "actual_2": 0
+        },
+        {
+          "player_id": 502110,
+          "player_name": "J.D. Martinez",
+          "pooled_2": 239.32278085758227,
+          "actual_2": 0
+        },
+        {
+          "player_id": 667670,
+          "player_name": "Brent Rooker",
+          "pooled_2": 237.60710704129914,
+          "actual_2": 0
+        },
+        {
+          "player_id": 519317,
+          "player_name": "Giancarlo Stanton",
+          "pooled_2": 233.0853042551545,
+          "actual_2": 0
+        },
+        {
+          "player_id": 624585,
+          "player_name": "Jorge Soler",
+          "pooled_2": 194.33200093212687,
+          "actual_2": 0
+        }
+      ]
+    },
+    {
+      "origin": 2024,
+      "arm": "context",
+      "zero_origin_C_share_rows": 3138,
+      "forecast_C_outs": 16243.962398229483,
+      "actual_C_outs": 0,
+      "at_least_nine_C_innings_rows": 150,
+      "examples": [
+        {
+          "player_id": 660271,
+          "player_name": "Shohei Ohtani",
+          "context_2": 491.95721810232794,
+          "actual_2": 0
+        },
+        {
+          "player_id": 670541,
+          "player_name": "Yordan Alvarez",
+          "context_2": 307.847346345699,
+          "actual_2": 0
+        },
+        {
+          "player_id": 542303,
+          "player_name": "Marcell Ozuna",
+          "context_2": 301.6475753479751,
+          "actual_2": 0
+        },
+        {
+          "player_id": 667670,
+          "player_name": "Brent Rooker",
+          "context_2": 254.0526809604474,
+          "actual_2": 0
+        },
+        {
+          "player_id": 457705,
+          "player_name": "Andrew McCutchen",
+          "context_2": 228.81290728262863,
+          "actual_2": 0
+        },
+        {
+          "player_id": 519317,
+          "player_name": "Giancarlo Stanton",
+          "context_2": 194.04622941608494,
+          "actual_2": 0
+        },
+        {
+          "player_id": 807799,
+          "player_name": "Masataka Yoshida",
+          "context_2": 187.97960730187268,
+          "actual_2": 0
+        },
+        {
+          "player_id": 656941,
+          "player_name": "Kyle Schwarber",
+          "context_2": 176.59748617593834,
+          "actual_2": 0
+        },
+        {
+          "player_id": 686469,
+          "player_name": "Vinnie Pasquantino",
+          "context_2": 169.16432296671564,
+          "actual_2": 0
+        },
+        {
+          "player_id": 676475,
+          "player_name": "Alec Burleson",
+          "context_2": 163.75412950369056,
+          "actual_2": 0
+        }
+      ]
+    },
+    {
+      "origin": 2024,
+      "arm": "ratio",
+      "zero_origin_C_share_rows": 3138,
+      "forecast_C_outs": 1146.2852232684488,
+      "actual_C_outs": 0,
+      "at_least_nine_C_innings_rows": 2,
+      "examples": [
+        {
+          "player_id": 805805,
+          "player_name": "Walker Jenkins",
+          "ratio_2": 41.317543895819725,
+          "actual_2": 0
+        },
+        {
+          "player_id": 701350,
+          "player_name": "Roman Anthony",
+          "ratio_2": 38.564534583673684,
+          "actual_2": 0
+        }
+      ]
+    }
+  ],
+  "extrapolation_not_a_physical_cap": true,
+  "forecast_and_model_changes": false,
+  "player_walkthrough_status": "mechanics_only_not_baseball_judgment",
+  "protected_outcomes_used": false,
+  "hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\verify_defense_opportunity_v8.py": "e2c3fbf2e99c25c4bedcb308739fd1ca01bb2a8ee3bee649f07a6109a3c345b3",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-opportunity-v8\\preflight.json": "69fd303c87f3e67d6bf02a15e0b56abba1ccdfce6edead62b6b5d911c91bad45",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-opportunity-v8\\fit-report.json": "3facbce754f0ba2e9c241dfce498bbbbe479fb9b1aeaf93a7f25d8864021ab77",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-opportunity-v8\\player-walkthrough.json": "855eff01b06692ec46c8c2288bb870856190e634cf60d0481ef67c0822a6c70a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\defense-opportunity-v8\\predictions.parquet": "1ca69c4b1bc28d64dfac7efe0870881580e2de8421840f60c54404e001b5f643"
+  }
+}

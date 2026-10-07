@@ -1,6 +1,27 @@
 # Project status and handoff
 
-Updated 2026-10-06. This is the current start-here document.
+Updated 2026-10-07. This is the current start-here document.
+
+## Defensive opportunity comparison requires an allocation repair
+
+[The completed opportunity review](defense-opportunity-v8-result.md) traces 13
+focal players and 39 origin-selected peers. All 12,432 forecasts and 2,604
+empirical means replay. Age/stage improves a broad role average slightly, but
+both lose to PA-scaled prior usage. More importantly, their nonexclusive role
+means spread innings into unrelated positions, including catcher for Hoskins,
+Guerrero and noncatching outfielders. Numerical tolerances pass; baseball
+reasonability fails. Neither allocator is promoted.
+
+Retain the audited source, stronger simple anchor, native count conversions and
+separate reviewed defensive skill baselines. Next repair position allocation
+and total defensive exposure with the same fixed PA: preserve observed position
+repertoire, stabilize tiny MLB ratios with fuller minor evidence, and distinguish
+dated assignments from historical development. Complete its player review before
+matched delivered-runs and expanded-value integration. The older PA cache still
+misses Tatis' finite return; no current-production repair is implied here.
+
+Frozen 2026 forecasts, explorer and protected selection remain unchanged.
+Lovich's independent batting small-sample defect remains open.
 
 ## Defensive position history prepared for opportunity integration
 

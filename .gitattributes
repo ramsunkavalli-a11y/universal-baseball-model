@@ -848,3 +848,11 @@ scripts/verify_defense_position_opportunity_v7.py -text -eol
 scripts/review_defense_position_cohort_v7.py -text -eol
 tests/test_defense_position_history.py -text -eol
 reports/model-evidence/defense-position-opportunity-v7/** -text -eol
+
+docs/defense-opportunity-v8-*.md -text -eol
+src/universal_baseball/defense_opportunity_bridge.py -text -eol
+scripts/run_defense_opportunity_v8.py -text -eol
+scripts/verify_defense_opportunity_v8.py -text -eol
+scripts/finalize_defense_opportunity_v8.py -text -eol
+tests/test_defense_opportunity_bridge.py -text -eol
+reports/model-evidence/defense-opportunity-v8/** -text -eol

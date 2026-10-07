@@ -1,5 +1,21 @@
 # Prospect model: controlling execution plan
 
+## Current checkpoint 2026-10-07 Repair defensive position allocation
+
+[The opportunity comparison](defense-opportunity-v8-result.md) is fully reviewed,
+not promoted. Its broad/context role averages borrow unrelated future positions;
+small numeric gains do not make catcher exposure for established noncatchers
+reasonable. PA-scaled prior usage is the stronger existing-player anchor, with
+an inadequate tiny-MLB/newcomer fallback that needs one coherent repair.
+
+Next separate total defensive time from allocation across the player's observed
+repertoire, preserving complete minor position evidence and DH separately.
+Lock one repair comparison, retain the current anchors, and walk newcomers,
+mixed roles, exits and planned moves before integrating defensive runs/value.
+Dated assignment evidence must have an explicit information cutoff, not a
+name-based future override. Do not rerun the failed broad means with new bins.
+No frozen forecast/explorer change or reuse of 2026 for selection.
+
 ## Current checkpoint 2026-10-06 Position opportunity sources ready
 
 [Full position history preparation](defense-position-opportunity-v7-source-result.md)
