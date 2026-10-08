@@ -32,7 +32,7 @@ jobs:
 
       - name: Upload 2023 fidelity report
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: pitch-sequence-fidelity-2023
           path: reports/generated/pitch-sequence-fidelity/

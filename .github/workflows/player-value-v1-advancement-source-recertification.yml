@@ -34,7 +34,7 @@ jobs:
           --output-result docs/player-value-v1-advancement-source-recertification-result.json
       - name: Upload immutable recertified history
         id: source_artifact
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: player-value-v1-advancement-history-recertified-2019-2024
           path: reports/generated/player-value-v1-advancement-history-recertified-2019-2024.parquet

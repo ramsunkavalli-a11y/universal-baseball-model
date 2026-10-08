@@ -64,7 +64,7 @@ jobs:
           done
           exit 1
       - name: Upload complete player sensitivity table
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: player-value-v1-runs-per-win-pythagenpat-sensitivity-2024
           path: |

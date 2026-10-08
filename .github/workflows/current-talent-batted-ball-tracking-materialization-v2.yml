@@ -259,7 +259,7 @@ jobs:
 
       - name: Upload corrected richer tracking materialization artifact
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: current-talent-batted-ball-tracking-materialization
           path: |

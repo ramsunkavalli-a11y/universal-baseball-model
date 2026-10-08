@@ -50,7 +50,7 @@ jobs:
 
       - name: Upload ${{ matrix.slug }} reconciliation
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: foul-air-official-${{ matrix.slug }}
           path: reports/generated/foul-air-official/${{ matrix.slug }}/

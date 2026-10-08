@@ -46,7 +46,7 @@ jobs:
 
       - name: Upload historical source evidence
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: position-role-historical-source-2021-2024
           path: |

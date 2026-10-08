@@ -92,7 +92,7 @@ jobs:
           done
       - name: Upload season calibration folds
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: current-talent-calibration-review-season-${{ matrix.season }}
           path: reports/generated/current-talent-calibration-review/
@@ -127,7 +127,7 @@ jobs:
           --expected-fold-count 9
       - name: Upload calibration review summary
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: current-talent-calibration-review-summary
           path: reports/generated/current-talent-calibration-review-summary/

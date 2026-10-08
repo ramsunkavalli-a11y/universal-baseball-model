@@ -50,7 +50,7 @@ jobs:
 
       - name: Upload ${{ matrix.slug }} audit report
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: era-${{ matrix.slug }}
           path: reports/generated/armstjc/${{ matrix.slug }}/

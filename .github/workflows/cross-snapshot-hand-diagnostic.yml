@@ -32,7 +32,7 @@ jobs:
 
       - name: Upload diagnostic report
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: cross-snapshot-hand-diagnostic
           path: reports/generated/cross-snapshot-hand-diagnostic/

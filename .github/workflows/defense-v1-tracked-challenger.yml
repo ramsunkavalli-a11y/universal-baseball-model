@@ -113,7 +113,7 @@ jobs:
 
       - name: Upload tracked challenger result
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: defense-v1-tracked-challenger-result
           path: reports/generated/defense-v1-tracked-challenger/

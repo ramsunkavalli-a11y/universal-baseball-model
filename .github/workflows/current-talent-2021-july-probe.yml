@@ -69,7 +69,7 @@ jobs:
           --output-dir "reports/generated/current-talent-july-probe/2021/${AS_OF_DATE}"
       - name: Upload probe artifact
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: current-talent-2021-july-probe-${{ env.AS_OF_DATE }}
           path: reports/generated/current-talent-july-probe/2021/${{ env.AS_OF_DATE }}/

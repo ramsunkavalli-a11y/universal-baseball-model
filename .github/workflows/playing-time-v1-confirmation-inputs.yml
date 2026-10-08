@@ -146,7 +146,7 @@ jobs:
 
       - name: Upload immutable pre-2025 confirmation inputs
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: playing-time-v1-confirmation-inputs
           path: |

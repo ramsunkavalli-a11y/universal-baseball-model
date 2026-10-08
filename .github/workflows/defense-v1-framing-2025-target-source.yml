@@ -76,7 +76,7 @@ jobs:
           PY
 
       - name: Upload 2025 framing target source
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: defense-v1-framing-2025-target-source
           path: reports/generated/defense-v1-framing-2025-target-source/

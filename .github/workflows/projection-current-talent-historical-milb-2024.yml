@@ -119,7 +119,7 @@ jobs:
 
       - name: Upload accepted 2024 historical game evidence
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: current-talent-historical-milb-full-season-2024-${{ matrix.level }}
           path: reports/generated/current-talent-historical-milb-game-evidence/2024/${{ matrix.level == 'a+' && 'aplus' || matrix.level }}/

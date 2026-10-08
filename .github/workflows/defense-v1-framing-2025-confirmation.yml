@@ -111,7 +111,7 @@ jobs:
           PY
 
       - name: Upload framing confirmation result
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: defense-v1-framing-2025-confirmation
           path: reports/generated/defense-v1-framing-2025-confirmation/

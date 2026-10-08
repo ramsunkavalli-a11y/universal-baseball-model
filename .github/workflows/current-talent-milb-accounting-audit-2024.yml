@@ -26,7 +26,7 @@ jobs:
         run: python scripts/audit_current_talent_milb_game_accounting_2024.py --level "${{ matrix.level }}"
       - name: Upload audit
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: current-talent-milb-accounting-audit-2024-${{ matrix.level }}
           path: reports/generated/current-talent-milb-accounting-audit-2024/${{ matrix.level }}/

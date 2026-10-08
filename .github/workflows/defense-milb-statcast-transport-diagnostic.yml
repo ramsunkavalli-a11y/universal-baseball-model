@@ -29,7 +29,7 @@ jobs:
       - name: Run frozen transport diagnostic
         run: python scripts/diagnose_defense_milb_statcast_transport.py
       - name: Upload diagnostic evidence
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: defense-milb-statcast-transport-diagnostic
           path: reports/generated/defense-milb-statcast-transport-diagnostic/

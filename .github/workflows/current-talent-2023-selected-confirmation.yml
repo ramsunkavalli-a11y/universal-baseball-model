@@ -69,7 +69,7 @@ jobs:
           --selected-candidate docs/current-talent-development-selected-candidate.json
           --output-dir reports/generated/current-talent-2023-confirmation
       - name: Upload 2023 confirmation artifact
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: current-talent-2023-selected-confirmation
           path: reports/generated/current-talent-2023-confirmation/

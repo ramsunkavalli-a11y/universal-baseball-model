@@ -24,7 +24,7 @@ jobs:
         run: python scripts/diagnose_current_talent_2022_official_residual_oracle.py
       - name: Upload oracle report
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: current-talent-2022-official-residual-oracle
           path: reports/generated/current-talent-2022-official-residual-oracle/

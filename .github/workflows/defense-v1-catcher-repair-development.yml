@@ -90,7 +90,7 @@ jobs:
           PY
 
       - name: Upload repaired catcher development result
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: defense-v1-catcher-repair-development
           path: reports/generated/defense-v1-catcher-repair-development/

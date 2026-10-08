@@ -93,7 +93,7 @@ jobs:
           --season "${TARGET_SEASON}"
           --level "${{ matrix.filename_level }}"
       - name: Upload level game evidence
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: ct-validation-game-evidence-${{ env.TARGET_SEASON }}-${{ matrix.artifact_suffix }}
           path: reports/generated/current-talent-historical-milb-game-evidence/${{ env.TARGET_SEASON }}/${{ matrix.level_dir }}/
@@ -136,7 +136,7 @@ jobs:
           --window-label all_history
           --output-dir "reports/generated/current-talent-validation-snapshot-multilevel/${TARGET_SEASON}/${CUTOFF}"
       - name: Upload multilevel validation snapshot
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: current-talent-validation-snapshot-multilevel-${{ env.TARGET_SEASON }}-${{ env.SNAPSHOT_MONTH }}
           path: reports/generated/current-talent-validation-snapshot-multilevel/${{ env.TARGET_SEASON }}/${{ env.CUTOFF }}/

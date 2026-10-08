@@ -68,7 +68,7 @@ jobs:
           PY
 
       - name: Upload challenger evidence
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: position-role-transition-challenger-development
           path: reports/generated/position-role-transition-challenger/

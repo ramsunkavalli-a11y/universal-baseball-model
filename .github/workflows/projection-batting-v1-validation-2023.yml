@@ -91,7 +91,7 @@ jobs:
 
       - name: Upload 2023 Projection validation
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: projection-batting-v1-validation-2023
           path: reports/generated/projection-batting-v1-validation-2023/

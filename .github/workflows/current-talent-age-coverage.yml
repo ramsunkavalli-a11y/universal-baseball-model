@@ -81,7 +81,7 @@ jobs:
           --output-dir "reports/generated/current-talent-age-coverage/${TARGET_SEASON}/${AS_OF_DATE}"
       - name: Upload age coverage report
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: current-talent-age-coverage-${{ env.TARGET_SEASON }}-${{ env.AS_OF_DATE }}
           path: reports/generated/current-talent-age-coverage/${{ env.TARGET_SEASON }}/${{ env.AS_OF_DATE }}/

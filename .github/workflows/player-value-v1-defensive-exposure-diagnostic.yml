@@ -84,7 +84,7 @@ jobs:
           PY
 
       - name: Upload diagnostic artifact
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: player-value-v1-defensive-exposure-diagnostic
           path: reports/generated/player-value-v1-defensive-exposure-diagnostic/

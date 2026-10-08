@@ -29,7 +29,7 @@ jobs:
       - name: Run frozen framing reuse POC
         run: python scripts/audit_defense_catcher_framing_reuse.py
       - name: Upload evidence
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: defense-catcher-framing-reuse-poc
           path: reports/generated/defense-catcher-framing-reuse-poc/

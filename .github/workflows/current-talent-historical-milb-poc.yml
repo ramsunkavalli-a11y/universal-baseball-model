@@ -47,7 +47,7 @@ jobs:
 
       - name: Upload POC artifact
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: current-talent-historical-milb-poc-${{ matrix.level }}
           path: reports/generated/current-talent-historical-milb-poc/2022/${{ matrix.level }}/

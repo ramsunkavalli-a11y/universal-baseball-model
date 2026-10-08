@@ -24,7 +24,7 @@ jobs:
       - name: Query Savant catcher leaderboards
         run: python -u scripts/diagnose_savant_catcher_year_filters.py
       - name: Upload diagnostic
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: savant-catcher-year-filter-diagnostic
           path: reports/generated/savant-catcher-year-filter-diagnostic.json

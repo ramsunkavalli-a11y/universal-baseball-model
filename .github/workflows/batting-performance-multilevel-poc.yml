@@ -53,7 +53,7 @@ jobs:
           --mlb-root certified-inputs/mlb
 
       - name: Upload universal Performance dataset
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: universal-batting-performance-2024
           path: reports/generated/universal-batting-performance-2024/

@@ -101,7 +101,7 @@ jobs:
           --boundary-json '{"model_fit":false,"recalibration":false,"run_value_conversion_performed":false,"war_value_calculated":false}'
 
       - name: Upload source-cert checkpoint
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: defense-v1-2025-confirmation-checkpoint-source-cert
           path: reports/checkpoints/defense-v1-2025-confirmation.json
@@ -148,7 +148,7 @@ jobs:
           --boundary-json '{"model_fit":false,"recalibration":false,"run_value_conversion_performed":false,"war_value_calculated":false}'
 
       - name: Upload input checkpoint
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: defense-v1-2025-confirmation-checkpoint-inputs
           path: reports/checkpoints/defense-v1-2025-confirmation.json
@@ -200,7 +200,7 @@ jobs:
           --boundary-json '{"model_fit":false,"recalibration":false,"run_value_conversion_performed":false,"war_value_calculated":false}'
 
       - name: Upload frozen confirmation result
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: defense-v1-2025-confirmation
           path: reports/generated/defense-v1-2025-confirmation/
@@ -246,7 +246,7 @@ jobs:
 
       - name: Upload final checkpoint and partial outputs
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: defense-v1-2025-confirmation-checkpoint-final
           path: |

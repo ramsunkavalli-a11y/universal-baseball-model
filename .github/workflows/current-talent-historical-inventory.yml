@@ -30,7 +30,7 @@ jobs:
         run: python scripts/audit_current_talent_historical_inventory.py
 
       - name: Upload historical inventory
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: current-talent-historical-inventory
           path: reports/generated/current-talent-historical-inventory/

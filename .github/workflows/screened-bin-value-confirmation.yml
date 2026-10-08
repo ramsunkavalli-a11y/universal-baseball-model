@@ -37,7 +37,7 @@ jobs:
 
       - name: Upload screened confirmation
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: screened-bin-value-confirmation
           path: reports/generated/screened-bin-value-confirmation/

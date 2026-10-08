@@ -86,7 +86,7 @@ jobs:
           PY
 
       - name: Upload 2023 validation artifact
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: playing-time-v1-validation-2023
           path: reports/generated/playing-time-v1-validation-2023/

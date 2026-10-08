@@ -85,7 +85,7 @@ jobs:
           --season "${TARGET_SEASON}"
       - name: Upload historical MLB evidence and source captures
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: current-talent-historical-mlb-${{ env.TARGET_SEASON }}
           path: |

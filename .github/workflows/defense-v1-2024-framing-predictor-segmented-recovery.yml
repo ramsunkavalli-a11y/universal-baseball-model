@@ -51,7 +51,7 @@ jobs:
           --segment "${{ matrix.segment }}"
           --output-root "reports/generated/framing-segment-${{ matrix.segment }}"
       - name: Upload segment
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: framing-segment-${{ matrix.segment }}
           path: reports/generated/framing-segment-${{ matrix.segment }}/
@@ -104,7 +104,7 @@ jobs:
           path.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
           PY
       - name: Upload certified 2024 framing predictor
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: defense-v1-2024-framing-predictor
           path: reports/generated/defense-v1-2024-framing-predictor/
