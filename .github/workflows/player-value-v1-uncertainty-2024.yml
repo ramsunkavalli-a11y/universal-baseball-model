@@ -111,7 +111,7 @@ jobs:
           done
           exit 1
       - name: Upload complete uncertainty table
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: player-value-v1-uncertainty-2024
           path: |

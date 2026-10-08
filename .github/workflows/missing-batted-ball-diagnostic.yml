@@ -35,7 +35,7 @@ jobs:
 
       - name: Upload diagnostic report
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: missing-batted-ball-diagnostic
           path: reports/generated/missing-batted-ball-diagnostic/

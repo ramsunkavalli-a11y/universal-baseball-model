@@ -44,7 +44,7 @@ jobs:
           path.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
           PY
       - name: Upload repaired 2025 catcher source
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: defense-v1-catcher-repair-2025-source
           path: reports/generated/defense-v1-catcher-repair-2025-source/

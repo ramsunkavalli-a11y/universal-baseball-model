@@ -130,7 +130,7 @@ jobs:
           done
           exit 1
       - name: Upload complete final ranking table
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: player-value-v1-final-2024
           path: |

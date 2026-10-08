@@ -95,7 +95,7 @@ jobs:
           PY
 
       - name: Upload binding confirmation evidence
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: position-role-2025-confirmation
           path: reports/generated/position-role-2025-confirmation/

@@ -84,7 +84,7 @@ jobs:
           PY
 
       - name: Upload selection artifact
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: player-value-v1-dh-positional-exposure-selection
           path: reports/generated/player-value-v1-dh-positional-exposure-selection/

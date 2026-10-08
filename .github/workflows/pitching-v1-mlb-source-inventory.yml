@@ -36,7 +36,7 @@ jobs:
 
       - name: Upload derived inventory and provenance
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: pitching-v1-mlb-source-inventory
           path: reports/generated/pitching-v1-mlb-source-inventory/

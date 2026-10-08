@@ -79,7 +79,7 @@ jobs:
           --target-root frozen-target
 
       - name: Upload binding confirmation evidence
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: playing-time-v1-confirmation-2025
           path: reports/generated/playing-time-v1-confirmation-2025/

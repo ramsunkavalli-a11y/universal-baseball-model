@@ -33,7 +33,7 @@ jobs:
         run: python scripts/diagnose_playing_time_roster_duplicates.py
 
       - name: Upload diagnostic
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: playing-time-roster-duplicate-diagnostic
           path: reports/generated/playing-time-roster-duplicate-diagnostic/

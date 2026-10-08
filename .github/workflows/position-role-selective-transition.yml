@@ -61,7 +61,7 @@ jobs:
           PY
 
       - name: Upload final development evidence
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: position-role-selective-transition-development
           path: reports/generated/position-role-selective-transition/

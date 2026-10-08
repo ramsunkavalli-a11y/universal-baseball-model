@@ -76,7 +76,7 @@ jobs:
           PY
 
       - name: Upload repaired framing development source
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: defense-v1-framing-repair-development-source
           path: reports/generated/defense-v1-framing-repair-development-source/

@@ -82,7 +82,7 @@ jobs:
           PY
 
       - name: Upload certified 2024 MLB tracking predictor source
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: defense-v1-2024-tracking-predictor
           path: reports/generated/defense-v1-2024-tracking-predictor/

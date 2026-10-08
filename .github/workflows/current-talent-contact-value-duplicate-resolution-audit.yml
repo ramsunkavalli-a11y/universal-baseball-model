@@ -33,7 +33,7 @@ jobs:
 
       - name: Upload duplicate-resolution audit
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: current-talent-contact-value-duplicate-resolution
           path: reports/generated/current-talent-contact-value-duplicate-resolution/

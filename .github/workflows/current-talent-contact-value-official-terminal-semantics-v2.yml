@@ -46,7 +46,7 @@ jobs:
 
       - name: Upload corrected terminal semantics audit
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: current-talent-contact-value-official-terminal-semantics-v2
           path: reports/generated/current-talent-contact-value-official-terminal-semantics-v2/

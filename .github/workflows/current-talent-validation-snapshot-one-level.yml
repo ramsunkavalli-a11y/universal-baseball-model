@@ -97,7 +97,7 @@ jobs:
 
       - name: Upload validation snapshot artifact
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: current-talent-validation-snapshot-${{ env.TARGET_SEASON }}-${{ env.TARGET_LEVEL }}-${{ env.SNAPSHOT_MONTH }}
           path: |

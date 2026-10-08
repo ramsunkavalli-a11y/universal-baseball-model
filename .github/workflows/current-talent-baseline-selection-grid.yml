@@ -71,7 +71,7 @@ jobs:
           --output-dir "reports/generated/current-talent-selection-grid/${{ matrix.season }}"
       - name: Upload season development grid
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: current-talent-selection-grid-season-${{ matrix.season }}
           path: reports/generated/current-talent-selection-grid/${{ matrix.season }}/
@@ -104,7 +104,7 @@ jobs:
           --output-dir reports/generated/current-talent-selection-grid-summary
       - name: Upload selection summary
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: current-talent-selection-grid-summary
           path: reports/generated/current-talent-selection-grid-summary/

@@ -65,7 +65,7 @@ jobs:
 
       - name: Upload historical game-evidence artifact
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: current-talent-historical-milb-full-season-${{ env.TARGET_SEASON }}-${{ matrix.level }}
           path: reports/generated/current-talent-historical-milb-game-evidence/${{ env.TARGET_SEASON }}/${{ matrix.level == 'a+' && 'aplus' || matrix.level }}/

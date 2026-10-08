@@ -48,7 +48,7 @@ jobs:
           exit 0
       - name: Upload stability evidence
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: defense-traditional-fielding-stability
           path: reports/generated/defense-traditional-fielding-stability/

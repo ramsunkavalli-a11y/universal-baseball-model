@@ -81,7 +81,7 @@ jobs:
           --output-dir "reports/generated/current-talent-september-validation/${{ matrix.season }}/${{ matrix.as_of_date }}"
       - name: Upload September artifact
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: current-talent-september-validation-${{ matrix.season }}-${{ matrix.as_of_date }}
           path: reports/generated/current-talent-september-validation/${{ matrix.season }}/${{ matrix.as_of_date }}/

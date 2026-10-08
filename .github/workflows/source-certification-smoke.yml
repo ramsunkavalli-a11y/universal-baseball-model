@@ -39,7 +39,7 @@ jobs:
 
       - name: Upload certification reports only
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: armstjc-release-smoke-report
           path: reports/generated/armstjc/

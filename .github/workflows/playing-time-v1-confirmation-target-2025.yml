@@ -89,7 +89,7 @@ jobs:
 
       - name: Upload immutable 2025 target source before any model scoring
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: playing-time-v1-confirmation-target-2025
           path: |

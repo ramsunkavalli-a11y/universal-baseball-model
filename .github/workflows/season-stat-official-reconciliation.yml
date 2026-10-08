@@ -36,7 +36,7 @@ jobs:
 
       - name: Upload reconciliation report
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: season-stat-official-reconciliation
           path: reports/generated/season-stat-official-reconciliation/

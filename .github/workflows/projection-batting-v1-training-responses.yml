@@ -57,7 +57,7 @@ jobs:
 
       - name: Upload Projection training responses
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: projection-batting-v1-training-responses
           path: reports/generated/projection-batting-v1-training-responses/

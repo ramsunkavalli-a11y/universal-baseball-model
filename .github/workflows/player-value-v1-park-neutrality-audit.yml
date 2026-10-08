@@ -84,7 +84,7 @@ jobs:
           exit 1
 
       - name: Upload park audit diagnostics
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: player-value-v1-park-neutrality-audit
           path: |

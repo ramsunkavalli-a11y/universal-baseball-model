@@ -41,7 +41,7 @@ jobs:
             sleep $((attempt * 2))
           done
           exit 1
-      - uses: actions/upload-artifact@v7
+      - uses: actions/upload-artifact@v6
         with:
           name: player-value-v1-alternate-centering-sensitivity-feasibility
           path: docs/player-value-v1-alternate-centering-sensitivity-feasibility.json

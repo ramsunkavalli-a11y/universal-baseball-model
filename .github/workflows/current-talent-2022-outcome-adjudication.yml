@@ -35,7 +35,7 @@ jobs:
           python scripts/certify_current_talent_2022_outcome_adjudication.py
           --level "${{ matrix.level }}"
       - if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: current-talent-2022-outcome-adjudication-${{ matrix.level }}
           path: reports/generated/current-talent-2022-outcome-adjudication/${{ matrix.level }}/

@@ -55,7 +55,7 @@ jobs:
           --snapshot-root inputs/current-talent-snapshots
 
       - name: Upload target-surface artifact
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: playing-time-v1-target-surface
           path: reports/generated/playing-time-v1-target-surface/

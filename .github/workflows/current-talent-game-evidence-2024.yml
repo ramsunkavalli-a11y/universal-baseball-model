@@ -63,7 +63,7 @@ jobs:
 
       - name: Upload Current Talent game-evidence diagnostics
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: current-talent-game-evidence-2024-aaa-mlb
           path: reports/generated/current-talent-game-evidence-2024/

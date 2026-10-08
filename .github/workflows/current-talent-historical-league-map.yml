@@ -34,7 +34,7 @@ jobs:
 
       - name: Upload historical league-map audit
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: current-talent-historical-league-map
           path: reports/generated/current-talent-historical-league-map/

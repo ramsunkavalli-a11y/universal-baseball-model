@@ -137,7 +137,7 @@ jobs:
 
       - name: Upload numerical component rows
         if: steps.centering.outcome == 'success'
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: player-value-v1-mlb-centering-2024-components
           path: |

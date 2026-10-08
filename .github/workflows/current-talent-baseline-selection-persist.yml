@@ -70,7 +70,7 @@ jobs:
           --season "${{ matrix.season }}"
           --output-dir "reports/generated/current-talent-selection-grid/${{ matrix.season }}"
       - name: Upload season development grid
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: current-talent-development-selection-season-${{ matrix.season }}
           path: reports/generated/current-talent-selection-grid/${{ matrix.season }}/
@@ -130,7 +130,7 @@ jobs:
             git push origin HEAD:source-certification-poc
           fi
       - name: Upload development selection summary
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: current-talent-development-selection-summary
           path: reports/generated/current-talent-development-selection-summary/

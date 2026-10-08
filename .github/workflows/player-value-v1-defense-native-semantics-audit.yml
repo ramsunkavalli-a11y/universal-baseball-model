@@ -50,7 +50,7 @@ jobs:
           PY
 
       - name: Upload audit artifact
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: player-value-v1-defense-native-semantics-audit
           path: reports/generated/player-value-v1-defense-native-semantics-audit/

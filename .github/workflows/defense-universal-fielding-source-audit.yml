@@ -39,7 +39,7 @@ jobs:
           python scripts/audit_defense_universal_fielding_source.py
           --source-root historical-source
       - name: Upload audit evidence
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: defense-universal-fielding-source-audit
           path: reports/generated/defense-universal-fielding-source-audit/

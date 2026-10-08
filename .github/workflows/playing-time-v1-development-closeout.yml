@@ -108,7 +108,7 @@ jobs:
 
       - name: Upload confirmation-refit artifact
         if: steps.decision.outputs.promoted == 'true'
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: playing-time-v1-confirmation-refit
           path: reports/generated/playing-time-v1-confirmation-refit/

@@ -32,7 +32,7 @@ jobs:
 
       - name: Upload all-level aggregate reuse report
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: all-level-season-profile-reuse
           path: reports/generated/all-level-season-profile-reuse/

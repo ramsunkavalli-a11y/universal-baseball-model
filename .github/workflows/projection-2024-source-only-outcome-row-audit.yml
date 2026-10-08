@@ -23,7 +23,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python scripts/audit_projection_2024_source_only_outcome_rows.py
       - if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: projection-2024-source-only-outcome-row-audit
           path: reports/generated/projection-2024-source-only-outcome-row-audit/

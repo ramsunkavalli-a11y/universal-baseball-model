@@ -52,7 +52,7 @@ jobs:
 
       - name: Upload POC evidence
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: defense-sportsdataverse-reuse-poc
           path: reports/generated/defense-sportsdataverse-reuse-poc/

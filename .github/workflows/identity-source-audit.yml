@@ -32,7 +32,7 @@ jobs:
 
       - name: Upload identity audit report
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: chadwick-identity-coverage
           path: reports/generated/identity/

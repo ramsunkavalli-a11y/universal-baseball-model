@@ -32,7 +32,7 @@ jobs:
 
       - name: Upload cross-validation report
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: milb-bin-value-cross-validation
           path: reports/generated/milb-bin-value-cross-validation/

@@ -86,7 +86,7 @@ jobs:
 
       - name: Upload Baseline 2 development artifact
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: current-talent-baseline2-development
           path: reports/generated/current-talent-baseline2-development/

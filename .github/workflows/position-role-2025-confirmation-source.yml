@@ -64,7 +64,7 @@ jobs:
 
       - name: Upload immutable 2025 source evidence
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: position-role-2025-confirmation-source
           path: |

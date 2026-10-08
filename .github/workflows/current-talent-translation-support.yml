@@ -86,7 +86,7 @@ jobs:
           --max-gap-days 365
           --output-dir "reports/generated/current-talent-translation-support/${TARGET_SEASON}/${TRAINING_END}"
       - name: Upload translation support artifact
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: current-talent-translation-support-${{ env.TARGET_SEASON }}-${{ env.TRAINING_END }}
           path: reports/generated/current-talent-translation-support/${{ env.TARGET_SEASON }}/${{ env.TRAINING_END }}/

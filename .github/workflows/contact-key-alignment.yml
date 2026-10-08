@@ -36,7 +36,7 @@ jobs:
 
       - name: Upload authority artifact
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: contact-sequence-authority-${{ matrix.level }}
           path: reports/generated/contact-sequence-authority/

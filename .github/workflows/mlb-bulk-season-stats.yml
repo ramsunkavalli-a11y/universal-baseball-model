@@ -32,7 +32,7 @@ jobs:
 
       - name: Upload source audit
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v6
         with:
           name: mlb-bulk-season-stats
           path: reports/generated/mlb-bulk-season-stats/
