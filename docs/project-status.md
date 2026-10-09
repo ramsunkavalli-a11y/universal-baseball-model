@@ -2,6 +2,21 @@
 
 Updated 2026-10-09. This is the current start-here document.
 
+Latest milestone: [the completed whole-WAR review](hitter-2027-whole-value-result.md)
+retains the additive component assembly. Current-MLB matched average absolute
+error is .761 WAR versus .772 for saved Steamer forecasts; uncertainty does not
+support claiming superiority. The review traces upper-minors overvaluation,
+fast-arrival misses, role translation and the known finite-return weakness.
+No blanket prospect haircut or new parameter search was introduced. Current
+rights, service/contract tails, annual control paths and the 2027 explorer remain
+the active unfinished deliverable, not another open component tournament.
+
+[Current ownership and service have now been refreshed](hitter-2027-current-control-result.md).
+The reviewed-v2 table covers all 4,851 identities; usable service estimates cover
+98.4% of projected net WAR. It fixes exhibition-team service interruptions and
+trade-terminal roster gaps, preserves explicit free agents and keeps unresolved
+balances bounded/missing. These are not yet control-value dollar forecasts.
+
 ## Active: finish the 2027 hitter model and control-value explorer
 
 The user's new scope is controlled by
@@ -75,7 +90,13 @@ supported minor player/position priors; unsupported records remain explicit.
 Roster positions resolve 109 unknown records, leaving 68 generic/unknown cases
 with 22.6 expected PA. Preserve their incomplete-role status in full value.
 
-Next: finish additive full-WAR accounting and its matched historical check,
+The [additive 2027 player review](hitter-2027-full-value-review.md) now closes
+the accounting walkthrough: 4,851 players total 569.22 development WAR, with
+all components reconciling. Eldridge is 2.06, Lindor 3.19, Bailey 1.58 and
+Judge 3.36; Ohtani is 4.00 for hitting only. These are not public-system accuracy
+claims or completed control values. Unknown roles remain incomplete.
+
+Next: finish the matched historical full-WAR check,
 then annual control/cost paths and the 2027 explorer. Verify batting context
 before labeling the integrated output: the existing fixed-wOBA target is league-
 relative observed production, not automatically park-neutral because its helper

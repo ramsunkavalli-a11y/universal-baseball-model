@@ -15,6 +15,28 @@ AS_OF = date(2026, 9, 8)
 MLB_TEAMS = {100, 200, 300}
 
 
+def test_elected_free_agency_not_generic_dfa():
+    tx = _transactions((20, 1, '2026-08-01', 'DFA', None, 999)).with_columns(
+        pl.lit('Player 1 elected free agency.').alias('description'))
+    result = resolve_current_organizations(_candidates((1,100)),_forty(),tx,
+        as_of_date=AS_OF,mlb_team_ids=MLB_TEAMS).row(0,named=True)
+    assert result['organization_id'] is None
+    assert result['organization_status']=='resolved_official_release_no_rights'
+    tx = tx.with_columns(pl.lit('Club designated Player 1 for assignment.').alias('description'))
+    result = resolve_current_organizations(_candidates((1,100)),_forty(),tx,
+        as_of_date=AS_OF,mlb_team_ids=MLB_TEAMS).row(0,named=True)
+    assert result['organization_id']==100
+
+
+def test_absent_roster_players_retained_and_resolved_from_transactions():
+    result=resolve_current_organizations(_candidates(),_forty(),
+        _transactions((20,1,'2026-08-01','SFA',None,200)),
+        as_of_date=AS_OF,mlb_team_ids=MLB_TEAMS,player_names={1:'One',2:'Two'})
+    assert result['player_id'].to_list()==[1,2]
+    assert result['organization_id'].to_list()==[200,None]
+    assert result.row(1,named=True)['organization_status']=='review_no_current_ownership_evidence'
+
+
 def _candidates(*rows: tuple[int, int]) -> pl.DataFrame:
     return pl.DataFrame(
         [

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from datetime import date
+import re
 from typing import Mapping
 
 import polars as pl
@@ -52,6 +53,10 @@ def _transaction_resolution(
     to_team = row["to_team_id"]
     direct_from_owner = int(from_team) if from_team in mlb_team_ids else None
     direct_to_owner = int(to_team) if to_team in mlb_team_ids else None
+    # StatsAPI also uses DFA for an actual election of free agency. That is
+    # different from a club merely designating a player for assignment.
+    if re.search(r'\belected free agency\b', str(row['description']).lower()):
+        return "no_incumbent_rights", None
     if code in _ACQUISITION_CODES and direct_to_owner is not None:
         return "owner", direct_to_owner
     if code in {"CU", "RE", "SE"} and direct_to_owner is not None:
@@ -89,6 +94,7 @@ def resolve_current_organizations(
     as_of_date: date,
     mlb_team_ids: set[int],
     affiliate_parent_organization_ids: Mapping[int, int] | None = None,
+    player_names: Mapping[int, str] | None = None,
 ) -> pl.DataFrame:
     """Resolve current owners while preserving broad-roster uncertainty.
 
@@ -126,6 +132,12 @@ def resolve_current_organizations(
             "teams": teams,
             "evidence_date": max(group.get_column("as_of_date")),
         }
+    for player_id, name in (player_names or {}).items():
+        if player_id <= 0:
+            raise ValueError('player universe requires positive identities')
+        candidate_groups.setdefault(player_id, {
+            'player_name': name, 'teams': [], 'evidence_date': as_of_date,
+        })
 
     forty_teams: dict[int, set[int]] = {}
     forty_dates: dict[int, date] = {}
@@ -225,9 +237,12 @@ def resolve_current_organizations(
                 f"official_mlb_stats_api_fullRoster:{candidate['evidence_date']}:"
                 f"team:{organization_id}"
             )
-        else:
+        elif teams:
             status = "review_multiple_full_roster_organizations"
             evidence = "official_full_roster_conflict:" + ",".join(map(str, teams))
+        else:
+            status = "review_no_current_ownership_evidence"
+            evidence = "no_conclusive_transaction_or_current_roster"
         rows.append(
             {
                 "player_id": player_id,

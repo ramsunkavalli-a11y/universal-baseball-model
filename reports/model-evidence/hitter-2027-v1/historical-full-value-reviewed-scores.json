@@ -1,0 +1,1078 @@
+{
+  "scores": [
+    {
+      "scope": "all",
+      "scores": {
+        "combined": {
+          "rows": 12432,
+          "people": 5753,
+          "RMSE": 0.48231084545217545,
+          "MAE": 0.14092084542602887,
+          "bias": -0.004506121141875437,
+          "predicted_WAR": 1652.376337774549,
+          "actual_WAR": 1708.4932219946324,
+          "expected_PA": 545803.7394324406,
+          "actual_PA": 547991
+        },
+        "batting_anchor": {
+          "rows": 12432,
+          "people": 5753,
+          "RMSE": 0.5186737476239391,
+          "MAE": 0.15225187237090435,
+          "bias": 0.002460995295336447,
+          "predicted_WAR": 1740.046692494354,
+          "actual_WAR": 1708.4932219946324,
+          "expected_PA": 545803.7394324406,
+          "actual_PA": 547991
+        },
+        "simple_history": {
+          "rows": 12432,
+          "people": 5753,
+          "RMSE": 0.4952820276559552,
+          "MAE": 0.15353853848575708,
+          "bias": 0.02245296006553617,
+          "predicted_WAR": 1987.5146061818052,
+          "actual_WAR": 1708.4932219946324,
+          "expected_PA": 545803.7394324406,
+          "actual_PA": 547991
+        }
+      }
+    },
+    {
+      "scope": "public_steamer",
+      "scores": {
+        "combined": {
+          "rows": 9750,
+          "people": 4710,
+          "RMSE": 0.5438231498803588,
+          "MAE": 0.17938115016906475,
+          "bias": -0.005543183375696335,
+          "predicted_WAR": 1650.7791294012657,
+          "actual_WAR": 1704.3887589455449,
+          "expected_PA": 544825.4726442927,
+          "actual_PA": 547438
+        },
+        "batting_anchor": {
+          "rows": 9750,
+          "people": 4710,
+          "RMSE": 0.584372018100928,
+          "MAE": 0.1937102867481081,
+          "bias": 0.003565838929595068,
+          "predicted_WAR": 1738.2118074472355,
+          "actual_WAR": 1704.3887589455449,
+          "expected_PA": 544825.4726442927,
+          "actual_PA": 547438
+        },
+        "simple_history": {
+          "rows": 9750,
+          "people": 4710,
+          "RMSE": 0.5586791591594013,
+          "MAE": 0.19533636843057708,
+          "bias": 0.028723556716433053,
+          "predicted_WAR": 1984.2957222088892,
+          "actual_WAR": 1704.3887589455449,
+          "expected_PA": 544825.4726442927,
+          "actual_PA": 547438
+        },
+        "steamer": {
+          "rows": 9750,
+          "people": 4710,
+          "RMSE": 0.546836338200962,
+          "MAE": 0.1804846560383757,
+          "bias": 0.03583511302771564,
+          "predicted_WAR": 2053.9536726542274,
+          "actual_WAR": 1704.3887589455449,
+          "expected_PA": 555168.9983950853,
+          "actual_PA": 547438
+        }
+      }
+    },
+    {
+      "scope": "origin_MLB_public",
+      "scores": {
+        "combined": {
+          "rows": 1985,
+          "people": 925,
+          "RMSE": 1.1527758466000917,
+          "MAE": 0.7611370248819176,
+          "bias": -0.04260346371225437,
+          "predicted_WAR": 1548.1352695823462,
+          "actual_WAR": 1632.6470025110443,
+          "expected_PA": 496698.12853020534,
+          "actual_PA": 500276
+        },
+        "batting_anchor": {
+          "rows": 1985,
+          "people": 925,
+          "RMSE": 1.2472001752269886,
+          "MAE": 0.8291622017299397,
+          "bias": -0.0013389896021015063,
+          "predicted_WAR": 1630.667748751624,
+          "actual_WAR": 1632.6470025110443,
+          "expected_PA": 496698.12853020534,
+          "actual_PA": 500276
+        },
+        "simple_history": {
+          "rows": 1985,
+          "people": 925,
+          "RMSE": 1.1856873029499735,
+          "MAE": 0.8173261094526042,
+          "bias": 0.09750812861409298,
+          "predicted_WAR": 1826.1735047883806,
+          "actual_WAR": 1632.6470025110443,
+          "expected_PA": 496698.12853020534,
+          "actual_PA": 500276
+        },
+        "steamer": {
+          "rows": 1985,
+          "people": 925,
+          "RMSE": 1.164193129345703,
+          "MAE": 0.771866428615192,
+          "bias": 0.19108377210090557,
+          "predicted_WAR": 2013.9347494146853,
+          "actual_WAR": 1632.6470025110443,
+          "expected_PA": 519122.37355077267,
+          "actual_PA": 500276
+        }
+      }
+    },
+    {
+      "scope": "actual_participants_public",
+      "scores": {
+        "combined": {
+          "rows": 1960,
+          "people": 896,
+          "RMSE": 1.2013680897412502,
+          "MAE": 0.8447613036322039,
+          "bias": -0.06986146550340717,
+          "predicted_WAR": 1567.7774007317876,
+          "actual_WAR": 1704.3879172213972,
+          "expected_PA": 489933.14504022454,
+          "actual_PA": 547438
+        },
+        "batting_anchor": {
+          "rows": 1960,
+          "people": 896,
+          "RMSE": 1.2926980806143054,
+          "MAE": 0.908189928848782,
+          "bias": -0.03625115569862558,
+          "predicted_WAR": 1633.1133629211095,
+          "actual_WAR": 1704.3879172213972,
+          "expected_PA": 489933.14504022454,
+          "actual_PA": 547438
+        },
+        "simple_history": {
+          "rows": 1960,
+          "people": 896,
+          "RMSE": 1.2317186005694227,
+          "MAE": 0.8896054106392367,
+          "bias": 0.06202816347849679,
+          "predicted_WAR": 1826.1172349198566,
+          "actual_WAR": 1704.3879172213972,
+          "expected_PA": 489933.14504022454,
+          "actual_PA": 547438
+        },
+        "steamer": {
+          "rows": 1960,
+          "people": 896,
+          "RMSE": 1.216667228327369,
+          "MAE": 0.8669723065956944,
+          "bias": 0.18282257296549598,
+          "predicted_WAR": 2063.144981549734,
+          "actual_WAR": 1704.3879172213972,
+          "expected_PA": 532394.5838682652,
+          "actual_PA": 547438
+        }
+      }
+    },
+    {
+      "scope": "public_both",
+      "scores": {
+        "combined": {
+          "rows": 5312,
+          "people": 2555,
+          "RMSE": 0.7383681228329486,
+          "MAE": 0.3293024572269448,
+          "bias": -0.010548959930364336,
+          "predicted_WAR": 1647.679951882216,
+          "actual_WAR": 1703.061883043165,
+          "expected_PA": 542669.3885991179,
+          "actual_PA": 546571
+        },
+        "batting_anchor": {
+          "rows": 5312,
+          "people": 2555,
+          "RMSE": 0.7929500632047902,
+          "MAE": 0.35545415577611356,
+          "bias": 0.006271723785143522,
+          "predicted_WAR": 1734.295331057555,
+          "actual_WAR": 1703.061883043165,
+          "expected_PA": 542669.3885991179,
+          "actual_PA": 546571
+        },
+        "simple_history": {
+          "rows": 5312,
+          "people": 2555,
+          "RMSE": 0.7585701980289439,
+          "MAE": 0.35798815617262925,
+          "bias": 0.05182549775235224,
+          "predicted_WAR": 1977.3764762301364,
+          "actual_WAR": 1703.061883043165,
+          "expected_PA": 542669.3885991179,
+          "actual_PA": 546571
+        },
+        "steamer": {
+          "rows": 5312,
+          "people": 2555,
+          "RMSE": 0.7423268055824399,
+          "MAE": 0.3265107808158134,
+          "bias": 0.07095604331872549,
+          "predicted_WAR": 2080.4420473773907,
+          "actual_WAR": 1703.061883043165,
+          "expected_PA": 550603.5062234402,
+          "actual_PA": 546571
+        },
+        "zips": {
+          "rows": 5312,
+          "people": 2555,
+          "RMSE": 1.0917667933499486,
+          "MAE": 0.8291803375731504,
+          "bias": 0.23501560551548595,
+          "predicted_WAR": 2943.163452184304,
+          "actual_WAR": 1703.061883043165,
+          "expected_PA": 2096808.0,
+          "actual_PA": 546571
+        }
+      }
+    },
+    {
+      "scope": "target_year_2023",
+      "scores": {
+        "combined": {
+          "rows": 4244,
+          "people": 4244,
+          "RMSE": 0.4647165802850237,
+          "MAE": 0.13673636997418054,
+          "bias": -0.006930109195987523,
+          "predicted_WAR": 539.0820586414442,
+          "actual_WAR": 568.4934420692152,
+          "expected_PA": 177294.80709346556,
+          "actual_PA": 182917
+        },
+        "batting_anchor": {
+          "rows": 4244,
+          "people": 4244,
+          "RMSE": 0.49426664595585107,
+          "MAE": 0.1466310125107174,
+          "bias": 0.0025590539568735673,
+          "predicted_WAR": 579.3540670621867,
+          "actual_WAR": 568.4934420692152,
+          "expected_PA": 177294.80709346556,
+          "actual_PA": 182917
+        },
+        "simple_history": {
+          "rows": 4244,
+          "people": 4244,
+          "RMSE": 0.4831695106169412,
+          "MAE": 0.15071299810444322,
+          "bias": 0.019595954729363825,
+          "predicted_WAR": 651.6586739406354,
+          "actual_WAR": 568.4934420692152,
+          "expected_PA": 177294.80709346556,
+          "actual_PA": 182917
+        }
+      }
+    },
+    {
+      "scope": "target_year_2024",
+      "scores": {
+        "combined": {
+          "rows": 4196,
+          "people": 4196,
+          "RMSE": 0.5121692035341533,
+          "MAE": 0.14596384418765074,
+          "bias": -0.0019862250372269827,
+          "predicted_WAR": 561.3995283837963,
+          "actual_WAR": 569.7337286400007,
+          "expected_PA": 186453.53525672553,
+          "actual_PA": 182194
+        },
+        "batting_anchor": {
+          "rows": 4196,
+          "people": 4196,
+          "RMSE": 0.5401496889407006,
+          "MAE": 0.15596382441752132,
+          "bias": 0.007037790419804161,
+          "predicted_WAR": 599.264297241499,
+          "actual_WAR": 569.7337286400007,
+          "expected_PA": 186453.53525672553,
+          "actual_PA": 182194
+        },
+        "simple_history": {
+          "rows": 4196,
+          "people": 4196,
+          "RMSE": 0.5222407650134655,
+          "MAE": 0.15650490661782354,
+          "bias": 0.025424283580939944,
+          "predicted_WAR": 676.4140225456247,
+          "actual_WAR": 569.7337286400007,
+          "expected_PA": 186453.53525672553,
+          "actual_PA": 182194
+        }
+      }
+    },
+    {
+      "scope": "target_year_2025",
+      "scores": {
+        "combined": {
+          "rows": 3992,
+          "people": 3992,
+          "RMSE": 0.4686069375092105,
+          "MAE": 0.1400623221162553,
+          "bias": -0.004602029192411805,
+          "predicted_WAR": 551.8947507493086,
+          "actual_WAR": 570.2660512854166,
+          "expected_PA": 182055.39708224946,
+          "actual_PA": 182880
+        },
+        "batting_anchor": {
+          "rows": 3992,
+          "people": 3992,
+          "RMSE": 0.5205825253075664,
+          "MAE": 0.1541607801844743,
+          "bias": -0.002213858490668389,
+          "predicted_WAR": 561.4283281906684,
+          "actual_WAR": 570.2660512854166,
+          "expected_PA": 182055.39708224946,
+          "actual_PA": 182880
+        },
+        "simple_history": {
+          "rows": 3992,
+          "people": 3992,
+          "RMSE": 0.4792960130496799,
+          "MAE": 0.1533977107350045,
+          "bias": 0.02233864188630475,
+          "predicted_WAR": 659.4419096955451,
+          "actual_WAR": 570.2660512854166,
+          "expected_PA": 182055.39708224946,
+          "actual_PA": 182880
+        }
+      }
+    },
+    {
+      "scope": "stage_Current MLB",
+      "scores": {
+        "combined": {
+          "rows": 1989,
+          "people": 927,
+          "RMSE": 1.1517267507709104,
+          "MAE": 0.7596771354837252,
+          "bias": -0.04252290076561533,
+          "predicted_WAR": 1548.1352695823462,
+          "actual_WAR": 1632.6470025110443,
+          "expected_PA": 496698.12853020534,
+          "actual_PA": 500276
+        },
+        "batting_anchor": {
+          "rows": 1989,
+          "people": 927,
+          "RMSE": 1.2460326925998078,
+          "MAE": 0.8275589983192263,
+          "bias": -0.0013264020947411186,
+          "predicted_WAR": 1630.667748751624,
+          "actual_WAR": 1632.6470025110443,
+          "expected_PA": 496698.12853020534,
+          "actual_PA": 500276
+        },
+        "simple_history": {
+          "rows": 1989,
+          "people": 927,
+          "RMSE": 1.1845985168628326,
+          "MAE": 0.8157426549157419,
+          "bias": 0.09731569078171141,
+          "predicted_WAR": 1826.1735047883806,
+          "actual_WAR": 1632.6470025110443,
+          "expected_PA": 496698.12853020534,
+          "actual_PA": 500276
+        }
+      }
+    },
+    {
+      "scope": "stage_Inactive / unknown",
+      "scores": {
+        "combined": {
+          "rows": 719,
+          "people": 570,
+          "RMSE": 0.12375183739967582,
+          "MAE": 0.013376597228695932,
+          "bias": -0.008020024222398055,
+          "predicted_WAR": 3.4727655565682864,
+          "actual_WAR": 9.287123479801101,
+          "expected_PA": 2028.6499725951862,
+          "actual_PA": 2972
+        },
+        "batting_anchor": {
+          "rows": 719,
+          "people": 570,
+          "RMSE": 0.12854874645833542,
+          "MAE": 0.014069980427036237,
+          "bias": -0.00789205454209332,
+          "predicted_WAR": 3.553414252541702,
+          "actual_WAR": 9.287123479801101,
+          "expected_PA": 2028.6499725951862,
+          "actual_PA": 2972
+        },
+        "simple_history": {
+          "rows": 719,
+          "people": 570,
+          "RMSE": 0.12043363537070674,
+          "MAE": 0.016328077362017898,
+          "bias": -0.003348218539287958,
+          "predicted_WAR": 6.808817423788957,
+          "actual_WAR": 9.287123479801101,
+          "expected_PA": 2028.6499725951862,
+          "actual_PA": 2972
+        }
+      }
+    },
+    {
+      "scope": "stage_Lower minors",
+      "scores": {
+        "combined": {
+          "rows": 6882,
+          "people": 3870,
+          "RMSE": 0.04101276075897794,
+          "MAE": 0.0019755750210569945,
+          "bias": 0.0007300360358942834,
+          "predicted_WAR": 6.5394457586286014,
+          "actual_WAR": 1.620675061740822,
+          "expected_PA": 2592.9292891362857,
+          "actual_PA": 2044
+        },
+        "batting_anchor": {
+          "rows": 6882,
+          "people": 3870,
+          "RMSE": 0.041102539241162514,
+          "MAE": 0.002009676928432962,
+          "bias": 0.0007413130220973174,
+          "predicted_WAR": 6.6171262526488634,
+          "actual_WAR": 1.620675061740822,
+          "expected_PA": 2592.9292891362857,
+          "actual_PA": 2044
+        },
+        "simple_history": {
+          "rows": 6882,
+          "people": 3870,
+          "RMSE": 0.04129973625416109,
+          "MAE": 0.0022801071820142825,
+          "bias": 0.0010347046701275023,
+          "predicted_WAR": 8.639405670597995,
+          "actual_WAR": 1.620675061740822,
+          "expected_PA": 2592.9292891362857,
+          "actual_PA": 2044
+        }
+      }
+    },
+    {
+      "scope": "stage_Upper minors",
+      "scores": {
+        "combined": {
+          "rows": 2842,
+          "people": 1788,
+          "RMSE": 0.28901352094216687,
+          "MAE": 0.07707248386419484,
+          "bias": 0.010168167690208505,
+          "predicted_WAR": 94.22885687700614,
+          "actual_WAR": 64.93842094204625,
+          "expected_PA": 44484.031640503745,
+          "actual_PA": 42699
+        },
+        "batting_anchor": {
+          "rows": 2842,
+          "people": 1788,
+          "RMSE": 0.28936774962431694,
+          "MAE": 0.0787904782536961,
+          "bias": 0.011906827515414229,
+          "predicted_WAR": 99.20840323753944,
+          "actual_WAR": 64.93842094204625,
+          "expected_PA": 44484.031640503745,
+          "actual_PA": 42699
+        },
+        "simple_history": {
+          "rows": 2842,
+          "people": 1788,
+          "RMSE": 0.292063482462256,
+          "MAE": 0.0914162572384517,
+          "bias": 0.028360807581354924,
+          "predicted_WAR": 145.89287829903773,
+          "actual_WAR": 64.93842094204625,
+          "expected_PA": 44484.031640503745,
+          "actual_PA": 42699
+        }
+      }
+    },
+    {
+      "scope": "position_1",
+      "scores": {
+        "combined": {
+          "rows": 24,
+          "people": 18,
+          "RMSE": 0.011939911058701052,
+          "MAE": 0.0026242243749507177,
+          "bias": 0.0026068485198723415,
+          "predicted_WAR": 0.06982138686002573,
+          "actual_WAR": 0.0,
+          "expected_PA": 63.947880371194714,
+          "actual_PA": 0
+        },
+        "batting_anchor": {
+          "rows": 24,
+          "people": 18,
+          "RMSE": 0.012628386769131113,
+          "MAE": 0.002825911936843691,
+          "bias": 0.0028251999115983337,
+          "predicted_WAR": 0.07580130613135476,
+          "actual_WAR": 0.0,
+          "expected_PA": 63.947880371194714,
+          "actual_PA": 0
+        },
+        "simple_history": {
+          "rows": 24,
+          "people": 18,
+          "RMSE": 0.026296789407028027,
+          "MAE": 0.007895374787261463,
+          "bias": 0.007895374787261463,
+          "predicted_WAR": 0.2118813532338128,
+          "actual_WAR": 0.0,
+          "expected_PA": 63.947880371194714,
+          "actual_PA": 0
+        }
+      }
+    },
+    {
+      "scope": "position_10",
+      "scores": {
+        "combined": {
+          "rows": 481,
+          "people": 393,
+          "RMSE": 0.6224999240102457,
+          "MAE": 0.18189879163281922,
+          "bias": -0.044504910721773656,
+          "predicted_WAR": 57.50713337456701,
+          "actual_WAR": 80.22704878119445,
+          "expected_PA": 27162.959692738274,
+          "actual_PA": 27691
+        },
+        "batting_anchor": {
+          "rows": 481,
+          "people": 393,
+          "RMSE": 0.6349170987813448,
+          "MAE": 0.21466882358940423,
+          "bias": 0.08438062698680217,
+          "predicted_WAR": 119.56386950454366,
+          "actual_WAR": 80.22704878119445,
+          "expected_PA": 27162.959692738274,
+          "actual_PA": 27691
+        },
+        "simple_history": {
+          "rows": 481,
+          "people": 393,
+          "RMSE": 0.6266539017070722,
+          "MAE": 0.2099451744318507,
+          "bias": 0.029192741037916168,
+          "predicted_WAR": 93.1586312850336,
+          "actual_WAR": 80.22704878119445,
+          "expected_PA": 27162.959692738274,
+          "actual_PA": 27691
+        }
+      }
+    },
+    {
+      "scope": "position_2",
+      "scores": {
+        "combined": {
+          "rows": 2165,
+          "people": 1081,
+          "RMSE": 0.3958521850864271,
+          "MAE": 0.10715043008836896,
+          "bias": -0.004248657729082312,
+          "predicted_WAR": 210.07631265779233,
+          "actual_WAR": 218.44383646957547,
+          "expected_PA": 64907.14600368714,
+          "actual_PA": 65707
+        },
+        "batting_anchor": {
+          "rows": 2165,
+          "people": 1081,
+          "RMSE": 0.4374342078449638,
+          "MAE": 0.11193523473010997,
+          "bias": -0.03944503255625283,
+          "predicted_WAR": 134.0364328144376,
+          "actual_WAR": 218.44383646957547,
+          "expected_PA": 64907.14600368714,
+          "actual_PA": 65707
+        },
+        "simple_history": {
+          "rows": 2165,
+          "people": 1081,
+          "RMSE": 0.40261247178122406,
+          "MAE": 0.11334819472318043,
+          "bias": 0.010838184679535935,
+          "predicted_WAR": 242.57308661124912,
+          "actual_WAR": 218.44383646957547,
+          "expected_PA": 64907.14600368714,
+          "actual_PA": 65707
+        }
+      }
+    },
+    {
+      "scope": "position_3",
+      "scores": {
+        "combined": {
+          "rows": 1436,
+          "people": 945,
+          "RMSE": 0.4195978458726472,
+          "MAE": 0.1145356540119934,
+          "bias": 0.005385822244738219,
+          "predicted_WAR": 131.85247862318326,
+          "actual_WAR": 124.20757930515643,
+          "expected_PA": 61838.482977094245,
+          "actual_PA": 59423
+        },
+        "batting_anchor": {
+          "rows": 1436,
+          "people": 945,
+          "RMSE": 0.5091784886581279,
+          "MAE": 0.14842477880393776,
+          "bias": 0.08935628704561005,
+          "predicted_WAR": 252.40861665626076,
+          "actual_WAR": 124.20757930515643,
+          "expected_PA": 61838.482977094245,
+          "actual_PA": 59423
+        },
+        "simple_history": {
+          "rows": 1436,
+          "people": 945,
+          "RMSE": 0.45132532533475916,
+          "MAE": 0.13491410202753987,
+          "bias": 0.0529391542454179,
+          "predicted_WAR": 200.1327808994564,
+          "actual_WAR": 124.20757930515643,
+          "expected_PA": 61838.482977094245,
+          "actual_PA": 59423
+        }
+      }
+    },
+    {
+      "scope": "position_4",
+      "scores": {
+        "combined": {
+          "rows": 1428,
+          "people": 977,
+          "RMSE": 0.41989402183313224,
+          "MAE": 0.1266546431751107,
+          "bias": 0.024238635470014813,
+          "predicted_WAR": 198.25139740651397,
+          "actual_WAR": 163.90719700066404,
+          "expected_PA": 63129.91990288688,
+          "actual_PA": 60664
+        },
+        "batting_anchor": {
+          "rows": 1428,
+          "people": 977,
+          "RMSE": 0.43319666045503563,
+          "MAE": 0.12831226716338914,
+          "bias": 0.009049677304191227,
+          "predicted_WAR": 176.62381872251018,
+          "actual_WAR": 163.90719700066404,
+          "expected_PA": 63129.91990288688,
+          "actual_PA": 60664
+        },
+        "simple_history": {
+          "rows": 1428,
+          "people": 977,
+          "RMSE": 0.4351719508998299,
+          "MAE": 0.13904761239293056,
+          "bias": 0.04732525972747303,
+          "predicted_WAR": 231.32935782779958,
+          "actual_WAR": 163.90719700066404,
+          "expected_PA": 63129.91990288688,
+          "actual_PA": 60664
+        }
+      }
+    },
+    {
+      "scope": "position_5",
+      "scores": {
+        "combined": {
+          "rows": 1321,
+          "people": 899,
+          "RMSE": 0.44178195552013444,
+          "MAE": 0.14333822419180017,
+          "bias": 0.013961977807721238,
+          "predicted_WAR": 224.69671948922027,
+          "actual_WAR": 205.84544337314742,
+          "expected_PA": 65002.33338274849,
+          "actual_PA": 65793
+        },
+        "batting_anchor": {
+          "rows": 1321,
+          "people": 899,
+          "RMSE": 0.458253667014265,
+          "MAE": 0.1464845837705268,
+          "bias": 0.010325612865182123,
+          "predicted_WAR": 220.25699409523182,
+          "actual_WAR": 205.84544337314742,
+          "expected_PA": 65002.33338274849,
+          "actual_PA": 65793
+        },
+        "simple_history": {
+          "rows": 1321,
+          "people": 899,
+          "RMSE": 0.4531436744847398,
+          "MAE": 0.15232669623301542,
+          "bias": 0.02805105609140222,
+          "predicted_WAR": 243.15559130188373,
+          "actual_WAR": 205.84544337314742,
+          "expected_PA": 65002.33338274849,
+          "actual_PA": 65793
+        }
+      }
+    },
+    {
+      "scope": "position_6",
+      "scores": {
+        "combined": {
+          "rows": 1271,
+          "people": 777,
+          "RMSE": 0.6486867506539035,
+          "MAE": 0.22083866826690127,
+          "bias": -0.02026512066080195,
+          "predicted_WAR": 283.72284550248884,
+          "actual_WAR": 309.4316619269803,
+          "expected_PA": 75574.21059666696,
+          "actual_PA": 76678
+        },
+        "batting_anchor": {
+          "rows": 1271,
+          "people": 777,
+          "RMSE": 0.7214276390987813,
+          "MAE": 0.23302958849904787,
+          "bias": -0.08675979043585931,
+          "predicted_WAR": 199.47236612816593,
+          "actual_WAR": 309.4316619269803,
+          "expected_PA": 75574.21059666696,
+          "actual_PA": 76678
+        },
+        "simple_history": {
+          "rows": 1271,
+          "people": 777,
+          "RMSE": 0.6678653922711789,
+          "MAE": 0.23435936570426238,
+          "bias": -0.0074216074029133765,
+          "predicted_WAR": 299.9998509010786,
+          "actual_WAR": 309.4316619269803,
+          "expected_PA": 75574.21059666696,
+          "actual_PA": 76678
+        }
+      }
+    },
+    {
+      "scope": "position_7",
+      "scores": {
+        "combined": {
+          "rows": 1435,
+          "people": 1048,
+          "RMSE": 0.413952792943024,
+          "MAE": 0.11647129836920526,
+          "bias": -0.002377774820355666,
+          "predicted_WAR": 155.90217814014792,
+          "actual_WAR": 159.5217441493464,
+          "expected_PA": 58043.42686195879,
+          "actual_PA": 60234
+        },
+        "batting_anchor": {
+          "rows": 1435,
+          "people": 1048,
+          "RMSE": 0.44460197583657307,
+          "MAE": 0.12808054049150241,
+          "bias": 0.03624408815639083,
+          "predicted_WAR": 211.376770854411,
+          "actual_WAR": 159.5217441493464,
+          "expected_PA": 58043.42686195879,
+          "actual_PA": 60234
+        },
+        "simple_history": {
+          "rows": 1435,
+          "people": 1048,
+          "RMSE": 0.43540246997157306,
+          "MAE": 0.1284108597591822,
+          "bias": 0.02465323644564287,
+          "predicted_WAR": 194.72975518331322,
+          "actual_WAR": 159.5217441493464,
+          "expected_PA": 58043.42686195879,
+          "actual_PA": 60234
+        }
+      }
+    },
+    {
+      "scope": "position_8",
+      "scores": {
+        "combined": {
+          "rows": 1345,
+          "people": 832,
+          "RMSE": 0.5600228913402934,
+          "MAE": 0.1869778412639916,
+          "bias": -0.02248048459098405,
+          "predicted_WAR": 218.10867452801216,
+          "actual_WAR": 248.82912044173963,
+          "expected_PA": 66986.79168552413,
+          "actual_PA": 70114
+        },
+        "batting_anchor": {
+          "rows": 1345,
+          "people": 832,
+          "RMSE": 0.577814532791383,
+          "MAE": 0.19112603350805116,
+          "bias": -0.041035389683178054,
+          "predicted_WAR": 193.73551927899524,
+          "actual_WAR": 248.82912044173963,
+          "expected_PA": 66986.79168552413,
+          "actual_PA": 70114
+        },
+        "simple_history": {
+          "rows": 1345,
+          "people": 832,
+          "RMSE": 0.5679149680730265,
+          "MAE": 0.19944763576896593,
+          "bias": 0.008101153591769788,
+          "predicted_WAR": 259.28648612956533,
+          "actual_WAR": 248.82912044173963,
+          "expected_PA": 66986.79168552413,
+          "actual_PA": 70114
+        }
+      }
+    },
+    {
+      "scope": "position_9",
+      "scores": {
+        "combined": {
+          "rows": 1282,
+          "people": 916,
+          "RMSE": 0.5499761002313107,
+          "MAE": 0.14823714077314465,
+          "bias": -0.017617314673745173,
+          "predicted_WAR": 169.5266287261072,
+          "actual_WAR": 192.18235968445222,
+          "expected_PA": 61159.70529620472,
+          "actual_PA": 59276
+        },
+        "batting_anchor": {
+          "rows": 1282,
+          "people": 916,
+          "RMSE": 0.5688398973287293,
+          "MAE": 0.16557048880852346,
+          "bias": 0.02898779510696407,
+          "predicted_WAR": 229.24493556056353,
+          "actual_WAR": 192.18235968445222,
+          "expected_PA": 61159.70529620472,
+          "actual_PA": 59276
+        },
+        "simple_history": {
+          "rows": 1282,
+          "people": 916,
+          "RMSE": 0.5523880987176335,
+          "MAE": 0.16287794185625684,
+          "bias": 0.019748551931852622,
+          "predicted_WAR": 217.3728955442895,
+          "actual_WAR": 192.18235968445222,
+          "expected_PA": 61159.70529620472,
+          "actual_PA": 59276
+        }
+      }
+    },
+    {
+      "scope": "position_UNKNOWN",
+      "scores": {
+        "combined": {
+          "rows": 162,
+          "people": 155,
+          "RMSE": 0.05561674398670032,
+          "MAE": 0.004703134040047409,
+          "bias": -0.002860717730155922,
+          "predicted_WAR": 0.15677239382681285,
+          "actual_WAR": 0.8173539286354505,
+          "expected_PA": 86.63323059753942,
+          "actual_PA": 170
+        },
+        "batting_anchor": {
+          "rows": 162,
+          "people": 155,
+          "RMSE": 0.05561785279862076,
+          "MAE": 0.004705872825364534,
+          "bias": -0.0028582257303173078,
+          "predicted_WAR": 0.15579070200958325,
+          "actual_WAR": 0.8173539286354505,
+          "expected_PA": 86.63323059753942,
+          "actual_PA": 170
+        },
+        "simple_history": {
+          "rows": 162,
+          "people": 155,
+          "RMSE": 0.05561548971194729,
+          "MAE": 0.0054841484724451215,
+          "bias": -0.0020727867108013514,
+          "predicted_WAR": 0.28877743532513145,
+          "actual_WAR": 0.8173539286354505,
+          "expected_PA": 86.63323059753942,
+          "actual_PA": 170
+        }
+      }
+    },
+    {
+      "scope": "position_X",
+      "scores": {
+        "combined": {
+          "rows": 82,
+          "people": 74,
+          "RMSE": 0.3306684905983803,
+          "MAE": 0.09081046280109167,
+          "bias": -0.03431167788337819,
+          "predicted_WAR": 2.5053755458292573,
+          "actual_WAR": 5.079876933740622,
+          "expected_PA": 1848.1819219621852,
+          "actual_PA": 2241
+        },
+        "batting_anchor": {
+          "rows": 82,
+          "people": 74,
+          "RMSE": 0.3339533713778334,
+          "MAE": 0.09737758930607615,
+          "bias": -0.026857529427867996,
+          "predicted_WAR": 3.095776871093226,
+          "actual_WAR": 5.079876933740622,
+          "expected_PA": 1848.1819219621852,
+          "actual_PA": 2241
+        },
+        "simple_history": {
+          "rows": 82,
+          "people": 74,
+          "RMSE": 0.3255455057295496,
+          "MAE": 0.10935202740862922,
+          "bias": 0.0033882479694650742,
+          "predicted_WAR": 5.275511709577075,
+          "actual_WAR": 5.079876933740622,
+          "expected_PA": 1848.1819219621852,
+          "actual_PA": 2241
+        }
+      }
+    }
+  ],
+  "intervals": [
+    {
+      "scope": "public_steamer",
+      "candidate": "combined",
+      "control": "steamer",
+      "people": 4710,
+      "resamples": 1000,
+      "delta_RMSE_95": [
+        -0.020351657906333823,
+        0.012931779013526686
+      ],
+      "delta_MAE_95": [
+        -0.005975152877782395,
+        0.003477195360735173
+      ],
+      "development_not_fresh_holdout": true
+    },
+    {
+      "scope": "origin_MLB_public",
+      "candidate": "combined",
+      "control": "steamer",
+      "people": 925,
+      "resamples": 1000,
+      "delta_RMSE_95": [
+        -0.04873810496082136,
+        0.02455068656614737
+      ],
+      "delta_MAE_95": [
+        -0.03462368588465014,
+        0.011780964677463307
+      ],
+      "development_not_fresh_holdout": true
+    },
+    {
+      "scope": "all",
+      "candidate": "combined",
+      "control": "simple_history",
+      "people": 5753,
+      "resamples": 1000,
+      "delta_RMSE_95": [
+        -0.019688808709166623,
+        -0.006768176304536813
+      ],
+      "delta_MAE_95": [
+        -0.014830867364602703,
+        -0.01061705776371528
+      ],
+      "development_not_fresh_holdout": true
+    },
+    {
+      "scope": "all",
+      "candidate": "combined",
+      "control": "batting_anchor",
+      "people": 5753,
+      "resamples": 1000,
+      "delta_RMSE_95": [
+        -0.04871015255522084,
+        -0.02410360316064379
+      ],
+      "delta_MAE_95": [
+        -0.014702538066653748,
+        -0.008029806897159668
+      ],
+      "development_not_fresh_holdout": true
+    }
+  ],
+  "reference_correction": [
+    {
+      "origin": 2022,
+      "reference_people": 688,
+      "reference_projected_PA": 161619.13269223296,
+      "centering_runs_per600": -0.24044633246358488,
+      "maximum_absolute_WAR_change": 0.00015161286555454012,
+      "total_WAR_change": -0.041899481757603683
+    },
+    {
+      "origin": 2023,
+      "reference_people": 652,
+      "reference_projected_PA": 168441.1532846203,
+      "centering_runs_per600": -0.11959259122565387,
+      "maximum_absolute_WAR_change": 0.0009451764171961585,
+      "total_WAR_change": -0.2568065467315117
+    },
+    {
+      "origin": 2024,
+      "reference_people": 649,
+      "reference_projected_PA": 166637.84255335212,
+      "centering_runs_per600": 0.7883566241978212,
+      "maximum_absolute_WAR_change": 0.00020191179433570738,
+      "total_WAR_change": -0.055939935376481974
+    }
+  ],
+  "correction": "Positive origin MLB PA reference; public PA metadata; verified label-only schema",
+  "no_refit": true,
+  "unchanged_identities_rates_roles_workloads_labels": true,
+  "source_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-base\\historical-full-value\\predictions.parquet": "ef6f0e36247d31a4f7b3b5d5df8e749610c2fdccda5cd1b3bacbd4c8c0f0af39",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-base\\historical-full-value\\fg-actual-hitter-war.parquet": "d00e7efeab54988fbe0c4b04ea81802de6aeb2930c278247a2eb88dfa475ab65",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\model-evidence\\hitter-2027-v1\\historical-full-value-player-walks.json.gz": "693781b4cd4863228e992e6acb7eed0f9e896aba9a4aba1bf6dafb691f33b2d3"
+  },
+  "output_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-base\\historical-full-value\\predictions-reviewed.parquet": "d581bf77d9758ff2495eab17fd00f43aa52130c267d179cdc43b8c8cc00494a5",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-base\\historical-full-value\\fg-actual-hitter-war-verified.parquet": "56daf63f006a9e4e719b4faca6f8860921966163d6c5e623b2a39b4790e2e240",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\model-evidence\\hitter-2027-v1\\historical-full-value-reviewed-player-walks.json.gz": "d92f1102d6abe82e404555b13996bece3f013f3b8ce38297d25bb6b6dc6a91d3"
+  },
+  "player_walkthrough_status": "initial_review_complete_cohort_review_pending",
+  "release_approved": false
+}

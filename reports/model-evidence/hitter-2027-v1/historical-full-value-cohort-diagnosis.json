@@ -1,0 +1,1933 @@
+{
+  "groups": {
+    "Current MLB": {
+      "rows": 1989,
+      "expected_PA": 496698.12853020534,
+      "actual_PA": 500276,
+      "WAR": 1548.1352695823462,
+      "actual_WAR": 1632.6470025110443,
+      "forecast_runs": {
+        "batting_runs": 827.467192527752,
+        "replacement_runs": 15090.105847135419,
+        "position_runs": -1242.8024787395084,
+        "stealing_runs": 70.42370324403386,
+        "advancement_runs": -3.921400732135808,
+        "gidp_runs": 0.0,
+        "double_play_runs": 0.0,
+        "abs_challenge_runs": 0.0,
+        "park_runs": 0.0,
+        "league_runs": 120.60834219471755,
+        "range_runs": 139.85475371482784,
+        "framing_runs": 48.226808916739344,
+        "catcher_throwing_runs": 16.83560464267528,
+        "blocking_runs": 13.774125625861787,
+        "arm_runs": 1.1021926398077384,
+        "receiving_runs": 8.431155965228792
+      },
+      "realized_runs": {
+        "Batting": 857.3861217483158,
+        "BaseRunning": -31.268697651503317,
+        "Fielding": 35.17692716210149,
+        "Positional": -1666.6387147837772,
+        "Replacement": 15298.245823435485,
+        "wLeague": 1549.9008306525648
+      },
+      "scores": {
+        "combined": {
+          "rows": 1989,
+          "people": 927,
+          "RMSE": 1.1517267507709104,
+          "MAE": 0.7596771354837252,
+          "bias": -0.04252290076561533,
+          "predicted_WAR": 1548.1352695823462,
+          "actual_WAR": 1632.6470025110443,
+          "expected_PA": 496698.12853020534,
+          "actual_PA": 500276
+        },
+        "batting_anchor": {
+          "rows": 1989,
+          "people": 927,
+          "RMSE": 1.2460326925998078,
+          "MAE": 0.8275589983192263,
+          "bias": -0.0013264020947411186,
+          "predicted_WAR": 1630.667748751624,
+          "actual_WAR": 1632.6470025110443,
+          "expected_PA": 496698.12853020534,
+          "actual_PA": 500276
+        },
+        "simple_history": {
+          "rows": 1989,
+          "people": 927,
+          "RMSE": 1.1845985168628326,
+          "MAE": 0.8157426549157419,
+          "bias": 0.09731569078171141,
+          "predicted_WAR": 1826.1735047883806,
+          "actual_WAR": 1632.6470025110443,
+          "expected_PA": 496698.12853020534,
+          "actual_PA": 500276
+        }
+      }
+    },
+    "Current MLB_2023": {
+      "rows": 688,
+      "expected_PA": 161619.13269223296,
+      "actual_PA": 166433,
+      "WAR": 506.02523254110247,
+      "actual_WAR": 533.8698393587341,
+      "forecast_runs": {
+        "batting_runs": 380.95478384776294,
+        "replacement_runs": 4819.455097010654,
+        "position_runs": -393.0202750511241,
+        "stealing_runs": 11.868366942861273,
+        "advancement_runs": -4.618579547538296,
+        "gidp_runs": 0.0,
+        "double_play_runs": 0.0,
+        "abs_challenge_runs": 0.0,
+        "park_runs": 0.0,
+        "league_runs": -64.76787951965481,
+        "range_runs": 39.56644394498372,
+        "framing_runs": 21.316707301991435,
+        "catcher_throwing_runs": 4.536115517018444,
+        "blocking_runs": 6.431353178228615,
+        "arm_runs": -0.5322628175306996,
+        "receiving_runs": -1.734773796998525
+      },
+      "realized_runs": {
+        "Batting": 318.94626304459393,
+        "BaseRunning": -14.897709237717208,
+        "Fielding": -48.08097784407437,
+        "Positional": -563.980926390806,
+        "Replacement": 5167.490501936525,
+        "wLeague": 494.3456941433251
+      },
+      "scores": {
+        "combined": {
+          "rows": 688,
+          "people": 688,
+          "RMSE": 1.0911963436154826,
+          "MAE": 0.7210566172356495,
+          "bias": -0.04047181223492977,
+          "predicted_WAR": 506.02523254110247,
+          "actual_WAR": 533.8698393587341,
+          "expected_PA": 161619.13269223296,
+          "actual_PA": 166433
+        },
+        "batting_anchor": {
+          "rows": 688,
+          "people": 688,
+          "RMSE": 1.167533359458579,
+          "MAE": 0.7784652555648974,
+          "bias": 0.014899522626663636,
+          "predicted_WAR": 544.1207109258787,
+          "actual_WAR": 533.8698393587341,
+          "expected_PA": 161619.13269223296,
+          "actual_PA": 166433
+        },
+        "simple_history": {
+          "rows": 688,
+          "people": 688,
+          "RMSE": 1.13813849146945,
+          "MAE": 0.7865985763079297,
+          "bias": 0.09624896144833507,
+          "predicted_WAR": 600.0891248351886,
+          "actual_WAR": 533.8698393587341,
+          "expected_PA": 161619.13269223296,
+          "actual_PA": 166433
+        }
+      }
+    },
+    "Current MLB_2024": {
+      "rows": 652,
+      "expected_PA": 168441.1532846203,
+      "actual_PA": 167741,
+      "WAR": 521.5066341428408,
+      "actual_WAR": 552.2037636414011,
+      "forecast_runs": {
+        "batting_runs": 355.1535225310866,
+        "replacement_runs": 5229.840654793751,
+        "position_runs": -425.8874585566895,
+        "stealing_runs": 29.86249013177961,
+        "advancement_runs": 3.2801514895641537,
+        "gidp_runs": 0.0,
+        "double_play_runs": 0.0,
+        "abs_challenge_runs": 0.0,
+        "park_runs": 0.0,
+        "league_runs": -33.5738566505755,
+        "range_runs": 45.581923612458986,
+        "framing_runs": 14.068341993476256,
+        "catcher_throwing_runs": 5.203387843871702,
+        "blocking_runs": 5.362069888897648,
+        "arm_runs": -3.9160716122975505,
+        "receiving_runs": 4.865499328427644
+      },
+      "realized_runs": {
+        "Batting": 322.979906570348,
+        "BaseRunning": -10.521345063163608,
+        "Fielding": 26.40117914439179,
+        "Positional": -550.4406939273467,
+        "Replacement": 5071.981253204867,
+        "wLeague": 486.38419900042936
+      },
+      "scores": {
+        "combined": {
+          "rows": 652,
+          "people": 652,
+          "RMSE": 1.2511620866121342,
+          "MAE": 0.8212157308229897,
+          "bias": -0.04708148696098207,
+          "predicted_WAR": 521.5066341428408,
+          "actual_WAR": 552.2037636414011,
+          "expected_PA": 168441.1532846203,
+          "actual_PA": 167741
+        },
+        "batting_anchor": {
+          "rows": 652,
+          "people": 652,
+          "RMSE": 1.3248996824564476,
+          "MAE": 0.8825113137714454,
+          "bias": 0.007389912200227522,
+          "predicted_WAR": 557.0219863959494,
+          "actual_WAR": 552.2037636414011,
+          "expected_PA": 168441.1532846203,
+          "actual_PA": 167741
+        },
+        "simple_history": {
+          "rows": 652,
+          "people": 652,
+          "RMSE": 1.277331399226286,
+          "MAE": 0.8657661756785804,
+          "bias": 0.09971427628632186,
+          "predicted_WAR": 617.217471780083,
+          "actual_WAR": 552.2037636414011,
+          "expected_PA": 168441.1532846203,
+          "actual_PA": 167741
+        }
+      }
+    },
+    "Current MLB_2025": {
+      "rows": 649,
+      "expected_PA": 166637.84255335212,
+      "actual_PA": 166102,
+      "WAR": 520.6034028984028,
+      "actual_WAR": 546.5733995109091,
+      "forecast_runs": {
+        "batting_runs": 91.35888614890246,
+        "replacement_runs": 5040.810095331013,
+        "position_runs": -423.8947451316948,
+        "stealing_runs": 28.69284616939298,
+        "advancement_runs": -2.582972674161666,
+        "gidp_runs": 0.0,
+        "double_play_runs": 0.0,
+        "abs_challenge_runs": 0.0,
+        "park_runs": 0.0,
+        "league_runs": 218.95007836494784,
+        "range_runs": 54.70638615738514,
+        "framing_runs": 12.841759621271649,
+        "catcher_throwing_runs": 7.096101281785133,
+        "blocking_runs": 1.9807025587355243,
+        "arm_runs": 5.550527069635989,
+        "receiving_runs": 5.300430433799673
+      },
+      "realized_runs": {
+        "Batting": 215.45995213337383,
+        "BaseRunning": -5.8496433506225,
+        "Fielding": 56.85672586178407,
+        "Positional": -552.2170944656245,
+        "Replacement": 5058.774068294093,
+        "wLeague": 569.1709375088103
+      },
+      "scores": {
+        "combined": {
+          "rows": 649,
+          "people": 649,
+          "RMSE": 1.1060323223254047,
+          "MAE": 0.7367590583925364,
+          "bias": -0.04001540310093416,
+          "predicted_WAR": 520.6034028984028,
+          "actual_WAR": 546.5733995109091,
+          "expected_PA": 166637.84255335212,
+          "actual_PA": 166102
+        },
+        "batting_anchor": {
+          "rows": 649,
+          "people": 649,
+          "RMSE": 1.240684931423264,
+          "MAE": 0.8217004256213364,
+          "bias": -0.026268641111114512,
+          "predicted_WAR": 529.5250514297958,
+          "actual_WAR": 546.5733995109091,
+          "expected_PA": 166637.84255335212,
+          "actual_PA": 166102
+        },
+        "simple_history": {
+          "rows": 649,
+          "people": 649,
+          "RMSE": 1.1326456680035166,
+          "MAE": 0.794863212760716,
+          "bias": 0.09598383461047728,
+          "predicted_WAR": 608.8669081731089,
+          "actual_WAR": 546.5733995109091,
+          "expected_PA": 166637.84255335212,
+          "actual_PA": 166102
+        }
+      }
+    },
+    "Inactive / unknown": {
+      "rows": 719,
+      "expected_PA": 2028.6499725951862,
+      "actual_PA": 2972,
+      "WAR": 3.4727655565682864,
+      "actual_WAR": 9.287123479801101,
+      "forecast_runs": {
+        "batting_runs": -27.639139256269726,
+        "replacement_runs": 61.80370859057887,
+        "position_runs": -0.9841510672617003,
+        "stealing_runs": 0.13948256444858909,
+        "advancement_runs": 0.28182386907518064,
+        "gidp_runs": 0.0,
+        "double_play_runs": 0.0,
+        "abs_challenge_runs": 0.0,
+        "park_runs": 0.0,
+        "league_runs": 0.5498987747257258,
+        "range_runs": -0.275160890356703,
+        "framing_runs": 0.23961690724498713,
+        "catcher_throwing_runs": -0.03335258307997067,
+        "blocking_runs": -0.13134573858254522,
+        "arm_runs": -0.006980749630939921,
+        "receiving_runs": -0.0336190861213772
+      },
+      "realized_runs": {
+        "Batting": -17.510527389995246,
+        "BaseRunning": 2.7235857248306274,
+        "Fielding": 10.049576491117477,
+        "Positional": -3.247030470520258,
+        "Replacement": 90.90263208560646,
+        "wLeague": 8.84853630582802
+      },
+      "scores": {
+        "combined": {
+          "rows": 719,
+          "people": 570,
+          "RMSE": 0.12375183739967582,
+          "MAE": 0.013376597228695932,
+          "bias": -0.008020024222398055,
+          "predicted_WAR": 3.4727655565682864,
+          "actual_WAR": 9.287123479801101,
+          "expected_PA": 2028.6499725951862,
+          "actual_PA": 2972
+        },
+        "batting_anchor": {
+          "rows": 719,
+          "people": 570,
+          "RMSE": 0.12854874645833542,
+          "MAE": 0.014069980427036237,
+          "bias": -0.00789205454209332,
+          "predicted_WAR": 3.553414252541702,
+          "actual_WAR": 9.287123479801101,
+          "expected_PA": 2028.6499725951862,
+          "actual_PA": 2972
+        },
+        "simple_history": {
+          "rows": 719,
+          "people": 570,
+          "RMSE": 0.12043363537070674,
+          "MAE": 0.016328077362017898,
+          "bias": -0.003348218539287958,
+          "predicted_WAR": 6.808817423788957,
+          "actual_WAR": 9.287123479801101,
+          "expected_PA": 2028.6499725951862,
+          "actual_PA": 2972
+        }
+      }
+    },
+    "Inactive / unknown_2023": {
+      "rows": 240,
+      "expected_PA": 508.8861593722549,
+      "actual_PA": 1025,
+      "WAR": 0.7883531106192995,
+      "actual_WAR": 4.499415154724514,
+      "forecast_runs": {
+        "batting_runs": -6.9907368170329836,
+        "replacement_runs": 15.174898873236273,
+        "position_runs": 0.5381467954743508,
+        "stealing_runs": -0.050256796132820976,
+        "advancement_runs": -0.023940028804240395,
+        "gidp_runs": 0.0,
+        "double_play_runs": 0.0,
+        "abs_challenge_runs": 0.0,
+        "park_runs": 0.0,
+        "league_runs": -0.20393301777089673,
+        "range_runs": -0.6602666845775363,
+        "framing_runs": -0.29208733213339266,
+        "catcher_throwing_runs": 0.09726444451516832,
+        "blocking_runs": -0.0757173035250888,
+        "arm_runs": -0.005558286695772474,
+        "receiving_runs": 0.0005714530076155192
+      },
+      "realized_runs": {
+        "Batting": 1.2180789977272382,
+        "BaseRunning": -0.5520789101719856,
+        "Fielding": 6.942326337099075,
+        "Positional": 2.6537488251924515,
+        "Replacement": 31.82468479499221,
+        "wLeague": 3.0348592554219067
+      },
+      "scores": {
+        "combined": {
+          "rows": 240,
+          "people": 240,
+          "RMSE": 0.1867101231517839,
+          "MAE": 0.02107649458589938,
+          "bias": -0.015462758517105062,
+          "predicted_WAR": 0.7883531106192995,
+          "actual_WAR": 4.499415154724514,
+          "expected_PA": 508.8861593722549,
+          "actual_PA": 1025
+        },
+        "batting_anchor": {
+          "rows": 240,
+          "people": 240,
+          "RMSE": 0.1925505546900954,
+          "MAE": 0.022194058926116426,
+          "bias": -0.015021582176318922,
+          "predicted_WAR": 0.8942354324079734,
+          "actual_WAR": 4.499415154724514,
+          "expected_PA": 508.8861593722549,
+          "actual_PA": 1025
+        },
+        "simple_history": {
+          "rows": 240,
+          "people": 240,
+          "RMSE": 0.1831402682029177,
+          "MAE": 0.023354736444390636,
+          "bias": -0.012266450530633617,
+          "predicted_WAR": 1.5554670273724458,
+          "actual_WAR": 4.499415154724514,
+          "expected_PA": 508.8861593722549,
+          "actual_PA": 1025
+        }
+      }
+    },
+    "Inactive / unknown_2024": {
+      "rows": 230,
+      "expected_PA": 821.4300769284873,
+      "actual_PA": 1004,
+      "WAR": 1.1866461544722708,
+      "actual_WAR": 1.6398108479593774,
+      "forecast_runs": {
+        "batting_runs": -12.23719917061161,
+        "replacement_runs": 25.50414983286159,
+        "position_runs": -1.3829793968329176,
+        "stealing_runs": -0.20322000888979283,
+        "advancement_runs": 0.0965271323674828,
+        "gidp_runs": 0.0,
+        "double_play_runs": 0.0,
+        "abs_challenge_runs": 0.0,
+        "park_runs": 0.0,
+        "league_runs": -0.16372825235094332,
+        "range_runs": -0.04747739080553838,
+        "framing_runs": 0.5368329084001648,
+        "catcher_throwing_runs": -0.1275580326511945,
+        "blocking_runs": -0.0568849308744338,
+        "arm_runs": 0.018078626307843366,
+        "receiving_runs": -0.03646201742331746
+      },
+      "realized_runs": {
+        "Batting": -0.2937519412625653,
+        "BaseRunning": -2.501074768602848,
+        "Fielding": -6.011778354644775,
+        "Positional": -8.848308801651001,
+        "Replacement": 30.35792786628008,
+        "wLeague": 3.1746670305728912
+      },
+      "scores": {
+        "combined": {
+          "rows": 230,
+          "people": 230,
+          "RMSE": 0.05296097752790181,
+          "MAE": 0.006569751567973371,
+          "bias": -0.001970281276030898,
+          "predicted_WAR": 1.1866461544722708,
+          "actual_WAR": 1.6398108479593774,
+          "expected_PA": 821.4300769284873,
+          "actual_PA": 1004
+        },
+        "batting_anchor": {
+          "rows": 230,
+          "people": 230,
+          "RMSE": 0.055932214561803945,
+          "MAE": 0.0069599201229698536,
+          "bias": -0.0013926987419705951,
+          "predicted_WAR": 1.3194901373061405,
+          "actual_WAR": 1.6398108479593774,
+          "expected_PA": 821.4300769284873,
+          "actual_PA": 1004
+        },
+        "simple_history": {
+          "rows": 230,
+          "people": 230,
+          "RMSE": 0.04514836059251959,
+          "MAE": 0.01062450818326481,
+          "bias": 0.004609729575775824,
+          "predicted_WAR": 2.7000486503878167,
+          "actual_WAR": 1.6398108479593774,
+          "expected_PA": 821.4300769284873,
+          "actual_PA": 1004
+        }
+      }
+    },
+    "Inactive / unknown_2025": {
+      "rows": 249,
+      "expected_PA": 698.3337362944442,
+      "actual_PA": 943,
+      "WAR": 1.4977662914767162,
+      "actual_WAR": 3.147897477117209,
+      "forecast_runs": {
+        "batting_runs": -8.411203268625131,
+        "replacement_runs": 21.12465988448101,
+        "position_runs": -0.13931846590313357,
+        "stealing_runs": 0.3929593694712029,
+        "advancement_runs": 0.20923676551193823,
+        "gidp_runs": 0.0,
+        "double_play_runs": 0.0,
+        "abs_challenge_runs": 0.0,
+        "park_runs": 0.0,
+        "league_runs": 0.9175600448475658,
+        "range_runs": 0.43258318502637166,
+        "framing_runs": -0.005128669021785013,
+        "catcher_throwing_runs": -0.003058994943944474,
+        "blocking_runs": 0.0012564958169773838,
+        "arm_runs": -0.019501089243010812,
+        "receiving_runs": 0.0022714782943247394
+      },
+      "realized_runs": {
+        "Batting": -18.43485444645992,
+        "BaseRunning": 5.776739403605461,
+        "Fielding": 9.119028508663177,
+        "Positional": 2.9475295059382915,
+        "Replacement": 28.72001942433417,
+        "wLeague": 2.639010019833222
+      },
+      "scores": {
+        "combined": {
+          "rows": 249,
+          "people": 249,
+          "RMSE": 0.09098360594811677,
+          "MAE": 0.012483545532215048,
+          "bias": -0.006627032874058206,
+          "predicted_WAR": 1.4977662914767162,
+          "actual_WAR": 3.147897477117209,
+          "expected_PA": 698.3337362944442,
+          "actual_PA": 943
+        },
+        "batting_anchor": {
+          "rows": 249,
+          "people": 249,
+          "RMSE": 0.09679985491093003,
+          "MAE": 0.013055962232022433,
+          "bias": -0.007261882707990446,
+          "predicted_WAR": 1.339688682827588,
+          "actual_WAR": 3.147897477117209,
+          "expected_PA": 698.3337362944442,
+          "actual_PA": 943
+        },
+        "simple_history": {
+          "rows": 249,
+          "people": 249,
+          "RMSE": 0.08907328041665594,
+          "MAE": 0.015004987458398247,
+          "bias": -0.002387934663006082,
+          "predicted_WAR": 2.5533017460286946,
+          "actual_WAR": 3.147897477117209,
+          "expected_PA": 698.3337362944442,
+          "actual_PA": 943
+        }
+      }
+    },
+    "Inactive / unknown_no_prior_MLB": {
+      "rows": 390,
+      "expected_PA": 197.81356138583044,
+      "actual_PA": 170,
+      "WAR": 0.34540624301308304,
+      "actual_WAR": 0.8173539286354505,
+      "forecast_runs": {
+        "batting_runs": -2.68001109034489,
+        "replacement_runs": 5.9846605851423,
+        "position_runs": -0.0349685695265857,
+        "stealing_runs": 0.0198788428340291,
+        "advancement_runs": 0.0,
+        "gidp_runs": 0.0,
+        "double_play_runs": 0.0,
+        "abs_challenge_runs": 0.0,
+        "park_runs": 0.0,
+        "league_runs": 0.06768791590958083,
+        "range_runs": -0.00782252647375406,
+        "framing_runs": 0.0,
+        "catcher_throwing_runs": 0.0,
+        "blocking_runs": 0.0,
+        "arm_runs": 0.0,
+        "receiving_runs": 0.0
+      },
+      "realized_runs": {
+        "Batting": -0.9612995327901339,
+        "BaseRunning": 1.685699736699462,
+        "Fielding": 0.7543080449104309,
+        "Positional": 0.8596248030662537,
+        "Replacement": 5.17752205953002,
+        "wLeague": 0.472942057531327
+      },
+      "scores": {
+        "combined": {
+          "rows": 390,
+          "people": 352,
+          "RMSE": 0.04147365388358132,
+          "MAE": 0.0029822978755866085,
+          "bias": -0.0012172226481248325,
+          "predicted_WAR": 0.34540624301308304,
+          "actual_WAR": 0.8173539286354505,
+          "expected_PA": 197.81356138583044,
+          "actual_PA": 170
+        },
+        "batting_anchor": {
+          "rows": 390,
+          "people": 352,
+          "RMSE": 0.04143458800087015,
+          "MAE": 0.0029819156794122503,
+          "bias": -0.0012074312129653857,
+          "predicted_WAR": 0.34924142887744186,
+          "actual_WAR": 0.8173539286354505,
+          "expected_PA": 197.81356138583044,
+          "actual_PA": 170
+        },
+        "simple_history": {
+          "rows": 390,
+          "people": 352,
+          "RMSE": 0.041515371625346485,
+          "MAE": 0.0037620280861708328,
+          "bias": -0.0004233513999349057,
+          "predicted_WAR": 0.6593785379527681,
+          "actual_WAR": 0.8173539286354505,
+          "expected_PA": 197.81356138583044,
+          "actual_PA": 170
+        }
+      }
+    },
+    "Inactive / unknown_MLB_returnee": {
+      "rows": 329,
+      "expected_PA": 1830.836411209356,
+      "actual_PA": 2802,
+      "WAR": 3.127359313555204,
+      "actual_WAR": 8.46976955116565,
+      "forecast_runs": {
+        "batting_runs": -24.959128165924835,
+        "replacement_runs": 55.81904800543657,
+        "position_runs": -0.9491824977351146,
+        "stealing_runs": 0.11960372161455997,
+        "advancement_runs": 0.28182386907518064,
+        "gidp_runs": 0.0,
+        "double_play_runs": 0.0,
+        "abs_challenge_runs": 0.0,
+        "park_runs": 0.0,
+        "league_runs": 0.48221085881614495,
+        "range_runs": -0.26733836388294896,
+        "framing_runs": 0.23961690724498713,
+        "catcher_throwing_runs": -0.03335258307997067,
+        "blocking_runs": -0.13134573858254522,
+        "arm_runs": -0.006980749630939921,
+        "receiving_runs": -0.0336190861213772
+      },
+      "realized_runs": {
+        "Batting": -16.549227857205114,
+        "BaseRunning": 1.0378859881311655,
+        "Fielding": 9.295268446207047,
+        "Positional": -4.106655273586512,
+        "Replacement": 85.72511002607644,
+        "wLeague": 8.375594248296693
+      },
+      "scores": {
+        "combined": {
+          "rows": 329,
+          "people": 218,
+          "RMSE": 0.18512693011113154,
+          "MAE": 0.027064076449519765,
+          "bias": -0.017350202275439906,
+          "predicted_WAR": 3.127359313555204,
+          "actual_WAR": 8.46976955116565,
+          "expected_PA": 1830.836411209356,
+          "actual_PA": 2802
+        },
+        "batting_anchor": {
+          "rows": 329,
+          "people": 218,
+          "RMSE": 0.1925278390854513,
+          "MAE": 0.028636176988218864,
+          "bias": -0.017056177237094614,
+          "predicted_WAR": 3.20417282366426,
+          "actual_WAR": 8.46976955116565,
+          "expected_PA": 1830.836411209356,
+          "actual_PA": 2802
+        },
+        "simple_history": {
+          "rows": 329,
+          "people": 218,
+          "RMSE": 0.1800678500320569,
+          "MAE": 0.03249861415132962,
+          "bias": -0.008256099472129536,
+          "predicted_WAR": 6.149438885836189,
+          "actual_WAR": 8.46976955116565,
+          "expected_PA": 1830.836411209356,
+          "actual_PA": 2802
+        }
+      }
+    },
+    "Inactive / unknown_future_nonparticipant": {
+      "rows": 708,
+      "expected_PA": 1354.554368437437,
+      "actual_PA": 0,
+      "WAR": 1.5831889368555512,
+      "actual_WAR": 0.0,
+      "forecast_runs": {
+        "batting_runs": -23.0794906007984,
+        "replacement_runs": 41.28897435876115,
+        "position_runs": -3.4488793327403755,
+        "stealing_runs": -0.04282576332929148,
+        "advancement_runs": 0.008901757615898469,
+        "gidp_runs": 0.0,
+        "double_play_runs": 0.0,
+        "abs_challenge_runs": 0.0,
+        "park_runs": 0.0,
+        "league_runs": 0.33739530980365895,
+        "range_runs": 0.030040784131667577,
+        "framing_runs": 0.5317042393783799,
+        "catcher_throwing_runs": -0.130617027595139,
+        "blocking_runs": -0.05562843505745642,
+        "arm_runs": -0.004663550083166137,
+        "receiving_runs": -0.0063654483499448284
+      },
+      "realized_runs": {
+        "Batting": 0,
+        "BaseRunning": 0,
+        "Fielding": 0,
+        "Positional": 0,
+        "Replacement": 0,
+        "wLeague": 0
+      },
+      "scores": {
+        "combined": {
+          "rows": 708,
+          "people": 560,
+          "RMSE": 0.017892687831980475,
+          "MAE": 0.0025397750244731993,
+          "bias": 0.0022269669105132203,
+          "predicted_WAR": 1.5831889368555512,
+          "actual_WAR": 0.0,
+          "expected_PA": 1354.554368437437,
+          "actual_PA": 0
+        },
+        "batting_anchor": {
+          "rows": 708,
+          "people": 560,
+          "RMSE": 0.011182989430928707,
+          "MAE": 0.0027184712064761986,
+          "bias": 0.00269458328241778,
+          "predicted_WAR": 1.9095029249717648,
+          "actual_WAR": 0.0,
+          "expected_PA": 1354.554368437437,
+          "actual_PA": 0
+        },
+        "simple_history": {
+          "rows": 708,
+          "people": 560,
+          "RMSE": 0.021751523082015004,
+          "MAE": 0.006228973459362706,
+          "bias": 0.006228973459362706,
+          "predicted_WAR": 4.401753966338592,
+          "actual_WAR": 0.0,
+          "expected_PA": 1354.554368437437,
+          "actual_PA": 0
+        }
+      }
+    },
+    "Inactive / unknown_future_participant": {
+      "rows": 11,
+      "expected_PA": 674.0956041577494,
+      "actual_PA": 2972,
+      "WAR": 1.8895766197127355,
+      "actual_WAR": 9.287123479801101,
+      "forecast_runs": {
+        "batting_runs": -4.559648655471323,
+        "replacement_runs": 20.514734231817723,
+        "position_runs": 2.464728265478675,
+        "stealing_runs": 0.18230832777788056,
+        "advancement_runs": 0.2729221114592822,
+        "gidp_runs": 0.0,
+        "double_play_runs": 0.0,
+        "abs_challenge_runs": 0.0,
+        "park_runs": 0.0,
+        "league_runs": 0.21250346492206684,
+        "range_runs": -0.30520167448837054,
+        "framing_runs": -0.29208733213339266,
+        "catcher_throwing_runs": 0.09726444451516832,
+        "blocking_runs": -0.0757173035250888,
+        "arm_runs": -0.0023171995477737828,
+        "receiving_runs": -0.02725363777143237
+      },
+      "realized_runs": {
+        "Batting": -17.510527389995246,
+        "BaseRunning": 2.7235857248306274,
+        "Fielding": 10.049576491117477,
+        "Positional": -3.247030470520258,
+        "Replacement": 90.90263208560646,
+        "wLeague": 8.84853630582802
+      },
+      "scores": {
+        "combined": {
+          "rows": 11,
+          "people": 11,
+          "RMSE": 0.9018846822581494,
+          "MAE": 0.6570435669338831,
+          "bias": -0.6253201779260474,
+          "predicted_WAR": 1.8895766197127355,
+          "actual_WAR": 9.287123479801101,
+          "expected_PA": 674.0956041577494,
+          "actual_PA": 2972
+        },
+        "batting_anchor": {
+          "rows": 11,
+          "people": 11,
+          "RMSE": 0.9483298210397626,
+          "MAE": 0.6877701848217276,
+          "bias": -0.6471832945829722,
+          "predicted_WAR": 1.6439113275699373,
+          "actual_WAR": 9.287123479801101,
+          "expected_PA": 674.0956041577494,
+          "actual_PA": 2972
+        },
+        "simple_history": {
+          "rows": 11,
+          "people": 11,
+          "RMSE": 0.8611621415664661,
+          "MAE": 0.5974777033618528,
+          "bias": -0.5639309355447529,
+          "predicted_WAR": 2.407063457450365,
+          "actual_WAR": 9.287123479801101,
+          "expected_PA": 674.0956041577494,
+          "actual_PA": 2972
+        }
+      }
+    },
+    "Lower minors": {
+      "rows": 6882,
+      "expected_PA": 2592.9292891362857,
+      "actual_PA": 2044,
+      "WAR": 6.5394457586286014,
+      "actual_WAR": 1.620675061740822,
+      "forecast_runs": {
+        "batting_runs": -14.728408684782512,
+        "replacement_runs": 78.41860559129998,
+        "position_runs": -0.1741565593577001,
+        "stealing_runs": 0.03103536240985854,
+        "advancement_runs": 0.004233318711826289,
+        "gidp_runs": 0.0,
+        "double_play_runs": 0.0,
+        "abs_challenge_runs": 0.0,
+        "park_runs": 0.0,
+        "league_runs": 0.24080166308622486,
+        "range_runs": -0.4004522728611537,
+        "framing_runs": 0.0,
+        "catcher_throwing_runs": 0.0,
+        "blocking_runs": 0.0,
+        "arm_runs": 0.0,
+        "receiving_runs": 0.0002268680220050918
+      },
+      "realized_runs": {
+        "Batting": -67.79372820947503,
+        "BaseRunning": 5.504698391770944,
+        "Fielding": 3.3085849955677986,
+        "Positional": 6.699815718457103,
+        "Replacement": 62.85639115422964,
+        "wLeague": 6.225631303619593
+      },
+      "scores": {
+        "combined": {
+          "rows": 6882,
+          "people": 3870,
+          "RMSE": 0.04101276075897794,
+          "MAE": 0.0019755750210569945,
+          "bias": 0.0007300360358942834,
+          "predicted_WAR": 6.5394457586286014,
+          "actual_WAR": 1.620675061740822,
+          "expected_PA": 2592.9292891362857,
+          "actual_PA": 2044
+        },
+        "batting_anchor": {
+          "rows": 6882,
+          "people": 3870,
+          "RMSE": 0.041102539241162514,
+          "MAE": 0.002009676928432962,
+          "bias": 0.0007413130220973174,
+          "predicted_WAR": 6.6171262526488634,
+          "actual_WAR": 1.620675061740822,
+          "expected_PA": 2592.9292891362857,
+          "actual_PA": 2044
+        },
+        "simple_history": {
+          "rows": 6882,
+          "people": 3870,
+          "RMSE": 0.04129973625416109,
+          "MAE": 0.0022801071820142825,
+          "bias": 0.0010347046701275023,
+          "predicted_WAR": 8.639405670597995,
+          "actual_WAR": 1.620675061740822,
+          "expected_PA": 2592.9292891362857,
+          "actual_PA": 2044
+        }
+      }
+    },
+    "Lower minors_2023": {
+      "rows": 2369,
+      "expected_PA": 1264.6301328374268,
+      "actual_PA": 1176,
+      "WAR": 3.2623921176892376,
+      "actual_WAR": 3.4934618808919162,
+      "forecast_runs": {
+        "batting_runs": -7.273688145126431,
+        "replacement_runs": 37.71105585093578,
+        "position_runs": 1.527049042069894,
+        "stealing_runs": -0.11531902495992494,
+        "advancement_runs": 0.004233318711826289,
+        "gidp_runs": 0.0,
+        "double_play_runs": 0.0,
+        "abs_challenge_runs": 0.0,
+        "park_runs": 0.0,
+        "league_runs": -0.5067927956061591,
+        "range_runs": -0.27498445257639337,
+        "framing_runs": 0.0,
+        "catcher_throwing_runs": 0.0,
+        "blocking_runs": 0.0,
+        "arm_runs": 0.0,
+        "receiving_runs": -7.492452150675288e-05
+      },
+      "realized_runs": {
+        "Batting": -27.98800944773987,
+        "BaseRunning": 3.003929396625608,
+        "Fielding": 12.748644568026066,
+        "Positional": 7.287950538098812,
+        "Replacement": 36.51300421357155,
+        "wLeague": 3.4680687887594104
+      },
+      "scores": {
+        "combined": {
+          "rows": 2369,
+          "people": 2369,
+          "RMSE": 0.060159250847105314,
+          "MAE": 0.0031251264922924596,
+          "bias": -9.753894605431758e-05,
+          "predicted_WAR": 3.2623921176892376,
+          "actual_WAR": 3.4934618808919162,
+          "expected_PA": 1264.6301328374268,
+          "actual_PA": 1176
+        },
+        "batting_anchor": {
+          "rows": 2369,
+          "people": 2369,
+          "RMSE": 0.0602366853443362,
+          "MAE": 0.0031837802706681786,
+          "bias": -0.00011030273372938645,
+          "predicted_WAR": 3.232154704686999,
+          "actual_WAR": 3.4934618808919162,
+          "expected_PA": 1264.6301328374268,
+          "actual_PA": 1176
+        },
+        "simple_history": {
+          "rows": 2369,
+          "people": 2369,
+          "RMSE": 0.06061964329248548,
+          "MAE": 0.0035312725061440223,
+          "bias": 0.00030332185276345664,
+          "predicted_WAR": 4.212031350088545,
+          "actual_WAR": 3.4934618808919162,
+          "expected_PA": 1264.6301328374268,
+          "actual_PA": 1176
+        }
+      }
+    },
+    "Lower minors_2024": {
+      "rows": 2338,
+      "expected_PA": 659.3064385103877,
+      "actual_PA": 422,
+      "WAR": 1.706417466757036,
+      "actual_WAR": -0.7923468300523729,
+      "forecast_runs": {
+        "batting_runs": -2.4054611964447177,
+        "replacement_runs": 20.47045836988895,
+        "position_runs": -0.7476432554730631,
+        "stealing_runs": 0.03483529422168376,
+        "advancement_runs": 0.0,
+        "gidp_runs": 0.0,
+        "double_play_runs": 0.0,
+        "abs_challenge_runs": 0.0,
+        "park_runs": 0.0,
+        "league_runs": -0.13141360898869084,
+        "range_runs": -0.10855982180680637,
+        "framing_runs": 0.0,
+        "catcher_throwing_runs": 0.0,
+        "blocking_runs": 0.0,
+        "arm_runs": 0.0,
+        "receiving_runs": 0.0003017925435118447
+      },
+      "realized_runs": {
+        "Batting": -18.88528933165512,
+        "BaseRunning": 2.933785148197785,
+        "Fielding": -8.305384069681168,
+        "Positional": 2.6091671343892813,
+        "Replacement": 12.760005537420511,
+        "wLeague": 1.2157147228717804
+      },
+      "scores": {
+        "combined": {
+          "rows": 2338,
+          "people": 2338,
+          "RMSE": 0.0128251909878743,
+          "MAE": 0.001140788197805876,
+          "bias": 0.0010687614614240414,
+          "predicted_WAR": 1.706417466757036,
+          "actual_WAR": -0.7923468300523729,
+          "expected_PA": 659.3064385103877,
+          "actual_PA": 422
+        },
+        "batting_anchor": {
+          "rows": 2338,
+          "people": 2338,
+          "RMSE": 0.012780875151995597,
+          "MAE": 0.0011819667292513162,
+          "bias": 0.001109094797954274,
+          "predicted_WAR": 1.8007168075647195,
+          "actual_WAR": -0.7923468300523729,
+          "expected_PA": 659.3064385103877,
+          "actual_PA": 422
+        },
+        "simple_history": {
+          "rows": 2338,
+          "people": 2338,
+          "RMSE": 0.012744376784020784,
+          "MAE": 0.0013505612040276096,
+          "bias": 0.001278761943798226,
+          "predicted_WAR": 2.1973985945478796,
+          "actual_WAR": -0.7923468300523729,
+          "expected_PA": 659.3064385103877,
+          "actual_PA": 422
+        }
+      }
+    },
+    "Lower minors_2025": {
+      "rows": 2175,
+      "expected_PA": 668.9927177884712,
+      "actual_PA": 446,
+      "WAR": 1.570636174182328,
+      "actual_WAR": -1.080439989098721,
+      "forecast_runs": {
+        "batting_runs": -5.049259343211363,
+        "replacement_runs": 20.237091370475262,
+        "position_runs": -0.9535623459545309,
+        "stealing_runs": 0.11151909314809971,
+        "advancement_runs": 0.0,
+        "gidp_runs": 0.0,
+        "double_play_runs": 0.0,
+        "abs_challenge_runs": 0.0,
+        "park_runs": 0.0,
+        "league_runs": 0.8790080676810748,
+        "range_runs": -0.01690799847795392,
+        "framing_runs": 0.0,
+        "catcher_throwing_runs": 0.0,
+        "blocking_runs": 0.0,
+        "arm_runs": 0.0,
+        "receiving_runs": 0.0
+      },
+      "realized_runs": {
+        "Batting": -20.92042943008004,
+        "BaseRunning": -0.4330161530524492,
+        "Fielding": -1.1346755027770996,
+        "Positional": -3.1973019540309906,
+        "Replacement": 13.583381403237581,
+        "wLeague": 1.5418477919884026
+      },
+      "scores": {
+        "combined": {
+          "rows": 2175,
+          "people": 2175,
+          "RMSE": 0.03553193843373997,
+          "MAE": 0.001660810373072649,
+          "bias": 0.0012188855923131261,
+          "predicted_WAR": 1.570636174182328,
+          "actual_WAR": -1.080439989098721,
+          "expected_PA": 668.9927177884712,
+          "actual_PA": 446
+        },
+        "batting_anchor": {
+          "rows": 2175,
+          "people": 2175,
+          "RMSE": 0.03572740076314604,
+          "MAE": 0.001663283785379392,
+          "bias": 0.001225147002067065,
+          "predicted_WAR": 1.584254740397145,
+          "actual_WAR": -1.080439989098721,
+          "expected_PA": 668.9927177884712,
+          "actual_PA": 446
+        },
+        "simple_history": {
+          "rows": 2175,
+          "people": 2175,
+          "RMSE": 0.03577491231950872,
+          "MAE": 0.001958487835871216,
+          "bias": 0.001522030213820824,
+          "predicted_WAR": 2.229975725961571,
+          "actual_WAR": -1.080439989098721,
+          "expected_PA": 668.9927177884712,
+          "actual_PA": 446
+        }
+      }
+    },
+    "Lower minors_no_prior_MLB": {
+      "rows": 6877,
+      "expected_PA": 2581.963357322683,
+      "actual_PA": 2044,
+      "WAR": 6.5411150739097454,
+      "actual_WAR": 1.620675061740822,
+      "forecast_runs": {
+        "batting_runs": -14.533013111744665,
+        "replacement_runs": 78.08858236107338,
+        "position_runs": -0.022912741041371885,
+        "stealing_runs": 0.030580296447547447,
+        "advancement_runs": 0.0,
+        "gidp_runs": 0.0,
+        "double_play_runs": 0.0,
+        "abs_challenge_runs": 0.0,
+        "park_runs": 0.0,
+        "league_runs": 0.23997099824108642,
+        "range_runs": -0.3946657549755775,
+        "framing_runs": 0.0,
+        "catcher_throwing_runs": 0.0,
+        "blocking_runs": 0.0,
+        "arm_runs": 0.0,
+        "receiving_runs": 0.0
+      },
+      "realized_runs": {
+        "Batting": -67.79372820947503,
+        "BaseRunning": 5.504698391770944,
+        "Fielding": 3.3085849955677986,
+        "Positional": 6.699815718457103,
+        "Replacement": 62.85639115422964,
+        "wLeague": 6.225631303619593
+      },
+      "scores": {
+        "combined": {
+          "rows": 6877,
+          "people": 3865,
+          "RMSE": 0.04103017943972234,
+          "MAE": 0.00197635829664836,
+          "bias": 0.0007308065855760261,
+          "predicted_WAR": 6.5411150739097454,
+          "actual_WAR": 1.620675061740822,
+          "expected_PA": 2581.963357322683,
+          "actual_PA": 2044
+        },
+        "batting_anchor": {
+          "rows": 6877,
+          "people": 3865,
+          "RMSE": 0.041119883253280275,
+          "MAE": 0.0020091354920042763,
+          "bias": 0.0007396989932912388,
+          "predicted_WAR": 6.602405714297419,
+          "actual_WAR": 1.620675061740822,
+          "expected_PA": 2581.963357322683,
+          "actual_PA": 2044
+        },
+        "simple_history": {
+          "rows": 6877,
+          "people": 3865,
+          "RMSE": 0.04131669259040182,
+          "MAE": 0.002277138791135803,
+          "bias": 0.0010306829812369443,
+          "predicted_WAR": 8.606544524408942,
+          "actual_WAR": 1.620675061740822,
+          "expected_PA": 2581.963357322683,
+          "actual_PA": 2044
+        }
+      }
+    },
+    "Lower minors_MLB_returnee": {
+      "rows": 5,
+      "expected_PA": 10.965931813602905,
+      "actual_PA": 0,
+      "WAR": -0.0016693152811436507,
+      "actual_WAR": 0.0,
+      "forecast_runs": {
+        "batting_runs": -0.19539557303784474,
+        "replacement_runs": 0.33002323022660696,
+        "position_runs": -0.15124381831632822,
+        "stealing_runs": 0.00045506596231109577,
+        "advancement_runs": 0.004233318711826289,
+        "gidp_runs": 0.0,
+        "double_play_runs": 0.0,
+        "abs_challenge_runs": 0.0,
+        "park_runs": 0.0,
+        "league_runs": 0.0008306648451384207,
+        "range_runs": -0.005786517885576174,
+        "framing_runs": 0.0,
+        "catcher_throwing_runs": 0.0,
+        "blocking_runs": 0.0,
+        "arm_runs": 0.0,
+        "receiving_runs": 0.0002268680220050918
+      },
+      "realized_runs": {
+        "Batting": 0,
+        "BaseRunning": 0,
+        "Fielding": 0,
+        "Positional": 0,
+        "Replacement": 0,
+        "wLeague": 0
+      },
+      "scores": {
+        "combined": {
+          "rows": 5,
+          "people": 5,
+          "RMSE": 0.0011092486635818643,
+          "MAE": 0.0009699421657530565,
+          "bias": -0.0003811169265706894,
+          "predicted_WAR": -0.0016693152811436507,
+          "actual_WAR": 0.0,
+          "expected_PA": 10.965931813602905,
+          "actual_PA": 0
+        },
+        "batting_anchor": {
+          "rows": 5,
+          "people": 5,
+          "RMSE": 0.0037241688414745623,
+          "MAE": 0.0028966684158201715,
+          "bias": 0.0028966684158201715,
+          "predicted_WAR": 0.014720538351445392,
+          "actual_WAR": 0.0,
+          "expected_PA": 10.965931813602905,
+          "actual_PA": 0
+        },
+        "simple_history": {
+          "rows": 5,
+          "people": 5,
+          "RMSE": 0.007861634788898845,
+          "MAE": 0.006234913923544259,
+          "bias": 0.006234913923544259,
+          "predicted_WAR": 0.032861146189052164,
+          "actual_WAR": 0.0,
+          "expected_PA": 10.965931813602905,
+          "actual_PA": 0
+        }
+      }
+    },
+    "Lower minors_future_nonparticipant": {
+      "rows": 6864,
+      "expected_PA": 2258.5428357833644,
+      "actual_PA": 0,
+      "WAR": 5.452560985882571,
+      "actual_WAR": 0.0,
+      "forecast_runs": {
+        "batting_runs": -14.031307839793238,
+        "replacement_runs": 68.43038948835014,
+        "position_runs": -1.4730877792975083,
+        "stealing_runs": 0.06545364355283041,
+        "advancement_runs": 0.004233318711826289,
+        "gidp_runs": 0.0,
+        "double_play_runs": 0.0,
+        "abs_challenge_runs": 0.0,
+        "park_runs": 0.0,
+        "league_runs": 0.35800154208876783,
+        "range_runs": -0.33591922286246617,
+        "framing_runs": 0.0,
+        "catcher_throwing_runs": 0.0,
+        "blocking_runs": 0.0,
+        "arm_runs": 0.0,
+        "receiving_runs": 0.0002268680220050918
+      },
+      "realized_runs": {
+        "Batting": 0,
+        "BaseRunning": 0,
+        "Fielding": 0,
+        "Positional": 0,
+        "Replacement": 0,
+        "wLeague": 0
+      },
+      "scores": {
+        "combined": {
+          "rows": 6864,
+          "people": 3858,
+          "RMSE": 0.006391630217147559,
+          "MAE": 0.000798129011170645,
+          "bias": 0.0007919870788386316,
+          "predicted_WAR": 5.452560985882571,
+          "actual_WAR": 0.0,
+          "expected_PA": 2258.5428357833644,
+          "actual_PA": 0
+        },
+        "batting_anchor": {
+          "rows": 6864,
+          "people": 3858,
+          "RMSE": 0.0060685281225324106,
+          "MAE": 0.0008187243740697295,
+          "bias": 0.0008187162159772192,
+          "predicted_WAR": 5.640325122400614,
+          "actual_WAR": 0.0,
+          "expected_PA": 2258.5428357833644,
+          "actual_PA": 0
+        },
+        "simple_history": {
+          "rows": 6864,
+          "people": 3858,
+          "RMSE": 0.007397180454135172,
+          "MAE": 0.001093459815627802,
+          "bias": 0.001093459815627802,
+          "predicted_WAR": 7.524784159421591,
+          "actual_WAR": 0.0,
+          "expected_PA": 2258.5428357833644,
+          "actual_PA": 0
+        }
+      }
+    },
+    "Lower minors_future_participant": {
+      "rows": 18,
+      "expected_PA": 334.38645335292136,
+      "actual_PA": 2044,
+      "WAR": 1.0868847727460307,
+      "actual_WAR": 1.620675061740822,
+      "forecast_runs": {
+        "batting_runs": -0.6971008449892734,
+        "replacement_runs": 9.988216102949846,
+        "position_runs": 1.2989312199398082,
+        "stealing_runs": -0.034418281142971865,
+        "advancement_runs": 0.0,
+        "gidp_runs": 0.0,
+        "double_play_runs": 0.0,
+        "abs_challenge_runs": 0.0,
+        "park_runs": 0.0,
+        "league_runs": -0.11719987900254296,
+        "range_runs": -0.06453304999868752,
+        "framing_runs": 0.0,
+        "catcher_throwing_runs": 0.0,
+        "blocking_runs": 0.0,
+        "arm_runs": 0.0,
+        "receiving_runs": 0.0
+      },
+      "realized_runs": {
+        "Batting": -67.79372820947503,
+        "BaseRunning": 5.504698391770944,
+        "Fielding": 3.3085849955677986,
+        "Positional": 6.699815718457103,
+        "Replacement": 62.85639115422964,
+        "wLeague": 6.225631303619593
+      },
+      "scores": {
+        "combined": {
+          "rows": 18,
+          "people": 18,
+          "RMSE": 0.7743701283938826,
+          "MAE": 0.4653613084320673,
+          "bias": 0.09528002124316676,
+          "predicted_WAR": 1.0868847727460307,
+          "actual_WAR": 1.620675061740822,
+          "expected_PA": 334.38645335292136,
+          "actual_PA": 2044
+        },
+        "batting_anchor": {
+          "rows": 18,
+          "people": 18,
+          "RMSE": 0.7777476846150099,
+          "MAE": 0.46955638118034965,
+          "bias": 0.0921981720667548,
+          "predicted_WAR": 0.9768011302482502,
+          "actual_WAR": 1.620675061740822,
+          "expected_PA": 334.38645335292136,
+          "actual_PA": 2044
+        },
+        "simple_history": {
+          "rows": 18,
+          "people": 18,
+          "RMSE": 0.7773222046549826,
+          "MAE": 0.4685531079691634,
+          "bias": 0.09698423468394668,
+          "predicted_WAR": 1.1146215111764044,
+          "actual_WAR": 1.620675061740822,
+          "expected_PA": 334.38645335292136,
+          "actual_PA": 2044
+        }
+      }
+    },
+    "Upper minors": {
+      "rows": 2842,
+      "expected_PA": 44484.031640503745,
+      "actual_PA": 42699,
+      "WAR": 94.22885687700614,
+      "actual_WAR": 64.93842094204625,
+      "forecast_runs": {
+        "batting_runs": -393.7922610591643,
+        "replacement_runs": 1352.8630416825272,
+        "position_runs": -61.60245277996839,
+        "stealing_runs": 3.302028861585307,
+        "advancement_runs": 0.19987816497259395,
+        "gidp_runs": 0.0,
+        "double_play_runs": 0.0,
+        "abs_challenge_runs": 0.0,
+        "park_runs": 0.0,
+        "league_runs": 9.594675210400272,
+        "range_runs": 11.897691161027122,
+        "framing_runs": -1.5644816532703867,
+        "catcher_throwing_runs": 0.19442677063450464,
+        "blocking_runs": -0.37742649024945507,
+        "arm_runs": -0.20325112989045416,
+        "receiving_runs": 0.06495234274622684
+      },
+      "realized_runs": {
+        "Batting": -717.5471344062822,
+        "BaseRunning": 43.98091815899443,
+        "Fielding": -49.35096569743473,
+        "Positional": -76.65410136675928,
+        "Replacement": 1306.0500476397574,
+        "wLeague": 133.4775307935197
+      },
+      "scores": {
+        "combined": {
+          "rows": 2842,
+          "people": 1788,
+          "RMSE": 0.28901352094216687,
+          "MAE": 0.07707248386419484,
+          "bias": 0.010168167690208505,
+          "predicted_WAR": 94.22885687700614,
+          "actual_WAR": 64.93842094204625,
+          "expected_PA": 44484.031640503745,
+          "actual_PA": 42699
+        },
+        "batting_anchor": {
+          "rows": 2842,
+          "people": 1788,
+          "RMSE": 0.28936774962431694,
+          "MAE": 0.0787904782536961,
+          "bias": 0.011906827515414229,
+          "predicted_WAR": 99.20840323753944,
+          "actual_WAR": 64.93842094204625,
+          "expected_PA": 44484.031640503745,
+          "actual_PA": 42699
+        },
+        "simple_history": {
+          "rows": 2842,
+          "people": 1788,
+          "RMSE": 0.292063482462256,
+          "MAE": 0.0914162572384517,
+          "bias": 0.028360807581354924,
+          "predicted_WAR": 145.89287829903773,
+          "actual_WAR": 64.93842094204625,
+          "expected_PA": 44484.031640503745,
+          "actual_PA": 42699
+        }
+      }
+    },
+    "Upper minors_2023": {
+      "rows": 947,
+      "expected_PA": 13902.158109022932,
+      "actual_PA": 14283,
+      "WAR": 29.006080872033206,
+      "actual_WAR": 26.63072567486467,
+      "forecast_runs": {
+        "batting_runs": -124.20323578177401,
+        "replacement_runs": 414.5599944875739,
+        "position_runs": -17.38438675678216,
+        "stealing_runs": 3.395407803116273,
+        "advancement_runs": 0.10760190816556599,
+        "gidp_runs": 0.0,
+        "double_play_runs": 0.0,
+        "abs_challenge_runs": 0.0,
+        "park_runs": 0.0,
+        "league_runs": -5.57120488440575,
+        "range_runs": 5.351699120416519,
+        "framing_runs": -0.17271896791187755,
+        "catcher_throwing_runs": 0.09708557741729489,
+        "blocking_runs": 0.13806996792049817,
+        "arm_runs": -0.07748843971099578,
+        "receiving_runs": 0.017147531985147443
+      },
+      "realized_runs": {
+        "Batting": -258.6779818050669,
+        "BaseRunning": 23.24987008035896,
+        "Fielding": 35.69097522646189,
+        "Positional": -19.042072182171978,
+        "Replacement": 443.4653394408524,
+        "wLeague": 42.37557043181732
+      },
+      "scores": {
+        "combined": {
+          "rows": 947,
+          "people": 947,
+          "RMSE": 0.2913613760625296,
+          "MAE": 0.07577657671746427,
+          "bias": 0.002508294822775643,
+          "predicted_WAR": 29.006080872033206,
+          "actual_WAR": 26.63072567486467,
+          "expected_PA": 13902.158109022932,
+          "actual_PA": 14283
+        },
+        "batting_anchor": {
+          "rows": 947,
+          "people": 947,
+          "RMSE": 0.2933203392519968,
+          "MAE": 0.07798201865190532,
+          "bias": 0.004726758526238954,
+          "predicted_WAR": 31.10696599921296,
+          "actual_WAR": 26.63072567486467,
+          "expected_PA": 13902.158109022932,
+          "actual_PA": 14283
+        },
+        "simple_history": {
+          "rows": 947,
+          "people": 947,
+          "RMSE": 0.29571256325387896,
+          "MAE": 0.08920319127950635,
+          "bias": 0.02024427143940971,
+          "predicted_WAR": 45.802050727985666,
+          "actual_WAR": 26.63072567486467,
+          "expected_PA": 13902.158109022932,
+          "actual_PA": 14283
+        }
+      }
+    },
+    "Upper minors_2024": {
+      "rows": 976,
+      "expected_PA": 16531.645456666385,
+      "actual_PA": 13027,
+      "WAR": 36.99983061972621,
+      "actual_WAR": 16.682500980692634,
+      "forecast_runs": {
+        "batting_runs": -120.61129001918957,
+        "replacement_runs": 513.2823529996836,
+        "position_runs": -21.132991388616674,
+        "stealing_runs": -0.2681019162788745,
+        "advancement_runs": -0.21118343331799636,
+        "gidp_runs": 0.0,
+        "double_play_runs": 0.0,
+        "abs_challenge_runs": 0.0,
+        "park_runs": 0.0,
+        "league_runs": -3.2951038623109015,
+        "range_runs": 4.400246945574921,
+        "framing_runs": -0.6961722891251231,
+        "catcher_throwing_runs": -0.08883630673515393,
+        "blocking_runs": -0.35963450137747166,
+        "arm_runs": 0.040008444872667255,
+        "receiving_runs": -0.012781116218060252
+      },
+      "realized_runs": {
+        "Batting": -235.0134275869312,
+        "BaseRunning": 9.141817768999317,
+        "Fielding": -16.1740099521121,
+        "Positional": -27.580020216060802,
+        "Replacement": 393.8971377629787,
+        "wLeague": 37.25897977501154
+      },
+      "scores": {
+        "combined": {
+          "rows": 976,
+          "people": 976,
+          "RMSE": 0.2845196444921757,
+          "MAE": 0.07464490578656675,
+          "bias": 0.020816936105567185,
+          "predicted_WAR": 36.99983061972621,
+          "actual_WAR": 16.682500980692634,
+          "expected_PA": 16531.645456666385,
+          "actual_PA": 13027
+        },
+        "batting_anchor": {
+          "rows": 976,
+          "people": 976,
+          "RMSE": 0.28384871267099276,
+          "MAE": 0.07649857667588561,
+          "bias": 0.02299139643441195,
+          "predicted_WAR": 39.122103900678695,
+          "actual_WAR": 16.682500980692634,
+          "expected_PA": 16531.645456666385,
+          "actual_PA": 13027
+        },
+        "simple_history": {
+          "rows": 976,
+          "people": 976,
+          "RMSE": 0.2858730120194107,
+          "MAE": 0.08874364000900185,
+          "bias": 0.038541600963026085,
+          "predicted_WAR": 54.29910352060609,
+          "actual_WAR": 16.682500980692634,
+          "expected_PA": 16531.645456666385,
+          "actual_PA": 13027
+        }
+      }
+    },
+    "Upper minors_2025": {
+      "rows": 919,
+      "expected_PA": 14050.228074814428,
+      "actual_PA": 15389,
+      "WAR": 28.222945385246724,
+      "actual_WAR": 21.625194286488938,
+      "forecast_runs": {
+        "batting_runs": -148.97773525820065,
+        "replacement_runs": 425.02069419526987,
+        "position_runs": -23.08507463456956,
+        "stealing_runs": 0.17472297474790818,
+        "advancement_runs": 0.30345969012502433,
+        "gidp_runs": 0.0,
+        "double_play_runs": 0.0,
+        "abs_challenge_runs": 0.0,
+        "park_runs": 0.0,
+        "league_runs": 18.460983957116923,
+        "range_runs": 2.1457450950356813,
+        "framing_runs": -0.695590396233386,
+        "catcher_throwing_runs": 0.18617749995236368,
+        "blocking_runs": -0.15586195679248155,
+        "arm_runs": -0.16577113505212565,
+        "receiving_runs": 0.06058592697913964
+      },
+      "realized_runs": {
+        "Batting": -223.8557250142842,
+        "BaseRunning": 11.58923030963615,
+        "Fielding": -68.86793097178452,
+        "Positional": -30.032008968526497,
+        "Replacement": 468.6875704359263,
+        "wLeague": 53.84298058669083
+      },
+      "scores": {
+        "combined": {
+          "rows": 919,
+          "people": 919,
+          "RMSE": 0.29110748238264184,
+          "MAE": 0.08079596908855347,
+          "bias": 0.007179272142282686,
+          "predicted_WAR": 28.222945385246724,
+          "actual_WAR": 21.625194286488938,
+          "expected_PA": 14050.228074814428,
+          "actual_PA": 15389
+        },
+        "batting_anchor": {
+          "rows": 919,
+          "people": 919,
+          "RMSE": 0.29085077009359606,
+          "MAE": 0.08189083943329739,
+          "bias": 0.008002327585591785,
+          "predicted_WAR": 28.97933333764779,
+          "actual_WAR": 21.625194286488938,
+          "expected_PA": 14050.228074814428,
+          "actual_PA": 15389
+        },
+        "simple_history": {
+          "rows": 919,
+          "people": 919,
+          "RMSE": 0.2945062551062577,
+          "MAE": 0.09630194042684691,
+          "bias": 0.026296550341628977,
+          "predicted_WAR": 45.79172405044597,
+          "actual_WAR": 21.625194286488938,
+          "expected_PA": 14050.228074814428,
+          "actual_PA": 15389
+        }
+      }
+    },
+    "Upper minors_no_prior_MLB": {
+      "rows": 2432,
+      "expected_PA": 37928.73549689386,
+      "actual_PA": 38745,
+      "WAR": 85.30739842774216,
+      "actual_WAR": 64.47836784305804,
+      "forecast_runs": {
+        "batting_runs": -291.80546910730413,
+        "replacement_runs": 1153.3911168784407,
+        "position_runs": -52.97777817716639,
+        "stealing_runs": 3.783463028058434,
+        "advancement_runs": 0.0,
+        "gidp_runs": 0.0,
+        "double_play_runs": 0.0,
+        "abs_challenge_runs": 0.0,
+        "park_runs": 0.0,
+        "league_runs": 7.40468290791572,
+        "range_runs": 13.722300350420047,
+        "framing_runs": 0.00014720378857743295,
+        "catcher_throwing_runs": 0.0,
+        "blocking_runs": 0.0,
+        "arm_runs": 0.0,
+        "receiving_runs": 0.0
+      },
+      "realized_runs": {
+        "Batting": -594.3898340252154,
+        "BaseRunning": 45.931962190849845,
+        "Fielding": -47.12720526882913,
+        "Positional": -76.10254685569089,
+        "Replacement": 1185.1889768894762,
+        "wLeague": 121.54451598972082
+      },
+      "scores": {
+        "combined": {
+          "rows": 2432,
+          "people": 1493,
+          "RMSE": 0.28860113429454043,
+          "MAE": 0.07837512619857233,
+          "bias": 0.008390562515589681,
+          "predicted_WAR": 85.30739842774216,
+          "actual_WAR": 64.47836784305804,
+          "expected_PA": 37928.73549689386,
+          "actual_PA": 38745
+        },
+        "batting_anchor": {
+          "rows": 2432,
+          "people": 1493,
+          "RMSE": 0.2894738687132555,
+          "MAE": 0.07988901385341436,
+          "bias": 0.009890166900874504,
+          "predicted_WAR": 88.98563318780762,
+          "actual_WAR": 64.47836784305804,
+          "expected_PA": 37928.73549689386,
+          "actual_PA": 38745
+        },
+        "simple_history": {
+          "rows": 2432,
+          "people": 1493,
+          "RMSE": 0.29206448383043965,
+          "MAE": 0.0914064848474807,
+          "bias": 0.025315540925614204,
+          "predicted_WAR": 126.43046894864464,
+          "actual_WAR": 64.47836784305804,
+          "expected_PA": 37928.73549689386,
+          "actual_PA": 38745
+        }
+      }
+    },
+    "Upper minors_MLB_returnee": {
+      "rows": 410,
+      "expected_PA": 6555.296143609883,
+      "actual_PA": 3954,
+      "WAR": 8.921458449263982,
+      "actual_WAR": 0.4600530989882068,
+      "forecast_runs": {
+        "batting_runs": -101.9867919518601,
+        "replacement_runs": 199.47192480408663,
+        "position_runs": -8.624674602802,
+        "stealing_runs": -0.48143416647312715,
+        "advancement_runs": 0.19987816497259395,
+        "gidp_runs": 0.0,
+        "double_play_runs": 0.0,
+        "abs_challenge_runs": 0.0,
+        "park_runs": 0.0,
+        "league_runs": 2.1899923024845527,
+        "range_runs": -1.8246091893929264,
+        "framing_runs": -1.5646288570589642,
+        "catcher_throwing_runs": 0.19442677063450464,
+        "blocking_runs": -0.37742649024945507,
+        "arm_runs": -0.20325112989045416,
+        "receiving_runs": 0.06495234274622684
+      },
+      "realized_runs": {
+        "Batting": -123.15730038106688,
+        "BaseRunning": -1.9510440318554174,
+        "Fielding": -2.223760428605601,
+        "Positional": -0.5515545110683888,
+        "Replacement": 120.86107075028121,
+        "wLeague": 11.93301480379887
+      },
+      "scores": {
+        "combined": {
+          "rows": 410,
+          "people": 309,
+          "RMSE": 0.2935598496781158,
+          "MAE": 0.06882413832767102,
+          "bias": 0.0206006998285678,
+          "predicted_WAR": 8.921458449263982,
+          "actual_WAR": 0.4600530989882068,
+          "expected_PA": 6555.296143609883,
+          "actual_PA": 3954
+        },
+        "batting_anchor": {
+          "rows": 410,
+          "people": 309,
+          "RMSE": 0.29112881639791544,
+          "MAE": 0.07179809583448439,
+          "bias": 0.023839849851848335,
+          "predicted_WAR": 10.22277004973182,
+          "actual_WAR": 0.4600530989882068,
+          "expected_PA": 6555.296143609883,
+          "actual_PA": 3954
+        },
+        "simple_history": {
+          "rows": 410,
+          "people": 309,
+          "RMSE": 0.2945884286635909,
+          "MAE": 0.09096193391111303,
+          "bias": 0.046167102576308794,
+          "predicted_WAR": 19.462409350393077,
+          "actual_WAR": 0.4600530989882068,
+          "expected_PA": 6555.296143609883,
+          "actual_PA": 3954
+        }
+      }
+    },
+    "Upper minors_future_nonparticipant": {
+      "rows": 2488,
+      "expected_PA": 22370.401811519125,
+      "actual_PA": 0,
+      "WAR": 37.5943052364674,
+      "actual_WAR": 0.010330074273648735,
+      "forecast_runs": {
+        "batting_runs": -260.31308235522835,
+        "replacement_runs": 680.7221364649704,
+        "position_runs": -63.155380754626385,
+        "stealing_runs": -2.335966961673809,
+        "advancement_runs": -0.20761114093806526,
+        "gidp_runs": 0.0,
+        "double_play_runs": 0.0,
+        "abs_challenge_runs": 0.0,
+        "park_runs": 0.0,
+        "league_runs": 4.497581415485094,
+        "range_runs": 10.551782338417198,
+        "framing_runs": -1.4147575304708717,
+        "catcher_throwing_runs": -0.0758964166373559,
+        "blocking_runs": -0.37281782451650686,
+        "arm_runs": -0.12347085750697508,
+        "receiving_runs": 0.06271236739891321
+      },
+      "realized_runs": {
+        "Batting": 0,
+        "BaseRunning": 0,
+        "Fielding": 0.07471674424596131,
+        "Positional": 0.02743484021630138,
+        "Replacement": 0,
+        "wLeague": 0
+      },
+      "scores": {
+        "combined": {
+          "rows": 2488,
+          "people": 1610,
+          "RMSE": 0.048109543955372244,
+          "MAE": 0.015581199623942214,
+          "bias": 0.01506227940315523,
+          "predicted_WAR": 37.5943052364674,
+          "actual_WAR": 0.010330074273648735,
+          "expected_PA": 22370.401811519125,
+          "actual_PA": 0
+        },
+        "batting_anchor": {
+          "rows": 2488,
+          "people": 1610,
+          "RMSE": 0.052299426968455784,
+          "MAE": 0.01753594921039418,
+          "bias": 0.017483724655033343,
+          "predicted_WAR": 43.65053999262506,
+          "actual_WAR": 0.010330074273648735,
+          "expected_PA": 22370.401811519125,
+          "actual_PA": 0
+        },
+        "simple_history": {
+          "rows": 2488,
+          "people": 1610,
+          "RMSE": 0.06794527384783693,
+          "MAE": 0.02920600800060384,
+          "bias": 0.02920600800060384,
+          "predicted_WAR": 72.78388116181364,
+          "actual_WAR": 0.010330074273648735,
+          "expected_PA": 22370.401811519125,
+          "actual_PA": 0
+        }
+      }
+    },
+    "Upper minors_future_participant": {
+      "rows": 354,
+      "expected_PA": 22113.62982898462,
+      "actual_PA": 42699,
+      "WAR": 56.634551640538746,
+      "actual_WAR": 64.9280908677726,
+      "forecast_runs": {
+        "batting_runs": -133.4791787039359,
+        "replacement_runs": 672.1409052175569,
+        "position_runs": 1.5529279746579923,
+        "stealing_runs": 5.637995823259116,
+        "advancement_runs": 0.4074893059106592,
+        "gidp_runs": 0.0,
+        "double_play_runs": 0.0,
+        "abs_challenge_runs": 0.0,
+        "park_runs": 0.0,
+        "league_runs": 5.097093794915178,
+        "range_runs": 1.3459088226099238,
+        "framing_runs": -0.14972412279951486,
+        "catcher_throwing_runs": 0.27032318727186055,
+        "blocking_runs": -0.004608665732948191,
+        "arm_runs": -0.07978027238347908,
+        "receiving_runs": 0.00223997534731363
+      },
+      "realized_runs": {
+        "Batting": -717.5471344062822,
+        "BaseRunning": 43.98091815899443,
+        "Fielding": -49.42568244168069,
+        "Positional": -76.68153620697558,
+        "Replacement": 1306.0500476397574,
+        "wLeague": 133.4775307935197
+      },
+      "scores": {
+        "combined": {
+          "rows": 354,
+          "people": 348,
+          "RMSE": 0.8114470215718195,
+          "MAE": 0.5116450097429076,
+          "bias": -0.0263365223938427,
+          "predicted_WAR": 56.634551640538746,
+          "actual_WAR": 64.9280908677726,
+          "expected_PA": 22113.62982898462,
+          "actual_PA": 42699
+        },
+        "batting_anchor": {
+          "rows": 354,
+          "people": 348,
+          "RMSE": 0.8107488965303076,
+          "MAE": 0.5115571555739904,
+          "bias": -0.029526048727282806,
+          "predicted_WAR": 55.55786324491439,
+          "actual_WAR": 64.9280908677726,
+          "expected_PA": 22113.62982898462,
+          "actual_PA": 42699
+        },
+        "simple_history": {
+          "rows": 354,
+          "people": 348,
+          "RMSE": 0.8103693870693811,
+          "MAE": 0.5307527522865488,
+          "bias": 0.020385315338869423,
+          "predicted_WAR": 73.1089971372241,
+          "actual_WAR": 64.9280908677726,
+          "expected_PA": 22113.62982898462,
+          "actual_PA": 42699
+        }
+      }
+    }
+  },
+  "actual_component_reconciliation": [
+    {
+      "year": 2023,
+      "rows": 1457,
+      "max_RAR_reconciliation_error": 7.105427357601002e-15,
+      "framing_already_in_Fielding": true
+    },
+    {
+      "year": 2024,
+      "rows": 1454,
+      "max_RAR_reconciliation_error": 7.105427357601002e-15,
+      "framing_already_in_Fielding": true
+    },
+    {
+      "year": 2025,
+      "rows": 1470,
+      "max_RAR_reconciliation_error": 7.105427357601002e-15,
+      "framing_already_in_Fielding": true
+    }
+  ],
+  "no_model_change": true,
+  "actual_opportunity_conditioning_diagnostic_only": true,
+  "peer_rule": "same origin, stage, position, previous MLB experience; nearest origin PA then age/ID",
+  "walkthrough_status": "pending_written_review",
+  "walk_sha256": "45a67b5ed600e3a3d95887e046ea39e7e13a76dbc658d5fe4af2172ee0515154"
+}
