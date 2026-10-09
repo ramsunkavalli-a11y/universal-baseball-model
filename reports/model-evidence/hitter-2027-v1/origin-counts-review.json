@@ -1,0 +1,410 @@
+{
+  "status": "aggregate_capture_requires_stint_and_source_player_review",
+  "season": 2026,
+  "forecast_season": 2027,
+  "levels": [
+    {
+      "sport_id": 1,
+      "label": "MLB",
+      "player_rows": 751,
+      "team_rows": 30,
+      "player_pa": 183849,
+      "player_minus_team_counts": {
+        "plate_appearances": 0,
+        "at_bats": 0,
+        "hits": 0,
+        "doubles": 0,
+        "triples": 0,
+        "home_runs": 0,
+        "base_on_balls": 0,
+        "intentional_walks": 0,
+        "hit_by_pitch": 0,
+        "strike_outs": 0,
+        "sac_bunts": 0,
+        "sac_flies": 0,
+        "stolen_bases": 0,
+        "caught_stealing": 0,
+        "runs": 0,
+        "unclassified_pa": 0
+      },
+      "event_totals_match": true,
+      "ambiguous_stint_rows": 70,
+      "unclassified_pa": 2,
+      "captures": [
+        {
+          "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-origin-counts\\captures\\players-sport-1-offset-0.json.gz",
+          "endpoint": "/stats",
+          "params": {
+            "stats": "season",
+            "group": "hitting",
+            "season": 2026,
+            "sportIds": 1,
+            "gameType": "R",
+            "limit": 5000,
+            "offset": 0,
+            "playerPool": "ALL"
+          },
+          "url": "https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2026&sportIds=1&gameType=R&limit=5000&offset=0&playerPool=ALL",
+          "captured_utc": "2026-10-09T06:17:04.175848+00:00",
+          "response_sha256": "1c7b86415b27d2fa6724d69ab88c947d5b839583e429f33a475d8a2fa375aabf",
+          "compressed_sha256": "b56d8d274efde206bcec6ef28f144a1673748b204b8b7093acfc1ec8e7992a68"
+        },
+        {
+          "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-origin-counts\\captures\\teams-sport-1-offset-0.json.gz",
+          "endpoint": "/teams/stats",
+          "params": {
+            "stats": "season",
+            "group": "hitting",
+            "season": 2026,
+            "sportIds": 1,
+            "gameType": "R",
+            "limit": 5000,
+            "offset": 0
+          },
+          "url": "https://statsapi.mlb.com/api/v1/teams/stats?stats=season&group=hitting&season=2026&sportIds=1&gameType=R&limit=5000&offset=0",
+          "captured_utc": "2026-10-09T06:17:42.095529+00:00",
+          "response_sha256": "a6f50f2bab7b2b2457c2ef627a9824d73c65266f772cfc282df1187ec8e9c6c4",
+          "compressed_sha256": "c5263e2b43d8ec2a2543c29113973893ad53c7b85d2425840f3dcb13a107ce2c"
+        }
+      ]
+    },
+    {
+      "sport_id": 11,
+      "label": "AAA",
+      "player_rows": 927,
+      "team_rows": 30,
+      "player_pa": 171799,
+      "player_minus_team_counts": {
+        "plate_appearances": 0,
+        "at_bats": 0,
+        "hits": 0,
+        "doubles": 0,
+        "triples": 0,
+        "home_runs": 0,
+        "base_on_balls": 0,
+        "intentional_walks": 0,
+        "hit_by_pitch": 0,
+        "strike_outs": 0,
+        "sac_bunts": 0,
+        "sac_flies": 0,
+        "stolen_bases": 0,
+        "caught_stealing": 0,
+        "runs": 0,
+        "unclassified_pa": 0
+      },
+      "event_totals_match": true,
+      "ambiguous_stint_rows": 92,
+      "unclassified_pa": 0,
+      "captures": [
+        {
+          "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-origin-counts\\captures\\players-sport-11-offset-0.json.gz",
+          "endpoint": "/stats",
+          "params": {
+            "stats": "season",
+            "group": "hitting",
+            "season": 2026,
+            "sportIds": 11,
+            "gameType": "R",
+            "limit": 5000,
+            "offset": 0,
+            "playerPool": "ALL"
+          },
+          "url": "https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2026&sportIds=11&gameType=R&limit=5000&offset=0&playerPool=ALL",
+          "captured_utc": "2026-10-09T06:16:46.649418+00:00",
+          "response_sha256": "696e0c9a9d74a4a2dcfdbe953623ec5ccd4d44b3e4be5593f82ea29e5772f47e",
+          "compressed_sha256": "a380f86c4493c38b5906d79ef906a42d8b8c46b75798e291bd21b2e61562a770"
+        },
+        {
+          "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-origin-counts\\captures\\teams-sport-11-offset-0.json.gz",
+          "endpoint": "/teams/stats",
+          "params": {
+            "stats": "season",
+            "group": "hitting",
+            "season": 2026,
+            "sportIds": 11,
+            "gameType": "R",
+            "limit": 5000,
+            "offset": 0
+          },
+          "url": "https://statsapi.mlb.com/api/v1/teams/stats?stats=season&group=hitting&season=2026&sportIds=11&gameType=R&limit=5000&offset=0",
+          "captured_utc": "2026-10-09T06:16:46.929897+00:00",
+          "response_sha256": "4332569817007ba61525b060c085b04c139f7b3af25de85a2a138f5a0e69fb16",
+          "compressed_sha256": "9ebf052183174b67ac636cc9712586d49ba4a1c94ccc1eb20875289f721caa58"
+        }
+      ]
+    },
+    {
+      "sport_id": 12,
+      "label": "AA",
+      "player_rows": 830,
+      "team_rows": 30,
+      "player_pa": 156270,
+      "player_minus_team_counts": {
+        "plate_appearances": 0,
+        "at_bats": 0,
+        "hits": 0,
+        "doubles": 0,
+        "triples": 0,
+        "home_runs": 0,
+        "base_on_balls": 0,
+        "intentional_walks": 0,
+        "hit_by_pitch": 0,
+        "strike_outs": 0,
+        "sac_bunts": 0,
+        "sac_flies": 0,
+        "stolen_bases": 0,
+        "caught_stealing": 0,
+        "runs": 0,
+        "unclassified_pa": 0
+      },
+      "event_totals_match": true,
+      "ambiguous_stint_rows": 20,
+      "unclassified_pa": 0,
+      "captures": [
+        {
+          "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-origin-counts\\captures\\players-sport-12-offset-0.json.gz",
+          "endpoint": "/stats",
+          "params": {
+            "stats": "season",
+            "group": "hitting",
+            "season": 2026,
+            "sportIds": 12,
+            "gameType": "R",
+            "limit": 5000,
+            "offset": 0,
+            "playerPool": "ALL"
+          },
+          "url": "https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2026&sportIds=12&gameType=R&limit=5000&offset=0&playerPool=ALL",
+          "captured_utc": "2026-10-09T06:16:46.508452+00:00",
+          "response_sha256": "7502710a84482a28faba00ae1a09789d6f9df06e79f3c2cf03e8c224b1dc9024",
+          "compressed_sha256": "5abd4df847c77cf27d0db6ceb75a969c30809a05fd25afdd7b33d8cfbea2ccc8"
+        },
+        {
+          "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-origin-counts\\captures\\teams-sport-12-offset-0.json.gz",
+          "endpoint": "/teams/stats",
+          "params": {
+            "stats": "season",
+            "group": "hitting",
+            "season": 2026,
+            "sportIds": 12,
+            "gameType": "R",
+            "limit": 5000,
+            "offset": 0
+          },
+          "url": "https://statsapi.mlb.com/api/v1/teams/stats?stats=season&group=hitting&season=2026&sportIds=12&gameType=R&limit=5000&offset=0",
+          "captured_utc": "2026-10-09T06:16:46.783173+00:00",
+          "response_sha256": "9267b5196c12691c1a7bee5ed4ad47bb2b18c5396c90f1e12d4faee1d4347706",
+          "compressed_sha256": "d0788b16ac31b10f109e07660ca663334c5fd086f4e821f0b4cdeb265b5fa70e"
+        }
+      ]
+    },
+    {
+      "sport_id": 13,
+      "label": "HIGH_A",
+      "player_rows": 837,
+      "team_rows": 30,
+      "player_pa": 151429,
+      "player_minus_team_counts": {
+        "plate_appearances": 0,
+        "at_bats": 0,
+        "hits": 0,
+        "doubles": 0,
+        "triples": 0,
+        "home_runs": 0,
+        "base_on_balls": 0,
+        "intentional_walks": 0,
+        "hit_by_pitch": 0,
+        "strike_outs": 0,
+        "sac_bunts": 0,
+        "sac_flies": 0,
+        "stolen_bases": 0,
+        "caught_stealing": 0,
+        "runs": 0,
+        "unclassified_pa": 0
+      },
+      "event_totals_match": true,
+      "ambiguous_stint_rows": 18,
+      "unclassified_pa": 0,
+      "captures": [
+        {
+          "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-origin-counts\\captures\\players-sport-13-offset-0.json.gz",
+          "endpoint": "/stats",
+          "params": {
+            "stats": "season",
+            "group": "hitting",
+            "season": 2026,
+            "sportIds": 13,
+            "gameType": "R",
+            "limit": 5000,
+            "offset": 0,
+            "playerPool": "ALL"
+          },
+          "url": "https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2026&sportIds=13&gameType=R&limit=5000&offset=0&playerPool=ALL",
+          "captured_utc": "2026-10-09T06:16:46.951897+00:00",
+          "response_sha256": "93e608f267b39345da15178d28f23b7b6db4d4a7f5b340bff861f07cca7e86db",
+          "compressed_sha256": "61903f97707435e5dc4f9f1c5f702774786af14aac8b8cd3812e1864711e6a90"
+        },
+        {
+          "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-origin-counts\\captures\\teams-sport-13-offset-0.json.gz",
+          "endpoint": "/teams/stats",
+          "params": {
+            "stats": "season",
+            "group": "hitting",
+            "season": 2026,
+            "sportIds": 13,
+            "gameType": "R",
+            "limit": 5000,
+            "offset": 0
+          },
+          "url": "https://statsapi.mlb.com/api/v1/teams/stats?stats=season&group=hitting&season=2026&sportIds=13&gameType=R&limit=5000&offset=0",
+          "captured_utc": "2026-10-09T06:16:47.218857+00:00",
+          "response_sha256": "720daa22d663788b51efa06010af4171e65e49c0aaa8c0f7bcec35861e7bab31",
+          "compressed_sha256": "6e4d956c5d5b165eaf931b6b78a99cd59125a07c50f075cb7d99dd71c692a7e5"
+        }
+      ]
+    },
+    {
+      "sport_id": 14,
+      "label": "SINGLE_A",
+      "player_rows": 979,
+      "team_rows": 30,
+      "player_pa": 151705,
+      "player_minus_team_counts": {
+        "plate_appearances": 0,
+        "at_bats": 0,
+        "hits": 0,
+        "doubles": 0,
+        "triples": 0,
+        "home_runs": 0,
+        "base_on_balls": 0,
+        "intentional_walks": 0,
+        "hit_by_pitch": 0,
+        "strike_outs": 0,
+        "sac_bunts": 0,
+        "sac_flies": 0,
+        "stolen_bases": 0,
+        "caught_stealing": 0,
+        "runs": 0,
+        "unclassified_pa": 0
+      },
+      "event_totals_match": true,
+      "ambiguous_stint_rows": 12,
+      "unclassified_pa": 2,
+      "captures": [
+        {
+          "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-origin-counts\\captures\\players-sport-14-offset-0.json.gz",
+          "endpoint": "/stats",
+          "params": {
+            "stats": "season",
+            "group": "hitting",
+            "season": 2026,
+            "sportIds": 14,
+            "gameType": "R",
+            "limit": 5000,
+            "offset": 0,
+            "playerPool": "ALL"
+          },
+          "url": "https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2026&sportIds=14&gameType=R&limit=5000&offset=0&playerPool=ALL",
+          "captured_utc": "2026-10-09T06:17:04.378958+00:00",
+          "response_sha256": "dfcc5f47fffe17b1deaea37ae527e2c111ed592f3b24e356215c6c6c05678759",
+          "compressed_sha256": "b9bf40163fcaea5408ea78e4993d81c805e8159c787cee2488cb4f43fc12c45c"
+        },
+        {
+          "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-origin-counts\\captures\\teams-sport-14-offset-0.json.gz",
+          "endpoint": "/teams/stats",
+          "params": {
+            "stats": "season",
+            "group": "hitting",
+            "season": 2026,
+            "sportIds": 14,
+            "gameType": "R",
+            "limit": 5000,
+            "offset": 0
+          },
+          "url": "https://statsapi.mlb.com/api/v1/teams/stats?stats=season&group=hitting&season=2026&sportIds=14&gameType=R&limit=5000&offset=0",
+          "captured_utc": "2026-10-09T06:17:42.060390+00:00",
+          "response_sha256": "5a19383bc8fda916a5b6921fd387e4330cb84f1f4baa309a573270c942b8e64f",
+          "compressed_sha256": "7266040eaee2291a6b610aa4adb18bc8c1f7f8cf5f33cdb6f55109c4cd3689c8"
+        }
+      ]
+    },
+    {
+      "sport_id": 16,
+      "label": "ROOKIE_COMPLEX",
+      "player_rows": 1602,
+      "team_rows": 81,
+      "player_pa": 163736,
+      "player_minus_team_counts": {
+        "plate_appearances": 0,
+        "at_bats": 0,
+        "hits": 0,
+        "doubles": 0,
+        "triples": 0,
+        "home_runs": 0,
+        "base_on_balls": 0,
+        "intentional_walks": 0,
+        "hit_by_pitch": 0,
+        "strike_outs": 0,
+        "sac_bunts": 0,
+        "sac_flies": 0,
+        "stolen_bases": 0,
+        "caught_stealing": 0,
+        "runs": 0,
+        "unclassified_pa": 0
+      },
+      "event_totals_match": true,
+      "ambiguous_stint_rows": 193,
+      "unclassified_pa": 1,
+      "captures": [
+        {
+          "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-origin-counts\\captures\\players-sport-16-offset-0.json.gz",
+          "endpoint": "/stats",
+          "params": {
+            "stats": "season",
+            "group": "hitting",
+            "season": 2026,
+            "sportIds": 16,
+            "gameType": "R",
+            "limit": 5000,
+            "offset": 0,
+            "playerPool": "ALL"
+          },
+          "url": "https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2026&sportIds=16&gameType=R&limit=5000&offset=0&playerPool=ALL",
+          "captured_utc": "2026-10-09T06:17:04.871031+00:00",
+          "response_sha256": "177c571e1f261c3a0074f8d68a704130f3a63eb61166739c85c96731e120ba5a",
+          "compressed_sha256": "1b0d074a14a7a607dfac83dc30d9de18703c24a682e2f96e67742c02080ebac7"
+        },
+        {
+          "path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-origin-counts\\captures\\teams-sport-16-offset-0.json.gz",
+          "endpoint": "/teams/stats",
+          "params": {
+            "stats": "season",
+            "group": "hitting",
+            "season": 2026,
+            "sportIds": 16,
+            "gameType": "R",
+            "limit": 5000,
+            "offset": 0
+          },
+          "url": "https://statsapi.mlb.com/api/v1/teams/stats?stats=season&group=hitting&season=2026&sportIds=16&gameType=R&limit=5000&offset=0",
+          "captured_utc": "2026-10-09T06:17:42.078905+00:00",
+          "response_sha256": "c0e768f56f6cf1bb2d11111dd2074d819df83c43f115af54d7ce614bbb0457ed",
+          "compressed_sha256": "26de6109eabf5b8382141827a77713b03ad17041ca4b8a3620296a257514a6e8"
+        }
+      ]
+    }
+  ],
+  "outputs": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-origin-counts\\player-aggregates.parquet": "1a92739ef7b877675c4f2933a8d9ff0d85e8fa937232f39ca50c8e745e1f39cd",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-origin-counts\\team-aggregates.parquet": "ac06dc201dee27367bcec355308f9979d9b0b0e56d94a8809881a66f8ef4e360"
+  },
+  "total_rows": 5926,
+  "code_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\capture_hitter_2027_origin_counts.py": "4f9da73b5dae1b9f0ff5840dc4d1bc73457bb629f92f66d52c8c15b000ed8a0b",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\src\\universal_baseball\\hitter_season_intake.py": "2299cbeeff3ee98722a5e207ee50390b513f8e48013e3e28e5f887ceaadf3a47"
+  },
+  "scope": "All completed-season aggregate counts, not a current roster or dated team stints",
+  "source_approved_for_features": false,
+  "models_fitted": 0,
+  "old_forecasts_changed": false
+}

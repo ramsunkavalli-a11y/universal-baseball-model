@@ -1,0 +1,82 @@
+{
+  "status": "event_inputs_approved_not_a_2027_forecast",
+  "source_season": 2026,
+  "forecast_season": 2027,
+  "team_sources": 231,
+  "team_season_rows": 6358,
+  "player_bucket_rows": 5956,
+  "mlb_events_match_previously_certified_completed_season": true,
+  "all_team_and_player_totals_reconcile": true,
+  "unclassified_pa": 5,
+  "unclassified_rows": [
+    {
+      "player_id": 815873,
+      "player_name": "Sean Keys",
+      "bucket": "MLB",
+      "unclassified_pa": 1
+    },
+    {
+      "player_id": 680777,
+      "player_name": "Ryan Jeffers",
+      "bucket": "MLB",
+      "unclassified_pa": 1
+    },
+    {
+      "player_id": 800384,
+      "player_name": "Nicandro Aybar",
+      "bucket": "A",
+      "unclassified_pa": 1
+    },
+    {
+      "player_id": 829670,
+      "player_name": "Brayden Smith",
+      "bucket": "A",
+      "unclassified_pa": 1
+    },
+    {
+      "player_id": 699000,
+      "player_name": "German Ortiz",
+      "bucket": "RK121",
+      "unclassified_pa": 1
+    }
+  ],
+  "minor_fg_pa_differences": [
+    {
+      "player_id": 829096,
+      "plate_appearances": 185,
+      "fg_pa": 177
+    }
+  ],
+  "fg_ids_without_official_minor": [
+    682643,
+    692369,
+    801736,
+    825101,
+    833193,
+    837758,
+    842661
+  ],
+  "source_approved_for_event_count_features": true,
+  "player_walkthrough_status": "complete_for_source_intake_only",
+  "player_walkthrough_path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\model-evidence\\hitter-2027-v1\\origin-source-player-walkthrough.json",
+  "output_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-origin-counts\\team-season-inputs.parquet": "634c6d5cc7e1e2d6b47f9d5e5f4de623bcc4b329156ef178aa126ce820087398",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-origin-counts\\counts.parquet": "ccec43919fd96e41b8a966741853d1dbfe6e99675e094cb071797b052ee32c53"
+  },
+  "input_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-origin-counts\\team-season-counts.parquet": "45c2ef3639ca06e20e54893bc6d1d9d4637d2c96fff68bd2a0a3eef3863a2e5c",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-final-2026-source\\actual-player-events-2026.parquet": "2711b5549cb05b17122d410edbca1f34854fb44dfec22aa9b5b509f364b19c73",
+    "C:\\Users\\ramav\\Documents\\Baseball\\2026 Data\\FanGraphs_MiLB_Batting_2026-09-28.csv": "b14eeade91f833be5d03ca5a86c3c530396ef6171c6345b1b86252133d0d6578",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\model-evidence\\hitter-2027-v1\\origin-counts-review.json": "fb5a9a90a28bdff56cb13634fb4da024390124fb85324cd5b0cdb0f70e44db48",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\model-evidence\\hitter-2027-v1\\team-stints-review.json": "cb4fa82eb462c98e553ec52fc47c845ece80e437a7a39ce3cd1f01eabf11c48a",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\review_hitter_2027_origin_counts.py": "b52b90fe1d70fe33be545379acf0d3c1c8c4371719ddc1cb81f8acf8daae1487"
+  },
+  "remaining": [
+    "2026 roster/absence/debut and international membership refresh",
+    "2026 tracking, defense and running source update",
+    "dated promotion/rehab intervals where required by a feature"
+  ],
+  "claim_limits": "Does not certify talent estimates, current ownership, promotion dates or every population member.",
+  "models_fitted": 0,
+  "old_forecasts_changed": false
+}

@@ -1,5 +1,14 @@
 # Prospect model: controlling execution plan
 
+## New user scope: 2027 hitter v1 finalization
+
+Follow [the 2027 finalization plan](hitter-2027-v1-finalization.md) for active
+work. Reuse the evidence below, but complete batting, nonbatting components,
+annual WAR, remaining-rights/contract valuation and the new explorer as one
+deliverable. The older defense-only next-step ordering is superseded. Frozen
+2026 artifacts remain immutable; 2026 outcomes are now exposed development
+data for a separately dated 2027 build.
+
 ## Current stopping point 2026 10 08
 
 [The hitter handoff](hitter-stopping-point-2026-10-08.md) closes the locked

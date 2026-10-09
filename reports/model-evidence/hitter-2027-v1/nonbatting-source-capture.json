@@ -1,0 +1,512 @@
+{
+  "status": "dated_2026_captures_component_reconciliation_pending",
+  "captures": [
+    {
+      "source": "fielding-position",
+      "rows": 1377,
+      "metadata": {
+        "type": "fielder",
+        "minSwings": "q",
+        "minGroupSwings": 1,
+        "minContact": 0,
+        "gameType": "Regular",
+        "seasonStart": 2026,
+        "seasonEnd": 2026,
+        "minInnings": "0",
+        "minResults": 0,
+        "groupBy": "position",
+        "minPitches": null,
+        "secondaryGroupBy": [
+          "position"
+        ],
+        "validSwingTimingX": [],
+        "validSwingTimingY": [],
+        "validSwingTimingZ": [],
+        "validPitchTypes": [],
+        "validCounts": [],
+        "validTeams": [],
+        "validShadowZones": [],
+        "sort": {
+          "column": "total_runs",
+          "direction": "desc"
+        },
+        "validTypes": [
+          "fielder",
+          "pitcher",
+          "batter",
+          "fielding-team",
+          "batting-team"
+        ]
+      },
+      "source_path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-nonbatting-source\\captures\\fielding-position.response.gz",
+      "source_sha256": "b94c43498f7d02af70505bafacf6684fa5f6fa588c172d61797dfb94e0270d78",
+      "parsed_path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-nonbatting-source\\fielding-position-rows.json.gz",
+      "parsed_sha256": "5ca114a250c01d5cb0a7f42cc2882bc775a806970970eb5280c9631e8355a4ab",
+      "audit": {},
+      "receipt": {
+        "requested_url": "https://baseballsavant.mlb.com/leaderboard/fielding-run-value",
+        "params": {
+          "type": "fielder",
+          "seasonStart": 2026,
+          "seasonEnd": 2026,
+          "minInnings": 0,
+          "minResults": 0,
+          "groupBy": "position"
+        },
+        "returned_url": "https://baseballsavant.mlb.com/leaderboard/fielding-run-value?type=fielder&seasonStart=2026&seasonEnd=2026&minInnings=0&minResults=0&groupBy=position",
+        "content_type": "text/html; charset=utf-8",
+        "captured_utc": "2026-10-09T06:36:19.966426+00:00",
+        "response_sha256": "e8f7cc38c68a133a88f185e68bd8915a323d04ff0c2fd927ac9f76443ca358c5",
+        "compressed_sha256": "b94c43498f7d02af70505bafacf6684fa5f6fa588c172d61797dfb94e0270d78"
+      }
+    },
+    {
+      "source": "fielding-aggregate",
+      "rows": 651,
+      "metadata": {
+        "type": "fielder",
+        "minSwings": "q",
+        "minGroupSwings": 1,
+        "minContact": 0,
+        "gameType": "Regular",
+        "seasonStart": 2026,
+        "seasonEnd": 2026,
+        "minInnings": "0",
+        "minResults": 0,
+        "minPitches": null,
+        "secondaryGroupBy": [],
+        "validSwingTimingX": [],
+        "validSwingTimingY": [],
+        "validSwingTimingZ": [],
+        "validPitchTypes": [],
+        "validCounts": [],
+        "validTeams": [],
+        "validShadowZones": [],
+        "sort": {
+          "column": "total_runs",
+          "direction": "desc"
+        },
+        "validTypes": [
+          "fielder",
+          "pitcher",
+          "batter",
+          "fielding-team",
+          "batting-team"
+        ]
+      },
+      "source_path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-nonbatting-source\\captures\\fielding-aggregate.response.gz",
+      "source_sha256": "9ed143260f8da218cb70331c895e61ea518f5f4e5efec74be618496deaadf1ca",
+      "parsed_path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-nonbatting-source\\fielding-aggregate-rows.json.gz",
+      "parsed_sha256": "06ae3592db2dd9a2a06a9210d08f88380216118e25d00eb4839fcab0a77c0c2f",
+      "audit": {},
+      "receipt": {
+        "requested_url": "https://baseballsavant.mlb.com/leaderboard/fielding-run-value",
+        "params": {
+          "type": "fielder",
+          "seasonStart": 2026,
+          "seasonEnd": 2026,
+          "minInnings": 0,
+          "minResults": 0
+        },
+        "returned_url": "https://baseballsavant.mlb.com/leaderboard/fielding-run-value?type=fielder&seasonStart=2026&seasonEnd=2026&minInnings=0&minResults=0",
+        "content_type": "text/html; charset=utf-8",
+        "captured_utc": "2026-10-09T06:36:19.427638+00:00",
+        "response_sha256": "2edbbdf0fc2897588be21589ffe26ee3635165deb4bb0346a732093e52259308",
+        "compressed_sha256": "9ed143260f8da218cb70331c895e61ea518f5f4e5efec74be618496deaadf1ca"
+      }
+    },
+    {
+      "source": "framing",
+      "rows": 111,
+      "metadata": {
+        "type": "catcher",
+        "minSwings": "q",
+        "minGroupSwings": 1,
+        "minContact": 0,
+        "gameType": "Regular",
+        "seasonStart": 2026,
+        "seasonEnd": 2026,
+        "call": "original",
+        "minPitches": 1,
+        "minResults": 1,
+        "min": "1",
+        "sortColumn": "rv_tot",
+        "sortDirection": "desc",
+        "secondaryGroupBy": [],
+        "validSwingTimingX": [],
+        "validSwingTimingY": [],
+        "validSwingTimingZ": [],
+        "validPitchTypes": [],
+        "validCounts": [],
+        "validTeams": [],
+        "validShadowZones": [],
+        "validTypes": [
+          "catcher",
+          "pitcher",
+          "batter",
+          "catching-team",
+          "batting-team",
+          "league"
+        ]
+      },
+      "source_path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-nonbatting-source\\captures\\framing.response.gz",
+      "source_sha256": "340eebbe6f5a50cd47d96e83104e0d32110a5fbbe6d62f6b2c464e0f3d19d336",
+      "parsed_path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-nonbatting-source\\framing-rows.json.gz",
+      "parsed_sha256": "03405867be173c3b6f9295662efd4681ecb1073b9ad97b2cba5b449e2daaa7e4",
+      "audit": {},
+      "receipt": {
+        "requested_url": "https://baseballsavant.mlb.com/leaderboard/catcher-framing",
+        "params": {
+          "type": "catcher",
+          "seasonStart": 2026,
+          "seasonEnd": 2026,
+          "minPitches": 1,
+          "min": 1,
+          "team": "",
+          "sortColumn": "rv_tot",
+          "sortDirection": "desc"
+        },
+        "returned_url": "https://baseballsavant.mlb.com/leaderboard/catcher-framing?type=catcher&seasonStart=2026&seasonEnd=2026&minPitches=1&min=1&team=&sortColumn=rv_tot&sortDirection=desc",
+        "content_type": "text/html; charset=utf-8",
+        "captured_utc": "2026-10-09T06:36:17.857607+00:00",
+        "response_sha256": "663bda3e461c8b1eb9398ca3b3d93d7833a025b251c777fea0c3448b3a091460",
+        "compressed_sha256": "340eebbe6f5a50cd47d96e83104e0d32110a5fbbe6d62f6b2c464e0f3d19d336"
+      }
+    },
+    {
+      "source": "arm",
+      "rows": 410,
+      "metadata": {
+        "game_type": "Regular",
+        "entity_code": "Fld",
+        "is_team_type": false,
+        "season_end": 2026,
+        "season_start": 2026,
+        "splitYears": false,
+        "sort": {
+          "column": "fielder_runs",
+          "direction": "desc"
+        },
+        "team_selection_id": 1,
+        "team": "",
+        "tot_n": 1,
+        "with_team_only": false,
+        "target_base": "All",
+        "full_params": {
+          "game_type": "Regular",
+          "n": "1",
+          "season_start": "2026",
+          "season_end": "2026",
+          "split": "no",
+          "team": "",
+          "with_team_only": "0",
+          "type": "Fld"
+        },
+        "key_base_out": "All",
+        "key_base_out_text": "All"
+      },
+      "source_path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-nonbatting-source\\captures\\arm.response.gz",
+      "source_sha256": "cb64290059bb964ad0ca8acba0c18e88bef743f9580f54f7d8526006a5684790",
+      "parsed_path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-nonbatting-source\\arm-rows.json.gz",
+      "parsed_sha256": "0bef0e09333f661db0508e692e1f8a9728ed6552eca9bfab9586f1be2c6193b9",
+      "audit": {},
+      "receipt": {
+        "requested_url": "https://baseballsavant.mlb.com/leaderboard/baserunning",
+        "params": {
+          "game_type": "Regular",
+          "n": 1,
+          "season_start": 2026,
+          "season_end": 2026,
+          "split": "no",
+          "team": "",
+          "with_team_only": 0,
+          "type": "Fld"
+        },
+        "returned_url": "https://baseballsavant.mlb.com/leaderboard/baserunning?game_type=Regular&n=1&season_start=2026&season_end=2026&split=no&team=&with_team_only=0&type=Fld",
+        "content_type": "text/html; charset=utf-8",
+        "captured_utc": "2026-10-09T06:36:19.334397+00:00",
+        "response_sha256": "848e3a6c16bc85609ad8cf3c6e6023f4ff1e864925661189566b43eae86fcde8",
+        "compressed_sha256": "cb64290059bb964ad0ca8acba0c18e88bef743f9580f54f7d8526006a5684790"
+      }
+    },
+    {
+      "source": "receiving",
+      "rows": 159,
+      "metadata": {
+        "type": "fielder_3",
+        "gameType": [
+          "R"
+        ],
+        "min": 1,
+        "minSplit": 1,
+        "splitYear": "1",
+        "split": [],
+        "season": [
+          "2026"
+        ],
+        "showColumn": "oaa",
+        "secondarySplit": [
+          "year"
+        ],
+        "validSwingTimingX": [],
+        "validSwingTimingY": [],
+        "validSwingTimingZ": [],
+        "validPitchTypes": [],
+        "validCounts": [],
+        "validTeams": [],
+        "chalOrgArr": [],
+        "oppOrgArr": [],
+        "validShadowZones": [],
+        "validSeasons": [
+          2026
+        ],
+        "validGameTypes": [
+          "R"
+        ],
+        "validFlags": [],
+        "validNotFlags": [],
+        "sort": {
+          "column": "total_oaa",
+          "direction": "desc"
+        },
+        "validTypes": [
+          "fielder_3",
+          "throw_fielder_id",
+          "pitching-team",
+          "batting-team",
+          "league"
+        ]
+      },
+      "source_path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-nonbatting-source\\captures\\receiving.response.gz",
+      "source_sha256": "4536857497a9069d0580ba6637bd88de811bd780ef73c432037767799a697e86",
+      "parsed_path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-nonbatting-source\\receiving-rows.json.gz",
+      "parsed_sha256": "3108370bbd74a7b8d11699504bf63c66147f58194032a665a789ff5e3b1700c5",
+      "audit": {},
+      "receipt": {
+        "requested_url": "https://baseballsavant.mlb.com/leaderboard/first-base-scoops-receiving",
+        "params": {
+          "type": "fielder_3",
+          "season[]": 2026,
+          "splitYear": 1,
+          "min": 1,
+          "minSplit": 1,
+          "gameType[]": "R"
+        },
+        "returned_url": "https://baseballsavant.mlb.com/leaderboard/first-base-scoops-receiving?type=fielder_3&season%5B%5D=2026&splitYear=1&min=1&minSplit=1&gameType%5B%5D=R",
+        "content_type": "text/html; charset=utf-8",
+        "captured_utc": "2026-10-09T06:36:20.375166+00:00",
+        "response_sha256": "70c24b35438fb9f79ef92e7e9a9b42a08078ee95db94d5c24243415c35bdb96f",
+        "compressed_sha256": "4536857497a9069d0580ba6637bd88de811bd780ef73c432037767799a697e86"
+      }
+    },
+    {
+      "source": "throwing",
+      "rows": 108,
+      "metadata": {},
+      "source_path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-nonbatting-source\\captures\\throwing.response.gz",
+      "source_sha256": "55bf2f7d6bc8af4aa5043c5447fb9e3f213a2566b667ebd67589ef0b2e96577c",
+      "parsed_path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-nonbatting-source\\throwing-rows.json.gz",
+      "parsed_sha256": "7c08c4c33402c516d59ae08949cb3d39a998675f779c6ecbb016aada206d9194",
+      "audit": {},
+      "receipt": {
+        "requested_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing",
+        "params": {
+          "game_type": "Regular",
+          "n": 1,
+          "season_start": 2026,
+          "season_end": 2026,
+          "split": "no",
+          "team": "",
+          "with_team_only": 0,
+          "type": "Cat",
+          "csv": "true",
+          "target_base": "All"
+        },
+        "returned_url": "https://baseballsavant.mlb.com/leaderboard/catcher-throwing?game_type=Regular&n=1&season_start=2026&season_end=2026&split=no&team=&with_team_only=0&type=Cat&csv=true&target_base=All",
+        "content_type": "text/csv; charset=utf-8",
+        "captured_utc": "2026-10-09T06:36:20.225622+00:00",
+        "response_sha256": "99de74cf6dfb3b2d34b0ad0bc80321337aa7de04b2449b74619672ae58e2ffa3",
+        "compressed_sha256": "55bf2f7d6bc8af4aa5043c5447fb9e3f213a2566b667ebd67589ef0b2e96577c"
+      }
+    },
+    {
+      "source": "blocking",
+      "rows": 111,
+      "metadata": {},
+      "source_path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-nonbatting-source\\captures\\blocking.response.gz",
+      "source_sha256": "89865c7872a380f5f6fa5eed36ded86443ccbdc2b78a85704c88b6c49efce12f",
+      "parsed_path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-nonbatting-source\\blocking-rows.json.gz",
+      "parsed_sha256": "76af789afef01b00452a4589e84dab65248ade78f44695ffce28f5739ab1d0f5",
+      "audit": {},
+      "receipt": {
+        "requested_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking",
+        "params": {
+          "game_type": "Regular",
+          "n": 1,
+          "season_start": 2026,
+          "season_end": 2026,
+          "split": "no",
+          "team": "",
+          "with_team_only": 0,
+          "type": "Cat",
+          "csv": "true"
+        },
+        "returned_url": "https://baseballsavant.mlb.com/leaderboard/catcher-blocking?game_type=Regular&n=1&season_start=2026&season_end=2026&split=no&team=&with_team_only=0&type=Cat&csv=true",
+        "content_type": "text/csv; charset=utf-8",
+        "captured_utc": "2026-10-09T06:36:20.798339+00:00",
+        "response_sha256": "089d0a2e7d9d036f08b753315b1fa376e675599e25959ef4c5e353cb180bc1ff",
+        "compressed_sha256": "89865c7872a380f5f6fa5eed36ded86443ccbdc2b78a85704c88b6c49efce12f"
+      }
+    },
+    {
+      "source": "running",
+      "rows": 612,
+      "metadata": {},
+      "source_path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-nonbatting-source\\captures\\running.response.gz",
+      "source_sha256": "8f4704e88acf267732d3efbda878ace2574d8aa11ae3a1866e28608daef5b042",
+      "parsed_path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-nonbatting-source\\running-rows.json.gz",
+      "parsed_sha256": "6a6561e708954cffc0b35b3dd393d62083d7a1ebef460b26ae1ecef67c57fbfd",
+      "audit": {
+        "row_count": 612,
+        "fields": {
+          "player_id": {
+            "present_rows": 612,
+            "nonnull_rows": 612,
+            "missing_rows": 0,
+            "complete": true
+          },
+          "runner_runs_tot": {
+            "present_rows": 612,
+            "nonnull_rows": 612,
+            "missing_rows": 0,
+            "complete": true
+          },
+          "runner_runs_xb": {
+            "present_rows": 612,
+            "nonnull_rows": 612,
+            "missing_rows": 0,
+            "complete": true
+          },
+          "runner_runs_sbx": {
+            "present_rows": 612,
+            "nonnull_rows": 612,
+            "missing_rows": 0,
+            "complete": true
+          },
+          "n_runner_moved": {
+            "present_rows": 612,
+            "nonnull_rows": 612,
+            "missing_rows": 0,
+            "complete": true
+          },
+          "n_runner_moved_xb": {
+            "present_rows": 612,
+            "nonnull_rows": 612,
+            "missing_rows": 0,
+            "complete": true
+          },
+          "n_runner_moved_sbx": {
+            "present_rows": 612,
+            "nonnull_rows": 612,
+            "missing_rows": 0,
+            "complete": true
+          }
+        },
+        "duplicate_player_id_rows": 0,
+        "run_decomposition": {
+          "checked_rows": 612,
+          "max_abs_delta": 4.440892098500626e-16,
+          "identity_is_diagnostic_only": true
+        },
+        "opportunity_identity": {
+          "checked_rows": 612,
+          "violation_rows": 0,
+          "identity_is_diagnostic_only": true
+        },
+        "advancement_source_usable": true
+      },
+      "receipt": {
+        "requested_url": "https://baseballsavant.mlb.com/leaderboard/baserunning-run-value",
+        "params": {
+          "game_type": "Regular",
+          "n": "1",
+          "season_start": "2026",
+          "season_end": "2026",
+          "split": "no",
+          "team": "",
+          "type": "Run",
+          "with_team_only": "0",
+          "csv": "true"
+        },
+        "returned_url": "https://baseballsavant.mlb.com/leaderboard/baserunning-run-value?game_type=Regular&n=1&season_start=2026&season_end=2026&split=no&team=&type=Run&with_team_only=0&csv=true",
+        "content_type": "text/csv; charset=utf-8",
+        "captured_utc": "2026-10-09T06:36:21.174275+00:00",
+        "response_sha256": "1232e179e85235415277d813c69547309d2fa3409e3e464ee532fc5c276bbf15",
+        "compressed_sha256": "8f4704e88acf267732d3efbda878ace2574d8aa11ae3a1866e28608daef5b042"
+      }
+    },
+    {
+      "source": "official-fielding",
+      "rows": 2748,
+      "metadata": {},
+      "source_path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-nonbatting-source\\captures\\official-fielding.response.gz",
+      "source_sha256": "2dbf9570c8d8c61147daa3ae7ef7064dfc5a17d0be5852dc70f072b3772036f6",
+      "parsed_path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-nonbatting-source\\official-fielding-rows.json.gz",
+      "parsed_sha256": "1346b641e0d40ea7ac759558c9cf55e047f74b742ca8c69823b3cba81ae2afe6",
+      "audit": {},
+      "receipt": {
+        "requested_url": "https://statsapi.mlb.com/api/v1/stats",
+        "params": {
+          "stats": "season",
+          "group": "fielding",
+          "season": 2026,
+          "sportIds": 1,
+          "gameType": "R",
+          "playerPool": "ALL",
+          "limit": 5000
+        },
+        "returned_url": "https://statsapi.mlb.com/api/v1/stats?stats=season&group=fielding&season=2026&sportIds=1&gameType=R&playerPool=ALL&limit=5000",
+        "content_type": "application/json;charset=UTF-8",
+        "captured_utc": "2026-10-09T06:36:21.003611+00:00",
+        "response_sha256": "7ab14f3fc58883d0d2d5f59aa8e6b669eee4e2fce18e16c4251f8578da59fa79",
+        "compressed_sha256": "2dbf9570c8d8c61147daa3ae7ef7064dfc5a17d0be5852dc70f072b3772036f6"
+      }
+    },
+    {
+      "source": "official-team-pitching",
+      "rows": 30,
+      "metadata": {},
+      "source_path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-nonbatting-source\\captures\\official-team-pitching.response.gz",
+      "source_sha256": "563e3a86bf9f689f2415e661b5d11a2b83662b5e1126bf9d38c6488089da0837",
+      "parsed_path": "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-nonbatting-source\\official-team-pitching-rows.json.gz",
+      "parsed_sha256": "04d6e330f3d2d968959716bf96db7bc300439190aa9b7d74b3c75ea6f17f323c",
+      "audit": {},
+      "receipt": {
+        "requested_url": "https://statsapi.mlb.com/api/v1/teams/stats",
+        "params": {
+          "stats": "season",
+          "group": "pitching",
+          "season": 2026,
+          "sportIds": 1,
+          "gameType": "R",
+          "limit": 100
+        },
+        "returned_url": "https://statsapi.mlb.com/api/v1/teams/stats?stats=season&group=pitching&season=2026&sportIds=1&gameType=R&limit=100",
+        "content_type": "application/json;charset=UTF-8",
+        "captured_utc": "2026-10-09T06:36:21.139576+00:00",
+        "response_sha256": "2ba977fd4a4fecb6b55102d7f75f2a6193bc3035f8f7454567322559b44e1d56",
+        "compressed_sha256": "563e3a86bf9f689f2415e661b5d11a2b83662b5e1126bf9d38c6488089da0837"
+      }
+    }
+  ],
+  "source_approved_for_estimation": false,
+  "models_fitted": 0,
+  "old_forecasts_changed": false,
+  "source_method": "Existing official/native endpoints, new year, explicit metadata; no algorithm change",
+  "pending": [
+    "native component sums and official-position outs",
+    "native opportunity denominators and independent run numerators",
+    "2026 source-player walkthrough before component estimation"
+  ],
+  "runner_sha256": "2e0327d87595b5f5bfc8b6fbad75f30ffa0d448625f111888e2fe10928ff0ae6"
+}

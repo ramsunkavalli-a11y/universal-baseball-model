@@ -1,0 +1,880 @@
+{
+  "scopes": [
+    {
+      "scope": "all",
+      "rows": 30506,
+      "measured_rate_rows": 4538,
+      "actual_value_total": 4264.186901827925,
+      "scores": {
+        "baseline": {
+          "relative_rate_pa_weighted": {
+            "rmse": 1.8197271162612911,
+            "mae": 1.3507127210560965,
+            "bias": 0.07154289022735923
+          },
+          "relative_rate_unweighted": {
+            "rmse": 3.8949682804746963,
+            "mae": 2.4662464897037277,
+            "bias": 1.1148672231070897
+          },
+          "common_origin_rate_sensitivity": {
+            "rmse": 1.8747559475114197,
+            "mae": 1.40000669385329,
+            "bias": 0.03435103827747992
+          },
+          "delivered_value": {
+            "rmse": 0.4533604184755846,
+            "mae": 0.12826180915530214,
+            "bias": -0.003383327335238157
+          },
+          "forecast_value_total": 4160.975118139149
+        },
+        "candidate": {
+          "relative_rate_pa_weighted": {
+            "rmse": 1.8211778428306404,
+            "mae": 1.351053190562007,
+            "bias": 0.0713551028403041
+          },
+          "relative_rate_unweighted": {
+            "rmse": 3.8995549361225694,
+            "mae": 2.468925586613373,
+            "bias": 1.119438868323555
+          },
+          "common_origin_rate_sensitivity": {
+            "rmse": 1.876464325201896,
+            "mae": 1.4005399454207057,
+            "bias": 0.03416325089042479
+          },
+          "delivered_value": {
+            "rmse": 0.4534236486362737,
+            "mae": 0.12841908189168974,
+            "bias": -0.0032561994821958405
+          },
+          "forecast_value_total": 4164.8532804240585
+        }
+      }
+    },
+    {
+      "scope": "never_debut",
+      "rows": 24199,
+      "measured_rate_rows": 787,
+      "actual_value_total": 214.74994801805383,
+      "scores": {
+        "baseline": {
+          "relative_rate_pa_weighted": {
+            "rmse": 2.5726088570101417,
+            "mae": 1.9397157672466756,
+            "bias": 0.21690135932354956
+          },
+          "relative_rate_unweighted": {
+            "rmse": 5.013433807323691,
+            "mae": 3.540355554382427,
+            "bias": 1.8695111064678882
+          },
+          "common_origin_rate_sensitivity": {
+            "rmse": 2.6088114107091105,
+            "mae": 1.9564763370185687,
+            "bias": 0.17229271588700185
+          },
+          "delivered_value": {
+            "rmse": 0.15174509996414093,
+            "mae": 0.018889324386804972,
+            "bias": -0.0008299695249130446
+          },
+          "forecast_value_total": 194.66551548468306
+        },
+        "candidate": {
+          "relative_rate_pa_weighted": {
+            "rmse": 2.585839194328905,
+            "mae": 1.9441149630400671,
+            "bias": 0.2144749643928906
+          },
+          "relative_rate_unweighted": {
+            "rmse": 5.033951211091908,
+            "mae": 3.5558037650253373,
+            "bias": 1.895872130600443
+          },
+          "common_origin_rate_sensitivity": {
+            "rmse": 2.6246335014898716,
+            "mae": 1.9633664637743367,
+            "bias": 0.16986632095634296
+          },
+          "delivered_value": {
+            "rmse": 0.15198307474321046,
+            "mae": 0.019087587211559735,
+            "bias": -0.0006697082626745674
+          },
+          "forecast_value_total": 198.54367776959197
+        }
+      }
+    },
+    {
+      "scope": "Inactive / unknown",
+      "rows": 893,
+      "measured_rate_rows": 3,
+      "actual_value_total": 1.2504307937765087,
+      "scores": {
+        "baseline": {
+          "relative_rate_pa_weighted": {
+            "rmse": 3.2252815998546454,
+            "mae": 2.113315459017992,
+            "bias": -2.113315459017992
+          },
+          "relative_rate_unweighted": {
+            "rmse": 4.939992840333575,
+            "mae": 4.014160749080039,
+            "bias": -4.014160749080039
+          },
+          "common_origin_rate_sensitivity": {
+            "rmse": 3.258275048988166,
+            "mae": 2.1824243492672344,
+            "bias": -2.1824243492672344
+          },
+          "delivered_value": {
+            "rmse": 0.022528757761174918,
+            "mae": 0.00182519664314394,
+            "bias": -0.0002801439731141054
+          },
+          "forecast_value_total": 1.000262225785612
+        },
+        "candidate": {
+          "relative_rate_pa_weighted": {
+            "rmse": 3.1683387652888375,
+            "mae": 2.1385132779981544,
+            "bias": -2.1385132779981544
+          },
+          "relative_rate_unweighted": {
+            "rmse": 4.839553309838075,
+            "mae": 3.929149493915146,
+            "bias": -3.929149493915146
+          },
+          "common_origin_rate_sensitivity": {
+            "rmse": 3.210966535783145,
+            "mae": 2.207622168247396,
+            "bias": -2.207622168247396
+          },
+          "delivered_value": {
+            "rmse": 0.023346787152383718,
+            "mae": 0.0019904370649948783,
+            "bias": -0.00011169329707359995
+          },
+          "forecast_value_total": 1.150688679489783
+        }
+      }
+    },
+    {
+      "scope": "Lower minors",
+      "rows": 17852,
+      "measured_rate_rows": 54,
+      "actual_value_total": 9.56025276109348,
+      "scores": {
+        "baseline": {
+          "relative_rate_pa_weighted": {
+            "rmse": 2.8100284983405217,
+            "mae": 2.2305490339109917,
+            "bias": 0.4050652862842218
+          },
+          "relative_rate_unweighted": {
+            "rmse": 4.771638289060698,
+            "mae": 3.293819443363583,
+            "bias": 2.2454409099385355
+          },
+          "common_origin_rate_sensitivity": {
+            "rmse": 2.671907813315941,
+            "mae": 2.0396916606365374,
+            "bias": 0.39615150430087276
+          },
+          "delivered_value": {
+            "rmse": 0.04404479150011782,
+            "mae": 0.0019101653247394856,
+            "bias": 0.00037075404477227784
+          },
+          "forecast_value_total": 16.178953968368184
+        },
+        "candidate": {
+          "relative_rate_pa_weighted": {
+            "rmse": 2.840939046710662,
+            "mae": 2.2618866928630297,
+            "bias": 0.5399567020982915
+          },
+          "relative_rate_unweighted": {
+            "rmse": 4.8602914883950605,
+            "mae": 3.372902902547131,
+            "bias": 2.3747546795068
+          },
+          "common_origin_rate_sensitivity": {
+            "rmse": 2.7077119245338332,
+            "mae": 2.0694090734779964,
+            "bias": 0.5310429201149425
+          },
+          "delivered_value": {
+            "rmse": 0.044098743423585274,
+            "mae": 0.002018330027806192,
+            "bias": 0.0004841297054228435
+          },
+          "forecast_value_total": 18.20293626230208
+        }
+      }
+    },
+    {
+      "scope": "Upper minors",
+      "rows": 5454,
+      "measured_rate_rows": 730,
+      "actual_value_total": 203.93926446318383,
+      "scores": {
+        "baseline": {
+          "relative_rate_pa_weighted": {
+            "rmse": 2.556748120310313,
+            "mae": 1.9229996945146035,
+            "bias": 0.2124759494369433
+          },
+          "relative_rate_unweighted": {
+            "rmse": 5.0311570032370945,
+            "mae": 3.556645327548078,
+            "bias": 1.8658820738366948
+          },
+          "common_origin_rate_sensitivity": {
+            "rmse": 2.603324484014691,
+            "mae": 1.9512322793827575,
+            "bias": 0.1659355198164551
+          },
+          "delivered_value": {
+            "rmse": 0.30940963261733945,
+            "mae": 0.07725936722712078,
+            "bias": -0.004850195301183457
+          },
+          "forecast_value_total": 177.48629929052925
+        },
+        "candidate": {
+          "relative_rate_pa_weighted": {
+            "rmse": 2.5691222341549413,
+            "mae": 1.9258382176585416,
+            "bias": 0.20243099885542373
+          },
+          "relative_rate_unweighted": {
+            "rmse": 5.047341354199926,
+            "mae": 3.5677991203502057,
+            "bias": 1.8843863870834612
+          },
+          "common_origin_rate_sensitivity": {
+            "rmse": 2.6182016156929353,
+            "mae": 1.9567981261421894,
+            "bias": 0.1558905692349355
+          },
+          "delivered_value": {
+            "rmse": 0.30989241689930996,
+            "mae": 0.07775794554035524,
+            "bias": -0.00453780924741176
+          },
+          "forecast_value_total": 179.1900528278001
+        }
+      }
+    },
+    {
+      "scope": "never_origin_2016",
+      "rows": 3745,
+      "measured_rate_rows": 108,
+      "actual_value_total": 21.282580116879206,
+      "scores": {
+        "baseline": {
+          "relative_rate_pa_weighted": {
+            "rmse": 2.8387830831714154,
+            "mae": 2.0811085452251454,
+            "bias": 0.4905231339378011
+          },
+          "relative_rate_unweighted": {
+            "rmse": 5.524601961978389,
+            "mae": 3.8248206656820583,
+            "bias": 2.291500380104136
+          },
+          "common_origin_rate_sensitivity": {
+            "rmse": 2.80842243506209,
+            "mae": 2.082787013779742,
+            "bias": 0.26298312757292214
+          },
+          "delivered_value": {
+            "rmse": 0.1303603611336191,
+            "mae": 0.015527766043383698,
+            "bias": 0.0012546560851878403
+          },
+          "forecast_value_total": 25.981267155907666
+        },
+        "candidate": {
+          "relative_rate_pa_weighted": {
+            "rmse": 2.877457501133317,
+            "mae": 2.112781015428694,
+            "bias": 0.5417652187046349
+          },
+          "relative_rate_unweighted": {
+            "rmse": 5.572153841552574,
+            "mae": 3.870587063442588,
+            "bias": 2.3648951632138537
+          },
+          "common_origin_rate_sensitivity": {
+            "rmse": 2.8434116133089624,
+            "mae": 2.112566149731649,
+            "bias": 0.3142252123397561
+          },
+          "delivered_value": {
+            "rmse": 0.13086667309314412,
+            "mae": 0.015841405015618672,
+            "bias": 0.0016318942851534612
+          },
+          "forecast_value_total": 27.394024214778913
+        }
+      }
+    },
+    {
+      "scope": "never_origin_2017",
+      "rows": 3776,
+      "measured_rate_rows": 95,
+      "actual_value_total": 23.570596116878196,
+      "scores": {
+        "baseline": {
+          "relative_rate_pa_weighted": {
+            "rmse": 2.489587364435519,
+            "mae": 1.9294877148397553,
+            "bias": -0.3877422614536587
+          },
+          "relative_rate_unweighted": {
+            "rmse": 4.564806355055138,
+            "mae": 3.3258538081375653,
+            "bias": 1.3263893026166615
+          },
+          "common_origin_rate_sensitivity": {
+            "rmse": 2.4594216096221473,
+            "mae": 1.8537415091310205,
+            "bias": 0.032457203154270614
+          },
+          "delivered_value": {
+            "rmse": 0.12879311550121136,
+            "mae": 0.01443364656606239,
+            "bias": -0.0008502002616945503
+          },
+          "forecast_value_total": 20.36023992871958
+        },
+        "candidate": {
+          "relative_rate_pa_weighted": {
+            "rmse": 2.4736717393382532,
+            "mae": 1.9052078190687713,
+            "bias": -0.3103760543105584
+          },
+          "relative_rate_unweighted": {
+            "rmse": 4.589816055811981,
+            "mae": 3.340246025142295,
+            "bias": 1.4131221826523075
+          },
+          "common_origin_rate_sensitivity": {
+            "rmse": 2.456578873222005,
+            "mae": 1.8444971641250367,
+            "bias": 0.1098234102973709
+          },
+          "delivered_value": {
+            "rmse": 0.12901858148733705,
+            "mae": 0.014714379439335947,
+            "bias": -0.00046665397543763044
+          },
+          "forecast_value_total": 21.808510705625707
+        }
+      }
+    },
+    {
+      "scope": "never_origin_2018",
+      "rows": 3603,
+      "measured_rate_rows": 108,
+      "actual_value_total": 64.27724740162158,
+      "scores": {
+        "baseline": {
+          "relative_rate_pa_weighted": {
+            "rmse": 2.7122618190673435,
+            "mae": 2.0773511359485277,
+            "bias": -0.41745171158743805
+          },
+          "relative_rate_unweighted": {
+            "rmse": 4.649018583043885,
+            "mae": 3.3079037494184256,
+            "bias": 1.3017944090889526
+          },
+          "common_origin_rate_sensitivity": {
+            "rmse": 2.860176238671757,
+            "mae": 2.2072501211941646,
+            "bias": -0.9992546585327025
+          },
+          "delivered_value": {
+            "rmse": 0.21498508404749844,
+            "mae": 0.023659581706202207,
+            "bias": -0.011166807737503903
+          },
+          "forecast_value_total": 24.043239123395022
+        },
+        "candidate": {
+          "relative_rate_pa_weighted": {
+            "rmse": 2.7255510323480427,
+            "mae": 2.0871746394655104,
+            "bias": -0.4128631136034095
+          },
+          "relative_rate_unweighted": {
+            "rmse": 4.6641903240667775,
+            "mae": 3.3190935689437575,
+            "bias": 1.3242429092640462
+          },
+          "common_origin_rate_sensitivity": {
+            "rmse": 2.871851850525475,
+            "mae": 2.219665848097625,
+            "bias": -0.9946660605486738
+          },
+          "delivered_value": {
+            "rmse": 0.21549426722063444,
+            "mae": 0.023857532904862023,
+            "bias": -0.011004625927952271
+          },
+          "forecast_value_total": 24.62758018320955
+        }
+      }
+    },
+    {
+      "scope": "never_origin_2021",
+      "rows": 3379,
+      "measured_rate_rows": 158,
+      "actual_value_total": 35.3616131839542,
+      "scores": {
+        "baseline": {
+          "relative_rate_pa_weighted": {
+            "rmse": 2.4910698809707026,
+            "mae": 1.8944148755715944,
+            "bias": 0.17843561983250522
+          },
+          "relative_rate_unweighted": {
+            "rmse": 5.104070133285331,
+            "mae": 3.652469148803553,
+            "bias": 1.8335018853058338
+          },
+          "common_origin_rate_sensitivity": {
+            "rmse": 2.5392266777300874,
+            "mae": 1.9251798302447736,
+            "bias": 0.5235286424273238
+          },
+          "delivered_value": {
+            "rmse": 0.15315054860948624,
+            "mae": 0.02211692050701353,
+            "bias": -0.0019662281790461806
+          },
+          "forecast_value_total": 28.71772816695716
+        },
+        "candidate": {
+          "relative_rate_pa_weighted": {
+            "rmse": 2.4893522602914158,
+            "mae": 1.8956561419875457,
+            "bias": 0.1746524277503958
+          },
+          "relative_rate_unweighted": {
+            "rmse": 5.115967783567437,
+            "mae": 3.6615895687036897,
+            "bias": 1.8562813531285047
+          },
+          "common_origin_rate_sensitivity": {
+            "rmse": 2.5370271063694654,
+            "mae": 1.924477487610437,
+            "bias": 0.5197454503452145
+          },
+          "delivered_value": {
+            "rmse": 0.1535199409583416,
+            "mae": 0.02229828745730873,
+            "bias": -0.001876116411007518
+          },
+          "forecast_value_total": 29.022215831159805
+        }
+      }
+    },
+    {
+      "scope": "never_origin_2022",
+      "rows": 3330,
+      "measured_rate_rows": 106,
+      "actual_value_total": 31.07003851869635,
+      "scores": {
+        "baseline": {
+          "relative_rate_pa_weighted": {
+            "rmse": 2.5841678859893418,
+            "mae": 1.959745386013953,
+            "bias": 0.7465146118588424
+          },
+          "relative_rate_unweighted": {
+            "rmse": 5.0734292100223115,
+            "mae": 3.5367239567153845,
+            "bias": 1.7952255323772508
+          },
+          "common_origin_rate_sensitivity": {
+            "rmse": 2.4822571170318812,
+            "mae": 1.8060117023096793,
+            "bias": 0.20238774121858782
+          },
+          "delivered_value": {
+            "rmse": 0.1400106580855595,
+            "mae": 0.019141494200017452,
+            "bias": 0.0002719743255727727
+          },
+          "forecast_value_total": 31.97571302285368
+        },
+        "candidate": {
+          "relative_rate_pa_weighted": {
+            "rmse": 2.5899740974813295,
+            "mae": 1.9662670449190904,
+            "bias": 0.7017185656084061
+          },
+          "relative_rate_unweighted": {
+            "rmse": 5.088148787106509,
+            "mae": 3.5420583090830355,
+            "bias": 1.7804505967155675
+          },
+          "common_origin_rate_sensitivity": {
+            "rmse": 2.498077665451506,
+            "mae": 1.8189280982478682,
+            "bias": 0.15759169496815165
+          },
+          "delivered_value": {
+            "rmse": 0.13999056543663457,
+            "mae": 0.019178926907543074,
+            "bias": 0.0001605142130348545
+          },
+          "forecast_value_total": 31.604550848102413
+        }
+      }
+    },
+    {
+      "scope": "never_origin_2023",
+      "rows": 3280,
+      "measured_rate_rows": 107,
+      "actual_value_total": 5.118642596467499,
+      "scores": {
+        "baseline": {
+          "relative_rate_pa_weighted": {
+            "rmse": 2.5495695869259123,
+            "mae": 1.7787237463429666,
+            "bias": 0.8742488265220458
+          },
+          "relative_rate_unweighted": {
+            "rmse": 5.476566548271209,
+            "mae": 3.8387110169943965,
+            "bias": 2.5820051431605107
+          },
+          "common_origin_rate_sensitivity": {
+            "rmse": 2.747492552087252,
+            "mae": 1.9657538469217497,
+            "bias": 1.3463733716441835
+          },
+          "delivered_value": {
+            "rmse": 0.10530805237720436,
+            "mae": 0.016687188340429423,
+            "bias": 0.009574365690733585
+          },
+          "forecast_value_total": 36.52256206207365
+        },
+        "candidate": {
+          "relative_rate_pa_weighted": {
+            "rmse": 2.5394625436991634,
+            "mae": 1.749937939615538,
+            "bias": 0.8783922762701302
+          },
+          "relative_rate_unweighted": {
+            "rmse": 5.494513059184878,
+            "mae": 3.854467291326893,
+            "bias": 2.615932922050212
+          },
+          "common_origin_rate_sensitivity": {
+            "rmse": 2.738830535959368,
+            "mae": 1.9356739241280354,
+            "bias": 1.350516821392268
+          },
+          "delivered_value": {
+            "rmse": 0.1045542096489854,
+            "mae": 0.016956147726046884,
+            "bias": 0.009835574544607494
+          },
+          "forecast_value_total": 37.37932710278009
+        }
+      }
+    },
+    {
+      "scope": "never_origin_2024",
+      "rows": 3086,
+      "measured_rate_rows": 105,
+      "actual_value_total": 34.06923008355681,
+      "scores": {
+        "baseline": {
+          "relative_rate_pa_weighted": {
+            "rmse": 2.3894560190461904,
+            "mae": 1.8661966841644184,
+            "bias": 0.20786349998031875
+          },
+          "relative_rate_unweighted": {
+            "rmse": 4.490195325710094,
+            "mae": 3.2118526567033956,
+            "bias": 1.913911096955301
+          },
+          "common_origin_rate_sensitivity": {
+            "rmse": 2.3813882373724042,
+            "mae": 1.857221578569052,
+            "bias": 0.06868118201986494
+          },
+          "delivered_value": {
+            "rmse": 0.16450247547533633,
+            "mae": 0.021385653547329273,
+            "bias": -0.002269755041730551
+          },
+          "forecast_value_total": 27.06476602477633
+        },
+        "candidate": {
+          "relative_rate_pa_weighted": {
+            "rmse": 2.4502654607174486,
+            "mae": 1.8955732006427382,
+            "bias": 0.13381099333601965
+          },
+          "relative_rate_unweighted": {
+            "rmse": 4.503012912111418,
+            "mae": 3.2208699961784246,
+            "bias": 1.8805029323565645
+          },
+          "common_origin_rate_sensitivity": {
+            "rmse": 2.4466148649052917,
+            "mae": 1.887120912722828,
+            "bias": -0.005371324624434365
+          },
+          "delivered_value": {
+            "rmse": 0.16489537614488797,
+            "mae": 0.021460262108909053,
+            "bias": -0.002385535061445657
+          },
+          "forecast_value_total": 26.707468883935512
+        }
+      }
+    },
+    {
+      "scope": "never_exposure_0",
+      "rows": 1525,
+      "measured_rate_rows": 1,
+      "actual_value_total": 0.47347428538573777,
+      "scores": {
+        "baseline": {
+          "relative_rate_pa_weighted": {
+            "rmse": 0.6916245588376911,
+            "mae": 0.6916245588376911,
+            "bias": -0.6916245588376911
+          },
+          "relative_rate_unweighted": {
+            "rmse": 0.6916245588376911,
+            "mae": 0.6916245588376911,
+            "bias": -0.6916245588376911
+          },
+          "common_origin_rate_sensitivity": {
+            "rmse": 0.8308068767981455,
+            "mae": 0.8308068767981454,
+            "bias": -0.8308068767981454
+          },
+          "delivered_value": {
+            "rmse": 0.012390501248553152,
+            "mae": 0.0009374182696913774,
+            "bias": 0.0003165628011506474
+          },
+          "forecast_value_total": 0.9562325571404751
+        },
+        "candidate": {
+          "relative_rate_pa_weighted": {
+            "rmse": 0.8160360248034649,
+            "mae": 0.8160360248034648,
+            "bias": -0.8160360248034648
+          },
+          "relative_rate_unweighted": {
+            "rmse": 0.8160360248034649,
+            "mae": 0.8160360248034649,
+            "bias": -0.8160360248034649
+          },
+          "common_origin_rate_sensitivity": {
+            "rmse": 0.9552183427639193,
+            "mae": 0.9552183427639193,
+            "bias": -0.9552183427639193
+          },
+          "delivered_value": {
+            "rmse": 0.012323593689184544,
+            "mae": 0.0009297188129516842,
+            "bias": 0.00030931906300662575
+          },
+          "forecast_value_total": 0.9451858564708422
+        }
+      }
+    },
+    {
+      "scope": "never_exposure_1",
+      "rows": 6841,
+      "measured_rate_rows": 12,
+      "actual_value_total": 8.241613244744716,
+      "scores": {
+        "baseline": {
+          "relative_rate_pa_weighted": {
+            "rmse": 2.5755399410219524,
+            "mae": 2.156042101412316,
+            "bias": 0.19327851505806962
+          },
+          "relative_rate_unweighted": {
+            "rmse": 3.279675321437646,
+            "mae": 2.6111657983633427,
+            "bias": 1.586128183457606
+          },
+          "common_origin_rate_sensitivity": {
+            "rmse": 2.555803225342357,
+            "mae": 2.0396502072366975,
+            "bias": 0.052137858663298994
+          },
+          "delivered_value": {
+            "rmse": 0.07304782329205005,
+            "mae": 0.001948665423395818,
+            "bias": -0.0006145215719780068
+          },
+          "forecast_value_total": 4.037671170843172
+        },
+        "candidate": {
+          "relative_rate_pa_weighted": {
+            "rmse": 2.8948762170326154,
+            "mae": 2.2892680179604596,
+            "bias": -0.044318577198721266
+          },
+          "relative_rate_unweighted": {
+            "rmse": 3.4028357343302527,
+            "mae": 2.6482531773001754,
+            "bias": 1.483717579149115
+          },
+          "common_origin_rate_sensitivity": {
+            "rmse": 2.894810586952422,
+            "mae": 2.172876123784841,
+            "bias": -0.18545923359349228
+          },
+          "delivered_value": {
+            "rmse": 0.07323922798945638,
+            "mae": 0.002030703079450238,
+            "bias": -0.0005436600728258976
+          },
+          "forecast_value_total": 4.522434686542752
+        }
+      }
+    },
+    {
+      "scope": "never_exposure_2",
+      "rows": 10340,
+      "measured_rate_rows": 120,
+      "actual_value_total": 23.549326808309917,
+      "scores": {
+        "baseline": {
+          "relative_rate_pa_weighted": {
+            "rmse": 2.8822139396247892,
+            "mae": 2.256596247534833,
+            "bias": 0.4191984454605508
+          },
+          "relative_rate_unweighted": {
+            "rmse": 5.987933792479878,
+            "mae": 4.33108825048385,
+            "bias": 2.9896926814825546
+          },
+          "common_origin_rate_sensitivity": {
+            "rmse": 2.8949643259072153,
+            "mae": 2.276877441690443,
+            "bias": 0.5581660695043471
+          },
+          "delivered_value": {
+            "rmse": 0.08820607739894332,
+            "mae": 0.0068213660729670505,
+            "bias": 0.0006027886573502635
+          },
+          "forecast_value_total": 29.782161525311636
+        },
+        "candidate": {
+          "relative_rate_pa_weighted": {
+            "rmse": 2.87656078638402,
+            "mae": 2.2379395190304474,
+            "bias": 0.4013344165713595
+          },
+          "relative_rate_unweighted": {
+            "rmse": 6.03110398328481,
+            "mae": 4.352320442220285,
+            "bias": 3.021332276892316
+          },
+          "common_origin_rate_sensitivity": {
+            "rmse": 2.891613960278853,
+            "mae": 2.260379874410076,
+            "bias": 0.540302040615156
+          },
+          "delivered_value": {
+            "rmse": 0.08846049658107352,
+            "mae": 0.006957887200732701,
+            "bias": 0.0006784941559080897
+          },
+          "forecast_value_total": 30.564956380399558
+        }
+      }
+    },
+    {
+      "scope": "never_exposure_3",
+      "rows": 5493,
+      "measured_rate_rows": 654,
+      "actual_value_total": 182.48553367961347,
+      "scores": {
+        "baseline": {
+          "relative_rate_pa_weighted": {
+            "rmse": 2.521932353788794,
+            "mae": 1.8855475633013181,
+            "bias": 0.18703781649539714
+          },
+          "relative_rate_unweighted": {
+            "rmse": 4.844472617493255,
+            "mae": 3.4166721974032264,
+            "bias": 1.6730889990361895
+          },
+          "common_origin_rate_sensitivity": {
+            "rmse": 2.563967130815028,
+            "mae": 1.9051874099176842,
+            "bias": 0.1159114918295558
+          },
+          "delivered_value": {
+            "rmse": 0.28303383430411894,
+            "mae": 0.06768786685219082,
+            "bias": -0.004113614317900177
+          },
+          "forecast_value_total": 159.8894502313878
+        },
+        "candidate": {
+          "relative_rate_pa_weighted": {
+            "rmse": 2.5293682812138423,
+            "mae": 1.8898164041826222,
+            "bias": 0.1938596065749176
+          },
+          "relative_rate_unweighted": {
+            "rmse": 4.858640897431111,
+            "mae": 3.430495467669879,
+            "bias": 1.7010747991291812
+          },
+          "common_origin_rate_sensitivity": {
+            "rmse": 2.5736801848450694,
+            "mae": 1.9120745427657668,
+            "bias": 0.12273328190907631
+          },
+          "delivered_value": {
+            "rmse": 0.2833858728617336,
+            "mae": 0.06820427968699937,
+            "bias": -0.0036363431337037406
+          },
+          "forecast_value_total": 162.5111008461788
+        }
+      }
+    }
+  ],
+  "paired_rate_rmse_delta_interval_95": [
+    -0.0007839272877299019,
+    0.032791435051531544
+  ],
+  "bootstrap_people": 787,
+  "bootstrap_replicates": 1000,
+  "status": "provisional_pending_player_walkthrough",
+  "predictive_disposition": null,
+  "source_2026_used": false,
+  "forecast_changed": false,
+  "contract_sha256": "229ad6fea55a8c1524df72def2df4048d77a52771c53f7cc6b5ce4a59ef84b65",
+  "preflight_sha256": "6a7975beed9392b8667dc1c52456a6618d64587dab1ebfc64f35450306ffc157"
+}

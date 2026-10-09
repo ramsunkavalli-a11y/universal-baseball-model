@@ -2,10 +2,52 @@
 
 Updated 2026-10-08. This is the current start-here document.
 
+## Active: finish the 2027 hitter model and control-value explorer
+
+The user's new scope is controlled by
+[the 2027 v1 finalization plan](hitter-2027-v1-finalization.md): complete the
+component model, annual full-WAR accounting and current-rights net-dollar value,
+then publish a separate 2027 explorer with a team filter. The older October 8
+handoff remains a completed bounded research checkpoint, not a finished model.
+Its archived completion receipt refers to the documents at commit 4de0201e;
+this new direction intentionally updates the live status and execution plan.
+
+Initial inventory finds reusable service/contract/option engines and the local
+completed-2026 exports. Old financial artifacts use Phase 1 WAR and a full-service
+future scenario: they cannot be relabeled as the new 2027 value projections.
+The evaluated 2026 batting forecast and existing explorer remain unchanged.
+
+The [2026 event-count intake](hitter-2027-origin-input-review.md) now has 6,358
+team-season rows from 231 teams, with player/team event totals reconciled and
+eight source cases reviewed. The
+[bounded reliability repair](hitter-2027-small-sample-repair-result.md) removes
+Lovich's old 26-PA distortion, at 0.51% worse historical batting-rate RMSE overall.
+Retain it as a qualified reasonability safeguard alongside the original anchor;
+Kurtz and sparse advanced-prospect support remain limitations. No production
+forecast changed. Continue the 2027 source/membership and nonbatting assembly;
+do not restart a prior-weight search or call the full model finished.
+
+The [current nonbatting intake](hitter-2027-nonbatting-source-review.md) reconciles
+2026 native components, including separately reported ABS challenge runs.
+The [defensive rate adapter](hitter-2027-defense-rate-assembly.md) refreshes twelve
+existing skill channels for 4,694 provisional identities without a new weight
+search. Projected role/opportunities and awarded WAR are not yet attached.
+Fifty-three focused checks pass, including the new origin-2026 input adapters.
+The October 9 membership capture contains 4,855 people and 112,095 dated
+transactions; current ownership/service reconciliation is not complete. Its
+one unresolved external-export ID remains flagged, not merged by name. Current
+ownership, 2027 batting/PA assembly, running, remaining defensive channels and
+financial integration are still open. The existing 2026 Statcast features are
+being refreshed from raw contacts on D:, not replaced by incompatible exports.
+
+Storage: the completed defense-role-v16 study (1,227,234,379 logical bytes,
+2,277 files) was moved to D: with every checksum verified and an original-path
+junction. Nothing was discarded. New membership and tracking captures use D:.
+
 ## Hitter stopping point completed 2026 10 08
 
-[The consolidated hitter handoff](hitter-stopping-point-2026-10-08.md) is the
-controlling current summary. The locked first-base comparison and all 44
+[The consolidated hitter handoff](hitter-stopping-point-2026-10-08.md) was the
+summary at the preceding bounded checkpoint. The locked first-base comparison and all 44
 focal/peer calculations are complete. Main measured skill error improves 2.35%
 versus original history, but older origins are mixed and custom expanded-value
 error improves only 0.017%, with uncertainty including no gain. Retain this

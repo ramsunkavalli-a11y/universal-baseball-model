@@ -1,0 +1,40 @@
+{
+  "player_walkthrough_status": "complete",
+  "source_approved_for_estimation": true,
+  "performance_validation": false,
+  "forecasts_created": false,
+  "source_cases": 8,
+  "receiving_source_discrepancy_max_runs": 0.008122041183799666,
+  "receiving_policy": "Use native published runs with independently checked counts. Do not claim exact cross-table equality. Materiality limit .01 run; all raw values and differences retained.",
+  "excluded_position_rate_rows": [
+    {
+      "season": 2026,
+      "player_id": 677588,
+      "player_name": "Tena, José",
+      "position": 6,
+      "native_outs": 0,
+      "official_outs": 0,
+      "exposure_valid": false,
+      "range_valid": false,
+      "range_runs": -6.98979592312231e-05,
+      "arm_runs": null,
+      "dp_runs": null,
+      "fielding_runs_prevented_on_rec1b": null,
+      "framing_runs": null,
+      "throwing_runs": null,
+      "blocking_runs": null,
+      "abs_runs": null,
+      "total_runs": -6.98979592312231e-05
+    }
+  ],
+  "missing_position_rows": 60,
+  "current_abs_only": true,
+  "abs_no_longitudinal_skill_validation": true,
+  "no_data_rule": "Unknown skill for absent MLB records; no automatic zero-talent label",
+  "hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\model-evidence\\hitter-2027-v1\\nonbatting-source-reconciliation.json": "d09643ae550cb91ba9e387ef343cbb4d520ad12e22cd3c8dc1deec4031a05f36",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-nonbatting-source\\receiving-native-annual.parquet": "e361b2cdf32f706772ddea38e9eb98fd01145deae364020e537d66b383a42a17",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\model-evidence\\hitter-2027-v1\\nonbatting-source-player-walkthrough.json.gz": "5ed30237f95077d45d8590b940023b6bf3b28a6701c0d0f60756287149db0ad1",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\scripts\\review_hitter_2027_nonbatting_sources.py": "b6cdb3523aa3f4f27a998c086184d86c28b767a3d6f51ea3a4c01f41ed446ae6"
+  }
+}
