@@ -62,6 +62,26 @@ running-rate-assembly.json and position-source-player-review.json. Fixed cases,
 origin-selected peers and forecast extremes are retained. Financial/control
 paths and the new explorer are not yet complete; the active goal remains open.
 
+The [joint position/fallback review](hitter-2027-role-fallback-result.md) now
+supplies a provisional exposure allocator. A short minor stint no longer erases
+larger older MLB position evidence; no new positions are donated. Matched
+historical fielding-position RMSE improves 0.75%, with role-change limitations
+and favorable positional-total bias still disclosed. This is not a glove gain.
+The [current defensive contribution review](hitter-2027-defensive-contribution-review.md)
+connects twelve skill channels to actual 2027 opportunities for all 4,851 players.
+The compatible minor-profile check supports qualified use: primary RMSE 1.43%
+better than position references, 2021 stress 4.67% worse. It provides 3,860
+supported minor player/position priors; unsupported records remain explicit.
+Roster positions resolve 109 unknown records, leaving 68 generic/unknown cases
+with 22.6 expected PA. Preserve their incomplete-role status in full value.
+
+Next: finish additive full-WAR accounting and its matched historical check,
+then annual control/cost paths and the 2027 explorer. Verify batting context
+before labeling the integrated output: the existing fixed-wOBA target is league-
+relative observed production, not automatically park-neutral because its helper
+is named `build_neutral_mlb_value_targets`. Do not apply duplicate park credits
+or present this intermediate layer as completed portable player value.
+
 Storage: the completed defense-role-v16 study (1,227,234,379 logical bytes,
 2,277 files) was moved to D: with every checksum verified and an original-path
 junction. Nothing was discarded. New membership and tracking captures use D:.
