@@ -1,5 +1,64 @@
 # Prospect model: controlling execution plan
 
+## Current stopping point 2026 10 08
+
+[The hitter handoff](hitter-stopping-point-2026-10-08.md) closes the locked
+first-base comparison, independent arithmetic review and component reconciliation.
+Keep the qualified historical first-base prior alongside existing anchors.
+Its main skill gain does not establish a whole-model upgrade or consistent
+cross-era gain. Frozen batting forecasts, explorer and 2026 selection stay fixed.
+
+Next establish compatibility of older measured MLB fielding and modern native
+range, retaining incompatible units and unknown outcomes explicitly. Audit
+mature fold/profile support before any minor-to-MLB fit; do not invent a scale
+conversion from insufficient overlap. Require the source-to-outcome player
+walkthrough before disposition. This is one milestone, not an algorithm or
+prior-weight tournament. Keep the separate Lovich reliability defect open.
+
+Earlier checkpoints below are historical. Their instruction to execute the
+first-base test is fulfilled, not an invitation to repeat it. The bounded goal
+can close while full defense, joint hitter value and club-control valuation
+remain unfinished and require their own contracts.
+
+## Requested diagnostics 2026 10 08 Probabilities and positional credit
+
+[The probability and position tests](probability-and-position-diagnostics-2026-10-08-result.md)
+are complete without new fits. An attractive pooled percentile chart does not
+certify prospect readiness: the older workload law misses upper-minors arrival
+and regular-workload counts, while overpredicting lower-minors arrivals. Retain
+event scores and forecast-time group checks alongside distribution scores and
+actual-player traces. Do not label this older law current hitting/WAR uncertainty.
+
+Same-season OF pairing yields an 8.72-run equalization gap with an interval that
+includes the standard 10. Higher-exposure pairing yields 9.72. Maintain compatible
+intrinsic/position-relative references; do not change constants from this
+range-only selected-switcher diagnostic. SS/1B overlap is inadequate. These
+findings do not authorize explorer or frozen-forecast changes. Continue the
+already locked first-base prior checkpoint; full hitting/value risk needs its
+own genuinely nested construction later, not a global width tweak now.
+
+## Current checkpoint 2026 10 07 Fix the first base prior without penalizing catchers
+
+[The completed component diagnosis](defense-component-bias-v27-result.md) separates
+rate and opportunity errors without changing a forecast. Actual opportunities
+do not fix first-base or framing optimism. First-base source averages often
+differ from the current raw-zero prior; framing source averages are near zero.
+Realmuto/Guerrero misses and Hedges/Bailey/Santana underestimates rule out a
+blanket penalty. All fourteen groups and 56 player records are reviewed.
+
+Execute [the locked historical first-base prior](defense-first-base-prior-v28-contract.md)
+once, comparing mature future-MLB quality with unchanged zero/history/saved-age
+anchors before separate opportunity/value integration. Keep the 3000-out prior
+size and three-year recency; no alternative-weight sweep. Preserve unknown
+talent, complete/partial target membership and outfield correction. Individual
+talent and player cases matter, not just totals. No framing offset or another
+unsupported young-age curve.
+
+Then return to older-quality compatibility, age/development and supported
+minor-to-MLB talent with honest sparse fallbacks. This diagnostic is not a model
+improvement or completion. Full goal stays active; frozen forecasts, explorer,
+2026 selection and the separate Lovich batting repair remain unchanged.
+
 ## Current checkpoint 2026 10 07 Retain the corrected outfield research baseline
 
 [The completed comparison and player review](defense-reference-history-v26-result.md)

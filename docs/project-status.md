@@ -1,6 +1,76 @@
 # Project status and handoff
 
-Updated 2026-10-07. This is the current start-here document.
+Updated 2026-10-08. This is the current start-here document.
+
+## Hitter stopping point completed 2026 10 08
+
+[The consolidated hitter handoff](hitter-stopping-point-2026-10-08.md) is the
+controlling current summary. The locked first-base comparison and all 44
+focal/peer calculations are complete. Main measured skill error improves 2.35%
+versus original history, but older origins are mixed and custom expanded-value
+error improves only 0.017%, with uncertainty including no gain. Retain this
+one qualified research prior; do not promote it or tune another weight.
+
+The evaluated 4,030-player forecast remains batting plus replacement, without
+the separate nonbatting research layer. Useful MLB defensive history is not
+proof of minor talent, full WAR or six control years. Current forecasts and
+explorer are unchanged. The immediate next defense milestone is compatibility
+of older measured MLB fielding and modern range, with mature profile support
+before a minor-to-MLB fit. Lovich's hitting-reliability failure remains separate.
+
+The entries below retain earlier evidence and its original next-step wording.
+Instructions to execute the first-base comparison are now fulfilled; use the
+handoff above rather than restarting them. Completion is the bounded review
+and handoff, not completion of the universal player-value model.
+
+## Probability calibration and positional credit need separate interpretations
+
+[The requested probability and position diagnostics](probability-and-position-diagnostics-2026-10-08-result.md)
+are complete. Overall older-workload percentile calibration is close, but masks
+upper-minors underprediction and lower-minors overprediction. Upper-minors
+arrival counts are 589.5 expected versus 730 actual; regular seasons 32.5 versus
+59. These are the saved older generation, not a new assessment of repaired
+production means. Full current hitting/value uncertainty is not validated.
+
+Among 266 same-season outfield pairs from 165 people, position-relative range
+implies about 8.72 runs of CF/corner equalization, interval 7.31–10.22. The
+300-inning sensitivity gives 9.72. Native range is nearly position-invariant;
+reference subtraction explains much of the apparent difference. Do not deploy
+a reduced constant or select constants against a target using those constants.
+Six player cases and 18 peers show large individual reversals; SS/1B support is
+only nine short-stint pairs. Range is not all defensive or replacement value.
+
+All 14 workload histories/head traces, discrete percentile checks, native/official
+pair eligibility and accounting are reviewed. The frozen forecast/explorer and
+2026 selection remain unchanged. Preserve the OF reference repair; continue the
+locked first-base prior below. Do not substitute a new width/position tournament.
+
+## First base and catcher optimism is mostly a skill estimate problem
+
+[The completed bias diagnosis and 56 player calculations](defense-component-bias-v27-result.md)
+show that actual defensive opportunities do not remove the overestimates.
+In the unchanged complete 2025 subset, first-base range would be −6.66 runs
+against −60.95 observed, and framing +37.81 against +3.19. These are explanatory
+actual-opportunity calculations, not replacement forecasts or accuracy gains.
+The same finding persists in each channel's own measured-defender population.
+
+First-base native averages are often negative, while the current rule shrinks
+toward raw zero. Framing's full-source averages are already near zero, so the
+same reference repair is not appropriate. Realmuto and Guerrero are overrated;
+Hedges, Bailey and Santana are badly underrated. A blanket penalty would harm
+real talent. Missing minor framing history remains unknown, not average skill.
+Existing age calibration improves some totals but worsens first-base individual
+errors; do not adopt it from aggregate totals or repeat the failed catcher curve.
+
+Next execute [one historical first-base prior comparison](defense-first-base-prior-v28-contract.md)
+against unchanged mature later-MLB quality labels and existing anchors, then
+check its separate delivered contribution. No tuning of prior size or recency.
+After that, return to compatible older quality and supported development/minor
+evidence. The full defense goal remains active; the preceding read-only Lovich
+turn made no defense progress, and this audit does not repair his batting issue.
+24864 focal histories, 2541 raw source rows and 120 summaries replay; five
+missing-data/accounting tests pass. The reference channel metadata omission is
+resolved in an additive receipt. Forecasts, explorer and 2026 selection unchanged.
 
 ## Outfield history correction improves measured MLB skill but not the whole model
 
