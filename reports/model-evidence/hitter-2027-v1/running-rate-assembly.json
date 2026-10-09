@@ -1,0 +1,65 @@
+{
+  "forecast_year": 2027,
+  "reference": {
+    "season": 2026,
+    "plate_appearances": 183849.0,
+    "runs": 21769.0,
+    "outs": 129239.0,
+    "steal_opportunity_proxy": 44020.0,
+    "steal_attempts": 4273.0,
+    "stolen_bases": 3289.0,
+    "advancement_opportunities": 12893.0,
+    "runs_per_out": 0.16843986722274237,
+    "run_value_stolen_base": 0.2,
+    "run_value_caught_stealing": -0.41187973444548476,
+    "steal_opportunities_per_pa": 0.23943562379996627,
+    "steal_attempt_rate": 0.09706951385733757,
+    "steal_success_probability": 0.7697168265855371,
+    "league_steal_runs_per_opportunity": 0.005736264000582532,
+    "advancement_opportunities_per_pa": 0.0701282030361873
+  },
+  "environment_audit": {
+    "player_season_count": 11742,
+    "player_environment_stint_count": 17323,
+    "actual_environment_attempt_rows": 16468,
+    "level_fallback_attempt_rows": 0,
+    "actual_environment_success_rows": 13175,
+    "level_fallback_success_rows": 0
+  },
+  "players": 4851,
+  "evidence": [
+    {
+      "baserunning_evidence_tier": "steal_only",
+      "len": 3776
+    },
+    {
+      "baserunning_evidence_tier": "steal_and_advancement",
+      "len": 821
+    },
+    {
+      "baserunning_evidence_tier": "population_neutral",
+      "len": 254
+    }
+  ],
+  "fixed_cases": 8,
+  "peer_cases": 24,
+  "extreme_cases": 4,
+  "player_walkthrough": "complete",
+  "new_model_fit": false,
+  "predictive_improvement_claim": false,
+  "minor_environment_scope": "Existing selected adapter uses sport/level, not park or exact minor league",
+  "future_path_rule": "These are 2027 skill estimates; do not repeatedly advance the historical lookback and make every player neutral in 2030.",
+  "missing_advancement_not_individual_zero": true,
+  "gidp": "Explicit neutral residual retained; no invented individual GIDP model",
+  "output_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-base\\running-rates.parquet": "7f02caa3ab7ddd7afeab25dd3a4c96d20b508cd6348bf1fc1e9b321c44405494",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\model-evidence\\hitter-2027-v1\\running-rate-player-walks.json.gz": "74d6c529289f6a0463e0c3c1c267bcd910445eb1b11886e2fda9677210db6ca5"
+  },
+  "input_hashes": {
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-base\\stints.parquet": "960610e798310a65e997f3fd70416b70d63d88a7989186aead0079b64bb882f2",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\multiyear-hitter-components-v1\\native-advancement-history.parquet": "73dce04e21ee091ef9d2311047ed2a2e9654dcb24510bc97098c0a5c3e0594cb",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-nonbatting-source\\running-rows.json.gz": "6a6561e708954cffc0b35b3dd393d62083d7a1ebef460b26ae1ecef67c57fbfd",
+    "C:\\Users\\ramav\\Documents\\Codex\\2026-09-13\\wa\\work\\ubm-audit-v3\\reports\\generated\\hitter-2027-nonbatting-source\\official-team-pitching-rows.json.gz": "04d6e330f3d2d968959716bf96db7bc300439190aa9b7d74b3c75ea6f17f323c"
+  },
+  "runner_sha256": "e9c615d5247aa93cdb1b1435d4d13c00152b1e300de2770513304f6626ba4e69"
+}

@@ -1,0 +1,199 @@
+{
+  "forecast_year": 2027,
+  "player_walkthrough": "complete",
+  "fixed_cases": 8,
+  "peers": 24,
+  "additional_extreme_cases": 30,
+  "replayed_heads": 25,
+  "replayed_players": 4851,
+  "arithmetic_pass": true,
+  "groups": [
+    {
+      "stage": "Current MLB",
+      "players": 659,
+      "expected_pa": 178695.97419352338,
+      "observed_2026_PA": 183846,
+      "participation_probability": 564.5351997781589,
+      "batting_contribution": 543.8156228082242
+    },
+    {
+      "stage": "Upper minors",
+      "players": 974,
+      "expected_pa": 10404.584791511648,
+      "observed_2026_PA": 0,
+      "participation_probability": 99.82774389950374,
+      "batting_contribution": 12.858215418805813
+    },
+    {
+      "stage": "Lower minors",
+      "players": 2084,
+      "expected_pa": 529.9844420886151,
+      "observed_2026_PA": 0,
+      "participation_probability": 6.806599152236802,
+      "batting_contribution": 0.8556644009731463
+    },
+    {
+      "stage": "Inactive / unknown",
+      "players": 1134,
+      "expected_pa": 1631.1300381789931,
+      "observed_2026_PA": 0,
+      "participation_probability": 16.53143776027493,
+      "batting_contribution": 1.8798922966732514
+    }
+  ],
+  "sparse_support": [
+    {
+      "head": "conditional_pa",
+      "row_id": 2532
+    },
+    {
+      "head": "participation",
+      "row_id": 129
+    },
+    {
+      "head": "rate_prospect",
+      "row_id": 2532
+    },
+    {
+      "head": "rate_numeric",
+      "row_id": 2532
+    },
+    {
+      "head": "rate_tracking",
+      "row_id": 2532
+    }
+  ],
+  "open_limits": [
+    "2027 preseason ranking unavailable at this cutoff",
+    "New prospects and uncertain availability retain sparse-support warnings",
+    "No 2027 accuracy can be measured yet",
+    "Nonbatting value and organization rights are still not integrated"
+  ],
+  "current_named_forecasts": [
+    {
+      "talent_route": "translated_prospect",
+      "raw_participation": 0.010729267778549323,
+      "raw_conditional_pa": 92.7542640540746,
+      "participation_probability": 0.010729267778549323,
+      "conditional_pa": 92.7542640540746,
+      "expected_pa": 0.9951853366384382,
+      "hitting_wins_per_600": -0.9313152970000926,
+      "batting_contribution": 0.0015407242939064999,
+      "reported_retired": false,
+      "hard_unavailable": false,
+      "nonmedical_reason": null,
+      "player_id": 804944,
+      "name": "Jackson Lovich"
+    },
+    {
+      "talent_route": "measured_MLB",
+      "raw_participation": 0.9816214549221246,
+      "raw_conditional_pa": 538.382017478538,
+      "participation_probability": 0.9816214549221246,
+      "conditional_pa": 538.382017478538,
+      "expected_pa": 528.4873393011912,
+      "hitting_wins_per_600": 1.9002895751755378,
+      "batting_contribution": 3.3123048127202597,
+      "reported_retired": false,
+      "hard_unavailable": false,
+      "nonmedical_reason": null,
+      "player_id": 805811,
+      "name": "Bryce Eldridge"
+    },
+    {
+      "talent_route": "translated_prospect",
+      "raw_participation": 0.0007868566462896638,
+      "raw_conditional_pa": 61.31035788195239,
+      "participation_probability": 0.0007868566462896638,
+      "conditional_pa": 61.31035788195239,
+      "expected_pa": 0.048242462585812114,
+      "hitting_wins_per_600": -0.5683657366075806,
+      "batting_contribution": 0.00010387056566341453,
+      "reported_retired": false,
+      "hard_unavailable": false,
+      "nonmedical_reason": null,
+      "player_id": 808393,
+      "name": "Carlos Concepcion"
+    },
+    {
+      "talent_route": "measured_MLB",
+      "raw_participation": 0.9482486575751395,
+      "raw_conditional_pa": 487.7346122157447,
+      "participation_probability": 0.9482486575751395,
+      "conditional_pa": 487.7346122157447,
+      "expected_pa": 462.49369128651114,
+      "hitting_wins_per_600": 2.945038073215133,
+      "batting_contribution": 3.7040043056148,
+      "reported_retired": false,
+      "hard_unavailable": false,
+      "nonmedical_reason": null,
+      "player_id": 592450,
+      "name": "Aaron Judge"
+    },
+    {
+      "talent_route": "measured_MLB",
+      "raw_participation": 0.9943592610416396,
+      "raw_conditional_pa": 582.6029305018117,
+      "participation_probability": 0.9943592610416396,
+      "conditional_pa": 582.6029305018117,
+      "expected_pa": 579.3166194544751,
+      "hitting_wins_per_600": 2.0457625146793497,
+      "batting_contribution": 3.7713364802124607,
+      "reported_retired": false,
+      "hard_unavailable": false,
+      "nonmedical_reason": "suspended_unspecified",
+      "player_id": 665487,
+      "name": "Fernando Tatis Jr."
+    },
+    {
+      "talent_route": "measured_MLB",
+      "raw_participation": 0.9916803457369631,
+      "raw_conditional_pa": 590.045002857617,
+      "participation_probability": 0.9916803457369631,
+      "conditional_pa": 590.045002857617,
+      "expected_pa": 585.1360324342089,
+      "hitting_wins_per_600": 3.2821501660362595,
+      "batting_contribution": 5.014978985695651,
+      "reported_retired": false,
+      "hard_unavailable": false,
+      "nonmedical_reason": null,
+      "player_id": 660271,
+      "name": "Shohei Ohtani"
+    },
+    {
+      "talent_route": "measured_MLB",
+      "raw_participation": 0.9750472961451414,
+      "raw_conditional_pa": 294.89473063267474,
+      "participation_probability": 0.9750472961451414,
+      "conditional_pa": 294.89473063267474,
+      "expected_pa": 287.5363097508393,
+      "hitting_wins_per_600": -1.3940556931349861,
+      "batting_contribution": 0.22339968466946383,
+      "reported_retired": false,
+      "hard_unavailable": false,
+      "nonmedical_reason": null,
+      "player_id": 672275,
+      "name": "Patrick Bailey"
+    },
+    {
+      "talent_route": "measured_MLB",
+      "raw_participation": 0.9916357149519391,
+      "raw_conditional_pa": 571.5460131804396,
+      "participation_probability": 0.9916357149519391,
+      "conditional_pa": 571.5460131804396,
+      "expected_pa": 566.7654394081156,
+      "hitting_wins_per_600": 0.512067602747024,
+      "batting_contribution": 2.240886499063981,
+      "reported_retired": false,
+      "hard_unavailable": false,
+      "nonmedical_reason": null,
+      "player_id": 596019,
+      "name": "Francisco Lindor"
+    }
+  ],
+  "source_fit_sha256": "47e731c0a60bab898411b7f4239e5b9209bc7e9305261db4d6ef6618720fd93a",
+  "walk_sha256": "a4e5137c7152d7499319ce009ef13ce5d5f07acf6d828d628a9fa7d7d43cc255",
+  "predictive_improvement_claim": false,
+  "full_model_release_approved": false,
+  "runner_sha256": "80bb6b7ceb559c745ef85e7de7f9bbc0161b2c7c0391c7243c6f5b6e155d45a3"
+}

@@ -55,3 +55,19 @@ def test_canceled_origin_and_future_debut_still_rejected():
     with pytest.raises(ValueError,match='Canceled-origin'):base_inputs(*args,source_cutoff=2026)
     args=list(sources());args[4]=args[4].with_columns(pl.lit(date(2027,4,1)).alias('mlb_debut_date'))
     with pytest.raises(ValueError,match='Future'):base_inputs(*args,source_cutoff=2026)
+
+
+def test_translation_extension_preserves_graph_and_blocks_future_inputs():
+    from test_hitter_forecast_translation import sources as translation_sources
+    from universal_baseball.hitter_forecast_translation import translation_inputs as old_translation
+    from universal_baseball.hitter_origin_translation_v1 import translation_inputs
+    c,f,k=translation_sources()
+    old,old_notes=old_translation(c,f,held_fold=k,source_cutoff=2025)
+    new,notes=translation_inputs(c,f,held_fold=k,source_cutoff=2025)
+    assert old.equals(new) and old_notes==notes
+    c=c.with_columns(pl.col('season')+1);f=f.with_columns(pl.col('origin_year')+1)
+    new,notes=translation_inputs(c,f,held_fold=k,source_cutoff=2026)
+    assert new['translation_supported_pa'].to_list()==old['translation_supported_pa'].to_list()
+    assert notes[-1]['max_source_year']==2026
+    with pytest.raises(ValueError):translation_inputs(c,f,held_fold=k,source_cutoff=2025)
+    with pytest.raises(ValueError):translation_inputs(c,f,held_fold=k,source_cutoff=2027)

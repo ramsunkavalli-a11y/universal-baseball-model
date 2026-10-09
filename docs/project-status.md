@@ -1,6 +1,6 @@
 # Project status and handoff
 
-Updated 2026-10-08. This is the current start-here document.
+Updated 2026-10-09. This is the current start-here document.
 
 ## Active: finish the 2027 hitter model and control-value explorer
 
@@ -23,7 +23,7 @@ eight source cases reviewed. The
 [bounded reliability repair](hitter-2027-small-sample-repair-result.md) removes
 Lovich's old 26-PA distortion, at 0.51% worse historical batting-rate RMSE overall.
 Retain it as a qualified reasonability safeguard alongside the original anchor;
-Kurtz and sparse advanced-prospect support remain limitations. No production
+Kurtz and sparse advanced-prospect support remain limitations. No frozen 2026
 forecast changed. Continue the 2027 source/membership and nonbatting assembly;
 do not restart a prior-weight search or call the full model finished.
 
@@ -32,13 +32,35 @@ The [current nonbatting intake](hitter-2027-nonbatting-source-review.md) reconci
 The [defensive rate adapter](hitter-2027-defense-rate-assembly.md) refreshes twelve
 existing skill channels for 4,694 provisional identities without a new weight
 search. Projected role/opportunities and awarded WAR are not yet attached.
-Fifty-three focused checks pass, including the new origin-2026 input adapters.
+Fifty-nine focused checks pass, including the new origin-2026 input adapters.
 The October 9 membership capture contains 4,855 people and 112,095 dated
 transactions; current ownership/service reconciliation is not complete. Its
 one unresolved external-export ID remains flagged, not merged by name. Current
-ownership, 2027 batting/PA assembly, running, remaining defensive channels and
-financial integration are still open. The existing 2026 Statcast features are
-being refreshed from raw contacts on D:, not replaced by incompatible exports.
+ownership, remaining defensive channels and financial integration are still open.
+
+The [2027 production refresh](hitter-2027-production-refresh.md) now produces
+actual batting and playing-time forecasts for 4,851 people, using completed 2026
+counts and 124,620 audited tracking contacts. All 25 saved heads independently
+replay. Expected MLB PA total 191,262 versus 183,849 in the completed season;
+this is not a forced league quota. Eldridge projects 528 PA, Judge 462, and
+Lovich about one expected MLB PA. These remain batting-plus-replacement values,
+not full WAR. Historical accuracy has not newly improved merely from refreshing
+the origin. Missing 2027 prospect lists stay missing, not negative scouting.
+
+Baserunning rates cover the same 4,851 people: 4,597 have stolen-base history
+and 821 have measured MLB advancement history. The existing recipes are reused,
+including minor-league stealing evidence; no new weight search was performed.
+Actual 2026 position usage now covers every affiliated level. The reviewed
+pitcher/DH correction adds nine missing dual-role DH starts, not all 14 pitching
+starts: five were already recorded. League DH starts and nonpitcher defensive
+outs reconcile exactly. Position forecasts and native defensive opportunities
+must still be attached before awarding defensive/positional WAR.
+
+Compact source-to-player receipts are in
+`reports/model-evidence/hitter-2027-v1/`: batting-refresh-player-review.json,
+running-rate-assembly.json and position-source-player-review.json. Fixed cases,
+origin-selected peers and forecast extremes are retained. Financial/control
+paths and the new explorer are not yet complete; the active goal remains open.
 
 Storage: the completed defense-role-v16 study (1,227,234,379 logical bytes,
 2,277 files) was moved to D: with every checksum verified and an original-path
