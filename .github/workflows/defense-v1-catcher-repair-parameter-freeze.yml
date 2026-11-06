@@ -58,7 +58,7 @@ jobs:
           PY
 
       - name: Download certified historical fielding source
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: position-role-historical-source-2021-2024
           path: inputs/historical
@@ -67,7 +67,7 @@ jobs:
           run-id: 32148467330
 
       - name: Download repaired 2022-2024 catcher targets
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: defense-v1-catcher-repair-development-source
           path: inputs/repaired-targets
